@@ -35,5 +35,5 @@ export const site = {
   // --- ENQUIRY FORM ---
   // Get a free access key at https://web3forms.com (takes 1 minute).
   // Paste it here. Submissions then land in the owner's email inbox.
-  formEndpoint: "",  // e.g. "a1b2c3d4-....." — leave "" for demo mode
+  formEndpoint: "57365b8e-fc31-4eec-ad7c-abfa5e563fb2",  // e.g. "a1b2c3d4-....." — leave "" for demo mode
 };
