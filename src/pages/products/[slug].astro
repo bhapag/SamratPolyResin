@@ -1,0 +1,188 @@
+---
+import Base from '../../layouts/Base.astro';
+import EnquiryForm from '../../components/EnquiryForm.astro';
+import { products } from '../../data/products.js';
+import { site } from '../../data/site.js';
+
+export function getStaticPaths() {
+  return products.map(p => ({ params: { slug: p.slug }, props: { product: p } }));
+}
+
+const { product } = Astro.props;
+const { name, price, image, description, features, applications, category, specs } = product;
+const specEntries = specs ? Object.entries(specs) : [];
+const gallery = [image, ...(product.images ?? [])];
+const related = products.filter(p => p.category === category && p.slug !== product.slug).slice(0, 3);
+const waText = `Hi, I'd like a quote for ${name}.`;
+const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(waText)}`;
+---
+<Base title={name} description={`${name} — ${product.tagline} Manufactured by ${site.name}.`}>
+  <div class="wrap crumb">
+    <a href="/">Home</a><span>/</span><a href="/products/">Products</a><span>/</span><span class="cur">{name}</span>
+  </div>
+
+  <article class="wrap prod">
+    <div class="prod-media">
+      <div class="prod-media-sticky">
+        <div class="prod-img">
+          <img src={`/products/${gallery[0]}`} alt={name} width="600" height="450" id="prodMainImg"
+               onerror="this.parentElement.classList.add('noimg'); this.remove();" />
+          <span class="img-fallback" aria-hidden="true">{name.split(' ').map(w=>w[0]).join('').slice(0,3)}</span>
+        </div>
+        {gallery.length > 1 && (
+          <div class="prod-thumbs" role="list">
+            {gallery.map((img, i) => (
+              <button type="button" class:list={['prod-thumb', { active: i === 0 }]} data-src={`/products/${img}`} aria-label={`Show photo ${i + 1} of ${name}`}>
+                <img src={`/products/${img}`} alt="" loading="lazy" width="120" height="90" />
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+
+    <div class="prod-info">
+      <span class="prod-cat">{category}</span>
+      <h1 class="prod-name">{name}</h1>
+      <p class="prod-price">{price || 'Ask for price'}</p>
+
+      <div class="prod-cta">
+        <a href="#enquire" class="btn btn-solid">Enquire / get quote</a>
+        <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+
+      {specEntries.length > 0 && (
+        <div class="specs-table-wrap">
+          <h2 class="spec-h">Product details</h2>
+          <table class="specs-table">
+            <tbody>
+              {specEntries.map(([k, v]) => (
+                <tr><th>{k}</th><td>{v}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      <p class="prod-desc">{description}</p>
+
+      <div class="spec-grid">
+        <div class="spec-col">
+          <h2 class="spec-h">Key features</h2>
+          <ul>{features.map(f => <li>{f}</li>)}</ul>
+        </div>
+        <div class="spec-col">
+          <h2 class="spec-h">Applications</h2>
+          <ul>{applications.map(a => <li>{a}</li>)}</ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  {related.length > 0 && (
+    <section class="wrap related">
+      <h2 class="rel-h">More in {category}</h2>
+      <div class="rel-grid">
+        {related.map(r => (
+          <a href={`/products/${r.slug}/`} class="rel-card">
+            <span class="rel-name">{r.name}</span>
+            <span class="rel-price">{r.price || 'Ask for price'}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section id="enquire" class="section enquire-sec">
+    <div class="wrap enquire-inner">
+      <div class="section-head">
+        <p class="eyebrow">Enquiry</p>
+        <h2>Get a quote for {name}</h2>
+      </div>
+      <div class="enquire-box">
+        <EnquiryForm product={name} />
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll<HTMLButtonElement>('.prod-thumb').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const main = document.getElementById('prodMainImg') as HTMLImageElement | null;
+        const src = btn.dataset.src;
+        if (!main || !src) return;
+        main.src = src;
+        document.querySelectorAll('.prod-thumb').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+
+  <style>
+    .crumb {
+      display: flex; gap: 0.6rem; align-items: center; padding-top: 1.5rem;
+      font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-faint); letter-spacing: 0.04em;
+    }
+    .crumb a:hover { color: var(--amber-2); }
+    .crumb .cur { color: var(--ink-dim); }
+
+    .prod { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(1.5rem, 5vw, 3.5rem); padding-block: 2.2rem 3rem; }
+    .prod-media-sticky { position: sticky; top: 90px; }
+    .prod-img {
+      position: relative; aspect-ratio: 4 / 3; border: 1px solid var(--line);
+      background: linear-gradient(135deg, #1a1e24, #23282f);
+      display: grid; place-items: center; overflow: hidden;
+    }
+    .prod-img img { width: 100%; height: 100%; object-fit: cover; }
+    .img-fallback { display: none; position: absolute; font-family: var(--font-display); font-weight: 700; font-size: 3.5rem; color: var(--line-2); }
+    .prod-img.noimg .img-fallback { display: block; }
+
+    .prod-thumbs { display: flex; gap: 0.7rem; margin-top: 0.9rem; flex-wrap: wrap; }
+    .prod-thumb {
+      padding: 0; border: 1px solid var(--line); background: var(--bg-3); cursor: pointer;
+      width: 76px; aspect-ratio: 4 / 3; overflow: hidden; transition: border-color .18s;
+    }
+    .prod-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .prod-thumb:hover { border-color: var(--line-2); }
+    .prod-thumb.active { border-color: var(--amber); }
+
+    .prod-cat { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); }
+    .prod-name { font-size: clamp(2rem, 5vw, 3.2rem); margin-top: 0.6rem; text-transform: none; letter-spacing: 0; }
+    .prod-price { font-family: var(--font-mono); font-size: 1.15rem; color: var(--amber-2); margin-top: 0.7rem; }
+    .prod-desc { color: var(--ink-dim); margin-top: 1.6rem; font-size: 1rem; }
+    .prod-cta { display: flex; gap: 0.8rem; margin-top: 1.4rem; flex-wrap: wrap; }
+
+    .specs-table-wrap { margin-top: 2rem; }
+    .specs-table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); font-size: 0.88rem; }
+    .specs-table th, .specs-table td { padding: 0.6rem 0.9rem; border-top: 1px solid var(--line); text-align: left; font-weight: 400; }
+    .specs-table tr:first-child th, .specs-table tr:first-child td { border-top: none; }
+    .specs-table th {
+      width: 42%; color: var(--ink-faint); font-family: var(--font-mono); font-size: 0.72rem;
+      letter-spacing: 0.06em; text-transform: uppercase; background: var(--bg-3);
+    }
+    .specs-table td { color: var(--ink); background: var(--bg-2); }
+
+    .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+    .spec-h { font-size: 0.8rem; letter-spacing: 0.14em; color: var(--ink); margin-bottom: 1rem; }
+    .spec-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .spec-col li { position: relative; padding-left: 1.2rem; color: var(--ink-dim); font-size: 0.92rem; }
+    .spec-col li::before { content: '▪'; position: absolute; left: 0; color: var(--amber); }
+    @media (max-width: 860px) { .prod { grid-template-columns: 1fr; } .prod-media-sticky { position: relative; top: 0; } }
+    @media (max-width: 460px) { .spec-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+    .related { padding-block: 1rem 3rem; }
+    .rel-h { font-size: 1.1rem; color: var(--ink-dim); margin-bottom: 1.2rem; }
+    .rel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.9rem; }
+    .rel-card {
+      display: flex; flex-direction: column; gap: 0.4rem; padding: 1rem 1.1rem;
+      background: var(--bg-3); border: 1px solid var(--line); transition: border-color .18s;
+    }
+    .rel-card:hover { border-color: var(--amber); }
+    .rel-name { font-family: var(--font-display); text-transform: uppercase; font-size: 0.95rem; }
+    .rel-price { font-family: var(--font-mono); font-size: 0.8rem; color: var(--amber-2); }
+
+    .enquire-sec { background: var(--bg-2); border-top: 1px solid var(--line); }
+    .enquire-inner { max-width: 720px; }
+    .enquire-box { background: var(--bg-3); border: 1px solid var(--line); padding: clamp(1.4rem, 4vw, 2.2rem); }
+  </style>
+</Base>

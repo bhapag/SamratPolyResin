@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Page not found">
+  <section class="nf">
+    <div class="wrap">
+      <p class="eyebrow">Error 404</p>
+      <h1>This page cured elsewhere.</h1>
+      <p class="nf-sub">The page you’re after doesn’t exist. Head back to the catalog.</p>
+      <a href="/" class="btn btn-solid">Back to home</a>
+    </div>
+  </section>
+  <style>
+    .nf { padding-block: clamp(4rem, 12vw, 8rem); }
+    .nf h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0.8rem 0 1rem; }
+    .nf-sub { color: var(--ink-dim); margin-bottom: 2rem; }
+  </style>
+</Base>

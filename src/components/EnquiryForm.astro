@@ -1,0 +1,119 @@
+---
+import { site } from '../data/site.js';
+// optional: pass product={name} to pre-fill the enquiry
+const { product } = Astro.props;
+const demo = !site.formEndpoint;
+---
+<form class="enq" id="enquiryForm" data-demo={demo ? 'true' : 'false'}>
+  <!-- Web3Forms access key -->
+  <input type="hidden" name="access_key" value={site.formEndpoint} />
+  <input type="hidden" name="subject" value={`New enquiry — ${site.name}`} />
+  <input type="hidden" name="from_name" value={site.name} />
+  <!-- honeypot -->
+  <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+  <div class="row two">
+    <label>
+      <span>Name</span>
+      <input type="text" name="name" required autocomplete="name" placeholder="Your name" />
+    </label>
+    <label>
+      <span>Phone</span>
+      <input type="tel" name="phone" required autocomplete="tel" placeholder="Mobile number" />
+    </label>
+  </div>
+
+  <div class="row two">
+    <label>
+      <span>Email <em>(optional)</em></span>
+      <input type="email" name="email" autocomplete="email" placeholder="you@company.com" />
+    </label>
+    <label>
+      <span>Product of interest</span>
+      <input type="text" name="product" value={product ?? ''} placeholder="e.g. Fire Retardant Resin" />
+    </label>
+  </div>
+
+  <label class="row">
+    <span>Requirement / message</span>
+    <textarea name="message" rows="4" required placeholder="Quantity needed, grade, delivery location, any specs…"></textarea>
+  </label>
+
+  <div class="enq-foot">
+    <button type="submit" class="btn btn-solid">Send enquiry</button>
+    <p class="enq-status" id="enqStatus" role="status" aria-live="polite"></p>
+  </div>
+
+  {demo && (
+    <p class="demo-note">
+      Demo mode — no email is sent yet. Add a Web3Forms key in <code>src/data/site.js</code> to go live. See README.
+    </p>
+  )}
+</form>
+
+<style>
+  .enq { display: flex; flex-direction: column; gap: 1.1rem; }
+  .row { display: flex; flex-direction: column; gap: 0.4rem; }
+  .row.two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+  @media (max-width: 560px) { .row.two { grid-template-columns: 1fr; } }
+  .enq label > span {
+    font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-dim);
+  }
+  .enq label > span em { color: var(--ink-faint); font-style: normal; }
+  .enq input, .enq textarea {
+    background: var(--bg); border: 1px solid var(--line-2); color: var(--ink);
+    padding: 0.75rem 0.85rem; font-family: var(--font-body); font-size: 0.95rem;
+    width: 100%; transition: border-color .16s;
+  }
+  .enq input:focus, .enq textarea:focus { outline: none; border-color: var(--amber); }
+  .enq input::placeholder, .enq textarea::placeholder { color: var(--ink-faint); }
+  .enq-foot { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; margin-top: 0.3rem; }
+  .enq-status { font-family: var(--font-mono); font-size: 0.8rem; }
+  .enq-status.ok { color: #2ee87a; }
+  .enq-status.err { color: #ff6b6b; }
+  .demo-note {
+    font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint);
+    border-left: 2px solid var(--amber); padding-left: 0.8rem; line-height: 1.6;
+  }
+  .demo-note code { color: var(--amber-2); }
+</style>
+
+<script>
+  const form = document.getElementById('enquiryForm') as HTMLFormElement | null;
+  const statusEl = document.getElementById('enqStatus');
+  if (form && statusEl) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const isDemo = form.dataset.demo === 'true';
+      statusEl.className = 'enq-status';
+
+      if (isDemo) {
+        statusEl.textContent = '✓ Looks good — connect a form key to actually send.';
+        statusEl.classList.add('ok');
+        form.reset();
+        return;
+      }
+
+      statusEl.textContent = 'Sending…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form) as any)),
+        });
+        const data = await res.json();
+        if (data.success) {
+          statusEl.textContent = '✓ Enquiry sent — we’ll be in touch shortly.';
+          statusEl.classList.add('ok');
+          form.reset();
+        } else {
+          throw new Error(data.message || 'failed');
+        }
+      } catch {
+        statusEl.textContent = '✗ Could not send. Please call or WhatsApp us instead.';
+        statusEl.classList.add('err');
+      }
+    });
+  }
+</script>

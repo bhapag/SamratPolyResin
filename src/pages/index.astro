@@ -1,0 +1,171 @@
+---
+import Base from '../layouts/Base.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { products, CATEGORIES } from '../data/products.js';
+import { site } from '../data/site.js';
+
+const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like to enquire about your resins.")}`;
+const featured = products.slice(0, 6);
+---
+<Base>
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero-grid-lines" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Est. {site.established} · Doraha, Punjab · GST verified</p>
+      <h1 class="hero-title">
+        Engineered for quality,<br/>built for <span class="hl">performance</span>.
+      </h1>
+      <p class="hero-sub">
+        {site.name} manufactures coating and composite resins — polyester,
+        fire-retardant, epoxy and GP grades — for FRP fabricators, panel
+        makers and moulders across India. Established in {site.established},
+        we produce every batch to a consistent specification and check it
+        against quality parameters before it ships, so fabricators get the
+        same reliable cure, finish and strength order after order — from
+        general-purpose and fire-rated resins to casting, industrial and
+        specialty grades.
+      </p>
+      <div class="hero-cta">
+        <a href="/products/" class="btn btn-solid">View products</a>
+        <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5 0-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2 2.8 1.2 2.8.8 3.3.8.5 0 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
+          WhatsApp us
+        </a>
+      </div>
+      <dl class="hero-stats">
+        <div><dt>{products.length}+</dt><dd>Resin grades</dd></div>
+        <div><dt>{new Date().getFullYear() - Number(site.established)}+ yrs</dt><dd>Manufacturing</dd></div>
+        <div><dt>Pan-India</dt><dd>Supply</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ================= CATEGORY TEASER ================= -->
+  <section class="section cats">
+    <div class="wrap cats-grid">
+      <div class="cats-main">
+        <div class="section-head">
+          <p class="eyebrow">Product range</p>
+          <h2>What we manufacture</h2>
+        </div>
+        <div class="cat-grid">
+          {CATEGORIES.map(cat => (
+            <a href={`/products/#${cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`} class="cat-tile">
+              <span class="cat-tile-name">{cat}</span>
+              <span class="cat-tile-count">{products.filter(p => p.category === cat).length} grades</span>
+            </a>
+          ))}
+        </div>
+      </div>
+      <div class="cats-video">
+        <video src="/home-video.mp4" autoplay muted loop playsinline preload="auto" poster="/logo.jpg" disablepictureinpicture disableremoteplayback></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURED PRODUCTS ================= -->
+  <section class="section featured">
+    <div class="wrap">
+      <div class="section-head featured-head">
+        <div>
+          <p class="eyebrow">A few of our grades</p>
+          <h2>Popular products</h2>
+        </div>
+        <a href="/products/" class="btn">See all products →</a>
+      </div>
+      <div class="grid">
+        {featured.map(p => <ProductCard product={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT TEASER ================= -->
+  <section class="section about-teaser">
+    <div class="wrap about-teaser-grid">
+      <div>
+        <p class="eyebrow">About us</p>
+        <h2>Built on consistent chemistry.</h2>
+      </div>
+      <div class="about-teaser-body">
+        <p>
+          Established in {site.established}, {site.name} is a Punjab-based
+          manufacturer of coating resin, fire-retardant resin, GP resin and
+          allied composite materials — made to perform on the shop floor.
+        </p>
+        <a href="/about/" class="btn btn-solid">More about us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT TEASER ================= -->
+  <section class="section contact-teaser">
+    <div class="wrap contact-teaser-inner">
+      <div>
+        <p class="eyebrow">Get in touch</p>
+        <h2>Request a quote.</h2>
+        <p class="contact-teaser-sub">Tell us the grade and quantity you need — we send prices quickly.</p>
+      </div>
+      <div class="contact-teaser-cta">
+        <a href="/contact/" class="btn btn-solid">Contact us</a>
+        <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ---------- hero ---------- */
+    .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line);
+      background: radial-gradient(120% 90% at 80% -10%, rgba(255,122,24,.14), transparent 55%), var(--bg); }
+    .hero-grid-lines {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(var(--line) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 64px 64px; opacity: .25; mask-image: radial-gradient(80% 80% at 60% 0%, #000, transparent 75%);
+    }
+    .hero-inner { position: relative; padding-block: clamp(3.5rem, 10vw, 7rem); }
+    .hero-title {
+      font-size: clamp(2.6rem, 8.5vw, 5.4rem); font-weight: 700; margin-top: 1.1rem;
+      letter-spacing: 0.005em;
+    }
+    .hero-title .hl { color: var(--amber); }
+    .hero-sub { color: var(--ink-dim); font-size: clamp(1rem, 2.2vw, 1.2rem); max-width: 62ch; margin-top: 1.4rem; }
+    .hero-cta { display: flex; gap: 0.9rem; margin-top: 2rem; flex-wrap: wrap; }
+    .hero-stats { display: flex; gap: clamp(1.5rem, 5vw, 3.5rem); margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1.8rem; }
+    .hero-stats dt { font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 700; color: var(--ink); }
+    .hero-stats dd { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-top: 0.3rem; }
+
+    /* ---------- category teaser ---------- */
+    .cats-grid { display: grid; grid-template-columns: 1.6fr 0.9fr; gap: clamp(1.5rem, 5vw, 3rem); align-items: start; }
+    .cats-video { border: 1px solid var(--line); background: var(--bg-3); overflow: hidden; align-self: start; }
+    .cats-video video { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; background: #000; }
+    @media (max-width: 860px) { .cats-grid { grid-template-columns: 1fr; } .cats-video video { aspect-ratio: 16 / 10; } }
+
+    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .cat-tile {
+      display: flex; flex-direction: column; gap: 0.4rem; padding: 1.3rem 1.4rem;
+      background: var(--bg-3); border: 1px solid var(--line); transition: border-color .18s, transform .18s;
+    }
+    .cat-tile:hover { border-color: var(--amber); transform: translateY(-2px); }
+    .cat-tile-name { font-family: var(--font-display); text-transform: uppercase; font-size: 1rem; letter-spacing: 0.03em; }
+    .cat-tile-count { font-family: var(--font-mono); font-size: 0.76rem; color: var(--amber-2); }
+
+    /* ---------- featured ---------- */
+    .featured { background: var(--bg-2); border-block: 1px solid var(--line); }
+    .featured-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.1rem; }
+
+    /* ---------- about teaser ---------- */
+    .about-teaser-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(1.5rem, 5vw, 4rem); }
+    .about-teaser-grid h2 { font-size: clamp(1.8rem, 4.5vw, 2.8rem); margin-top: 0.6rem; }
+    .about-teaser-body p { color: var(--ink-dim); margin-bottom: 1.3rem; max-width: 60ch; }
+    @media (max-width: 760px) { .about-teaser-grid { grid-template-columns: 1fr; } }
+
+    /* ---------- contact teaser ---------- */
+    .contact-teaser { background: var(--bg-2); border-top: 1px solid var(--line); }
+    .contact-teaser-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .contact-teaser-inner h2 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); margin-top: 0.6rem; }
+    .contact-teaser-sub { color: var(--ink-dim); margin-top: 0.8rem; max-width: 42ch; }
+    .contact-teaser-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+  </style>
+</Base>

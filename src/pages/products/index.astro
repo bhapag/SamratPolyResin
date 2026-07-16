@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { products, CATEGORIES } from '../../data/products.js';
+
+const byCat = CATEGORIES.map(cat => ({ cat, items: products.filter(p => p.category === cat) })).filter(g => g.items.length);
+const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+---
+<Base title="Products" description="Full product range from Samrat Poly Resins — polyester, GP, fire-retardant and coating resins, hardeners and FRP raw materials.">
+  <section class="section prod-hero">
+    <div class="wrap">
+      <p class="eyebrow">Product range</p>
+      <h1>What we manufacture</h1>
+      <p class="prod-hero-sub">{products.length} resin grades and FRP raw materials, organised by category.</p>
+    </div>
+  </section>
+
+  <section class="section prod-list">
+    <div class="wrap">
+      {byCat.map(group => (
+        <div class="cat-block" id={catId(group.cat)}>
+          <h2 class="cat-title"><span>{group.cat}</span><span class="cat-count">{String(group.items.length).padStart(2,'0')}</span></h2>
+          <div class="grid">
+            {group.items.map(p => <ProductCard product={p} />)}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <style>
+    .prod-hero { padding-bottom: 0; }
+    .prod-hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); margin-top: 0.6rem; }
+    .prod-hero-sub { color: var(--ink-dim); margin-top: 0.9rem; max-width: 48ch; }
+
+    .cat-block { margin-bottom: 3.2rem; scroll-margin-top: 90px; }
+    .cat-title {
+      display: flex; align-items: baseline; gap: 1rem;
+      font-size: 1.25rem; color: var(--ink-dim); margin-bottom: 1.3rem;
+      padding-bottom: 0.7rem; border-bottom: 1px solid var(--line);
+    }
+    .cat-title span:first-child { color: var(--ink); letter-spacing: 0.05em; }
+    .cat-count { font-family: var(--font-mono); font-size: 0.8rem; color: var(--amber); margin-left: auto; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.1rem; }
+  </style>
+</Base>

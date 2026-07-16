@@ -1,0 +1,105 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site.js';
+import { products, CATEGORIES } from '../data/products.js';
+
+const years = new Date().getFullYear() - Number(site.established);
+---
+<Base title="About us" description={`About ${site.name} — coating and composite resin manufacturer in ${site.address.line2}, ${site.address.state}. Established ${site.established}.`}>
+  <section class="section about-hero">
+    <div class="wrap">
+      <p class="eyebrow">About us</p>
+      <h1>Built on consistent chemistry.</h1>
+      <p class="about-lead">
+        Established in {site.established}, {site.name} is a Punjab-based
+        manufacturer of coating resin, fire-retardant resin, GP resin and
+        allied composite materials.
+      </p>
+    </div>
+  </section>
+
+  <section class="section about-body">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <figure class="about-photo">
+          <img src="/about/factory-gate.jpg" alt={`${site.name} factory gate, ${site.address.line2}`} width="1448" height="1086" loading="lazy" />
+          <figcaption>Our facility — {site.address.line2}, {site.address.state}</figcaption>
+        </figure>
+        <p>
+          Our range is produced with modern equipment and inputs sourced from
+          trusted vendors, then checked against quality parameters before it
+          ships. Buyers choose us for precise composition, batch-to-batch
+          consistency and a nominal price structure.
+        </p>
+        <p>
+          From sheet-grade and gelcoat resins to fire-rated and roof-light
+          grades, every product is made to perform on the shop floor —
+          whether that's a fabricator laying up FRP sheets, a moulder casting
+          buttons, or a panel maker running production at scale.
+        </p>
+        <a href="/products/" class="btn btn-solid">View our products</a>
+      </div>
+
+      <ul class="about-facts">
+        <li><span>Proprietor</span>{site.proprietor}</li>
+        <li><span>Business</span>Manufacturer</li>
+        <li><span>Location</span>{site.address.line2}, {site.address.state}</li>
+        <li><span>GST</span>{site.gst}</li>
+        <li><span>Established</span>{site.established} ({years}+ yrs)</li>
+        <li><span>Range</span>{products.length}+ resin grades</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section about-cats">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Categories</p>
+        <h2>Where we manufacture across</h2>
+      </div>
+      <div class="cat-grid">
+        {CATEGORIES.map(cat => (
+          <a href={`/products/#${cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`} class="cat-tile">
+            <span class="cat-tile-name">{cat}</span>
+            <span class="cat-tile-count">{products.filter(p => p.category === cat).length} grades</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .about-hero { padding-bottom: 0; }
+    .about-hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); margin-top: 0.6rem; }
+    .about-lead { color: var(--ink-dim); margin-top: 1.1rem; max-width: 52ch; font-size: 1.05rem; }
+
+    .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(1.5rem, 5vw, 4rem); }
+    .about-copy p { color: var(--ink-dim); margin-bottom: 1.1rem; }
+    .about-copy .btn { margin-top: 0.8rem; }
+
+    .about-photo {
+      border: 1px solid var(--line); margin-bottom: 1.6rem; overflow: hidden;
+    }
+    .about-photo img { width: 100%; height: auto; display: block; }
+    .about-photo figcaption {
+      padding: 0.7rem 0.9rem; border-top: 1px solid var(--line); background: var(--bg-3);
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink-faint);
+    }
+
+    .about-facts { list-style: none; display: flex; flex-direction: column; gap: 1rem; align-self: start; }
+    .about-facts li { border-left: 2px solid var(--amber); padding-left: 0.9rem; font-size: 0.95rem; }
+    .about-facts span { display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.2rem; }
+    @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
+
+    .about-cats { background: var(--bg-2); border-top: 1px solid var(--line); }
+    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .cat-tile {
+      display: flex; flex-direction: column; gap: 0.4rem; padding: 1.3rem 1.4rem;
+      background: var(--bg-3); border: 1px solid var(--line); transition: border-color .18s, transform .18s;
+    }
+    .cat-tile:hover { border-color: var(--amber); transform: translateY(-2px); }
+    .cat-tile-name { font-family: var(--font-display); text-transform: uppercase; font-size: 1rem; letter-spacing: 0.03em; }
+    .cat-tile-count { font-family: var(--font-mono); font-size: 0.76rem; color: var(--amber-2); }
+  </style>
+</Base>
