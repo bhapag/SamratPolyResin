@@ -17,7 +17,7 @@ export const site = {
   phoneDisplay: "+91 74638 81005",     // shown on the page
   phoneDial: "+917463881005",          // used for the tel: link
   whatsapp: "917463881005",            // digits only, country code, no +
-  email: "sales@samratpolyresins.com",
+  email: "harmyysingh654@gmail.com",
 
   address: {
     line1: "Oswal Road, Near GT Road",
