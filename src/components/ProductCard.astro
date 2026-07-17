@@ -5,12 +5,13 @@ const { slug, name, price, image, tagline, category } = product;
 <a href={`/products/${slug}/`} class="card">
   <div class="card-img">
     <img src={`/products/${image}`} alt={name} loading="lazy" width="400" height="300"
-         onerror="this.parentElement.classList.add('noimg'); this.remove();" />
+         onerror="this.parentElement.classList.add('noimg'); this.remove();"
+         transition:name={`product-photo-${slug}`} />
     <span class="img-fallback" aria-hidden="true">{name.split(' ').map(w=>w[0]).join('').slice(0,3)}</span>
   </div>
   <div class="card-body">
     <span class="card-cat">{category}</span>
-    <h3 class="card-name">{name}</h3>
+    <h3 class="card-name" transition:name={`product-name-${slug}`}>{name}</h3>
     <p class="card-tag">{tagline}</p>
     <div class="card-foot">
       <span class="card-price">{price || 'Ask for price'}</span>

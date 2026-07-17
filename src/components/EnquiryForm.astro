@@ -80,9 +80,12 @@ const demo = !site.formEndpoint;
 </style>
 
 <script>
-  const form = document.getElementById('enquiryForm') as HTMLFormElement | null;
-  const statusEl = document.getElementById('enqStatus');
-  if (form && statusEl) {
+  document.addEventListener('astro:page-load', () => {
+    const form = document.getElementById('enquiryForm') as HTMLFormElement | null;
+    const statusEl = document.getElementById('enqStatus');
+    if (!form || !statusEl || form.dataset.wired === 'true') return;
+    form.dataset.wired = 'true';
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const isDemo = form.dataset.demo === 'true';
@@ -115,5 +118,5 @@ const demo = !site.formEndpoint;
         statusEl.classList.add('err');
       }
     });
-  }
+  });
 </script>

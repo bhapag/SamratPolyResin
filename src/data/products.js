@@ -151,32 +151,12 @@ export const products = [
     ],
   },
   {
-    slug: "gp-yellow-resin",
-    name: "GP Yellow Resin",
-    category: "GP Resins",
-    price: "₹90 / kg",
-    image: "gp-yellow-resin.jpg",
-    tagline: "Pre-pigmented yellow resin for decorative FRP.",
-    description:
-      "A general-purpose unsaturated polyester resin pre-pigmented with yellow colour, used where a consistent yellow appearance is needed in the final FRP product. Based on orthophthalic acid, it suits non-critical structural and decorative applications and is easy to process with MEKP catalyst at room temperature, saving the time and cost of manually adding pigment.",
-    features: [
-      "Yellow pigment pre-blended for uniform colour",
-      "Saves time and cost versus manual pigmenting",
-      "Orthophthalic base for decorative applications",
-      "Easy to process with MEKP at room temperature",
-    ],
-    applications: [
-      "Roofing sheets and cladding panels",
-      "Bathroom partitions",
-      "Decorative FRP parts",
-    ],
-  },
-  {
     slug: "gp-white-resin",
     name: "GP White Resin",
     category: "GP Resins",
     price: "₹135 / kg",
     image: "gp-white-resin.jpg",
+    images: ["gp-white-resin-2.jpg"],
     specs: {
       "Minimum Order Quantity": "1000 kg",
       "Usage / Application": "Panel, moulding, general purpose, hand layup, cooling tower, spray up, water tank",
@@ -203,6 +183,43 @@ export const products = [
       "Panels and general-purpose moulding",
       "Hand layup and spray-up work",
       "Cooling towers and water tanks",
+    ],
+  },
+  {
+    slug: "gp-gelcoat-resin",
+    name: "GP Gelcoat Resin",
+    category: "GP Resins",
+    price: "₹180 / kg",
+    image: "gp-gelcoat-resin.jpg",
+    images: ["gp-gelcoat-resin-2.jpg", "gp-gelcoat-resin-3.jpg"],
+    specs: {
+      "Minimum Order Quantity": "500 kg",
+      "Application": "Mould surface, automotive, boat, bathware",
+      "Gloss Level": "High gloss",
+      "Color": "White",
+      "Viscosity": "High",
+      "Form": "Liquid",
+      "Purity": "100%",
+      "UV Resistance": "High",
+      "Styrene Content": "30–35%",
+      "Packaging": "35 kg pail",
+      "Packaging Type": "Bottle",
+      "Usage / Application": "Commercial",
+    },
+    tagline: "General-purpose gelcoat for a glossy, protective outer layer.",
+    description:
+      "A general-purpose surface-coating polyester resin applied as the outermost layer of FRP mouldings, ahead of the laminate. Brushed, sprayed or rollered onto the mould before laying up fibreglass, it cures with an MEKP catalyst into a smooth, high-gloss, water-white finish that shields the laminate underneath from moisture, abrasion and weathering. Thixotropic so it stays put on vertical mould faces without sagging, it's a more affordable alternative to ISO or vinyl ester gelcoats for standard-duty work.",
+    features: [
+      "High-gloss, water-white finish, 100% purity",
+      "Thixotropic — resists sagging on vertical mould surfaces",
+      "Shields laminate from moisture, abrasion and weathering",
+      "Cures with MEKP catalyst at room temperature",
+      "Supplied in 35 kg pails, minimum order 500 kg",
+    ],
+    applications: [
+      "Mould surfaces for FRP moulding and boat hulls",
+      "Automotive body panels and bathware",
+      "Sanitaryware, water tanks and FRP furniture",
     ],
   },
   {
@@ -454,6 +471,7 @@ export const products = [
     category: "Epoxy & Casting",
     price: "₹700 / kg",
     image: "epoxy-art-resin.jpg",
+    images: ["epoxy-art-resin-2.jpg", "epoxy-art-resin-3.jpg"],
     specs: {
       "Minimum Order Quantity": "100 kg",
       "Component Type": "Two component",
@@ -487,6 +505,7 @@ export const products = [
     category: "Epoxy & Casting",
     price: "₹140 / kg",
     image: "uv-resin.jpg",
+    images: ["uv-resin-2.jpg"],
     specs: {
       "Minimum Order Quantity": "1000 kg",
       "Resin Chemistry": "Epoxy acrylate",
@@ -552,6 +571,7 @@ export const products = [
     category: "Industrial & Specialty Resins",
     price: "₹150 / kg",
     image: "dmc-smc-resin.jpg",
+    images: ["dmc-smc-resin-2.jpg", "dmc-smc-resin-3.jpg"],
     specs: {
       "Minimum Order Quantity": "1000 kg",
       "Resin Type": "Polyester",
@@ -587,6 +607,7 @@ export const products = [
     category: "Industrial & Specialty Resins",
     price: "₹115 / kg",
     image: "pet-resin.jpg",
+    images: ["pet-resin-2.jpg"],
     specs: {
       "Minimum Order Quantity": "1000 kg",
       "IV Value": "0.90 dl/g",
@@ -619,6 +640,7 @@ export const products = [
     category: "Industrial & Specialty Resins",
     price: "₹125 / kg",
     image: "marble-resin.jpg",
+    images: ["marble-resin-2.jpg"],
     specs: {
       "Resin Type": "Polyester",
       "Usage / Application": "Artificial marble, edge bonding, marble slab",
@@ -646,8 +668,9 @@ export const products = [
     slug: "vinyl-ester-resin",
     name: "Vinyl Ester Resin",
     category: "Industrial & Specialty Resins",
-    price: "",
+    price: "₹135 / kg",
     image: "vinyl-ester-resin.jpg",
+    images: ["vinyl-ester-resin-2.jpg"],
     tagline: "High-performance resin for chemical and corrosion resistance.",
     description:
       "A high-performance resin engineered for demanding industrial applications requiring exceptional chemical resistance, corrosion protection and mechanical strength. It offers excellent adhesion, superior toughness, thermal stability and resistance to water, acids, alkalis and solvents, with low shrinkage on cure.",
@@ -669,6 +692,7 @@ export const products = [
     category: "Industrial & Specialty Resins",
     price: "₹800 / kg",
     image: "fiberglass-epoxy-resin.jpg",
+    images: ["fiberglass-epoxy-resin-2.jpg", "fiberglass-epoxy-resin-3.jpg"],
     specs: {
       "Resin System": "Epoxy",
       "Reinforcement Form": "Fabric",
@@ -695,8 +719,9 @@ export const products = [
     slug: "bisphenol-resin",
     name: "Bisphenol Resin",
     category: "Industrial & Specialty Resins",
-    price: "",
+    price: "₹125 / kg",
     image: "bisphenol-resin.jpg",
+    images: ["bisphenol-resin-2.jpg"],
     tagline: "Bisphenol-based epoxy for demanding industrial use.",
     description:
       "A premium-quality bisphenol-based epoxy resin for high-performance industrial and composite applications requiring exceptional mechanical strength, superior chemical resistance and excellent adhesion. It offers outstanding durability, low shrinkage, excellent electrical insulation and resistance to moisture, solvents and corrosive chemicals, with excellent wet-out of fibreglass reinforcements.",
@@ -716,7 +741,7 @@ export const products = [
     slug: "mekp-hardener",
     name: "MEKP Hardener",
     category: "Hardeners",
-    price: "",
+    price: "₹220 / kg",
     image: "mekp-hardener.jpg",
     images: ["mekp-hardener-2.jpg"],
     tagline: "The catalyst that kicks off resin curing.",

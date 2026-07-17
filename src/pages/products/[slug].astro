@@ -26,7 +26,8 @@ const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(waText)
       <div class="prod-media-sticky">
         <div class="prod-img">
           <img src={`/products/${gallery[0]}`} alt={name} width="600" height="450" id="prodMainImg"
-               onerror="this.parentElement.classList.add('noimg'); this.remove();" />
+               onerror="this.parentElement.classList.add('noimg'); this.remove();"
+               transition:name={`product-photo-${product.slug}`} />
           <span class="img-fallback" aria-hidden="true">{name.split(' ').map(w=>w[0]).join('').slice(0,3)}</span>
         </div>
         {gallery.length > 1 && (
@@ -43,7 +44,7 @@ const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(waText)
 
     <div class="prod-info">
       <span class="prod-cat">{category}</span>
-      <h1 class="prod-name">{name}</h1>
+      <h1 class="prod-name" transition:name={`product-name-${product.slug}`}>{name}</h1>
       <p class="prod-price">{price || 'Ask for price'}</p>
 
       <div class="prod-cta">
@@ -106,14 +107,20 @@ const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(waText)
   </section>
 
   <script>
-    document.querySelectorAll<HTMLButtonElement>('.prod-thumb').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const main = document.getElementById('prodMainImg') as HTMLImageElement | null;
-        const src = btn.dataset.src;
-        if (!main || !src) return;
-        main.src = src;
-        document.querySelectorAll('.prod-thumb').forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
+    document.addEventListener('astro:page-load', () => {
+      document.querySelectorAll<HTMLButtonElement>('.prod-thumb').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const main = document.getElementById('prodMainImg') as HTMLImageElement | null;
+          const src = btn.dataset.src;
+          if (!main || !src || main.src.endsWith(src)) return;
+          main.classList.add('fading');
+          window.setTimeout(() => {
+            main.src = src;
+            main.classList.remove('fading');
+          }, 140);
+          document.querySelectorAll('.prod-thumb').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
       });
     });
   </script>
@@ -133,7 +140,8 @@ const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(waText)
       background: linear-gradient(135deg, #1a1e24, #23282f);
       display: grid; place-items: center; overflow: hidden;
     }
-    .prod-img img { width: 100%; height: 100%; object-fit: cover; }
+    .prod-img img { width: 100%; height: 100%; object-fit: cover; transition: opacity .14s ease; }
+    .prod-img img.fading { opacity: 0; }
     .img-fallback { display: none; position: absolute; font-family: var(--font-display); font-weight: 700; font-size: 3.5rem; color: var(--line-2); }
     .prod-img.noimg .img-fallback { display: block; }
 

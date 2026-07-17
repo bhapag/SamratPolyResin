@@ -101,3 +101,28 @@ h1, h2, h3, h4 {
 
 /* --- footer / focus baseline --- */
 :focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+
+/* --- page transitions (Astro View Transitions) --- */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.36s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  ::view-transition-old(root) { animation-name: spr-fade-out; }
+  ::view-transition-new(root) { animation-name: spr-fade-in; }
+
+  @keyframes spr-fade-out {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(-6px); }
+  }
+  @keyframes spr-fade-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  ::view-transition-group(*) {
+    animation-duration: 0.42s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
