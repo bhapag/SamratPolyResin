@@ -80,6 +80,99 @@ const featured = products.slice(0, 6);
     </div>
   </section>
 
+  <!-- ================= WHY CHOOSE US ================= -->
+  <section class="section why-us">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Why choose us</p>
+        <h2>Why choose {site.name}</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card why-card-cert">
+          <div class="why-head">
+            <span class="why-check" aria-hidden="true">✓</span>
+            <h3 class="why-title">ISO 9001:2015 Certified</h3>
+          </div>
+          <p class="why-desc">Our quality management system is certified to ISO 9001:2015 standards, ensuring consistent manufacturing and reliable production processes.</p>
+          <div class="why-cert-row">
+            <a href="/certificates/iso-9001-2015-certificate.png" target="_blank" rel="noopener" class="why-cert-thumb" aria-label="View full ISO 9001:2015 certificate">
+              <img src="/certificates/iso-9001-2015-certificate.png" alt="ISO 9001:2015 Certificate of Registration — Samrat Poly Resins" width="1086" height="1448" loading="lazy" />
+            </a>
+            <a href="/certificates/iso-9001-2015-certificate.png" target="_blank" rel="noopener" class="btn why-cert-btn">View certificate</a>
+          </div>
+        </div>
+        <div class="why-card why-card-timeline">
+          <div class="why-head">
+            <span class="why-check" aria-hidden="true">✓</span>
+            <h3 class="why-title">{new Date().getFullYear() - Number(site.established)}+ Years Manufacturing Experience</h3>
+          </div>
+          <p class="why-desc">Trusted by industrial buyers since {site.established}, supplying premium polyester resin solutions across multiple industries.</p>
+          <div class="why-timeline" aria-hidden="true">
+            <span class="why-timeline-year">{site.established}</span>
+            <span class="why-timeline-bar"></span>
+            <span class="why-timeline-year">{new Date().getFullYear()}</span>
+          </div>
+          <p class="why-timeline-label">{new Date().getFullYear() - Number(site.established)}+ Years of Manufacturing Excellence</p>
+        </div>
+        <div class="why-card">
+          <div class="why-head">
+            <span class="why-check" aria-hidden="true">✓</span>
+            <h3 class="why-title">GST Registered Manufacturer</h3>
+          </div>
+          <p class="why-desc">Registered under India's Goods and Services Tax (GST), ensuring transparent and compliant business operations.</p>
+          <div class="why-gst">
+            <div class="why-gst-rule" aria-hidden="true"></div>
+            <span class="why-gst-label">GSTIN</span>
+            <p class="why-gst-number">{site.gst}</p>
+            <button type="button" id="gstCopyBtn" class="btn why-gst-copy" data-gstin={site.gst}>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M8 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2zm2 0h4a2 2 0 0 1 2 2v4h2V5h-8v2zM6 9v8h8V9H6z"/></svg>
+              <span class="why-gst-copy-text" aria-live="polite">Copy GSTIN</span>
+            </button>
+            <p class="why-gst-caption">Verify our GST registration using this GSTIN.</p>
+            <div class="why-gst-rule" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-head">
+            <span class="why-check" aria-hidden="true">✓</span>
+            <h3 class="why-title">Pan India Supply</h3>
+          </div>
+          <p class="why-desc">Reliable logistics network serving customers across India with timely delivery and bulk shipment capability.</p>
+          <div class="why-india">
+            <svg class="why-india-map" viewBox="0 0 308 312" aria-hidden="true">
+              <path class="why-india-land" d="M 103.17 4 L 114.2 16.95 L 113.16 25.97 L 117.24 31.62 L 116.91 37.26 L 109.54 35.78 L 112.42 47.96 L 122.5 54.96 L 136.77 62.68 L 130.26 67.69 L 126.27 78.03 L 136.22 82.21 L 145.89 87.63 L 159.28 93.83 L 173.35 95.26 L 179.27 100.88 L 187.2 101.94 L 199.55 104.51 L 208.1 104.33 L 209.28 99.95 L 207.93 92.93 L 208.72 88.17 L 214.98 85.85 L 215.84 94.55 L 216.06 96.77 L 225.39 100.96 L 231.85 99.23 L 240.51 99.97 L 248.89 99.65 L 249.61 92.86 L 245.43 89.33 L 253.71 87.95 L 263.05 79.73 L 274.88 72.69 L 283.49 75.41 L 290.81 70.76 L 295.62 77.63 L 292.16 82.27 L 303.23 83.92 L 304 88.11 L 300.4 90.13 L 301.24 96.93 L 293.91 94.94 L 280.62 102.57 L 280.93 108.9 L 275.27 118.16 L 274.75 123.55 L 270.17 132.66 L 262.15 130.14 L 261.75 141.58 L 259.43 145.34 L 260.51 150.03 L 255.45 152.65 L 250.04 135.13 L 247.21 135.16 L 245.53 142.22 L 239.91 136.5 L 243.08 130.21 L 247.67 129.57 L 252.41 120.22 L 246.49 118.33 L 236.97 118.49 L 227.2 116.98 L 226.29 109.3 L 221.39 108.75 L 213.26 103.98 L 209.64 111.47 L 217.05 117.32 L 210.63 121.44 L 208.35 125.47 L 214.67 128.43 L 212.92 135.09 L 216.48 143.4 L 218.08 152.49 L 216.61 156.53 L 209.62 156.39 L 196.97 158.68 L 197.56 167 L 192.08 173.53 L 177.31 180.97 L 165.82 193.97 L 158.1 200.94 L 147.87 208.18 L 147.86 213.26 L 142.74 215.98 L 133.49 219.94 L 128.7 220.52 L 125.62 228.95 L 127.76 243.33 L 128.3 252.49 L 123.95 262.99 L 123.91 281.76 L 118.6 282.3 L 113.92 290.73 L 117.05 294.37 L 107.69 297.5 L 104.23 305.02 L 100.11 308.19 L 90.39 297.87 L 85.64 282.4 L 81.7 271.25 L 78.11 266.03 L 72.65 255.41 L 70.11 241.59 L 68.33 234.69 L 58.99 219.51 L 54.74 198.1 L 51.67 183.96 L 51.71 170.57 L 49.72 160.23 L 34.78 166.84 L 27.55 165.52 L 14.14 152.12 L 19.07 148.13 L 16.04 143.79 L 4 134.41 L 10.84 127.04 L 33.43 127.07 L 31.39 117.58 L 25.62 111.98 L 24.45 103.47 L 17.73 98.51 L 29.04 86.93 L 40.96 87.77 L 51.7 76.18 L 58.14 64.97 L 68.1 53.88 L 67.94 46.01 L 76.7 39.61 L 68.41 34.16 L 64.85 26.68 L 61.21 17 L 66.24 12.23 L 81.81 14.93 L 93.25 13.29 L 103.17 4 Z" />
+              <circle class="why-india-dot" cx="93.85" cy="45.81" r="4.5" />
+              <circle class="why-india-dot" cx="82.87" cy="54.76" r="4.5" />
+              <circle class="why-india-dot" cx="94.47" cy="68.13" r="4.5" />
+              <circle class="why-india-dot" cx="96.73" cy="80.07" r="4" />
+              <circle class="why-india-dot" cx="135.12" cy="99.52" r="4.5" />
+              <circle class="why-india-dot" cx="71.37" cy="185.27" r="4.5" />
+              <circle class="why-india-dot" cx="132.04" cy="213.77" r="4.5" />
+            </svg>
+            <p class="why-india-caption">
+              Currently supplying customers across:<br />
+              Punjab • Haryana • Delhi • Himachal Pradesh • Uttar Pradesh • Maharashtra • Andhra Pradesh
+            </p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-head">
+            <span class="why-check" aria-hidden="true">✓</span>
+            <h3 class="why-title">Bulk Orders Accepted</h3>
+          </div>
+          <p class="why-desc">Manufacturing capacity designed to efficiently fulfill large-volume industrial requirements.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-head">
+            <span class="why-check" aria-hidden="true">✓</span>
+            <h3 class="why-title">Quality Controlled Manufacturing</h3>
+          </div>
+          <p class="why-desc">Each production batch undergoes strict quality inspection before packaging and dispatch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= ABOUT TEASER ================= -->
   <section class="section about-teaser">
     <div class="wrap about-teaser-grid">
@@ -155,6 +248,69 @@ const featured = products.slice(0, 6);
     .featured-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.1rem; }
 
+    /* ---------- why choose us ---------- */
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); grid-auto-rows: 1fr; gap: 1.1rem; }
+    .why-card {
+      display: flex; flex-direction: column; gap: 0.8rem; padding: 1.3rem 1.4rem; height: 100%;
+      background: var(--bg-3); border: 1px solid var(--line); transition: border-color .18s, transform .18s;
+    }
+    .why-card:hover { border-color: var(--amber); transform: translateY(-2px); }
+    .why-head { display: flex; align-items: center; gap: 0.8rem; }
+    .why-check {
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--amber); color: #17120c; font-weight: 700; font-size: 0.9rem;
+    }
+    .why-title { font-size: 0.95rem; color: var(--ink); }
+    .why-desc { color: var(--ink-dim); font-size: 0.86rem; line-height: 1.6; flex: 1; }
+    .why-cert-row { display: flex; align-items: center; gap: 0.9rem; margin-top: auto; }
+    .why-cert-thumb {
+      display: block; flex-shrink: 0; width: 56px;
+      border: 1px solid var(--line); overflow: hidden;
+    }
+    .why-cert-thumb img { width: 100%; height: auto; display: block; transition: transform .18s; }
+    .why-cert-thumb:hover img { transform: scale(1.04); }
+    .why-cert-btn { padding: 0.55rem 1rem; font-size: 0.72rem; }
+
+    .why-timeline { display: flex; align-items: center; gap: 0.6rem; margin-top: auto; }
+    .why-timeline-year {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em;
+      color: var(--ink-faint); flex-shrink: 0;
+    }
+    .why-timeline-bar {
+      position: relative; flex: 1; height: 2px; border-radius: 1px;
+      background: linear-gradient(90deg, var(--amber-deep), var(--amber) 60%, var(--amber-2));
+    }
+    .why-timeline-bar::after {
+      content: ''; position: absolute; right: -1px; top: 50%; transform: translateY(-50%);
+      width: 0; height: 0;
+      border-top: 4px solid transparent; border-bottom: 4px solid transparent;
+      border-left: 6px solid var(--amber-2);
+    }
+    .why-timeline-label { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.03em; color: var(--amber-2); font-weight: 500; }
+
+    .why-gst { display: flex; flex-direction: column; gap: 0.6rem; margin-top: auto; }
+    .why-gst-rule { height: 1px; background: var(--line); }
+    .why-gst-label {
+      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--ink-faint); opacity: 0.75;
+    }
+    .why-gst-number { font-family: var(--font-mono); font-size: 1.05rem; font-weight: 600; letter-spacing: 0.14em; color: var(--ink); }
+    .why-gst-copy { align-self: flex-start; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.85rem; font-size: 0.72rem; }
+    .why-gst-copy.copied { border-color: #2ee87a; color: #2ee87a; animation: why-gst-pop .35s ease; }
+    @keyframes why-gst-pop {
+      0% { transform: scale(1); }
+      35% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .why-gst-caption { font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-faint); line-height: 1.6; }
+
+    .why-india { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; margin-top: auto; text-align: center; }
+    .why-india-map { width: 100%; max-width: 128px; height: auto; }
+    .why-india-land { fill: var(--line-2); stroke: var(--line); stroke-width: 1; stroke-linejoin: round; }
+    .why-india-dot { fill: var(--amber); }
+    .why-india-caption { font-family: var(--font-mono); font-size: 0.66rem; line-height: 1.7; color: var(--ink-faint); letter-spacing: 0.01em; }
+
     /* ---------- about teaser ---------- */
     .about-teaser-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(1.5rem, 5vw, 4rem); }
     .about-teaser-grid h2 { font-size: clamp(1.8rem, 4.5vw, 2.8rem); margin-top: 0.6rem; }
@@ -168,4 +324,31 @@ const featured = products.slice(0, 6);
     .contact-teaser-sub { color: var(--ink-dim); margin-top: 0.8rem; max-width: 42ch; }
     .contact-teaser-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; }
   </style>
+
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const btn = document.getElementById('gstCopyBtn') as HTMLButtonElement | null;
+      if (!btn || btn.dataset.wired === 'true') return;
+      btn.dataset.wired = 'true';
+
+      const label = btn.querySelector('.why-gst-copy-text');
+      const gstin = btn.dataset.gstin ?? '';
+      let resetTimer: number | undefined;
+
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(gstin);
+          btn.classList.add('copied');
+          if (label) label.textContent = 'Copied!';
+          window.clearTimeout(resetTimer);
+          resetTimer = window.setTimeout(() => {
+            btn.classList.remove('copied');
+            if (label) label.textContent = 'Copy GSTIN';
+          }, 1800);
+        } catch {
+          // clipboard access unavailable/denied — GSTIN remains visible to copy manually
+        }
+      });
+    });
+  </script>
 </Base>
