@@ -1,0 +1,76 @@
+---
+// Shared table for both "Comparison Table" and "Specification Table" use
+// cases — structurally identical (headers + rows + optional note/caption).
+const { headers, rows, note, caption } = Astro.props;
+const tableId = `dt-${Math.random().toString(36).slice(2, 9)}`;
+---
+<div class="data-table-wrap">
+  <div class="data-table-head">
+    {caption && <p class="data-table-caption">{caption}</p>}
+    <button type="button" class="data-table-copy" data-table-id={tableId}>Copy table</button>
+  </div>
+  <div class="data-table-scroll">
+    <table class="data-table" id={tableId}>
+      <thead><tr>{headers.map((h) => <th>{h}</th>)}</tr></thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr>{row.map((cell) => <td>{cell}</td>)}</tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  {note && <p class="data-table-note">{note}</p>}
+</div>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll<HTMLButtonElement>('.data-table-copy').forEach((btn) => {
+      if (btn.dataset.wired === 'true') return;
+      btn.dataset.wired = 'true';
+      btn.addEventListener('click', async () => {
+        const table = document.getElementById(btn.dataset.tableId ?? '');
+        if (!table) return;
+        const lines = Array.from(table.querySelectorAll('tr')).map((tr) =>
+          Array.from(tr.querySelectorAll('th, td')).map((cell) => cell.textContent?.trim() ?? '').join('\t')
+        );
+        try {
+          await navigator.clipboard.writeText(lines.join('\n'));
+          const original = btn.textContent;
+          btn.textContent = 'Copied!';
+          btn.classList.add('copied');
+          window.setTimeout(() => {
+            btn.textContent = original;
+            btn.classList.remove('copied');
+          }, 1600);
+        } catch {}
+      });
+    });
+  });
+</script>
+
+<style>
+  .data-table-wrap { margin-top: 1.3rem; }
+  .data-table-head { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 0.8rem; }
+  .data-table-caption { font-family: var(--font-mono); font-size: 0.76rem; color: var(--ink-faint); letter-spacing: 0.03em; }
+  .data-table-copy {
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--ink-faint); background: transparent; border: 1px solid var(--line-2); padding: 0.28rem 0.55rem;
+    cursor: pointer; transition: border-color .25s var(--ease-premium), color .25s var(--ease-premium);
+    flex-shrink: 0; margin-left: auto;
+  }
+  .data-table-copy:hover { border-color: var(--amber); color: var(--amber-2); }
+  .data-table-copy.copied { border-color: #2ee87a; color: #2ee87a; }
+
+  .data-table-scroll { overflow-x: auto; border: 1px solid var(--line); }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+  .data-table th, .data-table td { padding: 0.75rem 1.1rem; text-align: left; }
+  .data-table thead th {
+    position: sticky; top: 0; background: var(--bg-3); font-family: var(--font-mono); font-size: 0.7rem;
+    letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); border-bottom: 1px solid var(--line);
+  }
+  .data-table tbody tr { border-top: 1px solid var(--line); transition: background .25s var(--ease-premium); }
+  .data-table tbody tr:nth-child(even) { background: color-mix(in srgb, var(--bg-3) 45%, transparent); }
+  .data-table tbody tr:hover { background: color-mix(in srgb, var(--amber) 8%, transparent); }
+  .data-table td { color: var(--ink-dim); }
+  .data-table-note { color: var(--ink-faint); font-size: 0.82rem; font-style: italic; margin-top: 0.8rem; }
+</style>

@@ -1,0 +1,43 @@
+---
+// Small set of clean line icons for the Knowledge Centre, matching the
+// stroke-based icon style already used in the "Industries We Serve" section.
+const { name } = Astro.props;
+const common = {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  "stroke-width": "1.6",
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+};
+---
+{name === 'info' && (
+  <svg {...common}><circle cx="12" cy="12" r="9" /><line x1="12" y1="11" x2="12" y2="16" /><circle cx="12" cy="7.5" r="0.9" fill="currentColor" stroke="none" /></svg>
+)}
+{name === 'grid' && (
+  <svg {...common}><rect x="3" y="3" width="8" height="8" /><rect x="13" y="3" width="8" height="8" /><rect x="3" y="13" width="8" height="8" /><rect x="13" y="13" width="8" height="8" /></svg>
+)}
+{name === 'checklist' && (
+  <svg {...common}><rect x="3" y="4" width="18" height="16" rx="1" /><path d="M6 9 L9 9" /><path d="M6 13 L9 13" /><path d="M6 17 L9 17" /><path d="M12 9 L18 9" /><path d="M12 13 L18 13" /><path d="M12 17 L18 17" /></svg>
+)}
+{name === 'layers' && (
+  <svg {...common}><path d="M12 3 L21 8 L12 13 L3 8 Z" /><path d="M3 13 L12 18 L21 13" /></svg>
+)}
+{name === 'shield' && (
+  <svg {...common}><path d="M12 2 L20 5 L20 11 C20 16 16.5 20 12 22 C7.5 20 4 16 4 11 L4 5 Z" /></svg>
+)}
+{name === 'tank' && (
+  <svg {...common}><ellipse cx="12" cy="5" rx="7" ry="2.5" /><path d="M5 5 L5 19 A7 2.5 0 0 0 19 19 L19 5" /></svg>
+)}
+{name === 'roof' && (
+  <svg {...common}><path d="M2 9 L7 5 L12 9 L17 5 L22 9" /><path d="M2 14 L7 10 L12 14 L17 10 L22 14" /></svg>
+)}
+{name === 'door' && (
+  <svg {...common}><rect x="5" y="2" width="14" height="20" rx="1" /><circle cx="15.3" cy="12" r="0.9" fill="currentColor" stroke="none" /></svg>
+)}
+{name === 'clock' && (
+  <svg {...common}><circle cx="12" cy="12" r="9" /><path d="M12 7 L12 12 L16 14" /></svg>
+)}
+{name === 'drum' && (
+  <svg {...common}><rect x="6" y="4" width="12" height="16" rx="2" /><line x1="6" y1="9" x2="18" y2="9" /><line x1="6" y1="15" x2="18" y2="15" /></svg>
+)}

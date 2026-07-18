@@ -1,0 +1,397 @@
+---
+import Base from '../../layouts/Base.astro';
+import ReadingProgress from '../../components/ReadingProgress.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
+import QuickFacts from '../../components/QuickFacts.astro';
+import DataTable from '../../components/DataTable.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import ImagePlaceholder from '../../components/ImagePlaceholder.astro';
+import ResourceIcon from '../../components/ResourceIcon.astro';
+import TechIcon from '../../components/TechIcon.astro';
+import Callout from '../../components/Callout.astro';
+import { resources, getReadingTime } from '../../data/resources.js';
+import { site, buildCanonicalUrl } from '../../data/site.js';
+
+export function getStaticPaths() {
+  return resources.map((r) => ({ params: { slug: r.slug }, props: { resource: r } }));
+}
+
+const { resource } = Astro.props;
+const { title, description, icon, category, publishDate, sections, quickFacts, comparisonTable, faqs, relatedSlugs } = resource;
+
+const toId = (heading) => heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+const formattedDate = new Date(publishDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const canonicalUrl = buildCanonicalUrl(Astro.url.pathname);
+const talkToTeamLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like help selecting the right polyester resin for my requirement.")}`;
+const readingTime = getReadingTime(resource);
+
+const relatedArticles = (relatedSlugs ?? [])
+  .map((slug) => resources.find((r) => r.slug === slug))
+  .filter(Boolean);
+
+const currentIndex = resources.findIndex((r) => r.slug === resource.slug);
+const prevArticle = currentIndex > 0 ? resources[currentIndex - 1] : null;
+const nextArticle = currentIndex < resources.length - 1 ? resources[currentIndex + 1] : null;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description,
+  datePublished: publishDate,
+  dateModified: publishDate,
+  author: { "@type": "Organization", name: site.name },
+  publisher: { "@type": "Organization", name: site.name },
+  mainEntityOfPage: canonicalUrl,
+};
+---
+<Base
+  title={resource.seo?.title ?? title}
+  description={description}
+  ogType="article"
+  ogTitle={resource.seo?.ogTitle}
+  ogDescription={resource.seo?.ogDescription}
+  keywords={resource.seo?.keywords}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <ReadingProgress />
+
+  <div class="wrap crumb">
+    <a href="/">Home</a><span>/</span><a href="/resources/">Resources</a><span>/</span><span class="cur">{title}</span>
+  </div>
+
+  <article class="wrap article">
+    <header class="article-head">
+      <span class="article-icon" aria-hidden="true"><ResourceIcon name={icon} /></span>
+      <p class="article-category">{category}</p>
+      <h1>{title}</h1>
+      <p class="article-lead">{description}</p>
+      <div class="article-meta">
+        <span>Published {formattedDate}</span>
+        <span class="article-meta-sep" aria-hidden="true">•</span>
+        <span>{readingTime}</span>
+      </div>
+    </header>
+
+    <div class="article-body">
+      <aside class="article-toc">
+        {quickFacts && <QuickFacts facts={quickFacts} />}
+        <TableOfContents sections={sections} />
+      </aside>
+
+      <div class="article-content">
+        {sections.map((s) => {
+          const isRich = typeof s !== 'string';
+          const heading = isRich ? s.heading : s;
+          const table = isRich && s.table ? resource[s.table] : null;
+          return (
+            <section class="article-section" id={toId(heading)}>
+              <h2>{heading}</h2>
+              {!isRich && <p class="article-placeholder">Detailed technical content for this section will be added here.</p>}
+              {isRich && s.body && s.body.map((para) => <p>{para}</p>)}
+              {isRich && s.imagePlaceholder && <ImagePlaceholder label={s.imagePlaceholder.label} />}
+              {table && <DataTable headers={table.headers} rows={table.rows} note={table.note} />}
+              {isRich && s.visuals && s.visuals.map((visual) => (
+                visual.type === 'steps' ? (
+                  <div class="process-block">
+                    <ol class="process-list">
+                      {visual.items.map((item, i) => (
+                        <li class="process-step">
+                          <span class="process-num">{String(i + 1).padStart(2, '0')}</span>
+                          <span class="process-label">{item.label}</span>
+                        </li>
+                      ))}
+                    </ol>
+                    {visual.branchItems && (
+                      <div class="process-branch">
+                        <p class="process-branch-label">{visual.branchLabel}</p>
+                        <div class="process-branch-chips">
+                          {visual.branchItems.map((b) => <span class="process-chip">{b}</span>)}
+                        </div>
+                      </div>
+                    )}
+                    {visual.caption && <p class="diagram-caption">{visual.caption}</p>}
+                  </div>
+                ) : visual.type === 'icongrid' ? (
+                  <div class="diagram-block">
+                    <div class="diagram-icongrid">
+                      {visual.items.map((item) => (
+                        <div class="diagram-icon-card">
+                          <span class="diagram-icon" aria-hidden="true"><TechIcon name={item.icon} /></span>
+                          <span class="diagram-icon-label">{item.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {visual.caption && <p class="diagram-caption">{visual.caption}</p>}
+                  </div>
+                ) : null
+              ))}
+              {isRich && s.subsections && s.subsections.map((sub) => (
+                <div class="article-subsection">
+                  <h3>{sub.heading}</h3>
+                  <p>{sub.body}</p>
+                </div>
+              ))}
+              {isRich && s.visualsAfter && s.visualsAfter.map((visual) => (
+                visual.type === 'steps' ? (
+                  <div class="process-block">
+                    <ol class="process-list">
+                      {visual.items.map((item, i) => (
+                        <li class="process-step">
+                          <span class="process-num">{String(i + 1).padStart(2, '0')}</span>
+                          <span class="process-label">{item.label}</span>
+                        </li>
+                      ))}
+                    </ol>
+                    {visual.branchItems && (
+                      <div class="process-branch">
+                        <p class="process-branch-label">{visual.branchLabel}</p>
+                        <div class="process-branch-chips">
+                          {visual.branchItems.map((b) => <span class="process-chip">{b}</span>)}
+                        </div>
+                      </div>
+                    )}
+                    {visual.caption && <p class="diagram-caption">{visual.caption}</p>}
+                  </div>
+                ) : visual.type === 'icongrid' ? (
+                  <div class="diagram-block">
+                    <div class="diagram-icongrid">
+                      {visual.items.map((item) => (
+                        <div class="diagram-icon-card">
+                          <span class="diagram-icon" aria-hidden="true"><TechIcon name={item.icon} /></span>
+                          <span class="diagram-icon-label">{item.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {visual.caption && <p class="diagram-caption">{visual.caption}</p>}
+                  </div>
+                ) : null
+              ))}
+              {isRich && s.callouts && s.callouts.map((c) => (
+                <Callout label={c.label} variant={c.variant}>
+                  {c.text && <p>{c.text}</p>}
+                  {c.items && <ul>{c.items.map((item) => <li>{item}</li>)}</ul>}
+                </Callout>
+              ))}
+            </section>
+          );
+        })}
+      </div>
+    </div>
+
+    {comparisonTable && (
+      <section class="article-compare">
+        <h2>{comparisonTable.title}</h2>
+        <DataTable headers={comparisonTable.headers} rows={comparisonTable.rows} note={comparisonTable.note} />
+      </section>
+    )}
+
+    {faqs && (
+      <section class="article-faq">
+        <h2>Frequently Asked Questions</h2>
+        <FaqAccordion faqs={faqs} />
+      </section>
+    )}
+
+    {relatedArticles.length > 0 && (
+      <section class="article-related">
+        <h2>Related Articles</h2>
+        <div class="article-related-grid">
+          {relatedArticles.map((r) => (
+            <a href={`/resources/${r.slug}/`} class="article-related-card">
+              <span class="article-related-cat">{r.category}</span>
+              <span class="article-related-title">{r.title}</span>
+              <span class="article-related-desc">{r.description}</span>
+              <span class="article-related-foot">
+                <span class="article-related-time">{getReadingTime(r)}</span>
+                <span class="article-related-arrow" aria-hidden="true">→</span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {(prevArticle || nextArticle) && (
+      <nav class="article-prevnext" aria-label="Article navigation">
+        {prevArticle ? (
+          <a href={`/resources/${prevArticle.slug}/`} class="prevnext-link prevnext-prev">
+            <span class="prevnext-dir">← Previous Article</span>
+            <span class="prevnext-title">{prevArticle.title}</span>
+          </a>
+        ) : <span />}
+        {nextArticle && (
+          <a href={`/resources/${nextArticle.slug}/`} class="prevnext-link prevnext-next">
+            <span class="prevnext-dir">Next Article →</span>
+            <span class="prevnext-title">{nextArticle.title}</span>
+          </a>
+        )}
+      </nav>
+    )}
+
+    <section class="article-cta">
+      <h2>Need help selecting the right polyester resin?</h2>
+      <p>Our technical team can help you choose the most suitable resin for your manufacturing requirements.</p>
+      <div class="article-cta-buttons">
+        <a href="/contact/" class="btn btn-solid">Request a Quote</a>
+        <a href={talkToTeamLink} class="btn btn-wa" target="_blank" rel="noopener">Contact Technical Team</a>
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .crumb {
+      display: flex; gap: 0.6rem; align-items: center; padding-top: 1.5rem;
+      font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-faint); letter-spacing: 0.04em;
+    }
+    .crumb a { transition: color .25s var(--ease-premium); }
+    .crumb a:hover { color: var(--amber-2); }
+    .crumb .cur { color: var(--ink-dim); }
+
+    .article { padding-block: 2.6rem 4rem; max-width: 900px; }
+    .article-head { padding-bottom: 2.6rem; border-bottom: 1px solid var(--line); }
+    .article-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 48px; height: 48px; color: var(--amber); margin-bottom: 1.4rem;
+    }
+    .article-icon :global(svg) { width: 28px; height: 28px; }
+    .article-category {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--amber); font-weight: 500;
+    }
+    .article-head h1 { font-size: clamp(2rem, 5vw, 3rem); margin-top: 0.9rem; text-transform: none; letter-spacing: 0; }
+    .article-lead { color: var(--ink-dim); margin-top: 1.3rem; font-size: 1.05rem; max-width: 56ch; line-height: 1.7; }
+    .article-meta {
+      display: flex; align-items: center; gap: 0.6rem; margin-top: 1.6rem;
+      font-family: var(--font-mono); font-size: 0.76rem; color: var(--ink-faint); letter-spacing: 0.03em;
+    }
+    .article-meta-sep { color: var(--line-2); }
+
+    .article-body { display: grid; grid-template-columns: 260px 1fr; gap: clamp(2rem, 5vw, 3.5rem); margin-top: 3rem; align-items: start; }
+    .article-toc { position: sticky; top: 90px; }
+
+    .article-section { margin-bottom: 3.2rem; scroll-margin-top: 90px; }
+    .article-section h2 { font-size: clamp(1.35rem, 3vw, 1.8rem); margin-bottom: 1.1rem; }
+    .article-section p { color: var(--ink-dim); margin-bottom: 1.2rem; max-width: 70ch; line-height: 1.75; }
+    .article-placeholder { color: var(--ink-faint); font-style: italic; font-size: 0.94rem; }
+
+    .article-subsection { margin-top: 1.6rem; }
+    .article-subsection h3 { font-size: 1.05rem; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; color: var(--ink); }
+    .article-subsection p { color: var(--ink-dim); margin-bottom: 0; max-width: 70ch; }
+
+    .process-block, .diagram-block {
+      background: var(--bg-3); border: 1px solid var(--line); border-radius: 14px;
+      padding: clamp(1.4rem, 4vw, 2rem); margin-block: 1.6rem;
+    }
+    .process-list { list-style: none; display: flex; flex-wrap: nowrap; align-items: stretch; gap: 1.4rem; }
+    .process-step {
+      position: relative; flex: 1 1 0; min-width: 0;
+      display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.45rem;
+      padding: 1.1rem 0.7rem; background: var(--bg); border: 1px solid var(--line); border-top: 2px solid var(--amber);
+    }
+    .process-step:not(:last-child)::after {
+      content: '→'; position: absolute; right: -1.3rem; top: 50%; transform: translateY(-50%);
+      color: var(--amber); font-size: 1.1rem; line-height: 1;
+    }
+    .process-num { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--amber-2); }
+    .process-label { font-size: 0.9rem; color: var(--ink); font-weight: 600; }
+    /* Wrapping and the direction swap always happen together at the same
+       breakpoint, so an arrow never points at empty space where an item wrapped away. */
+    @media (max-width: 700px) {
+      .process-list { flex-direction: column; flex-wrap: wrap; }
+      .process-step { flex: 1 1 auto; }
+      .process-step:not(:last-child)::after {
+        content: '↓'; right: auto; left: 50%; top: auto; bottom: -1.1rem; transform: translateX(-50%);
+      }
+    }
+
+    .process-branch { margin-top: 1.6rem; padding-top: 1.3rem; border-top: 1px solid var(--line); }
+    .process-branch-label {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.8rem;
+    }
+    .process-branch-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .process-chip {
+      font-family: var(--font-mono); font-size: 0.78rem; padding: 0.45rem 0.9rem;
+      border: 1px solid var(--amber-deep); border-radius: 999px; color: var(--amber-2);
+    }
+
+    .diagram-icongrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.9rem; }
+    .diagram-icon-card {
+      display: flex; flex-direction: column; align-items: center; gap: 0.6rem; text-align: center;
+      padding: 1.1rem 0.8rem; background: var(--bg); border: 1px solid var(--line); border-top: 2px solid var(--amber);
+      transition: transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+    }
+    .diagram-icon-card:hover { transform: translateY(-3px) scale(1.015); box-shadow: 0 10px 22px rgba(0, 0, 0, .26); }
+    .diagram-icon { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; color: var(--amber); }
+    .diagram-icon :global(svg) { width: 24px; height: 24px; }
+    .diagram-icon-label { font-size: 0.86rem; color: var(--ink); }
+
+    .diagram-caption {
+      text-align: center; margin-top: 1.3rem; padding-top: 1rem; border-top: 1px solid var(--line);
+      font-family: var(--font-mono); font-size: 0.76rem; color: var(--ink-faint); letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 820px) {
+      .article-body { grid-template-columns: 1fr; }
+      .article-toc { position: relative; top: 0; }
+    }
+
+    .article-compare, .article-faq, .article-related, .article-prevnext { margin-top: 3.4rem; }
+    .article-compare h2, .article-faq h2, .article-related h2 { font-size: clamp(1.4rem, 3.5vw, 1.9rem); margin-bottom: 1.3rem; }
+
+    .article-related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+    .article-related-card {
+      display: flex; flex-direction: column; gap: 0.5rem; min-width: 0;
+      padding: 1.3rem 1.4rem; background: var(--bg-3); border: 1px solid var(--line); height: 100%;
+      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+    }
+    .article-related-card:hover {
+      border-color: var(--amber); transform: translateY(-3px) scale(1.012);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
+    }
+    .article-related-cat {
+      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--amber);
+    }
+    .article-related-title { font-family: var(--font-display); font-size: 1rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
+    .article-related-desc { color: var(--ink-dim); font-size: 0.86rem; flex: 1; }
+    .article-related-foot {
+      display: flex; align-items: center; justify-content: space-between; gap: 0.6rem;
+      margin-top: 0.5rem; padding-top: 0.8rem; border-top: 1px solid var(--line);
+    }
+    .article-related-time { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); }
+    .article-related-arrow { color: var(--amber); flex-shrink: 0; transition: transform .3s var(--ease-premium); }
+    .article-related-card:hover .article-related-arrow { transform: translateX(3px); }
+
+    .article-prevnext {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      padding-top: 2rem; border-top: 1px solid var(--line);
+    }
+    .prevnext-link {
+      display: flex; flex-direction: column; gap: 0.4rem; padding: 1.2rem 1.3rem;
+      background: var(--bg-3); border: 1px solid var(--line);
+      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium);
+    }
+    .prevnext-link:hover { border-color: var(--amber); transform: translateY(-2px); }
+    .prevnext-next { text-align: right; align-items: flex-end; grid-column: 2; }
+    .prevnext-dir {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--amber-2);
+    }
+    .prevnext-title { color: var(--ink); font-size: 0.92rem; }
+    @media (max-width: 620px) {
+      .article-prevnext { grid-template-columns: 1fr; }
+      .prevnext-next { grid-column: 1; text-align: left; align-items: flex-start; }
+    }
+
+    .article-cta {
+      margin-top: 3.4rem; padding: clamp(1.8rem, 5vw, 2.6rem);
+      background: var(--bg-3); border: 1px solid var(--line);
+    }
+    .article-cta h2 { font-size: clamp(1.4rem, 3.5vw, 1.9rem); }
+    .article-cta p { color: var(--ink-dim); margin-top: 0.8rem; max-width: 55ch; }
+    .article-cta-buttons { display: flex; gap: 0.9rem; margin-top: 1.4rem; flex-wrap: wrap; }
+  </style>
+</Base>

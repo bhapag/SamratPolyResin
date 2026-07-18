@@ -18,6 +18,10 @@
 //    description one paragraph shown on the product page
 //    features    bullet list of key features
 //    applications bullet list of where it's used
+//    whatsappName  optional — clean product name used only in the WhatsApp
+//                  quote message, for products whose display `name` carries
+//                  a parenthetical alias (e.g. "LR Resin (GP Clear Resin)").
+//                  Omit for products where `name` is already clean.
 //
 //  Prices and specs below were reconciled against the live IndiaMART listing
 //  (samratpolyresins.com) on 2026-07-08 — that site is the temporary catalog
@@ -81,6 +85,7 @@ export const products = [
   {
     slug: "unsaturated-polyester-resin",
     name: "Unsaturated Polyester Resin (UPR)",
+    whatsappName: "Unsaturated Polyester Resin",
     category: "Polyester Resins",
     price: "₹130 / kg",
     image: "unsaturated-polyester-resin.jpg",
@@ -117,6 +122,7 @@ export const products = [
   {
     slug: "gp-clear-resin",
     name: "LR Resin (GP Clear Resin)",
+    whatsappName: "LR Resin",
     category: "GP Resins",
     price: "₹140 / kg",
     image: "gp-clear-resin.jpg",

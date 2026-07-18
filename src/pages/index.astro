@@ -6,38 +6,38 @@ import { site } from '../data/site.js';
 
 const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like to enquire about your resins.")}`;
 const featured = products.slice(0, 6);
+const [whyWord, chooseWord, samratWord, polyWord, resinsWord] = `Why choose ${site.name}`.split(' ');
 ---
 <Base>
   <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="hero-grid-lines" aria-hidden="true"></div>
     <div class="wrap hero-inner">
-      <p class="eyebrow">Est. {site.established} · Doraha, Punjab · GST verified</p>
+      <p class="eyebrow">Trusted industrial resin manufacturer</p>
       <h1 class="hero-title">
-        Engineered for quality,<br/>built for <span class="hl">performance</span>.
+        Engineered for<br/>
+        <span class="hl">quality</span>.<br/>
+        Built for<br/>
+        <span class="hl">performance</span>.
       </h1>
       <p class="hero-sub">
-        {site.name} manufactures coating and composite resins — polyester,
-        fire-retardant, epoxy and GP grades — for FRP fabricators, panel
-        makers and moulders across India. Established in {site.established},
-        we produce every batch to a consistent specification and check it
-        against quality parameters before it ships, so fabricators get the
-        same reliable cure, finish and strength order after order — from
-        general-purpose and fire-rated resins to casting, industrial and
-        specialty grades.
+        {site.name} manufactures premium GP Polyester, Gel Coat, Fire Retardant,
+        Epoxy and Specialty Resin systems for FRP manufacturers and industrial
+        applications across India.
       </p>
+      <div class="hero-trust">
+        <span class="hero-trust-item">ISO 9001:2015 Certified</span>
+        <span class="hero-trust-item">Manufacturer Since {site.established}</span>
+        <span class="hero-trust-item">GST Verified</span>
+        <span class="hero-trust-item">Pan-India Supply</span>
+      </div>
       <div class="hero-cta">
-        <a href="/products/" class="btn btn-solid">View products</a>
+        <a href="/products/" class="btn btn-solid">Explore products</a>
         <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5 0-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2 2.8 1.2 2.8.8 3.3.8.5 0 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
-          WhatsApp us
+          Request quotation
         </a>
       </div>
-      <dl class="hero-stats">
-        <div><dt>{products.length}+</dt><dd>Resin grades</dd></div>
-        <div><dt>{new Date().getFullYear() - Number(site.established)}+ yrs</dt><dd>Manufacturing</dd></div>
-        <div><dt>Pan-India</dt><dd>Supply</dd></div>
-      </dl>
     </div>
   </section>
 
@@ -85,7 +85,7 @@ const featured = products.slice(0, 6);
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">Why choose us</p>
-        <h2>Why choose {site.name}</h2>
+        <h2><span class="why-heading-gold">{whyWord}</span> <span class="why-heading-white">{chooseWord}</span> <span class="why-heading-red">{samratWord}</span> <span class="why-heading-poly">{polyWord}</span> <span class="why-heading-blue">{resinsWord}</span></h2>
       </div>
       <div class="why-grid">
         <div class="why-card why-card-cert">
@@ -161,13 +161,138 @@ const featured = products.slice(0, 6);
             <h3 class="why-title">Bulk Orders Accepted</h3>
           </div>
           <p class="why-desc">Manufacturing capacity designed to efficiently fulfill large-volume industrial requirements.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-head">
-            <span class="why-check" aria-hidden="true">✓</span>
-            <h3 class="why-title">Quality Controlled Manufacturing</h3>
+          <div class="why-bulk">
+            <div class="why-bulk-rule" aria-hidden="true"></div>
+            <div class="why-bulk-row">
+              <span class="why-bulk-value">225 KG</span>
+              <span class="why-bulk-label">Standard Drum Packaging</span>
+            </div>
+            <div class="why-bulk-row">
+              <span class="why-bulk-value">Flexible</span>
+              <span class="why-bulk-label">Order Quantities</span>
+            </div>
+            <div class="why-bulk-rule" aria-hidden="true"></div>
+            <svg class="why-drums-svg" viewBox="0 0 200 56" aria-hidden="true">
+              <g>
+                <rect x="8" y="4" width="48" height="48" rx="5" class="why-drum-body" />
+                <rect x="8" y="26" width="48" height="7" class="why-drum-band" />
+              </g>
+              <g>
+                <rect x="76" y="4" width="48" height="48" rx="5" class="why-drum-body" />
+                <rect x="76" y="26" width="48" height="7" class="why-drum-band" />
+              </g>
+              <g>
+                <rect x="144" y="4" width="48" height="48" rx="5" class="why-drum-body" />
+                <rect x="144" y="26" width="48" height="7" class="why-drum-band" />
+              </g>
+            </svg>
           </div>
-          <p class="why-desc">Each production batch undergoes strict quality inspection before packaging and dispatch.</p>
+        </div>
+      </div>
+
+      <div class="why-quality">
+        <div class="why-quality-text">
+          <h3 class="why-quality-title">Quality Controlled Manufacturing</h3>
+          <p class="why-quality-desc">Every production batch is inspected against defined quality parameters before dispatch to ensure consistent viscosity, gel time and batch performance.</p>
+          <ul class="why-quality-list">
+            <li class="why-quality-feature"><span class="why-quality-check" aria-hidden="true">✓</span>Batch Consistency</li>
+            <li class="why-quality-feature"><span class="why-quality-check" aria-hidden="true">✓</span>Viscosity Verification</li>
+            <li class="why-quality-feature"><span class="why-quality-check" aria-hidden="true">✓</span>Gel Time Testing</li>
+            <li class="why-quality-feature"><span class="why-quality-check" aria-hidden="true">✓</span>Visual Quality Inspection</li>
+          </ul>
+        </div>
+        <figure class="why-quality-photo">
+          <div class="why-quality-frame">
+            <img src="/quality/qc-laboratory.jpg" alt="Quality inspection laboratory at Samrat Poly Resins" width="1600" height="865" loading="lazy" />
+          </div>
+          <figcaption class="why-quality-caption">Quality Inspection Laboratory</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCTION INFRASTRUCTURE ================= -->
+  <section class="section facility">
+    <div class="wrap facility-grid">
+      <div class="facility-text">
+        <div class="section-head">
+          <p class="eyebrow">Our Facility</p>
+          <h2>Production Infrastructure</h2>
+        </div>
+        <p class="facility-desc">Our manufacturing facility is equipped with industrial resin processing equipment designed for reliable batch production, consistent product quality and efficient manufacturing operations.</p>
+        <ul class="facility-list">
+          <li class="facility-feature"><span class="facility-check" aria-hidden="true">✓</span>Stainless Steel Processing Equipment</li>
+          <li class="facility-feature"><span class="facility-check" aria-hidden="true">✓</span>Batch Manufacturing Process</li>
+          <li class="facility-feature"><span class="facility-check" aria-hidden="true">✓</span>Industrial Production Facility</li>
+          <li class="facility-feature"><span class="facility-check" aria-hidden="true">✓</span>Quality-Controlled Operations</li>
+        </ul>
+      </div>
+      <figure class="facility-photo">
+        <div class="facility-frame">
+          <img src="/facility/production-infrastructure.jpg" alt="Stainless-steel resin processing reactors at the Samrat Poly Resins manufacturing facility" width="1452" height="1083" loading="lazy" />
+        </div>
+        <figcaption class="facility-caption">Industrial Resin Manufacturing Facility</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= INDUSTRIES WE SERVE ================= -->
+  <section class="section industries">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Applications</p>
+        <h2>Industries We Serve</h2>
+      </div>
+      <p class="industries-desc">Supplying high-performance resin solutions for a wide range of industrial manufacturing applications.</p>
+
+      <div class="industry-grid">
+        <div class="industry-card">
+          <span class="industry-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L21 8 L12 13 L3 8 Z" /><path d="M3 13 L12 18 L21 13" /><path d="M3 17.5 L12 22.5 L21 17.5" /></svg>
+          </span>
+          <h3 class="industry-name">FRP Manufacturers</h3>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="7" ry="2.5" /><path d="M5 5 L5 19 A7 2.5 0 0 0 19 19 L19 5" /></svg>
+          </span>
+          <h3 class="industry-name">Water Tank Manufacturers</h3>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="1" /><circle cx="15.3" cy="12" r="0.9" fill="currentColor" stroke="none" /></svg>
+          </span>
+          <h3 class="industry-name">Door Skin Manufacturers</h3>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8 L7 4 L12 8 L17 4 L22 8" /><path d="M2 13 L7 9 L12 13 L17 9 L22 13" /><path d="M2 18 L7 14 L12 18 L17 14 L22 18" /></svg>
+          </span>
+          <h3 class="industry-name">Roofing Sheet Manufacturers</h3>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2" /><line x1="12" y1="7" x2="12" y2="19" /><path d="M6 12 L6 15 A6 6 0 0 0 18 15 L18 12" /><line x1="8" y1="10" x2="16" y2="10" /></svg>
+          </span>
+          <h3 class="industry-name">Marine &amp; Industrial Fabrication</h3>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L20 7 L20 17 L12 22 L4 17 L4 7 Z" /><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" /></svg>
+          </span>
+          <h3 class="industry-name">Composite Manufacturing</h3>
+        </div>
+      </div>
+
+      <div class="industry-service">
+        <p class="industry-service-heading">Serving Industrial Customers Across</p>
+        <div class="industry-chips">
+          <span class="industry-chip">Punjab</span>
+          <span class="industry-chip">Haryana</span>
+          <span class="industry-chip">Delhi</span>
+          <span class="industry-chip">Uttar Pradesh</span>
+          <span class="industry-chip">Maharashtra</span>
+          <span class="industry-chip">Andhra Pradesh</span>
         </div>
       </div>
     </div>
@@ -217,16 +342,40 @@ const featured = products.slice(0, 6);
       background-size: 64px 64px; opacity: .25; mask-image: radial-gradient(80% 80% at 60% 0%, #000, transparent 75%);
     }
     .hero-inner { position: relative; padding-block: clamp(3.5rem, 10vw, 7rem); }
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-inner .eyebrow,
+      .hero-inner .hero-title,
+      .hero-inner .hero-sub,
+      .hero-inner .hero-cta,
+      .hero-inner .hero-trust {
+        animation: hero-fade-up .6s var(--ease-premium) both;
+      }
+      .hero-inner .eyebrow    { animation-delay: .05s; }
+      .hero-inner .hero-title { animation-delay: .15s; }
+      .hero-inner .hero-sub   { animation-delay: .28s; }
+      .hero-inner .hero-trust { animation-delay: .40s; }
+      .hero-inner .hero-cta   { animation-delay: .52s; }
+    }
+    @keyframes hero-fade-up {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
     .hero-title {
-      font-size: clamp(2.6rem, 8.5vw, 5.4rem); font-weight: 700; margin-top: 1.1rem;
+      font-size: clamp(2.3rem, 7vw, 4.6rem); font-weight: 700; margin-top: 1.1rem;
       letter-spacing: 0.005em;
     }
     .hero-title .hl { color: var(--amber); }
     .hero-sub { color: var(--ink-dim); font-size: clamp(1rem, 2.2vw, 1.2rem); max-width: 62ch; margin-top: 1.4rem; }
+
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.8rem; }
+    .hero-trust-item {
+      font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.03em;
+      padding: 0.55rem 1rem; background: var(--bg-3); border: 1px solid var(--line); color: var(--ink-dim);
+      transition: border-color .3s var(--ease-premium), color .3s var(--ease-premium), transform .3s var(--ease-premium);
+    }
+    .hero-trust-item:hover { border-color: var(--amber); color: var(--amber-2); transform: translateY(-2px); }
+
     .hero-cta { display: flex; gap: 0.9rem; margin-top: 2rem; flex-wrap: wrap; }
-    .hero-stats { display: flex; gap: clamp(1.5rem, 5vw, 3.5rem); margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1.8rem; }
-    .hero-stats dt { font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 700; color: var(--ink); }
-    .hero-stats dd { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-top: 0.3rem; }
 
     /* ---------- category teaser ---------- */
     .cats-grid { display: grid; grid-template-columns: 1.6fr 0.9fr; gap: clamp(1.5rem, 5vw, 3rem); align-items: start; }
@@ -237,9 +386,13 @@ const featured = products.slice(0, 6);
     .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
     .cat-tile {
       display: flex; flex-direction: column; gap: 0.4rem; padding: 1.3rem 1.4rem;
-      background: var(--bg-3); border: 1px solid var(--line); transition: border-color .18s, transform .18s;
+      background: var(--bg-3); border: 1px solid var(--line);
+      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
-    .cat-tile:hover { border-color: var(--amber); transform: translateY(-2px); }
+    .cat-tile:hover {
+      border-color: var(--amber); transform: translateY(-3px) scale(1.012);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
+    }
     .cat-tile-name { font-family: var(--font-display); text-transform: uppercase; font-size: 1rem; letter-spacing: 0.03em; }
     .cat-tile-count { font-family: var(--font-mono); font-size: 0.76rem; color: var(--amber-2); }
 
@@ -249,12 +402,34 @@ const featured = products.slice(0, 6);
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.1rem; }
 
     /* ---------- why choose us ---------- */
+    .why-heading-gold {
+      background: linear-gradient(180deg, #e8c66a 0%, #d4af37 50%, #c29a2e 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .why-heading-white { color: var(--ink); }
+    .why-heading-red {
+      background: linear-gradient(180deg, #cc5560 0%, #ac3d47 55%, #a83a42 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .why-heading-poly {
+      background: linear-gradient(180deg, #ffffff 0%, #f4f2ee 55%, #d9d6cf 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .why-heading-blue {
+      background: linear-gradient(180deg, #6a86d6 0%, #4c6cc2 55%, #3f5cb0 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+    }
+
     .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); grid-auto-rows: 1fr; gap: 1.1rem; }
     .why-card {
       display: flex; flex-direction: column; gap: 0.8rem; padding: 1.3rem 1.4rem; height: 100%;
-      background: var(--bg-3); border: 1px solid var(--line); transition: border-color .18s, transform .18s;
+      background: var(--bg-3); border: 1px solid var(--line);
+      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
-    .why-card:hover { border-color: var(--amber); transform: translateY(-2px); }
+    .why-card:hover {
+      border-color: var(--amber); transform: translateY(-3px) scale(1.012);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
+    }
     .why-head { display: flex; align-items: center; gap: 0.8rem; }
     .why-check {
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
@@ -268,7 +443,7 @@ const featured = products.slice(0, 6);
       display: block; flex-shrink: 0; width: 56px;
       border: 1px solid var(--line); overflow: hidden;
     }
-    .why-cert-thumb img { width: 100%; height: auto; display: block; transition: transform .18s; }
+    .why-cert-thumb img { width: 100%; height: auto; display: block; transition: transform .4s var(--ease-premium); }
     .why-cert-thumb:hover img { transform: scale(1.04); }
     .why-cert-btn { padding: 0.55rem 1rem; font-size: 0.72rem; }
 
@@ -310,6 +485,111 @@ const featured = products.slice(0, 6);
     .why-india-land { fill: var(--line-2); stroke: var(--line); stroke-width: 1; stroke-linejoin: round; }
     .why-india-dot { fill: var(--amber); }
     .why-india-caption { font-family: var(--font-mono); font-size: 0.66rem; line-height: 1.7; color: var(--ink-faint); letter-spacing: 0.01em; }
+
+    .why-bulk { display: flex; flex-direction: column; gap: 0.55rem; margin-top: auto; }
+    .why-bulk-rule { height: 1px; background: var(--line); }
+    .why-bulk-row { display: flex; flex-direction: column; gap: 0.15rem; padding-block: 0.1rem; }
+    .why-bulk-value { font-family: var(--font-display); font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--ink); }
+    .why-bulk-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); }
+    .why-drums-svg { display: block; width: 100%; max-width: 128px; height: auto; margin-top: 0.15rem; opacity: 0.9; }
+    .why-drum-body { fill: var(--line-2); stroke: var(--line); stroke-width: 1; }
+    .why-drum-band { fill: var(--amber); }
+
+    .why-quality {
+      display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: center;
+      margin-top: clamp(2.5rem, 6vw, 4rem); padding-top: clamp(2.5rem, 6vw, 4rem); border-top: 1px solid var(--line);
+    }
+    .why-quality-title { font-size: clamp(1.5rem, 3.5vw, 2rem); }
+    .why-quality-desc { color: var(--ink-dim); margin-top: 1rem; max-width: 52ch; }
+    .why-quality-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin-top: 1.6rem; }
+    .why-quality-feature { display: flex; align-items: center; gap: 0.85rem; font-size: 0.95rem; color: var(--ink); }
+    .why-quality-check {
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--amber); color: #17120c; font-weight: 700; font-size: 0.72rem;
+    }
+
+    .why-quality-photo { display: flex; flex-direction: column; gap: 0.9rem; }
+    .why-quality-frame {
+      border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .35);
+      height: clamp(280px, 32vw, 460px);
+    }
+    .why-quality-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s var(--ease-premium); }
+    .why-quality-frame:hover img { transform: scale(1.045); }
+    .why-quality-caption {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink-faint); text-align: center;
+    }
+    @media (max-width: 760px) {
+      .why-quality { grid-template-columns: 1fr; }
+      .why-quality-photo { order: 2; }
+      .why-quality-text { order: 1; }
+    }
+
+    /* ---------- production infrastructure ---------- */
+    .facility { background: var(--bg-2); border-block: 1px solid var(--line); }
+    .facility-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
+    .facility-desc { color: var(--ink-dim); margin-top: 1rem; max-width: 52ch; }
+    .facility-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin-top: 1.6rem; }
+    .facility-feature { display: flex; align-items: center; gap: 0.85rem; font-size: 0.95rem; color: var(--ink); }
+    .facility-check {
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--amber); color: #17120c; font-weight: 700; font-size: 0.72rem;
+    }
+    .facility-photo { display: flex; flex-direction: column; gap: 0.9rem; }
+    .facility-frame {
+      border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .35);
+      height: clamp(280px, 32vw, 460px);
+    }
+    .facility-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s var(--ease-premium); }
+    .facility-frame:hover img { transform: scale(1.045); }
+    .facility-caption {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink-faint); text-align: center;
+    }
+    @media (max-width: 760px) {
+      .facility-grid { grid-template-columns: 1fr; }
+      .facility-photo { order: 2; }
+      .facility-text { order: 1; }
+    }
+
+    /* ---------- industries we serve ---------- */
+    .industries-desc { color: var(--ink-dim); margin-top: 1rem; max-width: 62ch; }
+    .industry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-top: 2.4rem; }
+    .industry-card {
+      display: flex; flex-direction: column; align-items: flex-start; gap: 0.9rem; padding: 1.4rem 1.5rem;
+      background: var(--bg-3); border: 1px solid var(--line);
+      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+    }
+    .industry-card:hover {
+      border-color: var(--amber); transform: translateY(-3px) scale(1.012);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
+    }
+    .industry-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 42px; height: 42px; color: var(--amber);
+    }
+    .industry-icon svg { width: 26px; height: 26px; }
+    .industry-name { font-size: 1rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
+    @media (max-width: 860px) { .industry-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .industry-grid { grid-template-columns: 1fr; } }
+
+    .industry-service {
+      margin-top: clamp(2.2rem, 5vw, 3rem); padding-top: clamp(1.8rem, 4vw, 2.4rem);
+      border-top: 1px solid var(--line);
+    }
+    .industry-service-heading {
+      font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-faint);
+    }
+    .industry-chips { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.1rem; }
+    .industry-chip {
+      font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.03em;
+      padding: 0.5rem 1rem; border: 1px solid var(--amber-deep); border-radius: 999px; color: var(--amber-2);
+    }
 
     /* ---------- about teaser ---------- */
     .about-teaser-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(1.5rem, 5vw, 4rem); }

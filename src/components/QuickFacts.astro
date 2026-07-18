@@ -1,0 +1,67 @@
+---
+const { facts } = Astro.props;
+---
+<div class="quick-facts">
+  <div class="quick-facts-head">
+    <p class="quick-facts-label">Quick Facts</p>
+    <button type="button" class="quick-facts-copy">Copy</button>
+  </div>
+  <dl class="quick-facts-list">
+    {Object.entries(facts).map(([k, v]) => (
+      <div class="quick-facts-row">
+        <dt>{k}</dt>
+        <dd>{v}</dd>
+      </div>
+    ))}
+  </dl>
+</div>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll<HTMLButtonElement>('.quick-facts-copy').forEach((btn) => {
+      if (btn.dataset.wired === 'true') return;
+      btn.dataset.wired = 'true';
+      btn.addEventListener('click', async () => {
+        const box = btn.closest('.quick-facts');
+        if (!box) return;
+        const lines = Array.from(box.querySelectorAll('.quick-facts-row')).map((row) => {
+          const dt = row.querySelector('dt')?.textContent?.trim() ?? '';
+          const dd = row.querySelector('dd')?.textContent?.trim() ?? '';
+          return `${dt}: ${dd}`;
+        });
+        try {
+          await navigator.clipboard.writeText(lines.join('\n'));
+          const original = btn.textContent;
+          btn.textContent = 'Copied!';
+          btn.classList.add('copied');
+          window.setTimeout(() => {
+            btn.textContent = original;
+            btn.classList.remove('copied');
+          }, 1600);
+        } catch {}
+      });
+    });
+  });
+</script>
+
+<style>
+  .quick-facts { background: var(--bg-3); border: 1px solid var(--line); padding: 1.3rem 1.4rem; margin-bottom: 1.1rem; }
+  .quick-facts-head { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 0.9rem; }
+  .quick-facts-label {
+    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .quick-facts-copy {
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--ink-faint); background: transparent; border: 1px solid var(--line-2); padding: 0.28rem 0.55rem;
+    cursor: pointer; transition: border-color .25s var(--ease-premium), color .25s var(--ease-premium);
+  }
+  .quick-facts-copy:hover { border-color: var(--amber); color: var(--amber-2); }
+  .quick-facts-copy.copied { border-color: #2ee87a; color: #2ee87a; }
+  .quick-facts-list { display: flex; flex-direction: column; gap: 0.7rem; }
+  .quick-facts-row dt {
+    font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.15rem;
+  }
+  .quick-facts-row dd { color: var(--ink); font-size: 0.86rem; }
+</style>

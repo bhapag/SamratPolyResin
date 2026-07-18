@@ -9,6 +9,9 @@
   --bg:        #0d0f12;   /* near-black charcoal */
   --bg-2:      #14171c;   /* raised panel */
   --bg-3:      #1c2129;   /* card */
+  --bg-grad-top:    #0c1530; /* deep navy */
+  --bg-grad-mid:    #0d1428; /* charcoal blue */
+  --bg-grad-bottom: #090b12; /* near black */
   --line:      #2a3038;   /* hairline borders */
   --line-2:    #3a424d;
   --ink:       #f4f2ee;   /* off-white text */
@@ -24,6 +27,9 @@
 
   --maxw: 1180px;
   --pad: clamp(1.1rem, 4vw, 2.5rem);
+
+  /* --- motion --- */
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1); /* smooth, spring-like deceleration, no overshoot */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,7 +41,7 @@ html { scroll-behavior: smooth; }
 }
 
 body {
-  background: var(--bg);
+  background: linear-gradient(180deg, var(--bg-grad-top) 0%, var(--bg-grad-mid) 25%, var(--bg-grad-bottom) 60%, var(--bg-grad-bottom) 100%);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 16px;
@@ -77,9 +83,11 @@ h1, h2, h3, h4 {
   border: 1px solid var(--line-2);
   background: transparent; color: var(--ink);
   cursor: pointer;
-  transition: border-color .18s, background .18s, color .18s, transform .18s;
+  transition: border-color .3s var(--ease-premium), background .3s var(--ease-premium),
+              color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
 }
-.btn:hover { border-color: var(--amber); color: var(--amber-2); transform: translateY(-1px); }
+.btn:hover { border-color: var(--amber); color: var(--amber-2); transform: translateY(-2px) scale(1.02); box-shadow: 0 10px 24px rgba(0, 0, 0, .28); }
+.btn:active { transform: translateY(-1px) scale(0.99); transition-duration: .12s; }
 .btn:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
 
 .btn-solid {
@@ -102,12 +110,27 @@ h1, h2, h3, h4 {
 /* --- footer / focus baseline --- */
 :focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
 
+/* --- scroll reveal (see Base.astro for the IntersectionObserver that applies these) --- */
+.js-reveal {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity .6s var(--ease-premium), transform .6s var(--ease-premium);
+  will-change: opacity, transform;
+}
+.js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+.js-reveal-img {
+  opacity: 0; transform: translateY(14px) scale(1.035);
+  transition: opacity .7s var(--ease-premium), transform .7s var(--ease-premium);
+  will-change: opacity, transform;
+}
+.js-reveal-img.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+
 /* --- page transitions (Astro View Transitions) --- */
 @media (prefers-reduced-motion: no-preference) {
   ::view-transition-old(root),
   ::view-transition-new(root) {
     animation-duration: 0.36s;
-    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-timing-function: var(--ease-premium);
   }
   ::view-transition-old(root) { animation-name: spr-fade-out; }
   ::view-transition-new(root) { animation-name: spr-fade-in; }
@@ -123,6 +146,6 @@ h1, h2, h3, h4 {
 
   ::view-transition-group(*) {
     animation-duration: 0.42s;
-    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-timing-function: var(--ease-premium);
   }
 }

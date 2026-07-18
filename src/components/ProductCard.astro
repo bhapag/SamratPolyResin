@@ -1,6 +1,6 @@
 ---
 const { product } = Astro.props;
-const { slug, name, price, image, tagline, category } = product;
+const { slug, name, image, tagline, category } = product;
 ---
 <a href={`/products/${slug}/`} class="card">
   <div class="card-img">
@@ -14,7 +14,7 @@ const { slug, name, price, image, tagline, category } = product;
     <h3 class="card-name" transition:name={`product-name-${slug}`}>{name}</h3>
     <p class="card-tag">{tagline}</p>
     <div class="card-foot">
-      <span class="card-price">{price || 'Ask for price'}</span>
+      <span class="card-price">Price on Request</span>
       <span class="card-arrow" aria-hidden="true">→</span>
     </div>
   </div>
@@ -25,10 +25,13 @@ const { slug, name, price, image, tagline, category } = product;
     display: flex; flex-direction: column;
     background: var(--bg-3);
     border: 1px solid var(--line);
-    transition: border-color .2s, transform .2s;
+    transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     height: 100%;
   }
-  .card:hover { border-color: var(--amber); transform: translateY(-3px); }
+  .card:hover {
+    border-color: var(--amber); transform: translateY(-4px) scale(1.012);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, .3);
+  }
   .card:hover .card-arrow { transform: translateX(4px); color: var(--amber); }
 
   .card-img {
@@ -36,7 +39,8 @@ const { slug, name, price, image, tagline, category } = product;
     background: linear-gradient(135deg, #1a1e24, #23282f);
     display: grid; place-items: center;
   }
-  .card-img img { width: 100%; height: 100%; object-fit: cover; }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s var(--ease-premium); }
+  .card:hover .card-img img { transform: scale(1.035); }
   .img-fallback {
     display: none;
     position: absolute; font-family: var(--font-display); font-weight: 700;
@@ -60,5 +64,5 @@ const { slug, name, price, image, tagline, category } = product;
     margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid var(--line);
   }
   .card-price { font-family: var(--font-mono); font-size: 0.9rem; color: var(--amber-2); font-weight: 500; }
-  .card-arrow { font-size: 1.1rem; color: var(--ink-dim); transition: transform .2s, color .2s; }
+  .card-arrow { font-size: 1.1rem; color: var(--ink-dim); transition: transform .3s var(--ease-premium), color .3s var(--ease-premium); }
 </style>

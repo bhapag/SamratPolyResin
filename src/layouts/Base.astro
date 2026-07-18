@@ -1,12 +1,15 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
-import { site } from '../data/site.js';
+import { site, buildCanonicalUrl } from '../data/site.js';
 
-const { title, description } = Astro.props;
+const { title, description, ogType = 'website', ogTitle, ogDescription, keywords } = Astro.props;
 const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
 const desc = description ?? `${site.name}: manufacturer of coating and composite resins from ${site.address.line2}, ${site.address.state}. Established ${site.established}.`;
+const finalOgTitle = ogTitle ?? pageTitle;
+const finalOgDesc = ogDescription ?? desc;
 const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like to enquire about your resins.")}`;
+const canonicalUrl = buildCanonicalUrl(Astro.url.pathname);
 ---
 <!doctype html>
 <html lang="en">
@@ -15,9 +18,12 @@ const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{pageTitle}</title>
   <meta name="description" content={desc} />
-  <meta property="og:title" content={pageTitle} />
-  <meta property="og:description" content={desc} />
-  <meta property="og:type" content="website" />
+  {keywords && <meta name="keywords" content={keywords.join(', ')} />}
+  <meta property="og:title" content={finalOgTitle} />
+  <meta property="og:description" content={finalOgDesc} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:url" content={canonicalUrl} />
+  <link rel="canonical" href={canonicalUrl} />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -34,6 +40,7 @@ const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'
         <a href="/">Home</a>
         <a href="/products/">Products</a>
         <a href="/about/">About</a>
+        <a href="/resources/">Resources</a>
         <a href="/contact/">Contact</a>
         <a href={waLink} class="nav-wa" target="_blank" rel="noopener">WhatsApp</a>
       </nav>
@@ -80,12 +87,65 @@ const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'
     <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5 0-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.3 4.7L7 20.4A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
   </a>
 
+  <script>
+    // Sitewide scroll-reveal + stagger system. Progressive enhancement only:
+    // if this doesn't run (JS disabled/slow), content stays normally visible —
+    // nothing is hidden by default in CSS, this script hides-then-reveals.
+    document.addEventListener('astro:page-load', () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const GRID_SELECTOR = [
+        '.grid', '.kc-grid', '.why-grid', '.industry-grid', '.cat-grid',
+        '.diagram-icongrid', '.footer-grid', '.article-related-grid',
+        '.rel-grid', '.faq-accordion', '.process-list', '.quick-facts-list', '.toc-list',
+      ].join(', ');
+      const IMG_SELECTOR = '.about-photo, .card-img, .prod-img, .facility-frame, .why-quality-frame';
+      const HEAD_SELECTOR = '.section-head, .article-prevnext';
+
+      const io = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+
+      const tagged = new WeakSet();
+      const tag = (el, cls, delayMs) => {
+        if (tagged.has(el)) return;
+        tagged.add(el);
+        const rect = el.getBoundingClientRect();
+        const alreadyVisible = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+        if (alreadyVisible) return; // already on screen at load — no reveal needed
+        el.classList.add(cls);
+        if (delayMs) el.style.transitionDelay = delayMs + 'ms';
+        io.observe(el);
+      };
+
+      document.querySelectorAll(GRID_SELECTOR).forEach((grid) => {
+        Array.from(grid.children).forEach((child, i) => {
+          tag(child, 'js-reveal', Math.min(i, 8) * 70);
+        });
+      });
+
+      document.querySelectorAll(IMG_SELECTOR).forEach((el) => tag(el, 'js-reveal-img', 0));
+      document.querySelectorAll(HEAD_SELECTOR).forEach((el) => tag(el, 'js-reveal', 0));
+    });
+  </script>
+
   <style>
     .site-header {
       position: sticky; top: 0; z-index: 50;
       background: color-mix(in srgb, var(--bg) 88%, transparent);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
+      animation: header-fade-in .5s var(--ease-premium) both;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes header-fade-in {
+        from { opacity: 0; transform: translateY(-8px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
     }
     .header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
     .brand { display: flex; align-items: center; gap: 0.7rem; }
@@ -95,7 +155,7 @@ const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'
     .nav { display: flex; align-items: center; gap: clamp(0.8rem, 2.5vw, 1.8rem); }
     .nav a {
       font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--ink-dim); transition: color .18s;
+      text-transform: uppercase; color: var(--ink-dim); transition: color .25s var(--ease-premium);
     }
     .nav a:hover { color: var(--amber-2); }
     .nav-wa { color: #25d366 !important; }
@@ -112,6 +172,7 @@ const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'
     .foot-name { font-family: var(--font-display); text-transform: uppercase; font-size: 1.2rem; margin-top: 0.9rem; }
     .foot-h { font-size: 0.8rem; letter-spacing: 0.16em; color: var(--ink); margin-bottom: 0.8rem; }
     .foot-dim { color: var(--ink-dim); font-size: 0.9rem; line-height: 1.9; }
+    .foot-dim a { transition: color .25s var(--ease-premium); }
     .foot-dim a:hover { color: var(--amber-2); }
     .foot-gst { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); margin-top: 0.8rem; letter-spacing: 0.05em; }
     .foot-bottom {
@@ -126,9 +187,9 @@ const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'
       background: #25d366; color: #062b14;
       display: grid; place-items: center;
       box-shadow: 0 6px 20px rgba(0,0,0,.4);
-      transition: transform .18s;
+      transition: transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
-    .wa-float:hover { transform: scale(1.08); }
+    .wa-float:hover { transform: scale(1.08); box-shadow: 0 10px 28px rgba(0,0,0,.5); }
   </style>
 </body>
 </html>
