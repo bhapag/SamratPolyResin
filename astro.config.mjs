@@ -1,8 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  // Placeholder production domain (per README) — update once the real domain is live.
-  site: 'https://samratpolyresins.com',
+  // Must match `site.url` in src/data/site.js — samratpolyresins.in is the
+  // live, crawlable domain today. samratpolyresins.com currently blocks
+  // crawlers via robots.txt; switch both back once that migration is done.
+  site: 'https://samratpolyresins.in',
+  integrations: [sitemap()],
 });

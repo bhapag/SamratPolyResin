@@ -151,7 +151,7 @@ const [whyWord, chooseWord, samratWord, polyWord, resinsWord] = `Why choose ${si
             </svg>
             <p class="why-india-caption">
               Currently supplying customers across:<br />
-              Punjab • Haryana • Delhi • Himachal Pradesh • Uttar Pradesh • Maharashtra • Andhra Pradesh
+              {site.statesServed.join(' • ')}
             </p>
           </div>
         </div>
@@ -164,7 +164,7 @@ const [whyWord, chooseWord, samratWord, polyWord, resinsWord] = `Why choose ${si
           <div class="why-bulk">
             <div class="why-bulk-rule" aria-hidden="true"></div>
             <div class="why-bulk-row">
-              <span class="why-bulk-value">225 KG</span>
+              <span class="why-bulk-value">{site.packagingRange}</span>
               <span class="why-bulk-label">Standard Drum Packaging</span>
             </div>
             <div class="why-bulk-row">
@@ -287,12 +287,7 @@ const [whyWord, chooseWord, samratWord, polyWord, resinsWord] = `Why choose ${si
       <div class="industry-service">
         <p class="industry-service-heading">Serving Industrial Customers Across</p>
         <div class="industry-chips">
-          <span class="industry-chip">Punjab</span>
-          <span class="industry-chip">Haryana</span>
-          <span class="industry-chip">Delhi</span>
-          <span class="industry-chip">Uttar Pradesh</span>
-          <span class="industry-chip">Maharashtra</span>
-          <span class="industry-chip">Andhra Pradesh</span>
+          {site.statesServed.map((state) => <span class="industry-chip">{state}</span>)}
         </div>
       </div>
     </div>

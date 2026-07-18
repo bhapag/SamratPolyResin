@@ -5,9 +5,7 @@
 //  This is a structured technical resource centre, not a blog. Each entry
 //  below defines one article's metadata and its section outline (the
 //  `sections` array becomes the Table of Contents and the H2 headings on
-//  the article page). Section bodies are intentionally left as a
-//  placeholder note until real technical content is written — no invented
-//  facts, figures or specs are used as filler.
+//  the article page).
 //
 //  Fields:
 //    slug          unique url-friendly id
@@ -17,14 +15,24 @@
 //    icon          one of: info, grid, checklist, layers, shield, tank,
 //                  roof, door, clock, drum (see ResourceIcon.astro)
 //    category      short label shown on cards and in the article hero
-//                  (e.g. "Product Guide", "Application Guide")
 //    readingTime   fallback only — the article template calculates actual
 //                  reading time from content via getReadingTime() below.
 //                  Kept for the resource-card grid, which shows it without
 //                  loading full section content.
 //    publishDate   ISO date string, shown on the article page and used in
 //                  the Schema.org Article JSON-LD
-//    sections      ordered list of section headings for the article body
+//    sections      ordered list of section headings for the article body.
+//                  A plain string = heading only, no body written yet.
+//                  An object ({ heading, body, ... }) = real written content.
+//    draft         true = excluded from getStaticPaths, the /resources/
+//                  index, and the sitemap. Use this for any article whose
+//                  `sections` are still plain-string headings — that way an
+//                  unfinished outline can never accidentally go live showing
+//                  placeholder filler text to a real visitor or Google.
+//                  Remove the flag once every section has real body content.
+//
+//  No invented facts, figures or specs are used as filler — sections without
+//  real content are marked `draft: true` instead of being padded out.
 // ============================================================================
 
 // Dynamic reading time — walks the actual section/subsection/FAQ content
@@ -392,6 +400,7 @@ export const resources = [
   },
   {
     slug: "applications-of-gp-polyester-resin",
+    draft: true, // AUDIT (2026-07-19): sections below are headings only, no body copy written yet — kept out of getStaticPaths/index/sitemap so this never ships live with placeholder text. Write real content, then remove this flag.
     title: "Applications of GP Polyester Resin",
     description: "Explore where GP Polyester Resin is commonly used across FRP, construction, marine and industrial manufacturing.",
     category: "Application Guide",
@@ -414,16 +423,162 @@ export const resources = [
     icon: "checklist",
     readingTime: "7 min read",
     publishDate: "2026-07-18",
+
+    seo: {
+      title: "How to Select the Right Polyester Resin for FRP Manufacturing",
+      keywords: [
+        "polyester resin selection",
+        "FRP manufacturing resin",
+        "resin viscosity FRP",
+        "resin gel time",
+        "hand layup resin",
+        "spray up resin",
+        "pultrusion resin",
+        "polyester resin buying guide",
+      ],
+      ogTitle: "How to Select Polyester Resin for FRP Manufacturing",
+      ogDescription: "A practical guide to matching polyester resin viscosity, gel time and type to your FRP manufacturing process — and the selection mistakes that cost fabricators the most.",
+    },
+
+    quickFacts: {
+      "Key Selection Factors": "Process, viscosity, gel time, mechanical needs, chemical exposure",
+      "Most Common Mistake": "Choosing resin on price alone, without checking process fit",
+      "Recommended First Step": "Confirm your process and part size before comparing grades",
+      "Always Check": "The specific grade's technical data sheet (TDS), not general figures",
+    },
+
+    processTable: {
+      headers: ["Process", "Typical Viscosity Need", "Typical Gel Time Need", "Notes"],
+      rows: [
+        ["Hand Lay-Up", "Medium — enough body to stay in place on a vertical mould", "Longer — allows time to roll out fibre and remove air manually", "Most forgiving process for beginners; thixotropic grades help on vertical surfaces"],
+        ["Spray-Up", "Medium-low — must atomise cleanly through spray equipment", "Moderate — matched to the pace of the spray line", "Viscosity must suit the specific spray equipment being used"],
+        ["Compression Moulding (SMC/DMC)", "Formulated as a moulding compound, not a liquid viscosity spec", "Fast — heat-activated cure inside a closed, heated mould", "Requires resin specifically formulated for the SMC/DMC process"],
+        ["Pultrusion", "Low — must wet out fibre quickly as it's pulled through a die", "Fast and tightly controlled — matched to line speed", "Not all grades are suitable; needs a resin engineered for continuous, fast cure"],
+        ["Continuous Lamination", "Low to medium — must impregnate reinforcement evenly at speed", "Matched to line speed and curing oven length", "Used for flat and corrugated sheet products such as roofing sheets"],
+        ["Vacuum Bagging / Infusion", "Low — must flow through reinforcement under vacuum without voids", "Longer — infusion can take time across large or complex parts", "Air removal and full wet-out matter more here than in hand lay-up"],
+      ],
+      note: "These are general tendencies, not fixed values — always confirm viscosity and gel time against the specific product's technical data sheet (TDS) before committing to a process.",
+    },
+
+    relatedSlugs: [
+      "what-is-gp-polyester-resin",
+    ],
+
+    faqs: [
+      {
+        q: "What's the single most important factor in choosing a polyester resin?",
+        a: "Your manufacturing process. Viscosity, gel time and cure behaviour all need to match how the resin will actually be applied — hand lay-up, spray-up, compression moulding, pultrusion or infusion each place different demands on the resin, and a grade that performs well in one process can perform poorly in another.",
+      },
+      {
+        q: "Can I use the same resin for hand lay-up and spray-up?",
+        a: "Not usually without checking first. Spray-up requires a resin viscosity that atomises cleanly through spray equipment, while hand lay-up generally works better with a slightly higher-viscosity or thixotropic resin that stays in place while being rolled out manually. Some grades are formulated to suit both; many are not.",
+      },
+      {
+        q: "How do I know if a resin's gel time is right for my part?",
+        a: "Match gel time to how long you need working time for. Larger or more complex parts made by hand generally need a longer gel time so you can complete lay-up before the resin starts curing. Faster-cycle or line-based processes usually need a shorter, more tightly controlled gel time to keep production moving.",
+      },
+      {
+        q: "Is a higher-priced resin always the better choice?",
+        a: "No — and price alone is one of the most common ways fabricators pick the wrong resin. A more expensive speciality resin (isophthalic, vinyl ester, fire-retardant) is only the right choice if your application actually needs its specific property. For general-purpose parts, a well-matched GP resin is usually the more practical and economical choice.",
+      },
+      {
+        q: "Should I trial a resin before placing a bulk order?",
+        a: "Yes. Running a small trial batch under your actual production conditions — checking gel time, viscosity, wet-out and finish on your own equipment — catches mismatches before they become an expensive bulk-order problem.",
+      },
+      {
+        q: "Do all polyester resins use the same catalyst?",
+        a: "Most unsaturated polyester resins cure with a peroxide catalyst, commonly MEKP, but the correct type and dosage vary by resin grade, ambient temperature and desired gel time. Always follow the specific product's technical data sheet rather than assuming a standard dosage across different resins.",
+      },
+      {
+        q: "What happens if I choose a resin with the wrong viscosity for my process?",
+        a: "Too low a viscosity for hand lay-up on a vertical surface can cause resin to run or drain before curing, leaving thin, resin-starved areas. Too high a viscosity for spray-up or pultrusion can cause poor atomisation or incomplete fibre wet-out, leading to voids and weaker laminate.",
+      },
+    ],
+
     sections: [
-      "Understanding FRP Manufacturing Processes",
-      "Resin Viscosity and Wet-Out Considerations",
-      "Gel Time and Cure Requirements",
-      "Matching Resin Type to Moulding Method",
-      "Common Selection Mistakes to Avoid",
+      {
+        heading: "Understanding FRP Manufacturing Processes",
+        body: [
+          "Polyester resin selection starts with the manufacturing process, not the finished part. The same general-purpose resin chemistry can be formulated in different ways — different viscosity, different gel time, different thixotropy — to suit very different production methods, and using the wrong formulation for your process is one of the most common causes of poor results in FRP manufacturing.",
+          "FRP fabrication covers a range of processes, each placing different demands on the resin. Hand lay-up and spray-up are open-mould processes suited to lower-volume or larger, more custom parts. Compression moulding (using SMC or DMC moulding compounds) and pultrusion are closed or continuous processes suited to higher-volume, more consistent production. Continuous lamination produces flat or corrugated sheet products, while vacuum bagging and resin infusion are used where a higher fibre-to-resin ratio and fewer voids are required.",
+          "Before comparing resin grades, confirm which process — or processes — the resin needs to work with. A resin that performs excellently in hand lay-up may be entirely unsuitable for pultrusion, and vice versa.",
+        ],
+        visuals: [
+          {
+            type: "icongrid",
+            label: "Diagram: FRP manufacturing processes covered in this guide",
+            caption: "Common FRP manufacturing processes",
+            items: [
+              { icon: "hand-layup", label: "Hand Lay-Up" },
+              { icon: "spray-up", label: "Spray-Up" },
+              { icon: "compression", label: "Compression Moulding" },
+              { icon: "pultrusion", label: "Pultrusion" },
+              { icon: "lamination", label: "Continuous Lamination" },
+              { icon: "vacuum", label: "Vacuum Bagging" },
+            ],
+          },
+        ],
+      },
+      {
+        heading: "Resin Viscosity and Wet-Out Considerations",
+        body: [
+          "Viscosity — how thick or thin the resin is in its liquid state — determines how well it wets out (fully saturates and de-airs) the reinforcement, and how well it behaves during application. Getting viscosity wrong is one of the fastest ways to end up with a weak, void-filled laminate, regardless of how good the resin's cured properties are on paper.",
+          "For hand lay-up, especially on vertical or overhead mould surfaces, resin needs enough body to stay in place while it's rolled and worked into the reinforcement — too thin, and it drains or runs before curing, leaving resin-starved patches. Thixotropic resins, which thicken when left undisturbed but flow more easily when worked with a brush or roller, are commonly used for exactly this reason.",
+          "For spray-up, pultrusion and infusion processes, the opposite is usually true: the resin needs to be low-viscosity enough to atomise cleanly through spray equipment, flow quickly through and around fibre as it's pulled through a pultrusion die, or draw through a reinforcement stack under vacuum without leaving dry spots or trapped air.",
+          "Because viscosity requirements are process-specific rather than universal, always check the intended process against the resin's stated viscosity range on its technical data sheet, rather than assuming a resin described as \"general purpose\" will suit every application equally well.",
+        ],
+      },
+      {
+        heading: "Gel Time and Cure Requirements",
+        body: [
+          "Gel time is the working window between when a resin is catalysed and when it begins to set — the point past which it can no longer be worked, rolled out or repositioned. Choosing the right gel time is a balance between giving yourself enough time to do the job properly and not holding up production.",
+          "Larger components, more complex mould geometry, and manual processes like hand lay-up generally call for a longer gel time, giving the fabricator time to fully wet out reinforcement, remove trapped air and work the resin into detail before it begins curing. Rushing a part that needed a longer gel time is a common cause of poor fibre wet-out and visible surface defects.",
+          "Faster-cycle and line-based processes — spray-up on larger production runs, continuous lamination, pultrusion and compression moulding — generally need a shorter, more tightly controlled gel time so that cure keeps pace with the production line without becoming the bottleneck. In compression moulding specifically, cure is usually heat-activated inside a closed, heated mould rather than relying on ambient-temperature gel time alone.",
+          "Gel time is also sensitive to ambient workshop temperature and catalyst dosage — both of which affect how quickly a given resin actually cures on a given day. Rather than treating a resin's stated gel time as fixed, treat it as a starting reference to be confirmed under your own workshop conditions, and always follow the specific product's technical data sheet for correct catalyst dosage rather than estimating.",
+        ],
+        callouts: [
+          {
+            label: "Important Note",
+            variant: "warning",
+            text: "Catalyst type and dosage vary by resin grade, ambient temperature and desired gel time. Always follow the specific product's technical data sheet (TDS) and safety data sheet (SDS) rather than assuming a standard dosage carries over between different resins.",
+          },
+        ],
+      },
+      {
+        heading: "Matching Resin Type to Moulding Method",
+        body: [
+          "The table below summarises how viscosity and gel time needs typically shift across common FRP processes. Treat it as a starting point for narrowing down candidate grades, not as a substitute for checking the specific product's technical data sheet.",
+        ],
+        table: "processTable",
+      },
+      {
+        heading: "Common Selection Mistakes to Avoid",
+        subsections: [
+          { heading: "Choosing on Price Alone", body: "The cheapest resin per kilogram isn't necessarily the most economical choice once wastage, rework and inconsistent results from a poorly matched grade are accounted for. Price should be one factor weighed against process fit, not the deciding one." },
+          { heading: "Ignoring the Technical Data Sheet", body: "General category descriptions (\"general purpose\", \"fire retardant\") describe a resin's positioning, not its exact viscosity, gel time or cure profile. Always check the specific grade's TDS rather than assuming it matches a similar product you've used before." },
+          { heading: "Mismatching Viscosity to Process", body: "Using a resin formulated for hand lay-up in a spray-up or infusion process, or vice versa, is one of the most common and most avoidable causes of poor wet-out, voids and weak laminate." },
+          { heading: "Skipping a Trial Batch", body: "Committing to a bulk order before trialling a small batch under real production conditions means any mismatch — in viscosity, gel time or finish — is discovered at full scale rather than caught early." },
+          { heading: "Overlooking Chemical or Environmental Exposure", body: "Selecting a standard GP resin for a part that will face sustained water immersion, chemical exposure or harsh UV conditions, without checking whether an isophthalic, vinyl ester or fire-retardant grade is more appropriate, can lead to premature degradation in service." },
+          { heading: "Assuming Catalyst Ratios Carry Over", body: "Applying a catalyst dosage that worked for a previous resin to a new grade, without checking its TDS, can produce a gel time that's badly mismatched to the process — either curing too fast to work with, or too slowly to hold a production schedule." },
+        ],
+        callouts: [
+          {
+            label: "Best Practice",
+            variant: "practice",
+            items: [
+              "Confirm your process before comparing resin grades on price",
+              "Check viscosity and gel time against the specific product's TDS",
+              "Trial a small batch under real production conditions first",
+              "Match chemical/UV exposure requirements to the grade, not just the application",
+            ],
+          },
+        ],
+      },
     ],
   },
   {
     slug: "what-is-gel-coat-resin",
+    draft: true, // AUDIT (2026-07-19): sections below are headings only, no body copy written yet — kept out of getStaticPaths/index/sitemap so this never ships live with placeholder text. Write real content, then remove this flag.
     title: "What is Gel Coat Resin?",
     description: "Learn how gel coat resin provides surface finish, protection and durability for composite products.",
     category: "Product Guide",
@@ -440,6 +595,7 @@ export const resources = [
   },
   {
     slug: "fire-retardant-polyester-resin-applications-and-benefits",
+    draft: true, // AUDIT (2026-07-19): sections below are headings only, no body copy written yet — kept out of getStaticPaths/index/sitemap so this never ships live with placeholder text. Write real content, then remove this flag.
     title: "Fire Retardant Polyester Resin: Applications & Benefits",
     description: "Understand where fire retardant polyester resin is used and why it is important for specialised industrial applications.",
     category: "Application Guide",
@@ -456,6 +612,7 @@ export const resources = [
   },
   {
     slug: "how-polyester-resin-is-used-in-water-tank-manufacturing",
+    draft: true, // AUDIT (2026-07-19): sections below are headings only, no body copy written yet — kept out of getStaticPaths/index/sitemap so this never ships live with placeholder text. Write real content, then remove this flag.
     title: "How Polyester Resin is Used in Water Tank Manufacturing",
     description: "Discover why polyester resin is widely used in manufacturing durable FRP water storage tanks.",
     category: "Application Guide",
@@ -472,6 +629,7 @@ export const resources = [
   },
   {
     slug: "polyester-resin-for-roofing-sheets",
+    draft: true, // AUDIT (2026-07-19): sections below are headings only, no body copy written yet — kept out of getStaticPaths/index/sitemap so this never ships live with placeholder text. Write real content, then remove this flag.
     title: "Polyester Resin for Roofing Sheets",
     description: "Learn how polyester resin improves strength, weather resistance and performance in FRP roofing sheets.",
     category: "Application Guide",
@@ -488,6 +646,7 @@ export const resources = [
   },
   {
     slug: "polyester-resin-for-door-skin-manufacturing",
+    draft: true, // AUDIT (2026-07-19): sections below are headings only, no body copy written yet — kept out of getStaticPaths/index/sitemap so this never ships live with placeholder text. Write real content, then remove this flag.
     title: "Polyester Resin for Door Skin Manufacturing",
     description: "Understand the role of polyester resin in producing strong and lightweight FRP door skins.",
     category: "Application Guide",
@@ -504,6 +663,7 @@ export const resources = [
   },
   {
     slug: "understanding-gel-time-in-polyester-resin",
+    draft: true, // AUDIT (2026-07-19): sections below are headings only, no body copy written yet — kept out of getStaticPaths/index/sitemap so this never ships live with placeholder text. Write real content, then remove this flag.
     title: "Understanding Gel Time in Polyester Resin",
     description: "Learn what gel time means, why it matters and how it affects manufacturing efficiency.",
     category: "Technical Data",
@@ -520,6 +680,7 @@ export const resources = [
   },
   {
     slug: "how-to-store-unsaturated-polyester-resin",
+    draft: true, // AUDIT (2026-07-19): sections below are headings only, no body copy written yet — kept out of getStaticPaths/index/sitemap so this never ships live with placeholder text. Write real content, then remove this flag.
     title: "How to Store Unsaturated Polyester Resin",
     description: "Best practices for storage, handling and maintaining resin quality before use.",
     category: "Best Practices",

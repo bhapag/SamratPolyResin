@@ -13,9 +13,21 @@ export const site = {
   tagline: "Coating & Composite Resins, Manufactured in Punjab",
   established: "2017",
 
-  // Placeholder production domain (per README) — used for canonical/OG URLs.
-  // Update once the real domain is live.
-  url: "https://samratpolyresins.com",
+  // Production domain — used for canonical/OG URLs and the sitemap.
+  //
+  // NOTE (engineering audit, 2026-07-19): this was previously set to
+  // "https://samratpolyresins.com", but that domain currently returns a
+  // robots.txt disallow to crawlers and is not the live site — samratpolyresins.in
+  // is what's actually deployed and indexed today. Pointing canonical/OG tags at
+  // a domain search engines can't crawl actively suppresses indexing of the
+  // real pages. Set to the live .in domain until the .com migration (see
+  // README → Deploy) is actually complete and crawlable, then switch this back.
+  url: "https://samratpolyresins.in",
+
+  // Default social-share image (absolute path resolved against `url` above).
+  // Falls back to the logo — replace with a dedicated 1200×630 share image
+  // when one exists.
+  ogImage: "/logo.jpg",
 
   // --- CONTACT (swap these) ---
   phoneDisplay: "+91 74638 81005",     // shown on the page
@@ -35,6 +47,31 @@ export const site = {
 
   // Google Maps embed query (place name or address). URL-encode spaces as +.
   mapsQuery: "Samrat+Poly+Resins+Doraha+Ludhiana",
+
+  // States the homepage claims to currently supply. Single source of truth —
+  // both "Why Choose Us" and "Industries We Serve" read from this array so
+  // they can't drift apart again.
+  //
+  // AUDIT FLAG: the two homepage sections previously listed DIFFERENT sets
+  // (one included Himachal Pradesh, one didn't) — a factual contradiction on
+  // the same page. I could not verify which is correct, so this defaults to
+  // the intersection (the 6 states both lists agreed on). Add Himachal
+  // Pradesh back in only if it's confirmed as an actual served state.
+  statesServed: ["Punjab", "Haryana", "Delhi", "Uttar Pradesh", "Maharashtra", "Andhra Pradesh"],
+
+  // Standard packaging sizes as they actually appear across the catalog in
+  // products.js (some grades ship in 200 kg drums, some 225 kg, PET resin in
+  // 75 kg packs) — used wherever the site describes packaging in general
+  // terms, instead of hardcoding one figure that contradicts the product
+  // pages next to it.
+  packagingRange: "200–225 kg",
+
+  // Single label used everywhere a product price would otherwise show, so
+  // the wording can't drift between the product grid, product pages and
+  // related-product lists. `products.js` still stores each product's actual
+  // last-known price for internal reference — it's just not rendered
+  // publicly right now under the "Price on Request" strategy.
+  priceLabel: "Price on Request",
 
   // --- ENQUIRY FORM ---
   // Get a free access key at https://web3forms.com (takes 1 minute).

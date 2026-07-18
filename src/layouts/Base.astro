@@ -10,6 +10,32 @@ const finalOgTitle = ogTitle ?? pageTitle;
 const finalOgDesc = ogDescription ?? desc;
 const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like to enquire about your resins.")}`;
 const canonicalUrl = buildCanonicalUrl(Astro.url.pathname);
+const ogImageUrl = buildCanonicalUrl(site.ogImage);
+
+// Sitewide Organization/LocalBusiness structured data — built entirely from
+// the verified contact fields in site.js, nothing invented. Helps Google
+// associate the business identity (name, address, phone) across the site
+// rather than just per-article Article schema.
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${site.url}/#organization`,
+  name: site.name,
+  url: site.url,
+  logo: buildCanonicalUrl('/logo.jpg'),
+  image: buildCanonicalUrl('/logo.jpg'),
+  telephone: site.phoneDial,
+  email: site.email,
+  foundingDate: site.established,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.address.line1,
+    addressLocality: site.address.line2,
+    addressRegion: "Punjab",
+    postalCode: site.address.pin,
+    addressCountry: "IN",
+  },
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -23,13 +49,21 @@ const canonicalUrl = buildCanonicalUrl(Astro.url.pathname);
   <meta property="og:description" content={finalOgDesc} />
   <meta property="og:type" content={ogType} />
   <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:site_name" content={site.name} />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={finalOgTitle} />
+  <meta name="twitter:description" content={finalOgDesc} />
+  <meta name="twitter:image" content={ogImageUrl} />
   <link rel="canonical" href={canonicalUrl} />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
   <ClientRouter />
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
   <header class="site-header" transition:persist>
     <div class="wrap header-inner">
       <a href="/" class="brand">
@@ -47,7 +81,7 @@ const canonicalUrl = buildCanonicalUrl(Astro.url.pathname);
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <slot />
   </main>
 
@@ -134,6 +168,14 @@ const canonicalUrl = buildCanonicalUrl(Astro.url.pathname);
   </script>
 
   <style>
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem; z-index: 100;
+      background: var(--amber); color: #17120c; font-family: var(--font-mono);
+      font-size: 0.85rem; font-weight: 700; padding: 0.8rem 1.2rem;
+      transition: top .2s var(--ease-premium);
+    }
+    .skip-link:focus { top: 1rem; }
+
     .site-header {
       position: sticky; top: 0; z-index: 50;
       background: color-mix(in srgb, var(--bg) 88%, transparent);

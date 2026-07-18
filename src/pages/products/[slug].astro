@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import EnquiryForm from '../../components/EnquiryForm.astro';
 import { products } from '../../data/products.js';
-import { site, buildProductQuoteLink } from '../../data/site.js';
+import { site, buildProductQuoteLink, buildCanonicalUrl } from '../../data/site.js';
 
 export function getStaticPaths() {
   return products.map(p => ({ params: { slug: p.slug }, props: { product: p } }));
@@ -14,8 +14,37 @@ const specEntries = specs ? Object.entries(specs) : [];
 const gallery = [image, ...(product.images ?? [])];
 const related = products.filter(p => p.category === category && p.slug !== product.slug).slice(0, 3);
 const waLink = buildProductQuoteLink(product.whatsappName ?? name);
+
+// BreadcrumbList — mirrors the visible breadcrumb below exactly, no extra data.
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: buildCanonicalUrl('/') },
+    { "@type": "ListItem", position: 2, name: "Products", item: buildCanonicalUrl('/products/') },
+    { "@type": "ListItem", position: 3, name, item: buildCanonicalUrl(Astro.url.pathname) },
+  ],
+};
+
+// Product schema — deliberately omits `offers`/price. Pricing here is
+// "Price on Request" (varies by quantity and current raw-material rates),
+// and Schema.org Offers without a real price fail Google's structured-data
+// validation — better to omit it than publish a placeholder number.
+const productJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name,
+  description,
+  category,
+  image: buildCanonicalUrl(`/products/${image}`),
+  brand: { "@type": "Organization", name: site.name },
+  manufacturer: { "@type": "Organization", name: site.name },
+};
 ---
 <Base title={name} description={`${name} — ${product.tagline} Manufactured by ${site.name}.`}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
+
   <div class="wrap crumb">
     <a href="/">Home</a><span>/</span><a href="/products/">Products</a><span>/</span><span class="cur">{name}</span>
   </div>
@@ -46,7 +75,7 @@ const waLink = buildProductQuoteLink(product.whatsappName ?? name);
       <h1 class="prod-name" transition:name={`product-name-${product.slug}`}>{name}</h1>
       <div class="prod-quote">
         <p class="prod-quote-heading">Price</p>
-        <p class="prod-quote-value">Price on Request</p>
+        <p class="prod-quote-value">{site.priceLabel}</p>
         <p class="prod-quote-note">Industrial resin pricing varies based on:</p>
         <ul class="prod-quote-list">
           <li>Order Quantity</li>
@@ -96,7 +125,7 @@ const waLink = buildProductQuoteLink(product.whatsappName ?? name);
         {related.map(r => (
           <a href={`/products/${r.slug}/`} class="rel-card">
             <span class="rel-name">{r.name}</span>
-            <span class="rel-price">Price on Request</span>
+            <span class="rel-price">{site.priceLabel}</span>
           </a>
         ))}
       </div>

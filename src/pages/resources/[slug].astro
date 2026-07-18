@@ -13,7 +13,7 @@ import { resources, getReadingTime } from '../../data/resources.js';
 import { site, buildCanonicalUrl } from '../../data/site.js';
 
 export function getStaticPaths() {
-  return resources.map((r) => ({ params: { slug: r.slug }, props: { resource: r } }));
+  return resources.filter((r) => !r.draft).map((r) => ({ params: { slug: r.slug }, props: { resource: r } }));
 }
 
 const { resource } = Astro.props;
@@ -25,13 +25,15 @@ const canonicalUrl = buildCanonicalUrl(Astro.url.pathname);
 const talkToTeamLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like help selecting the right polyester resin for my requirement.")}`;
 const readingTime = getReadingTime(resource);
 
+const published = resources.filter((r) => !r.draft);
+
 const relatedArticles = (relatedSlugs ?? [])
-  .map((slug) => resources.find((r) => r.slug === slug))
+  .map((slug) => published.find((r) => r.slug === slug))
   .filter(Boolean);
 
-const currentIndex = resources.findIndex((r) => r.slug === resource.slug);
-const prevArticle = currentIndex > 0 ? resources[currentIndex - 1] : null;
-const nextArticle = currentIndex < resources.length - 1 ? resources[currentIndex + 1] : null;
+const currentIndex = published.findIndex((r) => r.slug === resource.slug);
+const prevArticle = currentIndex > 0 ? published[currentIndex - 1] : null;
+const nextArticle = currentIndex >= 0 && currentIndex < published.length - 1 ? published[currentIndex + 1] : null;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -44,6 +46,16 @@ const jsonLd = {
   publisher: { "@type": "Organization", name: site.name },
   mainEntityOfPage: canonicalUrl,
 };
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: buildCanonicalUrl('/') },
+    { "@type": "ListItem", position: 2, name: "Resources", item: buildCanonicalUrl('/resources/') },
+    { "@type": "ListItem", position: 3, name: title, item: canonicalUrl },
+  ],
+};
 ---
 <Base
   title={resource.seo?.title ?? title}
@@ -54,6 +66,7 @@ const jsonLd = {
   keywords={resource.seo?.keywords}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
 
   <ReadingProgress />
 

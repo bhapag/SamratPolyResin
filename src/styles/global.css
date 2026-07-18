@@ -16,7 +16,7 @@
   --line-2:    #3a424d;
   --ink:       #f4f2ee;   /* off-white text */
   --ink-dim:   #a6adb8;   /* secondary text */
-  --ink-faint: #6b7280;   /* captions */
+  --ink-faint: #838a96;   /* captions — kept ≥4.5:1 against --bg for WCAG AA at small sizes */
   --amber:     #ff7a18;   /* molten resin accent */
   --amber-2:   #ffb347;   /* lighter amber */
   --amber-deep:#c9500a;

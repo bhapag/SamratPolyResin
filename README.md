@@ -30,7 +30,13 @@ Important fields:
 - `slug` — the URL id. Lowercase, dashes, no spaces, must be unique.
 - `category` — must exactly match one of the `CATEGORIES` listed at the top.
 - `image` — a filename inside `public/products/`. Drop the photo there first.
-- `price` — shown as-is (e.g. `"₹130 / kg"`). Leave `""` to show "Ask for price".
+- `price` — kept for internal reference only (last-known price per product).
+  **Not currently shown publicly** — every page displays `site.priceLabel`
+  ("Price on Request") instead, since resin pricing moves too often to keep
+  hardcoded page prices accurate. If you want to show real prices again,
+  wire `product.price` back into `ProductCard.astro` and
+  `products/[slug].astro` (search for `site.priceLabel` in both) and add a
+  fallback to `site.priceLabel` for any product where `price` is `""`.
 
 After editing, commit and push — the live site rebuilds automatically.
 
@@ -50,6 +56,33 @@ Open **`src/data/site.js`** and replace the placeholders:
 - `email` — where enquiries should go
 - `address`, `gst`, `proprietor` — business details
 - `mapsQuery` — the Google Maps search term for the map embed
+- `url` — the live, crawlable production domain. Used for canonical/OG tags,
+  the sitemap and structured data. **Must match `site` in `astro.config.mjs`
+  and must actually resolve and allow crawling** — pointing this at a domain
+  that isn't live yet or blocks crawlers (check its `/robots.txt`) actively
+  suppresses indexing of the real site.
+- `ogImage` — default social-share image, falls back to the logo.
+- `statesServed` — single source of truth for the states listed on the
+  homepage ("Why Choose Us" and "Industries We Serve" both read this array),
+  so the two sections can't drift into showing different lists again.
+- `packagingRange` — general packaging-size copy for aggregate mentions.
+  Individual products still show their own exact pack size under `specs`
+  in `products.js`.
+- `priceLabel` — the single string shown everywhere a price would otherwise
+  appear. Change it in one place if the pricing strategy changes.
+
+---
+
+## Knowledge Centre articles (`src/data/resources.js`)
+
+Each article's `sections` array is either plain heading strings (an outline
+with no body copy yet) or rich objects with real `body` content. **Any
+article still using plain-string sections must be marked `draft: true`.**
+Draft articles are automatically excluded from `/resources/`, from the
+sitemap, and don't get a built page at all — this is what stops an
+unfinished outline from ever going live showing placeholder filler text to
+a real visitor or to Google. Write the real content, then remove the
+`draft` flag to publish it.
 
 ---
 
@@ -80,8 +113,14 @@ Web3Forms free tier covers 250 submissions/month — plenty for this.
    - **Build command:** `npm run build`
    - **Output directory:** `dist`
 4. Deploy. You get a free `*.pages.dev` URL immediately.
-5. Add the real domain (`samratpolyresins.com`) under **Custom domains**.
-   WARNING: this needs access to the domain's DNS. If IndiaMART currently controls
+5. Add the real domain (`samratpolyresins.com`) under **Custom domains**,
+   then update `site.url` in `src/data/site.js` **and** `site` in
+   `astro.config.mjs` to match it, and redeploy. Until that domain is live
+   and crawlable, leave both pointed at whichever domain is actually serving
+   the site — `sitemap.xml` and `robots.txt` are generated from these values
+   automatically on every build, so a stale domain here means Google is
+   told the wrong canonical URLs.
+   WARNING: adding a custom domain needs access to the domain's DNS. If IndiaMART currently controls
    the domain, sort that out first — you may need the registrar login or to move
    the domain to Cloudflare.
 
@@ -95,18 +134,27 @@ Netlify works identically (same build command / output dir) if you prefer it.
 src/
   data/
     products.js     <- THE product catalog (edit this)
-    site.js         <- contact details + form key (edit this)
+    resources.js     <- Knowledge Centre articles (edit this — see draft-flag note above)
+    site.js         <- contact details + form key + SEO domain (edit this)
   components/
     ProductCard.astro
     EnquiryForm.astro
+    ...              <- Knowledge Centre building blocks (DataTable, Callout, FaqAccordion, etc.)
   layouts/
-    Base.astro      <- header, footer, floating WhatsApp, SEO
+    Base.astro      <- header, footer, floating WhatsApp, SEO, structured data
   pages/
     index.astro     <- homepage
     404.astro
-    products/[slug].astro  <- auto-generates one page per product
+    products/[slug].astro   <- auto-generates one page per product
+    resources/[slug].astro  <- auto-generates one page per published (non-draft) article
   styles/
     global.css      <- colors, fonts, design system
 public/
   products/         <- product images (+ favicon)
+  robots.txt        <- points crawlers at the sitemap
 ```
+
+`sitemap.xml` is generated automatically at build time by `@astrojs/sitemap`
+(configured in `astro.config.mjs`) from whatever pages actually get built —
+draft resource articles are excluded automatically since they never become
+real pages.

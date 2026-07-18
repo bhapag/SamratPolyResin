@@ -2,6 +2,8 @@
 import Base from '../../layouts/Base.astro';
 import ResourceCard from '../../components/ResourceCard.astro';
 import { resources } from '../../data/resources.js';
+
+const published = resources.filter((r) => !r.draft);
 ---
 <Base
   title="Knowledge Centre"
@@ -22,7 +24,7 @@ import { resources } from '../../data/resources.js';
   <section class="section kc-list">
     <div class="wrap">
       <div class="kc-grid">
-        {resources.map((resource) => <ResourceCard resource={resource} />)}
+        {published.map((resource) => <ResourceCard resource={resource} />)}
       </div>
     </div>
   </section>
