@@ -1,11 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import ReadingProgress from '../../components/ReadingProgress.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
 import QuickFacts from '../../components/QuickFacts.astro';
 import DataTable from '../../components/DataTable.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
-import ImagePlaceholder from '../../components/ImagePlaceholder.astro';
 import ResourceIcon from '../../components/ResourceIcon.astro';
 import TechIcon from '../../components/TechIcon.astro';
 import Callout from '../../components/Callout.astro';
@@ -15,6 +15,19 @@ import { site, buildCanonicalUrl } from '../../data/site.js';
 export function getStaticPaths() {
   return resources.filter((r) => !r.draft).map((r) => ({ params: { slug: r.slug }, props: { resource: r } }));
 }
+
+// Real photography used inline in article bodies (see `photo` on a section)
+// lives alongside the other real site photos in src/assets/ — resolved here,
+// by filename, the same way ProductCard.astro resolves product photos.
+const sharedPhotoModules = {
+  ...import.meta.glob('/src/assets/facility/*', { eager: true }),
+  ...import.meta.glob('/src/assets/quality/*', { eager: true }),
+  ...import.meta.glob('/src/assets/about/*', { eager: true }),
+};
+const resolveSharedPhoto = (filename) => {
+  const entry = Object.entries(sharedPhotoModules).find(([path]) => path.endsWith(`/${filename}`));
+  return entry?.[1]?.default;
+};
 
 const { resource } = Astro.props;
 const { title, description, icon, category, publishDate, sections, quickFacts, comparisonTable, faqs, relatedSlugs } = resource;
@@ -109,12 +122,18 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           const isRich = typeof s !== 'string';
           const heading = isRich ? s.heading : s;
           const table = isRich && s.table ? resource[s.table] : null;
+          const photoModule = isRich && s.photo ? resolveSharedPhoto(s.photo.src) : null;
           return (
             <section class="article-section" id={toId(heading)}>
               <h2>{heading}</h2>
               {!isRich && <p class="article-placeholder">Detailed technical content for this section will be added here.</p>}
               {isRich && s.body && s.body.map((para) => <p>{para}</p>)}
-              {isRich && s.imagePlaceholder && <ImagePlaceholder label={s.imagePlaceholder.label} />}
+              {photoModule && (
+                <figure class="article-photo">
+                  <Image src={photoModule} alt={s.photo.alt} widths={[400, 800, 1200]} sizes="(max-width: 900px) 100vw, 700px" loading="lazy" />
+                  {s.photo.caption && <figcaption>{s.photo.caption}</figcaption>}
+                </figure>
+              )}
               {table && <DataTable headers={table.headers} rows={table.rows} note={table.note} />}
               {isRich && s.visuals && s.visuals.map((visual) => (
                 visual.type === 'steps' ? (
@@ -299,6 +318,14 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .article-section h2 { font-size: clamp(1.35rem, 3vw, 1.8rem); margin-bottom: 1.1rem; }
     .article-section p { color: var(--ink-dim); margin-bottom: 1.2rem; max-width: 70ch; line-height: 1.75; }
     .article-placeholder { color: var(--ink-faint); font-style: italic; font-size: 0.94rem; }
+
+    .article-photo { border: 1px solid var(--line); margin-block: 1.6rem; overflow: hidden; }
+    .article-photo img { width: 100%; height: auto; display: block; }
+    .article-photo figcaption {
+      padding: 0.7rem 0.9rem; border-top: 1px solid var(--line); background: var(--bg-3);
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink-faint);
+    }
 
     .article-subsection { margin-top: 1.6rem; }
     .article-subsection h3 { font-size: 1.05rem; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; color: var(--ink); }

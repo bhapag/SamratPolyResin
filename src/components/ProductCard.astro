@@ -9,7 +9,7 @@ const { product } = Astro.props;
 const { slug, name, image, tagline, category } = product;
 const img = resolveProductImage(image);
 ---
-<a href={`/products/${slug}/`} class="card">
+<a href={`/products/${slug}/`} class="card" data-product-card data-category={category} data-search={`${name} ${tagline}`.toLowerCase()}>
   <div class:list={['card-img', { noimg: !img }]}>
     {img && (
       <Image src={img} alt={name} loading="lazy" widths={[320, 480, 640]} sizes="(max-width: 640px) 100vw, 320px"

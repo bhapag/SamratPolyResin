@@ -214,7 +214,11 @@ export const resources = [
       },
       {
         heading: "How GP Polyester Resin Is Manufactured",
-        imagePlaceholder: { type: "factory", label: "Factory photograph — coming soon" },
+        photo: {
+          src: "production-infrastructure.jpg",
+          alt: "Stainless-steel resin processing reactors at the Samrat Poly Resins manufacturing facility",
+          caption: "Our production reactors — Doraha, Ludhiana",
+        },
         body: [
           "GP polyester resin manufacturing begins with a small number of core raw materials: unsaturated dibasic acids or anhydrides (typically maleic anhydride, sometimes combined with phthalic anhydride), saturated dibasic acids such as phthalic anhydride, which contribute rigidity and control the degree of unsaturation, and glycols, commonly propylene glycol or ethylene glycol, which provide the flexible backbone linking the acid units together.",
           "These raw materials are reacted together in a controlled polycondensation process inside a resin reactor, typically under heat and with continuous removal of water, a by-product of the esterification reaction. This produces a linear unsaturated polyester chain containing reactive double bonds distributed along its backbone. The reaction is monitored and controlled to achieve a target acid value and molecular weight, which influence the resin's final viscosity and reactivity.",
@@ -271,7 +275,6 @@ export const resources = [
       },
       {
         heading: "Common Industrial Applications",
-        imagePlaceholder: { type: "product", label: "Product photograph — coming soon" },
         visuals: [
           {
             type: "steps",
@@ -315,7 +318,6 @@ export const resources = [
       },
       {
         heading: "Manufacturing Processes",
-        imagePlaceholder: { type: "process", label: "Manufacturing process photograph — coming soon" },
         visuals: [
           {
             type: "icongrid",

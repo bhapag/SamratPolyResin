@@ -15,10 +15,26 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
     </div>
   </section>
 
+  <section class="prod-filter-bar">
+    <div class="wrap prod-filter-inner">
+      <div class="prod-search">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+        <input type="search" id="prodSearch" placeholder="Search products by name…" aria-label="Search products by name" autocomplete="off" />
+      </div>
+      <div class="prod-chips" role="list" aria-label="Filter by category">
+        <button type="button" class="prod-chip is-active" data-chip-cat="all">All ({products.length})</button>
+        {byCat.map(group => (
+          <button type="button" class="prod-chip" data-chip-cat={group.cat}>{group.cat} ({group.items.length})</button>
+        ))}
+      </div>
+      <p class="prod-filter-empty" id="prodFilterEmpty" hidden>No products match your search.</p>
+    </div>
+  </section>
+
   <section class="section prod-list">
     <div class="wrap">
       {byCat.map(group => (
-        <div class="cat-block" id={catId(group.cat)}>
+        <div class="cat-block" id={catId(group.cat)} data-cat-block={group.cat}>
           <h2 class="cat-title"><span>{group.cat}</span><span class="cat-count">{String(group.items.length).padStart(2,'0')}</span></h2>
           <div class="grid">
             {group.items.map(p => <ProductCard product={p} />)}
@@ -28,12 +44,84 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
     </div>
   </section>
 
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const searchInput = document.getElementById('prodSearch') as HTMLInputElement | null;
+      const chips = document.querySelectorAll<HTMLButtonElement>('[data-chip-cat]');
+      const blocks = document.querySelectorAll<HTMLElement>('[data-cat-block]');
+      const emptyMsg = document.getElementById('prodFilterEmpty');
+      if (!searchInput || !blocks.length || searchInput.dataset.wired === 'true') return;
+      searchInput.dataset.wired = 'true';
+
+      let activeCategory = 'all';
+
+      const applyFilter = () => {
+        const query = searchInput.value.trim().toLowerCase();
+        let anyVisible = false;
+
+        blocks.forEach((block) => {
+          const blockCat = block.dataset.catBlock ?? '';
+          const catMatches = activeCategory === 'all' || blockCat === activeCategory;
+          let blockHasVisibleCard = false;
+
+          block.querySelectorAll<HTMLElement>('[data-product-card]').forEach((card) => {
+            const searchText = card.dataset.search ?? '';
+            const matches = catMatches && (query === '' || searchText.includes(query));
+            card.style.display = matches ? '' : 'none';
+            if (matches) blockHasVisibleCard = true;
+          });
+
+          block.hidden = !blockHasVisibleCard;
+          if (blockHasVisibleCard) anyVisible = true;
+        });
+
+        if (emptyMsg) emptyMsg.hidden = anyVisible;
+      };
+
+      searchInput.addEventListener('input', applyFilter);
+
+      chips.forEach((chip) => {
+        chip.addEventListener('click', () => {
+          activeCategory = chip.dataset.chipCat ?? 'all';
+          chips.forEach((c) => c.classList.toggle('is-active', c === chip));
+          applyFilter();
+        });
+      });
+    });
+  </script>
+
   <style>
     .prod-hero { padding-bottom: 0; }
     .prod-hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); margin-top: 0.6rem; }
     .prod-hero-sub { color: var(--ink-dim); margin-top: 0.9rem; max-width: 48ch; }
 
+    .prod-filter-bar { padding-block: 1.6rem; position: sticky; top: 68px; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); }
+    .prod-filter-inner { display: flex; flex-direction: column; gap: 1rem; }
+    .prod-search {
+      display: flex; align-items: center; gap: 0.6rem;
+      border: 1px solid var(--line-2); background: var(--bg-3); padding: 0.7rem 1rem;
+      max-width: 420px; color: var(--ink-faint); transition: border-color .25s var(--ease-premium);
+    }
+    .prod-search:focus-within { border-color: var(--amber); color: var(--amber); }
+    .prod-search input {
+      flex: 1; background: transparent; border: none; outline: none;
+      color: var(--ink); font-family: var(--font-body); font-size: 0.92rem;
+    }
+    .prod-search input::placeholder { color: var(--ink-faint); }
+    .prod-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .prod-chip {
+      font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.03em;
+      padding: 0.45rem 0.9rem; border: 1px solid var(--line-2); background: transparent;
+      color: var(--ink-dim); cursor: pointer;
+      transition: border-color .25s var(--ease-premium), color .25s var(--ease-premium), background .25s var(--ease-premium);
+    }
+    .prod-chip:hover { border-color: var(--amber); color: var(--amber-2); }
+    .prod-chip.is-active { background: var(--amber); border-color: var(--amber); color: #17120c; font-weight: 600; }
+    .prod-filter-empty { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.2rem; }
+    @media (max-width: 620px) { .prod-search { max-width: none; } }
+
     .cat-block { margin-bottom: 3.2rem; scroll-margin-top: 90px; }
+    .cat-block[hidden] { display: none; }
     .cat-title {
       display: flex; align-items: baseline; gap: 1rem;
       font-size: 1.25rem; color: var(--ink-dim); margin-bottom: 1.3rem;

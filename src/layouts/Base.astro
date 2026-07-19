@@ -93,6 +93,16 @@ const organizationJsonLd = {
         <p class="foot-dim">Manufacturer of coating &amp; composite resins.<br/>Established {site.established}.</p>
       </div>
       <div>
+        <h3 class="foot-h">Quick links</h3>
+        <nav class="foot-nav" aria-label="Footer">
+          <a href="/">Home</a>
+          <a href="/products/">Products</a>
+          <a href="/about/">About</a>
+          <a href="/resources/">Resources</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+      <div>
         <h3 class="foot-h">Reach us</h3>
         <p class="foot-dim">
           {site.proprietor} (Proprietor)<br/>
@@ -208,11 +218,14 @@ const organizationJsonLd = {
 
     .site-footer { border-top: 1px solid var(--line); background: var(--bg-2); margin-top: 2rem; }
     .footer-grid {
-      display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2.5rem;
+      display: grid; grid-template-columns: 1.3fr 0.9fr 1fr 1fr; gap: 2.5rem;
       padding-block: 3.5rem 2rem;
     }
     .foot-name { font-family: var(--font-display); text-transform: uppercase; font-size: 1.2rem; margin-top: 0.9rem; }
     .foot-h { font-size: 0.8rem; letter-spacing: 0.16em; color: var(--ink); margin-bottom: 0.8rem; }
+    .foot-nav { display: flex; flex-direction: column; gap: 0.7rem; }
+    .foot-nav a { color: var(--ink-dim); font-size: 0.9rem; transition: color .25s var(--ease-premium); }
+    .foot-nav a:hover { color: var(--amber-2); }
     .foot-dim { color: var(--ink-dim); font-size: 0.9rem; line-height: 1.9; }
     .foot-dim a { transition: color .25s var(--ease-premium); }
     .foot-dim a:hover { color: var(--amber-2); }
@@ -221,7 +234,8 @@ const organizationJsonLd = {
       border-top: 1px solid var(--line); padding-block: 1.3rem;
       font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); letter-spacing: 0.04em;
     }
-    @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+    @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
 
     .wa-float {
       position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 60;
