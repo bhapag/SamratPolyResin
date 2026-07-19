@@ -1,0 +1,2898 @@
+#!/usr/bin/env bash
+# ============================================================================
+#  Samrat Poly Resins — consistency-audit branch installer
+# ----------------------------------------------------------------------------
+#  Applies the full engineering audit as a new branch on your LOCAL clone.
+#
+#  This does NOT patch — it overwrites each changed file with its final
+#  content directly, so it applies cleanly even if your local checkout has
+#  drifted slightly from the commit this was generated against. The one
+#  thing that means: if you've made your own uncommitted edits to any of
+#  the files listed below, this will overwrite them. Commit or stash any
+#  local work first if you're not sure.
+#
+#  Usage:
+#    1. cd into your local SamratPolyResin repo (the folder with package.json)
+#    2. bash apply-consistency-audit.sh
+#    3. Review with: git status / git diff main
+#    4. Push yourself when ready: git push -u origin consistency-audit
+#       (deliberately not pushed automatically — review first)
+# ============================================================================
+
+set -euo pipefail
+
+if [ ! -f "package.json" ] || ! grep -q '"samrat-poly-resins"' package.json 2>/dev/null; then
+  echo "ERROR: run this from the root of your SamratPolyResin repo (where package.json lives)." >&2
+  exit 1
+fi
+
+SCRIPT_NAME="$(basename "$0")"
+DIRTY="$(git status --porcelain | grep -v " ${SCRIPT_NAME}\$" || true)"
+if [ -n "$DIRTY" ]; then
+  echo "ERROR: you have uncommitted changes in this repo." >&2
+  echo "This script overwrites files directly, so commit or stash your work first, then re-run." >&2
+  echo "$DIRTY" >&2
+  exit 1
+fi
+
+echo "==> Creating branch consistency-audit"
+git checkout main 2>/dev/null || git checkout master 2>/dev/null || true
+git checkout -b consistency-audit 2>/dev/null || git checkout consistency-audit
+
+
+echo "==> Writing README.md"
+cat > "README.md" <<'CLAUDE_AUDIT_EOF'
+# Samrat Poly Resins — website
+
+A fast, static catalog site built with [Astro](https://astro.build). No database,
+no server to maintain, free to host. Products are edited in one plain file.
+
+---
+
+## Run it locally
+
+You need [Node.js](https://nodejs.org) (v18+). Then:
+
+```bash
+npm install       # first time only
+npm run dev        # start local preview at http://localhost:4321
+npm run build      # build the final site into /dist
+```
+
+---
+
+## Add / edit / remove a product
+
+Everything lives in **`src/data/products.js`**.
+
+To **add** a product: copy one existing block (from `{` to `},`), paste it below,
+and change the fields. To **remove** one: delete its block. To **edit**: change
+the text. No other file needs touching.
+
+Important fields:
+
+- `slug` — the URL id. Lowercase, dashes, no spaces, must be unique.
+- `category` — must exactly match one of the `CATEGORIES` listed at the top.
+- `image` — a filename inside `public/products/`. Drop the photo there first.
+- `price` — kept for internal reference only (last-known price per product).
+  **Not currently shown publicly** — every page displays `site.priceLabel`
+  ("Price on Request") instead, since resin pricing moves too often to keep
+  hardcoded page prices accurate. If you want to show real prices again,
+  wire `product.price` back into `ProductCard.astro` and
+  `products/[slug].astro` (search for `site.priceLabel` in both) and add a
+  fallback to `site.priceLabel` for any product where `price` is `""`.
+
+After editing, commit and push — the live site rebuilds automatically.
+
+### Product photos
+Placeholder images are in `public/products/`. Replace them with real photos using
+the **same filename** (keep them ~4:3, ~800x600px, JPG). Better photos make a real
+difference for B2B buyers — worth getting proper ones.
+
+---
+
+## Set the contact details
+
+Open **`src/data/site.js`** and replace the placeholders:
+
+- `phoneDisplay`, `phoneDial` — the shop phone number
+- `whatsapp` — digits only, with country code, **no + or spaces** (e.g. `919876543210`)
+- `email` — where enquiries should go
+- `address`, `gst`, `proprietor` — business details
+- `mapsQuery` — the Google Maps search term for the map embed
+- `url` — the live, crawlable production domain. Used for canonical/OG tags,
+  the sitemap and structured data. **Must match `site` in `astro.config.mjs`
+  and must actually resolve and allow crawling** — pointing this at a domain
+  that isn't live yet or blocks crawlers (check its `/robots.txt`) actively
+  suppresses indexing of the real site.
+- `ogImage` — default social-share image, falls back to the logo.
+- `statesServed` — single source of truth for the states listed on the
+  homepage ("Why Choose Us" and "Industries We Serve" both read this array),
+  so the two sections can't drift into showing different lists again.
+- `packagingRange` — general packaging-size copy for aggregate mentions.
+  Individual products still show their own exact pack size under `specs`
+  in `products.js`.
+- `priceLabel` — the single string shown everywhere a price would otherwise
+  appear. Change it in one place if the pricing strategy changes.
+
+---
+
+## Knowledge Centre articles (`src/data/resources.js`)
+
+Each article's `sections` array is either plain heading strings (an outline
+with no body copy yet) or rich objects with real `body` content. **Any
+article still using plain-string sections must be marked `draft: true`.**
+Draft articles are automatically excluded from `/resources/`, from the
+sitemap, and don't get a built page at all — this is what stops an
+unfinished outline from ever going live showing placeholder filler text to
+a real visitor or to Google. Write the real content, then remove the
+`draft` flag to publish it.
+
+---
+
+## Make the enquiry form send email (2 minutes)
+
+The form works in **demo mode** until connected. To make enquiries land in the
+owner's inbox:
+
+1. Go to **[web3forms.com](https://web3forms.com)** -> enter the owner's email ->
+   get a free **Access Key** (emailed instantly).
+2. Paste it into `formEndpoint` in **`src/data/site.js`**:
+   ```js
+   formEndpoint: "your-access-key-here",
+   ```
+3. Rebuild / redeploy. Every enquiry now emails the owner, and the message
+   includes which product they were looking at.
+
+Web3Forms free tier covers 250 submissions/month — plenty for this.
+
+---
+
+## Deploy (free, on Cloudflare Pages)
+
+1. Push this folder to a GitHub repo.
+2. On [Cloudflare Pages](https://pages.cloudflare.com): **Create project ->
+   Connect to Git -> pick the repo.**
+3. Build settings:
+   - **Build command:** `npm run build`
+   - **Output directory:** `dist`
+4. Deploy. You get a free `*.pages.dev` URL immediately.
+5. Add the real domain (`samratpolyresins.com`) under **Custom domains**,
+   then update `site.url` in `src/data/site.js` **and** `site` in
+   `astro.config.mjs` to match it, and redeploy. Until that domain is live
+   and crawlable, leave both pointed at whichever domain is actually serving
+   the site — `sitemap.xml` and `robots.txt` are generated from these values
+   automatically on every build, so a stale domain here means Google is
+   told the wrong canonical URLs.
+   WARNING: adding a custom domain needs access to the domain's DNS. If IndiaMART currently controls
+   the domain, sort that out first — you may need the registrar login or to move
+   the domain to Cloudflare.
+
+Netlify works identically (same build command / output dir) if you prefer it.
+
+---
+
+## Structure
+
+```
+src/
+  data/
+    products.js     <- THE product catalog (edit this)
+    resources.js     <- Knowledge Centre articles (edit this — see draft-flag note above)
+    site.js         <- contact details + form key + SEO domain (edit this)
+  components/
+    ProductCard.astro
+    EnquiryForm.astro
+    ...              <- Knowledge Centre building blocks (DataTable, Callout, FaqAccordion, etc.)
+  layouts/
+    Base.astro      <- header, footer, floating WhatsApp, SEO, structured data
+  pages/
+    index.astro     <- homepage
+    404.astro
+    products/[slug].astro   <- auto-generates one page per product
+    resources/[slug].astro  <- auto-generates one page per published (non-draft) article
+  styles/
+    global.css      <- colors, fonts, design system
+public/
+  products/         <- product images (+ favicon)
+  robots.txt        <- points crawlers at the sitemap
+```
+
+`sitemap.xml` is generated automatically at build time by `@astrojs/sitemap`
+(configured in `astro.config.mjs`) from whatever pages actually get built —
+draft resource articles are excluded automatically since they never become
+real pages.
+CLAUDE_AUDIT_EOF
+
+echo "==> Writing astro.config.mjs"
+cat > "astro.config.mjs" <<'CLAUDE_AUDIT_EOF'
+// @ts-check
+import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+
+// https://astro.build/config
+export default defineConfig({
+  // Must match `site.url` in src/data/site.js — samratpolyresins.in is the
+  // live, crawlable domain today. samratpolyresins.com currently blocks
+  // crawlers via robots.txt; switch both back once that migration is done.
+  site: 'https://samratpolyresins.in',
+  integrations: [sitemap()],
+});
+CLAUDE_AUDIT_EOF
+
+echo "==> Writing src/components/ProductCard.astro"
+mkdir -p "src/components"
+cat > "src/components/ProductCard.astro" <<'CLAUDE_AUDIT_EOF'
+---
+import { site } from '../data/site.js';
+const { product } = Astro.props;
+const { slug, name, image, tagline, category } = product;
+---
+<a href={`/products/${slug}/`} class="card">
+  <div class="card-img">
+    <img src={`/products/${image}`} alt={name} loading="lazy" width="400" height="300"
+         onerror="this.parentElement.classList.add('noimg'); this.remove();"
+         transition:name={`product-photo-${slug}`} />
+    <span class="img-fallback" aria-hidden="true">{name.split(' ').map(w=>w[0]).join('').slice(0,3)}</span>
+  </div>
+  <div class="card-body">
+    <span class="card-cat">{category}</span>
+    <h3 class="card-name" transition:name={`product-name-${slug}`}>{name}</h3>
+    <p class="card-tag">{tagline}</p>
+    <div class="card-foot">
+      <span class="card-price">{site.priceLabel}</span>
+      <span class="card-arrow" aria-hidden="true">→</span>
+    </div>
+  </div>
+</a>
+
+<style>
+  .card {
+    display: flex; flex-direction: column;
+    background: var(--bg-3);
+    border: 1px solid var(--line);
+    transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+    height: 100%;
+  }
+  .card:hover {
+    border-color: var(--amber); transform: translateY(-4px) scale(1.012);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, .3);
+  }
+  .card:hover .card-arrow { transform: translateX(4px); color: var(--amber); }
+
+  .card-img {
+    position: relative; aspect-ratio: 4 / 3; overflow: hidden;
+    background: linear-gradient(135deg, #1a1e24, #23282f);
+    display: grid; place-items: center;
+  }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s var(--ease-premium); }
+  .card:hover .card-img img { transform: scale(1.035); }
+  .img-fallback {
+    display: none;
+    position: absolute; font-family: var(--font-display); font-weight: 700;
+    font-size: 2.4rem; color: var(--line-2); letter-spacing: 0.05em;
+  }
+  .card-img.noimg { border-bottom: 1px solid var(--line); }
+  .card-img.noimg .img-fallback { display: block; }
+
+  .card-body { padding: 1.15rem 1.25rem 1.25rem; display: flex; flex-direction: column; flex: 1; }
+  .card-cat {
+    font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .card-name {
+    font-size: 1.15rem; margin-top: 0.5rem; color: var(--ink);
+    text-transform: none; letter-spacing: 0; font-weight: 600;
+  }
+  .card-tag { color: var(--ink-dim); font-size: 0.86rem; margin-top: 0.4rem; flex: 1; }
+  .card-foot {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid var(--line);
+  }
+  .card-price { font-family: var(--font-mono); font-size: 0.9rem; color: var(--amber-2); font-weight: 500; }
+  .card-arrow { font-size: 1.1rem; color: var(--ink-dim); transition: transform .3s var(--ease-premium), color .3s var(--ease-premium); }
+</style>
+CLAUDE_AUDIT_EOF
+
+echo "==> Writing src/data/resources.js"
+mkdir -p "src/data"
+cat > "src/data/resources.js" <<'CLAUDE_AUDIT_EOF'
+// ============================================================================
+//  KNOWLEDGE CENTRE — technical resource articles
+// ============================================================================
+//
+//  This is a structured technical resource centre, not a blog. Each entry
+//  below defines one article's metadata and its section outline (the
+//  `sections` array becomes the Table of Contents and the H2 headings on
+//  the article page).
+//
+//  Fields:
+//    slug          unique url-friendly id
+//    title         article title (used as the page H1)
+//    description   one-sentence summary, shown on the resource card and
+//                  used as the page meta description
+//    icon          one of: info, grid, checklist, layers, shield, tank,
+//                  roof, door, clock, drum (see ResourceIcon.astro)
+//    category      short label shown on cards and in the article hero
+//    readingTime   fallback only — the article template calculates actual
+//                  reading time from content via getReadingTime() below.
+//                  Kept for the resource-card grid, which shows it without
+//                  loading full section content.
+//    publishDate   ISO date string, shown on the article page and used in
+//                  the Schema.org Article JSON-LD
+//    sections      ordered list of section headings for the article body.
+//                  A plain string = heading only, no body written yet.
+//                  An object ({ heading, body, ... }) = real written content.
+//    draft         true = excluded from getStaticPaths, the /resources/
+//                  index, and the sitemap. Use this for any article whose
+//                  `sections` are still plain-string headings — that way an
+//                  unfinished outline can never accidentally go live showing
+//                  placeholder filler text to a real visitor or Google.
+//                  Remove the flag once every section has real body content.
+//
+//  No invented facts, figures or specs are used as filler — sections without
+//  real content are marked `draft: true` instead of being padded out.
+// ============================================================================
+
+// Dynamic reading time — walks the actual section/subsection/FAQ content
+// (never a hardcoded figure) and estimates minutes at ~200 words/minute.
+export function getReadingTime(resource) {
+  let words = 0;
+  const count = (str) => {
+    if (!str) return;
+    words += String(str).trim().split(/\s+/).filter(Boolean).length;
+  };
+  (resource.sections || []).forEach((s) => {
+    if (typeof s === 'string') { count(s); return; }
+    count(s.heading);
+    (s.body || []).forEach(count);
+    (s.subsections || []).forEach((sub) => { count(sub.heading); count(sub.body); });
+  });
+  (resource.faqs || []).forEach((f) => { count(f.q); count(f.a); });
+  const minutes = Math.max(1, Math.round(words / 200));
+  return `${minutes} min read`;
+}
+
+export const resources = [
+  {
+    slug: "what-is-gp-polyester-resin",
+    title: "What is GP Polyester Resin?",
+    description: "A complete guide to General Purpose (GP) polyester resin — what it is, how it's made, key properties, applications and how to select the right grade.",
+    category: "Product Guide",
+    icon: "info",
+    readingTime: "10 min read",
+    publishDate: "2026-07-18",
+
+    seo: {
+      title: "GP Polyester Resin — Properties, Uses & Buying Guide",
+      keywords: [
+        "GP polyester resin",
+        "general purpose polyester resin",
+        "unsaturated polyester resin",
+        "UPR resin",
+        "FRP resin",
+        "polyester resin manufacturer India",
+        "GP resin applications",
+        "GP resin properties",
+      ],
+      ogTitle: "What is GP Polyester Resin? A Complete Guide",
+      ogDescription: "What General Purpose polyester resin is, how it's manufactured, its properties and advantages, where it's used, and how to select and store it correctly.",
+    },
+
+    quickFacts: {
+      "Resin Type": "Unsaturated Polyester Resin (UPR)",
+      "Material Class": "Thermosetting resin",
+      "Curing System": "Room-temperature cure via peroxide catalyst (typically MEKP)",
+      "Typical Reinforcement": "Glass fibre — chopped strand mat, woven roving",
+      "Typical Applications": "FRP tanks, roofing sheets, door skins, industrial mouldings",
+      "Appearance": "Viscous liquid, pale to water-white depending on grade",
+    },
+
+    propertiesTable: {
+      headers: ["Property", "Typical Performance"],
+      rows: [
+        ["Mechanical Strength", "Good — suitable for most general structural and semi-structural FRP components"],
+        ["Chemical Resistance", "Moderate — adequate for general environmental exposure; speciality grades needed for aggressive chemicals"],
+        ["Processability", "Excellent — compatible with hand lay-up, spray-up and most open-mould processes"],
+        ["Surface Finish", "Good — smooth, paintable finish when used with a compatible gel coat"],
+        ["Adhesion", "Good — bonds well to glass fibre reinforcement and common core materials"],
+        ["Cost Effectiveness", "Very good — among the most economical resin systems available"],
+        ["Curing Characteristics", "Reliable — cures at room temperature with standard peroxide catalysts"],
+        ["Glass Fibre Compatibility", "Excellent — well suited to chopped strand mat, woven roving and combination reinforcements"],
+      ],
+      note: "Exact figures vary between manufacturers and grades. Always confirm against the specific product's technical data sheet (TDS).",
+    },
+
+    resinFamilyTable: {
+      headers: ["Resin Type", "Typical Positioning"],
+      rows: [
+        ["GP Polyester Resin", "General purpose applications"],
+        ["Isophthalic Polyester Resin", "Improved water & chemical resistance"],
+        ["Vinyl Ester Resin", "Higher chemical resistance"],
+        ["Epoxy Resin", "Higher structural performance"],
+      ],
+      note: "This is a general positioning guide, not a ranking — no resin system is universally “better”, and the right choice depends on the application.",
+    },
+
+    comparisonTable: {
+      title: "GP Polyester Resin vs Epoxy Resin vs Vinyl Ester Resin",
+      note: "This comparison is general in nature. No single resin system is universally “better” — actual performance depends on the specific grade, formulation and reinforcement used, and should be confirmed against manufacturer data.",
+      headers: ["Property", "GP Polyester Resin", "Epoxy Resin", "Vinyl Ester Resin"],
+      rows: [
+        ["Cost", "Low", "High", "Moderate to high"],
+        ["Strength", "Good for general use", "Very good — high strength-to-weight ratio", "Very good — good toughness"],
+        ["Chemical Resistance", "Moderate", "Good to very good, application-dependent", "Very good — strong corrosion resistance"],
+        ["Ease of Processing", "Easy — room-temperature cure, familiar techniques", "Requires more precise mixing and cure control", "Similar to polyester, slightly more sensitive to processing conditions"],
+        ["Typical Applications", "Tanks, roofing sheets, mouldings, general FRP", "Structural composites, adhesives, high-performance parts", "Chemical storage tanks, pipework, corrosion-resistant structures"],
+      ],
+    },
+
+    relatedSlugs: [
+      "applications-of-gp-polyester-resin",
+      "how-to-select-polyester-resin-for-frp-manufacturing",
+      "understanding-gel-time-in-polyester-resin",
+    ],
+
+    faqs: [
+      {
+        q: "What does GP mean in GP polyester resin?",
+        a: "GP stands for General Purpose. It refers to a standard-grade unsaturated polyester resin formulated for broad, everyday FRP applications, as opposed to speciality resins engineered for specific properties such as fire retardancy or enhanced chemical resistance.",
+      },
+      {
+        q: "Does GP resin require MEKP to cure?",
+        a: "Yes. GP polyester resin is typically cured using a peroxide catalyst, most commonly Methyl Ethyl Ketone Peroxide (MEKP), added at a small percentage just before use to initiate curing. The correct dosage should always follow the manufacturer's technical data sheet.",
+      },
+      {
+        q: "Can GP resin be reinforced with glass fibre?",
+        a: "Yes. GP resin is designed to be used with glass fibre reinforcement, including chopped strand mat, woven roving and combination fabrics, and this reinforcement is what gives the cured laminate its structural strength.",
+      },
+      {
+        q: "Is GP resin waterproof?",
+        a: "Cured GP resin laminates generally resist water well and provide a good barrier for general storage and outdoor use. However, GP resin offers moderate rather than specialised chemical resistance, so prolonged immersion or aggressive chemical exposure may call for an isophthalic or vinyl ester grade instead.",
+      },
+      {
+        q: "Can GP resin be painted?",
+        a: "Yes. Once fully cured, GP resin laminate surfaces can generally be painted using compatible coating systems, particularly after appropriate surface preparation such as light abrasion and cleaning.",
+      },
+      {
+        q: "What industries use GP polyester resin?",
+        a: "GP resin is used across FRP water tank manufacturing, roofing sheet production, door skin manufacturing, industrial mouldings, decorative panels, marine components, automotive parts and general construction products, among other FRP applications.",
+      },
+      {
+        q: "How long does GP resin last once cured?",
+        a: "Cured GP resin laminates are designed for long-term structural use and, when correctly formulated and reinforced, can perform reliably for many years under normal service conditions. Actual service life depends on the application, environmental exposure and product design.",
+      },
+      {
+        q: "How should GP resin be stored before use?",
+        a: "Uncured GP resin should be stored in tightly sealed containers, in a cool, dry, well-ventilated area away from direct sunlight and heat sources, and used within the shelf life stated on the product's technical data sheet.",
+      },
+      {
+        q: "What is the difference between GP resin and gel coat resin?",
+        a: "GP resin is a laminating resin used with reinforcement to build structural thickness in a composite part, while gel coat resin is a surface-coating resin applied as the outermost layer of a mould, ahead of lamination, to provide a smooth, protective and often pigmented finish.",
+      },
+    ],
+
+    sections: [
+      {
+        heading: "Introduction",
+        body: [
+          "General Purpose (GP) polyester resin is one of the most widely used thermosetting resin systems in the fibre-reinforced plastics (FRP) and composites industry. It is manufactured by reacting unsaturated dibasic acids or anhydrides with glycols, then dissolving the resulting polyester in styrene monomer. Once combined with a suitable catalyst, it cures through free-radical crosslinking into a rigid, insoluble thermoset structure.",
+          "Its popularity is not accidental. GP resin offers a practical balance of mechanical performance, ease of processing and cost, which is why it remains the default choice for a broad range of FRP applications — from water storage tanks and roofing sheets to industrial mouldings and construction products. Unlike speciality resin systems developed for specific performance requirements, such as enhanced chemical resistance, fire retardancy, or superior toughness, GP resin is formulated as a versatile, all-round material suited to general-purpose composite manufacturing.",
+          "This article explains what GP polyester resin is, how it is manufactured, its key properties and advantages, where it is used, and how manufacturers should approach selecting and handling it correctly.",
+        ],
+      },
+      {
+        heading: "What Is General Purpose (GP) Polyester Resin?",
+        body: [
+          "The term “GP” simply stands for General Purpose. It distinguishes this resin grade from speciality polyester systems — such as isophthalic, fire-retardant, or gel coat resins — that are engineered for specific performance characteristics. GP resin, by contrast, is formulated to perform reliably across a wide range of everyday FRP applications without the need for specialised additives or modified backbone chemistry.",
+          "Chemically, GP resin belongs to the unsaturated polyester resin (UPR) family. Unsaturated polyester resins are produced by reacting unsaturated dibasic acids or anhydrides, commonly maleic anhydride, with glycols to form a polyester backbone containing reactive carbon-carbon double bonds. This polyester is then dissolved in styrene monomer, which acts both as a viscosity-reducing solvent and as the reactive comonomer that crosslinks the resin during curing. When combined with a peroxide catalyst — most commonly Methyl Ethyl Ketone Peroxide (MEKP) — the resin cures at room temperature into a rigid, thermoset polymer network.",
+          "GP resin is typically based on orthophthalic acid chemistry, which is more economical to produce than isophthalic or vinyl ester alternatives. Isophthalic resins offer improved water and chemical resistance; vinyl ester resins offer superior corrosion resistance and toughness; fire-retardant grades incorporate halogenated or halogen-free additives to meet flammability standards; gel coat resins are formulated for surface finish and weatherability rather than structural lamination. GP resin sits at the general-purpose end of this spectrum — it is not engineered to excel in any one of these specialised areas, but it performs adequately across most of them at a lower cost.",
+          "Manufacturers choose GP resin because it offers a dependable combination of processability, mechanical performance and cost-effectiveness for applications that do not demand the enhanced properties of speciality systems. It is compatible with common reinforcement materials, cures reliably under standard workshop conditions, and is widely available, making it a practical default for FRP fabricators producing tanks, panels, roofing sheets and general mouldings.",
+        ],
+        visuals: [
+          {
+            type: "steps",
+            caption: "How catalysed GP resin cures from a liquid into a rigid composite",
+            items: [
+              { label: "Liquid GP Resin + MEKP Catalyst" },
+              { label: "Cross-Linking Reaction" },
+              { label: "Gel Stage" },
+              { label: "Hard Cure" },
+              { label: "Finished Composite Product" },
+            ],
+          },
+        ],
+        table: "resinFamilyTable",
+        callouts: [
+          {
+            label: "Information",
+            variant: "info",
+            text: "GP stands for General Purpose — a standard-grade unsaturated polyester resin formulated for broad, everyday FRP applications, rather than a speciality system engineered for one specific property.",
+          },
+        ],
+      },
+      {
+        heading: "How GP Polyester Resin Is Manufactured",
+        imagePlaceholder: { type: "factory", label: "Factory photograph — coming soon" },
+        body: [
+          "GP polyester resin manufacturing begins with a small number of core raw materials: unsaturated dibasic acids or anhydrides (typically maleic anhydride, sometimes combined with phthalic anhydride), saturated dibasic acids such as phthalic anhydride, which contribute rigidity and control the degree of unsaturation, and glycols, commonly propylene glycol or ethylene glycol, which provide the flexible backbone linking the acid units together.",
+          "These raw materials are reacted together in a controlled polycondensation process inside a resin reactor, typically under heat and with continuous removal of water, a by-product of the esterification reaction. This produces a linear unsaturated polyester chain containing reactive double bonds distributed along its backbone. The reaction is monitored and controlled to achieve a target acid value and molecular weight, which influence the resin's final viscosity and reactivity.",
+          "Once the polyester base is formed and cooled to a safe handling temperature, it is dissolved in styrene monomer, typically in a ratio that balances viscosity, reactivity and cured mechanical properties. Styrene serves two purposes: it reduces the viscosity of the otherwise highly viscous polyester so it can be processed at ambient temperature, and it acts as the crosslinking agent that reacts with the polyester's unsaturation sites during cure. Small quantities of inhibitor are also added at this stage to give the resin adequate shelf life and controllable gel time before it is catalysed for use.",
+          "Before packaging, each batch is checked against a set of quality parameters, which typically include viscosity, acid value, colour and gel time. These checks confirm that the batch is consistent with previous production and suitable for its intended application, helping fabricators achieve repeatable results from drum to drum.",
+          "Finished GP resin is typically packed into sealed drums to protect it from moisture, contamination and light exposure, all of which can affect shelf life and performance if the resin is stored incorrectly.",
+        ],
+        visuals: [
+          {
+            type: "steps",
+            caption: "GP polyester resin manufacturing process",
+            items: [
+              { label: "Raw Materials" },
+              { label: "Polyester Formation" },
+              { label: "Styrene Addition" },
+              { label: "Quality Control" },
+              { label: "Packaging" },
+              { label: "Industrial Customer" },
+            ],
+          },
+        ],
+        callouts: [
+          {
+            label: "Technical Note",
+            variant: "technical",
+            text: "Each batch is checked against viscosity, acid value, colour and gel time before packaging — these checks confirm the batch matches the specification and prior production runs, not just that it looks correct.",
+          },
+        ],
+      },
+      {
+        heading: "Key Properties of GP Polyester Resin",
+        body: [
+          "GP resin's properties reflect its role as an all-round material rather than a specialised one. The table below summarises how it typically compares across the properties that matter most to FRP fabricators.",
+        ],
+        table: "propertiesTable",
+      },
+      {
+        heading: "Advantages of GP Polyester Resin",
+        subsections: [
+          { heading: "Economical", body: "GP resin is one of the most cost-effective resin systems available, making it the practical choice for high-volume or price-sensitive FRP production where speciality performance is not required." },
+          { heading: "Easy Processing", body: "It is compatible with straightforward, room-temperature curing processes and common catalyst systems, allowing fabricators to work with familiar techniques and equipment without specialised curing infrastructure." },
+          { heading: "Good Mechanical Properties", body: "When properly reinforced with glass fibre, GP resin laminates achieve mechanical properties suitable for a wide range of structural and semi-structural applications." },
+          { heading: "Good Dimensional Stability", body: "Cured GP resin laminates hold their shape and dimensions well under normal service conditions, which matters for products such as tanks and panels that must maintain accurate geometry." },
+          { heading: "Smooth Finish", body: "GP resin, particularly when paired with a compatible gel coat, produces a smooth, consistent surface finish suitable for both functional and semi-decorative applications." },
+          { heading: "Efficient Production", body: "Predictable gel time and cure behaviour allow fabricators to plan production schedules with confidence, supporting efficient, repeatable manufacturing." },
+        ],
+        callouts: [
+          {
+            label: "Key Takeaway",
+            variant: "takeaway",
+            items: ["Economical", "Easy processing", "Good mechanical properties", "Good dimensional stability", "Smooth finish", "Efficient production"],
+          },
+        ],
+      },
+      {
+        heading: "Common Industrial Applications",
+        imagePlaceholder: { type: "product", label: "Product photograph — coming soon" },
+        visuals: [
+          {
+            type: "steps",
+            caption: "Typical manufacturing workflow for GP resin composites",
+            items: [
+              { label: "GP Resin + Glass Fibre Reinforcement" },
+              { label: "Composite Laminate" },
+              { label: "Finished Product" },
+            ],
+            branchLabel: "Typical Applications",
+            branchItems: ["Water Tanks", "Roofing Sheets", "Door Skins", "FRP Components", "Decorative Panels"],
+          },
+        ],
+        subsections: [
+          { heading: "FRP Water Tanks", body: "GP resin is widely used in manufacturing FRP water storage tanks, where its good mechanical strength, dimensional stability and compatibility with glass fibre reinforcement provide a durable, corrosion-free storage vessel. Its cost-effectiveness is particularly valuable given the relatively large resin volumes required for tank fabrication." },
+          { heading: "Roofing Sheets", body: "In FRP and translucent roofing sheets, GP resin's clarity in appropriate formulations, UV-stabilised grades and smooth cured finish support both structural roofing panels and roof-light sheets that admit natural light while maintaining weather resistance." },
+          { heading: "Door Skins", body: "FRP door skins benefit from GP resin's ability to reproduce fine mould detail and achieve a smooth, paintable or textured surface, while its mechanical properties provide the rigidity and impact resistance expected of a door facing." },
+          { heading: "Industrial Mouldings", body: "GP resin is a practical choice for general industrial mouldings — enclosures, covers, ducting and similar components — where moderate mechanical and chemical performance is sufficient and cost efficiency is a priority." },
+          { heading: "Decorative Panels", body: "For decorative and architectural panels, GP resin's compatibility with pigments and its smooth surface finish allow fabricators to produce consistent colour and texture across production runs." },
+          { heading: "Marine Components", body: "In less demanding marine applications, GP resin is used for components where full marine-grade isophthalic or vinyl ester performance is not required, offering an economical option for parts not subject to prolonged immersion or high mechanical loading." },
+          { heading: "Automotive Components", body: "GP resin is used in certain automotive FRP components, such as body panels and covers, where its processability and finish support moderate-volume production without the cost of speciality resin systems." },
+          { heading: "Construction Products", body: "Beyond tanks and roofing, GP resin is used across various construction-related FRP products, including cladding, formwork and structural liners, where its balance of strength, cost and workability suits general building applications." },
+        ],
+        visualsAfter: [
+          {
+            type: "icongrid",
+            label: "Infographic: industrial applications of GP polyester resin",
+            caption: "GP polyester resin — industrial applications",
+            items: [
+              { icon: "tank", label: "Water Tanks" },
+              { icon: "roof", label: "Roofing Sheets" },
+              { icon: "door", label: "Door Skins" },
+              { icon: "marine", label: "Marine Components" },
+              { icon: "moulding", label: "Industrial Mouldings" },
+              { icon: "decorative", label: "Decorative Panels" },
+              { icon: "construction", label: "Construction Products" },
+              { icon: "automotive", label: "Automotive Components" },
+            ],
+          },
+        ],
+      },
+      {
+        heading: "Manufacturing Processes",
+        imagePlaceholder: { type: "process", label: "Manufacturing process photograph — coming soon" },
+        visuals: [
+          {
+            type: "icongrid",
+            label: "Diagram: manufacturing methods compatible with GP polyester resin",
+            caption: "Manufacturing methods used with GP polyester resin",
+            items: [
+              { icon: "hand-layup", label: "Hand Lay-Up" },
+              { icon: "spray-up", label: "Spray-Up" },
+              { icon: "compression", label: "Compression Moulding" },
+              { icon: "pultrusion", label: "Pultrusion" },
+              { icon: "lamination", label: "Continuous Lamination" },
+              { icon: "vacuum", label: "Vacuum Bagging" },
+            ],
+          },
+        ],
+        subsections: [
+          { heading: "Hand Lay-Up", body: "The most common and accessible FRP process, in which catalysed resin is applied by brush or roller onto reinforcement laid into an open mould. GP resin's workable gel time and viscosity make it well suited to this manual, labour-intensive method." },
+          { heading: "Spray-Up", body: "In spray-up, catalysed resin and chopped glass fibre are simultaneously deposited onto the mould using spray equipment. GP resin's viscosity and cure characteristics are compatible with this faster, semi-mechanised process, commonly used for tanks and larger components." },
+          { heading: "Compression Moulding", body: "GP resin formulations, often as part of sheet moulding compound (SMC) or dough moulding compound (DMC) systems, are used in compression moulding, where heat and pressure cure the resin rapidly in a closed mould — suited to higher-volume production of consistent parts." },
+          { heading: "Continuous Lamination", body: "For flat or corrugated sheet products such as roofing sheets, GP resin is used in continuous lamination lines, where resin-impregnated reinforcement passes through a curing process to produce continuous panel lengths." },
+          { heading: "Pultrusion (Where Suitable Grades Are Used)", body: "Certain GP resin grades, formulated with appropriate reactivity and viscosity, are used in pultrusion — a continuous process that pulls resin-impregnated reinforcement through a heated die to form constant cross-section profiles. Not all GP grades are suitable; pultrusion typically requires resins specifically formulated for the process's fast, controlled cure requirements." },
+          { heading: "Vacuum Bagging", body: "GP resin can be used in vacuum bagging processes, where atmospheric pressure consolidates the laminate and removes excess resin and trapped air, improving fibre-to-resin ratio and reducing voids compared with basic hand lay-up." },
+        ],
+      },
+      {
+        heading: "How to Select the Right GP Polyester Resin",
+        subsections: [
+          { heading: "Application", body: "Start with the end-use of the component. Structural parts, storage tanks, decorative panels and roofing products each place different demands on mechanical performance, surface finish and chemical exposure, which should guide grade selection." },
+          { heading: "Gel Time", body: "Gel time — how quickly the catalysed resin begins to cure — should match the production process and component size. Larger components or manual lay-up typically require a longer working time, while faster-cycle processes may need a shorter gel time." },
+          { heading: "Viscosity", body: "Resin viscosity affects how easily it wets out reinforcement and flows into mould detail. Lower-viscosity grades suit fine detail and thorough fibre wet-out; higher-viscosity or thixotropic grades help resin stay in place on vertical or overhead mould surfaces." },
+          { heading: "Mechanical Properties", body: "Consider the load-bearing and impact requirements of the finished part, and select a grade with mechanical properties appropriate to the application, reinforcement type and expected service conditions." },
+          { heading: "Chemical Resistance", body: "For components exposed to water, mild chemicals or outdoor weathering, assess whether standard GP resin's moderate chemical resistance is sufficient, or whether an isophthalic or vinyl ester grade is more appropriate." },
+          { heading: "Processing Method", body: "Match the resin grade to the intended manufacturing process — hand lay-up, spray-up, compression moulding, continuous lamination, pultrusion or vacuum bagging — since not all GP grades are formulated for every process." },
+          { heading: "Environmental Conditions", body: "Account for the temperature, humidity and UV exposure the finished product will face in service, as well as the workshop conditions during fabrication, both of which affect cure behaviour and long-term performance." },
+        ],
+        callouts: [
+          {
+            label: "Best Practice",
+            variant: "practice",
+            items: [
+              "Confirm gel time and viscosity against your process before committing to a bulk order",
+              "Request the technical data sheet (TDS) for the specific grade rather than relying on general GP resin figures",
+              "Trial a small batch under real production conditions before scaling up",
+            ],
+          },
+        ],
+      },
+      {
+        heading: "Storage and Handling",
+        body: [
+          "GP polyester resin should be stored in a cool, dry, well-ventilated area, away from direct sunlight, heat sources and open flames. Storing resin at excessive temperatures accelerates the ageing of its inhibitor system, which can shorten shelf life and cause premature gelling in the drum.",
+          "Exact recommended storage temperature ranges vary by manufacturer and grade, so resin should generally be kept within a moderate, stable temperature range rather than subjected to extremes of heat or cold. Always refer to the product's technical data sheet (TDS) for the specific recommended storage temperature.",
+          "Drums should be kept tightly sealed when not in use. Exposure to air allows styrene monomer to evaporate, which changes the resin's viscosity and reactivity, and can also allow moisture or contaminants to enter the container.",
+          "Unsaturated polyester resin has a finite shelf life, typically measured in months rather than years, and this reduces further if storage conditions are not followed. Always check the batch manufacturing date and consult the SDS/TDS for the manufacturer's stated shelf life rather than assuming a fixed figure, since this varies between products.",
+          "GP resin contains styrene monomer, which is flammable and gives off vapour that should not be inhaled in unventilated spaces. When handling resin and catalyst, appropriate personal protective equipment should be used, typically including chemical-resistant gloves, eye protection, and respiratory protection where ventilation is limited. Resin and peroxide catalyst, such as MEKP, must always be stored, handled and mixed separately, as direct contact between concentrated peroxide and accelerator can be hazardous. Full handling, storage and emergency guidance should always be read from the product's Safety Data Sheet (SDS) before use.",
+        ],
+        callouts: [
+          {
+            label: "Best Practice",
+            variant: "practice",
+            items: [
+              "Cool, dry, well-ventilated area — away from direct sunlight and heat sources",
+              "Keep drums tightly sealed when not in use",
+              "Check the batch date and use within the shelf life stated on the TDS",
+              "Never store resin and peroxide catalyst together",
+            ],
+          },
+          {
+            label: "Important Note",
+            variant: "warning",
+            text: "Resin and peroxide catalyst (such as MEKP) must always be stored, handled and mixed separately — direct contact between concentrated peroxide and accelerator can be hazardous. Always read the product's Safety Data Sheet (SDS) before use.",
+          },
+        ],
+      },
+      {
+        heading: "Conclusion",
+        body: [
+          "GP polyester resin remains one of the most practical and widely used resin systems in FRP manufacturing because it offers a dependable balance of mechanical performance, processability and cost. It is not designed to outperform speciality resin systems in any single demanding property, but for the broad range of general industrial applications — from water tanks and roofing sheets to industrial mouldings and construction products — it continues to provide manufacturers with a reliable, economical and well-understood material. Selecting the right grade, and following correct storage and handling practices, remains essential to achieving consistent results in production.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "applications-of-gp-polyester-resin",
+    draft: true, // AUDIT (2026-07-19): sections below are headings only, no body copy written yet — kept out of getStaticPaths/index/sitemap so this never ships live with placeholder text. Write real content, then remove this flag.
+    title: "Applications of GP Polyester Resin",
+    description: "Explore where GP Polyester Resin is commonly used across FRP, construction, marine and industrial manufacturing.",
+    category: "Application Guide",
+    icon: "grid",
+    readingTime: "6 min read",
+    publishDate: "2026-07-18",
+    sections: [
+      "Overview of GP Polyester Resin Applications",
+      "FRP Manufacturing and Moulding",
+      "Construction and Building Products",
+      "Marine and Industrial Fabrication",
+      "Selecting the Right Application-Specific Grade",
+    ],
+  },
+  {
+    slug: "how-to-select-polyester-resin-for-frp-manufacturing",
+    title: "How to Select Polyester Resin for FRP Manufacturing",
+    description: "Understand the key factors when selecting polyester resin for different FRP manufacturing processes.",
+    category: "Buying Guide",
+    icon: "checklist",
+    readingTime: "7 min read",
+    publishDate: "2026-07-18",
+
+    seo: {
+      title: "How to Select the Right Polyester Resin for FRP Manufacturing",
+      keywords: [
+        "polyester resin selection",
+        "FRP manufacturing resin",
+        "resin viscosity FRP",
+        "resin gel time",
+        "hand layup resin",
+        "spray up resin",
+        "pultrusion resin",
+        "polyester resin buying guide",
+      ],
+      ogTitle: "How to Select Polyester Resin for FRP Manufacturing",
+      ogDescription: "A practical guide to matching polyester resin viscosity, gel time and type to your FRP manufacturing process — and the selection mistakes that cost fabricators the most.",
+    },
+
+    quickFacts: {
+      "Key Selection Factors": "Process, viscosity, gel time, mechanical needs, chemical exposure",
+      "Most Common Mistake": "Choosing resin on price alone, without checking process fit",
+      "Recommended First Step": "Confirm your process and part size before comparing grades",
+      "Always Check": "The specific grade's technical data sheet (TDS), not general figures",
+    },
+
+    processTable: {
+      headers: ["Process", "Typical Viscosity Need", "Typical Gel Time Need", "Notes"],
+      rows: [
+        ["Hand Lay-Up", "Medium — enough body to stay in place on a vertical mould", "Longer — allows time to roll out fibre and remove air manually", "Most forgiving process for beginners; thixotropic grades help on vertical surfaces"],
+        ["Spray-Up", "Medium-low — must atomise cleanly through spray equipment", "Moderate — matched to the pace of the spray line", "Viscosity must suit the specific spray equipment being used"],
+        ["Compression Moulding (SMC/DMC)", "Formulated as a moulding compound, not a liquid viscosity spec", "Fast — heat-activated cure inside a closed, heated mould", "Requires resin specifically formulated for the SMC/DMC process"],
+        ["Pultrusion", "Low — must wet out fibre quickly as it's pulled through a die", "Fast and tightly controlled — matched to line speed", "Not all grades are suitable; needs a resin engineered for continuous, fast cure"],
+        ["Continuous Lamination", "Low to medium — must impregnate reinforcement evenly at speed", "Matched to line speed and curing oven length", "Used for flat and corrugated sheet products such as roofing sheets"],
+        ["Vacuum Bagging / Infusion", "Low — must flow through reinforcement under vacuum without voids", "Longer — infusion can take time across large or complex parts", "Air removal and full wet-out matter more here than in hand lay-up"],
+      ],
+      note: "These are general tendencies, not fixed values — always confirm viscosity and gel time against the specific product's technical data sheet (TDS) before committing to a process.",
+    },
+
+    relatedSlugs: [
+      "what-is-gp-polyester-resin",
+    ],
+
+    faqs: [
+      {
+        q: "What's the single most important factor in choosing a polyester resin?",
+        a: "Your manufacturing process. Viscosity, gel time and cure behaviour all need to match how the resin will actually be applied — hand lay-up, spray-up, compression moulding, pultrusion or infusion each place different demands on the resin, and a grade that performs well in one process can perform poorly in another.",
+      },
+      {
+        q: "Can I use the same resin for hand lay-up and spray-up?",
+        a: "Not usually without checking first. Spray-up requires a resin viscosity that atomises cleanly through spray equipment, while hand lay-up generally works better with a slightly higher-viscosity or thixotropic resin that stays in place while being rolled out manually. Some grades are formulated to suit both; many are not.",
+      },
+      {
+        q: "How do I know if a resin's gel time is right for my part?",
+        a: "Match gel time to how long you need working time for. Larger or more complex parts made by hand generally need a longer gel time so you can complete lay-up before the resin starts curing. Faster-cycle or line-based processes usually need a shorter, more tightly controlled gel time to keep production moving.",
+      },
+      {
+        q: "Is a higher-priced resin always the better choice?",
+        a: "No — and price alone is one of the most common ways fabricators pick the wrong resin. A more expensive speciality resin (isophthalic, vinyl ester, fire-retardant) is only the right choice if your application actually needs its specific property. For general-purpose parts, a well-matched GP resin is usually the more practical and economical choice.",
+      },
+      {
+        q: "Should I trial a resin before placing a bulk order?",
+        a: "Yes. Running a small trial batch under your actual production conditions — checking gel time, viscosity, wet-out and finish on your own equipment — catches mismatches before they become an expensive bulk-order problem.",
+      },
+      {
+        q: "Do all polyester resins use the same catalyst?",
+        a: "Most unsaturated polyester resins cure with a peroxide catalyst, commonly MEKP, but the correct type and dosage vary by resin grade, ambient temperature and desired gel time. Always follow the specific product's technical data sheet rather than assuming a standard dosage across different resins.",
+      },
+      {
+        q: "What happens if I choose a resin with the wrong viscosity for my process?",
+        a: "Too low a viscosity for hand lay-up on a vertical surface can cause resin to run or drain before curing, leaving thin, resin-starved areas. Too high a viscosity for spray-up or pultrusion can cause poor atomisation or incomplete fibre wet-out, leading to voids and weaker laminate.",
+      },
+    ],
+
+    sections: [
+      {
+        heading: "Understanding FRP Manufacturing Processes",
+        body: [
+          "Polyester resin selection starts with the manufacturing process, not the finished part. The same general-purpose resin chemistry can be formulated in different ways — different viscosity, different gel time, different thixotropy — to suit very different production methods, and using the wrong formulation for your process is one of the most common causes of poor results in FRP manufacturing.",
+          "FRP fabrication covers a range of processes, each placing different demands on the resin. Hand lay-up and spray-up are open-mould processes suited to lower-volume or larger, more custom parts. Compression moulding (using SMC or DMC moulding compounds) and pultrusion are closed or continuous processes suited to higher-volume, more consistent production. Continuous lamination produces flat or corrugated sheet products, while vacuum bagging and resin infusion are used where a higher fibre-to-resin ratio and fewer voids are required.",
+          "Before comparing resin grades, confirm which process — or processes — the resin needs to work with. A resin that performs excellently in hand lay-up may be entirely unsuitable for pultrusion, and vice versa.",
+        ],
+        visuals: [
+          {
+            type: "icongrid",
+            label: "Diagram: FRP manufacturing processes covered in this guide",
+            caption: "Common FRP manufacturing processes",
+            items: [
+              { icon: "hand-layup", label: "Hand Lay-Up" },
+              { icon: "spray-up", label: "Spray-Up" },
+              { icon: "compression", label: "Compression Moulding" },
+              { icon: "pultrusion", label: "Pultrusion" },
+              { icon: "lamination", label: "Continuous Lamination" },
+              { icon: "vacuum", label: "Vacuum Bagging" },
+            ],
+          },
+        ],
+      },
+      {
+        heading: "Resin Viscosity and Wet-Out Considerations",
+        body: [
+          "Viscosity — how thick or thin the resin is in its liquid state — determines how well it wets out (fully saturates and de-airs) the reinforcement, and how well it behaves during application. Getting viscosity wrong is one of the fastest ways to end up with a weak, void-filled laminate, regardless of how good the resin's cured properties are on paper.",
+          "For hand lay-up, especially on vertical or overhead mould surfaces, resin needs enough body to stay in place while it's rolled and worked into the reinforcement — too thin, and it drains or runs before curing, leaving resin-starved patches. Thixotropic resins, which thicken when left undisturbed but flow more easily when worked with a brush or roller, are commonly used for exactly this reason.",
+          "For spray-up, pultrusion and infusion processes, the opposite is usually true: the resin needs to be low-viscosity enough to atomise cleanly through spray equipment, flow quickly through and around fibre as it's pulled through a pultrusion die, or draw through a reinforcement stack under vacuum without leaving dry spots or trapped air.",
+          "Because viscosity requirements are process-specific rather than universal, always check the intended process against the resin's stated viscosity range on its technical data sheet, rather than assuming a resin described as \"general purpose\" will suit every application equally well.",
+        ],
+      },
+      {
+        heading: "Gel Time and Cure Requirements",
+        body: [
+          "Gel time is the working window between when a resin is catalysed and when it begins to set — the point past which it can no longer be worked, rolled out or repositioned. Choosing the right gel time is a balance between giving yourself enough time to do the job properly and not holding up production.",
+          "Larger components, more complex mould geometry, and manual processes like hand lay-up generally call for a longer gel time, giving the fabricator time to fully wet out reinforcement, remove trapped air and work the resin into detail before it begins curing. Rushing a part that needed a longer gel time is a common cause of poor fibre wet-out and visible surface defects.",
+          "Faster-cycle and line-based processes — spray-up on larger production runs, continuous lamination, pultrusion and compression moulding — generally need a shorter, more tightly controlled gel time so that cure keeps pace with the production line without becoming the bottleneck. In compression moulding specifically, cure is usually heat-activated inside a closed, heated mould rather than relying on ambient-temperature gel time alone.",
+          "Gel time is also sensitive to ambient workshop temperature and catalyst dosage — both of which affect how quickly a given resin actually cures on a given day. Rather than treating a resin's stated gel time as fixed, treat it as a starting reference to be confirmed under your own workshop conditions, and always follow the specific product's technical data sheet for correct catalyst dosage rather than estimating.",
+        ],
+        callouts: [
+          {
+            label: "Important Note",
+            variant: "warning",
+            text: "Catalyst type and dosage vary by resin grade, ambient temperature and desired gel time. Always follow the specific product's technical data sheet (TDS) and safety data sheet (SDS) rather than assuming a standard dosage carries over between different resins.",
+          },
+        ],
+      },
+      {
+        heading: "Matching Resin Type to Moulding Method",
+        body: [
+          "The table below summarises how viscosity and gel time needs typically shift across common FRP processes. Treat it as a starting point for narrowing down candidate grades, not as a substitute for checking the specific product's technical data sheet.",
+        ],
+        table: "processTable",
+      },
+      {
+        heading: "Common Selection Mistakes to Avoid",
+        subsections: [
+          { heading: "Choosing on Price Alone", body: "The cheapest resin per kilogram isn't necessarily the most economical choice once wastage, rework and inconsistent results from a poorly matched grade are accounted for. Price should be one factor weighed against process fit, not the deciding one." },
+          { heading: "Ignoring the Technical Data Sheet", body: "General category descriptions (\"general purpose\", \"fire retardant\") describe a resin's positioning, not its exact viscosity, gel time or cure profile. Always check the specific grade's TDS rather than assuming it matches a similar product you've used before." },
+          { heading: "Mismatching Viscosity to Process", body: "Using a resin formulated for hand lay-up in a spray-up or infusion process, or vice versa, is one of the most common and most avoidable causes of poor wet-out, voids and weak laminate." },
+          { heading: "Skipping a Trial Batch", body: "Committing to a bulk order before trialling a small batch under real production conditions means any mismatch — in viscosity, gel time or finish — is discovered at full scale rather than caught early." },
+          { heading: "Overlooking Chemical or Environmental Exposure", body: "Selecting a standard GP resin for a part that will face sustained water immersion, chemical exposure or harsh UV conditions, without checking whether an isophthalic, vinyl ester or fire-retardant grade is more appropriate, can lead to premature degradation in service." },
+          { heading: "Assuming Catalyst Ratios Carry Over", body: "Applying a catalyst dosage that worked for a previous resin to a new grade, without checking its TDS, can produce a gel time that's badly mismatched to the process — either curing too fast to work with, or too slowly to hold a production schedule." },
+        ],
+        callouts: [
+          {
+            label: "Best Practice",
+            variant: "practice",
+            items: [
+              "Confirm your process before comparing resin grades on price",
+              "Check viscosity and gel time against the specific product's TDS",
+              "Trial a small batch under real production conditions first",
+              "Match chemical/UV exposure requirements to the grade, not just the application",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "what-is-gel-coat-resin",
+    draft: true, // AUDIT (2026-07-19): sections below are headings only, no body copy written yet — kept out of getStaticPaths/index/sitemap so this never ships live with placeholder text. Write real content, then remove this flag.
+    title: "What is Gel Coat Resin?",
+    description: "Learn how gel coat resin provides surface finish, protection and durability for composite products.",
+    category: "Product Guide",
+    icon: "layers",
+    readingTime: "5 min read",
+    publishDate: "2026-07-18",
+    sections: [
+      "What Is Gel Coat Resin?",
+      "How Gel Coat Differs From Laminating Resin",
+      "Surface Finish and Protective Properties",
+      "Application Methods and Best Practices",
+      "Common Uses in Composite Manufacturing",
+    ],
+  },
+  {
+    slug: "fire-retardant-polyester-resin-applications-and-benefits",
+    draft: true, // AUDIT (2026-07-19): sections below are headings only, no body copy written yet — kept out of getStaticPaths/index/sitemap so this never ships live with placeholder text. Write real content, then remove this flag.
+    title: "Fire Retardant Polyester Resin: Applications & Benefits",
+    description: "Understand where fire retardant polyester resin is used and why it is important for specialised industrial applications.",
+    category: "Application Guide",
+    icon: "shield",
+    readingTime: "6 min read",
+    publishDate: "2026-07-18",
+    sections: [
+      "What Makes a Resin Fire Retardant?",
+      "Flammability Ratings and Standards",
+      "Industries That Require Fire Retardant Resin",
+      "Halogenated vs Halogen-Free Formulations",
+      "Key Benefits for Industrial Buyers",
+    ],
+  },
+  {
+    slug: "how-polyester-resin-is-used-in-water-tank-manufacturing",
+    draft: true, // AUDIT (2026-07-19): sections below are headings only, no body copy written yet — kept out of getStaticPaths/index/sitemap so this never ships live with placeholder text. Write real content, then remove this flag.
+    title: "How Polyester Resin is Used in Water Tank Manufacturing",
+    description: "Discover why polyester resin is widely used in manufacturing durable FRP water storage tanks.",
+    category: "Application Guide",
+    icon: "tank",
+    readingTime: "6 min read",
+    publishDate: "2026-07-18",
+    sections: [
+      "Why FRP Is Used for Water Storage Tanks",
+      "Resin Properties That Matter for Tank Manufacturing",
+      "Manufacturing Process Overview",
+      "Durability and Chemical Resistance",
+      "Maintenance and Service Life Considerations",
+    ],
+  },
+  {
+    slug: "polyester-resin-for-roofing-sheets",
+    draft: true, // AUDIT (2026-07-19): sections below are headings only, no body copy written yet — kept out of getStaticPaths/index/sitemap so this never ships live with placeholder text. Write real content, then remove this flag.
+    title: "Polyester Resin for Roofing Sheets",
+    description: "Learn how polyester resin improves strength, weather resistance and performance in FRP roofing sheets.",
+    category: "Application Guide",
+    icon: "roof",
+    readingTime: "5 min read",
+    publishDate: "2026-07-18",
+    sections: [
+      "Role of Resin in FRP Roofing Sheets",
+      "Weather and UV Resistance Requirements",
+      "Strength and Load-Bearing Performance",
+      "Translucent and Roof Light Sheet Applications",
+      "Manufacturing Considerations for Roofing Grades",
+    ],
+  },
+  {
+    slug: "polyester-resin-for-door-skin-manufacturing",
+    draft: true, // AUDIT (2026-07-19): sections below are headings only, no body copy written yet — kept out of getStaticPaths/index/sitemap so this never ships live with placeholder text. Write real content, then remove this flag.
+    title: "Polyester Resin for Door Skin Manufacturing",
+    description: "Understand the role of polyester resin in producing strong and lightweight FRP door skins.",
+    category: "Application Guide",
+    icon: "door",
+    readingTime: "5 min read",
+    publishDate: "2026-07-18",
+    sections: [
+      "What Are FRP Door Skins?",
+      "Why Manufacturers Choose Polyester Resin",
+      "Strength-to-Weight Considerations",
+      "Surface Finish and Moulding Detail",
+      "Durability in Interior and Exterior Use",
+    ],
+  },
+  {
+    slug: "understanding-gel-time-in-polyester-resin",
+    draft: true, // AUDIT (2026-07-19): sections below are headings only, no body copy written yet — kept out of getStaticPaths/index/sitemap so this never ships live with placeholder text. Write real content, then remove this flag.
+    title: "Understanding Gel Time in Polyester Resin",
+    description: "Learn what gel time means, why it matters and how it affects manufacturing efficiency.",
+    category: "Technical Data",
+    icon: "clock",
+    readingTime: "4 min read",
+    publishDate: "2026-07-18",
+    sections: [
+      "What Is Gel Time?",
+      "Factors That Influence Gel Time",
+      "Gel Time and Production Scheduling",
+      "Adjusting Gel Time With Catalyst Ratio",
+      "Common Gel Time Issues and Causes",
+    ],
+  },
+  {
+    slug: "how-to-store-unsaturated-polyester-resin",
+    draft: true, // AUDIT (2026-07-19): sections below are headings only, no body copy written yet — kept out of getStaticPaths/index/sitemap so this never ships live with placeholder text. Write real content, then remove this flag.
+    title: "How to Store Unsaturated Polyester Resin",
+    description: "Best practices for storage, handling and maintaining resin quality before use.",
+    category: "Best Practices",
+    icon: "drum",
+    readingTime: "4 min read",
+    publishDate: "2026-07-18",
+    sections: [
+      "Recommended Storage Conditions",
+      "Shelf Life and Temperature Sensitivity",
+      "Handling Precautions",
+      "Signs of Resin Degradation",
+      "Stock Rotation Best Practices",
+    ],
+  },
+];
+CLAUDE_AUDIT_EOF
+
+echo "==> Writing src/data/site.js"
+mkdir -p "src/data"
+cat > "src/data/site.js" <<'CLAUDE_AUDIT_EOF'
+// ============================================================================
+//  SITE SETTINGS  —  swap these placeholders for the real details
+// ============================================================================
+//
+//  whatsapp: digits only, with country code, NO "+" or spaces.
+//            India example: 919876543210
+//  formEndpoint: paste your Web3Forms access key here (see CONTACT SETUP
+//                in README). Until then the form runs in "demo" mode.
+// ============================================================================
+
+export const site = {
+  name: "Samrat Poly Resins",
+  tagline: "Coating & Composite Resins, Manufactured in Punjab",
+  established: "2017",
+
+  // Production domain — used for canonical/OG URLs and the sitemap.
+  //
+  // NOTE (engineering audit, 2026-07-19): this was previously set to
+  // "https://samratpolyresins.com", but that domain currently returns a
+  // robots.txt disallow to crawlers and is not the live site — samratpolyresins.in
+  // is what's actually deployed and indexed today. Pointing canonical/OG tags at
+  // a domain search engines can't crawl actively suppresses indexing of the
+  // real pages. Set to the live .in domain until the .com migration (see
+  // README → Deploy) is actually complete and crawlable, then switch this back.
+  url: "https://samratpolyresins.in",
+
+  // Default social-share image (absolute path resolved against `url` above).
+  // Falls back to the logo — replace with a dedicated 1200×630 share image
+  // when one exists.
+  ogImage: "/logo.jpg",
+
+  // --- CONTACT (swap these) ---
+  phoneDisplay: "+91 74638 81005",     // shown on the page
+  phoneDial: "+917463881005",          // used for the tel: link
+  whatsapp: "917463881005",            // digits only, country code, no +
+  email: "info@samratpolyresins.in",
+
+  address: {
+    line1: "Oswal Road, Near GT Road",
+    line2: "Doraha, Ludhiana",
+    state: "Punjab, India",
+    pin: "141421",
+  },
+
+  proprietor: "Jaspal Singh",
+  gst: "03ALBPS3446G1ZB",
+
+  // Google Maps embed query (place name or address). URL-encode spaces as +.
+  mapsQuery: "Samrat+Poly+Resins+Doraha+Ludhiana",
+
+  // States the homepage claims to currently supply. Single source of truth —
+  // both "Why Choose Us" and "Industries We Serve" read from this array so
+  // they can't drift apart again.
+  //
+  // AUDIT FLAG: the two homepage sections previously listed DIFFERENT sets
+  // (one included Himachal Pradesh, one didn't) — a factual contradiction on
+  // the same page. I could not verify which is correct, so this defaults to
+  // the intersection (the 6 states both lists agreed on). Add Himachal
+  // Pradesh back in only if it's confirmed as an actual served state.
+  statesServed: ["Punjab", "Haryana", "Delhi", "Uttar Pradesh", "Maharashtra", "Andhra Pradesh"],
+
+  // Standard packaging sizes as they actually appear across the catalog in
+  // products.js (some grades ship in 200 kg drums, some 225 kg, PET resin in
+  // 75 kg packs) — used wherever the site describes packaging in general
+  // terms, instead of hardcoding one figure that contradicts the product
+  // pages next to it.
+  packagingRange: "200–225 kg",
+
+  // Single label used everywhere a product price would otherwise show, so
+  // the wording can't drift between the product grid, product pages and
+  // related-product lists. `products.js` still stores each product's actual
+  // last-known price for internal reference — it's just not rendered
+  // publicly right now under the "Price on Request" strategy.
+  priceLabel: "Price on Request",
+
+  // --- ENQUIRY FORM ---
+  // Get a free access key at https://web3forms.com (takes 1 minute).
+  // Paste it here. Submissions then land in the owner's email inbox.
+  formEndpoint: "57365b8e-fc31-4eec-ad7c-abfa5e563fb2",  // e.g. "a1b2c3d4-....." — leave "" for demo mode
+};
+
+// Shared canonical-URL builder — used by Base.astro (canonical link + og:url)
+// and by any page that needs the same absolute URL for structured data.
+export function buildCanonicalUrl(pathname) {
+  return new URL(pathname, site.url).toString();
+}
+
+// Shared WhatsApp product-quote link builder — used by every per-product
+// WhatsApp CTA (product page's "WhatsApp" and "Request Bulk Quote" buttons)
+// so they always send the exact same message format for the exact same product.
+export function buildProductQuoteLink(productName) {
+  const message = `Hello,
+
+I'm interested in ${productName}.
+
+Please provide a quotation for:
+
+Product: ${productName}
+Quantity:
+
+Thank you.`;
+  return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
+}
+CLAUDE_AUDIT_EOF
+
+echo "==> Writing src/layouts/Base.astro"
+mkdir -p "src/layouts"
+cat > "src/layouts/Base.astro" <<'CLAUDE_AUDIT_EOF'
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+import { site, buildCanonicalUrl } from '../data/site.js';
+
+const { title, description, ogType = 'website', ogTitle, ogDescription, keywords } = Astro.props;
+const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
+const desc = description ?? `${site.name}: manufacturer of coating and composite resins from ${site.address.line2}, ${site.address.state}. Established ${site.established}.`;
+const finalOgTitle = ogTitle ?? pageTitle;
+const finalOgDesc = ogDescription ?? desc;
+const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like to enquire about your resins.")}`;
+const canonicalUrl = buildCanonicalUrl(Astro.url.pathname);
+const ogImageUrl = buildCanonicalUrl(site.ogImage);
+
+// Sitewide Organization/LocalBusiness structured data — built entirely from
+// the verified contact fields in site.js, nothing invented. Helps Google
+// associate the business identity (name, address, phone) across the site
+// rather than just per-article Article schema.
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${site.url}/#organization`,
+  name: site.name,
+  url: site.url,
+  logo: buildCanonicalUrl('/logo.jpg'),
+  image: buildCanonicalUrl('/logo.jpg'),
+  telephone: site.phoneDial,
+  email: site.email,
+  foundingDate: site.established,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.address.line1,
+    addressLocality: site.address.line2,
+    addressRegion: "Punjab",
+    postalCode: site.address.pin,
+    addressCountry: "IN",
+  },
+};
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={desc} />
+  {keywords && <meta name="keywords" content={keywords.join(', ')} />}
+  <meta property="og:title" content={finalOgTitle} />
+  <meta property="og:description" content={finalOgDesc} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:site_name" content={site.name} />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={finalOgTitle} />
+  <meta name="twitter:description" content={finalOgDesc} />
+  <meta name="twitter:image" content={ogImageUrl} />
+  <link rel="canonical" href={canonicalUrl} />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
+  <ClientRouter />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <header class="site-header" transition:persist>
+    <div class="wrap header-inner">
+      <a href="/" class="brand">
+        <img src="/logo.jpg" alt={`${site.name} logo`} class="brand-mark" width="40" height="40" />
+        <span class="brand-name">{site.name}</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/products/">Products</a>
+        <a href="/about/">About</a>
+        <a href="/resources/">Resources</a>
+        <a href="/contact/">Contact</a>
+        <a href={waLink} class="nav-wa" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <img src="/logo.jpg" alt={`${site.name} logo`} class="brand-mark big" width="64" height="64" />
+        <p class="foot-name">{site.name}</p>
+        <p class="foot-dim">Manufacturer of coating &amp; composite resins.<br/>Established {site.established}.</p>
+      </div>
+      <div>
+        <h4 class="foot-h">Reach us</h4>
+        <p class="foot-dim">
+          {site.proprietor} (Proprietor)<br/>
+          {site.address.line1}<br/>
+          {site.address.line2} — {site.address.pin}<br/>
+          {site.address.state}
+        </p>
+      </div>
+      <div>
+        <h4 class="foot-h">Contact</h4>
+        <p class="foot-dim">
+          <a href={`tel:${site.phoneDial}`}>{site.phoneDisplay}</a><br/>
+          <a href={`mailto:${site.email}`}>{site.email}</a><br/>
+          <a href={waLink} target="_blank" rel="noopener">WhatsApp enquiry</a>
+        </p>
+        <p class="foot-gst">GST {site.gst}</p>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <!-- floating whatsapp -->
+  <a href={waLink} class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" transition:persist>
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5 0-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.3 4.7L7 20.4A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+  </a>
+
+  <script>
+    // Sitewide scroll-reveal + stagger system. Progressive enhancement only:
+    // if this doesn't run (JS disabled/slow), content stays normally visible —
+    // nothing is hidden by default in CSS, this script hides-then-reveals.
+    document.addEventListener('astro:page-load', () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const GRID_SELECTOR = [
+        '.grid', '.kc-grid', '.why-grid', '.industry-grid', '.cat-grid',
+        '.diagram-icongrid', '.footer-grid', '.article-related-grid',
+        '.rel-grid', '.faq-accordion', '.process-list', '.quick-facts-list', '.toc-list',
+      ].join(', ');
+      const IMG_SELECTOR = '.about-photo, .card-img, .prod-img, .facility-frame, .why-quality-frame';
+      const HEAD_SELECTOR = '.section-head, .article-prevnext';
+
+      const io = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+
+      const tagged = new WeakSet();
+      const tag = (el, cls, delayMs) => {
+        if (tagged.has(el)) return;
+        tagged.add(el);
+        const rect = el.getBoundingClientRect();
+        const alreadyVisible = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+        if (alreadyVisible) return; // already on screen at load — no reveal needed
+        el.classList.add(cls);
+        if (delayMs) el.style.transitionDelay = delayMs + 'ms';
+        io.observe(el);
+      };
+
+      document.querySelectorAll(GRID_SELECTOR).forEach((grid) => {
+        Array.from(grid.children).forEach((child, i) => {
+          tag(child, 'js-reveal', Math.min(i, 8) * 70);
+        });
+      });
+
+      document.querySelectorAll(IMG_SELECTOR).forEach((el) => tag(el, 'js-reveal-img', 0));
+      document.querySelectorAll(HEAD_SELECTOR).forEach((el) => tag(el, 'js-reveal', 0));
+    });
+  </script>
+
+  <style>
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem; z-index: 100;
+      background: var(--amber); color: #17120c; font-family: var(--font-mono);
+      font-size: 0.85rem; font-weight: 700; padding: 0.8rem 1.2rem;
+      transition: top .2s var(--ease-premium);
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      animation: header-fade-in .5s var(--ease-premium) both;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes header-fade-in {
+        from { opacity: 0; transform: translateY(-8px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .brand { display: flex; align-items: center; gap: 0.7rem; }
+    .brand-mark { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .brand-mark.big { width: 64px; height: 64px; display: block; }
+    .brand-name { font-family: var(--font-display); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; font-size: 1.05rem; }
+    .nav { display: flex; align-items: center; gap: clamp(0.8rem, 2.5vw, 1.8rem); }
+    .nav a {
+      font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink-dim); transition: color .25s var(--ease-premium);
+    }
+    .nav a:hover { color: var(--amber-2); }
+    .nav-wa { color: #25d366 !important; }
+    @media (max-width: 620px) {
+      .brand-name { display: none; }
+      .nav a:not(.nav-wa):nth-child(3) { display: none; }
+    }
+
+    .site-footer { border-top: 1px solid var(--line); background: var(--bg-2); margin-top: 2rem; }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2.5rem;
+      padding-block: 3.5rem 2rem;
+    }
+    .foot-name { font-family: var(--font-display); text-transform: uppercase; font-size: 1.2rem; margin-top: 0.9rem; }
+    .foot-h { font-size: 0.8rem; letter-spacing: 0.16em; color: var(--ink); margin-bottom: 0.8rem; }
+    .foot-dim { color: var(--ink-dim); font-size: 0.9rem; line-height: 1.9; }
+    .foot-dim a { transition: color .25s var(--ease-premium); }
+    .foot-dim a:hover { color: var(--amber-2); }
+    .foot-gst { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); margin-top: 0.8rem; letter-spacing: 0.05em; }
+    .foot-bottom {
+      border-top: 1px solid var(--line); padding-block: 1.3rem;
+      font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); letter-spacing: 0.04em;
+    }
+    @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .wa-float {
+      position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 60;
+      width: 54px; height: 54px; border-radius: 50%;
+      background: #25d366; color: #062b14;
+      display: grid; place-items: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,.4);
+      transition: transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+    }
+    .wa-float:hover { transform: scale(1.08); box-shadow: 0 10px 28px rgba(0,0,0,.5); }
+  </style>
+</body>
+</html>
+CLAUDE_AUDIT_EOF
+
+echo "==> Writing src/pages/index.astro"
+mkdir -p "src/pages"
+cat > "src/pages/index.astro" <<'CLAUDE_AUDIT_EOF'
+---
+import Base from '../layouts/Base.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { products, CATEGORIES } from '../data/products.js';
+import { site } from '../data/site.js';
+
+const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like to enquire about your resins.")}`;
+const featured = products.slice(0, 6);
+const [whyWord, chooseWord, samratWord, polyWord, resinsWord] = `Why choose ${site.name}`.split(' ');
+---
+<Base>
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero-grid-lines" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Trusted industrial resin manufacturer</p>
+      <h1 class="hero-title">
+        Engineered for<br/>
+        <span class="hl">quality</span>.<br/>
+        Built for<br/>
+        <span class="hl">performance</span>.
+      </h1>
+      <p class="hero-sub">
+        {site.name} manufactures premium GP Polyester, Gel Coat, Fire Retardant,
+        Epoxy and Specialty Resin systems for FRP manufacturers and industrial
+        applications across India.
+      </p>
+      <div class="hero-trust">
+        <span class="hero-trust-item">ISO 9001:2015 Certified</span>
+        <span class="hero-trust-item">Manufacturer Since {site.established}</span>
+        <span class="hero-trust-item">GST Verified</span>
+        <span class="hero-trust-item">Pan-India Supply</span>
+      </div>
+      <div class="hero-cta">
+        <a href="/products/" class="btn btn-solid">Explore products</a>
+        <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5 0-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2 2.8 1.2 2.8.8 3.3.8.5 0 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
+          Request quotation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CATEGORY TEASER ================= -->
+  <section class="section cats">
+    <div class="wrap cats-grid">
+      <div class="cats-main">
+        <div class="section-head">
+          <p class="eyebrow">Product range</p>
+          <h2>What we manufacture</h2>
+        </div>
+        <div class="cat-grid">
+          {CATEGORIES.map(cat => (
+            <a href={`/products/#${cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`} class="cat-tile">
+              <span class="cat-tile-name">{cat}</span>
+              <span class="cat-tile-count">{products.filter(p => p.category === cat).length} grades</span>
+            </a>
+          ))}
+        </div>
+      </div>
+      <div class="cats-video">
+        <video src="/home-video.mp4" autoplay muted loop playsinline preload="auto" poster="/logo.jpg" disablepictureinpicture disableremoteplayback></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURED PRODUCTS ================= -->
+  <section class="section featured">
+    <div class="wrap">
+      <div class="section-head featured-head">
+        <div>
+          <p class="eyebrow">A few of our grades</p>
+          <h2>Popular products</h2>
+        </div>
+        <a href="/products/" class="btn">See all products →</a>
+      </div>
+      <div class="grid">
+        {featured.map(p => <ProductCard product={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHY CHOOSE US ================= -->
+  <section class="section why-us">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Why choose us</p>
+        <h2><span class="why-heading-gold">{whyWord}</span> <span class="why-heading-white">{chooseWord}</span> <span class="why-heading-red">{samratWord}</span> <span class="why-heading-poly">{polyWord}</span> <span class="why-heading-blue">{resinsWord}</span></h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card why-card-cert">
+          <div class="why-head">
+            <span class="why-check" aria-hidden="true">✓</span>
+            <h3 class="why-title">ISO 9001:2015 Certified</h3>
+          </div>
+          <p class="why-desc">Our quality management system is certified to ISO 9001:2015 standards, ensuring consistent manufacturing and reliable production processes.</p>
+          <div class="why-cert-row">
+            <a href="/certificates/iso-9001-2015-certificate.png" target="_blank" rel="noopener" class="why-cert-thumb" aria-label="View full ISO 9001:2015 certificate">
+              <img src="/certificates/iso-9001-2015-certificate.png" alt="ISO 9001:2015 Certificate of Registration — Samrat Poly Resins" width="1086" height="1448" loading="lazy" />
+            </a>
+            <a href="/certificates/iso-9001-2015-certificate.png" target="_blank" rel="noopener" class="btn why-cert-btn">View certificate</a>
+          </div>
+        </div>
+        <div class="why-card why-card-timeline">
+          <div class="why-head">
+            <span class="why-check" aria-hidden="true">✓</span>
+            <h3 class="why-title">{new Date().getFullYear() - Number(site.established)}+ Years Manufacturing Experience</h3>
+          </div>
+          <p class="why-desc">Trusted by industrial buyers since {site.established}, supplying premium polyester resin solutions across multiple industries.</p>
+          <div class="why-timeline" aria-hidden="true">
+            <span class="why-timeline-year">{site.established}</span>
+            <span class="why-timeline-bar"></span>
+            <span class="why-timeline-year">{new Date().getFullYear()}</span>
+          </div>
+          <p class="why-timeline-label">{new Date().getFullYear() - Number(site.established)}+ Years of Manufacturing Excellence</p>
+        </div>
+        <div class="why-card">
+          <div class="why-head">
+            <span class="why-check" aria-hidden="true">✓</span>
+            <h3 class="why-title">GST Registered Manufacturer</h3>
+          </div>
+          <p class="why-desc">Registered under India's Goods and Services Tax (GST), ensuring transparent and compliant business operations.</p>
+          <div class="why-gst">
+            <div class="why-gst-rule" aria-hidden="true"></div>
+            <span class="why-gst-label">GSTIN</span>
+            <p class="why-gst-number">{site.gst}</p>
+            <button type="button" id="gstCopyBtn" class="btn why-gst-copy" data-gstin={site.gst}>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M8 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2zm2 0h4a2 2 0 0 1 2 2v4h2V5h-8v2zM6 9v8h8V9H6z"/></svg>
+              <span class="why-gst-copy-text" aria-live="polite">Copy GSTIN</span>
+            </button>
+            <p class="why-gst-caption">Verify our GST registration using this GSTIN.</p>
+            <div class="why-gst-rule" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-head">
+            <span class="why-check" aria-hidden="true">✓</span>
+            <h3 class="why-title">Pan India Supply</h3>
+          </div>
+          <p class="why-desc">Reliable logistics network serving customers across India with timely delivery and bulk shipment capability.</p>
+          <div class="why-india">
+            <svg class="why-india-map" viewBox="0 0 308 312" aria-hidden="true">
+              <path class="why-india-land" d="M 103.17 4 L 114.2 16.95 L 113.16 25.97 L 117.24 31.62 L 116.91 37.26 L 109.54 35.78 L 112.42 47.96 L 122.5 54.96 L 136.77 62.68 L 130.26 67.69 L 126.27 78.03 L 136.22 82.21 L 145.89 87.63 L 159.28 93.83 L 173.35 95.26 L 179.27 100.88 L 187.2 101.94 L 199.55 104.51 L 208.1 104.33 L 209.28 99.95 L 207.93 92.93 L 208.72 88.17 L 214.98 85.85 L 215.84 94.55 L 216.06 96.77 L 225.39 100.96 L 231.85 99.23 L 240.51 99.97 L 248.89 99.65 L 249.61 92.86 L 245.43 89.33 L 253.71 87.95 L 263.05 79.73 L 274.88 72.69 L 283.49 75.41 L 290.81 70.76 L 295.62 77.63 L 292.16 82.27 L 303.23 83.92 L 304 88.11 L 300.4 90.13 L 301.24 96.93 L 293.91 94.94 L 280.62 102.57 L 280.93 108.9 L 275.27 118.16 L 274.75 123.55 L 270.17 132.66 L 262.15 130.14 L 261.75 141.58 L 259.43 145.34 L 260.51 150.03 L 255.45 152.65 L 250.04 135.13 L 247.21 135.16 L 245.53 142.22 L 239.91 136.5 L 243.08 130.21 L 247.67 129.57 L 252.41 120.22 L 246.49 118.33 L 236.97 118.49 L 227.2 116.98 L 226.29 109.3 L 221.39 108.75 L 213.26 103.98 L 209.64 111.47 L 217.05 117.32 L 210.63 121.44 L 208.35 125.47 L 214.67 128.43 L 212.92 135.09 L 216.48 143.4 L 218.08 152.49 L 216.61 156.53 L 209.62 156.39 L 196.97 158.68 L 197.56 167 L 192.08 173.53 L 177.31 180.97 L 165.82 193.97 L 158.1 200.94 L 147.87 208.18 L 147.86 213.26 L 142.74 215.98 L 133.49 219.94 L 128.7 220.52 L 125.62 228.95 L 127.76 243.33 L 128.3 252.49 L 123.95 262.99 L 123.91 281.76 L 118.6 282.3 L 113.92 290.73 L 117.05 294.37 L 107.69 297.5 L 104.23 305.02 L 100.11 308.19 L 90.39 297.87 L 85.64 282.4 L 81.7 271.25 L 78.11 266.03 L 72.65 255.41 L 70.11 241.59 L 68.33 234.69 L 58.99 219.51 L 54.74 198.1 L 51.67 183.96 L 51.71 170.57 L 49.72 160.23 L 34.78 166.84 L 27.55 165.52 L 14.14 152.12 L 19.07 148.13 L 16.04 143.79 L 4 134.41 L 10.84 127.04 L 33.43 127.07 L 31.39 117.58 L 25.62 111.98 L 24.45 103.47 L 17.73 98.51 L 29.04 86.93 L 40.96 87.77 L 51.7 76.18 L 58.14 64.97 L 68.1 53.88 L 67.94 46.01 L 76.7 39.61 L 68.41 34.16 L 64.85 26.68 L 61.21 17 L 66.24 12.23 L 81.81 14.93 L 93.25 13.29 L 103.17 4 Z" />
+              <circle class="why-india-dot" cx="93.85" cy="45.81" r="4.5" />
+              <circle class="why-india-dot" cx="82.87" cy="54.76" r="4.5" />
+              <circle class="why-india-dot" cx="94.47" cy="68.13" r="4.5" />
+              <circle class="why-india-dot" cx="96.73" cy="80.07" r="4" />
+              <circle class="why-india-dot" cx="135.12" cy="99.52" r="4.5" />
+              <circle class="why-india-dot" cx="71.37" cy="185.27" r="4.5" />
+              <circle class="why-india-dot" cx="132.04" cy="213.77" r="4.5" />
+            </svg>
+            <p class="why-india-caption">
+              Currently supplying customers across:<br />
+              {site.statesServed.join(' • ')}
+            </p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-head">
+            <span class="why-check" aria-hidden="true">✓</span>
+            <h3 class="why-title">Bulk Orders Accepted</h3>
+          </div>
+          <p class="why-desc">Manufacturing capacity designed to efficiently fulfill large-volume industrial requirements.</p>
+          <div class="why-bulk">
+            <div class="why-bulk-rule" aria-hidden="true"></div>
+            <div class="why-bulk-row">
+              <span class="why-bulk-value">{site.packagingRange}</span>
+              <span class="why-bulk-label">Standard Drum Packaging</span>
+            </div>
+            <div class="why-bulk-row">
+              <span class="why-bulk-value">Flexible</span>
+              <span class="why-bulk-label">Order Quantities</span>
+            </div>
+            <div class="why-bulk-rule" aria-hidden="true"></div>
+            <svg class="why-drums-svg" viewBox="0 0 200 56" aria-hidden="true">
+              <g>
+                <rect x="8" y="4" width="48" height="48" rx="5" class="why-drum-body" />
+                <rect x="8" y="26" width="48" height="7" class="why-drum-band" />
+              </g>
+              <g>
+                <rect x="76" y="4" width="48" height="48" rx="5" class="why-drum-body" />
+                <rect x="76" y="26" width="48" height="7" class="why-drum-band" />
+              </g>
+              <g>
+                <rect x="144" y="4" width="48" height="48" rx="5" class="why-drum-body" />
+                <rect x="144" y="26" width="48" height="7" class="why-drum-band" />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-quality">
+        <div class="why-quality-text">
+          <h3 class="why-quality-title">Quality Controlled Manufacturing</h3>
+          <p class="why-quality-desc">Every production batch is inspected against defined quality parameters before dispatch to ensure consistent viscosity, gel time and batch performance.</p>
+          <ul class="why-quality-list">
+            <li class="why-quality-feature"><span class="why-quality-check" aria-hidden="true">✓</span>Batch Consistency</li>
+            <li class="why-quality-feature"><span class="why-quality-check" aria-hidden="true">✓</span>Viscosity Verification</li>
+            <li class="why-quality-feature"><span class="why-quality-check" aria-hidden="true">✓</span>Gel Time Testing</li>
+            <li class="why-quality-feature"><span class="why-quality-check" aria-hidden="true">✓</span>Visual Quality Inspection</li>
+          </ul>
+        </div>
+        <figure class="why-quality-photo">
+          <div class="why-quality-frame">
+            <img src="/quality/qc-laboratory.jpg" alt="Quality inspection laboratory at Samrat Poly Resins" width="1600" height="865" loading="lazy" />
+          </div>
+          <figcaption class="why-quality-caption">Quality Inspection Laboratory</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCTION INFRASTRUCTURE ================= -->
+  <section class="section facility">
+    <div class="wrap facility-grid">
+      <div class="facility-text">
+        <div class="section-head">
+          <p class="eyebrow">Our Facility</p>
+          <h2>Production Infrastructure</h2>
+        </div>
+        <p class="facility-desc">Our manufacturing facility is equipped with industrial resin processing equipment designed for reliable batch production, consistent product quality and efficient manufacturing operations.</p>
+        <ul class="facility-list">
+          <li class="facility-feature"><span class="facility-check" aria-hidden="true">✓</span>Stainless Steel Processing Equipment</li>
+          <li class="facility-feature"><span class="facility-check" aria-hidden="true">✓</span>Batch Manufacturing Process</li>
+          <li class="facility-feature"><span class="facility-check" aria-hidden="true">✓</span>Industrial Production Facility</li>
+          <li class="facility-feature"><span class="facility-check" aria-hidden="true">✓</span>Quality-Controlled Operations</li>
+        </ul>
+      </div>
+      <figure class="facility-photo">
+        <div class="facility-frame">
+          <img src="/facility/production-infrastructure.jpg" alt="Stainless-steel resin processing reactors at the Samrat Poly Resins manufacturing facility" width="1452" height="1083" loading="lazy" />
+        </div>
+        <figcaption class="facility-caption">Industrial Resin Manufacturing Facility</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= INDUSTRIES WE SERVE ================= -->
+  <section class="section industries">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Applications</p>
+        <h2>Industries We Serve</h2>
+      </div>
+      <p class="industries-desc">Supplying high-performance resin solutions for a wide range of industrial manufacturing applications.</p>
+
+      <div class="industry-grid">
+        <div class="industry-card">
+          <span class="industry-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L21 8 L12 13 L3 8 Z" /><path d="M3 13 L12 18 L21 13" /><path d="M3 17.5 L12 22.5 L21 17.5" /></svg>
+          </span>
+          <h3 class="industry-name">FRP Manufacturers</h3>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="7" ry="2.5" /><path d="M5 5 L5 19 A7 2.5 0 0 0 19 19 L19 5" /></svg>
+          </span>
+          <h3 class="industry-name">Water Tank Manufacturers</h3>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="1" /><circle cx="15.3" cy="12" r="0.9" fill="currentColor" stroke="none" /></svg>
+          </span>
+          <h3 class="industry-name">Door Skin Manufacturers</h3>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8 L7 4 L12 8 L17 4 L22 8" /><path d="M2 13 L7 9 L12 13 L17 9 L22 13" /><path d="M2 18 L7 14 L12 18 L17 14 L22 18" /></svg>
+          </span>
+          <h3 class="industry-name">Roofing Sheet Manufacturers</h3>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2" /><line x1="12" y1="7" x2="12" y2="19" /><path d="M6 12 L6 15 A6 6 0 0 0 18 15 L18 12" /><line x1="8" y1="10" x2="16" y2="10" /></svg>
+          </span>
+          <h3 class="industry-name">Marine &amp; Industrial Fabrication</h3>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L20 7 L20 17 L12 22 L4 17 L4 7 Z" /><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" /></svg>
+          </span>
+          <h3 class="industry-name">Composite Manufacturing</h3>
+        </div>
+      </div>
+
+      <div class="industry-service">
+        <p class="industry-service-heading">Serving Industrial Customers Across</p>
+        <div class="industry-chips">
+          {site.statesServed.map((state) => <span class="industry-chip">{state}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT TEASER ================= -->
+  <section class="section about-teaser">
+    <div class="wrap about-teaser-grid">
+      <div>
+        <p class="eyebrow">About us</p>
+        <h2>Built on consistent chemistry.</h2>
+      </div>
+      <div class="about-teaser-body">
+        <p>
+          Established in {site.established}, {site.name} is a Punjab-based
+          manufacturer of coating resin, fire-retardant resin, GP resin and
+          allied composite materials — made to perform on the shop floor.
+        </p>
+        <a href="/about/" class="btn btn-solid">More about us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT TEASER ================= -->
+  <section class="section contact-teaser">
+    <div class="wrap contact-teaser-inner">
+      <div>
+        <p class="eyebrow">Get in touch</p>
+        <h2>Request a quote.</h2>
+        <p class="contact-teaser-sub">Tell us the grade and quantity you need — we send prices quickly.</p>
+      </div>
+      <div class="contact-teaser-cta">
+        <a href="/contact/" class="btn btn-solid">Contact us</a>
+        <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ---------- hero ---------- */
+    .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line);
+      background: radial-gradient(120% 90% at 80% -10%, rgba(255,122,24,.14), transparent 55%), var(--bg); }
+    .hero-grid-lines {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(var(--line) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 64px 64px; opacity: .25; mask-image: radial-gradient(80% 80% at 60% 0%, #000, transparent 75%);
+    }
+    .hero-inner { position: relative; padding-block: clamp(3.5rem, 10vw, 7rem); }
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-inner .eyebrow,
+      .hero-inner .hero-title,
+      .hero-inner .hero-sub,
+      .hero-inner .hero-cta,
+      .hero-inner .hero-trust {
+        animation: hero-fade-up .6s var(--ease-premium) both;
+      }
+      .hero-inner .eyebrow    { animation-delay: .05s; }
+      .hero-inner .hero-title { animation-delay: .15s; }
+      .hero-inner .hero-sub   { animation-delay: .28s; }
+      .hero-inner .hero-trust { animation-delay: .40s; }
+      .hero-inner .hero-cta   { animation-delay: .52s; }
+    }
+    @keyframes hero-fade-up {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-title {
+      font-size: clamp(2.3rem, 7vw, 4.6rem); font-weight: 700; margin-top: 1.1rem;
+      letter-spacing: 0.005em;
+    }
+    .hero-title .hl { color: var(--amber); }
+    .hero-sub { color: var(--ink-dim); font-size: clamp(1rem, 2.2vw, 1.2rem); max-width: 62ch; margin-top: 1.4rem; }
+
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.8rem; }
+    .hero-trust-item {
+      font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.03em;
+      padding: 0.55rem 1rem; background: var(--bg-3); border: 1px solid var(--line); color: var(--ink-dim);
+      transition: border-color .3s var(--ease-premium), color .3s var(--ease-premium), transform .3s var(--ease-premium);
+    }
+    .hero-trust-item:hover { border-color: var(--amber); color: var(--amber-2); transform: translateY(-2px); }
+
+    .hero-cta { display: flex; gap: 0.9rem; margin-top: 2rem; flex-wrap: wrap; }
+
+    /* ---------- category teaser ---------- */
+    .cats-grid { display: grid; grid-template-columns: 1.6fr 0.9fr; gap: clamp(1.5rem, 5vw, 3rem); align-items: start; }
+    .cats-video { border: 1px solid var(--line); background: var(--bg-3); overflow: hidden; align-self: start; }
+    .cats-video video { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; background: #000; }
+    @media (max-width: 860px) { .cats-grid { grid-template-columns: 1fr; } .cats-video video { aspect-ratio: 16 / 10; } }
+
+    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .cat-tile {
+      display: flex; flex-direction: column; gap: 0.4rem; padding: 1.3rem 1.4rem;
+      background: var(--bg-3); border: 1px solid var(--line);
+      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+    }
+    .cat-tile:hover {
+      border-color: var(--amber); transform: translateY(-3px) scale(1.012);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
+    }
+    .cat-tile-name { font-family: var(--font-display); text-transform: uppercase; font-size: 1rem; letter-spacing: 0.03em; }
+    .cat-tile-count { font-family: var(--font-mono); font-size: 0.76rem; color: var(--amber-2); }
+
+    /* ---------- featured ---------- */
+    .featured { background: var(--bg-2); border-block: 1px solid var(--line); }
+    .featured-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.1rem; }
+
+    /* ---------- why choose us ---------- */
+    .why-heading-gold {
+      background: linear-gradient(180deg, #e8c66a 0%, #d4af37 50%, #c29a2e 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .why-heading-white { color: var(--ink); }
+    .why-heading-red {
+      background: linear-gradient(180deg, #cc5560 0%, #ac3d47 55%, #a83a42 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .why-heading-poly {
+      background: linear-gradient(180deg, #ffffff 0%, #f4f2ee 55%, #d9d6cf 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .why-heading-blue {
+      background: linear-gradient(180deg, #6a86d6 0%, #4c6cc2 55%, #3f5cb0 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+    }
+
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); grid-auto-rows: 1fr; gap: 1.1rem; }
+    .why-card {
+      display: flex; flex-direction: column; gap: 0.8rem; padding: 1.3rem 1.4rem; height: 100%;
+      background: var(--bg-3); border: 1px solid var(--line);
+      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+    }
+    .why-card:hover {
+      border-color: var(--amber); transform: translateY(-3px) scale(1.012);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
+    }
+    .why-head { display: flex; align-items: center; gap: 0.8rem; }
+    .why-check {
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--amber); color: #17120c; font-weight: 700; font-size: 0.9rem;
+    }
+    .why-title { font-size: 0.95rem; color: var(--ink); }
+    .why-desc { color: var(--ink-dim); font-size: 0.86rem; line-height: 1.6; flex: 1; }
+    .why-cert-row { display: flex; align-items: center; gap: 0.9rem; margin-top: auto; }
+    .why-cert-thumb {
+      display: block; flex-shrink: 0; width: 56px;
+      border: 1px solid var(--line); overflow: hidden;
+    }
+    .why-cert-thumb img { width: 100%; height: auto; display: block; transition: transform .4s var(--ease-premium); }
+    .why-cert-thumb:hover img { transform: scale(1.04); }
+    .why-cert-btn { padding: 0.55rem 1rem; font-size: 0.72rem; }
+
+    .why-timeline { display: flex; align-items: center; gap: 0.6rem; margin-top: auto; }
+    .why-timeline-year {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em;
+      color: var(--ink-faint); flex-shrink: 0;
+    }
+    .why-timeline-bar {
+      position: relative; flex: 1; height: 2px; border-radius: 1px;
+      background: linear-gradient(90deg, var(--amber-deep), var(--amber) 60%, var(--amber-2));
+    }
+    .why-timeline-bar::after {
+      content: ''; position: absolute; right: -1px; top: 50%; transform: translateY(-50%);
+      width: 0; height: 0;
+      border-top: 4px solid transparent; border-bottom: 4px solid transparent;
+      border-left: 6px solid var(--amber-2);
+    }
+    .why-timeline-label { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.03em; color: var(--amber-2); font-weight: 500; }
+
+    .why-gst { display: flex; flex-direction: column; gap: 0.6rem; margin-top: auto; }
+    .why-gst-rule { height: 1px; background: var(--line); }
+    .why-gst-label {
+      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--ink-faint); opacity: 0.75;
+    }
+    .why-gst-number { font-family: var(--font-mono); font-size: 1.05rem; font-weight: 600; letter-spacing: 0.14em; color: var(--ink); }
+    .why-gst-copy { align-self: flex-start; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.85rem; font-size: 0.72rem; }
+    .why-gst-copy.copied { border-color: #2ee87a; color: #2ee87a; animation: why-gst-pop .35s ease; }
+    @keyframes why-gst-pop {
+      0% { transform: scale(1); }
+      35% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .why-gst-caption { font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-faint); line-height: 1.6; }
+
+    .why-india { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; margin-top: auto; text-align: center; }
+    .why-india-map { width: 100%; max-width: 128px; height: auto; }
+    .why-india-land { fill: var(--line-2); stroke: var(--line); stroke-width: 1; stroke-linejoin: round; }
+    .why-india-dot { fill: var(--amber); }
+    .why-india-caption { font-family: var(--font-mono); font-size: 0.66rem; line-height: 1.7; color: var(--ink-faint); letter-spacing: 0.01em; }
+
+    .why-bulk { display: flex; flex-direction: column; gap: 0.55rem; margin-top: auto; }
+    .why-bulk-rule { height: 1px; background: var(--line); }
+    .why-bulk-row { display: flex; flex-direction: column; gap: 0.15rem; padding-block: 0.1rem; }
+    .why-bulk-value { font-family: var(--font-display); font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--ink); }
+    .why-bulk-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); }
+    .why-drums-svg { display: block; width: 100%; max-width: 128px; height: auto; margin-top: 0.15rem; opacity: 0.9; }
+    .why-drum-body { fill: var(--line-2); stroke: var(--line); stroke-width: 1; }
+    .why-drum-band { fill: var(--amber); }
+
+    .why-quality {
+      display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: center;
+      margin-top: clamp(2.5rem, 6vw, 4rem); padding-top: clamp(2.5rem, 6vw, 4rem); border-top: 1px solid var(--line);
+    }
+    .why-quality-title { font-size: clamp(1.5rem, 3.5vw, 2rem); }
+    .why-quality-desc { color: var(--ink-dim); margin-top: 1rem; max-width: 52ch; }
+    .why-quality-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin-top: 1.6rem; }
+    .why-quality-feature { display: flex; align-items: center; gap: 0.85rem; font-size: 0.95rem; color: var(--ink); }
+    .why-quality-check {
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--amber); color: #17120c; font-weight: 700; font-size: 0.72rem;
+    }
+
+    .why-quality-photo { display: flex; flex-direction: column; gap: 0.9rem; }
+    .why-quality-frame {
+      border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .35);
+      height: clamp(280px, 32vw, 460px);
+    }
+    .why-quality-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s var(--ease-premium); }
+    .why-quality-frame:hover img { transform: scale(1.045); }
+    .why-quality-caption {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink-faint); text-align: center;
+    }
+    @media (max-width: 760px) {
+      .why-quality { grid-template-columns: 1fr; }
+      .why-quality-photo { order: 2; }
+      .why-quality-text { order: 1; }
+    }
+
+    /* ---------- production infrastructure ---------- */
+    .facility { background: var(--bg-2); border-block: 1px solid var(--line); }
+    .facility-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
+    .facility-desc { color: var(--ink-dim); margin-top: 1rem; max-width: 52ch; }
+    .facility-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin-top: 1.6rem; }
+    .facility-feature { display: flex; align-items: center; gap: 0.85rem; font-size: 0.95rem; color: var(--ink); }
+    .facility-check {
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--amber); color: #17120c; font-weight: 700; font-size: 0.72rem;
+    }
+    .facility-photo { display: flex; flex-direction: column; gap: 0.9rem; }
+    .facility-frame {
+      border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .35);
+      height: clamp(280px, 32vw, 460px);
+    }
+    .facility-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s var(--ease-premium); }
+    .facility-frame:hover img { transform: scale(1.045); }
+    .facility-caption {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink-faint); text-align: center;
+    }
+    @media (max-width: 760px) {
+      .facility-grid { grid-template-columns: 1fr; }
+      .facility-photo { order: 2; }
+      .facility-text { order: 1; }
+    }
+
+    /* ---------- industries we serve ---------- */
+    .industries-desc { color: var(--ink-dim); margin-top: 1rem; max-width: 62ch; }
+    .industry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-top: 2.4rem; }
+    .industry-card {
+      display: flex; flex-direction: column; align-items: flex-start; gap: 0.9rem; padding: 1.4rem 1.5rem;
+      background: var(--bg-3); border: 1px solid var(--line);
+      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+    }
+    .industry-card:hover {
+      border-color: var(--amber); transform: translateY(-3px) scale(1.012);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
+    }
+    .industry-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 42px; height: 42px; color: var(--amber);
+    }
+    .industry-icon svg { width: 26px; height: 26px; }
+    .industry-name { font-size: 1rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
+    @media (max-width: 860px) { .industry-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .industry-grid { grid-template-columns: 1fr; } }
+
+    .industry-service {
+      margin-top: clamp(2.2rem, 5vw, 3rem); padding-top: clamp(1.8rem, 4vw, 2.4rem);
+      border-top: 1px solid var(--line);
+    }
+    .industry-service-heading {
+      font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-faint);
+    }
+    .industry-chips { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.1rem; }
+    .industry-chip {
+      font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.03em;
+      padding: 0.5rem 1rem; border: 1px solid var(--amber-deep); border-radius: 999px; color: var(--amber-2);
+    }
+
+    /* ---------- about teaser ---------- */
+    .about-teaser-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(1.5rem, 5vw, 4rem); }
+    .about-teaser-grid h2 { font-size: clamp(1.8rem, 4.5vw, 2.8rem); margin-top: 0.6rem; }
+    .about-teaser-body p { color: var(--ink-dim); margin-bottom: 1.3rem; max-width: 60ch; }
+    @media (max-width: 760px) { .about-teaser-grid { grid-template-columns: 1fr; } }
+
+    /* ---------- contact teaser ---------- */
+    .contact-teaser { background: var(--bg-2); border-top: 1px solid var(--line); }
+    .contact-teaser-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .contact-teaser-inner h2 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); margin-top: 0.6rem; }
+    .contact-teaser-sub { color: var(--ink-dim); margin-top: 0.8rem; max-width: 42ch; }
+    .contact-teaser-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+  </style>
+
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const btn = document.getElementById('gstCopyBtn') as HTMLButtonElement | null;
+      if (!btn || btn.dataset.wired === 'true') return;
+      btn.dataset.wired = 'true';
+
+      const label = btn.querySelector('.why-gst-copy-text');
+      const gstin = btn.dataset.gstin ?? '';
+      let resetTimer: number | undefined;
+
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(gstin);
+          btn.classList.add('copied');
+          if (label) label.textContent = 'Copied!';
+          window.clearTimeout(resetTimer);
+          resetTimer = window.setTimeout(() => {
+            btn.classList.remove('copied');
+            if (label) label.textContent = 'Copy GSTIN';
+          }, 1800);
+        } catch {
+          // clipboard access unavailable/denied — GSTIN remains visible to copy manually
+        }
+      });
+    });
+  </script>
+</Base>
+CLAUDE_AUDIT_EOF
+
+echo "==> Writing src/pages/products/[slug].astro"
+mkdir -p "src/pages/products"
+cat > "src/pages/products/[slug].astro" <<'CLAUDE_AUDIT_EOF'
+---
+import Base from '../../layouts/Base.astro';
+import EnquiryForm from '../../components/EnquiryForm.astro';
+import { products } from '../../data/products.js';
+import { site, buildProductQuoteLink, buildCanonicalUrl } from '../../data/site.js';
+
+export function getStaticPaths() {
+  return products.map(p => ({ params: { slug: p.slug }, props: { product: p } }));
+}
+
+const { product } = Astro.props;
+const { name, image, description, features, applications, category, specs } = product;
+const specEntries = specs ? Object.entries(specs) : [];
+const gallery = [image, ...(product.images ?? [])];
+const related = products.filter(p => p.category === category && p.slug !== product.slug).slice(0, 3);
+const waLink = buildProductQuoteLink(product.whatsappName ?? name);
+
+// BreadcrumbList — mirrors the visible breadcrumb below exactly, no extra data.
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: buildCanonicalUrl('/') },
+    { "@type": "ListItem", position: 2, name: "Products", item: buildCanonicalUrl('/products/') },
+    { "@type": "ListItem", position: 3, name, item: buildCanonicalUrl(Astro.url.pathname) },
+  ],
+};
+
+// Product schema — deliberately omits `offers`/price. Pricing here is
+// "Price on Request" (varies by quantity and current raw-material rates),
+// and Schema.org Offers without a real price fail Google's structured-data
+// validation — better to omit it than publish a placeholder number.
+const productJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name,
+  description,
+  category,
+  image: buildCanonicalUrl(`/products/${image}`),
+  brand: { "@type": "Organization", name: site.name },
+  manufacturer: { "@type": "Organization", name: site.name },
+};
+---
+<Base title={name} description={`${name} — ${product.tagline} Manufactured by ${site.name}.`}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
+
+  <div class="wrap crumb">
+    <a href="/">Home</a><span>/</span><a href="/products/">Products</a><span>/</span><span class="cur">{name}</span>
+  </div>
+
+  <article class="wrap prod">
+    <div class="prod-media">
+      <div class="prod-media-sticky">
+        <div class="prod-img">
+          <img src={`/products/${gallery[0]}`} alt={name} width="600" height="450" id="prodMainImg"
+               onerror="this.parentElement.classList.add('noimg'); this.remove();"
+               transition:name={`product-photo-${product.slug}`} />
+          <span class="img-fallback" aria-hidden="true">{name.split(' ').map(w=>w[0]).join('').slice(0,3)}</span>
+        </div>
+        {gallery.length > 1 && (
+          <div class="prod-thumbs" role="list">
+            {gallery.map((img, i) => (
+              <button type="button" class:list={['prod-thumb', { active: i === 0 }]} data-src={`/products/${img}`} aria-label={`Show photo ${i + 1} of ${name}`}>
+                <img src={`/products/${img}`} alt="" loading="lazy" width="120" height="90" />
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+
+    <div class="prod-info">
+      <span class="prod-cat">{category}</span>
+      <h1 class="prod-name" transition:name={`product-name-${product.slug}`}>{name}</h1>
+      <div class="prod-quote">
+        <p class="prod-quote-heading">Price</p>
+        <p class="prod-quote-value">{site.priceLabel}</p>
+        <p class="prod-quote-note">Industrial resin pricing varies based on:</p>
+        <ul class="prod-quote-list">
+          <li>Order Quantity</li>
+          <li>Resin Grade</li>
+          <li>Current Raw Material Rates</li>
+        </ul>
+        <a href={waLink} class="btn btn-solid prod-quote-cta" target="_blank" rel="noopener">Request Bulk Quote</a>
+      </div>
+
+      <div class="prod-cta">
+        <a href="#enquire" class="btn btn-solid">Enquire / get quote</a>
+        <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+
+      {specEntries.length > 0 && (
+        <div class="specs-table-wrap">
+          <h2 class="spec-h">Product details</h2>
+          <table class="specs-table">
+            <tbody>
+              {specEntries.map(([k, v]) => (
+                <tr><th>{k}</th><td>{v}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      <p class="prod-desc">{description}</p>
+
+      <div class="spec-grid">
+        <div class="spec-col">
+          <h2 class="spec-h">Key features</h2>
+          <ul>{features.map(f => <li>{f}</li>)}</ul>
+        </div>
+        <div class="spec-col">
+          <h2 class="spec-h">Applications</h2>
+          <ul>{applications.map(a => <li>{a}</li>)}</ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  {related.length > 0 && (
+    <section class="wrap related">
+      <h2 class="rel-h">More in {category}</h2>
+      <div class="rel-grid">
+        {related.map(r => (
+          <a href={`/products/${r.slug}/`} class="rel-card">
+            <span class="rel-name">{r.name}</span>
+            <span class="rel-price">{site.priceLabel}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section id="enquire" class="section enquire-sec">
+    <div class="wrap enquire-inner">
+      <div class="section-head">
+        <p class="eyebrow">Enquiry</p>
+        <h2>Get a quote for {name}</h2>
+      </div>
+      <div class="enquire-box">
+        <EnquiryForm product={name} />
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      document.querySelectorAll<HTMLButtonElement>('.prod-thumb').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const main = document.getElementById('prodMainImg') as HTMLImageElement | null;
+          const src = btn.dataset.src;
+          if (!main || !src || main.src.endsWith(src)) return;
+          main.classList.add('fading');
+          window.setTimeout(() => {
+            main.src = src;
+            main.classList.remove('fading');
+          }, 140);
+          document.querySelectorAll('.prod-thumb').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .crumb {
+      display: flex; gap: 0.6rem; align-items: center; padding-top: 1.5rem;
+      font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-faint); letter-spacing: 0.04em;
+    }
+    .crumb a:hover { color: var(--amber-2); }
+    .crumb .cur { color: var(--ink-dim); }
+
+    .prod { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(1.5rem, 5vw, 3.5rem); padding-block: 2.2rem 3rem; }
+    .prod-media-sticky { position: sticky; top: 90px; }
+    .prod-img {
+      position: relative; aspect-ratio: 4 / 3; border: 1px solid var(--line);
+      background: linear-gradient(135deg, #1a1e24, #23282f);
+      display: grid; place-items: center; overflow: hidden;
+    }
+    .prod-img img { width: 100%; height: 100%; object-fit: cover; transition: opacity .14s ease; }
+    .prod-img img.fading { opacity: 0; }
+    .img-fallback { display: none; position: absolute; font-family: var(--font-display); font-weight: 700; font-size: 3.5rem; color: var(--line-2); }
+    .prod-img.noimg .img-fallback { display: block; }
+
+    .prod-thumbs { display: flex; gap: 0.7rem; margin-top: 0.9rem; flex-wrap: wrap; }
+    .prod-thumb {
+      padding: 0; border: 1px solid var(--line); background: var(--bg-3); cursor: pointer;
+      width: 76px; aspect-ratio: 4 / 3; overflow: hidden; transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium);
+    }
+    .prod-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .prod-thumb:hover { border-color: var(--line-2); transform: translateY(-1px); }
+    .prod-thumb.active { border-color: var(--amber); }
+
+    .prod-cat { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); }
+    .prod-name { font-size: clamp(2rem, 5vw, 3.2rem); margin-top: 0.6rem; text-transform: none; letter-spacing: 0; }
+    .prod-quote {
+      display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.9rem; max-width: 420px;
+      padding: 1.1rem 1.3rem; background: var(--bg-3); border: 1px solid var(--line);
+    }
+    .prod-quote-heading { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
+    .prod-quote-value { font-family: var(--font-display); font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--amber-2); }
+    .prod-quote-note { color: var(--ink-dim); font-size: 0.88rem; margin-top: 0.3rem; }
+    .prod-quote-list { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+    .prod-quote-list li { position: relative; padding-left: 1.1rem; color: var(--ink-dim); font-size: 0.88rem; }
+    .prod-quote-list li::before { content: '▪'; position: absolute; left: 0; color: var(--amber); }
+    .prod-quote-cta { align-self: flex-start; margin-top: 0.5rem; }
+    .prod-desc { color: var(--ink-dim); margin-top: 1.6rem; font-size: 1rem; }
+    .prod-cta { display: flex; gap: 0.8rem; margin-top: 1.4rem; flex-wrap: wrap; }
+
+    .specs-table-wrap { margin-top: 2rem; }
+    .specs-table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); font-size: 0.88rem; }
+    .specs-table th, .specs-table td { padding: 0.6rem 0.9rem; border-top: 1px solid var(--line); text-align: left; font-weight: 400; }
+    .specs-table tr:first-child th, .specs-table tr:first-child td { border-top: none; }
+    .specs-table th {
+      width: 42%; color: var(--ink-faint); font-family: var(--font-mono); font-size: 0.72rem;
+      letter-spacing: 0.06em; text-transform: uppercase; background: var(--bg-3);
+    }
+    .specs-table td { color: var(--ink); background: var(--bg-2); }
+
+    .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+    .spec-h { font-size: 0.8rem; letter-spacing: 0.14em; color: var(--ink); margin-bottom: 1rem; }
+    .spec-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .spec-col li { position: relative; padding-left: 1.2rem; color: var(--ink-dim); font-size: 0.92rem; }
+    .spec-col li::before { content: '▪'; position: absolute; left: 0; color: var(--amber); }
+    @media (max-width: 860px) { .prod { grid-template-columns: 1fr; } .prod-media-sticky { position: relative; top: 0; } }
+    @media (max-width: 460px) { .spec-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+    .related { padding-block: 1rem 3rem; }
+    .rel-h { font-size: 1.1rem; color: var(--ink-dim); margin-bottom: 1.2rem; }
+    .rel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.9rem; }
+    .rel-card {
+      display: flex; flex-direction: column; gap: 0.4rem; padding: 1rem 1.1rem;
+      background: var(--bg-3); border: 1px solid var(--line);
+      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+    }
+    .rel-card:hover { border-color: var(--amber); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0, 0, 0, .26); }
+    .rel-name { font-family: var(--font-display); text-transform: uppercase; font-size: 0.95rem; }
+    .rel-price { font-family: var(--font-mono); font-size: 0.8rem; color: var(--amber-2); }
+
+    .enquire-sec { background: var(--bg-2); border-top: 1px solid var(--line); }
+    .enquire-inner { max-width: 720px; }
+    .enquire-box { background: var(--bg-3); border: 1px solid var(--line); padding: clamp(1.4rem, 4vw, 2.2rem); }
+  </style>
+</Base>
+CLAUDE_AUDIT_EOF
+
+echo "==> Writing src/pages/resources/[slug].astro"
+mkdir -p "src/pages/resources"
+cat > "src/pages/resources/[slug].astro" <<'CLAUDE_AUDIT_EOF'
+---
+import Base from '../../layouts/Base.astro';
+import ReadingProgress from '../../components/ReadingProgress.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
+import QuickFacts from '../../components/QuickFacts.astro';
+import DataTable from '../../components/DataTable.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import ImagePlaceholder from '../../components/ImagePlaceholder.astro';
+import ResourceIcon from '../../components/ResourceIcon.astro';
+import TechIcon from '../../components/TechIcon.astro';
+import Callout from '../../components/Callout.astro';
+import { resources, getReadingTime } from '../../data/resources.js';
+import { site, buildCanonicalUrl } from '../../data/site.js';
+
+export function getStaticPaths() {
+  return resources.filter((r) => !r.draft).map((r) => ({ params: { slug: r.slug }, props: { resource: r } }));
+}
+
+const { resource } = Astro.props;
+const { title, description, icon, category, publishDate, sections, quickFacts, comparisonTable, faqs, relatedSlugs } = resource;
+
+const toId = (heading) => heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+const formattedDate = new Date(publishDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const canonicalUrl = buildCanonicalUrl(Astro.url.pathname);
+const talkToTeamLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like help selecting the right polyester resin for my requirement.")}`;
+const readingTime = getReadingTime(resource);
+
+const published = resources.filter((r) => !r.draft);
+
+const relatedArticles = (relatedSlugs ?? [])
+  .map((slug) => published.find((r) => r.slug === slug))
+  .filter(Boolean);
+
+const currentIndex = published.findIndex((r) => r.slug === resource.slug);
+const prevArticle = currentIndex > 0 ? published[currentIndex - 1] : null;
+const nextArticle = currentIndex >= 0 && currentIndex < published.length - 1 ? published[currentIndex + 1] : null;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description,
+  datePublished: publishDate,
+  dateModified: publishDate,
+  author: { "@type": "Organization", name: site.name },
+  publisher: { "@type": "Organization", name: site.name },
+  mainEntityOfPage: canonicalUrl,
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: buildCanonicalUrl('/') },
+    { "@type": "ListItem", position: 2, name: "Resources", item: buildCanonicalUrl('/resources/') },
+    { "@type": "ListItem", position: 3, name: title, item: canonicalUrl },
+  ],
+};
+---
+<Base
+  title={resource.seo?.title ?? title}
+  description={description}
+  ogType="article"
+  ogTitle={resource.seo?.ogTitle}
+  ogDescription={resource.seo?.ogDescription}
+  keywords={resource.seo?.keywords}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <ReadingProgress />
+
+  <div class="wrap crumb">
+    <a href="/">Home</a><span>/</span><a href="/resources/">Resources</a><span>/</span><span class="cur">{title}</span>
+  </div>
+
+  <article class="wrap article">
+    <header class="article-head">
+      <span class="article-icon" aria-hidden="true"><ResourceIcon name={icon} /></span>
+      <p class="article-category">{category}</p>
+      <h1>{title}</h1>
+      <p class="article-lead">{description}</p>
+      <div class="article-meta">
+        <span>Published {formattedDate}</span>
+        <span class="article-meta-sep" aria-hidden="true">•</span>
+        <span>{readingTime}</span>
+      </div>
+    </header>
+
+    <div class="article-body">
+      <aside class="article-toc">
+        {quickFacts && <QuickFacts facts={quickFacts} />}
+        <TableOfContents sections={sections} />
+      </aside>
+
+      <div class="article-content">
+        {sections.map((s) => {
+          const isRich = typeof s !== 'string';
+          const heading = isRich ? s.heading : s;
+          const table = isRich && s.table ? resource[s.table] : null;
+          return (
+            <section class="article-section" id={toId(heading)}>
+              <h2>{heading}</h2>
+              {!isRich && <p class="article-placeholder">Detailed technical content for this section will be added here.</p>}
+              {isRich && s.body && s.body.map((para) => <p>{para}</p>)}
+              {isRich && s.imagePlaceholder && <ImagePlaceholder label={s.imagePlaceholder.label} />}
+              {table && <DataTable headers={table.headers} rows={table.rows} note={table.note} />}
+              {isRich && s.visuals && s.visuals.map((visual) => (
+                visual.type === 'steps' ? (
+                  <div class="process-block">
+                    <ol class="process-list">
+                      {visual.items.map((item, i) => (
+                        <li class="process-step">
+                          <span class="process-num">{String(i + 1).padStart(2, '0')}</span>
+                          <span class="process-label">{item.label}</span>
+                        </li>
+                      ))}
+                    </ol>
+                    {visual.branchItems && (
+                      <div class="process-branch">
+                        <p class="process-branch-label">{visual.branchLabel}</p>
+                        <div class="process-branch-chips">
+                          {visual.branchItems.map((b) => <span class="process-chip">{b}</span>)}
+                        </div>
+                      </div>
+                    )}
+                    {visual.caption && <p class="diagram-caption">{visual.caption}</p>}
+                  </div>
+                ) : visual.type === 'icongrid' ? (
+                  <div class="diagram-block">
+                    <div class="diagram-icongrid">
+                      {visual.items.map((item) => (
+                        <div class="diagram-icon-card">
+                          <span class="diagram-icon" aria-hidden="true"><TechIcon name={item.icon} /></span>
+                          <span class="diagram-icon-label">{item.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {visual.caption && <p class="diagram-caption">{visual.caption}</p>}
+                  </div>
+                ) : null
+              ))}
+              {isRich && s.subsections && s.subsections.map((sub) => (
+                <div class="article-subsection">
+                  <h3>{sub.heading}</h3>
+                  <p>{sub.body}</p>
+                </div>
+              ))}
+              {isRich && s.visualsAfter && s.visualsAfter.map((visual) => (
+                visual.type === 'steps' ? (
+                  <div class="process-block">
+                    <ol class="process-list">
+                      {visual.items.map((item, i) => (
+                        <li class="process-step">
+                          <span class="process-num">{String(i + 1).padStart(2, '0')}</span>
+                          <span class="process-label">{item.label}</span>
+                        </li>
+                      ))}
+                    </ol>
+                    {visual.branchItems && (
+                      <div class="process-branch">
+                        <p class="process-branch-label">{visual.branchLabel}</p>
+                        <div class="process-branch-chips">
+                          {visual.branchItems.map((b) => <span class="process-chip">{b}</span>)}
+                        </div>
+                      </div>
+                    )}
+                    {visual.caption && <p class="diagram-caption">{visual.caption}</p>}
+                  </div>
+                ) : visual.type === 'icongrid' ? (
+                  <div class="diagram-block">
+                    <div class="diagram-icongrid">
+                      {visual.items.map((item) => (
+                        <div class="diagram-icon-card">
+                          <span class="diagram-icon" aria-hidden="true"><TechIcon name={item.icon} /></span>
+                          <span class="diagram-icon-label">{item.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {visual.caption && <p class="diagram-caption">{visual.caption}</p>}
+                  </div>
+                ) : null
+              ))}
+              {isRich && s.callouts && s.callouts.map((c) => (
+                <Callout label={c.label} variant={c.variant}>
+                  {c.text && <p>{c.text}</p>}
+                  {c.items && <ul>{c.items.map((item) => <li>{item}</li>)}</ul>}
+                </Callout>
+              ))}
+            </section>
+          );
+        })}
+      </div>
+    </div>
+
+    {comparisonTable && (
+      <section class="article-compare">
+        <h2>{comparisonTable.title}</h2>
+        <DataTable headers={comparisonTable.headers} rows={comparisonTable.rows} note={comparisonTable.note} />
+      </section>
+    )}
+
+    {faqs && (
+      <section class="article-faq">
+        <h2>Frequently Asked Questions</h2>
+        <FaqAccordion faqs={faqs} />
+      </section>
+    )}
+
+    {relatedArticles.length > 0 && (
+      <section class="article-related">
+        <h2>Related Articles</h2>
+        <div class="article-related-grid">
+          {relatedArticles.map((r) => (
+            <a href={`/resources/${r.slug}/`} class="article-related-card">
+              <span class="article-related-cat">{r.category}</span>
+              <span class="article-related-title">{r.title}</span>
+              <span class="article-related-desc">{r.description}</span>
+              <span class="article-related-foot">
+                <span class="article-related-time">{getReadingTime(r)}</span>
+                <span class="article-related-arrow" aria-hidden="true">→</span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {(prevArticle || nextArticle) && (
+      <nav class="article-prevnext" aria-label="Article navigation">
+        {prevArticle ? (
+          <a href={`/resources/${prevArticle.slug}/`} class="prevnext-link prevnext-prev">
+            <span class="prevnext-dir">← Previous Article</span>
+            <span class="prevnext-title">{prevArticle.title}</span>
+          </a>
+        ) : <span />}
+        {nextArticle && (
+          <a href={`/resources/${nextArticle.slug}/`} class="prevnext-link prevnext-next">
+            <span class="prevnext-dir">Next Article →</span>
+            <span class="prevnext-title">{nextArticle.title}</span>
+          </a>
+        )}
+      </nav>
+    )}
+
+    <section class="article-cta">
+      <h2>Need help selecting the right polyester resin?</h2>
+      <p>Our technical team can help you choose the most suitable resin for your manufacturing requirements.</p>
+      <div class="article-cta-buttons">
+        <a href="/contact/" class="btn btn-solid">Request a Quote</a>
+        <a href={talkToTeamLink} class="btn btn-wa" target="_blank" rel="noopener">Contact Technical Team</a>
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .crumb {
+      display: flex; gap: 0.6rem; align-items: center; padding-top: 1.5rem;
+      font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-faint); letter-spacing: 0.04em;
+    }
+    .crumb a { transition: color .25s var(--ease-premium); }
+    .crumb a:hover { color: var(--amber-2); }
+    .crumb .cur { color: var(--ink-dim); }
+
+    .article { padding-block: 2.6rem 4rem; max-width: 900px; }
+    .article-head { padding-bottom: 2.6rem; border-bottom: 1px solid var(--line); }
+    .article-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 48px; height: 48px; color: var(--amber); margin-bottom: 1.4rem;
+    }
+    .article-icon :global(svg) { width: 28px; height: 28px; }
+    .article-category {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--amber); font-weight: 500;
+    }
+    .article-head h1 { font-size: clamp(2rem, 5vw, 3rem); margin-top: 0.9rem; text-transform: none; letter-spacing: 0; }
+    .article-lead { color: var(--ink-dim); margin-top: 1.3rem; font-size: 1.05rem; max-width: 56ch; line-height: 1.7; }
+    .article-meta {
+      display: flex; align-items: center; gap: 0.6rem; margin-top: 1.6rem;
+      font-family: var(--font-mono); font-size: 0.76rem; color: var(--ink-faint); letter-spacing: 0.03em;
+    }
+    .article-meta-sep { color: var(--line-2); }
+
+    .article-body { display: grid; grid-template-columns: 260px 1fr; gap: clamp(2rem, 5vw, 3.5rem); margin-top: 3rem; align-items: start; }
+    .article-toc { position: sticky; top: 90px; }
+
+    .article-section { margin-bottom: 3.2rem; scroll-margin-top: 90px; }
+    .article-section h2 { font-size: clamp(1.35rem, 3vw, 1.8rem); margin-bottom: 1.1rem; }
+    .article-section p { color: var(--ink-dim); margin-bottom: 1.2rem; max-width: 70ch; line-height: 1.75; }
+    .article-placeholder { color: var(--ink-faint); font-style: italic; font-size: 0.94rem; }
+
+    .article-subsection { margin-top: 1.6rem; }
+    .article-subsection h3 { font-size: 1.05rem; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; color: var(--ink); }
+    .article-subsection p { color: var(--ink-dim); margin-bottom: 0; max-width: 70ch; }
+
+    .process-block, .diagram-block {
+      background: var(--bg-3); border: 1px solid var(--line); border-radius: 14px;
+      padding: clamp(1.4rem, 4vw, 2rem); margin-block: 1.6rem;
+    }
+    .process-list { list-style: none; display: flex; flex-wrap: nowrap; align-items: stretch; gap: 1.4rem; }
+    .process-step {
+      position: relative; flex: 1 1 0; min-width: 0;
+      display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.45rem;
+      padding: 1.1rem 0.7rem; background: var(--bg); border: 1px solid var(--line); border-top: 2px solid var(--amber);
+    }
+    .process-step:not(:last-child)::after {
+      content: '→'; position: absolute; right: -1.3rem; top: 50%; transform: translateY(-50%);
+      color: var(--amber); font-size: 1.1rem; line-height: 1;
+    }
+    .process-num { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--amber-2); }
+    .process-label { font-size: 0.9rem; color: var(--ink); font-weight: 600; }
+    /* Wrapping and the direction swap always happen together at the same
+       breakpoint, so an arrow never points at empty space where an item wrapped away. */
+    @media (max-width: 700px) {
+      .process-list { flex-direction: column; flex-wrap: wrap; }
+      .process-step { flex: 1 1 auto; }
+      .process-step:not(:last-child)::after {
+        content: '↓'; right: auto; left: 50%; top: auto; bottom: -1.1rem; transform: translateX(-50%);
+      }
+    }
+
+    .process-branch { margin-top: 1.6rem; padding-top: 1.3rem; border-top: 1px solid var(--line); }
+    .process-branch-label {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.8rem;
+    }
+    .process-branch-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .process-chip {
+      font-family: var(--font-mono); font-size: 0.78rem; padding: 0.45rem 0.9rem;
+      border: 1px solid var(--amber-deep); border-radius: 999px; color: var(--amber-2);
+    }
+
+    .diagram-icongrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.9rem; }
+    .diagram-icon-card {
+      display: flex; flex-direction: column; align-items: center; gap: 0.6rem; text-align: center;
+      padding: 1.1rem 0.8rem; background: var(--bg); border: 1px solid var(--line); border-top: 2px solid var(--amber);
+      transition: transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+    }
+    .diagram-icon-card:hover { transform: translateY(-3px) scale(1.015); box-shadow: 0 10px 22px rgba(0, 0, 0, .26); }
+    .diagram-icon { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; color: var(--amber); }
+    .diagram-icon :global(svg) { width: 24px; height: 24px; }
+    .diagram-icon-label { font-size: 0.86rem; color: var(--ink); }
+
+    .diagram-caption {
+      text-align: center; margin-top: 1.3rem; padding-top: 1rem; border-top: 1px solid var(--line);
+      font-family: var(--font-mono); font-size: 0.76rem; color: var(--ink-faint); letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 820px) {
+      .article-body { grid-template-columns: 1fr; }
+      .article-toc { position: relative; top: 0; }
+    }
+
+    .article-compare, .article-faq, .article-related, .article-prevnext { margin-top: 3.4rem; }
+    .article-compare h2, .article-faq h2, .article-related h2 { font-size: clamp(1.4rem, 3.5vw, 1.9rem); margin-bottom: 1.3rem; }
+
+    .article-related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+    .article-related-card {
+      display: flex; flex-direction: column; gap: 0.5rem; min-width: 0;
+      padding: 1.3rem 1.4rem; background: var(--bg-3); border: 1px solid var(--line); height: 100%;
+      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+    }
+    .article-related-card:hover {
+      border-color: var(--amber); transform: translateY(-3px) scale(1.012);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
+    }
+    .article-related-cat {
+      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--amber);
+    }
+    .article-related-title { font-family: var(--font-display); font-size: 1rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
+    .article-related-desc { color: var(--ink-dim); font-size: 0.86rem; flex: 1; }
+    .article-related-foot {
+      display: flex; align-items: center; justify-content: space-between; gap: 0.6rem;
+      margin-top: 0.5rem; padding-top: 0.8rem; border-top: 1px solid var(--line);
+    }
+    .article-related-time { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); }
+    .article-related-arrow { color: var(--amber); flex-shrink: 0; transition: transform .3s var(--ease-premium); }
+    .article-related-card:hover .article-related-arrow { transform: translateX(3px); }
+
+    .article-prevnext {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      padding-top: 2rem; border-top: 1px solid var(--line);
+    }
+    .prevnext-link {
+      display: flex; flex-direction: column; gap: 0.4rem; padding: 1.2rem 1.3rem;
+      background: var(--bg-3); border: 1px solid var(--line);
+      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium);
+    }
+    .prevnext-link:hover { border-color: var(--amber); transform: translateY(-2px); }
+    .prevnext-next { text-align: right; align-items: flex-end; grid-column: 2; }
+    .prevnext-dir {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--amber-2);
+    }
+    .prevnext-title { color: var(--ink); font-size: 0.92rem; }
+    @media (max-width: 620px) {
+      .article-prevnext { grid-template-columns: 1fr; }
+      .prevnext-next { grid-column: 1; text-align: left; align-items: flex-start; }
+    }
+
+    .article-cta {
+      margin-top: 3.4rem; padding: clamp(1.8rem, 5vw, 2.6rem);
+      background: var(--bg-3); border: 1px solid var(--line);
+    }
+    .article-cta h2 { font-size: clamp(1.4rem, 3.5vw, 1.9rem); }
+    .article-cta p { color: var(--ink-dim); margin-top: 0.8rem; max-width: 55ch; }
+    .article-cta-buttons { display: flex; gap: 0.9rem; margin-top: 1.4rem; flex-wrap: wrap; }
+  </style>
+</Base>
+CLAUDE_AUDIT_EOF
+
+echo "==> Writing src/pages/resources/index.astro"
+mkdir -p "src/pages/resources"
+cat > "src/pages/resources/index.astro" <<'CLAUDE_AUDIT_EOF'
+---
+import Base from '../../layouts/Base.astro';
+import ResourceCard from '../../components/ResourceCard.astro';
+import { resources } from '../../data/resources.js';
+
+const published = resources.filter((r) => !r.draft);
+---
+<Base
+  title="Knowledge Centre"
+  description="Technical articles, application guides and educational resources on polyester resin manufacturing, industrial applications and best practices."
+>
+  <div class="wrap crumb">
+    <a href="/">Home</a><span>/</span><span class="cur">Resources</span>
+  </div>
+
+  <section class="section kc-hero">
+    <div class="wrap">
+      <p class="eyebrow">Technical Resources</p>
+      <h1>Knowledge Centre</h1>
+      <p class="kc-hero-sub">Technical articles, application guides and educational resources on polyester resin manufacturing, industrial applications and best practices.</p>
+    </div>
+  </section>
+
+  <section class="section kc-list">
+    <div class="wrap">
+      <div class="kc-grid">
+        {published.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .crumb {
+      display: flex; gap: 0.6rem; align-items: center; padding-top: 1.5rem;
+      font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-faint); letter-spacing: 0.04em;
+    }
+    .crumb a:hover { color: var(--amber-2); }
+    .crumb .cur { color: var(--ink-dim); }
+
+    .kc-hero { padding-bottom: 0; }
+    .kc-hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); margin-top: 0.6rem; }
+    .kc-hero-sub { color: var(--ink-dim); margin-top: 0.9rem; max-width: 60ch; }
+
+    .kc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.1rem; }
+  </style>
+</Base>
+CLAUDE_AUDIT_EOF
+
+echo "==> Writing src/styles/global.css"
+mkdir -p "src/styles"
+cat > "src/styles/global.css" <<'CLAUDE_AUDIT_EOF'
+/* ==========================================================================
+   Samrat Poly Resins — design system
+   Dark industrial. Charcoal base, molten-amber accent, condensed display type.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --bg:        #0d0f12;   /* near-black charcoal */
+  --bg-2:      #14171c;   /* raised panel */
+  --bg-3:      #1c2129;   /* card */
+  --bg-grad-top:    #0c1530; /* deep navy */
+  --bg-grad-mid:    #0d1428; /* charcoal blue */
+  --bg-grad-bottom: #090b12; /* near black */
+  --line:      #2a3038;   /* hairline borders */
+  --line-2:    #3a424d;
+  --ink:       #f4f2ee;   /* off-white text */
+  --ink-dim:   #a6adb8;   /* secondary text */
+  --ink-faint: #838a96;   /* captions — kept ≥4.5:1 against --bg for WCAG AA at small sizes */
+  --amber:     #ff7a18;   /* molten resin accent */
+  --amber-2:   #ffb347;   /* lighter amber */
+  --amber-deep:#c9500a;
+
+  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --maxw: 1180px;
+  --pad: clamp(1.1rem, 4vw, 2.5rem);
+
+  /* --- motion --- */
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1); /* smooth, spring-like deceleration, no overshoot */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+body {
+  background: linear-gradient(180deg, var(--bg-grad-top) 0%, var(--bg-grad-mid) 25%, var(--bg-grad-bottom) 60%, var(--bg-grad-bottom) 100%);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad); }
+
+/* --- mono label / eyebrow --- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 500;
+}
+
+/* --- buttons --- */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem; font-weight: 500;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 0.85rem 1.4rem;
+  border: 1px solid var(--line-2);
+  background: transparent; color: var(--ink);
+  cursor: pointer;
+  transition: border-color .3s var(--ease-premium), background .3s var(--ease-premium),
+              color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+}
+.btn:hover { border-color: var(--amber); color: var(--amber-2); transform: translateY(-2px) scale(1.02); box-shadow: 0 10px 24px rgba(0, 0, 0, .28); }
+.btn:active { transform: translateY(-1px) scale(0.99); transition-duration: .12s; }
+.btn:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+
+.btn-solid {
+  background: var(--amber); color: #17120c; border-color: var(--amber);
+  font-weight: 700;
+}
+.btn-solid:hover { background: var(--amber-2); color: #17120c; border-color: var(--amber-2); }
+
+.btn-wa { background: #25d366; color: #062b14; border-color: #25d366; font-weight: 700; }
+.btn-wa:hover { background: #2ee87a; border-color: #2ee87a; color: #062b14; }
+
+/* --- section rhythm --- */
+.section { padding-block: clamp(3.5rem, 8vw, 6rem); }
+.section-head { margin-bottom: 2.6rem; }
+.section-head h2 {
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  margin-top: 0.5rem;
+}
+
+/* --- footer / focus baseline --- */
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+
+/* --- scroll reveal (see Base.astro for the IntersectionObserver that applies these) --- */
+.js-reveal {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity .6s var(--ease-premium), transform .6s var(--ease-premium);
+  will-change: opacity, transform;
+}
+.js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+.js-reveal-img {
+  opacity: 0; transform: translateY(14px) scale(1.035);
+  transition: opacity .7s var(--ease-premium), transform .7s var(--ease-premium);
+  will-change: opacity, transform;
+}
+.js-reveal-img.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+
+/* --- page transitions (Astro View Transitions) --- */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.36s;
+    animation-timing-function: var(--ease-premium);
+  }
+  ::view-transition-old(root) { animation-name: spr-fade-out; }
+  ::view-transition-new(root) { animation-name: spr-fade-in; }
+
+  @keyframes spr-fade-out {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(-6px); }
+  }
+  @keyframes spr-fade-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  ::view-transition-group(*) {
+    animation-duration: 0.42s;
+    animation-timing-function: var(--ease-premium);
+  }
+}
+CLAUDE_AUDIT_EOF
+
+echo "==> Writing public/robots.txt"
+mkdir -p "public"
+cat > "public/robots.txt" <<'CLAUDE_AUDIT_EOF'
+User-agent: *
+Allow: /
+
+Sitemap: https://samratpolyresins.in/sitemap-index.xml
+CLAUDE_AUDIT_EOF
+
+
+echo "==> Installing @astrojs/sitemap"
+npm install @astrojs/sitemap
+
+echo "==> Verifying build"
+npm run build
+
+echo "==> Staging and committing"
+git add -A -- . ":(exclude)${SCRIPT_NAME}"
+git commit -m "Engineering audit: fix data conflicts, SEO, a11y, structured data, and gate unfinished Knowledge Centre content
+
+- site.js/astro.config: canonical domain corrected to the live, crawlable
+  samratpolyresins.in (samratpolyresins.com currently blocks crawlers)
+- Centralize price label, states-served list, and packaging-range copy into
+  single sources of truth in site.js
+- Homepage: fixed two self-contradicting states-served lists and a false
+  225 KG standard packaging claim that contradicted products.js itself
+- Add sitewide Organization structured data, Product + BreadcrumbList schema
+  on product pages, BreadcrumbList on articles, og:image/twitter:card meta
+- Add @astrojs/sitemap + robots.txt (neither existed before)
+- Add skip-to-content link; raise --ink-faint contrast to meet WCAG AA
+- resources.js: add a draft-flag mechanism so unfinished Knowledge Centre
+  articles are excluded from getStaticPaths, the /resources index, and the
+  sitemap instead of shipping live placeholder text. Fully wrote How to
+  Select Polyester Resin for FRP Manufacturing; 8 articles remain in draft.
+- README: documented all of the above for future editors
+"
+
+echo ""
+echo "Done. Branch 'consistency-audit' committed locally with $(git diff --stat main consistency-audit 2>/dev/null | tail -1 || echo 'the above changes')."
+echo "Review it, then push yourself when ready:"
+echo "  git push -u origin consistency-audit"
+echo "Then open the PR at:"
+echo "  https://github.com/bhapag/SamratPolyResin/compare/main...consistency-audit?expand=1"
