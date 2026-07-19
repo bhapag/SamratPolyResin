@@ -1,13 +1,20 @@
 ---
+import { Image } from 'astro:assets';
 import { site } from '../data/site.js';
+
+const productImageModules = import.meta.glob('/src/assets/products/*', { eager: true });
+const resolveProductImage = (filename) => productImageModules[`/src/assets/products/${filename}`]?.default;
+
 const { product } = Astro.props;
 const { slug, name, image, tagline, category } = product;
+const img = resolveProductImage(image);
 ---
 <a href={`/products/${slug}/`} class="card">
-  <div class="card-img">
-    <img src={`/products/${image}`} alt={name} loading="lazy" width="400" height="300"
-         onerror="this.parentElement.classList.add('noimg'); this.remove();"
-         transition:name={`product-photo-${slug}`} />
+  <div class:list={['card-img', { noimg: !img }]}>
+    {img && (
+      <Image src={img} alt={name} loading="lazy" widths={[320, 480, 640]} sizes="(max-width: 640px) 100vw, 320px"
+             transition:name={`product-photo-${slug}`} />
+    )}
     <span class="img-fallback" aria-hidden="true">{name.split(' ').map(w=>w[0]).join('').slice(0,3)}</span>
   </div>
   <div class="card-body">

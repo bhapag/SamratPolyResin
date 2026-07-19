@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import { site } from '../data/site.js';
 import { products, CATEGORIES } from '../data/products.js';
+import factoryGate from '../assets/about/factory-gate.jpg';
 
 const years = new Date().getFullYear() - Number(site.established);
 ---
@@ -27,7 +29,7 @@ const years = new Date().getFullYear() - Number(site.established);
     <div class="wrap about-grid">
       <div class="about-copy">
         <figure class="about-photo">
-          <img src="/about/factory-gate.jpg" alt={`${site.name} factory gate, ${site.address.line2}`} width="1448" height="1086" loading="lazy" />
+          <Image src={factoryGate} alt={`${site.name} factory gate, ${site.address.line2}`} widths={[400, 800, 1448]} sizes="(max-width: 860px) 100vw, 480px" loading="lazy" />
           <figcaption>Our facility — {site.address.line2}, {site.address.state}</figcaption>
         </figure>
         <p>

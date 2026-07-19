@@ -1,8 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import ProductCard from '../components/ProductCard.astro';
 import { products, CATEGORIES } from '../data/products.js';
 import { site } from '../data/site.js';
+import qcLaboratory from '../assets/quality/qc-laboratory.jpg';
+import productionInfrastructure from '../assets/facility/production-infrastructure.jpg';
 
 const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like to enquire about your resins.")}`;
 const featured = products.slice(0, 6);
@@ -203,7 +206,7 @@ const [whyWord, chooseWord, samratWord, polyWord, resinsWord] = `Why choose ${si
         </div>
         <figure class="why-quality-photo">
           <div class="why-quality-frame">
-            <img src="/quality/qc-laboratory.jpg" alt="Quality inspection laboratory at Samrat Poly Resins" width="1600" height="865" loading="lazy" />
+            <Image src={qcLaboratory} alt="Quality inspection laboratory at Samrat Poly Resins" widths={[480, 900, 1600]} sizes="(max-width: 760px) 100vw, 560px" loading="lazy" />
           </div>
           <figcaption class="why-quality-caption">Quality Inspection Laboratory</figcaption>
         </figure>
@@ -229,7 +232,7 @@ const [whyWord, chooseWord, samratWord, polyWord, resinsWord] = `Why choose ${si
       </div>
       <figure class="facility-photo">
         <div class="facility-frame">
-          <img src="/facility/production-infrastructure.jpg" alt="Stainless-steel resin processing reactors at the Samrat Poly Resins manufacturing facility" width="1452" height="1083" loading="lazy" />
+          <Image src={productionInfrastructure} alt="Stainless-steel resin processing reactors at the Samrat Poly Resins manufacturing facility" widths={[480, 900, 1452]} sizes="(max-width: 760px) 100vw, 560px" loading="lazy" />
         </div>
         <figcaption class="facility-caption">Industrial Resin Manufacturing Facility</figcaption>
       </figure>

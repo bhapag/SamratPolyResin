@@ -1,4 +1,5 @@
 ---
+import { getImage } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import EnquiryForm from '../../components/EnquiryForm.astro';
 import { products } from '../../data/products.js';
@@ -8,10 +9,31 @@ export function getStaticPaths() {
   return products.map(p => ({ params: { slug: p.slug }, props: { product: p } }));
 }
 
+const productImageModules = import.meta.glob('/src/assets/products/*', { eager: true });
+const resolveProductImage = (filename) => productImageModules[`/src/assets/products/${filename}`]?.default;
+
 const { product } = Astro.props;
 const { name, image, description, features, applications, category, specs } = product;
 const specEntries = specs ? Object.entries(specs) : [];
 const gallery = [image, ...(product.images ?? [])];
+
+// Resolve each gallery photo to an optimised, compressed webp — one size for
+// the large main viewer, one for the thumbnail strip. The thumbnail's
+// `data-src` carries the main-size URL so the click-to-swap script (below)
+// can assign it straight to the main <img>'s src.
+const galleryImages = await Promise.all(
+  gallery.map(async (filename) => {
+    const mod = resolveProductImage(filename);
+    if (!mod) return null;
+    const [main, thumb] = await Promise.all([
+      getImage({ src: mod, width: 700, format: 'webp' }),
+      getImage({ src: mod, width: 160, format: 'webp' }),
+    ]);
+    return { main, thumb };
+  })
+);
+const mainImage = galleryImages[0];
+
 const related = products.filter(p => p.category === category && p.slug !== product.slug).slice(0, 3);
 const waLink = buildProductQuoteLink(product.whatsappName ?? name);
 
@@ -36,7 +58,7 @@ const productJsonLd = {
   name,
   description,
   category,
-  image: buildCanonicalUrl(`/products/${image}`),
+  image: mainImage ? buildCanonicalUrl(mainImage.main.src) : undefined,
   brand: { "@type": "Organization", name: site.name },
   manufacturer: { "@type": "Organization", name: site.name },
 };
@@ -52,17 +74,19 @@ const productJsonLd = {
   <article class="wrap prod">
     <div class="prod-media">
       <div class="prod-media-sticky">
-        <div class="prod-img">
-          <img src={`/products/${gallery[0]}`} alt={name} width="600" height="450" id="prodMainImg"
-               onerror="this.parentElement.classList.add('noimg'); this.remove();"
-               transition:name={`product-photo-${product.slug}`} />
+        <div class:list={['prod-img', { noimg: !mainImage }]}>
+          {mainImage && (
+            <img src={mainImage.main.src} width={mainImage.main.attributes.width} height={mainImage.main.attributes.height}
+                 alt={name} id="prodMainImg"
+                 transition:name={`product-photo-${product.slug}`} />
+          )}
           <span class="img-fallback" aria-hidden="true">{name.split(' ').map(w=>w[0]).join('').slice(0,3)}</span>
         </div>
         {gallery.length > 1 && (
           <div class="prod-thumbs" role="list">
-            {gallery.map((img, i) => (
-              <button type="button" class:list={['prod-thumb', { active: i === 0 }]} data-src={`/products/${img}`} aria-label={`Show photo ${i + 1} of ${name}`}>
-                <img src={`/products/${img}`} alt="" loading="lazy" width="120" height="90" />
+            {galleryImages.map((g, i) => g && (
+              <button type="button" class:list={['prod-thumb', { active: i === 0 }]} data-src={g.main.src} aria-label={`Show photo ${i + 1} of ${name}`}>
+                <img src={g.thumb.src} width={g.thumb.attributes.width} height={g.thumb.attributes.height} alt="" loading="lazy" />
               </button>
             ))}
           </div>
