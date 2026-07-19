@@ -25,9 +25,9 @@ export const site = {
   url: "https://samratpolyresins.in",
 
   // Default social-share image (absolute path resolved against `url` above).
-  // Falls back to the logo — replace with a dedicated 1200×630 share image
-  // when one exists.
-  ogImage: "/logo.jpg",
+  // 1200x630 share image composited from real factory/QC photography — see
+  // scripts/build-og-image.mjs (re-run it if those source photos change).
+  ogImage: "/og-image.jpg",
 
   // --- CONTACT (swap these) ---
   phoneDisplay: "+91 74638 81005",     // shown on the page
