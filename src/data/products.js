@@ -38,7 +38,7 @@ export const CATEGORIES = [
   "GP Resins",
   "GelCoat Resin",
   "Fire Retardant Resins",
-  "Coating & FRP",
+  "FRP Allied Products",
   "Epoxy & Casting",
   "Industrial & Specialty Resins",
   "Hardeners",
@@ -371,7 +371,7 @@ export const products = [
   {
     slug: "frp-polyester-pigment",
     name: "FRP Polyester Pigment",
-    category: "Coating & FRP",
+    category: "FRP Allied Products",
     price: "₹300 / kg",
     image: "frp-polyester-pigment.jpg",
     images: ["frp-polyester-pigment-1.jpg", "frp-polyester-pigment-3.jpg"],
@@ -404,7 +404,7 @@ export const products = [
   {
     slug: "fibre-glass-mat",
     name: "Glass Fiber",
-    category: "Coating & FRP",
+    category: "FRP Allied Products",
     price: "₹120 / kg",
     image: "fibre-glass-mat.jpg",
     images: ["fibre-glass-mat-2.jpg"],
