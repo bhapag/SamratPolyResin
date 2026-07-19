@@ -35,7 +35,6 @@
 // ============================================================================
 
 export const CATEGORIES = [
-  "Polyester Resins",
   "GP Resins",
   "Fire Retardant Resins",
   "Coating & FRP",
@@ -48,7 +47,7 @@ export const products = [
   {
     slug: "sheet-grade-yellow-resin",
     name: "Sheet Grade Yellow Resin",
-    category: "Polyester Resins",
+    category: "GP Resins",
     price: "₹135 / kg",
     image: "sheet-grade-yellow-resin.jpg",
     images: ["sheet-grade-yellow-resin-2.jpg", "sheet-grade-yellow-resin-3.jpg"],
@@ -86,7 +85,7 @@ export const products = [
     slug: "unsaturated-polyester-resin",
     name: "Unsaturated Polyester Resin (UPR)",
     whatsappName: "Unsaturated Polyester Resin",
-    category: "Polyester Resins",
+    category: "GP Resins",
     price: "₹130 / kg",
     image: "unsaturated-polyester-resin.jpg",
     images: ["unsaturated-polyester-resin-2.jpg", "unsaturated-polyester-resin-3.jpg", "unsaturated-polyester-resin-4.jpg"],
