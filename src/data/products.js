@@ -36,6 +36,7 @@
 
 export const CATEGORIES = [
   "GP Resins",
+  "GelCoat Resin",
   "Fire Retardant Resins",
   "Coating & FRP",
   "Epoxy & Casting",
@@ -193,7 +194,7 @@ export const products = [
   {
     slug: "gp-gelcoat-resin",
     name: "GP Gelcoat Resin",
-    category: "GP Resins",
+    category: "GelCoat Resin",
     price: "₹180 / kg",
     image: "gp-gelcoat-resin.jpg",
     images: ["gp-gelcoat-resin-2.jpg", "gp-gelcoat-resin-3.jpg"],
