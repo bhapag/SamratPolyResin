@@ -48,16 +48,10 @@ export const site = {
   // Google Maps embed query (place name or address). URL-encode spaces as +.
   mapsQuery: "Samrat+Poly+Resins+Doraha+Ludhiana",
 
-  // States the homepage claims to currently supply. Single source of truth —
-  // both "Why Choose Us" and "Industries We Serve" read from this array so
-  // they can't drift apart again.
-  //
-  // AUDIT FLAG: the two homepage sections previously listed DIFFERENT sets
-  // (one included Himachal Pradesh, one didn't) — a factual contradiction on
-  // the same page. I could not verify which is correct, so this defaults to
-  // the intersection (the 6 states both lists agreed on). Add Himachal
-  // Pradesh back in only if it's confirmed as an actual served state.
-  statesServed: ["Punjab", "Haryana", "Delhi", "Uttar Pradesh", "Maharashtra", "Andhra Pradesh"],
+  // States/regions the homepage claims to currently supply, plus export
+  // markets. Single source of truth — both "Why Choose Us" and "Industries
+  // We Serve" read from this array so they can't drift apart again.
+  statesServed: ["Punjab", "Haryana", "Delhi", "Uttar Pradesh", "West Bengal", "Bihar", "Jharkhand", "Odisha", "Assam", "Andhra Pradesh", "Export Nepal", "Export Bangladesh"],
 
   // Standard packaging sizes as they actually appear across the catalog in
   // products.js (some grades ship in 200 kg drums, some 225 kg, PET resin in
