@@ -143,12 +143,11 @@ const [whyWord, chooseWord, samratWord, polyWord, resinsWord] = `Why choose ${si
           <p class="why-desc">Reliable logistics network serving customers across India with timely delivery and bulk shipment capability.</p>
           <div class="why-india">
             <svg class="why-india-map" viewBox="-26 -26 360 364" aria-hidden="true">
-              <defs>
-                <marker id="whyIndiaArrowhead" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                  <path class="why-india-arrowhead" d="M0,0 L8,4 L0,8 Z" />
-                </marker>
-              </defs>
               <path class="why-india-land" d="M 103.17 4 L 114.2 16.95 L 113.16 25.97 L 117.24 31.62 L 116.91 37.26 L 109.54 35.78 L 112.42 47.96 L 122.5 54.96 L 136.77 62.68 L 130.26 67.69 L 126.27 78.03 L 136.22 82.21 L 145.89 87.63 L 159.28 93.83 L 173.35 95.26 L 179.27 100.88 L 187.2 101.94 L 199.55 104.51 L 208.1 104.33 L 209.28 99.95 L 207.93 92.93 L 208.72 88.17 L 214.98 85.85 L 215.84 94.55 L 216.06 96.77 L 225.39 100.96 L 231.85 99.23 L 240.51 99.97 L 248.89 99.65 L 249.61 92.86 L 245.43 89.33 L 253.71 87.95 L 263.05 79.73 L 274.88 72.69 L 283.49 75.41 L 290.81 70.76 L 295.62 77.63 L 292.16 82.27 L 303.23 83.92 L 304 88.11 L 300.4 90.13 L 301.24 96.93 L 293.91 94.94 L 280.62 102.57 L 280.93 108.9 L 275.27 118.16 L 274.75 123.55 L 270.17 132.66 L 262.15 130.14 L 261.75 141.58 L 259.43 145.34 L 260.51 150.03 L 255.45 152.65 L 250.04 135.13 L 247.21 135.16 L 245.53 142.22 L 239.91 136.5 L 243.08 130.21 L 247.67 129.57 L 252.41 120.22 L 246.49 118.33 L 236.97 118.49 L 227.2 116.98 L 226.29 109.3 L 221.39 108.75 L 213.26 103.98 L 209.64 111.47 L 217.05 117.32 L 210.63 121.44 L 208.35 125.47 L 214.67 128.43 L 212.92 135.09 L 216.48 143.4 L 218.08 152.49 L 216.61 156.53 L 209.62 156.39 L 196.97 158.68 L 197.56 167 L 192.08 173.53 L 177.31 180.97 L 165.82 193.97 L 158.1 200.94 L 147.87 208.18 L 147.86 213.26 L 142.74 215.98 L 133.49 219.94 L 128.7 220.52 L 125.62 228.95 L 127.76 243.33 L 128.3 252.49 L 123.95 262.99 L 123.91 281.76 L 118.6 282.3 L 113.92 290.73 L 117.05 294.37 L 107.69 297.5 L 104.23 305.02 L 100.11 308.19 L 90.39 297.87 L 85.64 282.4 L 81.7 271.25 L 78.11 266.03 L 72.65 255.41 L 70.11 241.59 L 68.33 234.69 L 58.99 219.51 L 54.74 198.1 L 51.67 183.96 L 51.71 170.57 L 49.72 160.23 L 34.78 166.84 L 27.55 165.52 L 14.14 152.12 L 19.07 148.13 L 16.04 143.79 L 4 134.41 L 10.84 127.04 L 33.43 127.07 L 31.39 117.58 L 25.62 111.98 L 24.45 103.47 L 17.73 98.51 L 29.04 86.93 L 40.96 87.77 L 51.7 76.18 L 58.14 64.97 L 68.1 53.88 L 67.94 46.01 L 76.7 39.61 L 68.41 34.16 L 64.85 26.68 L 61.21 17 L 66.24 12.23 L 81.81 14.93 L 93.25 13.29 L 103.17 4 Z" />
+              <!-- Neighbouring export markets, drawn as simplified landmasses in the
+                   same style as India (not a detailed political map). -->
+              <path class="why-india-land why-india-neighbour" d="M 120,10 Q 132,-8 152,-13 Q 172,-13 185,3 Q 178,10 160,7 Q 138,5 120,10 Z" />
+              <path class="why-india-land why-india-neighbour" d="M 230,120 Q 238,130 237,143 Q 235,155 224,157 Q 224,146 226,136 Q 225,126 230,120 Z" />
               <!-- Domestic supply markers (approximate positions, illustrative not geographic) -->
               <circle class="why-india-dot" cx="93.85" cy="45.81" r="4.5" />
               <circle class="why-india-dot" cx="82.87" cy="54.76" r="4.5" />
@@ -160,13 +159,9 @@ const [whyWord, chooseWord, samratWord, polyWord, resinsWord] = `Why choose ${si
               <circle class="why-india-dot" cx="169" cy="163" r="4" />
               <circle class="why-india-dot" cx="230" cy="100" r="4" />
               <circle class="why-india-dot" cx="132.04" cy="213.77" r="4.5" />
-              <!-- Export markets: simplified outline of Nepal (north border) and
-                   Bangladesh (east of West Bengal) — unfilled, same accent as the
-                   domestic markers, not meant to be a precise political map. -->
-              <path class="why-india-export-outline" d="M 125,18 Q 155,-10 188,13 Q 155,3 125,18 Z" />
-              <path class="why-india-export-outline" d="M 224,124 Q 236,120 237,136 Q 235,147 224,145 Q 220,136 224,124 Z" />
-              <line class="why-india-export-line" x1="140" y1="40" x2="150" y2="6" marker-end="url(#whyIndiaArrowhead)" />
-              <line class="why-india-export-line" x1="178" y1="135" x2="226" y2="132" marker-end="url(#whyIndiaArrowhead)" />
+              <!-- Export market markers: Nepal and Bangladesh -->
+              <circle class="why-india-dot" cx="150" cy="-1" r="4" />
+              <circle class="why-india-dot" cx="230" cy="138" r="4" />
             </svg>
             <p class="why-india-caption">
               Currently supplying customers across:<br />
@@ -498,9 +493,6 @@ const [whyWord, chooseWord, samratWord, polyWord, resinsWord] = `Why choose ${si
     .why-india-map { width: 100%; max-width: 128px; height: auto; }
     .why-india-land { fill: var(--line-2); stroke: var(--line); stroke-width: 1; stroke-linejoin: round; }
     .why-india-dot { fill: var(--amber); }
-    .why-india-export-line { stroke: var(--amber-2); stroke-width: 2; stroke-linecap: round; }
-    .why-india-export-outline { fill: none; stroke: var(--amber-2); stroke-width: 1.5; stroke-linejoin: round; }
-    .why-india-arrowhead { fill: var(--amber-2); }
     .why-india-caption { font-family: var(--font-mono); font-size: 0.66rem; line-height: 1.7; color: var(--ink-faint); letter-spacing: 0.01em; }
 
     .why-bulk { display: flex; flex-direction: column; gap: 0.55rem; margin-top: auto; }
