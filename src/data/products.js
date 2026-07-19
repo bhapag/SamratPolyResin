@@ -36,6 +36,7 @@
 
 export const CATEGORIES = [
   "GP Resins",
+  "Sheet Grade Resins",
   "GelCoat Resin",
   "Fire Retardant Resins",
   "FRP Allied Products",
@@ -48,7 +49,7 @@ export const products = [
   {
     slug: "sheet-grade-yellow-resin",
     name: "Sheet Grade Yellow Resin",
-    category: "GP Resins",
+    category: "Sheet Grade Resins",
     price: "₹135 / kg",
     image: "sheet-grade-yellow-resin.jpg",
     images: ["sheet-grade-yellow-resin-2.jpg", "sheet-grade-yellow-resin-3.jpg"],
@@ -265,7 +266,7 @@ export const products = [
   {
     slug: "roof-light-resin",
     name: "Roof Light Sheet Grade Resin",
-    category: "GP Resins",
+    category: "Sheet Grade Resins",
     price: "₹135 / kg",
     image: "roof-light-resin.jpg",
     images: ["roof-light-resin-2.jpg", "roof-light-resin-3.jpg"],
