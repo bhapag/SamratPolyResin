@@ -22,7 +22,7 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
         <input type="search" id="prodSearch" placeholder="Search products by name…" aria-label="Search products by name" autocomplete="off" />
       </div>
       <div class="prod-chips" role="list" aria-label="Filter by category">
-        <button type="button" class="prod-chip is-active" data-chip-cat="all">All ({products.length})</button>
+        <button type="button" class="prod-chip is-active" data-chip-cat="all">Unsaturated Polyester Resin (UPR) ({products.length})</button>
         {byCat.map(group => (
           <button type="button" class="prod-chip" data-chip-cat={group.cat}>{group.cat} ({group.items.length})</button>
         ))}
