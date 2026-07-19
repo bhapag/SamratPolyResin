@@ -160,9 +160,13 @@ const [whyWord, chooseWord, samratWord, polyWord, resinsWord] = `Why choose ${si
               <circle class="why-india-dot" cx="169" cy="163" r="4" />
               <circle class="why-india-dot" cx="230" cy="100" r="4" />
               <circle class="why-india-dot" cx="132.04" cy="213.77" r="4.5" />
-              <!-- Export reach: Nepal (north) and Bangladesh (east of West Bengal) -->
-              <line class="why-india-export-line" x1="138" y1="24" x2="150" y2="-14" marker-end="url(#whyIndiaArrowhead)" />
-              <line class="why-india-export-line" x1="184" y1="141" x2="221" y2="153" marker-end="url(#whyIndiaArrowhead)" />
+              <!-- Export markets: simplified outline of Nepal (north border) and
+                   Bangladesh (east of West Bengal) — unfilled, same accent as the
+                   domestic markers, not meant to be a precise political map. -->
+              <path class="why-india-export-outline" d="M 125,18 Q 155,-10 188,13 Q 155,3 125,18 Z" />
+              <path class="why-india-export-outline" d="M 224,124 Q 236,120 237,136 Q 235,147 224,145 Q 220,136 224,124 Z" />
+              <line class="why-india-export-line" x1="140" y1="40" x2="150" y2="6" marker-end="url(#whyIndiaArrowhead)" />
+              <line class="why-india-export-line" x1="178" y1="135" x2="226" y2="132" marker-end="url(#whyIndiaArrowhead)" />
             </svg>
             <p class="why-india-caption">
               Currently supplying customers across:<br />
@@ -495,6 +499,7 @@ const [whyWord, chooseWord, samratWord, polyWord, resinsWord] = `Why choose ${si
     .why-india-land { fill: var(--line-2); stroke: var(--line); stroke-width: 1; stroke-linejoin: round; }
     .why-india-dot { fill: var(--amber); }
     .why-india-export-line { stroke: var(--amber-2); stroke-width: 2; stroke-linecap: round; }
+    .why-india-export-outline { fill: none; stroke: var(--amber-2); stroke-width: 1.5; stroke-linejoin: round; }
     .why-india-arrowhead { fill: var(--amber-2); }
     .why-india-caption { font-family: var(--font-mono); font-size: 0.66rem; line-height: 1.7; color: var(--ink-faint); letter-spacing: 0.01em; }
 
