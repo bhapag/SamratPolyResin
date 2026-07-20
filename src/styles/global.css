@@ -34,12 +34,20 @@
 
   /* --- shared elevation tokens ---
      Every flat --bg-3 panel (cards, forms, boxes) gets a resting shadow so
-     it reads as a machined plate rather than a printed rectangle; the
+     it reads as a machined plate rather than a printed rectangle, and the
      interactive-card subset (product/resource cards, category tiles,
-     industry/why cards) steps up to the hover token, which adds a whisper
-     of gold at the rim instead of just a darker shadow. */
+     industry/why cards) steps up to the hover token for a deeper lift.
+     Neutral tones only, no colour in either shadow: every premium reference
+     site audited (Apple, Porsche, Siemens, B&O) runs zero or near-zero
+     box-shadow on cards/imagery and lets typography and white space carry
+     the quality instead — a coloured glow reads as decorative, not
+     engineered. A quiet neutral shadow earns its place here anyway, because
+     it does real work this site's dark-on-dark palette needs that those
+     reference sites never have to solve: without it, a --bg-3 card has
+     almost no luminance separation from the page behind it, where their
+     white canvas gives that separation away for free. */
   --surface-shadow-rest:  0 1px 0 rgba(255, 255, 255, .04) inset, 0 10px 26px rgba(0, 0, 0, .24);
-  --surface-shadow-hover: 0 1px 0 rgba(255, 255, 255, .07) inset, 0 20px 44px rgba(0, 0, 0, .36), 0 0 0 1px rgba(var(--gold-rgb), .14);
+  --surface-shadow-hover: 0 1px 0 rgba(255, 255, 255, .07) inset, 0 22px 46px rgba(0, 0, 0, .4);
 
   /* --- premium image frame --- */
   --image-frame-border: rgba(var(--gold-rgb), .18);
