@@ -681,14 +681,24 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     }
     .why-quality-title { font-size: clamp(1.5rem, 3.5vw, 2rem); }
     .why-quality-desc { color: var(--ink-dim); margin-top: 1rem; max-width: 52ch; }
-    .why-quality-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin-top: 1.6rem; }
-    .why-quality-feature { display: flex; align-items: center; gap: 0.85rem; font-size: 0.95rem; color: var(--ink); }
+    .why-quality-list { list-style: none; display: flex; flex-direction: column; gap: 1.05rem; margin-top: 1.6rem; }
+    .why-quality-feature {
+      display: flex; align-items: center; gap: 0.9rem; font-size: 0.95rem; font-weight: 600; color: var(--ink);
+      line-height: 1.6; text-shadow: 0 1px 3px rgba(0, 0, 0, .25);
+      transition: color .25s var(--ease-premium), transform .25s var(--ease-premium);
+    }
+    .why-quality-feature:hover { color: #ffffff; transform: translateX(3px); }
     .why-quality-check {
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       width: 24px; height: 24px; border-radius: 50%;
       background: linear-gradient(180deg, var(--accent-gold-light), var(--accent-gold-dark)); color: #17120c;
       font-weight: 700; font-size: 0.72rem;
       box-shadow: 0 0 0 1px rgba(var(--gold-rgb), 0.3), 0 2px 6px rgba(0, 0, 0, .3);
+      transition: box-shadow .25s var(--ease-premium), transform .25s var(--ease-premium);
+    }
+    .why-quality-feature:hover .why-quality-check {
+      box-shadow: 0 0 12px rgba(var(--gold-rgb), 0.5), 0 0 0 1px rgba(var(--gold-rgb), 0.45);
+      transform: scale(1.08);
     }
 
     .why-quality-photo { display: flex; flex-direction: column; gap: 0.9rem; }
@@ -724,14 +734,24 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .facility::after { bottom: 0; }
     .facility-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
     .facility-desc { color: var(--ink-dim); margin-top: 1rem; max-width: 52ch; }
-    .facility-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin-top: 1.6rem; }
-    .facility-feature { display: flex; align-items: center; gap: 0.85rem; font-size: 0.95rem; color: var(--ink); }
+    .facility-list { list-style: none; display: flex; flex-direction: column; gap: 1.05rem; margin-top: 1.6rem; }
+    .facility-feature {
+      display: flex; align-items: center; gap: 0.9rem; font-size: 0.95rem; font-weight: 600; color: var(--ink);
+      line-height: 1.6; text-shadow: 0 1px 3px rgba(0, 0, 0, .25);
+      transition: color .25s var(--ease-premium), transform .25s var(--ease-premium);
+    }
+    .facility-feature:hover { color: #ffffff; transform: translateX(3px); }
     .facility-check {
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       width: 24px; height: 24px; border-radius: 50%;
       background: linear-gradient(180deg, var(--accent-gold-light), var(--accent-gold-dark)); color: #17120c;
       font-weight: 700; font-size: 0.72rem;
       box-shadow: 0 0 0 1px rgba(var(--gold-rgb), 0.3), 0 2px 6px rgba(0, 0, 0, .3);
+      transition: box-shadow .25s var(--ease-premium), transform .25s var(--ease-premium);
+    }
+    .facility-feature:hover .facility-check {
+      box-shadow: 0 0 12px rgba(var(--gold-rgb), 0.5), 0 0 0 1px rgba(var(--gold-rgb), 0.45);
+      transform: scale(1.08);
     }
     .facility-photo { display: flex; flex-direction: column; gap: 0.9rem; }
     .facility-frame {
@@ -811,10 +831,11 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .applications-capabilities { list-style: none; display: flex; flex-direction: column; gap: 1.05rem; margin-top: 2.1rem; }
     .applications-capabilities li {
       display: flex; align-items: center; gap: 0.9rem;
-      font-size: 0.97rem; color: var(--ink-dim); line-height: 1.5;
+      font-size: 0.97rem; font-weight: 600; color: var(--ink); line-height: 1.6;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, .25);
       transition: color .25s var(--ease-premium), transform .25s var(--ease-premium);
     }
-    .applications-capabilities li:hover { color: var(--ink); transform: translateX(4px); }
+    .applications-capabilities li:hover { color: #ffffff; transform: translateX(4px); }
     .cap-check {
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       width: 22px; height: 22px; border-radius: 50%;

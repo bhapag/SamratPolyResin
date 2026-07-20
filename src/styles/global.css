@@ -72,6 +72,23 @@ h1, h2, h3, h4 {
   text-transform: uppercase;
 }
 
+/* --- premium heading system (page titles + section titles) ---
+   A subtle brushed-metal gradient (not a flat fill) with a bevel highlight
+   and a soft depth shadow, so every major heading reads as a machined plate
+   set slightly proud of the page rather than flat printed text — same
+   register as "Where Our Resin Builds Excellence," applied once here so
+   every H1/H2 sitewide inherits it automatically. Nested accent spans
+   (.hl, .excellence-gold, .why-heading-*) keep their own distinct colour,
+   since their own background-clip:text wins for their own glyphs. H3/H4
+   (card and component titles) are intentionally left out — this is for
+   page and section titles only, not every small heading on the page. */
+h1, h2 {
+  background: linear-gradient(180deg, #ffffff 0%, #f4f2ee 45%, #d9d6cf 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 4px 18px rgba(0, 0, 0, .32);
+  letter-spacing: 0.015em;
+}
+
 .wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad); }
 
 /* --- mono label / eyebrow --- */
