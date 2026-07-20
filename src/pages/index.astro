@@ -428,23 +428,21 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
 
   <style>
     /* ---------- hero ---------- */
+    /* base is transparent (not var(--bg)) so the hero sits directly on the
+       body's own navy gradient — the section below it has no background of
+       its own either, so this keeps both continuous rather than having the
+       hero as an opaque charcoal block butting up against a bluer tone */
     .hero {
       position: relative; overflow: hidden;
       background: radial-gradient(120% 90% at 80% -10%, rgba(255, 122, 24, .17), transparent 55%),
                   radial-gradient(70% 55% at 6% 108%, rgba(201, 80, 10, .12), transparent 62%),
-                  var(--bg);
+                  transparent;
     }
     /* soft top edge-light instead of a hard rule — a thin catch of light
        rather than a divider, since the hero shouldn't hard-cut against the nav */
     .hero::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, rgba(255, 179, 71, .45) 40%, rgba(255, 179, 71, .45) 60%, transparent);
-    }
-    /* fades the hero out into the section below instead of a flat border-bottom cut */
-    .hero::after {
-      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 140px;
-      background: linear-gradient(180deg, transparent, var(--bg) 92%);
-      pointer-events: none;
     }
     .hero-grid-lines {
       position: absolute; inset: 0;
