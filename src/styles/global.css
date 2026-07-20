@@ -84,6 +84,9 @@ h1, h2, h3, h4 {
   border: 1px solid var(--line-2);
   background: transparent; color: var(--ink);
   cursor: pointer;
+  /* faint top highlight at rest, like light catching a bevelled edge —
+     carried through into the hover shadow below so it doesn't flicker off */
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .06) inset;
   transition: border-color .3s var(--ease-premium), background .3s var(--ease-premium),
               color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
 }
@@ -97,7 +100,7 @@ h1, h2, h3, h4 {
   pointer-events: none;
 }
 .btn:hover::after { transform: translateX(340%) skewX(-18deg); }
-.btn:hover { border-color: var(--amber); color: var(--amber-2); transform: translateY(-2px) scale(1.02); box-shadow: 0 10px 24px rgba(0, 0, 0, .28); }
+.btn:hover { border-color: var(--amber); color: var(--amber-2); transform: translateY(-2px) scale(1.02); box-shadow: 0 1px 0 rgba(255, 255, 255, .09) inset, 0 10px 24px rgba(0, 0, 0, .28); }
 .btn:active { transform: translateY(-1px) scale(0.99); transition-duration: .12s; }
 .btn:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
 
@@ -107,7 +110,7 @@ h1, h2, h3, h4 {
 }
 .btn-solid:hover {
   background: var(--amber-2); color: #17120c; border-color: var(--amber-2);
-  box-shadow: 0 14px 30px rgba(255, 122, 24, .28), 0 8px 20px rgba(0, 0, 0, .3);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .22) inset, 0 14px 30px rgba(255, 122, 24, .28), 0 8px 20px rgba(0, 0, 0, .3);
 }
 
 .btn-wa { background: #25d366; color: #062b14; border-color: #25d366; font-weight: 700; }
