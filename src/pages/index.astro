@@ -10,12 +10,16 @@ import frpWaterTanks from '../assets/applications/frp-water-tanks.jpg';
 import frpRoofingSheets from '../assets/applications/frp-roofing-sheets.jpg';
 import coolingTowers from '../assets/applications/cooling-towers.jpg';
 import marineBoatComponents from '../assets/applications/marine-boat-components.jpg';
+import frpStatue from '../assets/applications/frp-statue.jpg';
+import frpPortableCabin from '../assets/applications/frp-portable-cabin.jpg';
 
 const applications = [
-  { image: frpWaterTanks, name: 'FRP Water Tanks', alt: 'Sectional FRP water storage tank built from glass-fibre-reinforced polyester panels' },
-  { image: frpRoofingSheets, name: 'FRP Roofing Sheets', alt: 'Translucent corrugated FRP roofing sheets fitted over an industrial building frame' },
-  { image: coolingTowers, name: 'Cooling Towers', alt: 'Industrial cooling towers, a common application for chemical-resistant FRP construction' },
-  { image: marineBoatComponents, name: 'Marine & Boat Components', alt: 'A marine vessel hull built using FRP composite construction' },
+  { image: frpWaterTanks, tag: 'Storage Solutions', name: 'FRP Water Tanks', alt: 'Sectional FRP water storage tank built from glass-fibre-reinforced polyester panels' },
+  { image: frpRoofingSheets, tag: 'Building Materials', name: 'FRP Roofing Sheets', alt: 'Translucent corrugated FRP roofing sheets fitted over an industrial building frame' },
+  { image: coolingTowers, tag: 'Industrial Cooling', name: 'Cooling Towers', alt: 'Industrial cooling towers, a common application for chemical-resistant FRP construction' },
+  { image: marineBoatComponents, tag: 'Marine Fabrication', name: 'Marine & Boat Components', alt: 'A marine vessel hull built using FRP composite construction' },
+  { image: frpStatue, tag: 'Decorative FRP', name: 'FRP Statues & Sculptures', alt: 'Bronze-finish FRP statue cast in fine decorative detail, showing the sculptural possibilities of polyester resin' },
+  { image: frpPortableCabin, tag: 'Modular Structures', name: 'FRP Portable Cabins', alt: 'Prefabricated FRP portable cabin used as a modular site office or security cabin' },
 ];
 
 const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like to enquire about your resins.")}`;
@@ -81,7 +85,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
         </div>
       </div>
       <div class="cats-video">
-        <video data-src="/home-video.mp4" muted loop playsinline preload="none" poster="/logo.jpg" disablepictureinpicture disableremoteplayback></video>
+        <video class="lazy-video" data-src="/home-video.mp4" muted loop playsinline preload="none" poster="/logo.jpg" disablepictureinpicture disableremoteplayback></video>
       </div>
     </div>
   </section>
@@ -272,9 +276,9 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       <div class="facility-text">
         <div class="section-head">
           <p class="eyebrow">Our Facility</p>
-          <h2>Production Infrastructure</h2>
+          <h2>Precision Manufacturing</h2>
         </div>
-        <p class="facility-desc">Our manufacturing facility is equipped with industrial resin processing equipment designed for reliable batch production, consistent product quality and efficient manufacturing operations.</p>
+        <p class="facility-desc">Precision starts on the shop floor. Our stainless-steel reactor systems and batch-controlled processes hold viscosity, gel time and colour within tight tolerances — so every drum that leaves this facility performs exactly as specified, not approximately.</p>
         <ul class="facility-list">
           <li class="facility-feature"><span class="facility-check" aria-hidden="true">✓</span>Stainless Steel Processing Equipment</li>
           <li class="facility-feature"><span class="facility-check" aria-hidden="true">✓</span>Batch Manufacturing Process</li>
@@ -294,19 +298,38 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
   <!-- ================= APPLICATION SHOWCASE ================= -->
   <section class="section applications">
     <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Proven Applications</p>
-        <h2>Where Our Resins Are Used</h2>
+      <div class="applications-intro">
+        <div class="applications-text">
+          <div class="section-head">
+            <p class="eyebrow">Proven Applications</p>
+            <h2>Where Our Resin Builds <span class="excellence-gold" data-text="Excellence">Excellence</span></h2>
+          </div>
+          <p class="applications-lead">Trusted by manufacturers who demand consistency, durability and uncompromising quality.</p>
+          <ul class="applications-capabilities">
+            <li><span class="cap-check" aria-hidden="true">✓</span>FRP Water Tanks &amp; Process Equipment</li>
+            <li><span class="cap-check" aria-hidden="true">✓</span>Roofing &amp; Daylight Sheet Systems</li>
+            <li><span class="cap-check" aria-hidden="true">✓</span>Cooling Towers &amp; Industrial Plants</li>
+            <li><span class="cap-check" aria-hidden="true">✓</span>Marine &amp; Boat Components</li>
+            <li><span class="cap-check" aria-hidden="true">✓</span>Quartz Stone Manufacturing</li>
+            <li><span class="cap-check" aria-hidden="true">✓</span>Decorative FRP Statues &amp; Sculptures</li>
+            <li><span class="cap-check" aria-hidden="true">✓</span>Portable Cabins &amp; Modular Structures</li>
+            <li><span class="cap-check" aria-hidden="true">✓</span>High-Performance Composite Applications</li>
+          </ul>
+          <p class="applications-closing">From everyday industrial manufacturing to landmark composite projects, <span class="applications-closing-brand">Samrat Poly Resins</span> delivers dependable performance where precision matters most.</p>
+        </div>
+        <div class="applications-video">
+          <video class="lazy-video" data-src="/applications-video.mp4" muted loop playsinline preload="none" poster="/applications-video-poster.jpg" disablepictureinpicture disableremoteplayback aria-label="Real industrial applications of Samrat Poly Resins products, including cooling towers, FRP roofing and marine components"></video>
+        </div>
       </div>
-      <p class="applications-desc">Trusted across diverse FRP and composite manufacturing industries.</p>
 
-      <div class="application-grid">
+      <div class="applications-gallery">
         {applications.map((app) => (
-          <figure class="application-card">
-            <div class="application-image">
-              <Image src={app.image} alt={app.alt} loading="lazy" widths={[280, 420, 560]} sizes="(max-width: 560px) 100vw, (max-width: 860px) 50vw, 280px" />
-            </div>
-            <figcaption class="application-name">{app.name}</figcaption>
+          <figure class="applications-gallery-card">
+            <Image src={app.image} alt={app.alt} loading="lazy" widths={[360, 480, 640]} sizes="(max-width: 560px) 100vw, (max-width: 860px) 50vw, 33vw" />
+            <figcaption class="applications-gallery-caption">
+              <span class="applications-gallery-tag">{app.tag}</span>
+              <span class="applications-gallery-title">{app.name}</span>
+            </figcaption>
           </figure>
         ))}
       </div>
@@ -405,13 +428,36 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
 
   <style>
     /* ---------- hero ---------- */
-    .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line);
-      background: radial-gradient(120% 90% at 80% -10%, rgba(255,122,24,.14), transparent 55%), var(--bg); }
+    .hero {
+      position: relative; overflow: hidden;
+      background: radial-gradient(120% 90% at 80% -10%, rgba(255, 122, 24, .17), transparent 55%),
+                  radial-gradient(70% 55% at 6% 108%, rgba(201, 80, 10, .12), transparent 62%),
+                  var(--bg);
+    }
+    /* soft top edge-light instead of a hard rule — a thin catch of light
+       rather than a divider, since the hero shouldn't hard-cut against the nav */
+    .hero::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 179, 71, .45) 40%, rgba(255, 179, 71, .45) 60%, transparent);
+    }
+    /* fades the hero out into the section below instead of a flat border-bottom cut */
+    .hero::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 140px;
+      background: linear-gradient(180deg, transparent, var(--bg) 92%);
+      pointer-events: none;
+    }
     .hero-grid-lines {
       position: absolute; inset: 0;
       background-image: linear-gradient(var(--line) 1px, transparent 1px),
                         linear-gradient(90deg, var(--line) 1px, transparent 1px);
       background-size: 64px 64px; opacity: .25; mask-image: radial-gradient(80% 80% at 60% 0%, #000, transparent 75%);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-grid-lines { animation: hero-grid-drift 50s linear infinite; }
+    }
+    @keyframes hero-grid-drift {
+      from { background-position: 0 0, 0 0; }
+      to { background-position: 64px 64px, 64px 64px; }
     }
     .hero-inner { position: relative; padding-block: clamp(3.5rem, 10vw, 7rem); }
     @media (prefers-reduced-motion: no-preference) {
@@ -433,21 +479,28 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       to { opacity: 1; transform: translateY(0); }
     }
     .hero-title {
-      font-size: clamp(2.3rem, 7vw, 4.6rem); font-weight: 700; margin-top: 1.1rem;
+      font-size: clamp(2.3rem, 7vw, 4.6rem); font-weight: 700; margin-top: 1.3rem;
       letter-spacing: 0.005em;
     }
-    .hero-title .hl { color: var(--amber); }
-    .hero-sub { color: var(--ink-dim); font-size: clamp(1rem, 2.2vw, 1.2rem); max-width: 62ch; margin-top: 1.4rem; }
+    /* richer molten-orange gradient in place of a flat fill, with a single
+       sparing glow — depth without turning it into a neon sign */
+    .hero-title .hl {
+      position: relative; display: inline-block;
+      background: linear-gradient(160deg, var(--amber-2) 0%, var(--amber) 45%, var(--amber-deep) 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+      filter: drop-shadow(0 0 14px rgba(255, 122, 24, .22));
+    }
+    .hero-sub { color: var(--ink-dim); font-size: clamp(1rem, 2.2vw, 1.2rem); max-width: 62ch; margin-top: 1.5rem; line-height: 1.7; }
 
-    .hero-trust { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.8rem; }
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2rem; }
     .hero-trust-item {
       font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.03em;
       padding: 0.55rem 1rem; background: var(--bg-3); border: 1px solid var(--line); color: var(--ink-dim);
-      transition: border-color .3s var(--ease-premium), color .3s var(--ease-premium), transform .3s var(--ease-premium);
+      transition: border-color .3s var(--ease-premium), color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
-    .hero-trust-item:hover { border-color: var(--amber); color: var(--amber-2); transform: translateY(-2px); }
+    .hero-trust-item:hover { border-color: var(--amber); color: var(--amber-2); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 0, 0, .25); }
 
-    .hero-cta { display: flex; gap: 0.9rem; margin-top: 2rem; flex-wrap: wrap; }
+    .hero-cta { display: flex; gap: 0.9rem; margin-top: 2.2rem; flex-wrap: wrap; }
 
     /* ---------- category teaser ---------- */
     .cats-grid { display: grid; grid-template-columns: 1.6fr 0.9fr; gap: clamp(1.5rem, 5vw, 3rem); align-items: start; }
@@ -463,13 +516,22 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     }
     .cat-tile:hover {
       border-color: var(--amber); transform: translateY(-3px) scale(1.012);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .28), 0 0 0 1px rgba(255, 122, 24, .1);
     }
     .cat-tile-name { font-family: var(--font-display); text-transform: uppercase; font-size: 1rem; letter-spacing: 0.03em; }
     .cat-tile-count { font-family: var(--font-mono); font-size: 0.76rem; color: var(--amber-2); }
 
     /* ---------- featured ---------- */
-    .featured { background: var(--bg-2); border-block: 1px solid var(--line); }
+    .featured {
+      position: relative;
+      background: linear-gradient(180deg, transparent, var(--bg-2) 64px, var(--bg-2) calc(100% - 64px), transparent);
+    }
+    .featured::before, .featured::after {
+      content: ''; position: absolute; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line-2) 20%, var(--line-2) 80%, transparent);
+    }
+    .featured::before { top: 0; }
+    .featured::after { bottom: 0; }
     .featured-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.1rem; }
 
@@ -505,7 +567,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     }
     .why-card:hover {
       border-color: var(--amber); transform: translateY(-3px) scale(1.012);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .28), 0 0 0 1px rgba(255, 122, 24, .1);
     }
     .why-head { display: flex; align-items: center; gap: 0.8rem; }
     .why-check {
@@ -606,7 +668,18 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     }
 
     /* ---------- production infrastructure ---------- */
-    .facility { background: var(--bg-2); border-block: 1px solid var(--line); }
+    /* soft-fades into the sections above/below instead of a hard-edged
+       colour block, with a hairline that itself fades out at both ends */
+    .facility {
+      position: relative;
+      background: linear-gradient(180deg, transparent, var(--bg-2) 64px, var(--bg-2) calc(100% - 64px), transparent);
+    }
+    .facility::before, .facility::after {
+      content: ''; position: absolute; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line-2) 20%, var(--line-2) 80%, transparent);
+    }
+    .facility::before { top: 0; }
+    .facility::after { bottom: 0; }
     .facility-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
     .facility-desc { color: var(--ink-dim); margin-top: 1rem; max-width: 52ch; }
     .facility-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin-top: 1.6rem; }
@@ -618,12 +691,19 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     }
     .facility-photo { display: flex; flex-direction: column; gap: 0.9rem; }
     .facility-frame {
-      border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, .35);
+      position: relative;
+      border: 1px solid rgba(255, 122, 24, .22); border-radius: 18px; overflow: hidden;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, .4), 0 0 0 1px rgba(255, 255, 255, .04) inset, 0 1px 0 rgba(255, 255, 255, .07) inset;
       height: clamp(280px, 32vw, 460px);
+      transition: transform .4s var(--ease-premium), box-shadow .4s var(--ease-premium), border-color .4s var(--ease-premium);
     }
-    .facility-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s var(--ease-premium); }
-    .facility-frame:hover img { transform: scale(1.045); }
+    .facility-frame:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 122, 24, .45);
+      box-shadow: 0 26px 56px rgba(0, 0, 0, .45), 0 0 26px rgba(255, 122, 24, .14), 0 0 0 1px rgba(255, 255, 255, .05) inset, 0 1px 0 rgba(255, 255, 255, .08) inset;
+    }
+    .facility-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease-premium); }
+    .facility-frame:hover img { transform: scale(1.05); }
     .facility-caption {
       font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;
       text-transform: uppercase; color: var(--ink-faint); text-align: center;
@@ -635,26 +715,107 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     }
 
     /* ---------- application showcase ---------- */
-    .applications-desc { color: var(--ink-dim); margin-top: 1rem; max-width: 62ch; }
-    .application-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; margin-top: 2.4rem; }
-    .application-card {
-      display: flex; flex-direction: column; gap: 0; overflow: hidden;
-      background: var(--bg-3); border: 1px solid var(--line);
+    .applications-intro { display: grid; grid-template-columns: 1.6fr 0.9fr; gap: clamp(1.5rem, 5vw, 3rem); align-items: start; }
+    /* premium "glass" frame for the hero video: rounded, a soft top-edge
+       highlight standing in for a glass bevel, and a deep ambient shadow
+       for depth — with a gentle lift on hover rather than a static plate */
+    .applications-video {
+      position: relative; align-self: start; overflow: hidden; border-radius: 18px;
+      background: var(--bg-3); border: 1px solid rgba(255, 255, 255, .08);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, .42), 0 0 0 1px rgba(255, 255, 255, .05) inset, 0 1px 0 rgba(255, 255, 255, .08) inset;
+      transition: transform .4s var(--ease-premium), box-shadow .4s var(--ease-premium);
+    }
+    .applications-video:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 26px 58px rgba(0, 0, 0, .48), 0 0 0 1px rgba(255, 255, 255, .06) inset, 0 1px 0 rgba(255, 255, 255, .1) inset;
+    }
+    .applications-video video { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; background: #000; }
+    @media (max-width: 860px) { .applications-intro { grid-template-columns: 1fr; } .applications-video video { aspect-ratio: 16 / 10; } .applications-video { order: 2; } }
+
+    /* premium metallic-gold "Excellence": layered gradient + text-shadow bevel
+       for depth, drop-shadow for a soft outer glow, and a ::before duplicate
+       of the text (via attr(data-text)) that carries an animated diagonal
+       shine band — clipped to the same glyphs so it reads as light moving
+       across polished metal, not a decorative overlay shape. */
+    .excellence-gold {
+      position: relative; display: inline-block;
+      background: linear-gradient(180deg, #fff8e0 0%, #f2d488 13%, #d4af37 30%, #8f6a1a 50%, #d4af37 72%, #f6dea0 88%, #c9a227 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+      text-shadow: 0 1px 0 rgba(255, 248, 224, 0.4), 0 -1px 1px rgba(0, 0, 0, 0.45);
+      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.35)) drop-shadow(0 0 22px rgba(212, 175, 55, 0.16));
+    }
+    .excellence-gold::before {
+      content: attr(data-text);
+      position: absolute; inset: 0;
+      background: linear-gradient(100deg, transparent 40%, rgba(255, 255, 255, 0.85) 48%, rgba(255, 241, 199, 0.95) 52%, transparent 60%);
+      background-size: 300% 100%;
+      background-position: -300% 0;
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+      animation: excellence-shine 7s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes excellence-shine {
+      0%, 62% { background-position: -300% 0; }
+      82%, 100% { background-position: 300% 0; }
+    }
+
+    .applications-lead {
+      font-size: clamp(1.1rem, 2.3vw, 1.4rem); font-weight: 500;
+      color: var(--ink); line-height: 1.55; letter-spacing: 0.005em;
+      margin-top: 1.3rem; max-width: 50ch;
+    }
+    .applications-capabilities { list-style: none; display: flex; flex-direction: column; gap: 1.05rem; margin-top: 2.1rem; }
+    .applications-capabilities li {
+      display: flex; align-items: center; gap: 0.9rem;
+      font-size: 0.97rem; color: var(--ink-dim); line-height: 1.5;
+      transition: color .25s var(--ease-premium), transform .25s var(--ease-premium);
+    }
+    .applications-capabilities li:hover { color: var(--ink); transform: translateX(4px); }
+    .cap-check {
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: linear-gradient(180deg, #f2d488, #a9791f); color: #17120c;
+      font-weight: 700; font-size: 0.68rem;
+      box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.3);
+      transition: box-shadow .25s var(--ease-premium), transform .25s var(--ease-premium);
+    }
+    .applications-capabilities li:hover .cap-check {
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.55), 0 0 0 1px rgba(212, 175, 55, 0.45);
+      transform: scale(1.1);
+    }
+    .applications-closing {
+      margin-top: 1.9rem; padding-top: 1.5rem; border-top: 1px solid var(--line);
+      color: var(--ink-dim); font-size: 0.98rem; line-height: 1.6; max-width: 54ch;
+    }
+    .applications-closing-brand { color: var(--amber-2); font-weight: 600; }
+
+    .applications-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-top: 2.6rem; }
+    .applications-gallery-card {
+      position: relative; overflow: hidden; border: 1px solid var(--line); background: var(--bg-3);
+      aspect-ratio: 4 / 3;
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
-    .application-card:hover {
+    .applications-gallery-card:hover {
       border-color: var(--amber); transform: translateY(-3px) scale(1.012);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, .32), 0 0 0 1px rgba(255, 122, 24, .12);
     }
-    .application-image { aspect-ratio: 1 / 1; overflow: hidden; background: var(--bg-2); }
-    .application-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s var(--ease-premium); }
-    .application-card:hover .application-image img { transform: scale(1.05); }
-    .application-name {
-      padding: 1rem 1.1rem; font-size: 0.95rem; color: var(--ink);
-      text-transform: none; letter-spacing: 0; border-top: 1px solid var(--line);
+    .applications-gallery-card img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .6s var(--ease-premium);
     }
-    @media (max-width: 860px) { .application-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .application-grid { grid-template-columns: 1fr; } }
+    .applications-gallery-card:hover img { transform: scale(1.06); }
+    .applications-gallery-caption {
+      position: absolute; inset: auto 0 0 0; padding: 1.1rem 1.2rem 1rem;
+      display: flex; flex-direction: column; gap: 0.25rem;
+      background: linear-gradient(180deg, transparent, rgba(8, 9, 11, 0.88) 72%);
+    }
+    .applications-gallery-tag {
+      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--amber-2);
+    }
+    .applications-gallery-title { font-family: var(--font-display); font-size: 1.05rem; color: var(--ink); letter-spacing: 0.01em; }
+    @media (max-width: 860px) { .applications-gallery { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .applications-gallery { grid-template-columns: 1fr; } }
 
     /* ---------- industries we serve ---------- */
     .industries-desc { color: var(--ink-dim); margin-top: 1rem; max-width: 62ch; }
@@ -666,12 +827,14 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     }
     .industry-card:hover {
       border-color: var(--amber); transform: translateY(-3px) scale(1.012);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .28), 0 0 0 1px rgba(255, 122, 24, .1);
     }
     .industry-icon {
       display: flex; align-items: center; justify-content: center;
       width: 42px; height: 42px; color: var(--amber);
+      transition: transform .3s var(--ease-premium), color .3s var(--ease-premium);
     }
+    .industry-card:hover .industry-icon { transform: scale(1.1); color: var(--amber-2); }
     .industry-icon svg { width: 26px; height: 26px; }
     .industry-name { font-size: 1rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
     @media (max-width: 860px) { .industry-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -698,7 +861,11 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     @media (max-width: 760px) { .about-teaser-grid { grid-template-columns: 1fr; } }
 
     /* ---------- contact teaser ---------- */
-    .contact-teaser { background: var(--bg-2); border-top: 1px solid var(--line); }
+    .contact-teaser { position: relative; background: linear-gradient(180deg, transparent, var(--bg-2) 70px); }
+    .contact-teaser::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line-2) 20%, var(--line-2) 80%, transparent);
+    }
     .contact-teaser-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
     .contact-teaser-inner h2 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); margin-top: 0.6rem; }
     .contact-teaser-sub { color: var(--ink-dim); margin-top: 0.8rem; max-width: 42ch; }
@@ -733,29 +900,31 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
   </script>
 
   <script>
-    // Hero category video: don't fetch the ~3MB file until it's actually
-    // about to scroll into view (rootMargin gives it a head start so
-    // playback is ready by the time it's visible, not loading on arrival).
+    // Homepage ambient videos (category teaser + application showcase):
+    // don't fetch the file until it's actually about to scroll into view
+    // (rootMargin gives it a head start so playback is ready by the time
+    // it's visible, not loading on arrival).
     document.addEventListener('astro:page-load', () => {
-      const video = document.querySelector('.cats-video video') as HTMLVideoElement | null;
-      if (!video || video.dataset.wired === 'true') return;
-      video.dataset.wired = 'true';
-
-      const src = video.dataset.src;
-      if (!src) return;
-
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      const io = new IntersectionObserver((entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          video.src = src;
-          video.play().catch(() => {});
-          io.unobserve(video);
-        }
-      }, { rootMargin: '200px 0px' });
+      document.querySelectorAll<HTMLVideoElement>('.lazy-video').forEach((video) => {
+        if (video.dataset.wired === 'true') return;
+        video.dataset.wired = 'true';
 
-      io.observe(video);
+        const src = video.dataset.src;
+        if (!src) return;
+
+        const io = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            video.src = src;
+            video.play().catch(() => {});
+            io.unobserve(video);
+          }
+        }, { rootMargin: '200px 0px' });
+
+        io.observe(video);
+      });
     });
   </script>
 </Base>

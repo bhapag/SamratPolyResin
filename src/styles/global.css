@@ -75,6 +75,7 @@ h1, h2, h3, h4 {
 
 /* --- buttons --- */
 .btn {
+  position: relative; overflow: hidden;
   display: inline-flex; align-items: center; gap: 0.55rem;
   font-family: var(--font-mono);
   font-size: 0.82rem; font-weight: 500;
@@ -86,6 +87,16 @@ h1, h2, h3, h4 {
   transition: border-color .3s var(--ease-premium), background .3s var(--ease-premium),
               color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
 }
+/* one-shot light sweep on hover — reads as a reflection passing across a
+   polished surface, not a looping effect, so it stays "premium" not "flashy" */
+.btn::after {
+  content: ''; position: absolute; top: 0; bottom: 0; left: -45%; width: 35%;
+  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: translateX(0) skewX(-18deg);
+  transition: transform .65s var(--ease-premium);
+  pointer-events: none;
+}
+.btn:hover::after { transform: translateX(340%) skewX(-18deg); }
 .btn:hover { border-color: var(--amber); color: var(--amber-2); transform: translateY(-2px) scale(1.02); box-shadow: 0 10px 24px rgba(0, 0, 0, .28); }
 .btn:active { transform: translateY(-1px) scale(0.99); transition-duration: .12s; }
 .btn:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
@@ -94,7 +105,10 @@ h1, h2, h3, h4 {
   background: var(--amber); color: #17120c; border-color: var(--amber);
   font-weight: 700;
 }
-.btn-solid:hover { background: var(--amber-2); color: #17120c; border-color: var(--amber-2); }
+.btn-solid:hover {
+  background: var(--amber-2); color: #17120c; border-color: var(--amber-2);
+  box-shadow: 0 14px 30px rgba(255, 122, 24, .28), 0 8px 20px rgba(0, 0, 0, .3);
+}
 
 .btn-wa { background: #25d366; color: #062b14; border-color: #25d366; font-weight: 700; }
 .btn-wa:hover { background: #2ee87a; border-color: #2ee87a; color: #062b14; }

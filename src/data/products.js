@@ -374,7 +374,7 @@ export const products = [
     category: "Fire Retardant Resins",
     price: "₹175 / kg",
     image: "iso-fire-retardant-resin.jpg",
-    images: ["iso-fire-retardant-resin-2.jpg", "iso-fire-retardant-resin-3.jpg"],
+    images: ["iso-fire-retardant-resin-2.jpg"],
     specs: {
       "Minimum Order Quantity": "500 kg",
       "Base Resin": "Polyester",
