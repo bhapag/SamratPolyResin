@@ -16,13 +16,13 @@ const { slug, title, description, readingTime, icon } = resource;
 <style>
   .res-card {
     display: flex; flex-direction: column; gap: 0.9rem; height: 100%;
-    background: var(--bg-3); border: 1px solid var(--line);
+    background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
     padding: 1.5rem 1.5rem 1.4rem;
     transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
   }
   .res-card:hover {
     border-color: var(--accent-gold); transform: translateY(-4px) scale(1.012);
-    box-shadow: 0 14px 32px rgba(0, 0, 0, .3);
+    box-shadow: var(--surface-shadow-hover);
   }
   .res-card:hover .res-card-link { transform: translateX(3px); color: var(--accent-gold); }
 

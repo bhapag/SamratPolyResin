@@ -549,12 +549,12 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
     .cat-tile {
       display: flex; flex-direction: column; gap: 0.4rem; padding: 1.3rem 1.4rem;
-      background: var(--bg-3); border: 1px solid var(--line);
+      background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
     .cat-tile:hover {
       border-color: var(--accent-gold); transform: translateY(-3px) scale(1.012);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, .28), 0 0 0 1px rgba(var(--gold-rgb), .1);
+      box-shadow: var(--surface-shadow-hover);
     }
     .cat-tile-name { font-family: var(--font-display); text-transform: uppercase; font-size: 1rem; letter-spacing: 0.03em; }
     .cat-tile-count { font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-gold-light); }
@@ -600,12 +600,12 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .why-logistics-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 1.1rem; }
     .why-card {
       display: flex; flex-direction: column; gap: 0.8rem; padding: 1.3rem 1.4rem; height: 100%;
-      background: var(--bg-3); border: 1px solid var(--line);
+      background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
     .why-card:hover {
       border-color: var(--accent-gold); transform: translateY(-3px) scale(1.012);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, .28), 0 0 0 1px rgba(var(--gold-rgb), .1);
+      box-shadow: var(--surface-shadow-hover);
     }
     .why-head { display: flex; align-items: center; gap: 0.8rem; }
     .why-check {
@@ -862,7 +862,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     }
     .applications-gallery-card:hover {
       border-color: var(--accent-gold); transform: translateY(-3px) scale(1.012);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, .32), 0 0 0 1px rgba(var(--gold-rgb), .12);
+      box-shadow: var(--surface-shadow-hover);
     }
     .applications-gallery-card img {
       width: 100%; height: 100%; object-fit: cover; display: block;
@@ -887,12 +887,12 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .industry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-top: 2.4rem; }
     .industry-card {
       display: flex; flex-direction: column; align-items: flex-start; gap: 0.9rem; padding: 1.4rem 1.5rem;
-      background: var(--bg-3); border: 1px solid var(--line);
+      background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
     .industry-card:hover {
       border-color: var(--accent-gold); transform: translateY(-3px) scale(1.012);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, .28), 0 0 0 1px rgba(var(--gold-rgb), .1);
+      box-shadow: var(--surface-shadow-hover);
     }
     .industry-icon {
       display: flex; align-items: center; justify-content: center;

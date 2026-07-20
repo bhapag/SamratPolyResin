@@ -191,7 +191,8 @@ const organizationJsonLd = {
       position: sticky; top: 0; z-index: 50;
       background: color-mix(in srgb, var(--bg) 88%, transparent);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(var(--gold-rgb), .14);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .22);
       animation: header-fade-in .5s var(--ease-premium) both;
     }
     @media (prefers-reduced-motion: no-preference) {
@@ -202,7 +203,10 @@ const organizationJsonLd = {
     }
     .header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
     .brand { display: flex; align-items: center; gap: 0.7rem; }
-    .brand-mark { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .brand-mark {
+      width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0;
+      box-shadow: 0 0 0 1px rgba(var(--gold-rgb), .3), 0 2px 8px rgba(0, 0, 0, .35);
+    }
     .brand-mark.big { width: 64px; height: 64px; display: block; }
     .brand-name { font-family: var(--font-display); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; font-size: 1.05rem; }
     .nav { display: flex; align-items: center; gap: clamp(0.8rem, 2.5vw, 1.8rem); }
@@ -217,13 +221,24 @@ const organizationJsonLd = {
       .nav a:not(.nav-wa):nth-child(3) { display: none; }
     }
 
-    .site-footer { border-top: 1px solid var(--line); background: var(--bg-2); margin-top: 2rem; }
+    .site-footer {
+      position: relative; margin-top: 2rem;
+      background: linear-gradient(180deg, transparent, var(--bg-2) 70px);
+    }
+    .site-footer::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line-2) 20%, var(--line-2) 80%, transparent);
+    }
     .footer-grid {
       display: grid; grid-template-columns: 1.3fr 0.9fr 1fr 1fr; gap: 2.5rem;
       padding-block: 3.5rem 2rem;
     }
     .foot-name { font-family: var(--font-display); text-transform: uppercase; font-size: 1.2rem; margin-top: 0.9rem; }
-    .foot-h { font-size: 0.8rem; letter-spacing: 0.16em; color: var(--ink); margin-bottom: 0.8rem; }
+    .foot-h {
+      font-size: 0.8rem; letter-spacing: 0.16em; color: var(--ink);
+      margin-bottom: 0.9rem; padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(var(--gold-rgb), .22);
+    }
     .foot-nav { display: flex; flex-direction: column; gap: 0.7rem; }
     .foot-nav a { color: var(--ink-dim); font-size: 0.9rem; transition: color .25s var(--ease-premium); }
     .foot-nav a:hover { color: var(--accent-gold-light); }

@@ -57,7 +57,7 @@ const { faqs } = Astro.props;
 
 <style>
   .faq-accordion { display: flex; flex-direction: column; gap: 0.9rem; }
-  .faq-item { background: var(--bg-3); border: 1px solid var(--line); transition: border-color .3s var(--ease-premium); }
+  .faq-item { background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest); transition: border-color .3s var(--ease-premium); }
   .faq-item.is-open { border-color: var(--accent-gold-dark); }
   .faq-item h3 { text-transform: none; letter-spacing: 0; font-weight: 400; }
 

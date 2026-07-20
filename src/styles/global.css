@@ -32,6 +32,19 @@
   --premium-navy-light: #7d9bd4;
   --premium-navy-rgb:   85, 120, 179;
 
+  /* --- shared elevation tokens ---
+     Every flat --bg-3 panel (cards, forms, boxes) gets a resting shadow so
+     it reads as a machined plate rather than a printed rectangle; the
+     interactive-card subset (product/resource cards, category tiles,
+     industry/why cards) steps up to the hover token, which adds a whisper
+     of gold at the rim instead of just a darker shadow. */
+  --surface-shadow-rest:  0 1px 0 rgba(255, 255, 255, .04) inset, 0 10px 26px rgba(0, 0, 0, .24);
+  --surface-shadow-hover: 0 1px 0 rgba(255, 255, 255, .07) inset, 0 20px 44px rgba(0, 0, 0, .36), 0 0 0 1px rgba(var(--gold-rgb), .14);
+
+  /* --- premium image frame --- */
+  --image-frame-border: rgba(var(--gold-rgb), .18);
+  --image-frame-shadow: 0 1px 0 rgba(255, 255, 255, .06) inset, 0 18px 40px rgba(0, 0, 0, .4);
+
   --font-display: 'Oswald', 'Arial Narrow', sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;

@@ -198,11 +198,15 @@ const productJsonLd = {
     .prod { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(1.5rem, 5vw, 3.5rem); padding-block: 2.2rem 3rem; }
     .prod-media-sticky { position: sticky; top: 90px; }
     .prod-img {
-      position: relative; aspect-ratio: 4 / 3; border: 1px solid var(--line);
+      position: relative; aspect-ratio: 4 / 3; border: 1px solid var(--image-frame-border); border-radius: 14px;
       background: linear-gradient(135deg, #1a1e24, #23282f);
       display: grid; place-items: center; overflow: hidden;
+      box-shadow: var(--image-frame-shadow);
+      transition: box-shadow .4s var(--ease-premium);
     }
-    .prod-img img { width: 100%; height: 100%; object-fit: cover; transition: opacity .14s ease; }
+    .prod-img:hover { box-shadow: 0 1px 0 rgba(255, 255, 255, .08) inset, 0 22px 48px rgba(0, 0, 0, .46); }
+    .prod-img img { width: 100%; height: 100%; object-fit: cover; transition: opacity .14s ease, transform .5s var(--ease-premium); }
+    .prod-img:hover img:not(.fading) { transform: scale(1.03); }
     .prod-img img.fading { opacity: 0; }
     .img-fallback { display: none; position: absolute; font-family: var(--font-display); font-weight: 700; font-size: 3.5rem; color: var(--line-2); }
     .prod-img.noimg .img-fallback { display: block; }
@@ -220,7 +224,7 @@ const productJsonLd = {
     .prod-name { font-size: clamp(2rem, 5vw, 3.2rem); margin-top: 0.6rem; text-transform: none; letter-spacing: 0; }
     .prod-quote {
       display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.9rem; max-width: 420px;
-      padding: 1.1rem 1.3rem; background: var(--bg-3); border: 1px solid var(--line);
+      padding: 1.1rem 1.3rem; background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
     }
     .prod-quote-heading { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
     .prod-quote-value { font-family: var(--font-display); font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--accent-gold-light); }
@@ -289,15 +293,19 @@ const productJsonLd = {
     .rel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.9rem; }
     .rel-card {
       display: flex; flex-direction: column; gap: 0.4rem; padding: 1rem 1.1rem;
-      background: var(--bg-3); border: 1px solid var(--line);
+      background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
-    .rel-card:hover { border-color: var(--accent-gold); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0, 0, 0, .26); }
+    .rel-card:hover { border-color: var(--accent-gold); transform: translateY(-2px); box-shadow: var(--surface-shadow-hover); }
     .rel-name { font-family: var(--font-display); text-transform: uppercase; font-size: 0.95rem; }
     .rel-price { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-gold-light); }
 
-    .enquire-sec { background: var(--bg-2); border-top: 1px solid var(--line); }
+    .enquire-sec { position: relative; background: linear-gradient(180deg, transparent, var(--bg-2) 64px); }
+    .enquire-sec::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line-2) 20%, var(--line-2) 80%, transparent);
+    }
     .enquire-inner { max-width: 720px; }
-    .enquire-box { background: var(--bg-3); border: 1px solid var(--line); padding: clamp(1.4rem, 4vw, 2.2rem); }
+    .enquire-box { background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest); padding: clamp(1.4rem, 4vw, 2.2rem); }
   </style>
 </Base>
