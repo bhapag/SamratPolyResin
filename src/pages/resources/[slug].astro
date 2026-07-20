@@ -289,19 +289,19 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-faint); letter-spacing: 0.04em;
     }
     .crumb a { transition: color .25s var(--ease-premium); }
-    .crumb a:hover { color: var(--amber-2); }
+    .crumb a:hover { color: var(--accent-gold-light); }
     .crumb .cur { color: var(--ink-dim); }
 
     .article { padding-block: 2.6rem 4rem; max-width: 900px; }
     .article-head { padding-bottom: 2.6rem; border-bottom: 1px solid var(--line); }
     .article-icon {
       display: flex; align-items: center; justify-content: center;
-      width: 48px; height: 48px; color: var(--amber); margin-bottom: 1.4rem;
+      width: 48px; height: 48px; color: var(--accent-gold); margin-bottom: 1.4rem;
     }
     .article-icon :global(svg) { width: 28px; height: 28px; }
     .article-category {
       font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--amber); font-weight: 500;
+      text-transform: uppercase; color: var(--accent-gold); font-weight: 500;
     }
     .article-head h1 { font-size: clamp(2rem, 5vw, 3rem); margin-top: 0.9rem; text-transform: none; letter-spacing: 0; }
     .article-lead { color: var(--ink-dim); margin-top: 1.3rem; font-size: 1.05rem; max-width: 56ch; line-height: 1.7; }
@@ -339,13 +339,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .process-step {
       position: relative; flex: 1 1 0; min-width: 0;
       display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.45rem;
-      padding: 1.1rem 0.7rem; background: var(--bg); border: 1px solid var(--line); border-top: 2px solid var(--amber);
+      padding: 1.1rem 0.7rem; background: var(--bg); border: 1px solid var(--line); border-top: 2px solid var(--accent-gold);
     }
     .process-step:not(:last-child)::after {
       content: '→'; position: absolute; right: -1.3rem; top: 50%; transform: translateY(-50%);
-      color: var(--amber); font-size: 1.1rem; line-height: 1;
+      color: var(--accent-gold); font-size: 1.1rem; line-height: 1;
     }
-    .process-num { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--amber-2); }
+    .process-num { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--accent-gold-light); }
     .process-label { font-size: 0.9rem; color: var(--ink); font-weight: 600; }
     /* Wrapping and the direction swap always happen together at the same
        breakpoint, so an arrow never points at empty space where an item wrapped away. */
@@ -365,17 +365,17 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .process-branch-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
     .process-chip {
       font-family: var(--font-mono); font-size: 0.78rem; padding: 0.45rem 0.9rem;
-      border: 1px solid var(--amber-deep); border-radius: 999px; color: var(--amber-2);
+      border: 1px solid var(--accent-gold-dark); border-radius: 999px; color: var(--accent-gold-light);
     }
 
     .diagram-icongrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.9rem; }
     .diagram-icon-card {
       display: flex; flex-direction: column; align-items: center; gap: 0.6rem; text-align: center;
-      padding: 1.1rem 0.8rem; background: var(--bg); border: 1px solid var(--line); border-top: 2px solid var(--amber);
+      padding: 1.1rem 0.8rem; background: var(--bg); border: 1px solid var(--line); border-top: 2px solid var(--accent-gold);
       transition: transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
     .diagram-icon-card:hover { transform: translateY(-3px) scale(1.015); box-shadow: 0 10px 22px rgba(0, 0, 0, .26); }
-    .diagram-icon { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; color: var(--amber); }
+    .diagram-icon { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; color: var(--accent-gold); }
     .diagram-icon :global(svg) { width: 24px; height: 24px; }
     .diagram-icon-label { font-size: 0.86rem; color: var(--ink); }
 
@@ -399,12 +399,12 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
     .article-related-card:hover {
-      border-color: var(--amber); transform: translateY(-3px) scale(1.012);
+      border-color: var(--accent-gold); transform: translateY(-3px) scale(1.012);
       box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
     }
     .article-related-cat {
       font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--amber);
+      text-transform: uppercase; color: var(--accent-gold);
     }
     .article-related-title { font-family: var(--font-display); font-size: 1rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
     .article-related-desc { color: var(--ink-dim); font-size: 0.86rem; flex: 1; }
@@ -413,7 +413,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       margin-top: 0.5rem; padding-top: 0.8rem; border-top: 1px solid var(--line);
     }
     .article-related-time { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); }
-    .article-related-arrow { color: var(--amber); flex-shrink: 0; transition: transform .3s var(--ease-premium); }
+    .article-related-arrow { color: var(--accent-gold); flex-shrink: 0; transition: transform .3s var(--ease-premium); }
     .article-related-card:hover .article-related-arrow { transform: translateX(3px); }
 
     .article-prevnext {
@@ -425,11 +425,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       background: var(--bg-3); border: 1px solid var(--line);
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium);
     }
-    .prevnext-link:hover { border-color: var(--amber); transform: translateY(-2px); }
+    .prevnext-link:hover { border-color: var(--accent-gold); transform: translateY(-2px); }
     .prevnext-next { text-align: right; align-items: flex-end; grid-column: 2; }
     .prevnext-dir {
       font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--amber-2);
+      text-transform: uppercase; color: var(--accent-gold-light);
     }
     .prevnext-title { color: var(--ink); font-size: 0.92rem; }
     @media (max-width: 620px) {

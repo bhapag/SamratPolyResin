@@ -102,7 +102,7 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
       border: 1px solid var(--line-2); background: var(--bg-3); padding: 0.7rem 1rem;
       max-width: 420px; color: var(--ink-faint); transition: border-color .25s var(--ease-premium);
     }
-    .prod-search:focus-within { border-color: var(--amber); color: var(--amber); }
+    .prod-search:focus-within { border-color: var(--accent-gold); color: var(--accent-gold); }
     .prod-search input {
       flex: 1; background: transparent; border: none; outline: none;
       color: var(--ink); font-family: var(--font-body); font-size: 0.92rem;
@@ -115,8 +115,8 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
       color: var(--ink-dim); cursor: pointer;
       transition: border-color .25s var(--ease-premium), color .25s var(--ease-premium), background .25s var(--ease-premium);
     }
-    .prod-chip:hover { border-color: var(--amber); color: var(--amber-2); }
-    .prod-chip.is-active { background: var(--amber); border-color: var(--amber); color: #17120c; font-weight: 600; }
+    .prod-chip:hover { border-color: var(--accent-gold); color: var(--accent-gold-light); }
+    .prod-chip.is-active { background: var(--accent-gold); border-color: var(--accent-gold); color: #17120c; font-weight: 600; }
     .prod-filter-empty { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.2rem; }
     @media (max-width: 620px) { .prod-search { max-width: none; } }
 
@@ -128,7 +128,7 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
       padding-bottom: 0.7rem; border-bottom: 1px solid var(--line);
     }
     .cat-title span:first-child { color: var(--ink); letter-spacing: 0.05em; }
-    .cat-count { font-family: var(--font-mono); font-size: 0.8rem; color: var(--amber); margin-left: auto; }
+    .cat-count { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-gold); margin-left: auto; }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.1rem; }
   </style>
 </Base>

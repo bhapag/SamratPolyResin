@@ -511,31 +511,9 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       font-size: clamp(2.3rem, 7vw, 4.6rem); font-weight: 700; margin-top: 1.3rem;
       letter-spacing: 0.005em;
     }
-    /* brushed champagne-gold, built the same way as the Excellence section's
-       gold (layered metallic gradient + bevel + sparing glow + a duplicate-
-       text ::before carrying a slow shine sweep) but tuned as its own thing —
-       cooler stops, a different angle and timing — rather than copied */
-    .hero-title .hl {
-      position: relative; display: inline-block;
-      background: linear-gradient(145deg, #fdf3d0 0%, #e8cf8a 16%, #cfa94a 36%, #8a6a24 54%, #cfa94a 74%, #f2e0ab 90%, #c9a227 100%);
-      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
-      text-shadow: 0 1px 0 rgba(255, 248, 224, .38), 0 -1px 1px rgba(0, 0, 0, .5);
-      filter: drop-shadow(0 0 10px rgba(212, 175, 55, .28)) drop-shadow(0 0 20px rgba(212, 175, 55, .12));
-    }
-    .hero-title .hl::before {
-      content: attr(data-text);
-      position: absolute; inset: 0;
-      background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, .85) 49%, rgba(255, 244, 214, .95) 51%, transparent 58%);
-      background-size: 280% 100%;
-      background-position: -280% 0;
-      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
-      animation: hero-gold-shine 8s ease-in-out infinite;
-      pointer-events: none;
-    }
-    @keyframes hero-gold-shine {
-      0%, 58% { background-position: -280% 0; }
-      80%, 100% { background-position: 280% 0; }
-    }
+    /* premium gold highlight for QUALITY/PERFORMANCE now lives in the shared
+       global `.hl` rule (src/styles/global.css) so the homepage hero and the
+       About page hero use the exact same treatment instead of two copies */
     .hero-sub { color: var(--ink-dim); font-size: clamp(1rem, 2.2vw, 1.2rem); max-width: 62ch; margin-top: 1.5rem; line-height: 1.7; }
 
     .hero-trust { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2rem; }
@@ -575,11 +553,11 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
     .cat-tile:hover {
-      border-color: var(--amber); transform: translateY(-3px) scale(1.012);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, .28), 0 0 0 1px rgba(255, 122, 24, .1);
+      border-color: var(--accent-gold); transform: translateY(-3px) scale(1.012);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .28), 0 0 0 1px rgba(var(--gold-rgb), .1);
     }
     .cat-tile-name { font-family: var(--font-display); text-transform: uppercase; font-size: 1rem; letter-spacing: 0.03em; }
-    .cat-tile-count { font-family: var(--font-mono); font-size: 0.76rem; color: var(--amber-2); }
+    .cat-tile-count { font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-gold-light); }
 
     /* ---------- featured ---------- */
     .featured {
@@ -626,14 +604,16 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
     .why-card:hover {
-      border-color: var(--amber); transform: translateY(-3px) scale(1.012);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, .28), 0 0 0 1px rgba(255, 122, 24, .1);
+      border-color: var(--accent-gold); transform: translateY(-3px) scale(1.012);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .28), 0 0 0 1px rgba(var(--gold-rgb), .1);
     }
     .why-head { display: flex; align-items: center; gap: 0.8rem; }
     .why-check {
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       width: 28px; height: 28px; border-radius: 50%;
-      background: var(--amber); color: #17120c; font-weight: 700; font-size: 0.9rem;
+      background: linear-gradient(180deg, var(--accent-gold-light), var(--accent-gold-dark)); color: #17120c;
+      font-weight: 700; font-size: 0.9rem;
+      box-shadow: 0 0 0 1px rgba(var(--gold-rgb), 0.3), 0 2px 6px rgba(0, 0, 0, .3);
     }
     .why-title { font-size: 0.95rem; color: var(--ink); }
     .why-desc { color: var(--ink-dim); font-size: 0.86rem; line-height: 1.6; flex: 1; }
@@ -653,15 +633,15 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     }
     .why-timeline-bar {
       position: relative; flex: 1; height: 2px; border-radius: 1px;
-      background: linear-gradient(90deg, var(--amber-deep), var(--amber) 60%, var(--amber-2));
+      background: linear-gradient(90deg, var(--accent-gold-dark), var(--accent-gold) 60%, var(--accent-gold-light));
     }
     .why-timeline-bar::after {
       content: ''; position: absolute; right: -1px; top: 50%; transform: translateY(-50%);
       width: 0; height: 0;
       border-top: 4px solid transparent; border-bottom: 4px solid transparent;
-      border-left: 6px solid var(--amber-2);
+      border-left: 6px solid var(--accent-gold-light);
     }
-    .why-timeline-label { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.03em; color: var(--amber-2); font-weight: 500; }
+    .why-timeline-label { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.03em; color: var(--accent-gold-light); font-weight: 500; }
 
     .why-gst { display: flex; flex-direction: column; gap: 0.6rem; margin-top: auto; }
     .why-gst-rule { height: 1px; background: var(--line); }
@@ -682,8 +662,8 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .why-india { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; margin-top: auto; text-align: center; }
     .why-india-map { width: 100%; max-width: 128px; height: auto; }
     .why-india-land { fill: var(--line-2); stroke: var(--line); stroke-width: 1; stroke-linejoin: round; }
-    .why-india-dot { fill: var(--amber); }
-    .why-export-neighbour { fill: var(--line-2); stroke: var(--amber); stroke-width: 1.5; stroke-linejoin: round; }
+    .why-india-dot { fill: var(--accent-gold); }
+    .why-export-neighbour { fill: var(--line-2); stroke: var(--accent-gold); stroke-width: 1.5; stroke-linejoin: round; }
     .why-india-caption { font-family: var(--font-mono); font-size: 0.66rem; line-height: 1.7; color: var(--ink-faint); letter-spacing: 0.01em; }
 
     .why-bulk { display: flex; flex-direction: column; gap: 0.55rem; margin-top: auto; }
@@ -693,7 +673,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .why-bulk-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); }
     .why-drums-svg { display: block; width: 100%; max-width: 128px; height: auto; margin-top: 0.15rem; opacity: 0.9; }
     .why-drum-body { fill: var(--line-2); stroke: var(--line); stroke-width: 1; }
-    .why-drum-band { fill: var(--amber); }
+    .why-drum-band { fill: var(--accent-gold); }
 
     .why-quality {
       display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: center;
@@ -706,7 +686,9 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .why-quality-check {
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       width: 24px; height: 24px; border-radius: 50%;
-      background: var(--amber); color: #17120c; font-weight: 700; font-size: 0.72rem;
+      background: linear-gradient(180deg, var(--accent-gold-light), var(--accent-gold-dark)); color: #17120c;
+      font-weight: 700; font-size: 0.72rem;
+      box-shadow: 0 0 0 1px rgba(var(--gold-rgb), 0.3), 0 2px 6px rgba(0, 0, 0, .3);
     }
 
     .why-quality-photo { display: flex; flex-direction: column; gap: 0.9rem; }
@@ -747,20 +729,22 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .facility-check {
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       width: 24px; height: 24px; border-radius: 50%;
-      background: var(--amber); color: #17120c; font-weight: 700; font-size: 0.72rem;
+      background: linear-gradient(180deg, var(--accent-gold-light), var(--accent-gold-dark)); color: #17120c;
+      font-weight: 700; font-size: 0.72rem;
+      box-shadow: 0 0 0 1px rgba(var(--gold-rgb), 0.3), 0 2px 6px rgba(0, 0, 0, .3);
     }
     .facility-photo { display: flex; flex-direction: column; gap: 0.9rem; }
     .facility-frame {
       position: relative;
-      border: 1px solid rgba(255, 122, 24, .22); border-radius: 18px; overflow: hidden;
+      border: 1px solid rgba(var(--gold-rgb), .22); border-radius: 18px; overflow: hidden;
       box-shadow: 0 20px 48px rgba(0, 0, 0, .4), 0 0 0 1px rgba(255, 255, 255, .04) inset, 0 1px 0 rgba(255, 255, 255, .07) inset;
       height: clamp(280px, 32vw, 460px);
       transition: transform .4s var(--ease-premium), box-shadow .4s var(--ease-premium), border-color .4s var(--ease-premium);
     }
     .facility-frame:hover {
       transform: translateY(-4px);
-      border-color: rgba(255, 122, 24, .45);
-      box-shadow: 0 26px 56px rgba(0, 0, 0, .45), 0 0 26px rgba(255, 122, 24, .14), 0 0 0 1px rgba(255, 255, 255, .05) inset, 0 1px 0 rgba(255, 255, 255, .08) inset;
+      border-color: rgba(var(--gold-rgb), .45);
+      box-shadow: 0 26px 56px rgba(0, 0, 0, .45), 0 0 26px rgba(var(--gold-rgb), .14), 0 0 0 1px rgba(255, 255, 255, .05) inset, 0 1px 0 rgba(255, 255, 255, .08) inset;
     }
     .facility-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease-premium); }
     .facility-frame:hover img { transform: scale(1.05); }
@@ -834,20 +818,20 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .cap-check {
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       width: 22px; height: 22px; border-radius: 50%;
-      background: linear-gradient(180deg, #f2d488, #a9791f); color: #17120c;
+      background: linear-gradient(180deg, var(--accent-gold-light), var(--accent-gold-dark)); color: #17120c;
       font-weight: 700; font-size: 0.68rem;
-      box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.3);
+      box-shadow: 0 0 0 1px rgba(var(--gold-rgb), 0.3);
       transition: box-shadow .25s var(--ease-premium), transform .25s var(--ease-premium);
     }
     .applications-capabilities li:hover .cap-check {
-      box-shadow: 0 0 12px rgba(212, 175, 55, 0.55), 0 0 0 1px rgba(212, 175, 55, 0.45);
+      box-shadow: 0 0 12px rgba(var(--gold-rgb), 0.55), 0 0 0 1px rgba(var(--gold-rgb), 0.45);
       transform: scale(1.1);
     }
     .applications-closing {
       margin-top: 1.9rem; padding-top: 1.5rem; border-top: 1px solid var(--line);
       color: var(--ink-dim); font-size: 0.98rem; line-height: 1.6; max-width: 54ch;
     }
-    .applications-closing-brand { color: var(--amber-2); font-weight: 600; }
+    .applications-closing-brand { color: var(--accent-gold-light); font-weight: 600; }
 
     .applications-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-top: 2.6rem; }
     .applications-gallery-card {
@@ -856,8 +840,8 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
     .applications-gallery-card:hover {
-      border-color: var(--amber); transform: translateY(-3px) scale(1.012);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, .32), 0 0 0 1px rgba(255, 122, 24, .12);
+      border-color: var(--accent-gold); transform: translateY(-3px) scale(1.012);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, .32), 0 0 0 1px rgba(var(--gold-rgb), .12);
     }
     .applications-gallery-card img {
       width: 100%; height: 100%; object-fit: cover; display: block;
@@ -871,7 +855,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     }
     .applications-gallery-tag {
       font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--amber-2);
+      text-transform: uppercase; color: var(--accent-gold-light);
     }
     .applications-gallery-title { font-family: var(--font-display); font-size: 1.05rem; color: var(--ink); letter-spacing: 0.01em; }
     @media (max-width: 860px) { .applications-gallery { grid-template-columns: repeat(2, 1fr); } }
@@ -886,15 +870,15 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
     .industry-card:hover {
-      border-color: var(--amber); transform: translateY(-3px) scale(1.012);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, .28), 0 0 0 1px rgba(255, 122, 24, .1);
+      border-color: var(--accent-gold); transform: translateY(-3px) scale(1.012);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .28), 0 0 0 1px rgba(var(--gold-rgb), .1);
     }
     .industry-icon {
       display: flex; align-items: center; justify-content: center;
-      width: 42px; height: 42px; color: var(--amber);
+      width: 42px; height: 42px; color: var(--accent-gold);
       transition: transform .3s var(--ease-premium), color .3s var(--ease-premium);
     }
-    .industry-card:hover .industry-icon { transform: scale(1.1); color: var(--amber-2); }
+    .industry-card:hover .industry-icon { transform: scale(1.1); color: var(--accent-gold-light); }
     .industry-icon svg { width: 26px; height: 26px; }
     .industry-name { font-size: 1rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
     @media (max-width: 860px) { .industry-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -911,7 +895,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .industry-chips { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.1rem; }
     .industry-chip {
       font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.03em;
-      padding: 0.5rem 1rem; border: 1px solid var(--amber-deep); border-radius: 999px; color: var(--amber-2);
+      padding: 0.5rem 1rem; border: 1px solid var(--accent-gold-dark); border-radius: 999px; color: var(--accent-gold-light);
     }
 
     /* ---------- about teaser ---------- */

@@ -37,10 +37,10 @@ const img = resolveProductImage(image);
     height: 100%;
   }
   .card:hover {
-    border-color: var(--amber); transform: translateY(-4px) scale(1.012);
+    border-color: var(--accent-gold); transform: translateY(-4px) scale(1.012);
     box-shadow: 0 14px 32px rgba(0, 0, 0, .3);
   }
-  .card:hover .card-arrow { transform: translateX(4px); color: var(--amber); }
+  .card:hover .card-arrow { transform: translateX(4px); color: var(--accent-gold); }
 
   .card-img {
     position: relative; aspect-ratio: 4 / 3; overflow: hidden;
@@ -71,6 +71,6 @@ const img = resolveProductImage(image);
     display: flex; align-items: center; justify-content: space-between;
     margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid var(--line);
   }
-  .card-price { font-family: var(--font-mono); font-size: 0.9rem; color: var(--amber-2); font-weight: 500; }
+  .card-price { font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent-gold-light); font-weight: 500; }
   .card-arrow { font-size: 1.1rem; color: var(--ink-dim); transition: transform .3s var(--ease-premium), color .3s var(--ease-premium); }
 </style>

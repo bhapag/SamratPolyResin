@@ -33,24 +33,24 @@ const c = {
 
 <style>
   .callout {
-    background: var(--bg-3); border: 1px solid var(--line); border-left: 3px solid var(--amber);
+    background: var(--bg-3); border: 1px solid var(--line); border-left: 3px solid var(--accent-gold);
     padding: 1.1rem 1.3rem; margin-block: 1.6rem;
   }
   .callout-warning { border-left-color: #ff6b6b; }
-  .callout-takeaway { background: color-mix(in srgb, var(--amber) 6%, var(--bg-3)); }
+  .callout-takeaway { background: color-mix(in srgb, var(--accent-gold) 6%, var(--bg-3)); }
 
   .callout-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; }
-  .callout-icon { display: flex; color: var(--amber); flex-shrink: 0; }
+  .callout-icon { display: flex; color: var(--accent-gold); flex-shrink: 0; }
   .callout-warning .callout-icon { color: #ff8f8f; }
   .callout-label {
     font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--amber-2);
+    text-transform: uppercase; color: var(--accent-gold-light);
   }
   .callout-warning .callout-label { color: #ff8f8f; }
 
   .callout-body { color: var(--ink-dim); font-size: 0.92rem; }
   .callout-body :global(ul) { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.3rem; }
   .callout-body :global(li) { position: relative; padding-left: 1.1rem; }
-  .callout-body :global(li)::before { content: '▪'; position: absolute; left: 0; color: var(--amber); }
+  .callout-body :global(li)::before { content: '▪'; position: absolute; left: 0; color: var(--accent-gold); }
   .callout-body :global(p) { margin: 0; }
 </style>

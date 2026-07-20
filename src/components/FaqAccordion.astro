@@ -58,7 +58,7 @@ const { faqs } = Astro.props;
 <style>
   .faq-accordion { display: flex; flex-direction: column; gap: 0.9rem; }
   .faq-item { background: var(--bg-3); border: 1px solid var(--line); transition: border-color .3s var(--ease-premium); }
-  .faq-item.is-open { border-color: var(--amber-deep); }
+  .faq-item.is-open { border-color: var(--accent-gold-dark); }
   .faq-item h3 { text-transform: none; letter-spacing: 0; font-weight: 400; }
 
   .faq-question {
@@ -67,14 +67,14 @@ const { faqs } = Astro.props;
     font-family: var(--font-body); font-size: 1rem; font-weight: 600; color: var(--ink); text-align: left;
     transition: color .25s var(--ease-premium);
   }
-  .faq-question:hover { color: var(--amber-2); }
+  .faq-question:hover { color: var(--accent-gold-light); }
   .faq-question span:first-child { flex: 1; }
   .faq-chevron {
     display: flex; color: var(--ink-faint); flex-shrink: 0;
     transition: transform .3s var(--ease-premium), color .3s var(--ease-premium);
   }
-  .faq-question:hover .faq-chevron { color: var(--amber-2); }
-  .faq-item.is-open .faq-chevron { transform: rotate(180deg); color: var(--amber); }
+  .faq-question:hover .faq-chevron { color: var(--accent-gold-light); }
+  .faq-item.is-open .faq-chevron { transform: rotate(180deg); color: var(--accent-gold); }
 
   .faq-panel { max-height: 0; overflow: hidden; transition: max-height .35s var(--ease-premium); }
   .faq-panel-inner p { color: var(--ink-dim); font-size: 0.94rem; padding: 0 1.3rem 1.2rem; }

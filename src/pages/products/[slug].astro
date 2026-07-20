@@ -192,7 +192,7 @@ const productJsonLd = {
       display: flex; gap: 0.6rem; align-items: center; padding-top: 1.5rem;
       font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-faint); letter-spacing: 0.04em;
     }
-    .crumb a:hover { color: var(--amber-2); }
+    .crumb a:hover { color: var(--accent-gold-light); }
     .crumb .cur { color: var(--ink-dim); }
 
     .prod { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(1.5rem, 5vw, 3.5rem); padding-block: 2.2rem 3rem; }
@@ -214,20 +214,20 @@ const productJsonLd = {
     }
     .prod-thumb img { width: 100%; height: 100%; object-fit: cover; }
     .prod-thumb:hover { border-color: var(--line-2); transform: translateY(-1px); }
-    .prod-thumb.active { border-color: var(--amber); }
+    .prod-thumb.active { border-color: var(--accent-gold); }
 
-    .prod-cat { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); }
+    .prod-cat { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-gold); }
     .prod-name { font-size: clamp(2rem, 5vw, 3.2rem); margin-top: 0.6rem; text-transform: none; letter-spacing: 0; }
     .prod-quote {
       display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.9rem; max-width: 420px;
       padding: 1.1rem 1.3rem; background: var(--bg-3); border: 1px solid var(--line);
     }
     .prod-quote-heading { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
-    .prod-quote-value { font-family: var(--font-display); font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--amber-2); }
+    .prod-quote-value { font-family: var(--font-display); font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--accent-gold-light); }
     .prod-quote-note { color: var(--ink-dim); font-size: 0.88rem; margin-top: 0.3rem; }
     .prod-quote-list { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
     .prod-quote-list li { position: relative; padding-left: 1.1rem; color: var(--ink-dim); font-size: 0.88rem; }
-    .prod-quote-list li::before { content: '▪'; position: absolute; left: 0; color: var(--amber); }
+    .prod-quote-list li::before { content: '▪'; position: absolute; left: 0; color: var(--accent-gold); }
     .prod-quote-cta { align-self: flex-start; margin-top: 0.5rem; }
     .prod-desc { color: var(--ink-dim); margin-top: 1.6rem; font-size: 1rem; }
     .prod-cta { display: flex; gap: 0.8rem; margin-top: 1.4rem; flex-wrap: wrap; }
@@ -246,7 +246,7 @@ const productJsonLd = {
     .spec-h { font-size: 0.8rem; letter-spacing: 0.14em; color: var(--ink); margin-bottom: 1rem; }
     .spec-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
     .spec-col li { position: relative; padding-left: 1.2rem; color: var(--ink-dim); font-size: 0.92rem; }
-    .spec-col li::before { content: '▪'; position: absolute; left: 0; color: var(--amber); }
+    .spec-col li::before { content: '▪'; position: absolute; left: 0; color: var(--accent-gold); }
     @media (max-width: 860px) { .prod { grid-template-columns: 1fr; } .prod-media-sticky { position: relative; top: 0; } }
     @media (max-width: 460px) { .spec-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
 
@@ -258,9 +258,9 @@ const productJsonLd = {
       background: var(--bg-3); border: 1px solid var(--line);
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
-    .rel-card:hover { border-color: var(--amber); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0, 0, 0, .26); }
+    .rel-card:hover { border-color: var(--accent-gold); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0, 0, 0, .26); }
     .rel-name { font-family: var(--font-display); text-transform: uppercase; font-size: 0.95rem; }
-    .rel-price { font-family: var(--font-mono); font-size: 0.8rem; color: var(--amber-2); }
+    .rel-price { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-gold-light); }
 
     .enquire-sec { background: var(--bg-2); border-top: 1px solid var(--line); }
     .enquire-inner { max-width: 720px; }

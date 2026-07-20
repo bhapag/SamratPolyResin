@@ -58,7 +58,7 @@ const tableId = `dt-${Math.random().toString(36).slice(2, 9)}`;
     cursor: pointer; transition: border-color .25s var(--ease-premium), color .25s var(--ease-premium);
     flex-shrink: 0; margin-left: auto;
   }
-  .data-table-copy:hover { border-color: var(--amber); color: var(--amber-2); }
+  .data-table-copy:hover { border-color: var(--accent-gold); color: var(--accent-gold-light); }
   .data-table-copy.copied { border-color: #2ee87a; color: #2ee87a; }
 
   .data-table-scroll { overflow-x: auto; border: 1px solid var(--line); }
@@ -70,7 +70,7 @@ const tableId = `dt-${Math.random().toString(36).slice(2, 9)}`;
   }
   .data-table tbody tr { border-top: 1px solid var(--line); transition: background .25s var(--ease-premium); }
   .data-table tbody tr:nth-child(even) { background: color-mix(in srgb, var(--bg-3) 45%, transparent); }
-  .data-table tbody tr:hover { background: color-mix(in srgb, var(--amber) 8%, transparent); }
+  .data-table tbody tr:hover { background: color-mix(in srgb, var(--accent-gold) 8%, transparent); }
   .data-table td { color: var(--ink-dim); }
   .data-table-note { color: var(--ink-faint); font-size: 0.82rem; font-style: italic; margin-top: 0.8rem; }
 </style>

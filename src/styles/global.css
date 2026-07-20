@@ -1,6 +1,7 @@
 /* ==========================================================================
    Samrat Poly Resins — design system
-   Dark industrial. Charcoal base, molten-amber accent, condensed display type.
+   Dark industrial. Charcoal + deep navy base, premium champagne-gold
+   accent, condensed display type.
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
@@ -17,9 +18,19 @@
   --ink:       #f4f2ee;   /* off-white text */
   --ink-dim:   #a6adb8;   /* secondary text */
   --ink-faint: #838a96;   /* captions — kept ≥4.5:1 against --bg for WCAG AA at small sizes */
-  --amber:     #ff7a18;   /* molten resin accent */
-  --amber-2:   #ffb347;   /* lighter amber */
-  --amber-deep:#c9500a;
+
+  /* --- premium champagne-gold accent (replaces the old molten-orange amber) --- */
+  --accent-gold:       #d4af37;   /* primary accent — icons, borders, links */
+  --accent-gold-light: #e8c66a;   /* bright champagne — hover text, highlights */
+  --accent-gold-dark:  #a9791f;   /* deep gold — pressed states, shadow tint */
+  --gold-rgb:          212, 175, 55;   /* channels, for rgba(var(--gold-rgb), alpha) glows */
+  --gold-glow:         rgba(212, 175, 55, .35);
+
+  /* --- bright metallic navy — selective alternate accent (Option B),
+     used only where navy reads better than gold in a given spot --- */
+  --premium-navy:       #5578b3;
+  --premium-navy-light: #7d9bd4;
+  --premium-navy-rgb:   85, 120, 179;
 
   --font-display: 'Oswald', 'Arial Narrow', sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
@@ -69,7 +80,7 @@ h1, h2, h3, h4 {
   font-size: 0.72rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--amber);
+  color: var(--accent-gold);
   font-weight: 500;
 }
 
@@ -100,21 +111,50 @@ h1, h2, h3, h4 {
   pointer-events: none;
 }
 .btn:hover::after { transform: translateX(340%) skewX(-18deg); }
-.btn:hover { border-color: var(--amber); color: var(--amber-2); transform: translateY(-2px) scale(1.02); box-shadow: 0 1px 0 rgba(255, 255, 255, .09) inset, 0 10px 24px rgba(0, 0, 0, .28); }
+.btn:hover { border-color: var(--accent-gold); color: var(--accent-gold-light); transform: translateY(-2px) scale(1.02); box-shadow: 0 1px 0 rgba(255, 255, 255, .09) inset, 0 10px 24px rgba(0, 0, 0, .28); }
 .btn:active { transform: translateY(-1px) scale(0.99); transition-duration: .12s; }
-.btn:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+.btn:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
 
 .btn-solid {
-  background: var(--amber); color: #17120c; border-color: var(--amber);
+  background: var(--accent-gold); color: #17120c; border-color: var(--accent-gold);
   font-weight: 700;
 }
 .btn-solid:hover {
-  background: var(--amber-2); color: #17120c; border-color: var(--amber-2);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, .22) inset, 0 14px 30px rgba(255, 122, 24, .28), 0 8px 20px rgba(0, 0, 0, .3);
+  background: var(--accent-gold-light); color: #17120c; border-color: var(--accent-gold-light);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .22) inset, 0 14px 30px rgba(var(--gold-rgb), .28), 0 8px 20px rgba(0, 0, 0, .3);
 }
 
 .btn-wa { background: #25d366; color: #062b14; border-color: #25d366; font-weight: 700; }
 .btn-wa:hover { background: #2ee87a; border-color: #2ee87a; color: #062b14; }
+
+/* --- premium gold headline highlight ---
+   Shared, sitewide treatment for an emphasised word inside a large heading
+   (e.g. the homepage hero, the About page hero): a brushed champagne-gold
+   gradient with a bevel highlight and a sparing glow, plus a duplicate of
+   the text in ::before (via attr(data-text)) carrying a slow shine sweep
+   clipped to the same glyphs. Requires a matching `data-text="…"` attribute
+   on the element for the shine layer to render the right word. */
+.hl {
+  position: relative; display: inline-block;
+  background: linear-gradient(145deg, #fdf3d0 0%, #e8cf8a 16%, #cfa94a 36%, #8a6a24 54%, #cfa94a 74%, #f2e0ab 90%, #c9a227 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+  text-shadow: 0 1px 0 rgba(255, 248, 224, .38), 0 -1px 1px rgba(0, 0, 0, .5);
+  filter: drop-shadow(0 0 10px var(--gold-glow)) drop-shadow(0 0 20px rgba(var(--gold-rgb), .12));
+}
+.hl::before {
+  content: attr(data-text);
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, .85) 49%, rgba(255, 244, 214, .95) 51%, transparent 58%);
+  background-size: 280% 100%;
+  background-position: -280% 0;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+  animation: hl-gold-shine 8s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes hl-gold-shine {
+  0%, 58% { background-position: -280% 0; }
+  80%, 100% { background-position: 280% 0; }
+}
 
 /* --- section rhythm --- */
 .section { padding-block: clamp(3.5rem, 8vw, 6rem); }
@@ -125,7 +165,7 @@ h1, h2, h3, h4 {
 }
 
 /* --- footer / focus baseline --- */
-:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
 
 /* --- scroll reveal (see Base.astro for the IntersectionObserver that applies these) --- */
 .js-reveal {

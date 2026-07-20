@@ -13,9 +13,9 @@ const years = new Date().getFullYear() - Number(site.established);
       <p class="eyebrow">About {site.name}</p>
       <h1>
         Engineered for<br/>
-        <span class="hl">quality</span>.<br/>
+        <span class="hl" data-text="quality">quality</span>.<br/>
         Built for<br/>
-        <span class="hl">consistency</span>.
+        <span class="hl" data-text="consistency">consistency</span>.
       </h1>
       <p class="about-lead">
         Established in {site.established}, {site.name} is a Punjab-based
@@ -79,7 +79,6 @@ const years = new Date().getFullYear() - Number(site.established);
   <style>
     .about-hero { padding-bottom: 0; }
     .about-hero h1 { font-size: clamp(1.9rem, 5vw, 3.1rem); margin-top: 0.6rem; }
-    .about-hero h1 .hl { color: var(--amber); }
     .about-lead { color: var(--ink-dim); margin-top: 1.3rem; max-width: 52ch; font-size: 1.05rem; }
 
     .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(1.5rem, 5vw, 4rem); }
@@ -97,7 +96,7 @@ const years = new Date().getFullYear() - Number(site.established);
     }
 
     .about-facts { list-style: none; display: flex; flex-direction: column; gap: 1.1rem; align-self: start; }
-    .about-facts li { border-left: 2px solid var(--amber); padding-left: 0.9rem; font-size: 0.95rem; line-height: 1.5; }
+    .about-facts li { border-left: 2px solid var(--accent-gold); padding-left: 0.9rem; font-size: 0.95rem; line-height: 1.5; }
     .about-facts span { display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.25rem; }
     @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
 
@@ -109,10 +108,10 @@ const years = new Date().getFullYear() - Number(site.established);
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
     .cat-tile:hover {
-      border-color: var(--amber); transform: translateY(-3px) scale(1.012);
+      border-color: var(--accent-gold); transform: translateY(-3px) scale(1.012);
       box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
     }
     .cat-tile-name { font-family: var(--font-display); text-transform: uppercase; font-size: 1rem; letter-spacing: 0.03em; }
-    .cat-tile-count { font-family: var(--font-mono); font-size: 0.76rem; color: var(--amber-2); }
+    .cat-tile-count { font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-gold-light); }
   </style>
 </Base>
