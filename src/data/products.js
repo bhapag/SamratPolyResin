@@ -89,8 +89,8 @@ export const products = [
     whatsappName: "Unsaturated Polyester Resin",
     category: "GP Resins",
     price: "₹130 / kg",
-    image: "unsaturated-polyester-resin.jpg",
-    images: ["unsaturated-polyester-resin-2.jpg", "unsaturated-polyester-resin-3.jpg", "unsaturated-polyester-resin-4.jpg"],
+    image: "unsaturated-polyester-resin-2.jpg",
+    images: ["unsaturated-polyester-resin.jpg", "unsaturated-polyester-resin-3.jpg", "unsaturated-polyester-resin-4.jpg"],
     specs: {
       "Minimum Order Quantity": "1000 kg",
       "Usage / Application": "Hand layup, lamination, bathware, automotive, marine, FRP moulding, pultrusion, casting",
