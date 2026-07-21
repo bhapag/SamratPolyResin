@@ -619,7 +619,7 @@ export const products = [
     category: "Epoxy & Casting",
     price: "₹700 / kg",
     image: "epoxy-hardener.jpg",
-    images: ["epoxy-hardener-2.jpg", "epoxy-hardener-3.jpg"],
+    images: ["epoxy-hardener-2.jpg"],
     specs: {
       "Minimum Order Quantity": "100 kg",
       "Hardener Type": "Polyamide",
