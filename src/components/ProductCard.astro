@@ -44,12 +44,18 @@ const img = resolveProductImage(image);
   .card:hover .card-arrow { transform: translateX(4px); color: var(--accent-gold); }
 
   .card-img {
-    position: relative; aspect-ratio: 4 / 3; overflow: hidden;
+    position: relative; aspect-ratio: 1 / 1; overflow: hidden;
     background: linear-gradient(135deg, #1a1e24, #23282f);
     display: grid; place-items: center;
   }
-  .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s var(--ease-premium); }
-  .card:hover .card-img img { transform: scale(1.035); }
+  /* contain, not cover — these are complete marketing posters (text, logo,
+     spec tables baked into the artwork), not cropped-to-fill photography;
+     the whole poster must stay visible, so no zoom-on-hover here either.
+     position:absolute + inset:0 (not width/height:100%) because percentage
+     heights don't reliably resolve against an aspect-ratio-derived height
+     inside a `place-items:center` grid in every browser — absolute
+     positioning against the relative parent sizes unambiguously instead. */
+  .card-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
   .img-fallback {
     display: none;
     position: absolute; font-family: var(--font-display); font-weight: 700;
