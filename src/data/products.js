@@ -20,7 +20,7 @@
 //    applications bullet list of where it's used
 //    whatsappName  optional — clean product name used only in the WhatsApp
 //                  quote message, for products whose display `name` carries
-//                  a parenthetical alias (e.g. "LR Resin (GP Clear Resin)").
+//                  a parenthetical alias (e.g. "Lamination Resin (LR Resin)").
 //                  Omit for products where `name` is already clean.
 //
 //  Prices and specs below were reconciled against the live IndiaMART listing
@@ -122,12 +122,12 @@ export const products = [
   },
   {
     slug: "gp-clear-resin",
-    name: "LR Resin (GP Clear Resin)",
-    whatsappName: "LR Resin",
+    name: "Lamination Resin (LR Resin)",
+    whatsappName: "Lamination Resin",
     category: "GP Resins",
     price: "₹140 / kg",
-    image: "gp-clear-resin.jpg",
-    images: ["gp-clear-resin-2.jpg", "gp-clear-resin-3.jpg"],
+    image: "lamination-resin.jpg",
+    images: ["lamination-resin-2.jpg", "lamination-resin-3.jpg"],
     specs: {
       "Minimum Order Quantity": "1000 kg",
       "Resin Type": "Polyester",
