@@ -78,7 +78,20 @@ const organizationJsonLd = {
         <a href="/contact/">Contact</a>
         <a href={waLink} class="nav-wa" target="_blank" rel="noopener">WhatsApp</a>
       </nav>
+      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
     </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Primary mobile">
+      <a href="/">Home</a>
+      <a href="/products/">Products</a>
+      <a href="/about/">About</a>
+      <a href="/resources/">Resources</a>
+      <a href="/contact/">Contact</a>
+      <a href={waLink} class="mobile-nav-wa" target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
   </header>
 
   <main id="main-content">
@@ -130,6 +143,27 @@ const organizationJsonLd = {
   <a href={waLink} class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" transition:persist>
     <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5 0-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.3 4.7L7 20.4A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
   </a>
+
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const toggle = document.getElementById('navToggle');
+      const panel = document.getElementById('mobileNav');
+      if (!toggle || !panel || toggle.dataset.wired === 'true') return;
+      toggle.dataset.wired = 'true';
+
+      const closeMenu = () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        panel.classList.remove('is-open');
+      };
+      toggle.addEventListener('click', () => {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        panel.classList.toggle('is-open', !isOpen);
+      });
+      panel.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+    });
+  </script>
 
   <script>
     // Sitewide scroll-reveal + stagger system. Progressive enhancement only:
@@ -216,9 +250,45 @@ const organizationJsonLd = {
     }
     .nav a:hover { color: var(--accent-gold-light); }
     .nav-wa { color: #25d366 !important; }
-    @media (max-width: 620px) {
-      .brand-name { display: none; }
-      .nav a:not(.nav-wa):nth-child(3) { display: none; }
+
+    .nav-toggle {
+      display: none;
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: transparent; border: 1px solid var(--line-2); border-radius: 4px;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+      cursor: pointer; transition: border-color .25s var(--ease-premium);
+    }
+    .nav-toggle:hover, .nav-toggle[aria-expanded="true"] { border-color: var(--accent-gold); }
+    .nav-toggle-bar {
+      display: block; width: 20px; height: 2px; background: var(--ink);
+      transition: transform .3s var(--ease-premium), opacity .3s var(--ease-premium);
+    }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+      padding: 0.4rem var(--pad) 1rem;
+    }
+    .mobile-nav a {
+      display: block; padding: 0.95rem 0.15rem;
+      font-family: var(--font-mono); font-size: 0.95rem; letter-spacing: 0.05em;
+      text-transform: uppercase; color: var(--ink-dim);
+      border-bottom: 1px solid var(--line);
+      transition: color .2s var(--ease-premium);
+    }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav a:hover, .mobile-nav a:active { color: var(--accent-gold-light); }
+    .mobile-nav-wa { color: #25d366 !important; }
+
+    @media (max-width: 760px) {
+      .nav { display: none; }
+      .nav-toggle { display: flex; }
+      .mobile-nav.is-open { display: flex; }
     }
 
     .site-footer {

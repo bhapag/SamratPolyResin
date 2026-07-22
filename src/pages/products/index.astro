@@ -118,7 +118,10 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
     .prod-chip:hover { border-color: var(--accent-gold); color: var(--accent-gold-light); }
     .prod-chip.is-active { background: var(--accent-gold); border-color: var(--accent-gold); color: #17120c; font-weight: 600; }
     .prod-filter-empty { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.2rem; }
-    @media (max-width: 620px) { .prod-search { max-width: none; } }
+    @media (max-width: 620px) {
+      .prod-search { max-width: none; }
+      .prod-chip { padding: 0.75rem 1rem; }
+    }
 
     .cat-block { margin-bottom: 3.2rem; scroll-margin-top: 90px; }
     .cat-block[hidden] { display: none; }

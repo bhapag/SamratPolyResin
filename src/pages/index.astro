@@ -646,6 +646,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .why-cert-thumb img { width: 100%; height: auto; display: block; transition: transform .4s var(--ease-premium); }
     .why-cert-thumb:hover img { transform: scale(1.04); }
     .why-cert-btn { padding: 0.55rem 1rem; font-size: 0.72rem; }
+    @media (max-width: 620px) { .why-cert-btn { padding: 0.8rem 1rem; } }
 
     .why-timeline { display: flex; align-items: center; gap: 0.6rem; margin-top: auto; }
     .why-timeline-year {
