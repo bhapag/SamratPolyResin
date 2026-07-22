@@ -21,12 +21,17 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
         <input type="search" id="prodSearch" placeholder="Search products by name…" aria-label="Search products by name" autocomplete="off" />
       </div>
-      <div class="prod-chips" role="list" aria-label="Filter by category">
+      <div class="prod-chips" id="prodChips" role="list" aria-label="Filter by category">
         <button type="button" class="prod-chip is-active" data-chip-cat="all">Unsaturated Polyester Resin (UPR) ({products.length})</button>
-        {byCat.map(group => (
-          <button type="button" class="prod-chip" data-chip-cat={group.cat}>{group.cat} ({group.items.length})</button>
+        {byCat.map((group, i) => (
+          <button type="button" class="prod-chip" data-chip-cat={group.cat} data-chip-primary={i < 2 ? 'true' : undefined}>{group.cat} ({group.items.length})</button>
         ))}
+        <div class="prod-chips-fade" aria-hidden="true"></div>
       </div>
+      <button type="button" class="prod-chips-toggle" id="chipsToggle" aria-expanded="false" aria-controls="prodChips" hidden>
+        <span class="toggle-label">View All Categories</span>
+        <svg class="toggle-chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+      </button>
       <p class="prod-filter-empty" id="prodFilterEmpty" hidden>No products match your search.</p>
     </div>
   </section>
@@ -87,6 +92,59 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
           applyFilter();
         });
       });
+
+      // Mobile-only chip collapse: clip the category list right after the
+      // last "primary" chip's own row so it never cuts a chip in half, and
+      // only offer the toggle if there's actually more to reveal.
+      const chipsEl = document.getElementById('prodChips');
+      const toggleBtn = document.getElementById('chipsToggle') as HTMLButtonElement | null;
+      const toggleLabel = toggleBtn?.querySelector('.toggle-label');
+      if (chipsEl && toggleBtn && toggleLabel) {
+        const mobileQuery = window.matchMedia('(max-width: 620px)');
+        const secondaryChips = Array.from(chipsEl.querySelectorAll<HTMLButtonElement>('.prod-chip')).filter(
+          (c) => c.dataset.chipCat !== 'all' && !c.hasAttribute('data-chip-primary')
+        );
+
+        // While collapsed on mobile, the secondary chips are visually clipped
+        // (overflow:hidden, not scrollable) — pull them out of tab order and
+        // the accessibility tree so keyboard/AT users don't land on controls
+        // they can't see, and always meet them again once expanded.
+        const setSecondaryReachable = (reachable: boolean) => {
+          secondaryChips.forEach((c) => {
+            if (reachable) { c.removeAttribute('tabindex'); c.removeAttribute('aria-hidden'); }
+            else { c.setAttribute('tabindex', '-1'); c.setAttribute('aria-hidden', 'true'); }
+          });
+        };
+
+        const measure = () => {
+          if (chipsEl.classList.contains('is-expanded')) return;
+          if (!mobileQuery.matches) {
+            toggleBtn.hidden = true;
+            setSecondaryReachable(true);
+            return;
+          }
+          const primaryChips = chipsEl.querySelectorAll<HTMLElement>('[data-chip-primary]');
+          const lastPrimary = primaryChips[primaryChips.length - 1];
+          if (!lastPrimary) { toggleBtn.hidden = true; setSecondaryReachable(true); return; }
+          const collapsedH = Math.ceil(lastPrimary.getBoundingClientRect().bottom - chipsEl.getBoundingClientRect().top) + 10;
+          chipsEl.style.setProperty('--chips-collapsed-h', `${collapsedH}px`);
+          const overflowing = chipsEl.scrollHeight > collapsedH + 4;
+          toggleBtn.hidden = !overflowing;
+          setSecondaryReachable(!overflowing);
+        };
+
+        toggleBtn.addEventListener('click', () => {
+          const nowExpanded = !chipsEl.classList.contains('is-expanded');
+          chipsEl.classList.toggle('is-expanded', nowExpanded);
+          toggleBtn.setAttribute('aria-expanded', String(nowExpanded));
+          toggleLabel.textContent = nowExpanded ? 'Show Fewer Categories' : 'View All Categories';
+          setSecondaryReachable(nowExpanded);
+          if (!nowExpanded) measure();
+        });
+
+        measure();
+        window.addEventListener('resize', measure);
+      }
     });
   </script>
 
@@ -118,9 +176,34 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
     .prod-chip:hover { border-color: var(--accent-gold); color: var(--accent-gold-light); }
     .prod-chip.is-active { background: var(--accent-gold); border-color: var(--accent-gold); color: #17120c; font-weight: 600; }
     .prod-filter-empty { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.2rem; }
+    .prod-chips-fade { display: none; }
+    .prod-chips-toggle {
+      display: none;
+      align-items: center; justify-content: center; gap: 0.4rem;
+      width: 100%; margin-top: -0.2rem;
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--accent-gold-light); background: transparent; border: none;
+      padding: 0.6rem; cursor: pointer;
+    }
+    .prod-chips-toggle .toggle-chevron { transition: transform .3s var(--ease-premium); }
+    .prod-chips-toggle[aria-expanded="true"] .toggle-chevron { transform: rotate(180deg); }
     @media (max-width: 620px) {
       .prod-search { max-width: none; }
       .prod-chip { padding: 0.75rem 1rem; }
+      .prod-chips {
+        max-height: var(--chips-collapsed-h, 108px);
+        overflow: hidden;
+        position: relative;
+        transition: max-height .45s var(--ease-premium);
+      }
+      .prod-chips.is-expanded { max-height: 600px; }
+      .prod-chips-fade {
+        display: block; position: absolute; left: 0; right: 0; bottom: 0; height: 2.4rem;
+        background: linear-gradient(180deg, transparent, var(--bg));
+        pointer-events: none; opacity: 1; transition: opacity .3s var(--ease-premium);
+      }
+      .prod-chips.is-expanded .prod-chips-fade { opacity: 0; }
+      .prod-chips-toggle:not([hidden]) { display: flex; }
     }
 
     .cat-block { margin-bottom: 3.2rem; scroll-margin-top: 90px; }
