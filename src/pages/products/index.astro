@@ -17,41 +17,24 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
 
   <section class="prod-filter-bar">
     <div class="wrap prod-filter-inner">
-      <div class="prod-search-row">
-        <div class="prod-search">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-          <input type="search" id="prodSearch" placeholder="Search products by name…" aria-label="Search products by name" autocomplete="off" />
-        </div>
-        <button type="button" class="prod-filter-btn" id="filterOpenBtn" aria-haspopup="dialog" aria-expanded="false" aria-controls="filterSheet">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4" /></svg>
-          <span class="prod-filter-btn-text">
-            <span class="prod-filter-btn-label">Filter</span>
-            <span class="prod-filter-btn-active" id="filterActiveLabel" hidden></span>
-          </span>
-        </button>
+      <div class="prod-search">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+        <input type="search" id="prodSearch" placeholder="Search products by name…" aria-label="Search products by name" autocomplete="off" />
       </div>
-      <div class="filter-sheet" id="filterSheet" role="dialog" aria-labelledby="filterSheetTitle">
-        <div class="filter-sheet-header">
-          <h2 class="filter-sheet-title" id="filterSheetTitle">Filter by Category</h2>
-          <button type="button" class="filter-sheet-close" id="filterCloseBtn" aria-label="Close filter">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
-          </button>
-        </div>
-        <div class="prod-chips" id="prodChips" role="list" aria-label="Filter by category">
-          <button type="button" class="prod-chip is-active" data-chip-cat="all">Unsaturated Polyester Resin (UPR) ({products.length})</button>
-          {byCat.map((group) => (
-            <button type="button" class="prod-chip" data-chip-cat={group.cat}>{group.cat} ({group.items.length})</button>
-          ))}
-        </div>
+      <div class="prod-chips" id="prodChips" role="list" aria-label="Filter by category">
+        <button type="button" class="prod-chip is-active" data-chip-cat="all">Unsaturated Polyester Resin (UPR) ({products.length})</button>
+        {byCat.map((group, i) => (
+          <button type="button" class="prod-chip" data-chip-cat={group.cat} data-chip-primary={i < 2 ? 'true' : undefined}>{group.cat} ({group.items.length})</button>
+        ))}
+        <div class="prod-chips-fade" aria-hidden="true"></div>
       </div>
+      <button type="button" class="prod-chips-toggle" id="chipsToggle" aria-expanded="false" aria-controls="prodChips" hidden>
+        <span class="toggle-label">View All Categories</span>
+        <svg class="toggle-chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+      </button>
       <p class="prod-filter-empty" id="prodFilterEmpty" hidden>No products match your search.</p>
     </div>
   </section>
-
-  <!-- Rendered outside .prod-filter-bar's own stacking context (it's
-       position:sticky + z-index) so the backdrop can sit above the sticky
-       site header instead of being trapped underneath it. -->
-  <div class="filter-sheet-backdrop" id="filterBackdrop"></div>
 
   <section class="section prod-list">
     <div class="wrap">
@@ -100,8 +83,6 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
         if (emptyMsg) emptyMsg.hidden = anyVisible;
       };
 
-      const filterActiveLabel = document.getElementById('filterActiveLabel');
-
       searchInput.addEventListener('input', applyFilter);
 
       chips.forEach((chip) => {
@@ -109,72 +90,60 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
           activeCategory = chip.dataset.chipCat ?? 'all';
           chips.forEach((c) => c.classList.toggle('is-active', c === chip));
           applyFilter();
-          if (filterActiveLabel) {
-            if (activeCategory === 'all') {
-              filterActiveLabel.hidden = true;
-              filterActiveLabel.textContent = '';
-            } else {
-              filterActiveLabel.hidden = false;
-              filterActiveLabel.textContent = activeCategory;
-            }
-          }
-          closeSheet();
         });
       });
 
-      // Mobile-only bottom sheet: the same chip buttons above live inside it
-      // (no duplicated markup, no divergent state) — on desktop the sheet
-      // wrapper is `display:contents` so those chips just render inline as
-      // they always have.
-      const openBtn = document.getElementById('filterOpenBtn') as HTMLButtonElement | null;
-      const sheet = document.getElementById('filterSheet');
-      const backdrop = document.getElementById('filterBackdrop');
-      const closeBtn = document.getElementById('filterCloseBtn') as HTMLButtonElement | null;
-      const mobileQuery = window.matchMedia('(max-width: 620px)');
-      let sheetOpen = false;
+      // Mobile-only chip collapse: clip the category list right after the
+      // last "primary" chip's own row so it never cuts a chip in half, and
+      // only offer the toggle if there's actually more to reveal.
+      const chipsEl = document.getElementById('prodChips');
+      const toggleBtn = document.getElementById('chipsToggle') as HTMLButtonElement | null;
+      const toggleLabel = toggleBtn?.querySelector('.toggle-label');
+      if (chipsEl && toggleBtn && toggleLabel) {
+        const mobileQuery = window.matchMedia('(max-width: 620px)');
+        const secondaryChips = Array.from(chipsEl.querySelectorAll<HTMLButtonElement>('.prod-chip')).filter(
+          (c) => c.dataset.chipCat !== 'all' && !c.hasAttribute('data-chip-primary')
+        );
 
-      function closeSheet() {
-        if (!sheetOpen || !sheet || !backdrop || !openBtn) return;
-        sheetOpen = false;
-        sheet.classList.remove('is-open');
-        sheet.removeAttribute('aria-modal');
-        backdrop.classList.remove('is-open');
-        openBtn.setAttribute('aria-expanded', 'false');
-        document.documentElement.style.overflow = '';
-        document.removeEventListener('keydown', onSheetKeydown);
-        openBtn.focus();
-      }
+        // While collapsed on mobile, the secondary chips are visually clipped
+        // (overflow:hidden, not scrollable) — pull them out of tab order and
+        // the accessibility tree so keyboard/AT users don't land on controls
+        // they can't see, and always meet them again once expanded.
+        const setSecondaryReachable = (reachable: boolean) => {
+          secondaryChips.forEach((c) => {
+            if (reachable) { c.removeAttribute('tabindex'); c.removeAttribute('aria-hidden'); }
+            else { c.setAttribute('tabindex', '-1'); c.setAttribute('aria-hidden', 'true'); }
+          });
+        };
 
-      function onSheetKeydown(e: KeyboardEvent) {
-        if (!sheet) return;
-        if (e.key === 'Escape') { e.preventDefault(); closeSheet(); return; }
-        if (e.key !== 'Tab') return;
-        const focusable = Array.from(sheet.querySelectorAll<HTMLElement>('button, [href], input, [tabindex]:not([tabindex="-1"])'))
-          .filter((el) => el.offsetParent !== null);
-        if (!focusable.length) return;
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-      }
+        const measure = () => {
+          if (chipsEl.classList.contains('is-expanded')) return;
+          if (!mobileQuery.matches) {
+            toggleBtn.hidden = true;
+            setSecondaryReachable(true);
+            return;
+          }
+          const primaryChips = chipsEl.querySelectorAll<HTMLElement>('[data-chip-primary]');
+          const lastPrimary = primaryChips[primaryChips.length - 1];
+          if (!lastPrimary) { toggleBtn.hidden = true; setSecondaryReachable(true); return; }
+          const collapsedH = Math.ceil(lastPrimary.getBoundingClientRect().bottom - chipsEl.getBoundingClientRect().top) + 10;
+          chipsEl.style.setProperty('--chips-collapsed-h', `${collapsedH}px`);
+          const overflowing = chipsEl.scrollHeight > collapsedH + 4;
+          toggleBtn.hidden = !overflowing;
+          setSecondaryReachable(!overflowing);
+        };
 
-      function openSheet() {
-        if (!mobileQuery.matches || !sheet || !backdrop || !openBtn) return;
-        sheetOpen = true;
-        sheet.classList.add('is-open');
-        sheet.setAttribute('aria-modal', 'true');
-        backdrop.classList.add('is-open');
-        openBtn.setAttribute('aria-expanded', 'true');
-        document.documentElement.style.overflow = 'hidden';
-        document.addEventListener('keydown', onSheetKeydown);
-        (closeBtn ?? sheet).focus();
-      }
+        toggleBtn.addEventListener('click', () => {
+          const nowExpanded = !chipsEl.classList.contains('is-expanded');
+          chipsEl.classList.toggle('is-expanded', nowExpanded);
+          toggleBtn.setAttribute('aria-expanded', String(nowExpanded));
+          toggleLabel.textContent = nowExpanded ? 'Show Fewer Categories' : 'View All Categories';
+          setSecondaryReachable(nowExpanded);
+          if (!nowExpanded) measure();
+        });
 
-      if (openBtn && sheet && backdrop && closeBtn) {
-        openBtn.addEventListener('click', openSheet);
-        closeBtn.addEventListener('click', closeSheet);
-        backdrop.addEventListener('click', closeSheet);
-        mobileQuery.addEventListener('change', (e) => { if (!e.matches) closeSheet(); });
+        measure();
+        window.addEventListener('resize', measure);
       }
     });
   </script>
@@ -184,15 +153,8 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
     .prod-hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); margin-top: 0.6rem; }
     .prod-hero-sub { color: var(--ink-dim); margin-top: 0.9rem; max-width: 48ch; }
 
-    /* No base z-index: position:sticky always creates its own stacking
-       context regardless of z-index, so whatever value this has is what the
-       mobile filter sheet nested inside it gets capped at when competing
-       against the site header's own sticky stacking context (z-index 50).
-       The mobile query below raises it above both the header and the
-       filter backdrop so the sheet can render on top of everything. */
-    .prod-filter-bar { padding-block: 1.6rem; position: sticky; top: 68px; background: var(--bg); border-bottom: 1px solid var(--line); }
+    .prod-filter-bar { padding-block: 1.6rem; position: sticky; top: 68px; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); }
     .prod-filter-inner { display: flex; flex-direction: column; gap: 1rem; }
-    .prod-search-row { display: contents; }
     .prod-search {
       display: flex; align-items: center; gap: 0.6rem;
       border: 1px solid var(--line-2); background: var(--bg-3); padding: 0.7rem 1rem;
@@ -204,10 +166,6 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
       color: var(--ink); font-family: var(--font-body); font-size: 0.92rem;
     }
     .prod-search input::placeholder { color: var(--ink-faint); }
-    .prod-filter-btn { display: none; }
-    .filter-sheet { display: contents; }
-    .filter-sheet-header { display: none; }
-    .filter-sheet-backdrop { display: none; }
     .prod-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
     .prod-chip {
       font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.03em;
@@ -218,71 +176,34 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
     .prod-chip:hover { border-color: var(--accent-gold); color: var(--accent-gold-light); }
     .prod-chip.is-active { background: var(--accent-gold); border-color: var(--accent-gold); color: #17120c; font-weight: 600; }
     .prod-filter-empty { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.2rem; }
-
+    .prod-chips-fade { display: none; }
+    .prod-chips-toggle {
+      display: none;
+      align-items: center; justify-content: center; gap: 0.4rem;
+      width: 100%; margin-top: -0.2rem;
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--accent-gold-light); background: transparent; border: none;
+      padding: 0.6rem; cursor: pointer;
+    }
+    .prod-chips-toggle .toggle-chevron { transition: transform .3s var(--ease-premium); }
+    .prod-chips-toggle[aria-expanded="true"] .toggle-chevron { transform: rotate(180deg); }
     @media (max-width: 620px) {
-      /* Raise .prod-filter-bar's own stacking context above the site
-         header's (z-index 50) and the filter backdrop's (100), so the
-         sheet nested inside it — capped at this context's rank — renders
-         above both instead of being trapped underneath the header. */
-      .prod-filter-bar { z-index: 110; }
-      .prod-search-row { display: flex; align-items: center; gap: 0.7rem; }
-      .prod-search { max-width: none; flex: 1; min-width: 0; }
-
-      .prod-filter-btn {
-        display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;
-        background: var(--bg-3); border: 1px solid var(--line-2); color: var(--ink);
-        padding: 0.7rem 1rem; min-height: 44px;
-        font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.03em; text-transform: uppercase;
-        cursor: pointer; transition: border-color .25s var(--ease-premium), color .25s var(--ease-premium);
+      .prod-search { max-width: none; }
+      .prod-chip { padding: 0.75rem 1rem; }
+      .prod-chips {
+        max-height: var(--chips-collapsed-h, 108px);
+        overflow: hidden;
+        position: relative;
+        transition: max-height .45s var(--ease-premium);
       }
-      .prod-filter-btn:hover, .prod-filter-btn[aria-expanded="true"] { border-color: var(--accent-gold); color: var(--accent-gold-light); }
-      .prod-filter-btn-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.25; }
-      .prod-filter-btn-active {
-        font-size: 0.68rem; letter-spacing: 0.02em; text-transform: none;
-        color: var(--accent-gold-light); max-width: 22vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      .prod-chips.is-expanded { max-height: 600px; }
+      .prod-chips-fade {
+        display: block; position: absolute; left: 0; right: 0; bottom: 0; height: 2.4rem;
+        background: linear-gradient(180deg, transparent, var(--bg));
+        pointer-events: none; opacity: 1; transition: opacity .3s var(--ease-premium);
       }
-
-      .filter-sheet {
-        display: flex; flex-direction: column;
-        position: fixed; left: 0; right: 0; bottom: 0; z-index: 101;
-        max-height: 78vh;
-        background: var(--bg-2); border-top: 1px solid var(--line-2);
-        border-radius: 18px 18px 0 0;
-        box-shadow: 0 -12px 40px rgba(0, 0, 0, .45);
-        transform: translateY(100%);
-        transition: transform .4s var(--ease-premium);
-        visibility: hidden;
-      }
-      .filter-sheet.is-open { transform: translateY(0); visibility: visible; }
-
-      .filter-sheet-header {
-        display: flex; align-items: center; justify-content: space-between;
-        padding: 1.1rem 1.3rem 0.9rem; border-bottom: 1px solid var(--line);
-        flex-shrink: 0;
-      }
-      .filter-sheet-title { font-size: 1rem; letter-spacing: 0.03em; color: var(--ink); text-transform: uppercase; }
-      .filter-sheet-close {
-        display: flex; align-items: center; justify-content: center;
-        width: 36px; height: 36px; flex-shrink: 0;
-        background: transparent; border: 1px solid var(--line-2); border-radius: 50%;
-        color: var(--ink-dim); cursor: pointer; transition: border-color .25s var(--ease-premium), color .25s var(--ease-premium);
-      }
-      .filter-sheet-close:hover { border-color: var(--accent-gold); color: var(--accent-gold-light); }
-
-      .filter-sheet .prod-chips {
-        display: flex; flex-direction: column; flex-wrap: nowrap; gap: 0.6rem;
-        padding: 1rem 1.3rem calc(1.3rem + env(safe-area-inset-bottom, 0px));
-        overflow-y: auto;
-      }
-      .filter-sheet .prod-chip { padding: 0.9rem 1rem; text-align: left; min-height: 44px; }
-
-      .filter-sheet-backdrop {
-        display: block; position: fixed; inset: 0; z-index: 100;
-        background: rgba(0, 0, 0, .55);
-        opacity: 0; pointer-events: none;
-        transition: opacity .35s var(--ease-premium);
-      }
-      .filter-sheet-backdrop.is-open { opacity: 1; pointer-events: auto; }
+      .prod-chips.is-expanded .prod-chips-fade { opacity: 0; }
+      .prod-chips-toggle:not([hidden]) { display: flex; }
     }
 
     .cat-block { margin-bottom: 3.2rem; scroll-margin-top: 90px; }
