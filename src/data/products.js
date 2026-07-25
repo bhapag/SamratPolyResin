@@ -53,34 +53,115 @@ export const products = [
     price: "₹135 / kg",
     image: "sheet-grade-yellow-resin.jpg",
     images: ["sheet-grade-yellow-resin-2.jpg", "sheet-grade-yellow-resin-3.jpg"],
-    specs: {
-      "Minimum Order Quantity": "1000 kg",
-      "Resin Type": "Polyester",
-      "Grade": "General Purpose",
-      "Packaging Size": "200 kg",
-      "Usage / Application": "FRP",
-      "Physical Form": "Liquid",
-      "Viscosity": "Low",
-      "Curing Time": "12 hours",
-      "Pot Life": "60 mins",
-      "Features": "Bubble free, UV resistant",
-      "Color": "Yellow",
-      "Pack Type": "Bottle",
+    imageAlt:
+      "Sheet Grade Yellow Resin — pre-pigmented yellow orthophthalic polyester resin for FRP sheets by Samrat Poly Resins",
+    seo: {
+      title: "Sheet Grade Yellow Resin – Polyester Resin for FRP Sheets",
+      description:
+        "Sheet Grade Yellow Resin — a pre-pigmented orthophthalic polyester resin for FRP sheet and panel manufacturing. Gel time 6.5 minutes. 225 kg drums.",
+      keywords: [
+        "Sheet Grade Yellow Resin",
+        "Polyester Sheet Grade Resin",
+        "Yellow Sheet Grade Resin",
+        "Sheet Grade Polyester Resin",
+        "FRP Sheet Resin",
+        "Roofing Sheet Resin",
+      ],
     },
-    tagline: "Pre-pigmented resin for consistent, glossy FRP sheets.",
+    // Same technical specifications as roof-light-resin except final product
+    // colour (both share this verified spec sheet) — the two pages target
+    // different buyer intent (general FRP sheet/panel manufacturing here vs.
+    // translucent roofing there) and must not share prose/FAQs. Colour
+    // describes the product as supplied to the customer. MOQ was not part of
+    // the verified sheet, so it is omitted rather than reusing the old,
+    // unverified 1000 kg figure. Density and Flash Point are excluded as
+    // unverified.
+    productDetails: {
+      "Packaging": "225 kg Drum",
+      "Physical Form": "Liquid",
+      "Colour / Appearance": "Yellow",
+      "Shelf Life": "2 Months",
+      "Storage Temperature": "30–35 °C",
+    },
+    techSpecs: {
+      "Resin Type": "Orthophthalic Unsaturated Polyester",
+      "Curing System": "Non-Accelerated (MEKP Catalyst)",
+      "Viscosity": "280 cPs",
+      "Gel Time": "6.5 Minutes",
+      "Styrene Content": "35%",
+      "Cure Time": "12 Hours",
+      "MEKP Dosage": "1.5%",
+      "Cobalt Octoate Dosage": "0.4%",
+      "Purity": "99%",
+    },
+    tagline: "Pre-pigmented yellow resin for consistent FRP sheet manufacturing.",
     description:
-      "A pre-pigmented polyester resin formulated for sheet moulding and laminate applications where consistent colour, surface finish and mechanical properties are critical. Factory-mixed with high-quality yellow pigment for uniform colour throughout the sheet, it is optimised for lamination and compression moulding to give a smooth, bubble-free finish with minimal porosity and excellent fibre wet-out.",
+      "Sheet Grade Yellow Resin is an orthophthalic unsaturated polyester resin supplied pre-pigmented yellow for consistent-colour FRP sheet and panel manufacturing. Based on a water-white orthophthalic resin, it is factory-pigmented so every batch delivers uniform colour throughout the sheet, without the variability of pigmenting resin by hand at the mould. Cured with an MEKP catalyst at room temperature, it wets out reinforcement cleanly for a smooth, low-porosity laminate suited to compression moulding and hand lay-up alike. Samrat Poly Resins supplies Sheet Grade Yellow Resin in bulk 225 kg drums for FRP sheet, panel and general industrial moulding manufacturers.",
+    usageNote:
+      'Sheet Grade Yellow Resin is typically catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> during sheet lay-up or compression moulding. Where a project needs an unpigmented general-purpose grade instead, see our <a href="/products/gp-clear-resin/">GP Clear Resin</a> or base <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin (UPR)</a>; for door and plywood lamination work, our <a href="/products/lamination-resin/">Lamination Resin</a> is more suitable, and mould-facing sheets can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> or upgraded to <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> for higher chemical resistance.',
     features: [
-      "Pre-pigmented in yellow for uniform colour throughout",
-      "Bubble-free and UV-resistant, holds colour over time",
-      "Optimised for lamination and compression moulding",
-      "60-minute pot life, cures in around 12 hours",
-      "Supplied in 200 kg drums, minimum order 1000 kg",
+      "Pre-pigmented yellow for consistent colour throughout every sheet",
+      "Water-white orthophthalic base resin, 99% purity",
+      "Gel time of 6.5 minutes for efficient sheet and panel production",
+      "Room-temperature MEKP cure, fully hardened in around 12 hours",
+      "35% styrene content for stable, repeatable sheet processing",
+      "Bulk-packed in 225 kg drums for sheet manufacturers",
     ],
     applications: [
-      "FRP sheets and roofing panels",
-      "Decorative panels and electrical enclosures",
-      "Washroom partitions and construction formwork",
+      "FRP sheets and panels for industrial use",
+      "Decorative and coloured composite panels",
+      "Electrical enclosures and washroom partitions",
+      "Compression moulding and hand lay-up sheet production",
+    ],
+    industries: [
+      "FRP sheet & panel manufacturing",
+      "Electrical & switchgear enclosures",
+      "Construction formwork & partitions",
+      "General industrial moulding",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Consistent 99% purity and factory-controlled pigmentation",
+      "Supplied in bulk 225 kg drums",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is Sheet Grade Yellow Resin?",
+        a: "Sheet Grade Yellow Resin is an orthophthalic unsaturated polyester resin, factory-pigmented yellow, formulated for FRP sheet and panel manufacturing where consistent colour is required across every batch.",
+      },
+      {
+        q: "Why is Sheet Grade Yellow Resin pre-pigmented rather than mixed on site?",
+        a: "Factory pigmentation ensures uniform colour depth and consistency throughout the sheet, batch after batch — mixing pigment by hand at the mould is harder to control and can lead to visible colour variation between sheets.",
+      },
+      {
+        q: "Is Sheet Grade Yellow Resin the same as Roof Light Sheet Grade Resin?",
+        a: 'They share the same base resin chemistry, but Sheet Grade Yellow Resin is factory-pigmented yellow for opaque, consistently-coloured FRP sheets and panels, while our <a href="/products/roof-light-resin/">Roof Light Sheet Grade Resin</a> is left water-white for translucent roofing and skylight sheets. Choose based on whether you need an opaque coloured sheet or a light-transmitting roofing sheet.',
+      },
+      {
+        q: "What is the gel time and cure time of Sheet Grade Yellow Resin?",
+        a: "Gel time is 6.5 minutes. Full cure at room temperature, once catalysed with MEKP (around 1.5%) and a cobalt octoate accelerator (around 0.4%), takes approximately 12 hours.",
+      },
+      {
+        q: "What is the viscosity and styrene content of Sheet Grade Yellow Resin?",
+        a: "Viscosity is approximately 280 cPs and styrene content is 35%, with 99% purity.",
+      },
+      {
+        q: "What is the shelf life and storage temperature for Sheet Grade Yellow Resin?",
+        a: "Shelf life is 2 months from manufacture. Store between 30–35 °C, away from direct heat and sunlight.",
+      },
+      {
+        q: "What packaging does Sheet Grade Yellow Resin come in?",
+        a: "It is supplied in bulk 225 kg drums.",
+      },
+    ],
+    relatedSlugs: [
+      "roof-light-resin",
+      "gp-clear-resin",
+      "gp-gelcoat-resin",
+      "mekp-hardener",
     ],
   },
   {
@@ -91,33 +172,121 @@ export const products = [
     price: "₹130 / kg",
     image: "unsaturated-polyester-resin-2.jpg",
     images: ["unsaturated-polyester-resin.jpg", "unsaturated-polyester-resin-3.jpg", "unsaturated-polyester-resin-4.jpg"],
-    specs: {
-      "Minimum Order Quantity": "1000 kg",
-      "Usage / Application": "Hand layup, lamination, bathware, automotive, marine, FRP moulding, pultrusion, casting",
-      "Resin Type": "Orthophthalic, isophthalic",
-      "Curing System": "Pre-accelerated, non-accelerated",
-      "Viscosity": "300–500 cPs",
-      "Pack Size": "225 kg",
-      "Gel Time": "8–12 min",
-      "Styrene Content": "30–35%",
-      "Color": "White",
-      "Pack Type": "Barrel",
+    imageAlt:
+      "Unsaturated Polyester Resin (UPR) — clear orthophthalic general-purpose polyester resin by Samrat Poly Resins",
+    seo: {
+      title: "Unsaturated Polyester Resin (UPR) – Orthophthalic Polyester Resin",
+      description:
+        "Unsaturated Polyester Resin (UPR) — a general-purpose orthophthalic polyester resin for FRP, fiberglass and composite manufacturing. Gel time under 8 minutes. 225 kg drums, MOQ 1,000 kg.",
+      // "General Purpose Polyester Resin" intentionally omitted here — that
+      // exact phrase is in GP Clear Resin's own title tag, so keeping it here
+      // too would have this page competing with GP Clear Resin for it. Every
+      // other requested secondary term is covered naturally in the page copy
+      // and FAQs below regardless.
+      keywords: [
+        "Unsaturated Polyester Resin",
+        "UPR Resin",
+        "Polyester Resin",
+        "Orthophthalic Polyester Resin",
+        "FRP Resin",
+        "Fiberglass Resin",
+        "Liquid Polyester Resin",
+      ],
+    },
+    // Same physical grade as GP Clear Resin — Samrat Poly Resins supplies its
+    // standard orthophthalic UPR under that product name. Values verified
+    // against SPR-TDS-GCR Rev. 01, identical to gp-clear-resin's specs
+    // (do not let the two drift apart). Flash Point and Thixotropy excluded.
+    productDetails: {
+      "Minimum Order Quantity": "1,000 kg",
+      "Packaging": "225 kg Drum",
+      "Physical Form": "Liquid",
+      "Colour / Appearance": "Clear",
+      "Shelf Life": "3 months (225 kg drum) / 2 months (PET packaging)",
+      "Storage Temperature": "30–35 °C",
+    },
+    techSpecs: {
+      "Resin Type": "Orthophthalic Unsaturated Polyester Resin",
+      "Curing System": "Non-accelerated",
+      "Viscosity": "350–450 cPs",
+      "Gel Time": "< 8 minutes",
+      "Styrene Content": "33–40%",
+      "Specific Gravity / Density": "1.20 g/cm³",
+      "Cure Time": "45 minutes – 1.5 hours",
+      "MEKP Dosage": "1.5%",
+      "Cobalt Octoate Dosage": "0.4%",
       "Purity": "99%",
     },
-    tagline: "The versatile, low-cost workhorse resin for FRP.",
+    tagline: "The versatile, general-purpose workhorse resin for FRP.",
     description:
-      "A thermosetting polymer widely used in fibreglass-reinforced plastic composites. One of the most common resins thanks to its low cost, versatility and good mechanical properties. It crosslinks with a styrene monomer using an MEKP catalyst, hardening into a rigid, durable solid through free-radical polymerisation. Its 300–500 cPs viscosity allows easy penetration and wetting of reinforcement materials.",
+      "Unsaturated Polyester Resin (UPR) is a thermosetting resin widely used across the fibreglass-reinforced plastic (FRP) industry for its versatility and reliable mechanical properties. It crosslinks with styrene monomer through free-radical polymerisation, catalysed with MEKP, hardening into a rigid, durable composite. Polyester resins are broadly grouped into orthophthalic, isophthalic and vinyl ester families, differing in chemical resistance and cost. Samrat Poly Resins supplies its standard UPR grade as a general-purpose orthophthalic resin — a clear liquid with 350–450 cPs viscosity, a gel time under 8 minutes and 99% purity — suited to hand layup, spray-up, moulding and everyday FRP work.",
+    usageNote:
+      'Samrat Poly Resins supplies this standard orthophthalic UPR grade under the product name <a href="/products/gp-clear-resin/">GP Clear Resin</a>, typically catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and cobalt accelerator, then reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> for hand layup and spray-up. For door and plywood lamination work, see our <a href="/products/lamination-resin/">Lamination Resin</a>; for higher chemical and corrosion resistance, step up to <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a>; and pair with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> for a finished decorative surface.',
     features: [
-      "Low cost and highly versatile",
-      "Cures with MEKP catalyst at room temperature",
-      "8–12 minute gel time, 99% purity",
-      "Available in orthophthalic and isophthalic formulations",
-      "Supplied in 225 kg drums, minimum order 1000 kg",
+      "Widely used, cost-effective orthophthalic UPR grade for general FRP work",
+      "Clear liquid, 350–450 cPs viscosity for smooth reinforcement wet-out",
+      "Gel time under 8 minutes for efficient production cycles",
+      "Cures via MEKP and cobalt octoate at room temperature — no special curing equipment required",
+      "33–40% styrene content, 99% purity, consistent batch-to-batch quality",
+      "Supplied in 225 kg drums, minimum order 1,000 kg",
     ],
     applications: [
-      "Hand layup, lamination and pultrusion",
-      "Bathware, automotive parts and marine components",
-      "General-purpose FRP moulding and casting",
+      "Hand layup, spray-up and pultrusion",
+      "FRP mouldings, panels and casting",
+      "Bathware, automotive and marine composite parts",
+      "General-purpose fiberglass fabrication",
+    ],
+    industries: [
+      "FRP & fiberglass composites manufacturing",
+      "Automotive & transport components",
+      "Marine & boat building",
+      "Bathware & sanitaryware",
+      "Construction & general fabrication",
+      "Pultrusion & casting",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Consistent 99% purity with batch-to-batch quality control",
+      "Bulk supply from 1,000 kg, packed in 225 kg drums",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is Unsaturated Polyester Resin (UPR)?",
+        a: "Unsaturated Polyester Resin (UPR) is a thermosetting resin used across the FRP and composites industry. It crosslinks with styrene monomer through free-radical polymerisation, catalysed with MEKP, curing into a rigid, durable solid used in fiberglass laminates, mouldings and castings.",
+      },
+      {
+        q: "What are the different types of polyester resin?",
+        a: "Polyester resins are generally grouped into orthophthalic, isophthalic and vinyl ester types. Orthophthalic is the most economical, general-purpose grade; isophthalic offers improved water and chemical resistance; vinyl ester offers the highest chemical and corrosion resistance. Samrat Poly Resins' standard UPR grade is an orthophthalic resin suited to general FRP work.",
+      },
+      {
+        q: "Is this Unsaturated Polyester Resin the same as GP Clear Resin?",
+        a: "Yes. Samrat Poly Resins supplies its standard general-purpose orthophthalic UPR grade under the product name GP Clear Resin. The technical specifications are identical — this page describes the same resin from a category perspective.",
+      },
+      {
+        q: "What is the viscosity and gel time of this UPR grade?",
+        a: "Viscosity is 350–450 cPs and gel time is under 8 minutes. It is a non-accelerated system, cured at room temperature with an MEKP catalyst and a cobalt octoate accelerator.",
+      },
+      {
+        q: "What is the styrene content, purity and density of this resin?",
+        a: "Styrene content is 33–40%, purity is 99%, and specific gravity is 1.20 g/cm³.",
+      },
+      {
+        q: "What packaging and minimum order quantity is available?",
+        a: "This UPR grade is supplied in 225 kg drums, with a minimum order quantity of 1,000 kg.",
+      },
+      {
+        q: "Is Unsaturated Polyester Resin the same as fiberglass resin?",
+        a: "\"Fiberglass resin\" is a common industry term for the unsaturated polyester resin used with glass fibre reinforcement in FRP manufacturing. Samrat Poly Resins' UPR grade is suitable for this use, typically paired with glass fibre matting and an MEKP catalyst.",
+      },
+    ],
+    relatedSlugs: [
+      "gp-clear-resin",
+      "lamination-resin",
+      "vinyl-ester-resin",
+      "gp-gelcoat-resin",
     ],
   },
   {
@@ -251,12 +420,14 @@ export const products = [
       title: "GP Clear Resin – General Purpose Polyester Resin",
       description:
         "GP Clear Resin — a clear, orthophthalic general-purpose unsaturated polyester resin for FRP hand layup, spray-up and moulding. Gel time under 8 minutes. 225 kg drums, MOQ 1,000 kg.",
+      // "Unsaturated Polyester Resin" and "Orthophthalic Polyester Resin" were
+      // removed from here — the dedicated /unsaturated-polyester-resin/ page
+      // now owns that search intent; keeping both here would have the two
+      // pages competing for the same terms.
       keywords: [
         "GP Clear Resin",
         "General Purpose Resin",
         "General Purpose Polyester Resin",
-        "Unsaturated Polyester Resin",
-        "Orthophthalic Polyester Resin",
         "FRP Resin",
         "Clear Polyester Resin",
       ],
@@ -300,7 +471,7 @@ export const products = [
     ],
     applications: [
       "Hand layup and spray-up laminates",
-      "FRP water tanks, roofing sheets and door skins",
+      "FRP water tanks, roofing sheets and sanitaryware",
       "Panels, moulding and cooling tower components",
       "General-purpose composite and FRP products",
     ],
@@ -434,34 +605,118 @@ export const products = [
     price: "₹180 / kg",
     image: "gp-gelcoat-resin.jpg",
     images: ["gp-gelcoat-resin-2.jpg", "gp-gelcoat-resin-3.jpg"],
-    specs: {
-      "Minimum Order Quantity": "500 kg",
-      "Application": "Mould surface, automotive, boat, bathware",
-      "Gloss Level": "High gloss",
-      "Color": "White",
-      "Viscosity": "High",
-      "Form": "Liquid",
-      "Purity": "100%",
-      "UV Resistance": "High",
-      "Styrene Content": "30–35%",
-      "Packaging": "35 kg pail",
-      "Packaging Type": "Bottle",
-      "Usage / Application": "Commercial",
+    imageAlt:
+      "GP Gelcoat Resin — white high-gloss polyester surface-coating gelcoat by Samrat Poly Resins",
+    seo: {
+      title: "GP Gelcoat Resin – Polyester Gelcoat for FRP Moulds",
+      description:
+        "GP Gelcoat Resin — a white, high-gloss polyester gelcoat for FRP moulds, applied before fibreglass lay-up. Thixotropic, 8.5-minute gel time. 50/225 kg packs, MOQ 500 kg.",
+      keywords: [
+        "GP Gelcoat Resin",
+        "Gelcoat Resin",
+        "Polyester Gelcoat Resin",
+        "FRP Gelcoat Resin",
+        "White Gelcoat Resin",
+        "General Purpose Gelcoat",
+        "Fiberglass Gelcoat Resin",
+        "Brush Grade Gelcoat Resin",
+        "Mould Gelcoat Resin",
+        "Surface Coating Gelcoat",
+      ],
     },
-    tagline: "General-purpose gelcoat for a glossy, protective outer layer.",
+    // Values verified for GP Gelcoat Resin only — do not copy Thixotropy to
+    // any other product. Density and Flash Point are not verified for this
+    // grade and are intentionally excluded; Storage Temperature was not
+    // supplied either, so it is omitted rather than estimated.
+    productDetails: {
+      "Minimum Order Quantity": "500 kg",
+      "Packaging": "50 kg / 225 kg",
+      "Physical Form": "Liquid",
+      "Colour / Appearance": "White",
+      "Gloss Level": "High Gloss",
+      "Shelf Life": "3 Months (Drum) / 2 Months (PET)",
+    },
+    techSpecs: {
+      "Resin Type": "Polyester (Surface-Coating Gelcoat)",
+      "Curing System": "MEKP Catalyst, Room Temperature Cure",
+      "Viscosity": "11,000 cPs",
+      "Thixotropy": "Yes — resists sagging on vertical mould surfaces",
+      "Gel Time": "8.5 Minutes",
+      "Styrene Content": "30%",
+      "Cure Time": "1.5–2 Hours",
+      "MEKP Dosage": "1.5%",
+      "Cobalt Octoate Dosage": "0.4%",
+      "Purity": "100%",
+    },
+    tagline: "White, high-gloss polyester gelcoat for FRP mould surfaces.",
     description:
-      "A general-purpose surface-coating polyester resin applied as the outermost layer of FRP mouldings, ahead of the laminate. Brushed, sprayed or rollered onto the mould before laying up fibreglass, it cures with an MEKP catalyst into a smooth, high-gloss, water-white finish that shields the laminate underneath from moisture, abrasion and weathering. Thixotropic so it stays put on vertical mould faces without sagging, it's a more affordable alternative to ISO or vinyl ester gelcoats for standard-duty work.",
+      "GP Gelcoat Resin is a white, high-gloss polyester surface-coating resin applied as the outermost layer of an FRP moulding, before the fibreglass laminate is built up behind it. Unlike a general-purpose laminating resin, which is designed to soak into and bind reinforcement, gelcoat is formulated to be brushed, sprayed or rollered directly onto the mould face — its high viscosity and thixotropic behaviour let it cling to vertical and overhead mould surfaces without sagging or running. Once cured with an MEKP catalyst, it forms a smooth, glossy, protective skin that shields the laminate underneath from moisture, abrasion and weathering, giving the finished part its visible surface finish. Samrat Poly Resins supplies GP Gelcoat Resin as a 100% pure, general-purpose white gelcoat suited to a wide range of FRP mould work.",
+    usageNote:
+      'In a typical FRP lay-up, GP Gelcoat Resin is brushed or sprayed onto the mould first and left to gel, then reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> saturated in a laminating resin such as our <a href="/products/gp-clear-resin/">GP Clear Resin</a> or base <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin (UPR)</a>, catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a>. For door and plywood lamination work rather than mould gelcoating, see our <a href="/products/lamination-resin/">Lamination Resin</a>; for moulds needing higher chemical and corrosion resistance, a <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> system may be more suitable.',
     features: [
-      "High-gloss, water-white finish, 100% purity",
-      "Thixotropic — resists sagging on vertical mould surfaces",
-      "Shields laminate from moisture, abrasion and weathering",
-      "Cures with MEKP catalyst at room temperature",
-      "Supplied in 35 kg pails, minimum order 500 kg",
+      "White, high-gloss, pigment-free finish with 100% purity",
+      "Thixotropic — resists sagging and running on vertical mould surfaces",
+      "Fast gel time of 8.5 minutes for efficient mould-release cycles",
+      "Cures with MEKP catalyst and cobalt octoate accelerator at room temperature",
+      "30% styrene content for consistent, controlled application viscosity",
+      "Supplied in 50 kg or 225 kg packs; minimum order 500 kg",
     ],
     applications: [
-      "Mould surfaces for FRP moulding and boat hulls",
-      "Automotive body panels and bathware",
-      "Sanitaryware, water tanks and FRP furniture",
+      "Mould surfaces for FRP boat hulls and body panels",
+      "Bathware, sanitaryware and water tank exteriors",
+      "FRP furniture, panels and moulded components",
+    ],
+    industries: [
+      "FRP mould manufacturing",
+      "Boat & marine hull building",
+      "Automotive body panels",
+      "Bathware & sanitaryware",
+      "Water tanks & storage",
+      "General FRP moulding & fabrication",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Consistent 100% purity with batch-to-batch quality control",
+      "Bulk supply from 500 kg, packed in 50 kg or 225 kg packs",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is GP Gelcoat Resin?",
+        a: "GP Gelcoat Resin is a white, high-gloss polyester surface-coating resin used as the outermost layer of FRP mouldings. It is applied to the mould face before the fibreglass laminate is built up, giving the finished part its visible, protective surface finish.",
+      },
+      {
+        q: "What is the difference between Gelcoat Resin and General Purpose Resin?",
+        a: "General-purpose resin (such as our GP Clear Resin or UPR) is designed to saturate and bind fibreglass reinforcement. Gelcoat is a thicker, thixotropic surface-coating resin applied directly to the mould with no reinforcement mixed in — it forms the outer skin and finish of a moulding, while general-purpose resin forms the structural laminate behind it.",
+      },
+      {
+        q: "Why is Gelcoat applied before the fibreglass reinforcement?",
+        a: "Gelcoat is sprayed or brushed onto the mould surface first so that, once the part is de-moulded, it becomes the visible outer face. Applying it before lay-up lets it cure against the smooth mould surface, producing a glossy, ready-to-use finish without additional surface finishing.",
+      },
+      {
+        q: "Why is GP Gelcoat Resin thixotropic?",
+        a: "Thixotropy lets the gelcoat resist sagging or running when applied to vertical or overhead mould surfaces, so it builds up to an even coating thickness rather than pooling at the bottom of the mould before it gels.",
+      },
+      {
+        q: "What is the gel time and cure time of GP Gelcoat Resin?",
+        a: "Gel time is 8.5 minutes. Full cure at room temperature, once catalysed with MEKP (around 1.5%) and a cobalt octoate accelerator (around 0.4%), typically takes 1.5 to 2 hours.",
+      },
+      {
+        q: "What is the viscosity and styrene content of GP Gelcoat Resin?",
+        a: "Viscosity is approximately 11,000 cPs — much thicker than a general-purpose laminating resin, by design, so it clings to the mould surface. Styrene content is 30%, and purity is 100%.",
+      },
+      {
+        q: "What packaging and minimum order quantity does GP Gelcoat Resin come in?",
+        a: "It is supplied in 50 kg or 225 kg packs, with a minimum order quantity of 500 kg.",
+      },
+    ],
+    relatedSlugs: [
+      "gp-clear-resin",
+      "vinyl-ester-resin",
+      "mekp-hardener",
+      "fibre-glass-mat",
     ],
   },
   {
@@ -471,31 +726,112 @@ export const products = [
     price: "₹175 / kg",
     image: "button-grade-resin.jpg",
     images: ["button-grade-resin-2.jpg", "button-grade-resin-3.jpg"],
-    specs: {
-      "Minimum Order Quantity": "2 kg",
-      "Resin Type": "Polyester",
-      "Grade": "Casting / moulding",
-      "Packaging Size": "200 ml",
+    imageAlt:
+      "Button Grade Resin — transparent unsaturated polyester casting resin for buttons by Samrat Poly Resins",
+    seo: {
+      title: "Button Grade Resin – Polyester Casting Resin for Buttons",
+      description:
+        "Button Grade Resin — a transparent, high-clarity unsaturated polyester casting resin for button and small moulding manufacture. Gel time 9.5 minutes. 225 kg drums.",
+      keywords: [
+        "Button Grade Resin",
+        "Polyester Button Grade Resin",
+        "Button Resin",
+        "Unsaturated Polyester Button Resin",
+        "Casting Grade Polyester Resin",
+        "Moulding Polyester Resin",
+        "Polyester Casting Resin",
+        "Transparent Button Resin",
+      ],
+    },
+    // Values verified for Button Grade Resin only. Purity and Minimum Order
+    // Quantity were not part of the verified sheet, so neither is included —
+    // the previous "2 kg / 200 ml bottle" figures described retail/craft
+    // packaging that directly conflicted with the verified 225 kg drum
+    // packaging, so they were removed rather than kept or guessed at.
+    // Density and Flash Point are not verified for this grade and are
+    // intentionally excluded.
+    productDetails: {
+      "Packaging": "225 kg Drum",
       "Physical Form": "Semi-liquid",
-      "Viscosity": "Medium",
-      "Curing Time": "12 hours",
-      "Features": "High gloss, scratch resistant",
-      "Color": "Transparent",
-      "Pack Type": "Bottle",
+      "Colour / Appearance": "Transparent",
+      "Grade": "Casting / Moulding",
+      "Shelf Life": "2 Months",
+      "Storage Temperature": "30–35 °C",
+    },
+    techSpecs: {
+      "Resin Type": "Polyester (Unsaturated)",
+      "Viscosity": "1,100 cPs",
+      "Gel Time": "9.5 Minutes",
+      "Curing Time": "2 Hours",
+      "Styrene Content": "33%",
+      "MEKP Dosage": "1.5%",
+      "Cobalt Octoate Dosage": "0.1%",
     },
     tagline: "High-clarity resin for buttons and small mouldings.",
     description:
-      "A specialised unsaturated polyester resin designed for manufacturing buttons and other small moulded accessories. Semi-liquid with medium viscosity, it's formulated for high clarity, excellent hardness, good polishability and durability, making it suitable for both transparent and coloured buttons in the fashion and garment industry.",
+      "Button Grade Resin is a specialised unsaturated polyester casting resin formulated for manufacturing buttons and other small decorative mouldings. Unlike a general-purpose laminating resin, which is optimised for reinforcement wet-out and structural strength, Button Grade Resin is a semi-liquid, transparent casting grade designed for clarity, hardness and a fine, polishable surface finish — properties that matter most when the cast part itself is the visible, finished product rather than a structural laminate. Cured with an MEKP catalyst and cobalt octoate accelerator, it sets into a hard, glass-clear casting suitable for both natural transparent buttons and pigmented colour work. Samrat Poly Resins supplies Button Grade Resin in bulk 225 kg drums for button, fashion-accessory and small-moulding manufacturers.",
+    usageNote:
+      'Button Grade Resin is cured with an <a href="/products/mekp-hardener/">MEKP hardener</a> and cobalt accelerator, in the same way as our general-purpose grades. If your project needs a resin for structural FRP lay-up rather than decorative casting, see our <a href="/products/gp-clear-resin/">GP Clear Resin</a> or base <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin (UPR)</a>; for mould-surface coating, door lamination or higher chemical resistance, our <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a>, <a href="/products/lamination-resin/">Lamination Resin</a> and <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> grades are also available.',
     features: [
-      "High clarity and excellent hardness",
-      "High-gloss, scratch-resistant finish",
-      "Good polishability for a fine finish",
-      "Cures in around 12 hours",
-      "Supplied in 200 ml packs, minimum order 2 kg",
+      "Transparent, glass-clear casting resin with a fine, polishable finish",
+      "Semi-liquid consistency suited to button and small-mould casting",
+      "Gel time of 9.5 minutes for controlled, predictable casting cycles",
+      "Cures with MEKP catalyst and cobalt octoate accelerator in around 2 hours",
+      "33% styrene content for consistent casting performance",
+      "Supplied in 225 kg drums",
     ],
     applications: [
-      "Buttons for the fashion and garment industry",
-      "Small moulded accessories",
+      "Buttons and fashion accessories",
+      "Small decorative mouldings and novelty items",
+      "Transparent and pigmented casting work",
+    ],
+    industries: [
+      "Button & fashion accessory manufacturing",
+      "Garment & apparel trims",
+      "Decorative casting & novelty moulding",
+      "General small-parts casting",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Supplied in bulk 225 kg drums for manufacturers",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is Button Grade Resin?",
+        a: "Button Grade Resin is a transparent, semi-liquid unsaturated polyester casting resin formulated for manufacturing buttons and other small decorative mouldings. It is a casting/moulding grade, not a laminating resin — it is poured or cast into moulds rather than used with fibreglass reinforcement.",
+      },
+      {
+        q: "Why is Button Grade Resin used for button manufacturing?",
+        a: "Button manufacturing needs a resin that casts clear and hard, with a fine surface that takes a high polish, since the cast part itself is the finished, visible product. Button Grade Resin is formulated specifically for this clarity and surface finish, rather than for structural strength or reinforcement wet-out.",
+      },
+      {
+        q: "How is Button Grade Resin different from General Purpose Resin?",
+        a: "General-purpose resin (such as our GP Clear Resin or UPR) is designed to saturate and bind fibreglass reinforcement for structural FRP laminates. Button Grade Resin is a casting grade, used on its own without reinforcement, formulated for clarity, hardness and polishability rather than laminate strength.",
+      },
+      {
+        q: "What is the gel time and curing time of Button Grade Resin?",
+        a: "Gel time is 9.5 minutes. Full cure at room temperature, once catalysed with MEKP (around 1.5%) and a cobalt octoate accelerator (around 0.1%), takes approximately 2 hours.",
+      },
+      {
+        q: "What is the viscosity and styrene content of Button Grade Resin?",
+        a: "Viscosity is approximately 1,100 cPs and styrene content is 33%.",
+      },
+      {
+        q: "What is the shelf life and storage temperature for Button Grade Resin?",
+        a: "Shelf life is 2 months from manufacture. Store between 30–35 °C, away from direct heat and sunlight.",
+      },
+      {
+        q: "What packaging is Button Grade Resin supplied in?",
+        a: "It is supplied in bulk 225 kg drums.",
+      },
+    ],
+    relatedSlugs: [
+      "gp-clear-resin",
+      "unsaturated-polyester-resin",
+      "mekp-hardener",
     ],
   },
   {
@@ -505,35 +841,116 @@ export const products = [
     price: "₹135 / kg",
     image: "roof-light-resin.jpg",
     images: ["roof-light-resin-2.jpg", "roof-light-resin-3.jpg"],
-    specs: {
-      "Minimum Order Quantity": "500 kg",
-      "Usage / Application": "Hand layup, roofing sheet",
-      "Resin Type": "Orthophthalic",
-      "Curing System": "Non-accelerated",
-      "Gel Time": "8–12 min",
-      "Viscosity": "<400 cPs",
-      "Color": "Water white",
-      "Pack Size": "25 kg",
-      "Pack Type": "Barrel",
-      "Styrene Content": "35–40%",
-      "Packaging": "225 kg drum",
-      "Shelf Life": "1 year",
+    imageAlt:
+      "Roof Light Sheet Grade Resin — water-white translucent orthophthalic polyester resin for roofing sheets by Samrat Poly Resins",
+    seo: {
+      title: "Roof Light Sheet Grade Resin – Translucent Roofing Resin",
+      description:
+        "Roof Light Sheet Grade Resin — a water-white orthophthalic polyester resin for translucent roof light and skylight sheets. Gel time 6.5 minutes. 225 kg drums.",
+      keywords: [
+        "Roof Light Sheet Grade Resin",
+        "Roof Light Resin",
+        "Roof Sheet Resin",
+        "Skylight Sheet Resin",
+        "Roofing Polyester Resin",
+        "Transparent Roof Sheet Resin",
+        "FRP Roof Light Resin",
+      ],
+    },
+    // Same base-resin chemistry as sheet-grade-yellow-resin (shared verified
+    // spec sheet) — this page targets translucent roofing/skylight intent,
+    // distinct prose/FAQs from the sheet-grade page. "UV-resistant" and
+    // "1 year" shelf life from the old data are not part of the verified
+    // sheet and have been removed rather than kept (shelf life corrected to
+    // the verified 2 months — a meaningful difference for storage planning).
+    // MOQ was not verified this time and is omitted. Density and Flash Point
+    // are excluded as unverified.
+    productDetails: {
+      "Packaging": "225 kg Drum",
+      "Physical Form": "Liquid",
+      "Colour / Appearance": "Water White",
+      "Shelf Life": "2 Months",
+      "Storage Temperature": "30–35 °C",
+    },
+    techSpecs: {
+      "Resin Type": "Orthophthalic Unsaturated Polyester",
+      "Curing System": "Non-Accelerated (MEKP Catalyst)",
+      "Viscosity": "280 cPs",
+      "Gel Time": "6.5 Minutes",
+      "Styrene Content": "35%",
+      "Cure Time": "12 Hours",
+      "MEKP Dosage": "1.5%",
+      "Cobalt Octoate Dosage": "0.4%",
       "Purity": "99%",
     },
-    tagline: "UV-stable translucent resin for roof light panels.",
+    tagline: "Water-white translucent resin for roof light and skylight sheets.",
     description:
-      "An orthophthalic unsaturated polyester resin formulated for translucent roof light panels that allow natural light into buildings. Water-white with an 8–12 minute gel time, it maintains high optical clarity for maximum light penetration while resisting yellowing, brittleness and degradation from sun exposure.",
+      "Roof Light Sheet Grade Resin is a water-white orthophthalic unsaturated polyester resin formulated for translucent FRP roof light and skylight sheets that let natural daylight into a building. Its water-white, low-viscosity liquid form is chosen specifically for optical clarity, so cured sheets stay transparent enough to transmit light rather than block it — unlike a pigmented or general-purpose sheet resin used for opaque panels. Cured with an MEKP catalyst at room temperature, it wets out fibreglass reinforcement cleanly for a smooth, bubble-free laminate suited to hand lay-up roofing sheet production. Samrat Poly Resins supplies Roof Light Sheet Grade Resin in bulk 225 kg drums for roofing sheet, skylight and daylighting panel manufacturers.",
+    usageNote:
+      'Roof Light Sheet Grade Resin is typically catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> during roofing sheet lay-up. Where a project needs an opaque, pigmented sheet resin instead, see our <a href="/products/gp-clear-resin/">GP Clear Resin</a> or base <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin (UPR)</a>; for door and plywood lamination work, our <a href="/products/lamination-resin/">Lamination Resin</a> is more suitable, and roofing accessories can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> or upgraded to <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> for higher chemical and weather resistance.',
     features: [
-      "High optical clarity, water-white colour",
-      "UV-resistant — resists yellowing and brittleness",
-      "Viscosity under 400 cPs for easy hand layup",
-      "Cures with MEKP into a rigid crosslinked polymer",
-      "Supplied in 25 kg and 225 kg drums, minimum order 500 kg",
+      "Water-white, high optical clarity for maximum light transmission",
+      "Low viscosity (280 cPs) for smooth hand lay-up over roofing profiles",
+      "Gel time of 6.5 minutes for efficient roofing sheet production",
+      "MEKP-catalysed room-temperature cure, hardening fully in around 12 hours",
+      "35% styrene content for consistent roofing-sheet lay-up",
+      "Bulk-packed in 225 kg drums for roofing sheet manufacturers",
     ],
     applications: [
-      "Skylights and roof light panels",
-      "Greenhouses",
+      "Roof light panels and skylight sheets",
+      "Daylighting panels for factories and warehouses",
+      "Greenhouse and agricultural roofing sheets",
       "Industrial and commercial roofing",
+    ],
+    industries: [
+      "Roofing sheet & panel manufacturing",
+      "Industrial & warehouse construction",
+      "Greenhouse & agricultural structures",
+      "Daylighting & skylight systems",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Consistent 99% purity and water-white optical clarity",
+      "Supplied in bulk 225 kg drums",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is Roof Light Sheet Grade Resin?",
+        a: "Roof Light Sheet Grade Resin is a water-white orthophthalic unsaturated polyester resin formulated for translucent FRP roofing sheets and skylight panels that transmit natural daylight into a building.",
+      },
+      {
+        q: "Why does Roof Light Resin need to be water-white rather than pigmented?",
+        a: 'Roof light and skylight sheets are designed to let daylight through, so the resin needs to stay optically clear rather than opaque. A water-white resin transmits light efficiently; a pigmented sheet resin, like our <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a>, is used instead where an opaque, coloured panel is required.',
+      },
+      {
+        q: "Is Roof Light Sheet Grade Resin suitable for industrial and greenhouse roofing?",
+        a: "Yes. It is commonly used for daylighting panels in factories, warehouses, greenhouses and other structures where translucent, weather-exposed roofing sheets are required.",
+      },
+      {
+        q: "What is the gel time and cure time of Roof Light Sheet Grade Resin?",
+        a: "Gel time is 6.5 minutes. Full cure at room temperature, once catalysed with MEKP (around 1.5%) and a cobalt octoate accelerator (around 0.4%), takes approximately 12 hours.",
+      },
+      {
+        q: "What is the viscosity and styrene content of Roof Light Sheet Grade Resin?",
+        a: "Viscosity is approximately 280 cPs and styrene content is 35%, with 99% purity.",
+      },
+      {
+        q: "What is the shelf life and storage temperature for Roof Light Sheet Grade Resin?",
+        a: "Shelf life is 2 months from manufacture. Store between 30–35 °C, away from direct heat and sunlight.",
+      },
+      {
+        q: "What packaging does Roof Light Sheet Grade Resin come in?",
+        a: "It is supplied in bulk 225 kg drums.",
+      },
+    ],
+    relatedSlugs: [
+      "sheet-grade-yellow-resin",
+      "gp-clear-resin",
+      "gp-gelcoat-resin",
+      "mekp-hardener",
     ],
   },
   {
@@ -543,29 +960,114 @@ export const products = [
     price: "₹175 / kg",
     image: "fire-retardant-resin.jpg",
     images: ["fire-retardant-resin-2.jpg", "fire-retardant-resin-3.jpg"],
-    specs: {
-      "Minimum Order Quantity": "500 kg",
-      "Base Resin": "Polyester",
-      "FR Type": "Halogenated",
-      "Flammability Rating": "UL 94 V0",
-      "Usage / Application": "Automotive, FRP panels, marine, electrical, railway, building",
-      "Curing Type": "Room temperature cure",
-      "Color": "White",
+    imageAlt:
+      "Fire Retardant Resin — halogenated UL 94 V0 unsaturated polyester resin by Samrat Poly Resins",
+    seo: {
+      title: "Fire Retardant Resin – Flame Retardant Polyester Resin",
+      description:
+        "Fire Retardant Resin — a halogenated, UL 94 V0-rated unsaturated polyester resin for fire-safety FRP components. Gel time 5.5 minutes. 35/225 kg packs.",
+      keywords: [
+        "Fire Retardant Resin",
+        "FR Resin",
+        "Fire Resistant Polyester Resin",
+        "Flame Retardant Resin",
+        "Fire Retardant Polyester Resin",
+        "FRP Fire Retardant Resin",
+        "Halogenated Fire Retardant Resin",
+        "UL 94 V0 Resin",
+      ],
     },
-    tagline: "Modified resin that limits flame spread and smoke.",
+    // Values verified for this halogenated grade only — do not confuse with
+    // the separate halogen-free iso-fire-retardant-resin. MOQ was not part
+    // of the verified sheet, so it is omitted rather than reusing the old,
+    // unverified 500 kg figure. Density and Flash Point are excluded as
+    // unverified; no fire-test claims beyond the verified UL 94 V0 rating.
+    productDetails: {
+      "Packaging": "35 kg / 225 kg",
+      "Physical Form": "Liquid",
+      "Colour / Appearance": "White",
+      "Shelf Life": "3 Months",
+      "Storage Temperature": "30–35 °C",
+    },
+    techSpecs: {
+      "Base Resin": "Unsaturated Polyester",
+      "FR Type": "Halogenated Fire-Retardant Formulation",
+      "Flammability Rating": "UL 94 V0",
+      "Curing System": "Room Temperature Cure with MEKP Catalyst",
+      "Smoke / Emission": "Reduced Smoke Density and Toxic Gas Emission",
+      "Viscosity": "400 cPs",
+      "Gel Time": "5.5 Minutes",
+      "Styrene Content": "35%",
+      "MEKP Dosage": "1.5%",
+      "Cobalt Octoate Dosage": "0.4%",
+    },
+    tagline: "Halogenated, UL 94 V0-rated resin for fire-safety FRP components.",
     description:
-      "A specially formulated unsaturated polyester resin modified with halogenated fire-retardant additives to reduce flammability, limit smoke production and prevent flame spread. Rated to UL 94 V0, it slows or prevents ignition and flame propagation and is engineered to reduce smoke density and toxic gas emissions, curing at room temperature into a rigid, heat-resistant polymer.",
+      "Fire Retardant Resin is a halogenated unsaturated polyester resin formulated to resist ignition and limit flame spread in FRP components. Unlike a general-purpose laminating resin, which offers no fire performance beyond that of ordinary polyester, this grade is modified with fire-retardant additives to meet a UL 94 V0 flammability rating, while also reducing smoke density and toxic gas emission if the laminate is exposed to fire. Cured at room temperature with an MEKP catalyst, it processes in the same way as a standard laminating resin, so existing hand lay-up and moulding workflows do not need to change. Samrat Poly Resins supplies Fire Retardant Resin for FRP components used in electrical enclosures, transport and construction, where fire safety is a specification requirement rather than an optional extra.",
+    usageNote:
+      'Fire Retardant Resin is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> in the same way as our general-purpose grades. Where fire performance is not a requirement, our <a href="/products/gp-clear-resin/">GP Clear Resin</a> or base <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin (UPR)</a> are more cost-effective; for door and plywood lamination work, see our <a href="/products/lamination-resin/">Lamination Resin</a>, and mould-facing surfaces can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> or upgraded to <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> for higher chemical resistance.',
     features: [
-      "UL 94 V0 flammability rating",
-      "Halogenated fire-retardant formulation",
-      "Reduced smoke density and toxic gas emission",
-      "Room-temperature cure with MEKP catalyst",
-      "Minimum order 500 kg",
+      "UL 94 V0 flammability rating for fire-critical FRP components",
+      "Halogenated fire-retardant formulation with reduced smoke density and toxic gas emission",
+      "Gel time of 5.5 minutes for efficient production cycles",
+      "Room-temperature cure system using MEKP and cobalt octoate",
+      "35% styrene content for consistent, controlled processing",
+      "Supplied in 35 kg or 225 kg packs",
     ],
     applications: [
-      "Automotive and railway components",
-      "Marine and electrical applications",
-      "FRP panels and building components",
+      "Electrical enclosures and switchgear components",
+      "Railway, automotive and marine FRP parts",
+      "Fire-rated building panels and construction components",
+      "General FRP manufacturing where flame retardancy is specified",
+    ],
+    industries: [
+      "Electrical & switchgear manufacturing",
+      "Railway & transport components",
+      "Marine & automotive FRP parts",
+      "Construction & fire-rated panels",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "UL 94 V0-rated formulation for fire-safety-critical components",
+      "Supplied in 35 kg or 225 kg packs",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is Fire Retardant Resin?",
+        a: "Fire Retardant Resin is a halogenated unsaturated polyester resin formulated to resist ignition and limit flame spread in FRP components, rated to UL 94 V0 for flammability performance.",
+      },
+      {
+        q: "How is Fire Retardant Resin different from General Purpose Polyester Resin?",
+        a: "General-purpose resin (such as our GP Clear Resin or UPR) has no specific fire performance. Fire Retardant Resin is modified with halogenated fire-retardant additives to meet a UL 94 V0 flammability rating and reduce smoke density and toxic gas emission, at the cost of being a more specialised, higher-cost grade.",
+      },
+      {
+        q: "Why is flame-retardant resin used for safety-critical components?",
+        a: "In electrical, transport and construction applications, a component that ignites easily or produces heavy smoke and toxic gas in a fire can be a serious safety hazard. Fire Retardant Resin is selected specifically to reduce these risks in FRP parts used in enclosures, panels and structural components where fire codes or safety specifications apply.",
+      },
+      {
+        q: "Is Fire Retardant Resin the same as ISO Fire Retardant Resin?",
+        a: 'No. Fire Retardant Resin is a halogenated, unsaturated-polyester-based grade rated to UL 94 V0. Our <a href="/products/iso-fire-retardant-resin/">ISO Fire Retardant Resin</a> is a separate, halogen-free, isophthalic-based grade for applications needing enhanced chemical resistance alongside fire performance.',
+      },
+      {
+        q: "What is the gel time and curing system of Fire Retardant Resin?",
+        a: "Gel time is 5.5 minutes. It cures at room temperature with an MEKP catalyst (around 1.5%) and a cobalt octoate accelerator (around 0.4%).",
+      },
+      {
+        q: "What is the viscosity and styrene content of Fire Retardant Resin?",
+        a: "Viscosity is approximately 400 cPs and styrene content is 35%.",
+      },
+      {
+        q: "What packaging and shelf life does Fire Retardant Resin have?",
+        a: "It is supplied in 35 kg or 225 kg packs. Shelf life is 3 months from manufacture; store between 30–35 °C.",
+      },
+    ],
+    relatedSlugs: [
+      "iso-fire-retardant-resin",
+      "gp-clear-resin",
+      "mekp-hardener",
     ],
   },
   {
