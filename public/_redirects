@@ -1,0 +1,9 @@
+# Product slug corrections (2026-07-25)
+# GP Clear Resin moved from the placeholder /crystal-clear-resin slug to its
+# correct keyword-matched /gp-clear-resin slug. Redirect the old URL so any
+# existing link, bookmark or QR code lands on the right product.
+# (No redirect for the old /gp-clear-resin path — it previously served
+#  Lamination Resin, but is now the live GP Clear Resin page, so a redirect
+#  there would hijack it.)
+/products/crystal-clear-resin/  /products/gp-clear-resin/  301
+/products/crystal-clear-resin   /products/gp-clear-resin/  301

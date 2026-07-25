@@ -121,7 +121,7 @@ export const products = [
     ],
   },
   {
-    slug: "gp-clear-resin",
+    slug: "lamination-resin",
     name: "Lamination Resin (LR Resin)",
     whatsappName: "Lamination Resin",
     category: "GP Resins",
@@ -143,7 +143,7 @@ export const products = [
     },
     tagline: "Transparent, glass-like general-purpose resin.",
     description:
-      "A transparent general-purpose unsaturated polyester resin used where a clear, glossy finish is required. Versatile and widely used for high-quality clear coatings, composite parts and castings, it offers a clear, glass-like finish that can be left transparent to showcase underlying materials or pigmented as needed, with a 10-minute gel time and good wet-out over large areas.",
+      "A transparent general-purpose unsaturated polyester lamination resin specially formulated for door lamination and other FRP bonding applications. It provides excellent adhesion, superior wet-out, and a smooth glossy finish, making it ideal for laminating decorative door skins, FRP doors, composite panels, and other fiberglass-reinforced products. With a typical 10-minute gel time, it ensures efficient processing and consistent manufacturing performance.",
     features: [
       "Clear, glass-like transparent finish, 100% purity",
       "Can be pigmented or left fully transparent",
@@ -158,7 +158,7 @@ export const products = [
     ],
   },
   {
-    slug: "crystal-clear-resin",
+    slug: "gp-clear-resin",
     name: "GP Clear Resin",
     category: "GP Resins",
     price: "",
