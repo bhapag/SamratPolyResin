@@ -1,0 +1,301 @@
+# UPR PAGE CHANGES
+
+## 1. H1
+Current:
+Unsaturated Polyester Resin (UPR)
+
+Change To:
+Unsaturated Polyester Resin (UPR Resin)
+
+---
+
+## 2. Category
+Current:
+GP RESINS
+
+Change To:
+Polyester Resin
+
+---
+
+## 3. Add Subtitle Below H1
+
+Also known as Polyester Resin, UPR Resin, Thermosetting Polyester Resin & Fiberglass Resin.
+
+---
+
+## 4. First Paragraph
+
+Replace the first sentence with:
+
+Unsaturated Polyester Resin (UPR Resin), also known as Polyester Resin, Thermosetting Polyester Resin and Fiberglass Resin, is a high-performance industrial resin widely used for FRP composites, hand layup, spray-up, pultrusion, casting, marine, automotive and construction applications.
+
+---
+
+## 5. Product Details
+
+Current:
+Orthophthalic, Isophthalic
+
+Change To:
+Orthophthalic / Isophthalic Unsaturated Polyester Resin
+
+---
+
+## 6. Usage / Application
+
+Replace with:
+
+FRP Manufacturing, Fiberglass Reinforcement, Hand Layup, Spray-Up, Pultrusion, Marine, Automotive, Construction, Water Tanks, Pipes & Fittings, Casting
+
+---
+
+## 7. Key Features
+
+Add:
+
+✓ Also Known as UPR Resin & Polyester Resin
+
+---
+
+## 8. Industries Served (New Section)
+
+• FRP Manufacturing
+• Marine
+• Automotive
+• Construction
+• Chemical Equipment
+• Water Tanks
+• Swimming Pools
+• Pipes & Fittings
+
+---
+
+## 9. Related Products (New Section)
+
+• GP Clear Resin
+• GP Yellow Resin
+• Vinyl Ester Resin
+• Gelcoat Resin
+• MEKP Hardener
+
+---
+
+## 10. FAQ (New Section)
+
+• What is Unsaturated Polyester Resin?
+• What is UPR Resin?
+• What is Polyester Resin?
+• What is Fiberglass Resin?
+• Which catalyst is used with Polyester Resin?
+• What are the applications of UPR Resin?
+
+---
+
+## 11. Keywords To Naturally Mention Throughout The Page
+
+- Polyester Resin
+- Unsaturated Polyester Resin
+- UPR Resin
+- Thermosetting Polyester Resin
+- Fiberglass Resin
+
+
+
+
+
+
+
+# LR RESIN PAGE CHANGES
+
+## 1. H1
+Current:
+Lamination Resin (LR Resin)
+
+Change To:
+Lamination Resin (LR Resin) | Polyester Lamination Resin
+
+---
+
+## 2. Category
+Current:
+(Whatever category is above H1)
+
+Change To:
+Polyester Lamination Resin
+
+---
+
+## 3. Subtitle (Below H1)
+
+Add:
+
+Also known as LR Resin, Polyester Lamination Resin, Decorative Lamination Resin, Door Lamination Resin & Photo Lamination Resin.
+
+---
+
+## 4. Product Details
+
+### Resin Type
+
+Current:
+Polyester
+
+Change To:
+Unsaturated Polyester Lamination Resin
+
+---
+
+### Usage / Application
+
+Current:
+Lamination, hand layup
+
+Replace With:
+
+Door Lamination, Decorative Lamination, Photo Lamination, Plywood Lamination, MDF Lamination, Particle Board, Hand Layup, FRP Lamination
+
+---
+
+### Curing System
+
+Current:
+Room temperature cure
+
+Change To:
+MEKP Catalyst | Room Temperature Cure
+
+---
+
+### Color
+
+Current:
+Transparent
+
+Change To:
+Transparent / Clear
+
+---
+
+## 5. Replace Entire First Paragraph
+
+Lamination Resin (LR Resin) is a high-performance Unsaturated Polyester Lamination Resin specially developed for decorative laminates, door lamination, photo lamination, plywood, MDF, particle board and FRP applications. It provides excellent clarity, strong adhesion, fast curing and a smooth glossy finish, making it ideal for industrial lamination and composite manufacturing.
+
+---
+
+## 6. Key Features
+
+Replace With:
+
+✓ High Gloss Transparent Finish
+
+✓ Excellent Adhesion
+
+✓ Fast Room Temperature Cure
+
+✓ Good Wet-Out Performance
+
+✓ Suitable For Decorative Lamination
+
+✓ Compatible With MEKP Catalyst
+
+✓ Available In 200 & 225 kg Drums
+
+---
+
+## 7. Applications
+
+Replace With:
+
+✓ Door Lamination
+
+✓ Decorative Laminates
+
+✓ Photo Lamination
+
+✓ MDF & Particle Board
+
+✓ Plywood Lamination
+
+✓ FRP Lamination
+
+✓ Furniture Panels
+
+✓ Industrial Composite Manufacturing
+
+---
+
+## 8. Industries Served (New Section)
+
+• Furniture Industry
+
+• Interior Decoration
+
+• Laminate Manufacturing
+
+• Plywood Industry
+
+• MDF Industry
+
+• FRP Manufacturing
+
+• Composite Industry
+
+---
+
+## 9. Related Products (New Section)
+
+• GP Clear Resin
+
+• GP Yellow Resin
+
+• Unsaturated Polyester Resin (UPR)
+
+• Vinyl Ester Resin
+
+• MEKP Hardener
+
+---
+
+## 10. FAQ (New Section)
+
+• What is Lamination Resin?
+
+• What is LR Resin?
+
+• What is Polyester Lamination Resin?
+
+• Is LR Resin suitable for door lamination?
+
+• Can LR Resin be used for plywood and MDF?
+
+• Which catalyst is used with LR Resin?
+
+---
+
+## 11. Keywords To Use Naturally
+
+- Lamination Resin
+- LR Resin
+- Polyester Lamination Resin
+- Decorative Lamination Resin
+- Door Lamination Resin
+- Photo Lamination Resin
+- Unsaturated Polyester Lamination Resin
+- Clear Lamination Resin
+
+---
+
+## 12. IMPORTANT
+
+❌ Remove every reference to:
+- Histology
+- Microscopy
+- Immunohistochemistry
+- Tissue Embedding
+- Laboratory Embedding Medium
+
+These belong to the old artwork and do NOT match your actual product.
+
+
+

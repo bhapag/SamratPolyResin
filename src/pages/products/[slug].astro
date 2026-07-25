@@ -15,7 +15,7 @@ const resolveProductImage = (filename) => productImageModules[`/src/assets/produ
 
 const { product } = Astro.props;
 const { name, image, description, features, applications, category, specs } = product;
-const { tagline, usageNote, industries, whyChoose, faqs } = product;
+const { tagline, usageNote, industries, whyChoose, faqs, tdsUrl } = product;
 
 // Two-table model (Product Details + Technical Specifications) when a product
 // supplies the grouped fields; otherwise fall back to the legacy single table
@@ -156,6 +156,21 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         </ul>
         <a href={waLink} class="btn btn-solid prod-quote-cta" target="_blank" rel="noopener">Request Bulk Quote</a>
       </div>
+
+      {tdsUrl && (
+        <div class="prod-cta">
+          <a
+            href={tdsUrl}
+            class="btn btn-solid"
+            target="_blank"
+            rel="noopener"
+            download
+            aria-label={`Download Technical Data Sheet PDF for ${name}`}
+          >
+            Download Technical Data Sheet (PDF)
+          </a>
+        </div>
+      )}
 
       <div class="prod-cta">
         <a href="#enquire" class="btn btn-solid">Enquire / get quote</a>

@@ -416,6 +416,7 @@ export const products = [
     images: ["gp-clear-resin-2.jpg"],
     imageAlt:
       "GP Clear Resin — clear orthophthalic general-purpose unsaturated polyester resin by Samrat Poly Resins",
+    tdsUrl: "/tds/gp-clear-resin-tds.pdf",
     seo: {
       title: "GP Clear Resin – General Purpose Polyester Resin",
       description:
