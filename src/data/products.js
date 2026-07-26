@@ -55,6 +55,7 @@ export const products = [
     images: ["sheet-grade-yellow-resin-2.jpg", "sheet-grade-yellow-resin-3.jpg"],
     imageAlt:
       "Sheet Grade Yellow Resin — pre-pigmented yellow orthophthalic polyester resin for FRP sheets by Samrat Poly Resins",
+    tdsUrl: "/tds/sheet-grade-yellow-resin-tds.pdf",
     seo: {
       title: "Sheet Grade Yellow Resin – Polyester Resin for FRP Sheets",
       description:
@@ -299,6 +300,7 @@ export const products = [
     images: ["lamination-resin-2.jpg", "lamination-resin-3.jpg"],
     imageAlt:
       "Lamination Resin (LR Resin) — transparent orthophthalic unsaturated polyester lamination resin by Samrat Poly Resins",
+    tdsUrl: "/tds/lamination-resin-tds.pdf",
     seo: {
       title: "Lamination Resin (LR Resin) – Door Lamination Resin",
       description:
@@ -608,6 +610,7 @@ export const products = [
     images: ["gp-gelcoat-resin-2.jpg", "gp-gelcoat-resin-3.jpg"],
     imageAlt:
       "GP Gelcoat Resin — white high-gloss polyester surface-coating gelcoat by Samrat Poly Resins",
+    tdsUrl: "/tds/gp-gelcoat-resin-tds.pdf",
     seo: {
       title: "GP Gelcoat Resin – Polyester Gelcoat for FRP Moulds",
       description:
@@ -729,6 +732,7 @@ export const products = [
     images: ["button-grade-resin-2.jpg", "button-grade-resin-3.jpg"],
     imageAlt:
       "Button Grade Resin — transparent unsaturated polyester casting resin for buttons by Samrat Poly Resins",
+    tdsUrl: "/tds/button-grade-resin-tds.pdf",
     seo: {
       title: "Button Grade Resin – Polyester Casting Resin for Buttons",
       description:
@@ -844,6 +848,7 @@ export const products = [
     images: ["roof-light-resin-2.jpg", "roof-light-resin-3.jpg"],
     imageAlt:
       "Roof Light Sheet Grade Resin — water-white translucent orthophthalic polyester resin for roofing sheets by Samrat Poly Resins",
+    tdsUrl: "/tds/roof-light-resin-tds.pdf",
     seo: {
       title: "Roof Light Sheet Grade Resin – Translucent Roofing Resin",
       description:
@@ -963,6 +968,7 @@ export const products = [
     images: ["fire-retardant-resin-2.jpg", "fire-retardant-resin-3.jpg"],
     imageAlt:
       "Fire Retardant Resin — halogenated UL 94 V0 unsaturated polyester resin by Samrat Poly Resins",
+    tdsUrl: "/tds/fire-retardant-resin-tds.pdf",
     seo: {
       title: "Fire Retardant Resin – Flame Retardant Polyester Resin",
       description:
