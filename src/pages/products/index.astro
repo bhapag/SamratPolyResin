@@ -21,8 +21,14 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
         <input type="search" id="prodSearch" placeholder="Search products by name…" aria-label="Search products by name" autocomplete="off" />
       </div>
-      <div class="prod-chips" role="list" aria-label="Filter by category">
-        <button type="button" class="prod-chip prod-chip-all is-active" data-chip-cat="all">Unsaturated Polyester Resin (UPR) ({products.length})</button>
+      <button type="button" class="prod-filter-toggle" id="prodFilterToggle" aria-expanded="false" aria-controls="prodChipsPanel">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7" /><line x1="7" y1="12" x2="17" y2="12" /><line x1="10" y1="17" x2="14" y2="17" /></svg>
+        <span>Filter</span>
+        <span class="prod-filter-toggle-active" id="prodFilterToggleActive">All</span>
+        <svg class="prod-filter-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
+      </button>
+      <div class="prod-chips" id="prodChipsPanel" role="list" aria-label="Filter by category">
+        <button type="button" class="prod-chip prod-chip-all is-active" data-chip-cat="all">All ({products.length})</button>
         {byCat.map(group => (
           <button type="button" class="prod-chip" data-chip-cat={group.cat}>{group.cat} ({group.items.length})</button>
         ))}
@@ -50,8 +56,26 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
       const chips = document.querySelectorAll<HTMLButtonElement>('[data-chip-cat]');
       const blocks = document.querySelectorAll<HTMLElement>('[data-cat-block]');
       const emptyMsg = document.getElementById('prodFilterEmpty');
+      const filterToggle = document.getElementById('prodFilterToggle');
+      const filterToggleActive = document.getElementById('prodFilterToggleActive');
+      const chipsPanel = document.getElementById('prodChipsPanel');
       if (!searchInput || !blocks.length || searchInput.dataset.wired === 'true') return;
       searchInput.dataset.wired = 'true';
+
+      // The toggle button only ever renders on mobile (display:none above
+      // that breakpoint, exactly like the site's existing nav-toggle
+      // hamburger) and the collapsed state only ever hides anything inside
+      // that same breakpoint — both driven by CSS media queries, not JS
+      // viewport checks, so there's no runtime race between "what width is
+      // it" and "did the script run yet." JS just always adds the class;
+      // it's inert (zero visual effect) above the mobile breakpoint.
+      chipsPanel?.classList.add('is-collapsed');
+
+      filterToggle?.addEventListener('click', () => {
+        if (!chipsPanel) return;
+        const nowOpen = chipsPanel.classList.toggle('is-collapsed') === false;
+        filterToggle.setAttribute('aria-expanded', String(nowOpen));
+      });
 
       let activeCategory = 'all';
 
@@ -84,7 +108,13 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
         chip.addEventListener('click', () => {
           activeCategory = chip.dataset.chipCat ?? 'all';
           chips.forEach((c) => c.classList.toggle('is-active', c === chip));
+          if (filterToggleActive) filterToggleActive.textContent = activeCategory === 'all' ? 'All' : activeCategory;
           applyFilter();
+          // Collapse back after a pick so the flow stays "tap → choose → see
+          // results" — harmless no-op on desktop, where the toggle/collapse
+          // CSS never applies in the first place.
+          chipsPanel?.classList.add('is-collapsed');
+          filterToggle?.setAttribute('aria-expanded', 'false');
         });
       });
     });
@@ -118,6 +148,11 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
     .prod-chip:hover { border-color: var(--accent-gold); color: var(--accent-gold-light); }
     .prod-chip.is-active { background: var(--accent-gold); border-color: var(--accent-gold); color: #17120c; font-weight: 600; }
     .prod-filter-empty { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.2rem; }
+    /* Mobile-only trigger — hidden by default here exactly like the
+       site's existing .nav-toggle hamburger; the mobile media query below
+       is the only place that ever shows it, so this is never visible on
+       desktop regardless of any JS state. */
+    .prod-filter-toggle { display: none; }
 
     @media (max-width: 620px) {
       .prod-filter-bar { padding-block: 1.1rem; }
@@ -137,6 +172,28 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
       }
       .prod-chip.is-active { background: var(--accent-gold); }
       .prod-chip-all { grid-column: 1 / -1; }
+
+      /* Filter toggle — shown only inside this mobile breakpoint. */
+      .prod-filter-toggle {
+        display: flex; align-items: center; gap: 0.55rem; width: 100%;
+        font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.03em;
+        padding: 0.75rem 1rem; border: 1px solid var(--line-2); background: var(--bg-3);
+        color: var(--ink); cursor: pointer;
+        transition: border-color .25s var(--ease-premium), color .25s var(--ease-premium);
+      }
+      .prod-filter-toggle:hover,
+      .prod-filter-toggle[aria-expanded="true"] { border-color: var(--accent-gold); color: var(--accent-gold-light); }
+      .prod-filter-toggle-active {
+        margin-left: auto; color: var(--accent-gold); font-weight: 600;
+        overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 55%;
+      }
+      .prod-filter-chevron { flex-shrink: 0; transition: transform .25s var(--ease-premium); }
+      .prod-filter-toggle[aria-expanded="true"] .prod-filter-chevron { transform: rotate(180deg); }
+
+      /* Collapsed by default on mobile (JS-driven) — the permanently-visible
+         category grid that used to occupy the top of the page becomes an
+         on-demand panel instead. */
+      .prod-chips.is-collapsed { display: none; }
     }
 
     .cat-block { margin-bottom: 3.2rem; scroll-margin-top: 90px; }

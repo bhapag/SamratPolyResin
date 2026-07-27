@@ -167,7 +167,7 @@ export const products = [
   },
   {
     slug: "unsaturated-polyester-resin",
-    name: "Unsaturated Polyester Resin (UPR)",
+    name: "Unsaturated Polyester Resin",
     whatsappName: "Unsaturated Polyester Resin",
     category: "GP Resins",
     price: "₹130 / kg",
@@ -1508,6 +1508,118 @@ export const products = [
       "Curing FRP products and laminates",
       "Boat building and automotive parts",
       "Gelcoat and casting work",
+    ],
+  },
+  {
+    slug: "gp-yellow-resin",
+    name: "GP Yellow Resin",
+    category: "GP Resins",
+    price: "",
+    image: "gp-yellow-resin.jpg",
+    images: ["gp-yellow-resin-2.jpg"],
+    imageAlt:
+      "GP Yellow Resin — transparent yellow, general-purpose orthophthalic unsaturated polyester resin by Samrat Poly Resins",
+    seo: {
+      title: "GP Yellow Resin – General Purpose Yellow Polyester Resin",
+      description:
+        "GP Yellow Resin — a transparent yellow, general-purpose orthophthalic polyester resin for FRP roofing sheets, tanks, doors and lamination. 225 kg drums, MOQ 1,000 kg.",
+      keywords: [
+        "GP Yellow Resin",
+        "Yellow Polyester Resin",
+        "General Purpose Yellow Resin",
+        "Yellow FRP Resin",
+        "Pigmented Polyester Resin",
+      ],
+    },
+    // Specification sheet supplied directly for this product (transparent
+    // yellow GP grade) — not yet backed by a published TDS PDF, so no
+    // tdsUrl. Field names/keys kept identical to gp-clear-resin's table for
+    // sitewide consistency ("Specific Gravity / Density", etc.).
+    productDetails: {
+      "Minimum Order Quantity": "1,000 kg",
+      "Packaging": "225 kg Drum",
+      "Physical Form": "Liquid",
+      "Colour / Appearance": "Transparent Yellow",
+      "Shelf Life": "3 months (225 kg drum) / 2 months (PET packaging)",
+      "Storage Temperature": "25–30 °C",
+    },
+    techSpecs: {
+      "Resin Type": "Orthophthalic, Unsaturated Polyester",
+      "Curing System": "Non-accelerated",
+      "Viscosity": "450–600 cPs @ 25°C",
+      "Gel Time": "10–15 minutes",
+      "Styrene Content": "34–38%",
+      "Specific Gravity / Density": "1.10–1.14 g/cm³",
+      "Cure Time": "60–90 minutes",
+      "MEKP Dosage": "1.5%",
+      "Cobalt Octoate Dosage": "0.3–0.5%",
+      "Purity": "99%",
+    },
+    tagline: "Transparent yellow, general-purpose orthophthalic polyester resin.",
+    description:
+      "GP Yellow Resin is a transparent yellow, orthophthalic unsaturated polyester resin developed by Samrat Poly Resins for general-purpose FRP manufacturing. Supplied as a non-accelerated liquid with a viscosity of 450–600 cPs and a gel time of 10–15 minutes, it offers excellent wet-out of reinforcement for a smooth, well-bonded laminate and good mechanical strength once cured. Cured at room temperature with an MEKP catalyst and cobalt octoate accelerator, it processes cleanly by hand layup or spray-up. With 34–38% styrene content, 1.10–1.14 g/cm³ density and 99% purity, it delivers consistent, cost-effective performance across roofing sheets, water tanks, FRP doors and panels, and general lamination work.",
+    usageNote:
+      'GP Yellow Resin is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and cobalt accelerator, then reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> for hand layup and spray-up. Where a factory-pigmented grade tuned specifically for sheet and panel production is needed instead, see our <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a>; for an unpigmented general-purpose grade, our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is available, and mould-facing surfaces can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a>.',
+    features: [
+      "Transparent yellow orthophthalic base for general-purpose FRP work",
+      "Excellent wet-out for smooth fibre impregnation and lamination",
+      "Good mechanical strength for durable, long-lasting FRP components",
+      "Gel time of 10–15 minutes with an MEKP and cobalt octoate cure system",
+      "34–38% styrene content and 99% purity for consistent processing",
+      "Supplied in 225 kg drums; minimum order 1,000 kg",
+    ],
+    applications: [
+      "Roofing sheets and daylighting panels",
+      "Water tanks and storage vessels",
+      "FRP doors and decorative panels",
+      "General lamination and FRP moulded products",
+    ],
+    industries: [
+      "FRP & composites manufacturing",
+      "Roofing & construction",
+      "Water tanks & storage",
+      "Door & panel manufacturing",
+      "General industrial moulding",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Consistent 99% purity with batch-to-batch quality control",
+      "Bulk supply from 1,000 kg, packed in 225 kg drums",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is GP Yellow Resin?",
+        a: "GP Yellow Resin is a transparent yellow, orthophthalic unsaturated polyester resin used for general-purpose FRP manufacturing — including roofing sheets, water tanks, doors, panels and lamination. It is supplied by Samrat Poly Resins as a non-accelerated liquid in 225 kg drums.",
+      },
+      {
+        q: "Is GP Yellow Resin the same as Sheet Grade Yellow Resin?",
+        a: "No. GP Yellow Resin is a general-purpose grade suited to a broad range of FRP work — roofing sheets, water tanks, doors and panels. Sheet Grade Yellow Resin is factory-pigmented and tuned specifically for FRP sheet and panel manufacturing. Choose based on your specific application.",
+      },
+      {
+        q: "What is the gel time, and how is GP Yellow Resin cured?",
+        a: "Gel time is 10–15 minutes. It is a non-accelerated resin, cured at room temperature by adding a cobalt octoate accelerator (0.3–0.5%) and an MEKP catalyst (around 1.5%); full cure typically takes 60–90 minutes depending on temperature and dosage.",
+      },
+      {
+        q: "What is the viscosity, styrene content and density of GP Yellow Resin?",
+        a: "Viscosity is 450–600 cPs at 25°C, styrene content is 34–38%, and specific gravity is 1.10–1.14 g/cm³. Purity is 99%.",
+      },
+      {
+        q: "How is GP Yellow Resin packed, and what is the minimum order quantity?",
+        a: "It is supplied in 225 kg drums, with a minimum order quantity of 1,000 kg. Bulk and repeat-order pricing is available on request.",
+      },
+      {
+        q: "What is the shelf life and recommended storage?",
+        a: "Shelf life is 3 months in a sealed 225 kg drum and 2 months in PET packaging. Store between 25–30 °C, away from direct heat, sparks and sunlight.",
+      },
+    ],
+    relatedSlugs: [
+      "sheet-grade-yellow-resin",
+      "gp-clear-resin",
+      "gp-gelcoat-resin",
+      "mekp-hardener",
     ],
   },
 ];
