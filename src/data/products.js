@@ -648,6 +648,7 @@ export const products = [
     price: "",
     image: "gp-quartz-resin.jpg",
     images: ["gp-quartz-resin-2.jpg"],
+    tdsUrl: "/tds/gp-quartz-resin-tds.pdf",
     seo: {
       title: "GP Quartz Resin – Resin for Engineered Stone",
       description:
@@ -660,41 +661,49 @@ export const products = [
         "Polyester Resin",
       ],
     },
-    // Reorganised into productDetails/techSpecs — every value is unchanged
-    // from the original single `specs` table, just regrouped. "Usage /
-    // Application" is not repeated in the table since it's already covered
-    // by the applications list below. No new values invented.
+    // Values verified against SPR-TDS-GQR Rev. 01 (July 2026) — do not edit
+    // without an updated TDS. Density, Tensile Strength, Flexural Strength
+    // and Barcol Hardness previously appeared here from an earlier,
+    // unverified source; the finalized TDS explicitly excludes these as
+    // "additional engineering properties... not part of the standard
+    // specification set," so they have been removed rather than kept.
     productDetails: {
-      "Colour / Appearance": "Clear Pale Yellow Liquid",
+      "Minimum Order Quantity": "1,000 kg",
+      "Packaging": "225 kg Drum",
+      "Physical Form": "Liquid",
+      "Colour / Appearance": "Clear to Pale Yellow",
+      "Shelf Life": "3 months",
+      "Storage Temperature": "30–35 °C",
     },
     techSpecs: {
-      "Resin Type": "Orthophthalic Polyester Resin",
-      "Curing System": "MEKP Catalyst, Room Temperature Cure",
-      "Viscosity (25°C)": "350–550 cP",
-      "Density (25°C)": "1.08–1.15 g/cm³",
-      "Gel Time": "12–20 min",
-      "Tensile Strength (Cured)": "55–70 MPa",
-      "Flexural Strength (Cured)": "95–120 MPa",
-      "Barcol Hardness (Cured)": "40–45",
+      "Resin Type": "Orthophthalic (Ortho) Unsaturated Polyester Resin",
+      "Curing System": "Non-accelerated",
+      "Viscosity": "400–800 cPs",
+      "Gel Time": "7–10 minutes",
+      "Styrene Content": "35–40%",
+      "Cure Time": "2 hours",
+      "MEKP Dosage": "1.5%",
+      "Cobalt Octoate Dosage": "0.4%",
+      "Purity": "99%",
     },
     tagline: "Premium resin engineered for quartz and engineered stone surfaces.",
     description:
-      "Samrat GP Quartz Resin is a premium general-purpose unsaturated polyester resin engineered for manufacturing artificial quartz stone, engineered stone slabs and composite mineral surfaces. Formulated for excellent quartz filler compatibility, it supports high filler loading while maintaining smooth, uniform resin distribution, delivering strong mechanical properties, superior wet-out and consistent curing performance for demanding industrial production. Supplied as a clear, pale-yellow liquid with a viscosity of 350–550 cP and a gel time of 12–20 minutes, it cures at room temperature with an MEKP catalyst into a hard, polishable surface with 40–45 Barcol hardness, 55–70 MPa tensile strength and 95–120 MPa flexural strength — the mechanical profile needed for slabs and countertops that must resist everyday wear.",
+      "Samrat GP Quartz Resin is an orthophthalic-based, general-purpose unsaturated polyester resin engineered for manufacturing artificial quartz stone, engineered stone slabs and composite mineral surfaces. Its clear-to-pale-yellow liquid form and controlled viscosity support smooth, uniform resin distribution and consistent curing performance for demanding industrial production. Supplied with a viscosity of 400–800 cPs and a gel time of 7–10 minutes, it cures under a non-accelerated system with an MEKP catalyst and cobalt octoate accelerator, reaching full cure in around 2 hours. At 99% purity, it is packed in 225 kg drums, with a minimum order quantity of 1,000 kg.",
     usageNote:
-      'GP Quartz Resin is cured with an <a href="/products/mekp-hardener/">MEKP catalyst</a> at room temperature. For cultured marble and artificial stone work outside quartz surfacing, see our <a href="/products/marble-resin/">Marble Resin</a>; for general-purpose FRP manufacturing rather than stone casting, our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is more suitable.',
+      'GP Quartz Resin is cured with an <a href="/products/mekp-hardener/">MEKP catalyst</a> and cobalt octoate accelerator under a non-accelerated system. For cultured marble and artificial stone work outside quartz surfacing, see our <a href="/products/marble-resin/">Marble Resin</a>; for general-purpose FRP manufacturing rather than stone casting, our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is more suitable.',
     features: [
-      "Excellent compatibility with quartz and mineral fillers at high loading",
-      "High mechanical strength — 55–70 MPa tensile, 95–120 MPa flexural",
-      "Barcol hardness of 40–45 for a durable, polishable surface",
-      "Superior wet-out for fast, uniform filler wetting and smooth processing",
-      "Low shrinkage on cure for dimensional stability and a premium polished finish",
-      "Room-temperature MEKP cure for straightforward processing",
-      "Consistent, reliable batch-to-batch curing performance",
+      "Clear to pale yellow liquid appearance",
+      "Controlled viscosity (400–800 cPs) for consistent processing",
+      "Non-accelerated curing system",
+      "Gel time of 7–10 minutes",
+      "99% purity for consistent batch-to-batch quality",
+      "Supplied in 225 kg drums; minimum order 1,000 kg",
     ],
     applications: [
       "Artificial quartz stone manufacturing and engineered stone slabs",
-      "Quartz, kitchen and vanity countertops",
-      "Table tops, interior decorative panels and premium composite stone products",
+      "Quartz kitchen and vanity countertops",
+      "Artificial marble and decorative cast stone",
+      "Table tops, interior panels and premium composite stone",
     ],
     industries: [
       "Engineered & quartz stone manufacturing",
@@ -713,31 +722,31 @@ export const products = [
     faqs: [
       {
         q: "What is GP Quartz Resin?",
-        a: "GP Quartz Resin is a premium unsaturated polyester resin engineered for manufacturing artificial quartz stone, engineered stone slabs and composite mineral surfaces, formulated for excellent compatibility with quartz and mineral fillers at high loading.",
+        a: "GP Quartz Resin is an orthophthalic-based, general-purpose unsaturated polyester resin engineered for manufacturing artificial quartz stone, engineered stone slabs and composite mineral surfaces.",
       },
       {
         q: "What is the difference between GP Quartz Resin and GP Clear Resin?",
-        a: 'GP Quartz Resin is engineered specifically for high filler-loading quartz and engineered-stone casting, with viscosity and cured mechanical strength (tensile, flexural and Barcol hardness) verified for that use. Our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is a broader general-purpose grade for hand layup, spray-up and moulding rather than filled stone casting.',
+        a: 'GP Quartz Resin is engineered specifically for artificial quartz and engineered-stone casting, with a controlled viscosity and gel time suited to that use. Our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is a broader general-purpose grade for hand layup, spray-up and moulding rather than stone casting.',
       },
       {
         q: "What is the viscosity and gel time of GP Quartz Resin?",
-        a: "Viscosity at 25°C is 350–550 cP, and gel time is 12–20 minutes, giving processors time to work high filler loadings into the mould before the resin gels.",
+        a: "Viscosity is 400–800 cPs, and gel time is 7–10 minutes.",
       },
       {
-        q: "What is the tensile and flexural strength of cured GP Quartz Resin?",
-        a: "Once cured, it achieves 55–70 MPa tensile strength and 95–120 MPa flexural strength.",
+        q: "What is the styrene content and purity of GP Quartz Resin?",
+        a: "Styrene content is 35–40%, and purity is 99%.",
       },
       {
-        q: "What is the Barcol hardness of cured GP Quartz Resin?",
-        a: "Barcol hardness is 40–45, giving a durable, polishable surface suited to countertops and slabs subject to everyday wear.",
+        q: "What is the cure time and packaging for GP Quartz Resin?",
+        a: "Full cure takes around 2 hours. It is supplied in 225 kg drums, with a minimum order quantity of 1,000 kg.",
       },
       {
         q: "How is GP Quartz Resin cured?",
-        a: 'It cures at room temperature with an <a href="/products/mekp-hardener/">MEKP catalyst</a>.',
+        a: "It cures under a non-accelerated system with an MEKP catalyst and cobalt octoate accelerator, reaching full cure in around 2 hours.",
       },
       {
         q: "Is GP Quartz Resin suitable for high filler loading?",
-        a: "Yes. It is specifically formulated for excellent compatibility with quartz and mineral fillers at high loading, while maintaining smooth, uniform resin distribution and consistent curing performance.",
+        a: "Its controlled viscosity is formulated to support smooth, uniform resin distribution and consistent curing performance, the properties needed for engineered stone and quartz casting work.",
       },
     ],
     relatedSlugs: [
@@ -1229,6 +1238,7 @@ export const products = [
     price: "₹175 / kg",
     image: "iso-fire-retardant-resin.jpg",
     images: ["iso-fire-retardant-resin-2.jpg"],
+    tdsUrl: "/tds/iso-fire-retardant-resin-tds.pdf",
     seo: {
       title: "ISO Fire Retardant Resin – Halogen-Free FR Resin",
       description:
@@ -1547,6 +1557,7 @@ export const products = [
     price: "₹700 / kg",
     image: "epoxy-clear-casting-resin.jpg",
     images: ["epoxy-clear-casting-resin-2.jpg"],
+    tdsUrl: "/tds/epoxy-clear-casting-resin-tds.pdf",
     seo: {
       title: "Epoxy Clear Casting Resin – River Table Resin",
       description:

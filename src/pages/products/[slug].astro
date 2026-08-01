@@ -179,6 +179,21 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
       </div>
 
+      <div class="prod-catalogue-note">
+        <p class="prod-catalogue-heading">Need our complete product range?</p>
+        <a
+          href={site.catalogue.url}
+          class="prod-catalogue-link"
+          target="_blank"
+          rel="noopener"
+          download
+          aria-label={`Download ${site.catalogue.title} (PDF)`}
+        >
+          📘 Download Product Catalogue (PDF)
+        </a>
+        <p class="prod-catalogue-desc">{site.catalogue.description}</p>
+      </div>
+
       {detailEntries && (
         <div class="specs-table-wrap">
           <h2 class="spec-h">Product details</h2>
@@ -377,6 +392,22 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .prod-quote-cta { align-self: flex-start; margin-top: 0.5rem; }
     .prod-desc { color: var(--ink-dim); margin-top: 1.6rem; font-size: 1rem; }
     .prod-cta { display: flex; gap: 0.8rem; margin-top: 1.4rem; flex-wrap: wrap; }
+
+    /* Secondary document callout — deliberately a text link, not a .btn,
+       so it never competes visually with the Enquire/WhatsApp/TDS buttons. */
+    .prod-catalogue-note {
+      margin-top: 1.4rem; padding: 1rem 1.2rem; max-width: 420px;
+      background: var(--bg-3); border: 1px solid var(--line);
+    }
+    .prod-catalogue-heading { font-size: 0.88rem; font-weight: 600; color: var(--ink); }
+    .prod-catalogue-link {
+      display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.5rem;
+      font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent-gold-light);
+      text-decoration: underline; text-underline-offset: 2px;
+      transition: color .25s var(--ease-premium);
+    }
+    .prod-catalogue-link:hover { color: var(--accent-gold); }
+    .prod-catalogue-desc { color: var(--ink-dim); font-size: 0.82rem; margin-top: 0.5rem; line-height: 1.5; }
 
     .specs-table-wrap { margin-top: 2rem; }
     .specs-table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); font-size: 0.88rem; }

@@ -29,6 +29,17 @@ export const site = {
   // scripts/build-og-image.mjs (re-run it if those source photos change).
   ogImage: "/og-image.jpg",
 
+  // Sitewide product catalogue PDF — single source of truth for every
+  // "Download Product Catalogue" link across the site (product pages,
+  // Resources/Knowledge Centre, Contact page, footer). Swapping the file
+  // later only means updating `url` (and `sizeLabel`) here once.
+  catalogue: {
+    url: "/downloads/samrat-poly-resins-product-catalogue.pdf",
+    title: "Samrat Poly Resins Product Catalogue",
+    description: "Complete industrial product catalogue covering polyester resins, epoxy systems, gelcoats, catalysts, glass fiber, pigments and FRP composite raw materials.",
+    sizeLabel: "1.1 MB",
+  },
+
   // --- CONTACT (swap these) ---
   phoneDisplay: "+91 74638 81005",     // shown on the page
   phoneDial: "+917463881005",          // used for the tel: link
