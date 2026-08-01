@@ -1,0 +1,183 @@
+CRITICAL SEO TASK
+
+THIS IS NOT A DESIGN TASK.
+
+THIS IS NOT A UI TASK.
+
+THIS IS NOT A REFACTOR.
+
+THIS IS NOT A ROUTING TASK.
+
+THIS IS NOT A CONTENT REWRITE.
+
+========================================================
+
+YOUR ONLY OBJECTIVE:
+
+Implement complete, professional SEO metadata for every public page of the website.
+
+DO NOT MODIFY ANY STYLING.
+
+DO NOT MODIFY ANY LAYOUT.
+
+DO NOT MODIFY ANY COMPONENT DESIGN.
+
+DO NOT CHANGE URLS.
+
+DO NOT CHANGE PAGE CONTENT.
+
+========================================================
+
+REQUIREMENTS
+
+1. Every public page must have a unique:
+
+- <title>
+- meta description
+- canonical URL
+- Open Graph title
+- Open Graph description
+- Open Graph URL
+- Twitter title
+- Twitter description
+
+2. Product pages MUST have unique metadata.
+
+Examples:
+
+GP Clear Resin
+GP Yellow Resin
+Lamination Resin
+Button Grade Resin
+GP Quartz Resin
+Roof Light Resin
+Sheet Grade Yellow Resin
+GP Gelcoat Resin
+Fire Retardant Resin
+ISO Fire Retardant Resin
+Epoxy Clear Casting Resin
+Vinyl Ester Resin
+MEKP Hardener
+Cobalt Catalyst
+
+Every product page should have its own optimized title and description.
+
+3. Titles should naturally contain:
+
+Product Name | Samrat Poly Resins
+
+or
+
+Buy Product Name | Samrat Poly Resins
+
+where appropriate.
+
+Keep titles under 60 characters whenever practical.
+
+4. Meta descriptions should:
+
+- be unique
+- around 140–160 characters
+- mention the primary application
+- mention Samrat Poly Resins
+- encourage industrial/B2B enquiries naturally
+
+DO NOT keyword stuff.
+
+5. Every page must have a canonical URL.
+
+6. Every page must generate proper Open Graph metadata.
+
+7. Every page must generate proper Twitter metadata.
+
+8. Preserve existing Organization JSON-LD.
+
+If Product schema already exists, improve it where appropriate.
+
+Do not remove any existing structured data.
+
+========================================================
+
+KEYWORDS
+
+Use keywords naturally.
+
+Examples:
+
+polyester resin
+
+unsaturated polyester resin
+
+GP resin
+
+FRP resin
+
+gelcoat resin
+
+lamination resin
+
+epoxy casting resin
+
+vinyl ester resin
+
+MEKP hardener
+
+cobalt catalyst
+
+industrial resin manufacturer
+
+resin manufacturer India
+
+FRP raw materials
+
+Do NOT stuff keywords.
+
+========================================================
+
+IMPORTANT
+
+SEO must be dynamic.
+
+Avoid hardcoding duplicate metadata.
+
+Use existing product data wherever possible.
+
+If product information already exists inside src/data or similar files, generate metadata from that data instead of duplicating content.
+
+========================================================
+
+DO NOT TOUCH
+
+Design
+
+Typography
+
+Colors
+
+Spacing
+
+Components
+
+Navigation
+
+Routing
+
+Animations
+
+Responsive behavior
+
+Product cards
+
+Search
+
+Filters
+
+Anything unrelated to SEO metadata
+
+========================================================
+
+GOAL
+
+The website should follow modern SEO best practices while producing unique metadata for every page without changing the visual appearance of the website.
+
+"Perform a complete technical SEO audit of the entire website. Check for duplicate titles, duplicate meta descriptions, missing metadata, missing alt text, broken links, canonical issues, robots.txt, sitemap, schema markup, internal linking, Core Web Vitals opportunities, and any SEO issues. Fix only genuine SEO problems. Do not modify the design, layout, colors, typography, animations, or user experience."

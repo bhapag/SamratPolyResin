@@ -3,7 +3,7 @@ import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import { site, buildCanonicalUrl } from '../data/site.js';
 
-const { title, description, ogType = 'website', ogTitle, ogDescription, keywords } = Astro.props;
+const { title, description, ogType = 'website', ogTitle, ogDescription, keywords, noindex = false } = Astro.props;
 const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
 const desc = description ?? `${site.name}: manufacturer of coating and composite resins from ${site.address.line2}, ${site.address.state}. Established ${site.established}.`;
 const finalOgTitle = ogTitle ?? pageTitle;
@@ -45,6 +45,7 @@ const organizationJsonLd = {
   <meta name="google-site-verification" content="OFsnvffAQ4QIkQX6p5GdUQ5asBnyE2PDzAwwtgj39Xw" />
   <title>{pageTitle}</title>
   <meta name="description" content={desc} />
+  {noindex && <meta name="robots" content="noindex, follow" />}
   {keywords && <meta name="keywords" content={keywords.join(', ')} />}
   <meta property="og:title" content={finalOgTitle} />
   <meta property="og:description" content={finalOgDesc} />

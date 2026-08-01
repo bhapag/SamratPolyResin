@@ -13,7 +13,7 @@ const { faqs } = Astro.props;
         </button>
       </h3>
       <div class="faq-panel" id={`faq-panel-${i}`} role="region" aria-labelledby={`faq-question-${i}`}>
-        <div class="faq-panel-inner"><p>{item.a}</p></div>
+        <div class="faq-panel-inner"><p set:html={item.a} /></div>
       </div>
     </div>
   ))}

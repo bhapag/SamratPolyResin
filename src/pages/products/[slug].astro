@@ -87,6 +87,8 @@ const productJsonLd = {
   name,
   description,
   category,
+  sku: product.slug,
+  url: buildCanonicalUrl(Astro.url.pathname),
   image: mainImage ? buildCanonicalUrl(mainImage.main.src) : undefined,
   brand: { "@type": "Organization", name: site.name },
   manufacturer: { "@type": "Organization", name: site.name },

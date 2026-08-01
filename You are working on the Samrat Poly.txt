@@ -1,0 +1,221 @@
+You are working on the Samrat Poly Resins website.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+OBJECTIVE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+GP Clear Resin is the MASTER TEMPLATE.
+
+DO NOT redesign it.
+DO NOT modify it.
+DO NOT improve it.
+
+Instead, upgrade every incomplete product page so that it matches the GP Clear Resin page EXACTLY in structure, completeness, professionalism, user experience and SEO quality.
+
+Every product page should feel like it was created from the exact same premium template.
+
+The only differences between products should be:
+
+• Product Name
+• Product Images
+• Product Description
+• Technical Specifications
+• Applications
+• Key Features
+• FAQs
+• Product-specific information
+
+Everything else must remain consistent.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STRICT RULES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DO NOT
+
+• Change the website design
+• Change fonts
+• Change colours
+• Change spacing
+• Change animations
+• Change layout
+• Change navigation
+• Change button styles
+• Change GP Clear Resin page
+• Make any product page look more premium than GP Clear Resin
+• Remove any existing section
+
+GP Clear Resin is the GOLD STANDARD.
+
+Every remaining product must match it.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FOR EVERY PRODUCT PAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Ensure every product page contains ALL of the following sections in the SAME ORDER as GP Clear Resin.
+
+1. Hero Section
+
+- Product Images
+- Product Gallery
+- Product Title
+- Product Subtitle
+- Price on Request
+- Request Bulk Quote
+- Download Technical Data Sheet
+- Enquiry Button
+- WhatsApp Button
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2. Product Details
+
+Create a complete Product Details table matching the depth and formatting of GP Clear Resin.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3. Technical Specifications
+
+Create a dedicated Technical Specifications table.
+
+Populate ONLY from finalized TDS.
+
+Never invent values.
+
+If TDS is not yet finalized:
+
+Leave placeholders or TODO markers so specifications can be filled later.
+
+Do NOT fabricate data.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+4. Product Description
+
+Generate professional industrial copy.
+
+Length should match GP Clear Resin.
+
+Approximately 2–3 high-quality paragraphs.
+
+Tone must remain industrial, technical and B2B.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+5. Key Features
+
+Generate product-specific key features.
+
+Maintain identical layout.
+
+Maintain similar amount of content.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+6. Applications
+
+Generate product-specific applications.
+
+Maintain identical layout.
+
+Maintain similar amount of content.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+7. Industries We Serve
+
+Add this section to every product.
+
+Keep identical design.
+
+Adjust industries only when required by the product.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+8. Why Choose Samrat Poly Resins
+
+Every product page must include this section.
+
+Keep the same layout.
+
+Reuse company strengths where applicable.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+9. Frequently Asked Questions
+
+Generate 6–10 high-quality FAQs.
+
+Questions must be product specific.
+
+Maintain the same accordion style and depth as GP Clear Resin.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+10. Related Products
+
+Maintain existing Related Products section.
+
+Cross-link logically related products.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+11. Quote Form
+
+Maintain the same enquiry form used on GP Clear Resin.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TECHNICAL CONSISTENCY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Every specification must remain consistent across:
+
+• Website
+• TDS
+• SDS
+• Product Catalogue
+
+Never allow conflicting values.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+IMPORTANT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The objective is NOT to redesign the website.
+
+The objective is NOT to improve GP Clear Resin.
+
+The objective is STANDARDIZATION.
+
+GP Clear Resin is the benchmark.
+
+Every remaining product page must reach that exact same level of completeness.
+
+No product page should feel unfinished.
+
+No product page should have fewer sections.
+
+No product page should contain less information.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FINAL QUALITY CHECK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Before finishing, verify that:
+
+✓ Every product page follows the exact GP Clear Resin structure.
+
+✓ Every product page contains every section present on GP Clear Resin.
+
+✓ No section is missing.
+
+✓ No page is visually better or worse than GP Clear Resin.
+
+✓ Every page looks like it belongs to one premium, professionally designed industrial website.
+
+✓ Technical information is accurate and consistent.
+
+✓ All product pages have identical layout, hierarchy, spacing and user experience.
+
+The final website should look as though every product page was created using one premium master template: GP Clear Resin.

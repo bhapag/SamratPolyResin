@@ -178,7 +178,7 @@ export const products = [
     seo: {
       title: "Unsaturated Polyester Resin (UPR) – Orthophthalic Polyester Resin",
       description:
-        "Unsaturated Polyester Resin (UPR) — a general-purpose orthophthalic polyester resin for FRP, fiberglass and composite manufacturing. Gel time under 8 minutes. 225 kg drums, MOQ 1,000 kg.",
+        "Unsaturated Polyester Resin (UPR) — a general-purpose orthophthalic polyester resin for FRP and composite manufacturing. Gel time under 8 minutes. 225 kg drums.",
       // "General Purpose Polyester Resin" intentionally omitted here — that
       // exact phrase is in GP Clear Resin's own title tag, so keeping it here
       // too would have this page competing with GP Clear Resin for it. Every
@@ -304,7 +304,7 @@ export const products = [
     seo: {
       title: "Lamination Resin (LR Resin) – Door Lamination Resin",
       description:
-        "Lamination Resin (LR Resin) — a transparent orthophthalic polyester resin for door lamination, plywood lamination and FRP bonding. 5-minute gel time. 35 kg PET or 225 kg drum, MOQ 1,000 kg.",
+        "Lamination Resin (LR Resin) — a transparent orthophthalic polyester resin for door and plywood lamination, and FRP bonding. 5-minute gel time. 35 kg PET or 225 kg drum.",
       keywords: [
         "Lamination Resin",
         "LR Resin",
@@ -422,7 +422,7 @@ export const products = [
     seo: {
       title: "GP Clear Resin – General Purpose Polyester Resin",
       description:
-        "GP Clear Resin — a clear, orthophthalic general-purpose unsaturated polyester resin for FRP hand layup, spray-up and moulding. Gel time under 8 minutes. 225 kg drums, MOQ 1,000 kg.",
+        "GP Clear Resin — a clear, orthophthalic general-purpose polyester resin for FRP hand layup, spray-up and moulding. Gel time under 8 minutes. 225 kg drums.",
       // "Unsaturated Polyester Resin" and "Orthophthalic Polyester Resin" were
       // removed from here — the dedicated /unsaturated-polyester-resin/ page
       // now owns that search intent; keeping both here would have the two
@@ -538,32 +538,107 @@ export const products = [
     price: "₹135 / kg",
     image: "gp-white-resin.jpg",
     images: ["gp-white-resin-2.jpg"],
-    specs: {
+    seo: {
+      title: "GP White Resin – Water-White Polyester Resin",
+      description:
+        "GP White Resin — a water-white, general-purpose orthophthalic polyester resin for FRP moulding, panels and water tanks. 6-minute gel time. 225 kg drums.",
+      keywords: [
+        "GP White Resin",
+        "Water White Polyester Resin",
+        "General Purpose Polyester Resin",
+        "FRP Resin",
+        "Polyester Moulding Resin",
+      ],
+    },
+    // Reorganised from the original single `specs` table into the sitewide
+    // productDetails/techSpecs pattern — every value below is unchanged from
+    // that original table, just regrouped. "Usage / Application" is not
+    // repeated here since it's already covered in full by the applications
+    // list below (same source data, no information lost). No new values
+    // invented; pending a finalized TDS for anything beyond this.
+    productDetails: {
       "Minimum Order Quantity": "1000 kg",
-      "Usage / Application": "Panel, moulding, general purpose, hand layup, cooling tower, spray up, water tank",
+      "Packaging": "225 kg Drum",
+      "Physical Form": "Liquid",
+      "Colour / Appearance": "Water White",
+    },
+    techSpecs: {
       "Resin Type": "Orthophthalic",
       "Curing System": "Non-accelerated",
       "Viscosity": "<350 cPs",
       "Gel Time": "6 min",
-      "Thixotropy": "Medium thixotropic",
-      "Color": "Water white",
+      "Thixotropy": "Medium Thixotropic",
       "Styrene Content": "30–35%",
-      "Packaging": "225 kg drum",
     },
     tagline: "Water-white general-purpose resin for FRP moulding.",
     description:
-      "A premium general-purpose orthophthalic unsaturated polyester resin offering excellent fibreglass wet-out, reliable curing and high mechanical strength. Water-white in colour with a fast 6-minute gel time, it is formulated for FRP moulding and lamination applications that need consistent, dependable performance.",
+      "GP White Resin is a premium general-purpose orthophthalic unsaturated polyester resin offering excellent fibreglass wet-out, reliable curing and high mechanical strength. Supplied as a water-white, medium-thixotropic liquid with a viscosity below 350 cPs, its body resists sagging on angled and vertical mould surfaces while still wetting out reinforcement quickly, helped by a fast 6-minute gel time. With 30–35% styrene content and a non-accelerated cure system, it is catalysed with an MEKP catalyst and cobalt octoate accelerator at room temperature for controlled, repeatable processing. Samrat Poly Resins supplies GP White Resin in bulk 225 kg drums for panel, moulding, hand layup, spray-up, cooling tower and water tank manufacturers who need a water-white general-purpose grade.",
+    usageNote:
+      'GP White Resin is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> for hand layup and spray-up. Where a fully clear (rather than water-white) grade is preferred, see our <a href="/products/gp-clear-resin/">GP Clear Resin</a>; mould-facing surfaces can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a>, and projects needing higher chemical resistance can step up to <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a>.',
     features: [
-      "Water-white colour, low viscosity (<350 cPa)",
-      "Fast 6-minute gel time",
-      "30–35% styrene content",
+      "Water-white colour, low viscosity (<350 cPs)",
+      "Medium-thixotropic body resists sagging on angled surfaces",
+      "Fast 6-minute gel time for efficient production cycles",
+      "Non-accelerated system — dose MEKP and cobalt accelerator to suit workshop conditions",
+      "30–35% styrene content for consistent processing",
       "Excellent fibreglass wet-out and mechanical strength",
-      "Supplied in 225 kg drums, minimum order 1000 kg",
+      "Supplied in 225 kg drums, minimum order 1,000 kg",
     ],
     applications: [
       "Panels and general-purpose moulding",
       "Hand layup and spray-up work",
-      "Cooling towers and water tanks",
+      "Cooling towers and water storage tanks",
+      "General industrial FRP fabrication",
+    ],
+    industries: [
+      "FRP & composites manufacturing",
+      "Water tanks & storage",
+      "Cooling towers & industrial plants",
+      "General moulding & fabrication",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Water-white colour with a medium-thixotropic, sag-resistant body",
+      "Supplied in bulk 225 kg drums, minimum order 1,000 kg",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is GP White Resin?",
+        a: "GP White Resin is a water-white, general-purpose orthophthalic unsaturated polyester resin used for FRP moulding, panels, hand layup and spray-up work. It is supplied by Samrat Poly Resins as a non-accelerated liquid in 225 kg drums.",
+      },
+      {
+        q: "What is the difference between GP White Resin and GP Clear Resin?",
+        a: 'Both are general-purpose orthophthalic polyester resins, but GP White Resin is a water-white, medium-thixotropic grade that resists sagging on angled mould surfaces, while our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is a lower-viscosity clear grade. Choose based on the colour and flow behaviour your project needs.',
+      },
+      {
+        q: "Is GP White Resin thixotropic?",
+        a: "Yes. It has a medium thixotropic body, which helps it resist sagging or running when applied to angled or vertical mould surfaces, rather than pooling before it gels.",
+      },
+      {
+        q: "What is the gel time and viscosity of GP White Resin?",
+        a: "Gel time is approximately 6 minutes, and viscosity is below 350 cPs, giving good reinforcement wet-out with a fast production cycle.",
+      },
+      {
+        q: "What is the styrene content of GP White Resin?",
+        a: "Styrene content is 30–35%.",
+      },
+      {
+        q: "How is GP White Resin cured?",
+        a: 'As a non-accelerated resin, it is cured at room temperature with a cobalt octoate accelerator and an <a href="/products/mekp-hardener/">MEKP catalyst</a>, dosed to suit workshop conditions.',
+      },
+      {
+        q: "What packaging and minimum order quantity does GP White Resin come in?",
+        a: "It is supplied in 225 kg drums, with a minimum order quantity of 1000 kg.",
+      },
+    ],
+    relatedSlugs: [
+      "gp-clear-resin",
+      "gp-gelcoat-resin",
+      "mekp-hardener",
+      "fibre-glass-mat",
     ],
   },
   {
@@ -573,32 +648,102 @@ export const products = [
     price: "",
     image: "gp-quartz-resin.jpg",
     images: ["gp-quartz-resin-2.jpg"],
-    specs: {
+    seo: {
+      title: "GP Quartz Resin – Resin for Engineered Stone",
+      description:
+        "GP Quartz Resin — a polyester resin engineered for artificial quartz stone and engineered stone countertop manufacturing. Gel time 12–20 minutes.",
+      keywords: [
+        "GP Quartz Resin",
+        "Quartz Stone Resin",
+        "Engineered Stone Resin",
+        "Artificial Marble Resin",
+        "Polyester Resin",
+      ],
+    },
+    // Reorganised into productDetails/techSpecs — every value is unchanged
+    // from the original single `specs` table, just regrouped. "Usage /
+    // Application" is not repeated in the table since it's already covered
+    // by the applications list below. No new values invented.
+    productDetails: {
+      "Colour / Appearance": "Clear Pale Yellow Liquid",
+    },
+    techSpecs: {
       "Resin Type": "Orthophthalic Polyester Resin",
-      "Appearance": "Clear pale yellow liquid",
+      "Curing System": "MEKP Catalyst, Room Temperature Cure",
       "Viscosity (25°C)": "350–550 cP",
       "Density (25°C)": "1.08–1.15 g/cm³",
       "Gel Time": "12–20 min",
-      "Curing System": "MEKP catalyst, room temperature cure",
-      "Tensile Strength (cured)": "55–70 MPa",
-      "Flexural Strength (cured)": "95–120 MPa",
-      "Barcol Hardness (cured)": "40–45",
-      "Usage / Application": "Quartz stone casting, artificial marble, engineered stone",
+      "Tensile Strength (Cured)": "55–70 MPa",
+      "Flexural Strength (Cured)": "95–120 MPa",
+      "Barcol Hardness (Cured)": "40–45",
     },
     tagline: "Premium resin engineered for quartz and engineered stone surfaces.",
     description:
-      "Samrat GP Quartz Resin is a premium general-purpose unsaturated polyester resin engineered for manufacturing artificial quartz stone, engineered stone slabs and composite mineral surfaces. Formulated for excellent quartz filler compatibility, it supports high filler loading while maintaining smooth, uniform resin distribution, delivering strong mechanical properties, superior wet-out and consistent curing performance for demanding industrial production.",
+      "Samrat GP Quartz Resin is a premium general-purpose unsaturated polyester resin engineered for manufacturing artificial quartz stone, engineered stone slabs and composite mineral surfaces. Formulated for excellent quartz filler compatibility, it supports high filler loading while maintaining smooth, uniform resin distribution, delivering strong mechanical properties, superior wet-out and consistent curing performance for demanding industrial production. Supplied as a clear, pale-yellow liquid with a viscosity of 350–550 cP and a gel time of 12–20 minutes, it cures at room temperature with an MEKP catalyst into a hard, polishable surface with 40–45 Barcol hardness, 55–70 MPa tensile strength and 95–120 MPa flexural strength — the mechanical profile needed for slabs and countertops that must resist everyday wear.",
+    usageNote:
+      'GP Quartz Resin is cured with an <a href="/products/mekp-hardener/">MEKP catalyst</a> at room temperature. For cultured marble and artificial stone work outside quartz surfacing, see our <a href="/products/marble-resin/">Marble Resin</a>; for general-purpose FRP manufacturing rather than stone casting, our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is more suitable.',
     features: [
       "Excellent compatibility with quartz and mineral fillers at high loading",
       "High mechanical strength — 55–70 MPa tensile, 95–120 MPa flexural",
+      "Barcol hardness of 40–45 for a durable, polishable surface",
       "Superior wet-out for fast, uniform filler wetting and smooth processing",
       "Low shrinkage on cure for dimensional stability and a premium polished finish",
+      "Room-temperature MEKP cure for straightforward processing",
       "Consistent, reliable batch-to-batch curing performance",
     ],
     applications: [
       "Artificial quartz stone manufacturing and engineered stone slabs",
       "Quartz, kitchen and vanity countertops",
       "Table tops, interior decorative panels and premium composite stone products",
+    ],
+    industries: [
+      "Engineered & quartz stone manufacturing",
+      "Countertop & surface manufacturing",
+      "Interior décor & architectural panels",
+      "Composite stone products",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "High filler-loading compatibility with consistent mechanical strength",
+      "Room-temperature MEKP cure for straightforward, repeatable processing",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is GP Quartz Resin?",
+        a: "GP Quartz Resin is a premium unsaturated polyester resin engineered for manufacturing artificial quartz stone, engineered stone slabs and composite mineral surfaces, formulated for excellent compatibility with quartz and mineral fillers at high loading.",
+      },
+      {
+        q: "What is the difference between GP Quartz Resin and GP Clear Resin?",
+        a: 'GP Quartz Resin is engineered specifically for high filler-loading quartz and engineered-stone casting, with viscosity and cured mechanical strength (tensile, flexural and Barcol hardness) verified for that use. Our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is a broader general-purpose grade for hand layup, spray-up and moulding rather than filled stone casting.',
+      },
+      {
+        q: "What is the viscosity and gel time of GP Quartz Resin?",
+        a: "Viscosity at 25°C is 350–550 cP, and gel time is 12–20 minutes, giving processors time to work high filler loadings into the mould before the resin gels.",
+      },
+      {
+        q: "What is the tensile and flexural strength of cured GP Quartz Resin?",
+        a: "Once cured, it achieves 55–70 MPa tensile strength and 95–120 MPa flexural strength.",
+      },
+      {
+        q: "What is the Barcol hardness of cured GP Quartz Resin?",
+        a: "Barcol hardness is 40–45, giving a durable, polishable surface suited to countertops and slabs subject to everyday wear.",
+      },
+      {
+        q: "How is GP Quartz Resin cured?",
+        a: 'It cures at room temperature with an <a href="/products/mekp-hardener/">MEKP catalyst</a>.',
+      },
+      {
+        q: "Is GP Quartz Resin suitable for high filler loading?",
+        a: "Yes. It is specifically formulated for excellent compatibility with quartz and mineral fillers at high loading, while maintaining smooth, uniform resin distribution and consistent curing performance.",
+      },
+    ],
+    relatedSlugs: [
+      "gp-clear-resin",
+      "marble-resin",
+      "mekp-hardener",
     ],
   },
   {
@@ -1084,33 +1229,104 @@ export const products = [
     price: "₹175 / kg",
     image: "iso-fire-retardant-resin.jpg",
     images: ["iso-fire-retardant-resin-2.jpg"],
-    specs: {
+    seo: {
+      title: "ISO Fire Retardant Resin – Halogen-Free FR Resin",
+      description:
+        "ISO Fire Retardant Resin — a halogen-free, ATH-filled isophthalic polyester resin, UL 94 V0 rated, for railway, marine and automotive fire-safety FRP parts.",
+      keywords: [
+        "ISO Fire Retardant Resin",
+        "Halogen Free Fire Retardant Resin",
+        "Isophthalic Fire Retardant Resin",
+        "UL 94 V0 Resin",
+        "Fire Retardant Polyester Resin",
+      ],
+    },
+    // Reorganised into productDetails/techSpecs — every value is unchanged
+    // from the original single `specs` table, just regrouped. "Usage /
+    // Application" is not repeated in the table since it's already covered
+    // by the applications list below. No new values invented.
+    productDetails: {
       "Minimum Order Quantity": "500 kg",
-      "Base Resin": "Polyester",
-      "FR Type": "Halogen free",
-      "Flammability Rating": "UL 94 V0",
-      "Usage / Application": "Railway, marine, automotive, FRP panels",
+      "Packaging": "50 kg",
       "Physical Form": "Semi-liquid",
-      "Curing Type": "Room temperature cure",
-      "Pack Size": "50 kg",
-      "Fillers": "ATH filled",
-      "Color": "White",
+      "Colour / Appearance": "White",
+    },
+    techSpecs: {
+      "Base Resin": "Polyester",
+      "FR Type": "Halogen Free",
+      "Flammability Rating": "UL 94 V0",
+      "Fillers": "ATH Filled",
+      "Curing System": "Room Temperature Cure",
       "Purity": "100%",
     },
     tagline: "Isophthalic-based resin for demanding fire safety.",
     description:
-      "An isophthalic-based fire retardant resin offering enhanced performance for demanding fire-safety applications. Halogen-free and filled with aluminium trihydrate (ATH), it combines a UL 94 V0 flammability rating with the improved chemical and mechanical resistance of an isophthalic backbone, bonding well with fibreglass mats to give strength and stability to the final product.",
+      "An isophthalic-based fire retardant resin offering enhanced performance for demanding fire-safety applications. Halogen-free and filled with aluminium trihydrate (ATH), it combines a UL 94 V0 flammability rating with the improved chemical and mechanical resistance of an isophthalic backbone, bonding well with fibreglass mats to give strength and stability to the final product. Supplied as a white, semi-liquid resin with 100% purity, it cures at room temperature and is packed in 50 kg containers, with a minimum order quantity of 500 kg — suited to railway, marine and automotive manufacturers who need fire-rated FRP components without halogenated additives.",
+    usageNote:
+      'ISO Fire Retardant Resin is typically reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> for railway, marine and automotive fire-rated components. Where a halogenated, unsaturated-polyester-based fire retardant grade is acceptable instead, see our <a href="/products/fire-retardant-resin/">Fire Retardant Resin</a>; for general-purpose FRP work without a fire-safety requirement, our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is more cost-effective.',
     features: [
       "Halogen-free, ATH-filled formulation",
       "UL 94 V0 flammability rating",
       "Isophthalic backbone for better chemical resistance",
+      "Bonds well with fibreglass reinforcement for strength and stability",
       "Room-temperature cure, 100% purity",
-      "Supplied in 50 kg barrels, minimum order 500 kg",
+      "Supplied in 50 kg containers, minimum order 500 kg",
     ],
     applications: [
-      "Railway and marine applications",
+      "Railway applications",
+      "Marine applications",
       "Automotive fire-rated components",
       "FRP panels requiring fire compliance",
+    ],
+    industries: [
+      "Railway & transport components",
+      "Marine & shipbuilding",
+      "Automotive FRP parts",
+      "Fire-rated panel manufacturing",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Halogen-free, ATH-filled formulation with 100% purity",
+      "UL 94 V0-rated formulation for fire-safety-critical components",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is ISO Fire Retardant Resin?",
+        a: "ISO Fire Retardant Resin is a halogen-free, isophthalic-based fire retardant resin, filled with aluminium trihydrate (ATH) and rated to UL 94 V0, formulated for demanding fire-safety FRP applications in railway, marine and automotive manufacturing.",
+      },
+      {
+        q: "What is the difference between ISO Fire Retardant Resin and Fire Retardant Resin?",
+        a: 'ISO Fire Retardant Resin is a halogen-free, isophthalic-based grade offering enhanced chemical resistance alongside fire performance. Our <a href="/products/fire-retardant-resin/">Fire Retardant Resin</a> is a halogenated, unsaturated-polyester-based grade, also rated UL 94 V0. Choose the halogen-free isophthalic grade where halogen-free specification or added chemical resistance is required.',
+      },
+      {
+        q: "Why is ISO Fire Retardant Resin halogen-free?",
+        a: "Some fire-safety specifications require halogen-free formulations to limit toxic gas and corrosive smoke in a fire. This grade uses ATH filler rather than halogenated additives to achieve its UL 94 V0 flammability rating.",
+      },
+      {
+        q: "What is the flammability rating of ISO Fire Retardant Resin?",
+        a: "It is rated UL 94 V0.",
+      },
+      {
+        q: "What is the physical form and purity of ISO Fire Retardant Resin?",
+        a: "It is a white, semi-liquid resin with 100% purity.",
+      },
+      {
+        q: "What packaging and minimum order quantity does ISO Fire Retardant Resin come in?",
+        a: "It is supplied in 50 kg containers, with a minimum order quantity of 500 kg.",
+      },
+      {
+        q: "How is ISO Fire Retardant Resin cured?",
+        a: "It cures at room temperature.",
+      },
+    ],
+    relatedSlugs: [
+      "fire-retardant-resin",
+      "gp-clear-resin",
+      "mekp-hardener",
+      "fibre-glass-mat",
     ],
   },
   {
@@ -1120,21 +1336,41 @@ export const products = [
     price: "₹300 / kg",
     image: "frp-polyester-pigment.jpg",
     images: ["frp-polyester-pigment-1.jpg", "frp-polyester-pigment-3.jpg"],
-    specs: {
+    seo: {
+      title: "FRP Polyester Pigment – Colour Paste for Resins",
+      description:
+        "FRP Polyester Pigment — a heat-stable colour paste for unsaturated polyester resins and gel coats, available in custom RAL and Pantone shades.",
+      keywords: [
+        "FRP Polyester Pigment",
+        "Polyester Resin Pigment",
+        "Gel Coat Pigment",
+        "FRP Colour Paste",
+        "Resin Pigment Paste",
+      ],
+    },
+    // Reorganised into productDetails/techSpecs — every value is unchanged
+    // from the original single `specs` table, just regrouped. "Usage /
+    // Application" is not repeated in the table since it's already covered
+    // by the applications list below. No new values invented.
+    productDetails: {
       "Minimum Order Quantity": "100 kg",
-      "Form": "Paste",
-      "Polyester Type": "UPR",
-      "Usage / Application": "FRP products",
-      "Binder Compatibility": "Unsaturated polyester",
-      "Color": "Multicolor",
       "Packaging Size": "10 kg",
       "Pack Type": "Bottle",
+      "Colour / Appearance": "Multicolor",
+    },
+    techSpecs: {
+      "Form": "Paste",
+      "Polyester Type": "UPR",
+      "Binder Compatibility": "Unsaturated Polyester",
     },
     tagline: "Heat-stable colour paste for polyester resins.",
     description:
-      "A colorant paste designed specifically for FRP products made with unsaturated polyester resins. Formulated to blend seamlessly with the resin system, it provides consistent multicolour coloration without affecting curing or mechanical properties. It withstands the exothermic heat of curing, contains stabilisers to resist fading, and is available in a wide range of standard and custom colours including RAL and Pantone matches.",
+      "A colorant paste designed specifically for FRP products made with unsaturated polyester resins. Formulated to blend seamlessly with the resin system, it provides consistent multicolour coloration without affecting curing or mechanical properties. It withstands the exothermic heat of curing, contains stabilisers to resist fading, and is available in a wide range of standard and custom colours including RAL and Pantone matches. Supplied as a paste in 10 kg bottles, with a minimum order quantity of 100 kg, it is compatible with unsaturated polyester resin binder systems used across FRP tanks, gel coats, panels and enclosures — letting manufacturers achieve consistent, factory-matched colour without compromising cure or mechanical performance.",
+    usageNote:
+      'FRP Polyester Pigment is blended directly into <a href="/products/gp-clear-resin/">GP Clear Resin</a> or another unsaturated polyester resin before catalysing with an <a href="/products/mekp-hardener/">MEKP hardener</a>. For a pre-pigmented, factory-coloured sheet resin instead of adding pigment yourself, see our <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a>.',
     features: [
       "Blends seamlessly with unsaturated polyester resins",
+      "Compatible with unsaturated polyester (UPR) binder systems",
       "Withstands exothermic curing heat",
       "UV and weather-resistant stabilisers resist fading",
       "Available in RAL and Pantone custom matches",
@@ -1143,7 +1379,58 @@ export const products = [
     applications: [
       "FRP tanks and pipes",
       "Gel coats for boats and automotive parts",
-      "Decorative and architectural panels, electrical enclosures",
+      "Decorative and architectural panels",
+      "Electrical enclosures",
+    ],
+    industries: [
+      "FRP tank & pipe manufacturing",
+      "Marine & automotive gelcoat",
+      "Architectural & decorative panels",
+      "Electrical enclosure manufacturing",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Heat-stable, fade-resistant multicolour formulation",
+      "Custom RAL and Pantone colour matching available",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is FRP Polyester Pigment?",
+        a: "FRP Polyester Pigment is a colorant paste formulated for FRP products made with unsaturated polyester resins, providing consistent multicolour coloration without affecting curing or mechanical properties.",
+      },
+      {
+        q: "Is FRP Polyester Pigment compatible with all polyester resins?",
+        a: 'It is formulated for compatibility with unsaturated polyester (UPR) resin binder systems, such as our <a href="/products/gp-clear-resin/">GP Clear Resin</a> and other general-purpose grades.',
+      },
+      {
+        q: "Does FRP Polyester Pigment affect curing or mechanical properties?",
+        a: "No. It is formulated to blend seamlessly with the resin system without affecting curing or the final mechanical properties of the FRP part.",
+      },
+      {
+        q: "Can I get custom colours matched?",
+        a: "Yes. It is available in a wide range of standard and custom colours, including RAL and Pantone matches.",
+      },
+      {
+        q: "Does FRP Polyester Pigment resist fading?",
+        a: "Yes. It contains stabilisers to resist fading and withstands the exothermic heat generated during resin curing.",
+      },
+      {
+        q: "What packaging and minimum order quantity does FRP Polyester Pigment come in?",
+        a: "It is supplied in 10 kg bottles, with a minimum order quantity of 100 kg.",
+      },
+      {
+        q: "How is FRP Polyester Pigment used?",
+        a: 'It is blended directly into the unsaturated polyester resin before catalysing with an <a href="/products/mekp-hardener/">MEKP hardener</a>, giving the cured FRP part its final colour.',
+      },
+    ],
+    relatedSlugs: [
+      "gp-clear-resin",
+      "sheet-grade-yellow-resin",
+      "mekp-hardener",
+      "fibre-glass-mat",
     ],
   },
   {
@@ -1153,33 +1440,104 @@ export const products = [
     price: "₹120 / kg",
     image: "fibre-glass-mat.jpg",
     images: ["fibre-glass-mat-2.jpg"],
-    specs: {
+    seo: {
+      title: "Glass Fiber Mat – E-Glass Chopped Strand Mat",
+      description:
+        "Glass Fiber — E-glass chopped strand mat reinforcement, polyester-sized, in 300/450 gsm for marine, automotive and construction FRP composites.",
+      keywords: [
+        "Glass Fiber Mat",
+        "Chopped Strand Mat",
+        "FRP Reinforcement",
+        "E-Glass Mat",
+        "Fibreglass Mat",
+      ],
+    },
+    // Reorganised into productDetails/techSpecs — every value is unchanged
+    // from the original single `specs` table, just regrouped. "Usage /
+    // Application" is not repeated in the table since it's already covered
+    // by the applications list below. No new values invented.
+    productDetails: {
       "Minimum Order Quantity": "500 kg",
-      "Glass Type": "E-glass",
-      "Form": "Chopped strand",
-      "Usage / Application": "FRP",
+      "Packaging Type": "Roll",
+      "Roll Width": "1040 mm",
+    },
+    techSpecs: {
+      "Glass Type": "E-Glass",
+      "Form": "Chopped Strand",
       "Tex / GSM": "300 g/m² & 450 g/m²",
       "Sizing Type": "Polyester",
       "Fiber Length": "3 mm",
-      "Grade Standard": "Industrial grade",
+      "Grade Standard": "Industrial Grade",
       "Types": "Orthophthalic",
-      "Roll Width": "1040 mm",
-      "Packaging Type": "Roll",
     },
     tagline: "Reinforcement that gives composites their strength.",
     description:
-      "E-glass chopped strand mat reinforcement used together with polyester resin to form FRP composites. It acts as the structure that the resin binds together, providing rigidity, strength and shape to the final product. Supplied in industrial-grade rolls with polyester sizing for good resin compatibility, it is widely used across marine, automotive and construction applications.",
+      "E-glass chopped strand mat reinforcement used together with polyester resin to form FRP composites. It acts as the structure that the resin binds together, providing rigidity, strength and shape to the final product. Supplied in industrial-grade rolls with polyester sizing for good resin compatibility, it is widely used across marine, automotive and construction applications. Available in 1040 mm wide rolls at 300 g/m² and 450 g/m², with a minimum order quantity of 500 kg, its polyester sizing ensures reliable wet-out and bonding with polyester resin systems, giving composite laminates the reinforcement they need for consistent strength and shape retention.",
+    usageNote:
+      'Glass Fiber is reinforced into <a href="/products/gp-clear-resin/">GP Clear Resin</a> or another general-purpose polyester resin, catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a>, for hand layup and spray-up work. Mould-facing surfaces can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a>.',
     features: [
       "E-glass chopped strand, 3 mm fibre length",
       "300 g/m² and 450 g/m² weights available",
       "1040 mm roll width, polyester sizing",
       "Fast curing, good chemical resistance once wet out",
+      "Reliable resin wet-out for consistent laminate strength",
       "Minimum order 500 kg",
     ],
     applications: [
       "Reinforcement for FRP laminates",
       "Marine, automotive and construction composites",
       "Moulded fibreglass parts",
+      "Hand layup and spray-up reinforcement",
+    ],
+    industries: [
+      "FRP & composites manufacturing",
+      "Marine & automotive fabrication",
+      "Construction & panel manufacturing",
+      "General moulding & fabrication",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Industrial-grade E-glass with polyester sizing for reliable wet-out",
+      "Supplied in 1040 mm rolls, minimum order 500 kg",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is Glass Fiber (chopped strand mat)?",
+        a: "Glass Fiber is an E-glass chopped strand mat reinforcement used together with polyester resin to form FRP composites, providing the structural rigidity and strength that the resin alone cannot.",
+      },
+      {
+        q: "What glass type and fibre length is used?",
+        a: "It is E-glass with a 3 mm chopped fibre length, industrial grade.",
+      },
+      {
+        q: "What weights (GSM) are available?",
+        a: "It is available in 300 g/m² and 450 g/m² weights.",
+      },
+      {
+        q: "What is the roll width and packaging?",
+        a: "It is supplied in 1040 mm wide rolls.",
+      },
+      {
+        q: "Is the sizing compatible with polyester resin?",
+        a: "Yes. It carries a polyester sizing formulated for good compatibility and wet-out with polyester resin systems.",
+      },
+      {
+        q: "What is the minimum order quantity for Glass Fiber?",
+        a: "Minimum order quantity is 500 kg.",
+      },
+      {
+        q: "How is Glass Fiber used with resin?",
+        a: 'It is laid into the mould and wet out with a catalysed polyester resin such as our <a href="/products/gp-clear-resin/">GP Clear Resin</a>, typically catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a>, so the resin binds around the glass fibre reinforcement as it cures.',
+      },
+    ],
+    relatedSlugs: [
+      "gp-clear-resin",
+      "mekp-hardener",
+      "gp-gelcoat-resin",
+      "vinyl-ester-resin",
     ],
   },
   {
@@ -1189,31 +1547,101 @@ export const products = [
     price: "₹700 / kg",
     image: "epoxy-clear-casting-resin.jpg",
     images: ["epoxy-clear-casting-resin-2.jpg"],
-    specs: {
+    seo: {
+      title: "Epoxy Clear Casting Resin – River Table Resin",
+      description:
+        "Epoxy Clear Casting Resin — a crystal-clear, high-gloss two-part epoxy for river tables, jewellery and decorative casting, curing in around 24 hours.",
+      keywords: [
+        "Epoxy Clear Casting Resin",
+        "Casting Epoxy Resin",
+        "River Table Resin",
+        "Clear Epoxy Resin",
+        "Epoxy Casting Resin",
+      ],
+    },
+    // Reorganised into productDetails/techSpecs — every value is unchanged
+    // from the original single `specs` table, just regrouped. "Usage /
+    // Application" is not repeated in the table since it's already covered
+    // by the applications list below. No new values invented.
+    productDetails: {
       "Minimum Order Quantity": "100 kg",
+      "Pack Size": "20 kg",
+      "Colour / Appearance": "Clear",
+      "Finish": "High Gloss",
+    },
+    techSpecs: {
       "Resin Type": "Epoxy",
       "Max Casting Depth": "30 mm",
-      "Pack Size": "20 kg",
-      "Usage / Application": "Decor items, artwork, river table, industrial casting, jewellery, flooring",
       "Curing Time": "24 hours",
-      "Color": "Clear",
       "Viscosity": "Medium",
       "Mix Ratio": "1:1",
-      "Finish": "High gloss",
     },
     tagline: "Crystal-clear, bubble-resistant resin for casting and art.",
     description:
-      "A premium two-part epoxy resin formulated for casting, river tables, jewellery and decorative artwork. Mixed 1:1, it cures in around 24 hours to a crystal-clear, high-gloss finish with low bubble formation, suited to deep pours up to 30 mm and fine detail work where optical clarity matters.",
+      "A premium two-part epoxy resin formulated for casting, river tables, jewellery and decorative artwork. Mixed 1:1, it cures in around 24 hours to a crystal-clear, high-gloss finish with low bubble formation, suited to deep pours up to 30 mm and fine detail work where optical clarity matters. Supplied in 20 kg packs, with a minimum order quantity of 100 kg, its medium viscosity gives good self-levelling in flat pours while still holding fine detail in decor items and jewellery moulds.",
+    usageNote:
+      'Epoxy Clear Casting Resin is mixed 1:1 with a compatible <a href="/products/epoxy-hardener/">epoxy hardener</a> before pouring. For a self-levelling grade formulated specifically for floor art and table-top work, see our <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a>; for fast UV-curing craft work rather than a 24-hour cast, our <a href="/products/uv-resin/">UV Resin</a> may be more suitable.',
     features: [
       "Crystal clear, high-gloss finish",
       "1:1 mix ratio, 24-hour cure",
       "Low bubble formation, max casting depth 30 mm",
+      "Medium viscosity for good self-levelling and detail retention",
       "Minimum order 100 kg",
     ],
     applications: [
       "River tables and flooring",
       "Jewellery making and decorative items",
       "Artwork and industrial casting",
+      "Decor items and detailed mould casting",
+    ],
+    industries: [
+      "Furniture & river table manufacturing",
+      "Jewellery & fashion accessories",
+      "Art & decorative casting",
+      "Industrial casting applications",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Crystal-clear, high-gloss finish with low bubble formation",
+      "Supplied in 20 kg packs, minimum order 100 kg",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is Epoxy Clear Casting Resin?",
+        a: "Epoxy Clear Casting Resin is a premium two-part epoxy system formulated for casting, river tables, jewellery and decorative artwork, curing to a crystal-clear, high-gloss finish.",
+      },
+      {
+        q: "What is the mix ratio and cure time?",
+        a: "It is mixed 1:1 and cures in around 24 hours.",
+      },
+      {
+        q: "What is the maximum casting depth?",
+        a: "Maximum casting depth is 30 mm per pour.",
+      },
+      {
+        q: "Does it form bubbles during casting?",
+        a: "It is formulated for low bubble formation, giving a clear, flawless finish suited to fine detail work.",
+      },
+      {
+        q: "What is the difference between Epoxy Clear Casting Resin and Epoxy Art Resin?",
+        a: 'Epoxy Clear Casting Resin is a medium-viscosity 1:1 system suited to deep pours up to 30 mm. Our <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a> is a self-levelling 2:1 system tuned specifically for floor art and table-top finishes. Choose based on your pour depth and finish requirement.',
+      },
+      {
+        q: "What packaging and minimum order quantity does it come in?",
+        a: "It is supplied in 20 kg packs, with a minimum order quantity of 100 kg.",
+      },
+      {
+        q: "How is Epoxy Clear Casting Resin used?",
+        a: 'It is mixed 1:1 with a compatible <a href="/products/epoxy-hardener/">epoxy hardener</a> and poured into the mould, where it self-levels and cures over approximately 24 hours.',
+      },
+    ],
+    relatedSlugs: [
+      "epoxy-art-resin",
+      "epoxy-hardener",
+      "uv-resin",
     ],
   },
   {
@@ -1223,31 +1651,100 @@ export const products = [
     price: "₹700 / kg",
     image: "epoxy-art-resin.jpg",
     images: ["epoxy-art-resin-2.jpg", "epoxy-art-resin-3.jpg"],
-    specs: {
+    seo: {
+      title: "Epoxy Art Resin – Self-Levelling Clear Epoxy",
+      description:
+        "Epoxy Art Resin — a self-levelling, water-clear two-component epoxy for floor art, table tops and river tables. UV resistant, high-gloss finish.",
+      keywords: [
+        "Epoxy Art Resin",
+        "Art Resin",
+        "Self Levelling Epoxy",
+        "Table Top Epoxy Resin",
+        "River Table Epoxy",
+      ],
+    },
+    // Reorganised into productDetails/techSpecs — every value is unchanged
+    // from the original single `specs` table, just regrouped. "Usage /
+    // Application" is not repeated in the table since it's already covered
+    // by the applications list below. No new values invented.
+    productDetails: {
       "Minimum Order Quantity": "100 kg",
-      "Component Type": "Two component",
-      "Usage / Application": "Floor art, table top, river table, wood art, coating, jewellery, casting",
+      "Pack Size": "15 kg",
+      "Colour / Appearance": "Water Clear",
+      "Finish": "High Gloss",
+    },
+    techSpecs: {
+      "Component Type": "Two Component",
       "Curing Time": "24 hours",
       "Mix Ratio": "2:1",
-      "Finish": "High gloss",
       "UV Resistant": "Yes",
-      "Color": "Water clear",
-      "Pack Size": "15 kg",
     },
     tagline: "Self-levelling, crystal-clear epoxy for artistic finishes.",
     description:
-      "A crystal-clear, two-component epoxy system formulated for artistic and decorative applications. Mixed 2:1 and curing in around 24 hours, it offers excellent transparency, superior gloss, outstanding self-levelling properties and excellent bubble release for a flawless finish.",
+      "A crystal-clear, two-component epoxy system formulated for artistic and decorative applications. Mixed 2:1 and curing in around 24 hours, it offers excellent transparency, superior gloss, outstanding self-levelling properties and excellent bubble release for a flawless finish. Supplied in 15 kg packs, with a minimum order quantity of 100 kg, its UV-resistant formulation is designed to hold its clarity and gloss over time, making it well suited to floor art, table tops and other surfaces exposed to daylight.",
+    usageNote:
+      'Epoxy Art Resin is mixed 2:1 with a compatible <a href="/products/epoxy-hardener/">epoxy hardener</a> before pouring. For deeper pours up to 30 mm rather than a self-levelling surface coat, see our <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a>; for fast UV-curing craft work, our <a href="/products/uv-resin/">UV Resin</a> may be more suitable.',
     features: [
       "Water-clear, high-gloss finish",
       "2:1 mix ratio, 24-hour cure",
       "Self-levelling with excellent bubble release",
-      "UV resistant",
+      "UV resistant — holds clarity and gloss over time",
       "Supplied in 15 kg packs, minimum order 100 kg",
     ],
     applications: [
       "Floor art and table tops",
       "River tables and wood art",
       "Jewellery and decorative casting",
+      "Decorative coatings",
+    ],
+    industries: [
+      "Furniture & table top manufacturing",
+      "Flooring & decorative coatings",
+      "Jewellery & fashion accessories",
+      "Art & decorative casting",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Self-levelling, UV-resistant formulation for a lasting high-gloss finish",
+      "Supplied in 15 kg packs, minimum order 100 kg",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is Epoxy Art Resin?",
+        a: "Epoxy Art Resin is a crystal-clear, two-component epoxy system formulated for artistic and decorative applications such as floor art, table tops and river tables.",
+      },
+      {
+        q: "What is the mix ratio and cure time?",
+        a: "It is mixed 2:1 and cures in around 24 hours.",
+      },
+      {
+        q: "Is Epoxy Art Resin self-levelling?",
+        a: "Yes. It is formulated to self-level with excellent bubble release, giving a flawless, flat finish on table tops and floor art without extensive tooling.",
+      },
+      {
+        q: "Is Epoxy Art Resin UV resistant?",
+        a: "Yes. It is UV resistant, helping it retain clarity and gloss over time rather than yellowing under daylight exposure.",
+      },
+      {
+        q: "What is the difference between Epoxy Art Resin and Epoxy Clear Casting Resin?",
+        a: 'Epoxy Art Resin is a 2:1, self-levelling system tuned for floor art and table-top surfaces. Our <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> is a 1:1 system suited to deeper pours up to 30 mm. Choose based on whether you need a self-levelling surface coat or a deeper cast.',
+      },
+      {
+        q: "What packaging and minimum order quantity does it come in?",
+        a: "It is supplied in 15 kg packs, with a minimum order quantity of 100 kg.",
+      },
+      {
+        q: "How is Epoxy Art Resin used?",
+        a: 'It is mixed 2:1 with a compatible <a href="/products/epoxy-hardener/">epoxy hardener</a> and poured onto the surface, where it self-levels and cures over approximately 24 hours.',
+      },
+    ],
+    relatedSlugs: [
+      "epoxy-clear-casting-resin",
+      "epoxy-hardener",
+      "uv-resin",
     ],
   },
   {
@@ -1257,29 +1754,99 @@ export const products = [
     price: "₹140 / kg",
     image: "uv-resin.jpg",
     images: ["uv-resin-2.jpg"],
-    specs: {
+    seo: {
+      title: "UV Resin – Fast-Curing Epoxy Acrylate Resin",
+      description:
+        "UV Resin — a fast UV/LED-curing, low-viscosity epoxy acrylate resin for jewellery, encapsulation and craft coatings. Crystal clear, scratch resistant.",
+      keywords: [
+        "UV Resin",
+        "UV Curing Resin",
+        "Epoxy Acrylate Resin",
+        "UV LED Resin",
+        "Craft Resin",
+      ],
+    },
+    // Reorganised into productDetails/techSpecs — every value is unchanged
+    // from the original single `specs` table, just regrouped. "Usage /
+    // Application" is not repeated in the table since it's already covered
+    // by the applications list below. No new values invented.
+    productDetails: {
       "Minimum Order Quantity": "1000 kg",
-      "Resin Chemistry": "Epoxy acrylate",
-      "Curing Type": "UV LED cure",
-      "Usage / Application": "Adhesive, label coating, electronics, metal coating, wood coating",
-      "Viscosity": "Low",
-      "Color": "Clear",
       "Packaging Size": "200 kg",
+      "Colour / Appearance": "Clear",
+    },
+    techSpecs: {
+      "Resin Chemistry": "Epoxy Acrylate",
+      "Curing Type": "UV LED Cure",
+      "Viscosity": "Low",
       "Hardness": "Medium",
     },
     tagline: "Fast UV-curing resin for crystal-clear craft work.",
     description:
-      "An epoxy-acrylate resin that cures rapidly under UV/LED light to a crystal-clear, high-gloss finish. Low-viscosity and fast-curing, it offers excellent scratch resistance, low shrinkage and outstanding surface hardness for detailed decorative work.",
+      "An epoxy-acrylate resin that cures rapidly under UV/LED light to a crystal-clear, high-gloss finish. Low-viscosity and fast-curing, it offers excellent scratch resistance, low shrinkage and outstanding surface hardness for detailed decorative work. Supplied in 200 kg packs, with a minimum order quantity of 1,000 kg, its medium hardness and low viscosity suit fine encapsulation, doming and coating work where a fast production cycle matters as much as clarity.",
+    usageNote:
+      'UV Resin is cured directly under UV/LED light with no separate hardener needed. Where a longer-working-time, room-temperature-cure system is preferred for deeper pours, see our <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> or <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a>.',
     features: [
       "Fast UV/LED curing",
       "Low viscosity, clear finish",
       "Excellent scratch resistance, low shrinkage",
+      "Medium hardness for durable coated and encapsulated surfaces",
       "Supplied in 200 kg packs, minimum order 1000 kg",
     ],
     applications: [
       "Jewellery making and resin art",
       "Encapsulation and doming",
       "Crafts, coatings and miniature models",
+      "Adhesive, label, electronics, metal and wood coating",
+    ],
+    industries: [
+      "Jewellery & fashion accessories",
+      "Electronics & component encapsulation",
+      "Craft & decorative coatings",
+      "Wood & metal finishing",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Fast UV/LED cure with excellent scratch resistance",
+      "Supplied in 200 kg packs, minimum order 1,000 kg",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is UV Resin?",
+        a: "UV Resin is an epoxy-acrylate resin that cures rapidly under UV/LED light to a crystal-clear, high-gloss finish, used for jewellery, encapsulation, doming and craft coatings.",
+      },
+      {
+        q: "How is UV Resin cured?",
+        a: "It cures directly under UV or LED light, without needing a separate hardener or long room-temperature cure time.",
+      },
+      {
+        q: "What is the viscosity and hardness of UV Resin?",
+        a: "Viscosity is low, and cured hardness is medium, giving a durable surface for coatings and encapsulated work.",
+      },
+      {
+        q: "Does UV Resin resist scratching and shrinkage?",
+        a: "Yes. It is formulated for excellent scratch resistance and low shrinkage on cure.",
+      },
+      {
+        q: "What applications is UV Resin suited for?",
+        a: "It is used for jewellery making, resin art, encapsulation, doming, and adhesive, label, electronics, metal and wood coating work.",
+      },
+      {
+        q: "What packaging and minimum order quantity does UV Resin come in?",
+        a: "It is supplied in 200 kg packs, with a minimum order quantity of 1,000 kg.",
+      },
+      {
+        q: "What is the difference between UV Resin and Epoxy Art Resin?",
+        a: 'UV Resin cures in seconds to minutes under UV/LED light, suited to thin layers and fast production. Our <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a> is a room-temperature, 24-hour-cure system better suited to thicker, self-levelling table-top pours.',
+      },
+    ],
+    relatedSlugs: [
+      "epoxy-art-resin",
+      "epoxy-clear-casting-resin",
+      "epoxy-hardener",
     ],
   },
   {
@@ -1289,24 +1856,44 @@ export const products = [
     price: "₹700 / kg",
     image: "epoxy-hardener.jpg",
     images: ["epoxy-hardener-2.jpg"],
-    specs: {
+    seo: {
+      title: "Epoxy Hardener – Polyamide Curing Agent",
+      description:
+        "Epoxy Hardener — a polyamide curing agent for epoxy resin systems, giving a bubble-free, super-gloss cure in around 24 hours. Enquire for bulk supply.",
+      keywords: [
+        "Epoxy Hardener",
+        "Polyamide Hardener",
+        "Epoxy Curing Agent",
+        "Epoxy Resin Hardener",
+        "Casting Resin Hardener",
+      ],
+    },
+    // Reorganised into productDetails/techSpecs — every value is unchanged
+    // from the original single `specs` table, just regrouped. "Features"
+    // and "Recommended Use" are not repeated here since they are already
+    // covered in full by the features and applications lists below (same
+    // source data, no information lost). No new values invented.
+    productDetails: {
       "Minimum Order Quantity": "100 kg",
+      "Pack Size": "20 kg",
+      "Colour / Appearance": "Clear / Transparent",
+    },
+    techSpecs: {
       "Hardener Type": "Polyamide",
       "Mixing Ratio (Resin:Hardener)": "1:2",
       "Viscosity": "Low",
       "Full Cure Time": "24 hours",
-      "Appearance": "Clear / transparent",
-      "Pack Size": "20 kg",
-      "Features": "High strength, solvent free, low yellowing",
-      "Recommended Use": "Art & craft",
     },
     tagline: "Polyamide hardener for a super-gloss epoxy cure.",
     description:
-      "A premium-quality polyamide curing agent formulated to provide excellent curing performance when used with compatible epoxy resins. Mixed 1:2 (resin:hardener) and fully curing in around 24 hours, it delivers superior bonding strength, outstanding mechanical properties and excellent chemical and moisture resistance.",
+      "A premium-quality polyamide curing agent formulated to provide excellent curing performance when used with compatible epoxy resins. Mixed 1:2 (resin:hardener) and fully curing in around 24 hours, it delivers superior bonding strength, outstanding mechanical properties and excellent chemical and moisture resistance. It is solvent-free and low-yellowing, keeping cured epoxy work clear and glossy over time, and is supplied in 20 kg packs with a minimum order quantity of 100 kg for art, casting and industrial epoxy applications.",
+    usageNote:
+      'Epoxy Hardener is mixed 1:2 with a compatible epoxy resin such as our <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> or <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a>. For fast UV/LED-curing craft work instead of a 24-hour room-temperature cure, see our <a href="/products/uv-resin/">UV Resin</a>.',
     features: [
       "Polyamide hardener, clear/transparent",
       "1:2 mix ratio (resin:hardener), 24-hour full cure",
       "Excellent adhesion and chemical resistance",
+      "Solvent-free, low-yellowing formulation",
       "Bubble-free, super-gloss finish",
       "Supplied in 20 kg packs, minimum order 100 kg",
     ],
@@ -1314,6 +1901,51 @@ export const products = [
       "Epoxy art and river tables",
       "Clear casting and laminating",
       "FRP composites, industrial flooring and adhesives",
+    ],
+    industries: [
+      "Furniture & river table manufacturing",
+      "Art & decorative casting",
+      "FRP & composites manufacturing",
+      "Industrial flooring & adhesives",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Solvent-free, low-yellowing formulation for lasting clarity",
+      "Supplied in 20 kg packs, minimum order 100 kg",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is Epoxy Hardener?",
+        a: "Epoxy Hardener is a premium-quality polyamide curing agent formulated to cure compatible epoxy resins into a hard, glossy, bubble-free finish.",
+      },
+      {
+        q: "What is the mixing ratio for Epoxy Hardener?",
+        a: "It is mixed 1:2 (resin:hardener) and fully cures in around 24 hours.",
+      },
+      {
+        q: "Is Epoxy Hardener solvent-free?",
+        a: "Yes. It is a solvent-free, low-yellowing formulation, so cured epoxy work stays clear and glossy rather than discolouring over time.",
+      },
+      {
+        q: "What resins is Epoxy Hardener compatible with?",
+        a: 'It is formulated to cure compatible epoxy resins, such as our <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> and <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a>.',
+      },
+      {
+        q: "What chemical and moisture resistance does it offer?",
+        a: "Once cured, it delivers excellent chemical and moisture resistance alongside superior bonding strength and mechanical properties.",
+      },
+      {
+        q: "What packaging and minimum order quantity does Epoxy Hardener come in?",
+        a: "It is supplied in 20 kg packs, with a minimum order quantity of 100 kg.",
+      },
+    ],
+    relatedSlugs: [
+      "epoxy-clear-casting-resin",
+      "epoxy-art-resin",
+      "uv-resin",
     ],
   },
   {
@@ -1323,33 +1955,99 @@ export const products = [
     price: "₹150 / kg",
     image: "dmc-smc-resin.jpg",
     images: ["dmc-smc-resin-2.jpg", "dmc-smc-resin-3.jpg"],
-    specs: {
+    seo: {
+      title: "DMC/SMC Resin – Moulding Compound Resin",
+      description:
+        "DMC/SMC Resin — an orthophthalic polyester resin for Dough and Sheet Moulding Compounds, used in electrical housings and automotive panels.",
+      keywords: [
+        "DMC Resin",
+        "SMC Resin",
+        "Sheet Moulding Compound Resin",
+        "Dough Moulding Compound Resin",
+        "Moulding Polyester Resin",
+      ],
+    },
+    // Reorganised into productDetails/techSpecs — every value is unchanged
+    // from the original single `specs` table, just regrouped. "Usage /
+    // Application" and "Features" are not repeated here since they are
+    // already covered in full by the applications and features lists below
+    // (same source data, no information lost). No new values invented.
+    productDetails: {
       "Minimum Order Quantity": "1000 kg",
-      "Resin Type": "Polyester",
-      "Grade": "Casting / moulding, FRP lamination, electrical",
       "Packaging Size": "225 kg",
-      "Usage / Application": "Casting & moulding, automotive parts",
       "Physical State": "Liquid",
-      "Viscosity": "Medium",
-      "Features": "Chemical resistant",
+      "Colour / Appearance": "Pale Yellow",
+    },
+    techSpecs: {
+      "Resin Type": "Polyester",
       "Base Type": "Orthophthalic",
-      "Color": "Pale yellow",
+      "Grade": "Casting / Moulding, FRP Lamination, Electrical",
+      "Viscosity": "Medium",
       "Curing Type": "Non-accelerated",
     },
     tagline: "Orthophthalic resin for dough and sheet moulding compounds.",
     description:
-      "A premium-grade orthophthalic unsaturated polyester resin engineered for the production of Dough Moulding Compound (DMC) and Sheet Moulding Compound (SMC) composites. Pale yellow with medium viscosity and a non-accelerated cure, it provides mechanical strength, dimensional stability and processing efficiency for high-volume manufacturing with superior surface finishes.",
+      "A premium-grade orthophthalic unsaturated polyester resin engineered for the production of Dough Moulding Compound (DMC) and Sheet Moulding Compound (SMC) composites. Pale yellow with medium viscosity and a non-accelerated cure, it provides mechanical strength, dimensional stability and processing efficiency for high-volume manufacturing with superior surface finishes. Supplied as a liquid in 225 kg drums, with a minimum order quantity of 1,000 kg, it is suited to casting, moulding, FRP lamination and electrical-grade compression moulding work where consistent batch-to-batch performance is required.",
+    usageNote:
+      'DMC/SMC Resin is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> during compression moulding. Where a project needs a broader general-purpose grade rather than a moulding-compound-specific one, see our <a href="/products/gp-clear-resin/">GP Clear Resin</a>.',
     features: [
       "High mechanical strength and dimensional stability",
       "Fast curing with excellent fibre wet-out and low shrinkage",
       "Chemical, corrosion and moisture resistance",
       "Electrical insulation properties",
+      "Non-accelerated cure system for controlled processing",
       "Supplied in 225 kg drums, minimum order 1000 kg",
     ],
     applications: [
       "Electrical housings and manhole covers",
       "Automotive panels and transportation components",
       "Water tanks and sanitaryware",
+      "Dough and sheet moulding compound (DMC/SMC) production",
+    ],
+    industries: [
+      "Electrical & switchgear manufacturing",
+      "Automotive & transport components",
+      "Water tanks & sanitaryware",
+      "Compression moulding & DMC/SMC manufacturing",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "High mechanical strength with consistent dimensional stability",
+      "Supplied in 225 kg drums, minimum order 1,000 kg",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is DMC/SMC Resin?",
+        a: "DMC/SMC Resin is an orthophthalic unsaturated polyester resin engineered for producing Dough Moulding Compound (DMC) and Sheet Moulding Compound (SMC) composites used in electrical, automotive and sanitaryware components.",
+      },
+      {
+        q: "What is the viscosity and colour of DMC/SMC Resin?",
+        a: "It is pale yellow in colour with medium viscosity.",
+      },
+      {
+        q: "How is DMC/SMC Resin cured?",
+        a: 'It is a non-accelerated system, catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> for room-temperature cure.',
+      },
+      {
+        q: "Does DMC/SMC Resin offer electrical insulation properties?",
+        a: "Yes. It provides electrical insulation properties suited to electrical housings and switchgear components.",
+      },
+      {
+        q: "What is DMC/SMC Resin used for?",
+        a: "It is used for electrical housings, manhole covers, automotive panels, transportation components, water tanks, sanitaryware and general DMC/SMC compression moulding.",
+      },
+      {
+        q: "What packaging and minimum order quantity does DMC/SMC Resin come in?",
+        a: "It is supplied in 225 kg drums, with a minimum order quantity of 1,000 kg.",
+      },
+    ],
+    relatedSlugs: [
+      "gp-clear-resin",
+      "mekp-hardener",
+      "fibre-glass-mat",
     ],
   },
   {
@@ -1359,30 +2057,98 @@ export const products = [
     price: "₹115 / kg",
     image: "pet-resin.jpg",
     images: ["pet-resin-2.jpg"],
-    specs: {
+    seo: {
+      title: "PET Resin – Sheet-Grade Polyester Resin",
+      description:
+        "PET Resin — a sheet-grade polyethylene terephthalate resin for beverage bottles, pharmaceutical packaging and food-grade containers. Bulk supply.",
+      keywords: [
+        "PET Resin",
+        "Polyethylene Terephthalate Resin",
+        "Sheet Grade PET Resin",
+        "PET Packaging Resin",
+        "Bottle Grade PET Resin",
+      ],
+    },
+    // Reorganised into productDetails/techSpecs — every value is unchanged
+    // from the original single `specs` table, just regrouped. "Usage /
+    // Application" is not repeated in the table since it's already covered
+    // by the applications list below. No new values invented.
+    productDetails: {
       "Minimum Order Quantity": "1000 kg",
-      "IV Value": "0.90 dl/g",
-      "Grade": "Sheet grade",
-      "Usage / Application": "Fibre, sheet",
-      "Physical Form": "Liquid",
-      "Color": "Pale yellow",
-      "End Use Process": "Fibre sheets",
       "Packaging Size": "75 kg",
+      "Colour / Appearance": "Pale Yellow",
       "Country of Origin": "India",
+    },
+    techSpecs: {
+      "IV Value": "0.90 dl/g",
+      "Grade": "Sheet Grade",
+      "Physical Form": "Liquid",
+      "End Use Process": "Fibre Sheets",
     },
     tagline: "Sheet-grade PET resin for packaging and containers.",
     description:
-      "A premium-quality polyethylene terephthalate (PET) resin designed for manufacturing high-performance plastic packaging and industrial containers. With an IV value of 0.90 dl/g and pale-yellow colour, it provides clarity, mechanical strength, impact resistance and dimensional stability with excellent processability for injection stretch blow moulding and fibre sheet manufacturing.",
+      "A premium-quality polyethylene terephthalate (PET) resin designed for manufacturing high-performance plastic packaging and industrial containers. With an IV value of 0.90 dl/g and pale-yellow colour, it provides clarity, mechanical strength, impact resistance and dimensional stability with excellent processability for injection stretch blow moulding and fibre sheet manufacturing. Manufactured in India and supplied in 75 kg packs, with a minimum order quantity of 1,000 kg, it is a sheet-grade resin suited to beverage, pharmaceutical, cosmetic and food-grade packaging manufacturers.",
     features: [
       "IV value 0.90 dl/g, sheet grade",
       "Exceptional transparency and low moisture absorption",
       "Durable and recyclable",
+      "Good processability for injection stretch blow moulding and fibre sheet manufacturing",
       "Supplied in 75 kg packs, minimum order 1000 kg",
     ],
     applications: [
       "Beverage, mineral water and edible-oil bottles",
       "Pharmaceutical and cosmetic packaging",
       "Food-grade containers and jars",
+      "Fibre and sheet manufacturing",
+    ],
+    industries: [
+      "Packaging & bottling industry",
+      "Pharmaceutical & cosmetic packaging",
+      "Food & beverage industry",
+      "Fibre & sheet manufacturing",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Consistent IV value of 0.90 dl/g for reliable processability",
+      "Supplied in 75 kg packs, minimum order 1,000 kg",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is PET Resin?",
+        a: "PET Resin is a sheet-grade polyethylene terephthalate resin used for manufacturing plastic packaging, bottles and industrial containers.",
+      },
+      {
+        q: "What is the IV value of PET Resin, and why does it matter?",
+        a: "IV (intrinsic viscosity) value is 0.90 dl/g. A consistent IV value gives predictable processability and mechanical performance during stretch blow moulding and sheet manufacturing.",
+      },
+      {
+        q: "What grade is this PET Resin?",
+        a: "It is a sheet grade, suited to fibre and sheet manufacturing as well as bottle and container applications.",
+      },
+      {
+        q: "What applications is PET Resin suited for?",
+        a: "It is used for beverage, mineral water and edible-oil bottles, pharmaceutical and cosmetic packaging, food-grade containers and jars, and fibre/sheet manufacturing.",
+      },
+      {
+        q: "Is PET Resin recyclable?",
+        a: "Yes. It is durable and recyclable, consistent with standard PET packaging recycling streams.",
+      },
+      {
+        q: "What packaging and minimum order quantity does PET Resin come in?",
+        a: "It is supplied in 75 kg packs, with a minimum order quantity of 1,000 kg.",
+      },
+      {
+        q: "Where is this PET Resin manufactured?",
+        a: "It is manufactured in India.",
+      },
+    ],
+    relatedSlugs: [
+      "dmc-smc-resin",
+      "marble-resin",
+      "vinyl-ester-resin",
     ],
   },
   {
@@ -1392,27 +2158,93 @@ export const products = [
     price: "₹125 / kg",
     image: "marble-resin.jpg",
     images: ["marble-resin-2.jpg"],
-    specs: {
-      "Resin Type": "Polyester",
-      "Usage / Application": "Artificial marble, edge bonding, marble slab",
+    seo: {
+      title: "Marble Resin – Resin for Cultured Marble",
+      description:
+        "Marble Resin — a water-white polyester resin for cultured marble slabs, countertops and wash basins, with a high-gloss finish and strong adhesion.",
+      keywords: [
+        "Marble Resin",
+        "Cultured Marble Resin",
+        "Artificial Marble Resin",
+        "Polyester Marble Resin",
+        "Marble Casting Resin",
+      ],
+    },
+    // Reorganised into productDetails/techSpecs — every value is unchanged
+    // from the original single `specs` table, just regrouped. "Usage /
+    // Application" is not repeated in the table since it's already covered
+    // by the applications list below. No new values invented.
+    productDetails: {
       "Pack Size": "200 kg",
-      "Curing Time": "20–40 min",
-      "Color": "Water white",
+      "Colour / Appearance": "Water White",
+    },
+    techSpecs: {
+      "Resin Type": "Polyester",
       "Viscosity": "Medium",
+      "Curing Time": "20–40 min",
     },
     tagline: "Polyester resin for cultured marble and artificial stone.",
     description:
-      "A premium-grade unsaturated polyester resin specially formulated for manufacturing cultured marble and artificial stone products. Water-white with medium viscosity, it offers excellent filler compatibility, smooth flow and a high-gloss finish, curing in 20–40 minutes with strong adhesion and consistent batch-to-batch quality.",
+      "A premium-grade unsaturated polyester resin specially formulated for manufacturing cultured marble and artificial stone products. Water-white with medium viscosity, it offers excellent filler compatibility, smooth flow and a high-gloss finish, curing in 20–40 minutes with strong adhesion and consistent batch-to-batch quality. Supplied in 200 kg packs, it is also used for edge bonding of marble slabs, giving fabricators a single resin for casting, bonding and finishing work.",
+    usageNote:
+      'Marble Resin is cured with a room-temperature catalyst system in the same way as our general-purpose grades. For quartz and engineered-stone surfacing rather than cultured marble, see our <a href="/products/gp-quartz-resin/">GP Quartz Resin</a>; for general FRP work, our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is available.',
     features: [
       "Excellent filler compatibility and smooth flow",
       "High-gloss finish, low shrinkage",
       "Water and chemical resistant once cured",
+      "Strong adhesion — also suited to marble slab edge bonding",
       "Supplied in 200 kg packs",
     ],
     applications: [
       "Cultured marble slabs and vanity tops",
       "Kitchen and bathroom countertops, wash basins",
       "Wall panels, window sills and decorative architectural components",
+      "Marble slab edge bonding",
+    ],
+    industries: [
+      "Cultured marble & artificial stone manufacturing",
+      "Countertop & vanity top manufacturing",
+      "Bathroom & sanitaryware fittings",
+      "Architectural & decorative components",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Water-white colour with a high-gloss, low-shrinkage cure",
+      "Supplied in 200 kg packs",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is Marble Resin?",
+        a: "Marble Resin is a premium-grade unsaturated polyester resin formulated for manufacturing cultured marble and artificial stone products, including slabs, countertops and wash basins.",
+      },
+      {
+        q: "What is the curing time of Marble Resin?",
+        a: "Curing time is 20–40 minutes.",
+      },
+      {
+        q: "Is Marble Resin water and chemical resistant?",
+        a: "Yes, once cured it is water and chemical resistant, suited to countertops, wash basins and wall panels.",
+      },
+      {
+        q: "Can Marble Resin be used for edge bonding?",
+        a: "Yes. Its strong adhesion makes it suitable for marble slab edge bonding as well as full casting work.",
+      },
+      {
+        q: "What is the difference between Marble Resin and GP Quartz Resin?",
+        a: 'Marble Resin is formulated for cultured marble and artificial stone casting and bonding. Our <a href="/products/gp-quartz-resin/">GP Quartz Resin</a> is engineered specifically for high filler-loading quartz and engineered-stone surfacing. Choose based on whether your product is cultured marble or quartz-based.',
+      },
+      {
+        q: "What packaging does Marble Resin come in?",
+        a: "It is supplied in 200 kg packs.",
+      },
+    ],
+    relatedSlugs: [
+      "gp-quartz-resin",
+      "gp-clear-resin",
+      "dmc-smc-resin",
     ],
   },
   {
@@ -1422,19 +2254,85 @@ export const products = [
     price: "₹135 / kg",
     image: "vinyl-ester-resin.jpg",
     images: ["vinyl-ester-resin-2.jpg"],
+    seo: {
+      title: "Vinyl Ester Resin – Chemical-Resistant Resin",
+      description:
+        "Vinyl Ester Resin — a high-performance resin for chemical storage tanks, pipelines and cooling towers, resisting acids, alkalis and solvents.",
+      keywords: [
+        "Vinyl Ester Resin",
+        "Chemical Resistant Resin",
+        "Corrosion Resistant Resin",
+        "FRP Tank Resin",
+        "Industrial Resin Manufacturer",
+      ],
+    },
+    // No productDetails/techSpecs table yet — unlike the other GP-family
+    // pages, no verified numeric spec sheet (viscosity, gel time, packaging,
+    // MOQ, purity, etc.) has been supplied for this grade. Per standing
+    // instruction, values are never invented to fill the table; this section
+    // will be added once a finalized TDS is provided for Vinyl Ester Resin.
     tagline: "High-performance resin for chemical and corrosion resistance.",
     description:
-      "A high-performance resin engineered for demanding industrial applications requiring exceptional chemical resistance, corrosion protection and mechanical strength. It offers excellent adhesion, superior toughness, thermal stability and resistance to water, acids, alkalis and solvents, with low shrinkage on cure.",
+      "A high-performance resin engineered for demanding industrial applications requiring exceptional chemical resistance, corrosion protection and mechanical strength. It offers excellent adhesion, superior toughness, thermal stability and resistance to water, acids, alkalis and solvents, with low shrinkage on cure — properties that go beyond what a standard orthophthalic general-purpose resin can offer in aggressive chemical environments. Samrat Poly Resins supplies Vinyl Ester Resin for FRP fabricators building tanks, pipelines and structures that must withstand sustained chemical or corrosive exposure.",
+    usageNote:
+      'Vinyl Ester Resin is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a>, in the same way as our general-purpose grades. Where chemical resistance beyond ordinary orthophthalic performance is not required, our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is more cost-effective for general FRP work.',
     features: [
       "Exceptional chemical and corrosion resistance",
       "Superior toughness and thermal stability",
       "Resists water, acids, alkalis and solvents",
+      "Excellent adhesion to fibreglass reinforcement",
       "Low shrinkage on cure",
     ],
     applications: [
       "FRP tanks and chemical storage vessels",
       "Pipelines, ducts and scrubbers",
       "Cooling towers, pressure vessels and offshore structures",
+    ],
+    industries: [
+      "Chemical storage & processing",
+      "Cooling towers & industrial plants",
+      "Pipelines, ducts & scrubbers",
+      "Offshore & marine structures",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Exceptional chemical and corrosion resistance for demanding environments",
+      "Superior toughness and thermal stability versus general-purpose grades",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is Vinyl Ester Resin?",
+        a: "Vinyl Ester Resin is a high-performance resin engineered for demanding industrial applications that require exceptional chemical resistance, corrosion protection and mechanical strength, beyond what a standard orthophthalic resin offers.",
+      },
+      {
+        q: "What is the difference between Vinyl Ester Resin and GP Clear Resin?",
+        a: 'Vinyl Ester Resin is formulated specifically for superior chemical, corrosion and thermal resistance in aggressive environments. Our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is a general-purpose orthophthalic resin for everyday FRP work at a lower cost, without the same chemical-resistance profile.',
+      },
+      {
+        q: "What chemicals does Vinyl Ester Resin resist?",
+        a: "It resists water, acids, alkalis and solvents, making it suitable for chemical storage tanks, pipelines and scrubbers.",
+      },
+      {
+        q: "Does Vinyl Ester Resin shrink on cure?",
+        a: "It is formulated for low shrinkage on cure, supporting dimensional stability in tanks and structural parts.",
+      },
+      {
+        q: "How is Vinyl Ester Resin cured?",
+        a: 'It is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> in the same way as our general-purpose polyester grades.',
+      },
+      {
+        q: "What applications is Vinyl Ester Resin used for?",
+        a: "It is used for FRP tanks and chemical storage vessels, pipelines, ducts and scrubbers, and cooling towers, pressure vessels and offshore structures.",
+      },
+    ],
+    relatedSlugs: [
+      "gp-clear-resin",
+      "mekp-hardener",
+      "fibre-glass-mat",
+      "fiberglass-epoxy-resin",
     ],
   },
   {
@@ -1444,26 +2342,91 @@ export const products = [
     price: "₹800 / kg",
     image: "fiberglass-epoxy-resin.jpg",
     images: ["fiberglass-epoxy-resin-2.jpg", "fiberglass-epoxy-resin-3.jpg"],
-    specs: {
-      "Resin System": "Epoxy",
+    seo: {
+      title: "Fiberglass Epoxy Resin – Structural Epoxy System",
+      description:
+        "Fiberglass Epoxy Resin — a low-viscosity, room-temperature-cure epoxy for structural fibreglass laminates in marine, wind and construction FRP work.",
+      keywords: [
+        "Fiberglass Epoxy Resin",
+        "Structural Epoxy Resin",
+        "Epoxy Laminating Resin",
+        "Fibreglass Resin",
+        "Composite Epoxy Resin",
+      ],
+    },
+    // Reorganised into productDetails/techSpecs — every value is unchanged
+    // from the original single `specs` table, just regrouped. "Usage /
+    // Application" is not repeated in the table since it's already covered
+    // by the applications list below. No new values invented.
+    productDetails: {
       "Reinforcement Form": "Fabric",
-      "Usage / Application": "Construction, boat building, electrical, automotive, FRP laminates",
+    },
+    techSpecs: {
+      "Resin System": "Epoxy",
       "Viscosity": "Low",
-      "Curing Type": "Room temperature cure",
+      "Curing Type": "Room Temperature Cure",
     },
     tagline: "Structural epoxy system for fibreglass reinforcement.",
     description:
-      "A premium-quality epoxy resin specially formulated for fibreglass reinforcement, composite manufacturing, lamination and structural applications. Low-viscosity and room-temperature curing, it offers outstanding mechanical strength, superior adhesion, excellent wet-out of fibreglass fabrics and exceptional chemical resistance.",
+      "A premium-quality epoxy resin specially formulated for fibreglass reinforcement, composite manufacturing, lamination and structural applications. Low-viscosity and room-temperature curing, it offers outstanding mechanical strength, superior adhesion, excellent wet-out of fibreglass fabrics and exceptional chemical resistance. Its low viscosity is matched to fabric reinforcement rather than chopped strand mat, giving structural laminators the wet-out and strength needed for marine, wind-energy, construction and automotive components.",
+    usageNote:
+      'Fiberglass Epoxy Resin is reinforced with fibreglass fabric for structural laminates. Where a lower-cost, general-purpose polyester system is sufficient instead of a structural epoxy, see our <a href="/products/gp-clear-resin/">GP Clear Resin</a>; for chemical-resistant polyester tank and pipeline work, our <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> is available.',
     features: [
       "Low viscosity for excellent fabric wet-out",
       "Room-temperature cure",
       "Outstanding mechanical strength and adhesion",
       "Exceptional chemical resistance",
+      "Formulated for fabric reinforcement in structural laminates",
     ],
     applications: [
       "Boat building and marine components",
       "Wind turbine components",
       "Construction, electrical and automotive FRP laminates",
+    ],
+    industries: [
+      "Marine & boat building",
+      "Wind energy components",
+      "Construction & electrical FRP laminates",
+      "Automotive structural components",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Outstanding mechanical strength and fabric wet-out",
+      "Room-temperature cure — no special curing equipment required",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is Fiberglass Epoxy Resin?",
+        a: "Fiberglass Epoxy Resin is a premium-quality epoxy resin formulated for fibreglass fabric reinforcement, composite manufacturing and structural laminating applications.",
+      },
+      {
+        q: "What reinforcement is Fiberglass Epoxy Resin designed for?",
+        a: "It is formulated for fabric reinforcement, giving good wet-out of woven fibreglass fabric for structural laminates.",
+      },
+      {
+        q: "How is Fiberglass Epoxy Resin cured?",
+        a: "It cures at room temperature, without needing special curing equipment.",
+      },
+      {
+        q: "What is the difference between Fiberglass Epoxy Resin and Vinyl Ester Resin?",
+        a: 'Fiberglass Epoxy Resin is an epoxy system formulated for structural fabric-reinforced laminates in marine, wind and construction work. Our <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> is a polyester-family resin engineered for chemical and corrosion resistance in tanks and pipelines. Choose based on whether your project needs structural laminating strength or chemical resistance.',
+      },
+      {
+        q: "What chemical resistance does Fiberglass Epoxy Resin offer?",
+        a: "It offers exceptional chemical resistance alongside its structural mechanical strength and adhesion.",
+      },
+      {
+        q: "What applications is Fiberglass Epoxy Resin used for?",
+        a: "It is used for boat building and marine components, wind turbine components, and construction, electrical and automotive FRP laminates.",
+      },
+    ],
+    relatedSlugs: [
+      "vinyl-ester-resin",
+      "gp-clear-resin",
+      "fibre-glass-mat",
     ],
   },
   {
@@ -1473,19 +2436,84 @@ export const products = [
     price: "₹125 / kg",
     image: "bisphenol-resin.jpg",
     images: ["bisphenol-resin-2.jpg"],
+    seo: {
+      title: "Bisphenol Resin – Industrial Epoxy Resin",
+      description:
+        "Bisphenol Resin — a bisphenol-based epoxy for industrial flooring, tooling and electrical encapsulation, with strong chemical and moisture resistance.",
+      keywords: [
+        "Bisphenol Resin",
+        "Bisphenol Epoxy Resin",
+        "Industrial Epoxy Resin",
+        "Epoxy Flooring Resin",
+        "Electrical Encapsulation Resin",
+      ],
+    },
+    // No productDetails/techSpecs table yet — no verified numeric spec sheet
+    // (viscosity, mix ratio, cure time, packaging, MOQ, etc.) has been
+    // supplied for this grade. Per standing instruction, values are never
+    // invented to fill the table; this section will be added once a
+    // finalized TDS is provided for Bisphenol Resin.
     tagline: "Bisphenol-based epoxy for demanding industrial use.",
     description:
-      "A premium-quality bisphenol-based epoxy resin for high-performance industrial and composite applications requiring exceptional mechanical strength, superior chemical resistance and excellent adhesion. It offers outstanding durability, low shrinkage, excellent electrical insulation and resistance to moisture, solvents and corrosive chemicals, with excellent wet-out of fibreglass reinforcements.",
+      "A premium-quality bisphenol-based epoxy resin for high-performance industrial and composite applications requiring exceptional mechanical strength, superior chemical resistance and excellent adhesion. It offers outstanding durability, low shrinkage, excellent electrical insulation and resistance to moisture, solvents and corrosive chemicals, with excellent wet-out of fibreglass reinforcements. Samrat Poly Resins supplies Bisphenol Resin for industrial flooring, tooling, electrical encapsulation and structural bonding work where long-term durability and chemical resistance are priorities.",
+    usageNote:
+      'Bisphenol Resin is reinforced with fibreglass for laminating and structural work, in the same way as our other epoxy and structural resin grades. Where a lower-cost, general-purpose polyester system is sufficient instead of a bisphenol epoxy, see our <a href="/products/gp-clear-resin/">GP Clear Resin</a>; for chemical-resistant polyester tank and pipeline work, our <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> is available.',
     features: [
       "Outstanding durability and low shrinkage",
       "Excellent electrical insulation",
       "Resists moisture, solvents and corrosive chemicals",
       "Excellent wet-out of fibreglass reinforcements",
+      "Excellent adhesion for structural bonding work",
     ],
     applications: [
       "Laminating and FRP composites",
       "Industrial flooring and protective coatings",
       "Electrical encapsulation, tooling and structural bonding",
+    ],
+    industries: [
+      "Industrial flooring & coatings",
+      "Electrical encapsulation & tooling",
+      "FRP & composites manufacturing",
+      "Structural bonding applications",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Outstanding durability with excellent chemical and moisture resistance",
+      "Excellent electrical insulation for tooling and encapsulation work",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is Bisphenol Resin?",
+        a: "Bisphenol Resin is a premium-quality bisphenol-based epoxy resin for high-performance industrial and composite applications requiring exceptional mechanical strength, chemical resistance and adhesion.",
+      },
+      {
+        q: "What electrical properties does Bisphenol Resin offer?",
+        a: "It offers excellent electrical insulation, making it suitable for electrical encapsulation and tooling work.",
+      },
+      {
+        q: "Does Bisphenol Resin resist chemicals and moisture?",
+        a: "Yes. It resists moisture, solvents and corrosive chemicals, with outstanding durability and low shrinkage on cure.",
+      },
+      {
+        q: "Is Bisphenol Resin suitable for fibreglass laminating?",
+        a: "Yes. It offers excellent wet-out of fibreglass reinforcements, suited to laminating and FRP composite work.",
+      },
+      {
+        q: "What is the difference between Bisphenol Resin and Vinyl Ester Resin?",
+        a: 'Bisphenol Resin is an epoxy system suited to industrial flooring, tooling, encapsulation and structural bonding. Our <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> is a polyester-family resin engineered specifically for chemical-resistant tanks and pipelines. Choose based on your application.',
+      },
+      {
+        q: "What applications is Bisphenol Resin used for?",
+        a: "It is used for laminating and FRP composites, industrial flooring and protective coatings, and electrical encapsulation, tooling and structural bonding.",
+      },
+    ],
+    relatedSlugs: [
+      "vinyl-ester-resin",
+      "fiberglass-epoxy-resin",
+      "gp-clear-resin",
     ],
   },
   {
@@ -1495,19 +2523,93 @@ export const products = [
     price: "₹220 / kg",
     image: "mekp-hardener.jpg",
     images: ["mekp-hardener-2.jpg"],
+    seo: {
+      title: "MEKP Hardener – Polyester Resin Catalyst",
+      description:
+        "MEKP Hardener (Methyl Ethyl Ketone Peroxide) — the standard catalyst for curing polyester and vinyl ester resins and gelcoats. Enquire for bulk supply.",
+      keywords: [
+        "MEKP Hardener",
+        "MEKP Catalyst",
+        "Polyester Resin Catalyst",
+        "Resin Curing Agent",
+        "Gelcoat Catalyst",
+      ],
+    },
+    // No productDetails/techSpecs table yet — no verified dosage rate,
+    // packaging size or MOQ has been supplied as this product's own spec
+    // sheet (other product pages state their own recommended MEKP dosage as
+    // part of *their* verified specs, but that is not the same as a verified
+    // spec sheet for this hardener itself). Per standing instruction, values
+    // are never invented to fill the table; this section will be added once
+    // a finalized TDS is provided for MEKP Hardener.
     tagline: "The catalyst that kicks off resin curing.",
     description:
-      "Methyl Ethyl Ketone Peroxide (MEKP) is the catalyst used to initiate curing in unsaturated polyester resins, vinyl ester resins and gelcoats. Essential across composite applications such as FRP products, boat building, automotive parts and laminates, it decomposes on mixing to generate free radicals that start polymerisation — an exothermic reaction that hardens the resin.",
+      "Methyl Ethyl Ketone Peroxide (MEKP) is the catalyst used to initiate curing in unsaturated polyester resins, vinyl ester resins and gelcoats. Essential across composite applications such as FRP products, boat building, automotive parts and laminates, it decomposes on mixing to generate free radicals that start polymerisation — an exothermic reaction that hardens the resin. Used alongside a cobalt octoate accelerator in most polyester and gelcoat systems, dosage is adjusted to suit the resin grade, ambient workshop temperature and the gel time required, as specified on each resin's own technical data sheet. Samrat Poly Resins supplies MEKP Hardener as the standard catalyst paired with its polyester, vinyl ester and gelcoat resin ranges.",
+    usageNote:
+      'MEKP Hardener is used to catalyse general-purpose resins such as <a href="/products/gp-clear-resin/">GP Clear Resin</a> and <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>, chemical-resistant <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a>, and reinforcement such as <a href="/products/fibre-glass-mat/">glass fibre</a> laminates. Dosage should follow the specific resin\'s own technical data sheet.',
     features: [
       "Initiates curing of polyester and vinyl ester resins",
       "Generates free radicals for polymerisation",
       "Essential for gelcoats and laminates",
       "Standard catalyst for room-temperature cure",
+      "Paired with a cobalt octoate accelerator in most polyester systems",
+      "Dosage adjustable to suit resin grade and workshop conditions",
     ],
     applications: [
       "Curing FRP products and laminates",
       "Boat building and automotive parts",
       "Gelcoat and casting work",
+      "Curing vinyl ester resin for chemical-resistant tanks and pipelines",
+    ],
+    industries: [
+      "FRP & composites manufacturing",
+      "Boat & marine building",
+      "Automotive parts manufacturing",
+      "Gelcoat & casting work",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "Manufacturing polyester resins since 2017",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Reliable, consistent-quality catalyst for room-temperature cure",
+      "Compatible with polyester and vinyl ester resins, and gelcoats",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+    ],
+    faqs: [
+      {
+        q: "What is MEKP Hardener?",
+        a: "MEKP Hardener (Methyl Ethyl Ketone Peroxide) is the standard catalyst used to initiate curing in unsaturated polyester resins, vinyl ester resins and gelcoats.",
+      },
+      {
+        q: "What resins is MEKP Hardener used with?",
+        a: 'It is used with unsaturated polyester resins such as <a href="/products/gp-clear-resin/">GP Clear Resin</a>, gelcoats such as our <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>, and vinyl ester resins such as our <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a>.',
+      },
+      {
+        q: "How does MEKP Hardener work?",
+        a: "It decomposes on mixing to generate free radicals that start polymerisation — an exothermic reaction that hardens the resin from a liquid into a rigid, cured solid.",
+      },
+      {
+        q: "Does MEKP Hardener cure resin at room temperature?",
+        a: "Yes. It is the standard catalyst for room-temperature cure, typically used alongside a cobalt octoate accelerator.",
+      },
+      {
+        q: "What dosage of MEKP Hardener should I use?",
+        a: "Dosage varies by resin system, ambient workshop temperature and the gel time required — always follow the specific resin's own technical data sheet.",
+      },
+      {
+        q: "Is MEKP Hardener used with gelcoats?",
+        a: "Yes. It is essential for curing gelcoats as well as general-purpose and structural laminating resins.",
+      },
+      {
+        q: "What applications use MEKP Hardener?",
+        a: "It is used for curing FRP products and laminates, boat building and automotive parts, gelcoat and casting work, and vinyl ester resin for chemical-resistant tanks and pipelines.",
+      },
+    ],
+    relatedSlugs: [
+      "gp-clear-resin",
+      "gp-gelcoat-resin",
+      "vinyl-ester-resin",
+      "fibre-glass-mat",
     ],
   },
   {
