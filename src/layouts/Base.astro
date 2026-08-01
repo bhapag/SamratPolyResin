@@ -3,14 +3,19 @@ import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import { site, buildCanonicalUrl } from '../data/site.js';
 
-const { title, description, ogType = 'website', ogTitle, ogDescription, keywords, noindex = false } = Astro.props;
+const { title, description, ogType = 'website', ogTitle, ogDescription, ogImageAlt, keywords, noindex = false } = Astro.props;
 const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
 const desc = description ?? `${site.name}: manufacturer of coating and composite resins from ${site.address.line2}, ${site.address.state}. Established ${site.established}.`;
 const finalOgTitle = ogTitle ?? pageTitle;
 const finalOgDesc = ogDescription ?? desc;
 const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like to enquire about your resins.")}`;
 const canonicalUrl = buildCanonicalUrl(Astro.url.pathname);
+// Single source of truth for the social-share image: swapping the actual
+// asset later means editing `site.ogImage` in site.js once — nothing here
+// or on any page hardcodes the path. Dimensions/type are declared once,
+// alongside it, since the shared image is always this exact 1200x630 JPEG.
 const ogImageUrl = buildCanonicalUrl(site.ogImage);
+const finalOgImageAlt = ogImageAlt ?? `${finalOgTitle} — social share image`;
 
 // Sitewide Organization/LocalBusiness structured data — built entirely from
 // the verified contact fields in site.js, nothing invented. Helps Google
@@ -52,11 +57,18 @@ const organizationJsonLd = {
   <meta property="og:type" content={ogType} />
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:image:secure_url" content={ogImageUrl} />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={finalOgImageAlt} />
   <meta property="og:site_name" content={site.name} />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:locale" content="en_IN" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={finalOgTitle} />
   <meta name="twitter:description" content={finalOgDesc} />
   <meta name="twitter:image" content={ogImageUrl} />
+  <meta name="twitter:image:alt" content={finalOgImageAlt} />
   <link rel="canonical" href={canonicalUrl} />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.png" type="image/png" />
