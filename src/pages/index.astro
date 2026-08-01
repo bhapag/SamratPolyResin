@@ -1001,16 +1001,49 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
         const src = video.dataset.src;
         if (!src) return;
 
+        // Belt-and-braces for mobile autoplay gating: re-assert muted as a
+        // JS property (not just the HTML attribute) at the moment we're
+        // about to play, since some mobile browsers re-check eligibility
+        // here rather than only at parse time.
+        const attemptPlay = () => {
+          video.muted = true;
+          video.play().catch(() => {
+            // First attempt can be rejected on some mobile browsers before
+            // the resource is fully ready; retry once metadata is loaded.
+            video.addEventListener('canplay', () => { video.muted = true; video.play().catch(() => {}); }, { once: true });
+          });
+        };
+
         const io = new IntersectionObserver((entries) => {
           for (const entry of entries) {
             if (!entry.isIntersecting) continue;
+            video.muted = true;
             video.src = src;
-            video.play().catch(() => {});
+            // Explicit load() after assigning src: some mobile browsers
+            // (notably Android Chrome) don't reliably re-run resource
+            // selection from a script-assigned src on a preload="none"
+            // element without this — desktop browsers tolerate the
+            // omission, Android's stricter media pipeline does not.
+            video.load();
+            attemptPlay();
             io.unobserve(video);
           }
         }, { rootMargin: '200px 0px' });
 
         io.observe(video);
+
+        // These ambient background videos must never stay stopped: resume
+        // on any browser-initiated pause (tab backgrounded and the media
+        // pipeline reclaimed, a network stall while re-buffering across the
+        // loop point, OS battery-saver throttling, etc.) — there is no user
+        // control to pause them, so any pause while the tab is visible is
+        // unintended and should self-heal rather than leave the video stuck.
+        video.addEventListener('pause', () => {
+          if (document.visibilityState === 'visible' && video.src) attemptPlay();
+        });
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible' && video.src && video.paused) attemptPlay();
+        });
       });
     });
   </script>
