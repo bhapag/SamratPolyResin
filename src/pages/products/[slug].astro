@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import EnquiryForm from '../../components/EnquiryForm.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
 import { products } from '../../data/products.js';
+import { applications as applicationGuides } from '../../data/applications.js';
 import { site, buildProductQuoteLink, buildCanonicalUrl } from '../../data/site.js';
 
 export function getStaticPaths() {
@@ -12,6 +13,9 @@ export function getStaticPaths() {
 
 const productImageModules = import.meta.glob('/src/assets/products/*', { eager: true });
 const resolveProductImage = (filename) => productImageModules[`/src/assets/products/${filename}`]?.default;
+
+const appImageModules = import.meta.glob('/src/assets/applications/*', { eager: true });
+const resolveAppImage = (filename) => appImageModules[`/src/assets/applications/${filename}`]?.default;
 
 const { product } = Astro.props;
 const { name, image, description, features, applications, category, specs } = product;
@@ -52,6 +56,28 @@ const related = product.relatedSlugs?.length
 const relatedHeading = product.relatedSlugs?.length ? 'Related products' : `More in ${category}`;
 
 const waLink = buildProductQuoteLink(product.whatsappName ?? name);
+
+// "Explore applications" cards — only populated when a product names
+// applicationSlugs (currently gp-clear-resin only). Cards for draft entries
+// still render (so all named applications appear) but link back to this
+// product page instead of a dead /applications/ URL, since their dedicated
+// page isn't built yet — never a dead-end "coming soon" state.
+const appCards = await Promise.all(
+  (product.applicationSlugs ?? []).map(async (s) => {
+    const app = applicationGuides.find(a => a.slug === s);
+    if (!app) return null;
+    let cardImg = null;
+    if (app.cardImage) {
+      const mod = resolveAppImage(app.cardImage);
+      if (mod) cardImg = await getImage({ src: mod, width: 480, format: 'webp' });
+    }
+    const relatedProducts = (app.relatedProductSlugs ?? [])
+      .map(rs => products.find(p => p.slug === rs))
+      .filter(Boolean);
+    const href = app.draft ? `/products/${product.slug}/` : `/applications/${app.slug}/`;
+    return { ...app, cardImg, relatedProducts, href };
+  })
+).then(list => list.filter(Boolean));
 
 // BreadcrumbList — mirrors the visible breadcrumb below exactly, no extra data.
 const breadcrumbJsonLd = {
@@ -268,6 +294,49 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   ) : null}
 
+  {appCards.length > 0 && (
+    <section class="wrap prod-apps">
+      <h2 class="rel-h">Explore applications</h2>
+      <p class="apps-sub">See how {name} performs in specific FRP manufacturing applications.</p>
+      <div class="apps-grid">
+        {appCards.map(app => (
+          <div class="app-card">
+            <div class:list={['app-card-img', { noimg: !app.cardImg }]}>
+              {app.cardImg ? (
+                <img src={app.cardImg.src} width={app.cardImg.attributes.width} height={app.cardImg.attributes.height}
+                     alt={app.cardImageAlt ?? app.title} loading="lazy" />
+              ) : (
+                <span class="app-card-img-fallback" aria-hidden="true">{app.title.split(' ').map(w=>w[0]).join('').slice(0,3)}</span>
+              )}
+            </div>
+            <div class="app-card-body">
+              <h3 class="app-card-title">
+                <a href={app.href} class="app-card-title-link">{app.title}</a>
+              </h3>
+              <p class="app-card-desc">{app.cardDescription}</p>
+              <p class="app-card-benefit">✓ {app.cardBenefit}</p>
+              <div class="app-card-rec">
+                <span class="app-card-rec-label">Recommended product</span>
+                <span class="app-card-rec-value">{name}</span>
+              </div>
+              {app.relatedProducts.length > 0 && (
+                <p class="app-card-related">
+                  {app.relatedProducts.map((p, i) => (
+                    <>
+                      <a href={`/products/${p.slug}/`} class="app-card-related-link">{p.name}</a>
+                      {i < app.relatedProducts.length - 1 && <span class="app-card-related-sep" aria-hidden="true">·</span>}
+                    </>
+                  ))}
+                </p>
+              )}
+              <span class="btn app-card-cta" aria-hidden="true">Learn more →</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
   {faqs && faqs.length > 0 && (
     <section class="wrap prod-faq">
       <h2 class="extra-h">Frequently asked questions</h2>
@@ -457,6 +526,53 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .extra-h { font-size: 1.15rem; color: var(--ink); margin-bottom: 1.2rem; letter-spacing: 0.02em; }
     .prod-faq { padding-block: 2rem 1rem; }
     @media (max-width: 760px) { .prod-extra-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .prod-apps { padding-block: 1.5rem 0.5rem; }
+    .apps-sub { color: var(--ink-dim); font-size: 0.92rem; margin-top: -0.7rem; margin-bottom: 1.4rem; max-width: 60ch; }
+    /* Grid rows stretch every card in the row to equal height by default;
+       the flex column + margin-top:auto on the CTA below then pins every
+       card's button to the same baseline regardless of copy length. */
+    .apps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.1rem; align-items: stretch; }
+    .app-card {
+      position: relative; display: flex; flex-direction: column;
+      background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
+      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+    }
+    .app-card:hover { border-color: var(--accent-gold); transform: translateY(-2px); box-shadow: var(--surface-shadow-hover); }
+    .app-card-img {
+      position: relative; aspect-ratio: 4 / 3; overflow: hidden;
+      background: linear-gradient(135deg, #1a1e24, #23282f);
+      border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .app-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s var(--ease-premium); }
+    .app-card:hover .app-card-img img { transform: scale(1.04); }
+    .app-card-img-fallback { font-family: var(--font-display); font-weight: 700; font-size: 1.8rem; color: var(--line-2); }
+    .app-card-body { display: flex; flex-direction: column; gap: 0.55rem; padding: 1.2rem 1.3rem; flex: 1; }
+    .app-card-title { font-family: var(--font-display); text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.01em; }
+    .app-card-title-link { color: var(--ink); }
+    .app-card-title-link:hover { color: var(--accent-gold-light); }
+    /* Stretched-link pattern: this is the one real link that makes the whole
+       card clickable. Related-product links below get position+z-index so
+       they still receive their own clicks instead of being swallowed by it. */
+    .app-card-title-link::after { content: ''; position: absolute; inset: 0; }
+    .app-card-desc { color: var(--ink-dim); font-size: 0.86rem; line-height: 1.55; }
+    .app-card-benefit { color: var(--ink); font-size: 0.84rem; font-weight: 600; }
+    .app-card-rec {
+      display: flex; flex-direction: column; gap: 0.15rem; margin-top: 0.2rem;
+      padding-top: 0.6rem; border-top: 1px solid var(--line);
+    }
+    .app-card-rec-label { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+    .app-card-rec-value { font-size: 0.86rem; font-weight: 600; color: var(--accent-gold-light); }
+    .app-card-related { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; font-size: 0.78rem; }
+    .app-card-related-link {
+      position: relative; z-index: 1; color: var(--ink-dim);
+      text-decoration: underline; text-underline-offset: 2px;
+      transition: color .25s var(--ease-premium);
+    }
+    .app-card-related-link:hover { color: var(--accent-gold-light); }
+    .app-card-related-sep { color: var(--line-2); }
+    .app-card-cta { align-self: flex-start; margin-top: auto; padding: 0.6rem 1.1rem; font-size: 0.76rem; pointer-events: none; }
 
     .related { padding-block: 2rem 3rem; }
     .rel-h { font-size: 1.1rem; color: var(--ink-dim); margin-bottom: 1.2rem; }

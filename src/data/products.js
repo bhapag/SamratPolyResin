@@ -531,6 +531,22 @@ export const products = [
       "vinyl-ester-resin",
       "epoxy-clear-casting-resin",
     ],
+    // Ordered application-guide cards shown in the "Explore applications"
+    // section — see src/data/applications.js. Only entries without
+    // `draft: true` there resolve to a live /applications/{slug}/ page.
+    applicationSlugs: [
+      "resin-for-water-tank-manufacturing",
+      "resin-for-cooling-tower-manufacturing",
+      "resin-for-roofing-sheet-manufacturing",
+      "resin-for-frp-door-manufacturing",
+      "resin-for-door-skin-manufacturing",
+      "resin-for-frp-panel-manufacturing",
+      "resin-for-hand-lay-up-process",
+      "resin-for-spray-up-process",
+      "resin-for-boat-manufacturing",
+      "resin-for-general-frp-lamination",
+      "resin-for-general-frp-moulded-products",
+    ],
   },
   {
     slug: "gp-white-resin",

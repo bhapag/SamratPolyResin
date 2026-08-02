@@ -1,0 +1,247 @@
+---
+import { getImage } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import { applications } from '../../data/applications.js';
+import { products } from '../../data/products.js';
+import { site, buildProductQuoteLink, buildCanonicalUrl } from '../../data/site.js';
+
+export function getStaticPaths() {
+  return applications.filter((a) => !a.draft).map((a) => ({ params: { slug: a.slug }, props: { application: a } }));
+}
+
+const appImageModules = import.meta.glob('/src/assets/applications/*', { eager: true });
+const resolveAppImage = (filename) => appImageModules[`/src/assets/applications/${filename}`]?.default;
+
+const { application } = Astro.props;
+const {
+  title, cardImage, cardImageAlt, cardDescription, seo, intro, whatTheyManufacture, whyGpClearResin,
+  requiredCharacteristics, manufacturingProcess, advantages, commonProducts,
+  faqs, relatedProductSlugs, ctaHeading, ctaText,
+} = application;
+
+// Same fixed-aspect-ratio treatment on every application page, whether or
+// not this particular entry has a photo yet — one consistent hero container
+// (see .app-hero-img below) so the layout never depends on image dimensions.
+const heroImgSrc = cardImage ? resolveAppImage(cardImage) : null;
+const heroImg = heroImgSrc ? await getImage({ src: heroImgSrc, width: 1000, format: 'webp' }) : null;
+
+// Reverse lookup rather than a hardcoded slug, so the breadcrumb and CTA stay
+// correct even if another product later lists this same application.
+const parentProduct = products.find((p) => p.applicationSlugs?.includes(application.slug));
+
+const relatedProducts = (relatedProductSlugs ?? [])
+  .map((s) => products.find((p) => p.slug === s))
+  .filter(Boolean);
+
+const waLink = buildProductQuoteLink(parentProduct?.whatsappName ?? parentProduct?.name ?? site.name);
+const canonicalUrl = buildCanonicalUrl(Astro.url.pathname);
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: buildCanonicalUrl('/') },
+    ...(parentProduct
+      ? [{ "@type": "ListItem", position: 2, name: parentProduct.name, item: buildCanonicalUrl(`/products/${parentProduct.slug}/`) }]
+      : []),
+    { "@type": "ListItem", position: parentProduct ? 3 : 2, name: title, item: canonicalUrl },
+  ],
+};
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description: seo?.description ?? cardDescription,
+  author: { "@type": "Organization", name: site.name },
+  publisher: { "@type": "Organization", name: site.name },
+  mainEntityOfPage: canonicalUrl,
+};
+
+const faqJsonLd = faqs && faqs.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+} : null;
+---
+<Base
+  title={seo?.title ?? title}
+  description={seo?.description ?? cardDescription}
+  keywords={seo?.keywords}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
+  {faqJsonLd && <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />}
+
+  <div class="wrap crumb">
+    <a href="/">Home</a><span>/</span>
+    {parentProduct && (<><a href={`/products/${parentProduct.slug}/`}>{parentProduct.name}</a><span>/</span></>)}
+    <span class="cur">{title}</span>
+  </div>
+
+  <article class="wrap app-article">
+    <header class="app-head">
+      <p class="app-eyebrow">Application guide</p>
+      <h1>{title}</h1>
+      <p class="app-lead">{intro}</p>
+    </header>
+
+    <div class:list={['app-hero-img', { noimg: !heroImg }]}>
+      {heroImg ? (
+        <img src={heroImg.src} width={heroImg.attributes.width} height={heroImg.attributes.height}
+             alt={cardImageAlt ?? title} />
+      ) : (
+        <span class="app-hero-img-fallback" aria-hidden="true">{title.split(' ').map(w => w[0]).join('').slice(0, 3)}</span>
+      )}
+    </div>
+
+    <div class="app-content">
+      <section class="app-section">
+        <h2>What this industry manufactures</h2>
+        <p>{whatTheyManufacture}</p>
+      </section>
+
+      <section class="app-section">
+        <h2>Why GP Clear Resin is suitable</h2>
+        <p set:html={whyGpClearResin} />
+      </section>
+
+      <section class="app-section">
+        <h2>Required resin characteristics</h2>
+        <ul class="app-list">{requiredCharacteristics.map((c) => <li>{c}</li>)}</ul>
+      </section>
+
+      <section class="app-section">
+        <h2>Manufacturing process</h2>
+        <p set:html={manufacturingProcess} />
+      </section>
+
+      <section class="app-section">
+        <h2>Advantages</h2>
+        <ul class="app-list">{advantages.map((a) => <li>{a}</li>)}</ul>
+      </section>
+
+      <section class="app-section">
+        <h2>Common products produced</h2>
+        <ul class="app-list">{commonProducts.map((p) => <li>{p}</li>)}</ul>
+      </section>
+    </div>
+
+    {faqs && faqs.length > 0 && (
+      <section class="app-faq">
+        <h2>Frequently asked questions</h2>
+        <FaqAccordion faqs={faqs} />
+      </section>
+    )}
+
+    {relatedProducts.length > 0 && (
+      <section class="app-related">
+        <h2 class="rel-h">Related products</h2>
+        <div class="rel-grid">
+          {relatedProducts.map((p) => (
+            <a href={`/products/${p.slug}/`} class="rel-card">
+              <span class="rel-name">{p.name}</span>
+              <span class="rel-price">{site.priceLabel}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="app-cta">
+      <h2>{ctaHeading}</h2>
+      <p>{ctaText}</p>
+      <div class="app-cta-buttons">
+        <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">Request Bulk Quote</a>
+        {parentProduct?.tdsUrl && (
+          <a href={parentProduct.tdsUrl} class="btn btn-solid" target="_blank" rel="noopener" download
+             aria-label={`Download Technical Data Sheet PDF for ${parentProduct.name}`}>
+            Download TDS (PDF)
+          </a>
+        )}
+        {parentProduct && <a href={`/products/${parentProduct.slug}/`} class="btn">View {parentProduct.name}</a>}
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .crumb {
+      display: flex; gap: 0.6rem; align-items: center; padding-top: 1.5rem;
+      font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-faint); letter-spacing: 0.04em;
+    }
+    .crumb a { transition: color .25s var(--ease-premium); }
+    .crumb a:hover { color: var(--accent-gold-light); }
+    .crumb .cur { color: var(--ink-dim); }
+
+    .app-article { padding-block: 2.6rem 4rem; max-width: 800px; }
+    .app-head { padding-bottom: 2.4rem; border-bottom: 1px solid var(--line); }
+
+    /* Fixed-ratio frame so every application page's hero photo scales
+       proportionally at every breakpoint instead of stretching to fit
+       whatever height its surrounding content happens to produce. */
+    .app-hero-img {
+      position: relative; aspect-ratio: 16 / 9; overflow: hidden; margin-top: 2.2rem;
+      border: 1px solid var(--image-frame-border); border-radius: 14px;
+      background: linear-gradient(135deg, #1a1e24, #23282f);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--image-frame-shadow);
+    }
+    .app-hero-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .app-hero-img-fallback { font-family: var(--font-display); font-weight: 700; font-size: 2.6rem; color: var(--line-2); }
+    @media (max-width: 560px) { .app-hero-img { aspect-ratio: 4 / 3; } }
+    .app-eyebrow {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--accent-gold); font-weight: 500;
+    }
+    .app-head h1 { font-size: clamp(2rem, 5vw, 3rem); margin-top: 0.9rem; text-transform: none; letter-spacing: 0; }
+    .app-lead { color: var(--ink-dim); margin-top: 1.2rem; font-size: 1.05rem; max-width: 62ch; line-height: 1.7; }
+
+    .app-section { margin-top: 2.6rem; }
+    .app-section h2 { font-size: clamp(1.3rem, 3vw, 1.6rem); margin-bottom: 1rem; }
+    .app-section p { color: var(--ink-dim); max-width: 72ch; line-height: 1.75; }
+    .app-section p a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; transition: color .25s var(--ease-premium); }
+    .app-section p a:hover { color: var(--accent-gold); }
+
+    .app-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .app-list li {
+      position: relative; padding-left: 1.7rem; color: var(--ink); font-size: 0.95rem; font-weight: 600;
+      line-height: 1.6; max-width: 68ch;
+      transition: color .25s var(--ease-premium), transform .25s var(--ease-premium);
+    }
+    .app-list li:hover { color: #ffffff; transform: translateX(3px); }
+    .app-list li::before {
+      content: '✓'; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+      display: flex; align-items: center; justify-content: center;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: linear-gradient(180deg, var(--accent-gold-light), var(--accent-gold-dark));
+      color: #17120c; font-size: 0.6rem; font-weight: 700; line-height: 1;
+      box-shadow: 0 0 0 1px rgba(var(--gold-rgb), .3), 0 1px 4px rgba(0, 0, 0, .3);
+    }
+
+    .app-faq, .app-related { margin-top: 3.2rem; }
+    .app-faq h2, .app-related h2 { font-size: clamp(1.3rem, 3vw, 1.6rem); margin-bottom: 1.2rem; }
+
+    .rel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.9rem; }
+    .rel-card {
+      display: flex; flex-direction: column; gap: 0.4rem; padding: 1rem 1.1rem;
+      background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
+      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+    }
+    .rel-card:hover { border-color: var(--accent-gold); transform: translateY(-2px); box-shadow: var(--surface-shadow-hover); }
+    .rel-name { font-family: var(--font-display); text-transform: uppercase; font-size: 0.95rem; }
+    .rel-price { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-gold-light); }
+
+    .app-cta {
+      margin-top: 3.4rem; padding: clamp(1.8rem, 5vw, 2.6rem);
+      background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
+    }
+    .app-cta h2 { font-size: clamp(1.4rem, 3.5vw, 1.9rem); }
+    .app-cta p { color: var(--ink-dim); margin-top: 0.8rem; max-width: 55ch; }
+    .app-cta-buttons { display: flex; gap: 0.9rem; margin-top: 1.4rem; flex-wrap: wrap; }
+  </style>
+</Base>
