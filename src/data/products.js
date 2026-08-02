@@ -303,9 +303,9 @@ export const products = [
       "Lamination Resin (LR Resin) — transparent orthophthalic unsaturated polyester lamination resin by Samrat Poly Resins",
     tdsUrl: "/tds/lamination-resin-tds.pdf",
     seo: {
-      title: "Lamination Resin (LR Resin) – Door Lamination Resin",
+      title: "Lamination Resin (LR Resin)",
       description:
-        "Lamination Resin (LR Resin) — a transparent orthophthalic polyester resin for door and plywood lamination, and FRP bonding. 5-minute gel time. 35 kg PET or 225 kg drum.",
+        "Lamination Resin (LR Resin) — a transparent orthophthalic polyester resin for door and plywood lamination. 5-minute gel time. 35 kg PET or 225 kg drum.",
       keywords: [
         "Lamination Resin",
         "LR Resin",
@@ -313,7 +313,7 @@ export const products = [
         "Decorative Lamination Resin",
         "Door Lamination Resin",
         "Plywood Lamination Resin",
-        "FRP Lamination Resin",
+        "FRP Door Skin Bonding Resin",
         "Unsaturated Polyester Lamination Resin",
       ],
     },
@@ -408,6 +408,19 @@ export const products = [
       "gp-gelcoat-resin",
       "vinyl-ester-resin",
       "epoxy-clear-casting-resin",
+    ],
+    // Ordered application-guide cards for the "Explore applications" section
+    // on this product's page — see src/data/applications.js. Scoped to
+    // decorative/bonding lamination use cases genuinely served by LR Resin's
+    // fast gel time and adhesion to laminate/veneer sheets, not general FRP
+    // structural work (that's GP Clear Resin's applicationSlugs instead).
+    applicationSlugs: [
+      "door-lamination",
+      "door-skin-lamination",
+      "wooden-door-lamination",
+      "decorative-panel-lamination",
+      "decorative-plywood-lamination",
+      "furniture-lamination",
     ],
   },
   {

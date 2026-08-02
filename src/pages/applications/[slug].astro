@@ -15,7 +15,7 @@ const resolveAppImage = (filename) => appImageModules[`/src/assets/applications/
 
 const { application } = Astro.props;
 const {
-  title, cardImage, cardImageAlt, cardDescription, seo, intro, whatTheyManufacture, whyGpClearResin,
+  title, cardImage, cardImageAlt, cardDescription, seo, intro, whatTheyManufacture, whySuitable,
   requiredCharacteristics, manufacturingProcess, advantages, commonProducts,
   faqs, relatedProductSlugs, ctaHeading, ctaText,
 } = application;
@@ -54,6 +54,7 @@ const articleJsonLd = {
   "@type": "Article",
   headline: title,
   description: seo?.description ?? cardDescription,
+  ...(heroImg ? { image: buildCanonicalUrl(heroImg.src) } : {}),
   author: { "@type": "Organization", name: site.name },
   publisher: { "@type": "Organization", name: site.name },
   mainEntityOfPage: canonicalUrl,
@@ -107,8 +108,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       </section>
 
       <section class="app-section">
-        <h2>Why GP Clear Resin is suitable</h2>
-        <p set:html={whyGpClearResin} />
+        <h2>Why {parentProduct?.name ?? 'this resin'} is suitable</h2>
+        <p set:html={whySuitable} />
       </section>
 
       <section class="app-section">
