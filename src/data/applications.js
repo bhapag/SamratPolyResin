@@ -1067,4 +1067,426 @@ export const applications = [
     ctaHeading: "Need resin for your furniture lamination line?",
     ctaText: "Get a bulk quote or talk to our technical team about the right dosage for your panel-facing production.",
   },
+
+  // ============================================================================
+  //  GP GELCOAT RESIN APPLICATIONS — card-only stubs approved via technical
+  //  audit (see conversation). Gelcoat is a surface-coating/mould-finish resin,
+  //  never the structural laminate — every description below is written to
+  //  keep that distinction explicit and avoid implying gelcoat is structural.
+  //  All five are `draft: true`: cards render fully on the GP Gelcoat Resin
+  //  product page now, but no dedicated /applications/ page exists yet, so
+  //  getStaticPaths excludes them and each card's CTA links back to the
+  //  product page instead of a dead URL. Flip draft to false individually,
+  //  one at a time, once each page is actually built (Step 4).
+  // ============================================================================
+  {
+    slug: "gelcoat-for-boat-marine-hull-finishing",
+    title: "Gelcoat for Boat & Marine Hull Finishing",
+    cardDescription: "Boat and marine hulls need a smooth, glossy cosmetic skin applied to the mould first — a surface coating, not the structural laminate that gives the hull its strength.",
+    cardBenefit: "Glossy, mould-ready hull finish.",
+    cardImage: "gelcoat-boat-hull-finish.jpg",
+    cardImageAlt: "Glossy white fiberglass boat hull showing a smooth gelcoat finish",
+    seo: {
+      title: "Gelcoat for Boat & Marine Hull Finishing",
+      description: "How GP Gelcoat Resin forms an FRP boat hull's outer finish, applied before the structural laminate, and when Vinyl Ester Resin suits hulls kept in water.",
+      keywords: ["Gelcoat for Boat Hulls", "Marine Gelcoat Finish", "FRP Hull Gelcoat", "Boat Hull Surface Coating"],
+    },
+    intro: "Every FRP boat hull starts life inside a mould, and the very first material to touch that mould face isn't the structural laminate — it's gelcoat. Sprayed or brushed onto the mould before anything else, it's what becomes the hull's finished, visible outer surface once the boat is demoulded. This page covers that specific outer-skin step, not the structural lay-up covered on our Boat & Marine Components page.",
+    whatTheyManufacture: "Marine gelcoat finishes the outer surface of FRP boat hulls, decks, cabin structures and other exterior marine components — the smooth, glossy, coloured skin visible on a finished boat, applied to the mould before the structural laminate is built up behind it.",
+    whySuitable: 'GP Gelcoat Resin is thixotropic and much thicker (around 11,000 cPs) than a laminating resin, which is exactly what a curved, often vertical hull mould needs — it clings to the mould face without sagging or running while it gels. It is not the structural material of the hull: once it has gelled, <a href="/products/fibre-glass-mat/">glass fibre</a> reinforcement wet out with <a href="/products/gp-clear-resin/">GP Clear Resin</a> is built up behind it to form the actual structural laminate that gives the hull its strength. For hulls that stay in the water continuously, some builders step up to a <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> laminate behind the gelcoat instead of GP Clear Resin, since vinyl ester offers meaningfully better resistance to the osmotic blistering that continuous immersion can cause — this is a laminate-side decision, not a change to the gelcoat itself.',
+    requiredCharacteristics: [
+      "Thixotropic body that clings to curved, vertical hull mould surfaces without sagging",
+      "High gloss, smooth cured finish straight off the mould face",
+      "Compatible with spray or brush application over large hull areas",
+      "Pigmentable for coloured hulls rather than plain white only",
+      "Room-temperature MEKP cure matching standard hand lay-up workflows",
+    ],
+    manufacturingProcess: 'A wax release agent is applied to the open hull mould first, then <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>, catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and cobalt octoate accelerator, is sprayed or brushed on and left to gel. Once gelled, a layer of <a href="/products/fibre-glass-mat/">glass fibre</a> wet out with <a href="/products/gp-clear-resin/">GP Clear Resin</a> is applied directly behind it, followed by the remaining structural laminate layers to build up the full hull thickness. Once fully cured, the hull is released from the mould with the gelcoat now forming its finished, visible outer surface — no additional surface finishing is needed.',
+    advantages: [
+      "Glossy, ready-to-use hull finish straight from the mould, without post-finishing",
+      "Thixotropic body suited to large, curved hull surfaces without special equipment",
+      "Pigmentable for coloured hulls in a single application step",
+      "Standard MEKP/cobalt cure keeps the process consistent with the rest of the hand lay-up workflow",
+    ],
+    commonProducts: [
+      "FRP boat hulls and decks",
+      "Cabin structures and marine component exteriors",
+      "Coloured or white gelcoated hull surfaces",
+    ],
+    faqs: [
+      {
+        q: "Is GP Gelcoat Resin the structural material of a boat hull?",
+        a: "No. It is the outer cosmetic and protective skin, applied to the mould first. The structural laminate that gives the hull its strength is built up behind the gelcoat, typically using GP Clear Resin reinforced with glass fibre.",
+      },
+      {
+        q: "Why is gelcoat sprayed onto the mould before the hull laminate?",
+        a: "Applying it first, against the smooth mould face, is what gives the finished hull its glossy, ready-to-use surface once demoulded — the gelcoat cures against the mould, and the structural laminate is built up on top of it afterwards.",
+      },
+      {
+        q: "Can boat hull gelcoat be coloured?",
+        a: "Yes. GP Gelcoat Resin is supplied plain white, but FRP Polyester Pigment can be blended in before catalysing to produce a coloured hull finish.",
+      },
+      {
+        q: "Does GP Gelcoat Resin resist UV fading on a boat kept outdoors?",
+        a: "GP Gelcoat Resin has no specific UV-stabiliser package confirmed in its specification. Like any unstabilised polyester surface, it can gradually yellow or chalk under prolonged direct sun exposure. For a hull expected to hold its colour long-term outdoors, discuss UV-stabilised formulation requirements with our technical team before specifying.",
+      },
+      {
+        q: "Should I use Vinyl Ester Resin instead of GP Clear Resin behind the gelcoat for a hull kept permanently in water?",
+        a: "For hulls in continuous water immersion, a Vinyl Ester Resin laminate behind the gelcoat offers meaningfully better resistance to osmotic blistering than a standard polyester laminate. This changes the laminate behind the gelcoat, not the gelcoat layer itself.",
+      },
+    ],
+    relatedProductSlugs: ["gp-clear-resin", "mekp-hardener", "frp-polyester-pigment", "vinyl-ester-resin"],
+    ctaHeading: "Need gelcoat for your boat or marine hull production?",
+    ctaText: "Get a bulk quote or talk to our technical team about the right gelcoat and laminate combination for your hull.",
+  },
+  {
+    slug: "gelcoat-for-frp-bathware-sanitaryware",
+    title: "Gelcoat for FRP Bathware & Sanitaryware",
+    cardDescription: "Bathtubs and shower trays need a smooth, glossy mould-facing surface coat applied before the structural laminate — the cosmetic finish, not the reinforced backing.",
+    cardBenefit: "Smooth, ready-to-use surface finish.",
+    cardImage: "gelcoat-bathtub-finish.jpg",
+    cardImageAlt: "Glossy white freestanding FRP bathtub with a smooth gelcoat surface finish",
+    seo: {
+      title: "Gelcoat for FRP Bathware & Sanitaryware",
+      description: "How GP Gelcoat Resin forms the smooth, coloured surface of FRP bathtubs and shower trays, applied to the mould before the structural laminate goes in behind it.",
+      keywords: ["Gelcoat for Bathtubs", "FRP Sanitaryware Gelcoat", "Shower Tray Gelcoat", "Bathware Surface Coating"],
+    },
+    intro: "The smooth, glossy surface of an FRP bathtub or shower tray is what a customer actually touches and sees — and it isn't the structural fibreglass laminate underneath. It's a gelcoat layer, sprayed or brushed onto the mould before any reinforcement goes in, that becomes the finished surface once the part is demoulded. This page covers that surface-coating step specifically, not the structural laminate behind it.",
+    whatTheyManufacture: "Gelcoat finishes the visible, mould-facing surface of FRP bathtubs, shower trays, wash basins and general sanitaryware — the smooth, coloured, easy-to-clean surface, applied before the structural laminate is built up behind it.",
+    whySuitable: 'Bathware moulds are often deep, curved shapes, and <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>\'s thixotropic body clings to those curved mould surfaces without sagging while it gels — the same property that suits vertical hull moulds works well here too. It is not the structural material of the tub or tray: once the gelcoat has gelled, <a href="/products/fibre-glass-mat/">glass fibre</a> reinforcement wet out with <a href="/products/gp-clear-resin/">GP Clear Resin</a> is built up behind it to form the actual structural shell. GP Gelcoat Resin is a general-purpose orthophthalic grade — some premium sanitaryware uses a more specialised gelcoat chemistry for continuous wet-service durability, so for demanding commercial installations it is worth confirming your specific requirement with our technical team.',
+    requiredCharacteristics: [
+      "Thixotropic body that clings to deep, curved bathware mould shapes without sagging",
+      "High gloss, smooth cured finish requiring no further surface work",
+      "Pigmentable for the range of colours bathware and sanitaryware are commonly sold in",
+      "Room-temperature MEKP cure compatible with standard mould workflows",
+    ],
+    manufacturingProcess: 'Gelcoat is sprayed or brushed onto the open bathtub or shower tray mould first and left to gel, then <a href="/products/fibre-glass-mat/">glass fibre</a> reinforcement wet out with <a href="/products/gp-clear-resin/">GP Clear Resin</a>, catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and cobalt octoate accelerator, is built up behind it to form the structural shell. Once cured, the part is released from the mould with the gelcoat forming its finished, ready-to-use surface, and is trimmed and fitted with drainage and hardware.',
+    advantages: [
+      "Smooth, glossy, ready-to-use surface straight from the mould",
+      "Pigmentable to match standard bathware colour ranges in a single application step",
+      "Thixotropic body suited to deep, curved mould shapes without special equipment",
+      "Consistent MEKP/cobalt cure across repeated production runs",
+    ],
+    commonProducts: [
+      "FRP bathtubs",
+      "Shower trays and shower bases",
+      "Wash basins and general sanitaryware",
+    ],
+    faqs: [
+      {
+        q: "Is the gelcoat on a bathtub the same material as the structural shell underneath?",
+        a: "No. The gelcoat is the outer surface coating, applied to the mould first. The structural shell is a separate fibreglass laminate — typically GP Clear Resin reinforced with glass fibre — built up behind the gelcoat.",
+      },
+      {
+        q: "Can FRP bathtub and shower tray gelcoat be coloured?",
+        a: "Yes. GP Gelcoat Resin is supplied plain white, and FRP Polyester Pigment can be blended in before catalysing to match standard bathware colour ranges.",
+      },
+      {
+        q: "Is GP Gelcoat Resin suitable for premium, continuous-wet-service sanitaryware?",
+        a: "It is a general-purpose orthophthalic gelcoat suitable for standard FRP bathware manufacturing. Some premium sanitaryware uses a more specialised gelcoat chemistry for maximum long-term wet-service durability — for demanding commercial applications, discuss your specific requirement with our technical team.",
+      },
+      {
+        q: "How is gelcoat catalysed for bathware manufacturing?",
+        a: "It is cured at room temperature with an MEKP catalyst (around 1.5%) and a cobalt octoate accelerator (around 0.4%), the same system used across Samrat Poly Resins' gelcoat and general-purpose grades.",
+      },
+      {
+        q: "Why is gelcoat applied before the fibreglass shell rather than after?",
+        a: "Applying it first, against the smooth mould face, is what gives the finished tub or tray its glossy surface once demoulded — there is no way to achieve the same mould-facing finish by coating the part afterward.",
+      },
+    ],
+    relatedProductSlugs: ["gp-clear-resin", "mekp-hardener", "fibre-glass-mat", "frp-polyester-pigment"],
+    ctaHeading: "Need gelcoat for your bathware or sanitaryware production?",
+    ctaText: "Get a bulk quote or talk to our technical team about the right gelcoat and laminate combination for your mould.",
+  },
+  {
+    slug: "gelcoat-for-water-tank-exteriors",
+    title: "Gelcoat for Water Tank Exteriors",
+    cardDescription: "FRP water tank exteriors need a clean, glossy cosmetic surface coat applied to the mould face — separate from the structural laminate that forms the tank wall itself.",
+    cardBenefit: "Clean, finished exterior surface.",
+    seo: {
+      title: "Gelcoat for Water Tank Exteriors",
+      description: "GP Gelcoat Resin for the exterior surface of FRP water tanks — not for interior or potable-water-contact surfaces. What it covers, and what it doesn't.",
+      keywords: ["Gelcoat for Water Tank Exteriors", "FRP Tank Exterior Finish", "Water Tank Surface Coating", "Non-Potable Tank Gelcoat"],
+    },
+    intro: "This page is specifically about the outer, exterior surface of an FRP water tank — the cosmetic gelcoat skin visible from the outside. It does not cover, and GP Gelcoat Resin is not recommended for, the interior surface of a tank that will hold potable (drinking) water, which requires certified food-grade materials Samrat Poly Resins does not currently supply. Read on for what this page does cover: the exterior finish only.",
+    whatTheyManufacture: "Gelcoat finishes the exterior, weather-facing surface of FRP water tanks — sectional panel tanks, one-piece cylindrical or rectangular tanks, and underground or overhead storage tanks — applied to the mould before the structural laminate that forms the tank wall is built up behind it.",
+    whySuitable: 'GP Gelcoat Resin\'s thixotropic body suits the flat and curved exterior mould surfaces used in tank panel and shell production, and it is not the structural material of the tank wall: <a href="/products/fibre-glass-mat/">glass fibre</a> reinforcement wet out with <a href="/products/gp-clear-resin/">GP Clear Resin</a> forms the actual structural laminate behind it. One important limitation for this specific application: independent industry sources describe UV-stabilised gelcoat as essential for tank exteriors that stay outdoors for the tank\'s full service life, since unstabilised polyester can yellow, chalk and eventually degrade under years of continuous sun exposure. GP Gelcoat Resin has no UV-stabiliser package confirmed in its specification, so for tanks expected to hold their exterior appearance over a long outdoor service life, discuss UV-stabilised formulation requirements with our technical team before specifying. This page covers exterior finishing only — it does not apply to interior, potable-water-contact surfaces.',
+    requiredCharacteristics: [
+      "Thixotropic body suited to flat and curved tank panel or shell exterior moulds",
+      "High gloss, smooth cured finish for the tank's visible exterior surface",
+      "Pigmentable for coloured or branded tank exteriors",
+      "Room-temperature MEKP cure compatible with standard tank panel production",
+      "Not certified or recommended for interior, potable-water-contact surfaces",
+    ],
+    manufacturingProcess: 'Gelcoat is sprayed or brushed onto the exterior-facing side of the tank panel or shell mould first and left to gel, then <a href="/products/fibre-glass-mat/">glass fibre</a> reinforcement wet out with <a href="/products/gp-clear-resin/">GP Clear Resin</a>, catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and cobalt octoate accelerator, is built up behind it to form the structural tank wall. Once cured, panels are released from the mould, trimmed, and — for sectional tanks — bolted together on site, with the gelcoat forming the tank\'s finished exterior surface. The interior surface of a tank is a separate specification question entirely, particularly for potable water storage.',
+    advantages: [
+      "Clean, glossy exterior finish straight from the mould, without post-finishing",
+      "Pigmentable for coloured or company-branded tank exteriors",
+      "Thixotropic body suited to flat and curved exterior panel moulds",
+      "Consistent MEKP/cobalt cure across repeated panel production runs",
+    ],
+    commonProducts: [
+      "Sectional panel water tank exteriors",
+      "One-piece cylindrical and rectangular tank exteriors",
+      "Underground and overhead tank exterior surfaces",
+    ],
+    faqs: [
+      {
+        q: "Can GP Gelcoat Resin be used for the interior of a potable (drinking) water tank?",
+        a: "No. This page and GP Gelcoat Resin cover exterior tank finishing only. Potable water tank interiors require certified food-grade, NSF/ANSI 61-type materials that Samrat Poly Resins does not currently supply — always confirm interior tank materials meet the relevant drinking-water standards for your project with a certified supplier.",
+      },
+      {
+        q: "Is the gelcoat the structural material of the tank wall?",
+        a: "No. It is the cosmetic exterior surface coating, applied to the mould first. The structural laminate that actually forms the tank wall — typically GP Clear Resin reinforced with glass fibre — is built up behind it.",
+      },
+      {
+        q: "Is GP Gelcoat Resin UV-stabilised for tanks that stay outdoors long-term?",
+        a: "Not as a confirmed feature of its current specification. Since tank exteriors are outdoors for the tank's entire service life, this matters more here than in most other gelcoat applications — for tanks needing long-term outdoor colour and surface stability, discuss UV-stabilised formulation options with our technical team before specifying.",
+      },
+      {
+        q: "Can tank exterior gelcoat be coloured?",
+        a: "Yes. GP Gelcoat Resin is supplied plain white, and FRP Polyester Pigment can be blended in before catalysing for a coloured or branded tank exterior.",
+      },
+      {
+        q: "What reinforcement is used behind the gelcoat on a tank panel?",
+        a: "Typically E-glass chopped strand mat, sometimes combined with woven roving for added strength, wet out with GP Clear Resin to form the structural laminate behind the gelcoat.",
+      },
+    ],
+    relatedProductSlugs: ["gp-clear-resin", "mekp-hardener", "fibre-glass-mat", "frp-polyester-pigment"],
+    ctaHeading: "Need gelcoat for your water tank exterior production?",
+    ctaText: "Get a bulk quote or talk to our technical team about the right gelcoat and laminate combination for your tank panels.",
+  },
+  {
+    slug: "gelcoat-for-general-frp-mould-finishing",
+    title: "Gelcoat for General FRP Mould Finishing",
+    cardDescription: "Panels, mouldings, furniture and décor items need a smooth, glossy mould-facing surface coat, applied before the structural laminate behind it — the cosmetic layer, not the structural resin.",
+    cardBenefit: "Consistent, glossy mould finish.",
+    cardImage: "gelcoat-mould-grating-finish.jpg",
+    cardImageAlt: "Stacked coloured FRP moulded grating panels showing a smooth gelcoat surface finish",
+    seo: {
+      title: "Gelcoat for General FRP Mould Finishing",
+      description: "How GP Gelcoat Resin finishes panels, furniture, planters and décor items, applied to the mould before the structural laminate is built up behind it.",
+      keywords: ["Gelcoat for FRP Panels", "Gelcoat for Moulded Products", "FRP Décor Gelcoat", "General Mould Finishing Resin"],
+    },
+    intro: "Beyond boats, bathware and tanks, a huge range of everyday FRP items share the same finishing step: panels, furniture, planters, signage, mannequins and general moulded décor all get their smooth, coloured, ready-to-use surface from gelcoat applied to the mould first — not from the structural laminate underneath. This page covers that general-purpose finishing role across the varied moulded products a typical FRP workshop produces.",
+    whatTheyManufacture: "General FRP mould finishing covers the visible surface of decorative and industrial moulded products — wall panels, cladding, furniture panels, planters, signage, mannequins and other moulded décor and industrial items — wherever a smooth, glossy, coloured mould-facing finish is wanted rather than a raw laminate surface.",
+    whySuitable: '<a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>\'s thixotropic body and high gloss finish suit the varied mould shapes this category covers, from flat panels to detailed decorative mouldings. As with every other gelcoat application, it is not the structural material of the part: <a href="/products/fibre-glass-mat/">glass fibre</a> reinforcement wet out with <a href="/products/gp-clear-resin/">GP Clear Resin</a> is built up behind the gelcoat to form the actual structural laminate, sized to whatever the specific product needs. Because this category spans such varied products, required laminate thickness and reinforcement varies job to job — the gelcoat step itself stays the same throughout.',
+    requiredCharacteristics: [
+      "Good flow into varied mould shapes, from flat panels to detailed decorative mouldings",
+      "High gloss, smooth cured finish across a wide range of product types",
+      "Pigmentable for the colour range general moulded and décor products are commonly sold in",
+      "Room-temperature MEKP cure compatible with standard mould workflows",
+    ],
+    manufacturingProcess: 'Gelcoat is sprayed or brushed onto the mould first and left to gel, then <a href="/products/fibre-glass-mat/">glass fibre</a> reinforcement wet out with <a href="/products/gp-clear-resin/">GP Clear Resin</a>, catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and cobalt octoate accelerator, is built up behind it — with thickness and layer count adjusted to the specific product, from a lightweight decorative item to a structural panel. Once cured, the part is released from the mould with the gelcoat forming its finished surface, trimmed and finished as the product requires.',
+    advantages: [
+      "One finishing process covers a wide range of moulded product types",
+      "Pigmentable in a single application step for coloured décor and panel products",
+      "Smooth, glossy, ready-to-use surface straight from the mould",
+      "Consistent MEKP/cobalt cure across varied production runs",
+    ],
+    commonProducts: [
+      "Decorative and cladding wall panels",
+      "Furniture panels and planters",
+      "Signage, mannequins and moulded décor",
+      "General industrial moulded FRP products",
+    ],
+    faqs: [
+      {
+        q: "Is gelcoat used the same way across such different products as panels, furniture and décor items?",
+        a: "The gelcoat step itself is consistent — sprayed or brushed onto the mould first, then backed with a structural laminate. What varies job to job is the laminate thickness and reinforcement built up behind it, which is sized to whatever the specific product needs.",
+      },
+      {
+        q: "Is the gelcoat the structural material of a moulded panel or décor item?",
+        a: "No. It is the cosmetic surface coating, applied to the mould first. The structural laminate — typically GP Clear Resin reinforced with glass fibre — is built up behind it separately.",
+      },
+      {
+        q: "Can general FRP mould gelcoat be coloured?",
+        a: "Yes. GP Gelcoat Resin is supplied plain white, and FRP Polyester Pigment can be blended in before catalysing to match the colour range needed for panels, furniture or décor items.",
+      },
+      {
+        q: "Does gelcoat work for detailed or ornamental mould shapes?",
+        a: "Yes — its flow and thixotropic body support good coverage of detailed or textured mould surfaces, helping reproduce ornamental designs accurately in the cured finish.",
+      },
+      {
+        q: "How is gelcoat catalysed for general mould finishing work?",
+        a: "It is cured at room temperature with an MEKP catalyst (around 1.5%) and a cobalt octoate accelerator (around 0.4%), the same system used across Samrat Poly Resins' gelcoat and general-purpose grades.",
+      },
+    ],
+    relatedProductSlugs: ["gp-clear-resin", "mekp-hardener", "frp-polyester-pigment", "fibre-glass-mat"],
+    ctaHeading: "Need gelcoat for your general FRP mould production?",
+    ctaText: "Get a bulk quote or talk to our technical team about the right gelcoat and laminate combination for your moulded product.",
+  },
+  {
+    slug: "gelcoat-for-automotive-body-panels",
+    title: "Gelcoat for Automotive & Transport Body Panels",
+    cardDescription: "FRP body panels for buses, autorickshaws and trucks need a smooth, glossy cosmetic surface coat applied to the mould face — separate from the structural laminate built up behind it.",
+    cardBenefit: "Glossy, paint-ready panel surface.",
+    cardImage: "gelcoat-truck-cabin-panels.webp",
+    cardImageAlt: "Interior of a moulded FRP commercial vehicle cab showing panel body finish",
+    seo: {
+      title: "Gelcoat for Bus & Commercial Vehicle Panels",
+      description: "GP Gelcoat Resin for FRP body panels on buses, commercial and utility vehicles — the mould-facing finish, applied before the structural laminate behind it.",
+      keywords: ["Gelcoat for Bus Body Panels", "Commercial Vehicle FRP Gelcoat", "Truck Body Panel Gelcoat", "Transport Panel Surface Coating"],
+    },
+    intro: "Bus, commercial and utility vehicle body fabricators across India build exterior panels from FRP, and — as with any open-mould FRP part — the finished, visible surface of those panels comes from gelcoat, applied to the mould before the structural laminate is built up behind it. This page covers that finishing step for buses, commercial vehicles, utility vehicles and truck bodies specifically.",
+    whatTheyManufacture: "Gelcoat finishes the visible surface of FRP body panels for buses, tourist and staff coaches, commercial and utility vehicle bodies, and truck bodies — including insulated panel bodies for goods transport — applied to the mould before the structural laminate behind it is built up.",
+    whySuitable: '<a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>\'s thixotropic body and high gloss finish suit the flat and gently curved panel moulds typical of bus and commercial vehicle body fabrication. It is not the structural material of the panel: <a href="/products/fibre-glass-mat/">glass fibre</a> reinforcement wet out with <a href="/products/gp-clear-resin/">GP Clear Resin</a> forms the structural laminate behind it, often over a foam or honeycomb core for insulated panel bodies. Because transport body panels are exposed outdoors for the vehicle\'s working life, the same caution applies here as with any long-term outdoor gelcoat use: GP Gelcoat Resin has no UV-stabiliser package confirmed in its specification, so where long-term outdoor colour stability matters, discuss UV-stabilised formulation requirements with our technical team before specifying.',
+    requiredCharacteristics: [
+      "Thixotropic body suited to flat and gently curved panel moulds",
+      "High gloss, smooth cured finish ready for the vehicle body without further finishing",
+      "Pigmentable to match fleet or livery colours",
+      "Room-temperature MEKP cure compatible with standard panel production",
+    ],
+    manufacturingProcess: 'Gelcoat is sprayed or brushed onto the panel mould first and left to gel, then <a href="/products/fibre-glass-mat/">glass fibre</a> reinforcement wet out with <a href="/products/gp-clear-resin/">GP Clear Resin</a>, catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and cobalt octoate accelerator, is built up behind it — for insulated body panels, this is often laminated over a foam or honeycomb core. Once cured, panels are released from the mould with the gelcoat forming the finished exterior surface, trimmed, and fitted to the vehicle body frame.',
+    advantages: [
+      "Glossy, ready-to-fit panel surface straight from the mould",
+      "Pigmentable to match fleet or livery colours in a single application step",
+      "Thixotropic body suited to flat and curved panel mould shapes",
+      "Consistent MEKP/cobalt cure across repeated panel production runs",
+    ],
+    commonProducts: [
+      "Bus and coach body panels",
+      "Commercial and utility vehicle body panels",
+      "Insulated truck body panels for goods transport",
+    ],
+    faqs: [
+      {
+        q: "Is the gelcoat the structural material of a vehicle body panel?",
+        a: "No. It is the cosmetic exterior surface coating, applied to the mould first. The structural laminate — typically GP Clear Resin reinforced with glass fibre, sometimes over a foam or honeycomb core — is built up behind it.",
+      },
+      {
+        q: "Can bus or truck body panel gelcoat be coloured to match fleet livery?",
+        a: "Yes. GP Gelcoat Resin is supplied plain white, and FRP Polyester Pigment can be blended in before catalysing to match fleet or livery colours.",
+      },
+      {
+        q: "Is GP Gelcoat Resin UV-stabilised for panels that stay outdoors on a vehicle body?",
+        a: "Not as a confirmed feature of its current specification. Since transport body panels are outdoors for the vehicle's working life, this matters here as it does for tank exteriors — for panels needing long-term outdoor colour stability, discuss UV-stabilised formulation options with our technical team before specifying.",
+      },
+      {
+        q: "Does this cover motorsport or aerospace panel applications?",
+        a: "No. This page covers buses, commercial vehicles, utility vehicles and truck body panels specifically. Motorsport and aerospace composite panels typically require specialised resin systems beyond general-purpose gelcoat and are outside the scope of GP Gelcoat Resin.",
+      },
+      {
+        q: "How is gelcoat catalysed for vehicle body panel production?",
+        a: "It is cured at room temperature with an MEKP catalyst (around 1.5%) and a cobalt octoate accelerator (around 0.4%), the same system used across Samrat Poly Resins' gelcoat and general-purpose grades.",
+      },
+    ],
+    relatedProductSlugs: ["gp-clear-resin", "mekp-hardener", "frp-polyester-pigment", "fibre-glass-mat"],
+    ctaHeading: "Need gelcoat for your bus or commercial vehicle body panel production?",
+    ctaText: "Get a bulk quote or talk to our technical team about the right gelcoat and laminate combination for your body panels.",
+  },
+
+  // ============================================================================
+  //  GP YELLOW RESIN APPLICATIONS — card-only stubs approved via technical
+  //  audit (Step 1) and Step 2 product-page work. GP Yellow Resin is a
+  //  general-purpose orthophthalic structural laminating resin — same MEKP +
+  //  cobalt octoate cure system and manufacturing route as GP Clear Resin,
+  //  differing mainly in viscosity (450–600 cPs vs. 350–450 cPs), gel time
+  //  (10–15 min vs. <8 min) and its transparent yellow colour rather than
+  //  colourless. Every card below is written to state that plainly — never
+  //  implying GP Yellow Resin is superior to GP Clear Resin, only that it is
+  //  a workable, same-purpose alternative wherever the resin's own colour is
+  //  hidden behind a gelcoat, paint or another layer. Slugs are prefixed
+  //  "gp-yellow-resin-for-" (mirroring the "gelcoat-for-" pattern used for
+  //  GP Gelcoat Resin) specifically so they never collide with GP Clear
+  //  Resin's existing "resin-for-*" application slugs/pages, which already
+  //  own this same search intent — see the Step 1 audit for why no new,
+  //  independent application ecosystem was invented here.
+  //  All 7 are `draft: true`: cards render fully on the GP Yellow Resin
+  //  product page now, but no dedicated /applications/ page exists yet, so
+  //  getStaticPaths excludes them and each card's CTA links back to the
+  //  product page instead of a dead URL. Flip draft to false individually,
+  //  one at a time, once each page is actually built (Step 4).
+  // ============================================================================
+  {
+    slug: "gp-yellow-resin-for-water-tank-manufacturing",
+    title: "GP Yellow Resin for Water Tank Manufacturing",
+    cardDescription: "Water tank panels need a resin that wets out glass reinforcement cleanly and cures into a strong, leak-resistant laminate — GP Yellow Resin's orthophthalic base and MEKP/cobalt cure suit this structural role wherever the tank's exterior is finished over the resin's natural yellow tint.",
+    cardBenefit: "Consistent laminate behind a finished exterior.",
+    seo: {
+      title: "GP Yellow Resin for Water Tank Manufacturing",
+      description: "GP Yellow Resin as a structural laminating resin for FRP water tank panels — same MEKP/cobalt cure as GP Clear Resin, thicker body, slower gel.",
+      keywords: ["GP Yellow Resin for Water Tanks", "Yellow Resin Water Tank Manufacturing", "FRP Tank Laminating Resin"],
+    },
+    draft: true,
+    relatedProductSlugs: ["mekp-hardener", "gp-gelcoat-resin", "gp-clear-resin", "vinyl-ester-resin"],
+  },
+  {
+    slug: "gp-yellow-resin-for-cooling-tower-manufacturing",
+    title: "GP Yellow Resin for Cooling Tower Manufacturing",
+    cardDescription: "Cooling tower casings and internal components need a resin that cures reliably under sustained moisture — GP Yellow Resin uses the same MEKP and cobalt octoate cure system as GP Clear Resin, in a thicker, slightly slower-gelling grade suited to larger panel lay-ups.",
+    cardBenefit: "Reliable cure for large panel lay-ups.",
+    seo: {
+      title: "GP Yellow Resin for Cooling Tower Manufacturing",
+      description: "GP Yellow Resin for FRP cooling tower casings and components — the same cure chemistry as GP Clear Resin, in a thicker, slower-gelling grade.",
+      keywords: ["GP Yellow Resin for Cooling Towers", "Yellow Resin Cooling Tower Manufacturing"],
+    },
+    draft: true,
+    relatedProductSlugs: ["mekp-hardener", "gp-gelcoat-resin", "gp-clear-resin", "vinyl-ester-resin"],
+  },
+  {
+    slug: "gp-yellow-resin-for-roofing-sheet-manufacturing",
+    title: "GP Yellow Resin for Roofing Sheet Manufacturing",
+    cardDescription: "GP Yellow Resin's transparent yellow, general-purpose orthophthalic base wets out reinforcement for corrugated FRP roofing sheets. For a factory-pigmented grade tuned specifically for sheet production instead, Sheet Grade Yellow Resin is the dedicated alternative.",
+    cardBenefit: "General-purpose base for sheet lay-up.",
+    seo: {
+      title: "GP Yellow Resin for Roofing Sheet Manufacturing",
+      description: "GP Yellow Resin as a general-purpose laminating resin for FRP roofing sheets, and how it differs from the factory-pigmented Sheet Grade Yellow Resin.",
+      keywords: ["GP Yellow Resin for Roofing Sheets", "Yellow Resin Roofing Sheet Manufacturing"],
+    },
+    draft: true,
+    relatedProductSlugs: ["mekp-hardener", "sheet-grade-yellow-resin", "gp-clear-resin"],
+  },
+  {
+    slug: "gp-yellow-resin-for-door-skin-manufacturing",
+    title: "GP Yellow Resin for Door Skin Manufacturing",
+    cardDescription: "Moulded FRP door skins need a laminating resin that wets out reinforcement cleanly behind a gelcoat-finished face — GP Yellow Resin fills that structural role with the same cure chemistry as GP Clear Resin, in a thicker, slower-gelling grade.",
+    cardBenefit: "Structural backing behind a gelcoat face.",
+    seo: {
+      title: "GP Yellow Resin for Door Skin Manufacturing",
+      description: "GP Yellow Resin as the structural laminating resin behind moulded FRP door skins — same MEKP/cobalt cure system as GP Clear Resin.",
+      keywords: ["GP Yellow Resin for Door Skins", "Yellow Resin Door Skin Manufacturing"],
+    },
+    draft: true,
+    relatedProductSlugs: ["mekp-hardener", "gp-gelcoat-resin", "gp-clear-resin"],
+  },
+  {
+    slug: "gp-yellow-resin-for-hand-lay-up-process",
+    title: "GP Yellow Resin for Hand Lay-Up Process",
+    cardDescription: "Hand lay-up work relies on a resin that saturates chopped strand mat evenly, layer by layer — GP Yellow Resin uses the standard MEKP and cobalt octoate cure system, differing from GP Clear Resin mainly in its thicker body, slower gel and yellow tint.",
+    cardBenefit: "Even saturation, layer by layer.",
+    seo: {
+      title: "GP Yellow Resin for Hand Lay-Up Process",
+      description: "Using GP Yellow Resin for hand lay-up FRP work — the same manufacturing route as GP Clear Resin, at a thicker, slower-gelling grade.",
+      keywords: ["GP Yellow Resin Hand Lay-Up", "Yellow Resin for Hand Layup Process"],
+    },
+    draft: true,
+    relatedProductSlugs: ["mekp-hardener", "gp-gelcoat-resin", "gp-clear-resin"],
+  },
+  {
+    slug: "gp-yellow-resin-for-spray-up-process",
+    title: "GP Yellow Resin for Spray-Up Process",
+    cardDescription: "Spray-up equipment chops and wets out fibre in a single pass, and GP Yellow Resin's viscosity and non-accelerated MEKP/cobalt cure make it workable through standard spray-up rigs — the same process route as GP Clear Resin, in a thicker, slower-gelling grade.",
+    cardBenefit: "Workable through standard spray-up rigs.",
+    seo: {
+      title: "GP Yellow Resin for Spray-Up Process",
+      description: "Using GP Yellow Resin for spray-up FRP work — the same process route and cure system as GP Clear Resin, at a thicker, slower-gelling grade.",
+      keywords: ["GP Yellow Resin Spray-Up", "Yellow Resin for Spray-Up Process"],
+    },
+    draft: true,
+    relatedProductSlugs: ["mekp-hardener", "gp-gelcoat-resin", "gp-clear-resin"],
+  },
+  {
+    slug: "gp-yellow-resin-for-general-frp-moulded-products",
+    title: "GP Yellow Resin for General FRP Moulded Products",
+    cardDescription: "Panels, furniture, planters and general moulded FRP items need a dependable general-purpose laminating resin behind their surface finish — GP Yellow Resin serves this role wherever the part is painted, gelcoated or otherwise finished over its natural yellow tint.",
+    cardBenefit: "Dependable backing for finished mouldings.",
+    seo: {
+      title: "GP Yellow Resin for General FRP Moulded Products",
+      description: "GP Yellow Resin as a general-purpose structural laminating resin for moulded FRP panels, furniture and décor items finished over its surface.",
+      keywords: ["GP Yellow Resin Moulded Products", "Yellow Resin General FRP Products"],
+    },
+    draft: true,
+    relatedProductSlugs: ["mekp-hardener", "gp-gelcoat-resin", "gp-clear-resin"],
+  },
 ];

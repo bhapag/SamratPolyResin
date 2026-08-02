@@ -797,20 +797,15 @@ export const products = [
       "GP Gelcoat Resin — white high-gloss polyester surface-coating gelcoat by Samrat Poly Resins",
     tdsUrl: "/tds/gp-gelcoat-resin-tds.pdf",
     seo: {
-      title: "GP Gelcoat Resin – Polyester Gelcoat for FRP Moulds",
+      title: "GP Gelcoat Resin – Mould Surface Coating",
       description:
-        "GP Gelcoat Resin — a white, high-gloss polyester gelcoat for FRP moulds, applied before fibreglass lay-up. Thixotropic, 8.5-minute gel time. 50/225 kg packs, MOQ 500 kg.",
+        "GP Gelcoat Resin — a white, high-gloss polyester surface coating for FRP moulds, not a laminating resin. Thixotropic, 8.5-minute gel time. 50/225 kg packs.",
       keywords: [
         "GP Gelcoat Resin",
-        "Gelcoat Resin",
         "Polyester Gelcoat Resin",
-        "FRP Gelcoat Resin",
+        "FRP Mould Gelcoat",
+        "Surface Coating Resin",
         "White Gelcoat Resin",
-        "General Purpose Gelcoat",
-        "Fiberglass Gelcoat Resin",
-        "Brush Grade Gelcoat Resin",
-        "Mould Gelcoat Resin",
-        "Surface Coating Gelcoat",
       ],
     },
     // Values verified for GP Gelcoat Resin only — do not copy Thixotropy to
@@ -839,11 +834,12 @@ export const products = [
     },
     tagline: "White, high-gloss polyester gelcoat for FRP mould surfaces.",
     description:
-      "GP Gelcoat Resin is a white, high-gloss polyester surface-coating resin applied as the outermost layer of an FRP moulding, before the fibreglass laminate is built up behind it. Unlike a general-purpose laminating resin, which is designed to soak into and bind reinforcement, gelcoat is formulated to be brushed, sprayed or rollered directly onto the mould face — its high viscosity and thixotropic behaviour let it cling to vertical and overhead mould surfaces without sagging or running. Once cured with an MEKP catalyst, it forms a smooth, glossy, protective skin that shields the laminate underneath from moisture, abrasion and weathering, giving the finished part its visible surface finish. Samrat Poly Resins supplies GP Gelcoat Resin as a 100% pure, general-purpose white gelcoat suited to a wide range of FRP mould work.",
+      "GP Gelcoat Resin is a white, high-gloss polyester surface-coating resin — not a laminating resin. It is applied as the outermost layer of an FRP moulding, brushed, sprayed or rollered directly onto the mould face before any reinforcement goes in, where its high viscosity and thixotropic behaviour let it cling to vertical and overhead surfaces without sagging or running. Once cured with an MEKP catalyst, it forms a smooth, glossy, protective skin that shields the laminate against moisture and abrasion and gives the finished part its visible surface finish, while the structural laminate itself — typically GP Clear Resin, reinforced with glass fibre — is built up behind it. Samrat Poly Resins supplies GP Gelcoat Resin as a 100% pure, general-purpose white gelcoat suited to a wide range of FRP mould work.",
     usageNote:
-      'In a typical FRP lay-up, GP Gelcoat Resin is brushed or sprayed onto the mould first and left to gel, then reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> saturated in a laminating resin such as our <a href="/products/gp-clear-resin/">GP Clear Resin</a> or base <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin (UPR)</a>, catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a>. For door and plywood lamination work rather than mould gelcoating, see our <a href="/products/lamination-resin/">Lamination Resin</a>; for moulds needing higher chemical and corrosion resistance, a <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> system may be more suitable.',
+      'In a typical FRP lay-up, GP Gelcoat Resin is brushed or sprayed onto the mould first and left to gel, then reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> saturated in a laminating resin such as our <a href="/products/gp-clear-resin/">GP Clear Resin</a> or base <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin (UPR)</a>, catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a>. Where a coloured rather than plain white finish is needed, <a href="/products/frp-polyester-pigment/">FRP Polyester Pigment</a> can be blended into the gelcoat before catalysing. For door and plywood lamination work rather than mould gelcoating, see our <a href="/products/lamination-resin/">Lamination Resin</a>; for moulds facing harsher chemical exposure or continuous water immersion, a <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> system may be more suitable.',
     features: [
-      "White, high-gloss, pigment-free finish with 100% purity",
+      "White, high-gloss finish with 100% purity, as supplied",
+      "Accepts polyester pigment for coloured finishes beyond standard white",
       "Thixotropic — resists sagging and running on vertical mould surfaces",
       "Fast gel time of 8.5 minutes for efficient mould-release cycles",
       "Cures with MEKP catalyst and cobalt octoate accelerator at room temperature",
@@ -881,6 +877,18 @@ export const products = [
         a: "General-purpose resin (such as our GP Clear Resin or UPR) is designed to saturate and bind fibreglass reinforcement. Gelcoat is a thicker, thixotropic surface-coating resin applied directly to the mould with no reinforcement mixed in — it forms the outer skin and finish of a moulding, while general-purpose resin forms the structural laminate behind it.",
       },
       {
+        q: "Can GP Gelcoat Resin be pigmented for coloured finishes?",
+        a: 'Yes. It is supplied as a plain white, pigment-free gelcoat, but <a href="/products/frp-polyester-pigment/">FRP Polyester Pigment</a> can be blended in before catalysing to produce a coloured, glossy finish for boat hulls, bathware, panels or mouldings.',
+      },
+      {
+        q: "Is GP Gelcoat Resin UV resistant or suitable for prolonged outdoor exposure?",
+        a: "GP Gelcoat Resin is a general-purpose gelcoat without a specific UV-stabiliser additive package. Like any unstabilised polyester surface, it can gradually yellow or chalk under prolonged direct UV exposure. For parts requiring long-term outdoor colour stability, discuss UV-stabilised formulation requirements with our technical team before specifying.",
+      },
+      {
+        q: "Does GP Gelcoat Resin offer good chemical or water resistance?",
+        a: "It offers standard-duty resistance suitable for general FRP mould work. For moulds facing harsher chemical exposure or continuous water immersion — such as chemical tank exteriors or hulls kept permanently in water — a Vinyl Ester Resin system offers meaningfully better resistance and is the more suitable choice.",
+      },
+      {
         q: "Why is Gelcoat applied before the fibreglass reinforcement?",
         a: "Gelcoat is sprayed or brushed onto the mould surface first so that, once the part is de-moulded, it becomes the visible outer face. Applying it before lay-up lets it cure against the smooth mould surface, producing a glossy, ready-to-use finish without additional surface finishing.",
       },
@@ -903,9 +911,20 @@ export const products = [
     ],
     relatedSlugs: [
       "gp-clear-resin",
-      "vinyl-ester-resin",
       "mekp-hardener",
       "fibre-glass-mat",
+      "frp-polyester-pigment",
+      "vinyl-ester-resin",
+    ],
+    // Ordered application-guide cards for the "Explore applications" section —
+    // see src/data/applications.js. All five are currently draft:true (card
+    // content only, no dedicated page yet) — approved via technical audit.
+    applicationSlugs: [
+      "gelcoat-for-boat-marine-hull-finishing",
+      "gelcoat-for-frp-bathware-sanitaryware",
+      "gelcoat-for-water-tank-exteriors",
+      "gelcoat-for-general-frp-mould-finishing",
+      "gelcoat-for-automotive-body-panels",
     ],
   },
   {
@@ -2674,18 +2693,18 @@ export const products = [
     image: "gp-yellow-resin.jpg",
     images: ["gp-yellow-resin-2.jpg"],
     imageAlt:
-      "GP Yellow Resin — transparent yellow, general-purpose orthophthalic unsaturated polyester resin by Samrat Poly Resins",
+      "GP Yellow Resin — transparent yellow, general-purpose orthophthalic polyester laminating resin by Samrat Poly Resins",
     tdsUrl: "/tds/gp-yellow-resin-tds.pdf",
     seo: {
-      title: "GP Yellow Resin – General Purpose Yellow Polyester Resin",
+      title: "GP Yellow Resin – Laminating Polyester Resin",
       description:
-        "GP Yellow Resin — a transparent yellow, general-purpose orthophthalic polyester resin for FRP roofing sheets, tanks, doors and lamination. 225 kg drums, MOQ 1,000 kg.",
+        "GP Yellow Resin — a transparent yellow, orthophthalic polyester resin for general-purpose FRP laminating. Gel time 10–15 minutes. 225 kg drums.",
       keywords: [
         "GP Yellow Resin",
         "Yellow Polyester Resin",
         "General Purpose Yellow Resin",
+        "FRP Laminating Resin",
         "Yellow FRP Resin",
-        "Pigmented Polyester Resin",
       ],
     },
     // Specification sheet supplied directly for this product (transparent
@@ -2712,17 +2731,17 @@ export const products = [
       "Cobalt Octoate Dosage": "0.3–0.5%",
       "Purity": "99%",
     },
-    tagline: "Transparent yellow, general-purpose orthophthalic polyester resin.",
+    tagline: "Transparent yellow, general-purpose orthophthalic laminating resin.",
     description:
-      "GP Yellow Resin is a transparent yellow, orthophthalic unsaturated polyester resin developed by Samrat Poly Resins for general-purpose FRP manufacturing. Supplied as a non-accelerated liquid with a viscosity of 450–600 cPs and a gel time of 10–15 minutes, it offers excellent wet-out of reinforcement for a smooth, well-bonded laminate and good mechanical strength once cured. Cured at room temperature with an MEKP catalyst and cobalt octoate accelerator, it processes cleanly by hand layup or spray-up. With 34–38% styrene content, 1.10–1.14 g/cm³ density and 99% purity, it delivers consistent, cost-effective performance across roofing sheets, water tanks, FRP doors and panels, and general lamination work.",
+      "GP Yellow Resin is a transparent yellow, orthophthalic unsaturated polyester resin from Samrat Poly Resins — a general-purpose structural laminating resin, not a surface coating or a lamination-specialty grade. It shares the same MEKP and cobalt octoate cure system and hand layup / spray-up processing as our GP Clear Resin, but runs thicker (450–600 cPs against GP Clear Resin's 350–450 cPs) with a slightly slower 10–15 minute gel time and 60–90 minute cure. With 34–38% styrene content and 99% purity, it wets out glass fibre reinforcement for a consistent, well-bonded laminate across roofing sheets, water tanks, FRP doors and panels, and general lamination work — a straightforward alternative to GP Clear Resin wherever the resin's own colour is hidden behind a gelcoat, paint or another layer.",
     usageNote:
-      'GP Yellow Resin is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and cobalt accelerator, then reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> for hand layup and spray-up. Where a factory-pigmented grade tuned specifically for sheet and panel production is needed instead, see our <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a>; for an unpigmented general-purpose grade, our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is available, and mould-facing surfaces can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a>.',
+      'GP Yellow Resin is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and cobalt accelerator, then reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> for hand layup and spray-up — the same process used for our <a href="/products/gp-clear-resin/">GP Clear Resin</a>. Where the finished part needs to stay colourless, GP Clear Resin is the better choice; where a factory-pigmented grade tuned specifically for sheet and panel production is needed instead, see our <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a>. Mould-facing surfaces can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a>, and projects facing harsher chemical exposure or continuous water immersion should step up to <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> instead.',
     features: [
-      "Transparent yellow orthophthalic base for general-purpose FRP work",
-      "Excellent wet-out for smooth fibre impregnation and lamination",
-      "Good mechanical strength for durable, long-lasting FRP components",
-      "Gel time of 10–15 minutes with an MEKP and cobalt octoate cure system",
-      "34–38% styrene content and 99% purity for consistent processing",
+      "Transparent yellow orthophthalic base, sharing GP Clear Resin's cure chemistry",
+      "Wets out glass fibre reinforcement for a consistent, well-bonded laminate",
+      "Thicker body and slightly slower cure than GP Clear Resin (450–600 cPs, 10–15 minute gel)",
+      "Cures at room temperature with the same MEKP and cobalt octoate system as GP Clear Resin",
+      "34–38% styrene content and 99% purity for consistent, batch-to-batch processing",
       "Supplied in 225 kg drums; minimum order 1,000 kg",
     ],
     applications: [
@@ -2749,7 +2768,11 @@ export const products = [
     faqs: [
       {
         q: "What is GP Yellow Resin?",
-        a: "GP Yellow Resin is a transparent yellow, orthophthalic unsaturated polyester resin used for general-purpose FRP manufacturing — including roofing sheets, water tanks, doors, panels and lamination. It is supplied by Samrat Poly Resins as a non-accelerated liquid in 225 kg drums.",
+        a: "GP Yellow Resin is a transparent yellow, orthophthalic unsaturated polyester resin from Samrat Poly Resins — a general-purpose structural laminating resin used to wet out and bind glass fibre reinforcement, not a surface coating. It is supplied as a non-accelerated liquid in 225 kg drums for roofing sheets, water tanks, doors, panels and general lamination work.",
+      },
+      {
+        q: "What is the difference between GP Yellow Resin and GP Clear Resin?",
+        a: "Both are general-purpose orthophthalic polyester resins that cure with the same MEKP and cobalt octoate system. GP Yellow Resin is thicker (450–600 cPs against 350–450 cPs) and gels and cures somewhat slower (10–15 minutes against under 8 minutes) than GP Clear Resin, and it carries a transparent yellow tint rather than being colourless. Choose GP Yellow Resin where the resin's own colour won't be visible in the finished part — for example, behind a gelcoat or another layer — and GP Clear Resin where a colourless resin matters.",
       },
       {
         q: "Is GP Yellow Resin the same as Sheet Grade Yellow Resin?",
@@ -2758,6 +2781,10 @@ export const products = [
       {
         q: "What is the gel time, and how is GP Yellow Resin cured?",
         a: "Gel time is 10–15 minutes. It is a non-accelerated resin, cured at room temperature by adding a cobalt octoate accelerator (0.3–0.5%) and an MEKP catalyst (around 1.5%); full cure typically takes 60–90 minutes depending on temperature and dosage.",
+      },
+      {
+        q: "Does GP Yellow Resin offer good chemical resistance?",
+        a: 'As an orthophthalic polyester resin, GP Yellow Resin offers standard-duty resistance suitable for general FRP work, but orthophthalic grades are the base tier for chemical resistance within the polyester family. For moulds or parts facing harsher chemical exposure or continuous water immersion, a <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> system offers meaningfully better resistance and is the more suitable choice.',
       },
       {
         q: "What is the viscosity, styrene content and density of GP Yellow Resin?",
@@ -2776,7 +2803,21 @@ export const products = [
       "sheet-grade-yellow-resin",
       "gp-clear-resin",
       "gp-gelcoat-resin",
+      "vinyl-ester-resin",
       "mekp-hardener",
+    ],
+    // Card-only stubs (draft: true) approved via Step 1 audit + Step 3 —
+    // slugs prefixed "gp-yellow-resin-for-" so they never collide with GP
+    // Clear Resin's existing "resin-for-*" pages that already own this
+    // search intent. See applications.js for the stub entries themselves.
+    applicationSlugs: [
+      "gp-yellow-resin-for-water-tank-manufacturing",
+      "gp-yellow-resin-for-cooling-tower-manufacturing",
+      "gp-yellow-resin-for-roofing-sheet-manufacturing",
+      "gp-yellow-resin-for-door-skin-manufacturing",
+      "gp-yellow-resin-for-hand-lay-up-process",
+      "gp-yellow-resin-for-spray-up-process",
+      "gp-yellow-resin-for-general-frp-moulded-products",
     ],
   },
 ];
