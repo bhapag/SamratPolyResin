@@ -1662,6 +1662,7 @@ export const products = [
     price: "₹700 / kg",
     image: "epoxy-art-resin.jpg",
     images: ["epoxy-art-resin-2.jpg", "epoxy-art-resin-3.jpg"],
+    tdsUrl: "/tds/epoxy-art-resin-tds.pdf",
     seo: {
       title: "Epoxy Art Resin – Self-Levelling Clear Epoxy",
       description:
@@ -1765,6 +1766,7 @@ export const products = [
     price: "₹140 / kg",
     image: "uv-resin.jpg",
     images: ["uv-resin-2.jpg"],
+    tdsUrl: "/tds/uv-resin-tds.pdf",
     seo: {
       title: "UV Resin – Fast-Curing Epoxy Acrylate Resin",
       description:
@@ -1867,6 +1869,7 @@ export const products = [
     price: "₹700 / kg",
     image: "epoxy-hardener.jpg",
     images: ["epoxy-hardener-2.jpg"],
+    tdsUrl: "/tds/epoxy-hardener-tds.pdf",
     seo: {
       title: "Epoxy Hardener – Polyamide Curing Agent",
       description:
@@ -1966,6 +1969,7 @@ export const products = [
     price: "₹150 / kg",
     image: "dmc-smc-resin.jpg",
     images: ["dmc-smc-resin-2.jpg", "dmc-smc-resin-3.jpg"],
+    tdsUrl: "/tds/dmc-smc-resin-tds.pdf",
     seo: {
       title: "DMC/SMC Resin – Moulding Compound Resin",
       description:
