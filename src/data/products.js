@@ -173,6 +173,7 @@ export const products = [
     price: "₹130 / kg",
     image: "unsaturated-polyester-resin-2.jpg",
     images: ["unsaturated-polyester-resin.jpg", "unsaturated-polyester-resin-3.jpg", "unsaturated-polyester-resin-4.jpg"],
+    tdsUrl: "/tds/unsaturated-polyester-resin-tds.pdf",
     imageAlt:
       "Unsaturated Polyester Resin (UPR) — clear orthophthalic general-purpose polyester resin by Samrat Poly Resins",
     seo: {
@@ -538,6 +539,7 @@ export const products = [
     price: "₹135 / kg",
     image: "gp-white-resin.jpg",
     images: ["gp-white-resin-2.jpg"],
+    tdsUrl: "/tds/gp-white-resin-tds.pdf",
     seo: {
       title: "GP White Resin – Water-White Polyester Resin",
       description:
@@ -1346,6 +1348,7 @@ export const products = [
     price: "₹300 / kg",
     image: "frp-polyester-pigment.jpg",
     images: ["frp-polyester-pigment-1.jpg", "frp-polyester-pigment-3.jpg"],
+    tdsUrl: "/tds/frp-polyester-pigment-tds.pdf",
     seo: {
       title: "FRP Polyester Pigment – Colour Paste for Resins",
       description:
@@ -1450,6 +1453,7 @@ export const products = [
     price: "₹120 / kg",
     image: "fibre-glass-mat.jpg",
     images: ["fibre-glass-mat-2.jpg"],
+    tdsUrl: "/tds/fibre-glass-mat-tds.pdf",
     seo: {
       title: "Glass Fiber Mat – E-Glass Chopped Strand Mat",
       description:
@@ -2072,6 +2076,7 @@ export const products = [
     price: "₹115 / kg",
     image: "pet-resin.jpg",
     images: ["pet-resin-2.jpg"],
+    tdsUrl: "/tds/pet-resin-tds.pdf",
     seo: {
       title: "PET Resin – Sheet-Grade Polyester Resin",
       description:
@@ -2173,6 +2178,7 @@ export const products = [
     price: "₹125 / kg",
     image: "marble-resin.jpg",
     images: ["marble-resin-2.jpg"],
+    tdsUrl: "/tds/marble-resin-tds.pdf",
     seo: {
       title: "Marble Resin – Resin for Cultured Marble",
       description:
@@ -2269,6 +2275,7 @@ export const products = [
     price: "₹135 / kg",
     image: "vinyl-ester-resin.jpg",
     images: ["vinyl-ester-resin-2.jpg"],
+    tdsUrl: "/tds/vinyl-ester-resin-tds.pdf",
     seo: {
       title: "Vinyl Ester Resin – Chemical-Resistant Resin",
       description:
@@ -2357,6 +2364,7 @@ export const products = [
     price: "₹800 / kg",
     image: "fiberglass-epoxy-resin.jpg",
     images: ["fiberglass-epoxy-resin-2.jpg", "fiberglass-epoxy-resin-3.jpg"],
+    tdsUrl: "/tds/fiberglass-epoxy-resin-tds.pdf",
     seo: {
       title: "Fiberglass Epoxy Resin – Structural Epoxy System",
       description:
@@ -2451,6 +2459,7 @@ export const products = [
     price: "₹125 / kg",
     image: "bisphenol-resin.jpg",
     images: ["bisphenol-resin-2.jpg"],
+    tdsUrl: "/tds/bisphenol-resin-tds.pdf",
     seo: {
       title: "Bisphenol Resin – Industrial Epoxy Resin",
       description:
@@ -2538,6 +2547,7 @@ export const products = [
     price: "₹220 / kg",
     image: "mekp-hardener.jpg",
     images: ["mekp-hardener-2.jpg"],
+    tdsUrl: "/tds/mekp-hardener-tds.pdf",
     seo: {
       title: "MEKP Hardener – Polyester Resin Catalyst",
       description:
@@ -2636,6 +2646,7 @@ export const products = [
     images: ["gp-yellow-resin-2.jpg"],
     imageAlt:
       "GP Yellow Resin — transparent yellow, general-purpose orthophthalic unsaturated polyester resin by Samrat Poly Resins",
+    tdsUrl: "/tds/gp-yellow-resin-tds.pdf",
     seo: {
       title: "GP Yellow Resin – General Purpose Yellow Polyester Resin",
       description:
