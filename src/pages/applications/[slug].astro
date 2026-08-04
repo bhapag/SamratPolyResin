@@ -18,6 +18,7 @@ const {
   title, cardImage, cardImageAlt, cardDescription, seo, intro, whatTheyManufacture, whySuitable,
   requiredCharacteristics, manufacturingProcess, advantages, commonProducts,
   faqs, relatedProductSlugs, ctaHeading, ctaText,
+  ogImage, ogImageAlt, ogImageWidth, ogImageHeight,
 } = application;
 
 // Same fixed-aspect-ratio treatment on every application page, whether or
@@ -74,6 +75,10 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
   title={seo?.title ?? title}
   description={seo?.description ?? cardDescription}
   keywords={seo?.keywords}
+  ogImage={ogImage}
+  ogImageAlt={ogImageAlt}
+  ogImageWidth={ogImageWidth}
+  ogImageHeight={ogImageHeight}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />

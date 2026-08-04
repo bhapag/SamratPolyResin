@@ -1396,11 +1396,13 @@ export const products = [
     price: "₹300 / kg",
     image: "frp-polyester-pigment.jpg",
     images: ["frp-polyester-pigment-1.jpg", "frp-polyester-pigment-3.jpg"],
+    imageAlt:
+      "FRP Polyester Pigment — multicolour resin colour paste by Samrat Poly Resins",
     tdsUrl: "/tds/frp-polyester-pigment-tds.pdf",
     seo: {
-      title: "FRP Polyester Pigment – Colour Paste for Resins",
+      title: "FRP Polyester Pigment – Resin Colour Paste",
       description:
-        "FRP Polyester Pigment — a heat-stable colour paste for unsaturated polyester resins and gel coats, available in custom RAL and Pantone shades.",
+        "FRP Polyester Pigment — a heat-stable colour paste for polyester, vinyl ester and gelcoat systems, in custom RAL and Pantone shades. 2–5% dosage.",
       keywords: [
         "FRP Polyester Pigment",
         "Polyester Resin Pigment",
@@ -1409,31 +1411,40 @@ export const products = [
         "Resin Pigment Paste",
       ],
     },
-    // Reorganised into productDetails/techSpecs — every value is unchanged
-    // from the original single `specs` table, just regrouped. "Usage /
-    // Application" is not repeated in the table since it's already covered
-    // by the applications list below. No new values invented.
+    // Reorganised into productDetails/techSpecs, values cross-checked against
+    // SPR-TDS-FPP Rev. 01 — do not edit without an updated TDS. Binder
+    // compatibility broadened from "Unsaturated Polyester" only to also
+    // include vinyl ester and gelcoat systems, per the TDS. Dosage, tinting
+    // strength, heat resistance and light fastness added — none of these
+    // were in the original table. "Polyester Type: UPR" removed as redundant
+    // with the broadened Binder Compatibility line below.
     productDetails: {
       "Minimum Order Quantity": "100 kg",
       "Packaging Size": "10 kg",
       "Pack Type": "Bottle",
-      "Colour / Appearance": "Multicolor",
+      "Colour / Appearance": "Multicolour (custom RAL & Pantone matching)",
+      "Shelf Life": "12 months (unopened)",
+      "Storage Temperature": "15–30 °C",
     },
     techSpecs: {
       "Form": "Paste",
-      "Polyester Type": "UPR",
-      "Binder Compatibility": "Unsaturated Polyester",
+      "Binder Compatibility": "Unsaturated Polyester, Vinyl Ester & Gelcoat Systems",
+      "Recommended Dosage": "2–5% by weight",
+      "Tinting Strength": "High (≥ 95%)",
+      "Heat Resistance": "Up to 180 °C",
+      "Light Fastness": "7–8 (Blue Wool Scale)",
+      "Specific Gravity / Density": "1.45 g/cm³",
     },
     tagline: "Heat-stable colour paste for polyester resins.",
     description:
-      "A colorant paste designed specifically for FRP products made with unsaturated polyester resins. Formulated to blend seamlessly with the resin system, it provides consistent multicolour coloration without affecting curing or mechanical properties. It withstands the exothermic heat of curing, contains stabilisers to resist fading, and is available in a wide range of standard and custom colours including RAL and Pantone matches. Supplied as a paste in 10 kg bottles, with a minimum order quantity of 100 kg, it is compatible with unsaturated polyester resin binder systems used across FRP tanks, gel coats, panels and enclosures — letting manufacturers achieve consistent, factory-matched colour without compromising cure or mechanical performance.",
+      "FRP Polyester Pigment is Samrat Poly Resins' colorant paste for FRP products made with unsaturated polyester, vinyl ester and gelcoat systems. Blended into the resin or gelcoat at a recommended 2–5% dosage before catalysing, its high tinting strength (≥95%) delivers full colour at that low dosage without the mechanical trade-offs that heavier pigment loading can bring. It withstands the exothermic heat of curing (rated up to 180°C) and carries a 7–8 Blue Wool Scale light-fastness rating for the pigment's own colour retention — a genuinely strong result, though a finished part's overall weathering also depends on the UV stability of the surrounding resin or gelcoat, not the pigment alone. Supplied as a paste in 10 kg bottles, with a minimum order quantity of 100 kg, it is available in a wide range of standard and custom colours, including RAL and Pantone matches.",
     usageNote:
-      'FRP Polyester Pigment is blended directly into <a href="/products/gp-clear-resin/">GP Clear Resin</a> or another unsaturated polyester resin before catalysing with an <a href="/products/mekp-hardener/">MEKP hardener</a>. For a pre-pigmented, factory-coloured sheet resin instead of adding pigment yourself, see our <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a>.',
+      'FRP Polyester Pigment is stirred thoroughly into <a href="/products/gp-clear-resin/">GP Clear Resin</a>, <a href="/products/gp-yellow-resin/">GP Yellow Resin</a> or a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> before catalysing with an <a href="/products/mekp-hardener/">MEKP hardener</a> — mixing pigment in after catalysing risks uneven colour as working time runs out. It is also compatible with <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> binder systems. For a pre-pigmented, factory-coloured sheet resin instead of adding pigment yourself, see our <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a>.',
     features: [
-      "Blends seamlessly with unsaturated polyester resins",
-      "Compatible with unsaturated polyester (UPR) binder systems",
-      "Withstands exothermic curing heat",
-      "UV and weather-resistant stabilisers resist fading",
+      "Blends seamlessly with unsaturated polyester, vinyl ester and gelcoat systems",
+      "High tinting strength (≥95%) delivers full colour at a low 2–5% dosage",
+      "Withstands exothermic curing heat, rated up to 180°C",
+      "7–8 Blue Wool Scale light-fastness for the pigment's own colour retention",
       "Available in RAL and Pantone custom matches",
       "Supplied in 10 kg bottles, minimum order 100 kg",
     ],
@@ -1460,15 +1471,19 @@ export const products = [
     faqs: [
       {
         q: "What is FRP Polyester Pigment?",
-        a: "FRP Polyester Pigment is a colorant paste formulated for FRP products made with unsaturated polyester resins, providing consistent multicolour coloration without affecting curing or mechanical properties.",
+        a: "FRP Polyester Pigment is a colorant paste for FRP products made with unsaturated polyester, vinyl ester or gelcoat systems, providing consistent colour without acting as a structural or surface-coating material in its own right — it is blended into whichever resin or gelcoat is already being used.",
       },
       {
         q: "Is FRP Polyester Pigment compatible with all polyester resins?",
-        a: 'It is formulated for compatibility with unsaturated polyester (UPR) resin binder systems, such as our <a href="/products/gp-clear-resin/">GP Clear Resin</a> and other general-purpose grades.',
+        a: 'It is formulated for compatibility with unsaturated polyester (UPR) and vinyl ester resin binder systems, as well as gelcoat systems such as our <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a> — including our <a href="/products/gp-clear-resin/">GP Clear Resin</a> and <a href="/products/gp-yellow-resin/">GP Yellow Resin</a> general-purpose grades.',
+      },
+      {
+        q: "What is the recommended dosage?",
+        a: "2–5% by weight is the recommended dosage, with its high tinting strength (≥95%) delivering full colour at the lower end of that range for most shades. Adding more than necessary isn't recommended, since heavier pigment loading can begin to affect the cured laminate's mechanical properties.",
       },
       {
         q: "Does FRP Polyester Pigment affect curing or mechanical properties?",
-        a: "No. It is formulated to blend seamlessly with the resin system without affecting curing or the final mechanical properties of the FRP part.",
+        a: "Within the recommended 2–5% dosage range, no — it blends seamlessly without affecting cure or the final laminate's mechanical properties. Loading significantly above that range isn't recommended, as heavier pigment content can begin to affect mechanical performance.",
       },
       {
         q: "Can I get custom colours matched?",
@@ -1476,7 +1491,11 @@ export const products = [
       },
       {
         q: "Does FRP Polyester Pigment resist fading?",
-        a: "Yes. It contains stabilisers to resist fading and withstands the exothermic heat generated during resin curing.",
+        a: "The pigment itself carries a 7–8 rating on the Blue Wool Scale, a strong result for outdoor-use colourants, meaning the colour itself resists fading well. The overall weathering of a finished FRP part also depends on the UV stability of the surrounding resin or gelcoat, which is a separate property from the pigment's own light-fastness.",
+      },
+      {
+        q: "Does FRP Polyester Pigment make the finished FRP part weather-resistant?",
+        a: "Not on its own. Pigment colour retention and a laminate's overall weather resistance are two different properties — a light-fast pigment can still be surrounded by a resin or gelcoat that yellows or chalks under prolonged UV exposure. For parts needing confirmed long-term outdoor performance, the resin or gelcoat's own UV stability matters as much as the pigment's.",
       },
       {
         q: "What packaging and minimum order quantity does FRP Polyester Pigment come in?",
@@ -1484,14 +1503,16 @@ export const products = [
       },
       {
         q: "How is FRP Polyester Pigment used?",
-        a: 'It is blended directly into the unsaturated polyester resin before catalysing with an <a href="/products/mekp-hardener/">MEKP hardener</a>, giving the cured FRP part its final colour.',
+        a: 'It is stirred thoroughly into the resin or gelcoat first, before adding an <a href="/products/mekp-hardener/">MEKP hardener</a> and accelerator — mixing pigment in after catalysing risks uneven colour as working time runs out.',
       },
     ],
     relatedSlugs: [
       "gp-clear-resin",
+      "gp-gelcoat-resin",
+      "gp-yellow-resin",
+      "vinyl-ester-resin",
       "sheet-grade-yellow-resin",
       "mekp-hardener",
-      "fibre-glass-mat",
     ],
   },
   {
@@ -1501,6 +1522,8 @@ export const products = [
     price: "₹120 / kg",
     image: "fibre-glass-mat.jpg",
     images: ["fibre-glass-mat-2.jpg"],
+    imageAlt:
+      "Glass Fiber — E-glass chopped strand mat (CSM) reinforcement roll by Samrat Poly Resins",
     tdsUrl: "/tds/fibre-glass-mat-tds.pdf",
     seo: {
       title: "Glass Fiber Mat – E-Glass Chopped Strand Mat",
@@ -1514,34 +1537,44 @@ export const products = [
         "Fibreglass Mat",
       ],
     },
-    // Reorganised into productDetails/techSpecs — every value is unchanged
-    // from the original single `specs` table, just regrouped. "Usage /
-    // Application" is not repeated in the table since it's already covered
-    // by the applications list below. No new values invented.
+    // Reorganised into productDetails/techSpecs, values cross-checked against
+    // SPR-TDS-GFM Rev. 01 — do not edit without an updated TDS. Fiber Length
+    // corrected from an earlier, unverified "3 mm" to the TDS-verified 50 mm
+    // (also the standard CSM chop length industry-wide). "Types:
+    // Orthophthalic" removed — that field described a resin classification,
+    // not a property of a reinforcement product, and didn't belong here.
+    // Tensile Strength is labelled explicitly as a glass-filament property,
+    // not a claim about the finished laminate (composite tensile strength is
+    // far lower and depends on the resin system and lay-up). Binder
+    // compatibility beyond polyester/vinyl ester is not stated here as a
+    // flat spec — see the FAQ below for the hedged epoxy note.
     productDetails: {
       "Minimum Order Quantity": "500 kg",
       "Packaging Type": "Roll",
       "Roll Width": "1040 mm",
+      "Roll Weight": "30 kg/roll",
+      "Shelf Life": "24 months",
     },
     techSpecs: {
       "Glass Type": "E-Glass",
-      "Form": "Chopped Strand",
-      "Tex / GSM": "300 g/m² & 450 g/m²",
-      "Sizing Type": "Polyester",
-      "Fiber Length": "3 mm",
+      "Form": "Chopped Strand Mat",
+      "Area Weight (GSM)": "300 g/m² & 450 g/m²",
+      "Fiber Length": "50 mm",
+      "Sizing Type": "Polyester-compatible",
       "Grade Standard": "Industrial Grade",
-      "Types": "Orthophthalic",
+      "Tensile Strength (Glass Filament)": "≥ 2,000 MPa",
+      "Moisture Content": "≤ 0.10%",
     },
     tagline: "Reinforcement that gives composites their strength.",
     description:
-      "E-glass chopped strand mat reinforcement used together with polyester resin to form FRP composites. It acts as the structure that the resin binds together, providing rigidity, strength and shape to the final product. Supplied in industrial-grade rolls with polyester sizing for good resin compatibility, it is widely used across marine, automotive and construction applications. Available in 1040 mm wide rolls at 300 g/m² and 450 g/m², with a minimum order quantity of 500 kg, its polyester sizing ensures reliable wet-out and bonding with polyester resin systems, giving composite laminates the reinforcement they need for consistent strength and shape retention.",
+      "Glass Fiber is Samrat Poly Resins' E-glass chopped strand mat (CSM) — a non-woven reinforcement made from 50 mm chopped E-glass strands bound with an emulsion binder, supplied with a polyester-compatible sizing. As the reinforcement in an FRP laminate, it carries the load-bearing strength that resin alone cannot provide: the individual glass filaments have very high tensile strength, though the strength of the finished laminate depends on the resin system, fibre loading and how thoroughly the resin wets out every strand. Supplied in industrial-grade 1040 mm wide rolls at 300 g/m² and 450 g/m², with a minimum order quantity of 500 kg, it wets out cleanly with polyester and vinyl ester resin systems for hand layup and spray-up reinforcement across marine, automotive and construction FRP work.",
     usageNote:
-      'Glass Fiber is reinforced into <a href="/products/gp-clear-resin/">GP Clear Resin</a> or another general-purpose polyester resin, catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a>, for hand layup and spray-up work. Mould-facing surfaces can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a>.',
+      'Glass Fiber is wet out with a catalysed resin such as <a href="/products/gp-clear-resin/">GP Clear Resin</a> or <a href="/products/gp-yellow-resin/">GP Yellow Resin</a>, using an <a href="/products/mekp-hardener/">MEKP hardener</a>, for hand layup and spray-up work. Its chemical resistance in a finished laminate comes from the resin that encapsulates it rather than from the fibre itself, so projects facing harsher chemical exposure should look at <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> as the resin-side upgrade. Mould-facing surfaces can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> first.',
     features: [
-      "E-glass chopped strand, 3 mm fibre length",
+      "E-glass chopped strand mat, 50 mm fibre length",
       "300 g/m² and 450 g/m² weights available",
-      "1040 mm roll width, polyester sizing",
-      "Fast curing, good chemical resistance once wet out",
+      "1040 mm roll width, polyester-compatible sizing",
+      "High filament-level tensile strength for laminate reinforcement",
       "Reliable resin wet-out for consistent laminate strength",
       "Minimum order 500 kg",
     ],
@@ -1568,11 +1601,11 @@ export const products = [
     faqs: [
       {
         q: "What is Glass Fiber (chopped strand mat)?",
-        a: "Glass Fiber is an E-glass chopped strand mat reinforcement used together with polyester resin to form FRP composites, providing the structural rigidity and strength that the resin alone cannot.",
+        a: "Glass Fiber is Samrat Poly Resins' E-glass chopped strand mat (CSM) — a non-woven reinforcement of 50 mm chopped E-glass strands, used together with a polyester or vinyl ester resin to form FRP composites. It provides the load-bearing reinforcement a cured resin alone cannot supply; the resin then provides the shape, surface finish and cure.",
       },
       {
         q: "What glass type and fibre length is used?",
-        a: "It is E-glass with a 3 mm chopped fibre length, industrial grade.",
+        a: "It is E-glass with a 50 mm chopped fibre length, industrial grade — the standard chop length for chopped strand mat used in hand layup and spray-up reinforcement.",
       },
       {
         q: "What weights (GSM) are available?",
@@ -1580,11 +1613,11 @@ export const products = [
       },
       {
         q: "What is the roll width and packaging?",
-        a: "It is supplied in 1040 mm wide rolls.",
+        a: "It is supplied in 1040 mm wide rolls, approximately 30 kg per roll.",
       },
       {
-        q: "Is the sizing compatible with polyester resin?",
-        a: "Yes. It carries a polyester sizing formulated for good compatibility and wet-out with polyester resin systems.",
+        q: "Which resin systems is Glass Fiber compatible with?",
+        a: 'Its polyester-compatible sizing wets out cleanly with polyester and <a href="/products/vinyl-ester-resin/">vinyl ester</a> resin systems, which share the same ester-based chemistry. It can also be used with epoxy resin, though epoxy-specific sizings are formulated for that chemistry specifically, so results with epoxy systems should be tested for your particular application.',
       },
       {
         q: "What is the minimum order quantity for Glass Fiber?",
@@ -1592,11 +1625,20 @@ export const products = [
       },
       {
         q: "How is Glass Fiber used with resin?",
-        a: 'It is laid into the mould and wet out with a catalysed polyester resin such as our <a href="/products/gp-clear-resin/">GP Clear Resin</a>, typically catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a>, so the resin binds around the glass fibre reinforcement as it cures.',
+        a: 'It is laid into the mould and wet out with a catalysed resin such as our <a href="/products/gp-clear-resin/">GP Clear Resin</a> or <a href="/products/gp-yellow-resin/">GP Yellow Resin</a>, typically catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a>. The fibre itself does not cure — only the resin does, binding around the glass fibre reinforcement as it sets.',
+      },
+      {
+        q: "Does Glass Fiber's tensile strength describe the finished FRP laminate?",
+        a: "No. The ≥2,000 MPa figure describes the individual glass filament's own tensile strength, which is very high. Once chopped, randomly oriented and bound into a cured resin laminate, the composite's overall tensile strength is substantially lower than the filament strength — how much lower depends on the resin system, fibre loading and lay-up quality.",
+      },
+      {
+        q: "Does Glass Fiber itself provide chemical resistance?",
+        a: 'Not independently. Chemical resistance in a finished FRP laminate comes from the resin that fully encapsulates the glass fibre — for harsher chemical exposure, the resin choice (for example, stepping up to <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a>) matters more than the reinforcement itself.',
       },
     ],
     relatedSlugs: [
       "gp-clear-resin",
+      "gp-yellow-resin",
       "mekp-hardener",
       "gp-gelcoat-resin",
       "vinyl-ester-resin",
@@ -1609,11 +1651,13 @@ export const products = [
     price: "₹700 / kg",
     image: "epoxy-clear-casting-resin.jpg",
     images: ["epoxy-clear-casting-resin-2.jpg"],
+    imageAlt:
+      "Epoxy Clear Casting Resin — crystal-clear two-part epoxy for river table and decorative casting by Samrat Poly Resins",
     tdsUrl: "/tds/epoxy-clear-casting-resin-tds.pdf",
     seo: {
-      title: "Epoxy Clear Casting Resin – River Table Resin",
+      title: "Epoxy Clear Casting Resin – Two-Part Epoxy",
       description:
-        "Epoxy Clear Casting Resin — a crystal-clear, high-gloss two-part epoxy for river tables, jewellery and decorative casting, curing in around 24 hours.",
+        "Epoxy Clear Casting Resin — a crystal-clear, high-gloss two-part epoxy (2:1 mix) for river tables, jewellery and decorative casting. Full cure in 72 hours.",
       keywords: [
         "Epoxy Clear Casting Resin",
         "Casting Epoxy Resin",
@@ -1622,40 +1666,51 @@ export const products = [
         "Epoxy Casting Resin",
       ],
     },
-    // Reorganised into productDetails/techSpecs — every value is unchanged
-    // from the original single `specs` table, just regrouped. "Usage /
-    // Application" is not repeated in the table since it's already covered
-    // by the applications list below. No new values invented.
+    // Reorganised into productDetails/techSpecs, values cross-checked against
+    // SPR-TDS-CCR Rev. 01 (chemist-verified block) — do not edit without an
+    // updated TDS. Mix ratio corrected from an earlier, unverified "1:1" to
+    // the confirmed 2:1 (resin:hardener by weight); Curing Time split into
+    // its two verified stages (initial vs. full cure) rather than a single
+    // "24 hours" figure. Viscosity, Pot Life, Hardness, Specific Gravity,
+    // Shrinkage and VOC added — none of these were in the original table.
     productDetails: {
       "Minimum Order Quantity": "100 kg",
       "Pack Size": "20 kg",
       "Colour / Appearance": "Clear",
       "Finish": "High Gloss",
+      "Shelf Life": "12 months (unopened)",
+      "Storage Temperature": "20–30 °C",
     },
     techSpecs: {
-      "Resin Type": "Epoxy",
-      "Max Casting Depth": "30 mm",
-      "Curing Time": "24 hours",
-      "Viscosity": "Medium",
-      "Mix Ratio": "1:1",
+      "Resin Type": "Epoxy, Two-Part System",
+      "Mix Ratio": "2:1 (Resin : Hardener, by weight)",
+      "Viscosity": "900 cPs (at 25°C)",
+      "Initial Cure Time": "24 hours (at 25°C)",
+      "Full Cure Time": "72 hours (at 25°C)",
+      "Pot Life": "40 minutes (at 25°C)",
+      "Max Casting Depth": "30 mm per pour",
+      "Hardness (Fully Cured)": "Shore D 82",
+      "Specific Gravity / Density": "1.10 g/cm³",
+      "Shrinkage": "< 0.2%",
     },
     tagline: "Crystal-clear, bubble-resistant resin for casting and art.",
     description:
-      "A premium two-part epoxy resin formulated for casting, river tables, jewellery and decorative artwork. Mixed 1:1, it cures in around 24 hours to a crystal-clear, high-gloss finish with low bubble formation, suited to deep pours up to 30 mm and fine detail work where optical clarity matters. Supplied in 20 kg packs, with a minimum order quantity of 100 kg, its medium viscosity gives good self-levelling in flat pours while still holding fine detail in decor items and jewellery moulds.",
+      "Epoxy Clear Casting Resin is Samrat Poly Resins' two-part epoxy system for casting, river tables, jewellery and decorative artwork — a different resin chemistry entirely from our polyester-based GP Clear Resin, GP Yellow Resin, GP Gelcoat Resin, Vinyl Ester Resin and Lamination Resin, all of which cure with an MEKP and cobalt system rather than a two-part epoxy reaction. Mixed 2:1 by weight (resin:hardener), it reaches an initial, de-mouldable cure in around 24 hours and a full cure in around 72 hours, delivering a crystal-clear, high-gloss finish with low bubble formation. Its 900 cPs viscosity gives moderate self-levelling in a contained mould and supports casting depths up to 30 mm per pour — deeper work such as most river tables is built up in stages rather than poured all at once. Once fully cured it reaches Shore D 82 hardness with under 0.2% shrinkage, and its UV-stabilised formulation is significantly more resistant to yellowing than a standard epoxy, though no clear epoxy is entirely immune to gradual colour change under prolonged UV exposure. Supplied in 20 kg packs, with a minimum order quantity of 100 kg.",
     usageNote:
-      'Epoxy Clear Casting Resin is mixed 1:1 with a compatible <a href="/products/epoxy-hardener/">epoxy hardener</a> before pouring. For a self-levelling grade formulated specifically for floor art and table-top work, see our <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a>; for fast UV-curing craft work rather than a 24-hour cast, our <a href="/products/uv-resin/">UV Resin</a> may be more suitable.',
+      'Epoxy Clear Casting Resin is mixed 2:1 by weight with a compatible <a href="/products/epoxy-hardener/">Epoxy Hardener</a> before pouring — accurate weight measurement matters more here than with a polyester resin dosed by catalyst percentage. For a self-levelling grade formulated specifically for floor art and table-top coating rather than deeper casting, see our <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a>; for fast UV/LED-curing craft work instead of a multi-day room-temperature cure, our <a href="/products/uv-resin/">UV Resin</a> may be more suitable. Our polyester-based <a href="/products/gp-clear-resin/">GP Clear Resin</a> and <a href="/products/gp-yellow-resin/">GP Yellow Resin</a> use an entirely different MEKP/cobalt cure system and are not interchangeable with this epoxy system for FRP structural laminating work.',
     features: [
-      "Crystal clear, high-gloss finish",
-      "1:1 mix ratio, 24-hour cure",
-      "Low bubble formation, max casting depth 30 mm",
-      "Medium viscosity for good self-levelling and detail retention",
+      "Crystal-clear, high-gloss finish with low bubble formation",
+      "2:1 mix ratio by weight; 24-hour initial cure, 72-hour full cure",
+      "Casting depths up to 30 mm per pour, built up in stages for deeper work",
+      "Shore D 82 hardness and under 0.2% shrinkage once fully cured",
+      "UV-stabilised formulation, more yellowing-resistant than standard epoxy",
       "Minimum order 100 kg",
     ],
     applications: [
-      "River tables and flooring",
-      "Jewellery making and decorative items",
-      "Artwork and industrial casting",
-      "Decor items and detailed mould casting",
+      "River tables and wood-resin furniture",
+      "Jewellery making and small decorative casting",
+      "Art and industrial casting",
+      "Decor items requiring optical clarity and casting depth",
     ],
     industries: [
       "Furniture & river table manufacturing",
@@ -1674,23 +1729,31 @@ export const products = [
     faqs: [
       {
         q: "What is Epoxy Clear Casting Resin?",
-        a: "Epoxy Clear Casting Resin is a premium two-part epoxy system formulated for casting, river tables, jewellery and decorative artwork, curing to a crystal-clear, high-gloss finish.",
+        a: "Epoxy Clear Casting Resin is a two-part epoxy system for casting, river tables, jewellery and decorative artwork — a different chemistry from Samrat's polyester-based GP Clear Resin, GP Yellow Resin, GP Gelcoat Resin, Vinyl Ester Resin and Lamination Resin, which all cure with an MEKP and cobalt system rather than a two-part epoxy reaction.",
       },
       {
         q: "What is the mix ratio and cure time?",
-        a: "It is mixed 1:1 and cures in around 24 hours.",
+        a: "It is mixed 2:1 by weight (resin:hardener). It reaches an initial, de-mouldable cure in around 24 hours and a full cure in around 72 hours.",
       },
       {
         q: "What is the maximum casting depth?",
-        a: "Maximum casting depth is 30 mm per pour.",
+        a: "Maximum casting depth is 30 mm per pour. Deeper castings, such as most river tables, are built up in stages — pouring one 30 mm layer, letting it reach initial cure, then pouring the next — rather than poured all at once.",
       },
       {
         q: "Does it form bubbles during casting?",
-        a: "It is formulated for low bubble formation, giving a clear, flawless finish suited to fine detail work.",
+        a: "It is formulated for low bubble formation. Surface bubbles are typically still released with a heat gun or torch passed briefly over a fresh pour, the standard technique for epoxy casting generally.",
+      },
+      {
+        q: "Is Epoxy Clear Casting Resin UV resistant, and will it stay non-yellowing?",
+        a: "It uses a UV-stabilised formulation that is significantly more resistant to yellowing than a standard, unstabilised epoxy. No clear epoxy — including UV-stabilised formulations — is permanently immune to yellowing under prolonged, intense UV exposure, so this is best understood as yellowing-resistant rather than an absolute guarantee.",
       },
       {
         q: "What is the difference between Epoxy Clear Casting Resin and Epoxy Art Resin?",
-        a: 'Epoxy Clear Casting Resin is a medium-viscosity 1:1 system suited to deep pours up to 30 mm. Our <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a> is a self-levelling 2:1 system tuned specifically for floor art and table-top finishes. Choose based on your pour depth and finish requirement.',
+        a: 'Both are 2:1 epoxy systems with a similar cure schedule. Epoxy Clear Casting Resin is suited to deeper pours up to 30 mm per stage, such as river tables and jewellery moulds. Our <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a> is formulated for self-levelling flatness on horizontal surfaces such as floor art and table tops. Choose based on whether you need casting depth or a level surface coat.',
+      },
+      {
+        q: "How is it different from Samrat's polyester resins, like GP Clear Resin or Vinyl Ester Resin?",
+        a: 'Epoxy Clear Casting Resin cures through a two-part epoxy reaction (2:1 by weight, multi-day cure), while <a href="/products/gp-clear-resin/">GP Clear Resin</a>, <a href="/products/gp-yellow-resin/">GP Yellow Resin</a> and <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> are polyester-family resins cured with an MEKP catalyst and cobalt accelerator in minutes to hours. Epoxy also shrinks far less on cure than polyester, which is why it is preferred for dimensionally accurate, optically clear casting work rather than structural FRP laminating.',
       },
       {
         q: "What packaging and minimum order quantity does it come in?",
@@ -1698,13 +1761,22 @@ export const products = [
       },
       {
         q: "How is Epoxy Clear Casting Resin used?",
-        a: 'It is mixed 1:1 with a compatible <a href="/products/epoxy-hardener/">epoxy hardener</a> and poured into the mould, where it self-levels and cures over approximately 24 hours.',
+        a: 'It is mixed 2:1 by weight with a compatible <a href="/products/epoxy-hardener/">Epoxy Hardener</a>, poured into the mould, and left to reach an initial cure over about 24 hours and a full cure over about 72 hours.',
       },
     ],
     relatedSlugs: [
       "epoxy-art-resin",
       "epoxy-hardener",
       "uv-resin",
+    ],
+    // Card-only stubs (draft: true) approved via Step 1 audit + Step 3 —
+    // slugs prefixed "epoxy-clear-casting-resin-" so they stay unambiguous
+    // against Epoxy Art Resin's own future application slugs. See
+    // applications.js for the stub entries themselves.
+    applicationSlugs: [
+      "epoxy-clear-casting-resin-for-river-tables",
+      "epoxy-clear-casting-resin-for-jewellery-casting",
+      "epoxy-clear-casting-resin-casting-process",
     ],
   },
   {
@@ -1794,7 +1866,7 @@ export const products = [
       },
       {
         q: "What is the difference between Epoxy Art Resin and Epoxy Clear Casting Resin?",
-        a: 'Epoxy Art Resin is a 2:1, self-levelling system tuned for floor art and table-top surfaces. Our <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> is a 1:1 system suited to deeper pours up to 30 mm. Choose based on whether you need a self-levelling surface coat or a deeper cast.',
+        a: 'Both are 2:1 epoxy systems with a similar cure schedule. Epoxy Art Resin is formulated for self-levelling flatness on floor art and table-top surfaces. Our <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> is suited to deeper pours up to 30 mm per stage. Choose based on whether you need a self-levelling surface coat or a deeper cast.',
       },
       {
         q: "What packaging and minimum order quantity does it come in?",
@@ -1946,18 +2018,18 @@ export const products = [
     },
     techSpecs: {
       "Hardener Type": "Polyamide",
-      "Mixing Ratio (Resin:Hardener)": "1:2",
+      "Mixing Ratio (Resin:Hardener)": "2:1",
       "Viscosity": "Low",
       "Full Cure Time": "24 hours",
     },
     tagline: "Polyamide hardener for a super-gloss epoxy cure.",
     description:
-      "A premium-quality polyamide curing agent formulated to provide excellent curing performance when used with compatible epoxy resins. Mixed 1:2 (resin:hardener) and fully curing in around 24 hours, it delivers superior bonding strength, outstanding mechanical properties and excellent chemical and moisture resistance. It is solvent-free and low-yellowing, keeping cured epoxy work clear and glossy over time, and is supplied in 20 kg packs with a minimum order quantity of 100 kg for art, casting and industrial epoxy applications.",
+      "A premium-quality polyamide curing agent formulated to provide excellent curing performance when used with compatible epoxy resins. Mixed 2:1 (resin:hardener) and fully curing in around 24 hours, it delivers superior bonding strength, outstanding mechanical properties and excellent chemical and moisture resistance. It is solvent-free and low-yellowing, keeping cured epoxy work clear and glossy over time, and is supplied in 20 kg packs with a minimum order quantity of 100 kg for art, casting and industrial epoxy applications.",
     usageNote:
-      'Epoxy Hardener is mixed 1:2 with a compatible epoxy resin such as our <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> or <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a>. For fast UV/LED-curing craft work instead of a 24-hour room-temperature cure, see our <a href="/products/uv-resin/">UV Resin</a>.',
+      'Epoxy Hardener is mixed 2:1 (resin:hardener) with a compatible epoxy resin such as our <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> or <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a>. For fast UV/LED-curing craft work instead of a 24-hour room-temperature cure, see our <a href="/products/uv-resin/">UV Resin</a>.',
     features: [
       "Polyamide hardener, clear/transparent",
-      "1:2 mix ratio (resin:hardener), 24-hour full cure",
+      "2:1 mix ratio (resin:hardener), 24-hour full cure",
       "Excellent adhesion and chemical resistance",
       "Solvent-free, low-yellowing formulation",
       "Bubble-free, super-gloss finish",
@@ -1989,7 +2061,7 @@ export const products = [
       },
       {
         q: "What is the mixing ratio for Epoxy Hardener?",
-        a: "It is mixed 1:2 (resin:hardener) and fully cures in around 24 hours.",
+        a: "It is mixed 2:1 (resin:hardener) and fully cures in around 24 hours.",
       },
       {
         q: "Is Epoxy Hardener solvent-free?",
@@ -2126,21 +2198,22 @@ export const products = [
     images: ["pet-resin-2.jpg"],
     tdsUrl: "/tds/pet-resin-tds.pdf",
     seo: {
-      title: "PET Resin – Sheet-Grade Polyester Resin",
+      title: "PET Resin – PET-Modified Polyester Resin",
       description:
-        "PET Resin — a sheet-grade polyethylene terephthalate resin for beverage bottles, pharmaceutical packaging and food-grade containers. Bulk supply.",
+        "PET Resin — a PET-modified unsaturated polyester resin (liquid) for FRP sheet lamination and panel manufacturing. Sheet grade, bulk supply from 1,000 kg.",
       keywords: [
         "PET Resin",
-        "Polyethylene Terephthalate Resin",
+        "PET-Modified Polyester Resin",
+        "PET-Modified Unsaturated Polyester Resin",
         "Sheet Grade PET Resin",
-        "PET Packaging Resin",
-        "Bottle Grade PET Resin",
+        "FRP Sheet Lamination Resin",
       ],
     },
-    // Reorganised into productDetails/techSpecs — every value is unchanged
-    // from the original single `specs` table, just regrouped. "Usage /
-    // Application" is not repeated in the table since it's already covered
-    // by the applications list below. No new values invented.
+    // Corrected per SPR-TDS-PET (July 2026): this is a PET-modified liquid
+    // unsaturated polyester resin, not a solid thermoplastic bottle-grade
+    // PET resin. The previous IV value (0.90 dl/g) and all bottle/
+    // packaging/ISBM claims did not appear in the TDS and have been
+    // removed — every value below is TDS-verified.
     productDetails: {
       "Minimum Order Quantity": "1000 kg",
       "Packaging Size": "75 kg",
@@ -2148,61 +2221,66 @@ export const products = [
       "Country of Origin": "India",
     },
     techSpecs: {
-      "IV Value": "0.90 dl/g",
+      "Resin Type": "PET-Modified Unsaturated Polyester Resin (Liquid)",
       "Grade": "Sheet Grade",
       "Physical Form": "Liquid",
-      "End Use Process": "Fibre Sheets",
+      "Viscosity": "450–650 cPs (at 25°C)",
+      "Solid Content": "60–64%",
+      "Specific Gravity": "1.05–1.12 g/cm³ (at 25°C)",
+      "HDT": "70–85°C (cured)",
+      "Shelf Life": "6 Months (Unopened)",
+      "End Use": "Fibre Sheets, PET Sheets",
     },
-    tagline: "Sheet-grade PET resin for packaging and containers.",
+    tagline: "PET-modified liquid polyester resin for sheet and panel lamination.",
     description:
-      "A premium-quality polyethylene terephthalate (PET) resin designed for manufacturing high-performance plastic packaging and industrial containers. With an IV value of 0.90 dl/g and pale-yellow colour, it provides clarity, mechanical strength, impact resistance and dimensional stability with excellent processability for injection stretch blow moulding and fibre sheet manufacturing. Manufactured in India and supplied in 75 kg packs, with a minimum order quantity of 1,000 kg, it is a sheet-grade resin suited to beverage, pharmaceutical, cosmetic and food-grade packaging manufacturers.",
+      "PET Resin is a premium-quality PET-modified unsaturated polyester resin — a liquid, styrene-compatible resin system incorporating polyethylene terephthalate content, not a solid thermoplastic PET material. Pale-yellow in appearance, it is manufactured for PET sheet and fibre sheet products as well as FRP sheet lamination and panel manufacturing, offering mechanical strength, impact resistance, dimensional stability and low moisture absorption with good wet-out for sheet and panel processing. Manufactured in India and supplied in 75 kg packs, with a minimum order quantity of 1,000 kg.",
     features: [
-      "IV value 0.90 dl/g, sheet grade",
-      "Exceptional transparency and low moisture absorption",
-      "Durable and recyclable",
-      "Good processability for injection stretch blow moulding and fibre sheet manufacturing",
+      "PET-modified, liquid unsaturated polyester resin — sheet grade",
+      "High strength and toughness, with low moisture absorption",
+      "Durable and recyclable PET content",
+      "Good wet-out for sheet and laminate processing",
       "Supplied in 75 kg packs, minimum order 1000 kg",
     ],
     applications: [
-      "Beverage, mineral water and edible-oil bottles",
-      "Pharmaceutical and cosmetic packaging",
-      "Food-grade containers and jars",
-      "Fibre and sheet manufacturing",
+      "PET sheets and fibre sheet products",
+      "FRP sheet lamination and panel manufacturing",
     ],
     industries: [
-      "Packaging & bottling industry",
-      "Pharmaceutical & cosmetic packaging",
-      "Food & beverage industry",
+      "FRP sheet & panel manufacturing",
       "Fibre & sheet manufacturing",
     ],
     whyChoose: [
       "ISO 9001:2015 certified quality management system",
       "Manufacturing polyester resins since 2017",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
-      "Consistent IV value of 0.90 dl/g for reliable processability",
+      "Consistent 450–650 cPs viscosity for reliable sheet and laminate processing",
       "Supplied in 75 kg packs, minimum order 1,000 kg",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
     ],
     faqs: [
       {
         q: "What is PET Resin?",
-        a: "PET Resin is a sheet-grade polyethylene terephthalate resin used for manufacturing plastic packaging, bottles and industrial containers.",
+        a: "PET Resin is a PET-modified unsaturated polyester resin — a liquid, styrene-compatible resin system incorporating polyethylene terephthalate content — used for PET sheet, fibre sheet and FRP sheet lamination work. It is not a solid thermoplastic PET material.",
       },
       {
-        q: "What is the IV value of PET Resin, and why does it matter?",
-        a: "IV (intrinsic viscosity) value is 0.90 dl/g. A consistent IV value gives predictable processability and mechanical performance during stretch blow moulding and sheet manufacturing.",
+        q: "Is PET Resin the same as bottle-grade PET used for beverage bottles?",
+        a: "No. This is a liquid unsaturated polyester resin for FRP sheet lamination and panel manufacturing, not the solid thermoplastic PET resin or chips processed by injection stretch blow moulding into bottles, preforms or packaging.",
+      },
+      {
+        q: "What is the viscosity of PET Resin?",
+        a: "450–650 cPs at 25°C, with a solid content of 60–64% and specific gravity of 1.05–1.12 g/cm³.",
       },
       {
         q: "What grade is this PET Resin?",
-        a: "It is a sheet grade, suited to fibre and sheet manufacturing as well as bottle and container applications.",
+        a: "It is a sheet grade resin, suited to PET sheet and fibre sheet products as well as FRP sheet lamination and panel manufacturing.",
       },
       {
         q: "What applications is PET Resin suited for?",
-        a: "It is used for beverage, mineral water and edible-oil bottles, pharmaceutical and cosmetic packaging, food-grade containers and jars, and fibre/sheet manufacturing.",
+        a: "It is used for PET sheets and fibre sheet products, and for FRP sheet lamination and panel manufacturing.",
       },
       {
         q: "Is PET Resin recyclable?",
-        a: "Yes. It is durable and recyclable, consistent with standard PET packaging recycling streams.",
+        a: "It incorporates PET content and is formulated to be durable and recyclable, consistent with standard sheet and laminate resin systems.",
       },
       {
         q: "What packaging and minimum order quantity does PET Resin come in?",
@@ -2323,40 +2401,63 @@ export const products = [
     price: "₹135 / kg",
     image: "vinyl-ester-resin.jpg",
     images: ["vinyl-ester-resin-2.jpg"],
+    imageAlt:
+      "Vinyl Ester Resin — Bisphenol-A epoxy vinyl ester resin for chemical-resistant FRP by Samrat Poly Resins",
     tdsUrl: "/tds/vinyl-ester-resin-tds.pdf",
     seo: {
       title: "Vinyl Ester Resin – Chemical-Resistant Resin",
       description:
-        "Vinyl Ester Resin — a high-performance resin for chemical storage tanks, pipelines and cooling towers, resisting acids, alkalis and solvents.",
+        "Vinyl Ester Resin — a Bisphenol-A epoxy vinyl ester for chemical tanks, pipelines and filament winding, resisting acids, alkalis and solvents.",
       keywords: [
         "Vinyl Ester Resin",
         "Chemical Resistant Resin",
         "Corrosion Resistant Resin",
         "FRP Tank Resin",
-        "Industrial Resin Manufacturer",
+        "Filament Winding Resin",
       ],
     },
-    // No productDetails/techSpecs table yet — unlike the other GP-family
-    // pages, no verified numeric spec sheet (viscosity, gel time, packaging,
-    // MOQ, purity, etc.) has been supplied for this grade. Per standing
-    // instruction, values are never invented to fill the table; this section
-    // will be added once a finalized TDS is provided for Vinyl Ester Resin.
+    // productDetails/techSpecs cross-checked against SPR-TDS-VER Rev. 01
+    // (chemist-verified) — do not edit without an updated TDS. HDT is
+    // explicitly labelled "with post-cure" since independent sources put
+    // standard, non-post-cured bisphenol vinyl ester HDT closer to 100°C;
+    // the TDS's single 110°C figure isn't tied to a specific cure schedule,
+    // so it is not presented as an unconditional result. No Colour/
+    // Appearance field — not part of this TDS, not invented.
+    productDetails: {
+      "Minimum Order Quantity": "225 kg",
+      "Packaging": "225 kg Drum",
+      "Shelf Life": "6 months",
+      "Storage Temperature": "Below 25 °C",
+    },
+    techSpecs: {
+      "Resin Type": "Bisphenol-A Epoxy Vinyl Ester",
+      "Curing System": "MEKP Catalyst — Room Temp, Heat Cure (60–120°C) or Post-Cure",
+      "Viscosity": "350 cPs (at 25°C)",
+      "Gel Time": "15–20 minutes (1.5% MEKP)",
+      "Styrene Content": "40%",
+      "Specific Gravity / Density": "1.05 g/cm³",
+      "Heat Deflection Temperature (HDT)": "Up to 110°C (with post-cure)",
+      "Flash Point": "32°C (closed cup)",
+      "MEKP Dosage": "1.5%",
+    },
     tagline: "High-performance resin for chemical and corrosion resistance.",
     description:
-      "A high-performance resin engineered for demanding industrial applications requiring exceptional chemical resistance, corrosion protection and mechanical strength. It offers excellent adhesion, superior toughness, thermal stability and resistance to water, acids, alkalis and solvents, with low shrinkage on cure — properties that go beyond what a standard orthophthalic general-purpose resin can offer in aggressive chemical environments. Samrat Poly Resins supplies Vinyl Ester Resin for FRP fabricators building tanks, pipelines and structures that must withstand sustained chemical or corrosive exposure.",
+      "Vinyl Ester Resin is Samrat Poly Resins' Bisphenol-A based epoxy vinyl ester system — a chemistry that sits between our general-purpose orthophthalic grades (GP Clear Resin, GP Yellow Resin) and a true two-part epoxy system like our Epoxy Clear Casting Resin. Its epoxy backbone gives it genuinely superior chemical resistance and toughness over standard polyester, while it still cures with the same MEKP catalyst and free-radical mechanism as our other polyester-family resins, not the amine-based two-part reaction a true epoxy uses. With a viscosity of 350 cPs and a 15–20 minute gel time at 1.5% MEKP, it processes by hand layup, spray-up, filament winding or pultrusion. A room-temperature cure is standard; where maximum heat deflection performance is needed, an optional heat cure (60–120°C) and post-cure can raise its heat deflection temperature to around 110°C. Samrat Poly Resins supplies Vinyl Ester Resin in 225 kg drums for FRP fabricators building tanks, pipelines and structures that must withstand sustained chemical or corrosive exposure beyond what a standard orthophthalic resin is rated for.",
     usageNote:
-      'Vinyl Ester Resin is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a>, in the same way as our general-purpose grades. Where chemical resistance beyond ordinary orthophthalic performance is not required, our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is more cost-effective for general FRP work.',
+      'Vinyl Ester Resin is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a>, using the same lay-up techniques as our general-purpose grades. Where chemical resistance beyond ordinary orthophthalic performance isn\'t required, <a href="/products/gp-clear-resin/">GP Clear Resin</a> or <a href="/products/gp-yellow-resin/">GP Yellow Resin</a> are more cost-effective for general FRP work, and <a href="/products/lamination-resin/">Lamination Resin</a> remains the better choice for fast-cycle door and plywood lamination rather than chemical-resistant structural work. Mould-facing surfaces can still be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> ahead of a vinyl ester laminate. For decorative, unreinforced casting work rather than structural chemical-resistant laminating, our two-part <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> uses a different, amine-cured epoxy chemistry entirely and is not a substitute for this product.',
     features: [
-      "Exceptional chemical and corrosion resistance",
-      "Superior toughness and thermal stability",
+      "Bisphenol-A epoxy vinyl ester chemistry — genuinely superior chemical resistance to standard orthophthalic polyester",
       "Resists water, acids, alkalis and solvents",
-      "Excellent adhesion to fibreglass reinforcement",
-      "Low shrinkage on cure",
+      "Lower shrinkage on cure than standard orthophthalic polyester",
+      "Cures with the same MEKP catalyst system as our general-purpose grades — room temperature, heat cure or post-cure",
+      "350 cPs viscosity suited to hand layup, spray-up, filament winding and pultrusion",
+      "Heat deflection temperature up to 110°C with post-cure",
     ],
     applications: [
       "FRP tanks and chemical storage vessels",
       "Pipelines, ducts and scrubbers",
       "Cooling towers, pressure vessels and offshore structures",
+      "Marine components, filament winding and pultrusion",
     ],
     industries: [
       "Chemical storage & processing",
@@ -2375,27 +2476,35 @@ export const products = [
     faqs: [
       {
         q: "What is Vinyl Ester Resin?",
-        a: "Vinyl Ester Resin is a high-performance resin engineered for demanding industrial applications that require exceptional chemical resistance, corrosion protection and mechanical strength, beyond what a standard orthophthalic resin offers.",
+        a: "Vinyl Ester Resin is a Bisphenol-A based epoxy vinyl ester resin — a chemistry that combines an epoxy backbone with the same MEKP-catalysed, styrene-based cure system as our general-purpose polyester grades. It sits between standard orthophthalic polyester and a true two-part epoxy system in both chemical resistance and cost.",
       },
       {
-        q: "What is the difference between Vinyl Ester Resin and GP Clear Resin?",
-        a: 'Vinyl Ester Resin is formulated specifically for superior chemical, corrosion and thermal resistance in aggressive environments. Our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is a general-purpose orthophthalic resin for everyday FRP work at a lower cost, without the same chemical-resistance profile.',
+        q: "What is the difference between Vinyl Ester Resin and GP Clear Resin or GP Yellow Resin?",
+        a: 'Vinyl Ester Resin\'s epoxy backbone gives it genuinely superior chemical, corrosion and water resistance than either general-purpose grade. <a href="/products/gp-clear-resin/">GP Clear Resin</a> and <a href="/products/gp-yellow-resin/">GP Yellow Resin</a> are more cost-effective orthophthalic resins for everyday FRP work that doesn\'t face sustained chemical exposure.',
+      },
+      {
+        q: "What is the difference between Vinyl Ester Resin and Epoxy Clear Casting Resin?",
+        a: 'They are different resin chemistries entirely, despite both offering strong performance. Vinyl Ester Resin cures with an MEKP catalyst in a styrene-based system, the same as our general-purpose polyester grades, and is used as a structural laminating resin with glass fibre reinforcement. Our <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> is a true two-part, amine-cured epoxy system used unreinforced for clear decorative casting. They are not interchangeable.',
       },
       {
         q: "What chemicals does Vinyl Ester Resin resist?",
-        a: "It resists water, acids, alkalis and solvents, making it suitable for chemical storage tanks, pipelines and scrubbers.",
+        a: "It resists water, acids, alkalis and solvents, making it suitable for chemical storage tanks, pipelines and scrubbers facing sustained exposure beyond what standard orthophthalic resin is rated for.",
       },
       {
         q: "Does Vinyl Ester Resin shrink on cure?",
-        a: "It is formulated for low shrinkage on cure, supporting dimensional stability in tanks and structural parts.",
+        a: "It is formulated for lower shrinkage than standard orthophthalic polyester, supporting dimensional stability in tanks and structural parts, though no specific shrinkage percentage has been published for this grade.",
+      },
+      {
+        q: "What is the heat resistance of Vinyl Ester Resin?",
+        a: "Its heat deflection temperature (HDT) reaches up to around 110°C, but that figure is achieved with a post-cure step — a room-temperature-only cure will typically have a somewhat lower HDT. Where maximum thermal performance matters, discuss the recommended heat-cure and post-cure schedule with our technical team.",
       },
       {
         q: "How is Vinyl Ester Resin cured?",
-        a: 'It is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> in the same way as our general-purpose polyester grades.',
+        a: 'It is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> at room temperature, the same base system as our general-purpose polyester grades. It also supports an optional heat cure (60–120°C) and post-cure step for higher heat deflection performance where that\'s required.',
       },
       {
-        q: "What applications is Vinyl Ester Resin used for?",
-        a: "It is used for FRP tanks and chemical storage vessels, pipelines, ducts and scrubbers, and cooling towers, pressure vessels and offshore structures.",
+        q: "What applications and processes is Vinyl Ester Resin used for?",
+        a: "It is used for FRP tanks and chemical storage vessels, pipelines, ducts and scrubbers, cooling towers, pressure vessels and offshore structures, and marine components — processed by hand layup, spray-up, filament winding or pultrusion.",
       },
     ],
     relatedSlugs: [
@@ -2403,6 +2512,17 @@ export const products = [
       "mekp-hardener",
       "fibre-glass-mat",
       "fiberglass-epoxy-resin",
+      "gp-gelcoat-resin",
+    ],
+    // Card-only stubs (draft: true) approved via Step 1 audit + Step 3 —
+    // slugs prefixed "vinyl-ester-resin-for-" for consistency with the GP
+    // Yellow and Epoxy Clear Casting Resin ecosystems. See applications.js
+    // for the stub entries themselves.
+    applicationSlugs: [
+      "vinyl-ester-resin-for-chemical-storage-tanks",
+      "vinyl-ester-resin-for-pipelines-ducts-scrubbers",
+      "vinyl-ester-resin-for-filament-winding",
+      "vinyl-ester-resin-for-pultrusion",
     ],
   },
   {
