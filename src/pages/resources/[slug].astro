@@ -30,7 +30,7 @@ const resolveSharedPhoto = (filename) => {
 };
 
 const { resource } = Astro.props;
-const { title, description, icon, category, publishDate, sections, quickFacts, comparisonTable, faqs, relatedSlugs } = resource;
+const { title, description, icon, category, publishDate, sections, quickFacts, comparisonTable, faqs, relatedSlugs, recommendedLinks = [] } = resource;
 
 const toId = (heading) => heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 const formattedDate = new Date(publishDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -256,6 +256,21 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       </section>
     )}
 
+    {recommendedLinks.length > 0 && (
+      <section class="article-recommended-links">
+        <h2>Relevant products and guides</h2>
+        <div class="article-recommended-grid">
+          {recommendedLinks.map((link) => (
+            <a href={link.href} class="article-recommended-card">
+              <span class="article-recommended-label">{link.label}</span>
+              <span class="article-recommended-description">{link.description}</span>
+              <span class="article-recommended-arrow" aria-hidden="true">→</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
     {(prevArticle || nextArticle) && (
       <nav class="article-prevnext" aria-label="Article navigation">
         {prevArticle ? (
@@ -421,6 +436,15 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .article-related-time { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); }
     .article-related-arrow { color: var(--accent-gold); flex-shrink: 0; transition: transform .3s var(--ease-premium); }
     .article-related-card:hover .article-related-arrow { transform: translateX(3px); }
+
+    .article-recommended-links { margin-top: 3.5rem; }
+    .article-recommended-links h2 { font-size: 1.35rem; margin-bottom: 1.1rem; }
+    .article-recommended-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.9rem; }
+    .article-recommended-card { position: relative; display: flex; flex-direction: column; gap: 0.45rem; min-height: 100%; padding: 1.05rem 2.6rem 1.05rem 1.1rem; background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest); }
+    .article-recommended-card:hover { border-color: var(--accent-gold); box-shadow: var(--surface-shadow-hover); }
+    .article-recommended-label { color: var(--ink); font-size: 0.9rem; font-weight: 600; }
+    .article-recommended-description { color: var(--ink-dim); font-size: 0.82rem; line-height: 1.55; }
+    .article-recommended-arrow { position: absolute; right: 1.05rem; top: 50%; transform: translateY(-50%); color: var(--accent-gold-light); font-size: 1.1rem; }
 
     .article-prevnext {
       display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;

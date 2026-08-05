@@ -98,6 +98,20 @@ const gpResources = isGpClearResin
   ? gpResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
   : [];
 
+const gpClusterResourceSlugs = [
+  'gp-clear-resin-vs-gp-yellow-resin',
+  'gp-resin-vs-lamination-resin',
+  'gp-resin-vs-vinyl-ester-resin',
+  'gp-resin-vs-gelcoat-resin',
+  'why-gp-resin-turns-yellow',
+  'why-polyester-resin-remains-sticky-or-tacky',
+  'how-to-reduce-shrinkage-in-gp-resin-applications',
+  'gp-resin-viscosity-explained',
+];
+const gpClusterResources = isGpClearResin
+  ? gpClusterResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
 const waLink = buildProductQuoteLink(product.whatsappName ?? name);
 
 // "Explore applications" cards — only populated when a product names
@@ -486,6 +500,15 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
+  {gpClusterResources.length > 0 && (
+    <section class="wrap prod-resources gp-cluster-resources">
+      <h2 class="rel-h">GP Resin comparisons and troubleshooting</h2>
+      <div class="resources-grid">
+        {gpClusterResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+    </section>
+  )}
+
   {isGpClearResin && (
     <section class="wrap gp-trust" aria-labelledby="gp-trust-heading">
       <div class="section-head">
@@ -758,6 +781,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .rel-price { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-gold-light); }
 
     .prod-resources { padding-block: 0 3rem; }
+    .gp-cluster-resources { padding-top: 0.5rem; }
     .resources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.1rem; }
 
     .gp-comparisons { padding-block: 1.5rem 2rem; }

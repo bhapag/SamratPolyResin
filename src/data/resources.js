@@ -133,6 +133,10 @@ export const resources = [
       "how-to-select-polyester-resin-for-frp-manufacturing",
       "understanding-gel-time-in-polyester-resin",
     ],
+    recommendedLinks: [
+      { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Review the published general-purpose grade, TDS and procurement details." },
+      { href: "/resources/applications-of-gp-polyester-resin/", label: "Explore GP Resin applications", description: "Match the resin discussion to the finished FRP product." },
+    ],
 
     faqs: [
       {
@@ -420,6 +424,10 @@ export const resources = [
       "what-is-gp-polyester-resin",
       "how-to-select-polyester-resin-for-frp-manufacturing",
     ],
+    recommendedLinks: [
+      { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Review the published GP grade used across common FRP processes." },
+      { href: "/resources/how-to-select-polyester-resin-for-frp-manufacturing/", label: "Read the selection guide", description: "Compare the process with the relevant resin data." },
+    ],
 
     faqs: [
       {
@@ -552,6 +560,10 @@ export const resources = [
 
     relatedSlugs: [
       "what-is-gp-polyester-resin",
+    ],
+    recommendedLinks: [
+      { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Review the published TDS before selecting a grade for the process." },
+      { href: "/applications/resin-for-hand-lay-up-process/", label: "Hand lay-up guide", description: "Review a common GP Clear Resin process use case." },
     ],
 
     faqs: [
@@ -911,6 +923,10 @@ export const resources = [
       "how-to-select-polyester-resin-for-frp-manufacturing",
       "how-to-store-unsaturated-polyester-resin",
     ],
+    recommendedLinks: [
+      { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Check the published gel time and TDS for the specific GP grade." },
+      { href: "/resources/gp-resin-viscosity-explained/", label: "Read GP Resin viscosity guidance", description: "Review viscosity alongside gel time and process fit." },
+    ],
 
     faqs: [
       {
@@ -1220,6 +1236,12 @@ export const resources = [
     icon: "clock",
     readingTime: "4 min read",
     publishDate: "2026-07-18",
+    seo: {
+      title: "GP Resin Gel Time Troubleshooting | Polyester Resin Guide",
+      keywords: ["GP resin gel time", "GP resin gel time troubleshooting", "polyester resin gel time", "resin curing time", "FRP resin troubleshooting"],
+      ogTitle: "GP Resin Gel Time Troubleshooting",
+      ogDescription: "Understand gel time, common GP resin troubleshooting checks and when to review the product TDS before changing a process.",
+    },
 
     quickFacts: {
       "Definition": "The working time between catalysing resin and it beginning to set",
@@ -1336,6 +1358,10 @@ export const resources = [
       "what-is-gp-polyester-resin",
       "understanding-gel-time-in-polyester-resin",
     ],
+    recommendedLinks: [
+      { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Check the product's stated shelf life and storage temperature." },
+      { href: "/resources/why-gp-resin-turns-yellow/", label: "Why GP Resin Turns Yellow", description: "Review expected grade colour and storage-related checks." },
+    ],
 
     faqs: [
       {
@@ -1428,6 +1454,367 @@ export const resources = [
           },
         ],
       },
+    ],
+  },
+  {
+    slug: "gp-clear-resin-vs-gp-yellow-resin",
+    title: "GP Clear Resin vs GP Yellow Resin",
+    description: "A practical comparison of GP Clear Resin and GP Yellow Resin for FRP buyers selecting a general-purpose polyester grade.",
+    category: "Comparison Guide",
+    icon: "checklist",
+    readingTime: "4 min read",
+    publishDate: "2026-08-06",
+    seo: {
+      title: "GP Clear Resin vs GP Yellow Resin | Which GP Resin to Choose",
+      keywords: ["GP Clear Resin vs GP Yellow Resin", "GP Resin comparison", "GP Yellow Resin", "clear polyester resin", "FRP resin selection"],
+      ogTitle: "GP Clear Resin vs GP Yellow Resin",
+      ogDescription: "Compare clear and yellow GP polyester resin grades for FRP processing, appearance and procurement decisions.",
+    },
+    quickFacts: {
+      "Shared Positioning": "General-purpose orthophthalic polyester resins for FRP work",
+      "GP Clear Resin": "Clear; 350-450 cPs; gel time under 8 minutes",
+      "GP Yellow Resin": "Transparent yellow; 450-600 cPs at 25 C; gel time 10-15 minutes",
+      "Best Starting Point": "Confirm whether resin colour, viscosity and working window matter for the process",
+    },
+    comparisonTable: {
+      title: "Side-by-side comparison",
+      note: "Compare the published technical data for the specific batch and process before purchase. Resin selection should not be made on colour alone.",
+      headers: ["Decision factor", "GP Clear Resin", "GP Yellow Resin"],
+      rows: [
+        ["Appearance", "Clear", "Transparent yellow"],
+        ["Published viscosity", "350-450 cPs", "450-600 cPs at 25 C"],
+        ["Published gel time", "Under 8 minutes", "10-15 minutes"],
+        ["Curing system", "Non-accelerated", "Non-accelerated"],
+        ["Packaging / MOQ", "225 kg drum / 1,000 kg", "225 kg drum / 1,000 kg"],
+      ],
+    },
+    relatedSlugs: ["what-is-gp-polyester-resin", "how-to-select-polyester-resin-for-frp-manufacturing", "gp-resin-viscosity-explained"],
+    recommendedLinks: [
+      { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Review the published TDS, packaging and commercial details." },
+      { href: "/products/gp-yellow-resin/", label: "View GP Yellow Resin", description: "Review the yellow GP grade and its published data." },
+      { href: "/applications/resin-for-hand-lay-up-process/", label: "Hand lay-up guide", description: "Check process suitability before selecting a grade." },
+    ],
+    faqs: [
+      { q: "Are GP Clear Resin and GP Yellow Resin used for the same type of FRP work?", a: "Both are general-purpose orthophthalic polyester resins used across common FRP work. The choice should consider the required appearance, published viscosity, gel time and the specific process." },
+      { q: "When is GP Clear Resin the more relevant option?", a: "GP Clear Resin is the grade to discuss where a clear or colourless resin is relevant to the finished process, alongside its published viscosity and gel time." },
+      { q: "Can procurement compare the two grades only on price?", a: "No. Confirm the intended process, appearance requirement, technical data, quantity and delivery location before comparing quotations." },
+    ],
+    sections: [
+      { heading: "Buyer question", body: ["A common FRP purchasing question is whether a clear GP grade or a yellow GP grade is the better fit for a routine manufacturing line. These are related general-purpose polyester resin grades, but they are not interchangeable without checking what the part, process and appearance requirement actually demand."] },
+      { heading: "Quick answer", body: ["Start with the role of resin colour in the process. GP Clear Resin is the clear general-purpose grade; GP Yellow Resin is supplied transparent yellow. Then compare the published processing data: GP Clear Resin has a lower published viscosity range and a shorter published gel time than the GP Yellow grade.", "Neither option is automatically better. The appropriate choice depends on whether the resin colour will matter, the reinforcement and moulding workflow, and the working window needed by the production team."] },
+      { heading: "When to choose each grade", subsections: [
+        { heading: "Consider GP Clear Resin", body: "Consider the clear grade when a colourless resin is relevant to the application and the published 350-450 cPs viscosity with gel time under 8 minutes aligns with the planned workflow. Confirm fit against the product TDS before ordering." },
+        { heading: "Consider GP Yellow Resin", body: "Consider the transparent-yellow grade when its colour is acceptable in the process and its published 450-600 cPs viscosity at 25 C and 10-15 minute gel time suit the line. Check its product page for the applicable details." },
+        { heading: "When not to force either choice", body: "If the job has a specific chemical-resistance, fire-performance, surface-coating or speciality bonding requirement, compare a purpose-specific grade instead of assuming either GP resin is suitable." },
+      ] },
+      { heading: "Details to share before requesting a quote", body: ["Share the finished part, manufacturing process, expected quantity, required appearance, existing grade if any, and delivery location. This gives the supplier enough context to direct the enquiry to the relevant product data and grade discussion."] },
+    ],
+  },
+  {
+    slug: "gp-resin-vs-lamination-resin",
+    title: "GP Resin vs Lamination Resin (LR Resin)",
+    description: "Understand the difference between general-purpose GP resin and Lamination Resin for FRP work, door lamination and bonding requirements.",
+    category: "Comparison Guide",
+    icon: "checklist",
+    readingTime: "4 min read",
+    publishDate: "2026-08-06",
+    seo: {
+      title: "GP Resin vs Lamination Resin (LR Resin) | FRP Buyer Guide",
+      keywords: ["GP Resin vs LR Resin", "GP Resin vs Lamination Resin", "Lamination Resin", "FRP bonding resin", "door lamination resin"],
+      ogTitle: "GP Resin vs Lamination Resin (LR Resin)",
+      ogDescription: "A practical guide to choosing a general-purpose GP resin or Lamination Resin for the manufacturing requirement.",
+    },
+    quickFacts: {
+      "GP Clear Resin": "Broad general-purpose FRP grade",
+      "Lamination Resin": "Product positioned for door lamination, plywood lamination and FRP bonding",
+      "Published gel time": "GP Clear: under 8 minutes; Lamination Resin: 5 minutes",
+      "Decision trigger": "Match the grade to the actual process, not the generic name",
+    },
+    comparisonTable: {
+      title: "Side-by-side comparison",
+      note: "This is a product-positioning comparison based on the published product pages. Confirm the specific grade's TDS before production use.",
+      headers: ["Decision factor", "GP Clear Resin", "Lamination Resin (LR Resin)"],
+      rows: [
+        ["Primary positioning", "General FRP and composite manufacturing", "Door lamination, plywood lamination and FRP bonding"],
+        ["Published gel time", "Under 8 minutes", "5 minutes"],
+        ["Published viscosity", "350-450 cPs", "400 cPs"],
+        ["Published packaging", "225 kg drum", "35 kg PET packaging / 225 kg drum"],
+      ],
+    },
+    relatedSlugs: ["what-is-gp-polyester-resin", "how-to-select-polyester-resin-for-frp-manufacturing", "applications-of-gp-polyester-resin"],
+    recommendedLinks: [
+      { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "For broad general-purpose FRP manufacturing requirements." },
+      { href: "/products/lamination-resin/", label: "View Lamination Resin", description: "For door, plywood and FRP bonding requirements." },
+      { href: "/applications/resin-for-general-frp-lamination/", label: "General FRP lamination guide", description: "Review the process before deciding on a grade." },
+    ],
+    faqs: [
+      { q: "Is Lamination Resin the same as a general GP resin?", a: "No. Both are polyester resin products, but the published positioning differs. GP Clear Resin is a broader general-purpose FRP grade, while Lamination Resin is positioned for door lamination, plywood lamination and FRP bonding." },
+      { q: "Which resin should be discussed for door or plywood lamination?", a: "Start with Lamination Resin, because that is the product positioned for those requirements. Confirm the substrate, process and finish requirement before placing an order." },
+      { q: "What should a buyer compare before changing grades?", a: "Compare the product purpose, TDS, viscosity, gel time, packaging, quantity and the actual manufacturing process. Do not rely on a generic resin name alone." },
+    ],
+    sections: [
+      { heading: "Buyer question", body: ["The term lamination can describe many FRP workflows, which is why buyers sometimes treat a general GP resin and Lamination Resin as the same item. They serve related polyester-resin applications, but the published product positioning is different and should guide the first selection discussion."] },
+      { heading: "Quick answer", body: ["GP Clear Resin is positioned as a clear general-purpose orthophthalic polyester resin for hand lay-up, spray-up, moulding and general lamination. Lamination Resin, also called LR Resin, is positioned for door lamination, plywood lamination and FRP bonding.", "For a general FRP requirement, begin with GP Clear Resin. For a door, plywood or bonding-focused requirement, begin with Lamination Resin and verify the details against its TDS."] },
+      { heading: "When not to choose by name alone", body: ["A buyer should not select either grade solely because a process is described as lamination. Confirm the substrate, reinforcement, required surface appearance, part size, expected working time and technical specification. Those details determine whether the general-purpose or lamination-specific positioning is appropriate."] },
+      { heading: "Quote checklist", body: ["Include the finished product, process, quantity, packaging preference, required delivery location and any current resin grade in the enquiry. This helps avoid a quotation being prepared against the wrong use case."] },
+    ],
+  },
+  {
+    slug: "gp-resin-vs-vinyl-ester-resin",
+    title: "GP Resin vs Vinyl Ester Resin",
+    description: "Compare general-purpose GP polyester resin and vinyl ester resin when an FRP project has different process or chemical-resistance requirements.",
+    category: "Comparison Guide",
+    icon: "checklist",
+    readingTime: "4 min read",
+    publishDate: "2026-08-06",
+    seo: {
+      title: "GP Resin vs Vinyl Ester Resin | FRP Selection Guide",
+      keywords: ["GP Resin vs Vinyl Ester Resin", "general purpose polyester resin", "vinyl ester resin", "chemical resistant FRP resin", "FRP resin selection"],
+      ogTitle: "GP Resin vs Vinyl Ester Resin",
+      ogDescription: "Understand when a general-purpose GP grade or a vinyl ester system should be reviewed for an FRP application.",
+    },
+    quickFacts: {
+      "GP Clear Resin": "Orthophthalic, general-purpose polyester resin",
+      "Vinyl Ester Resin": "Bisphenol-A epoxy vinyl ester product positioned for chemical-resistant FRP work",
+      "GP Clear Resin use": "Routine hand lay-up, spray-up, moulding and general lamination",
+      "Decision trigger": "Confirm the actual exposure and performance requirement before choosing a resin family",
+    },
+    comparisonTable: {
+      title: "Side-by-side comparison",
+      note: "No resin family is universally better. Use the product TDS and the application's stated requirements to make the final selection.",
+      headers: ["Decision factor", "GP Clear Resin", "Vinyl Ester Resin"],
+      rows: [
+        ["Published resin type", "Orthophthalic unsaturated polyester", "Bisphenol-A epoxy vinyl ester"],
+        ["Primary positioning", "General-purpose FRP work", "Chemical-resistant FRP applications"],
+        ["Published applications", "Hand lay-up, spray-up, moulding and general lamination", "Chemical tanks, pipelines, ducting, scrubbers, filament winding and pultrusion"],
+        ["What to verify", "Process, working time and appearance requirement", "Chemical exposure, cure requirements and the application-specific TDS"],
+      ],
+    },
+    relatedSlugs: ["what-is-gp-polyester-resin", "how-to-select-polyester-resin-for-frp-manufacturing", "applications-of-gp-polyester-resin"],
+    recommendedLinks: [
+      { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "For general-purpose FRP production requirements." },
+      { href: "/products/vinyl-ester-resin/", label: "View Vinyl Ester Resin", description: "For projects requiring a chemical-resistant resin system review." },
+      { href: "/applications/vinyl-ester-resin-for-chemical-storage-tanks/", label: "Chemical tank application guide", description: "Review a relevant vinyl ester use case." },
+    ],
+    faqs: [
+      { q: "Is vinyl ester resin a direct substitute for GP resin?", a: "Not automatically. The products are positioned for different needs: GP Clear Resin for general-purpose FRP work and Vinyl Ester Resin for chemical-resistant FRP applications. The application requirements should determine the choice." },
+      { q: "When should a buyer review vinyl ester instead of GP Clear Resin?", a: "Review Vinyl Ester Resin when the project has a stated chemical- or corrosion-resistance requirement, or when the end use is a chemical tank, pipeline, duct, scrubber or related application." },
+      { q: "Can a supplier recommend a grade without knowing the application?", a: "A responsible selection discussion needs the end use, process, exposure, quantity and technical requirement. Those details should be shared before finalising a grade." },
+    ],
+    sections: [
+      { heading: "Buyer question", body: ["Many FRP buyers first compare GP resin and vinyl ester resin when a project moves beyond routine moulding or lamination into a more demanding service environment. The useful question is not which name sounds higher specification, but what the finished part is required to handle."] },
+      { heading: "Quick answer", body: ["GP Clear Resin is the published general-purpose orthophthalic polyester grade for common FRP processes. Vinyl Ester Resin is a different product family, published as a Bisphenol-A epoxy vinyl ester for chemical-resistant FRP applications.", "For a normal GP application, begin with the GP Clear Resin data. For a project with specified chemical or corrosion exposure, review the Vinyl Ester Resin page, TDS and application details before making a purchase decision."] },
+      { heading: "When to consider each resin", subsections: [
+        { heading: "Consider GP Clear Resin", body: "Consider GP Clear Resin for the routine FRP processes and general applications listed on its product page, after confirming the published technical data is appropriate for the job." },
+        { heading: "Consider Vinyl Ester Resin", body: "Consider Vinyl Ester Resin where the design brief identifies chemical resistance or corrosion resistance as a requirement, or where the application aligns with its published chemical-tank, pipeline, ducting, scrubber, filament-winding or pultrusion uses." },
+        { heading: "Do not make an assumption", body: "Do not upgrade or substitute resin families based only on a product name. Share the exposure, process, cure requirement and applicable specification for technical review." },
+      ] },
+      { heading: "Details to share with the supplier", body: ["Provide the medium or exposure involved, expected service conditions, part type, reinforcement and manufacturing process, plus the quantity and delivery location. This is more useful than asking for a generic high-performance resin."] },
+    ],
+  },
+  {
+    slug: "gp-resin-vs-gelcoat-resin",
+    title: "GP Resin vs Gelcoat Resin",
+    description: "Learn the different roles of GP resin and gelcoat resin in an FRP laminate, from structural build-up to the mould-facing surface.",
+    category: "Comparison Guide",
+    icon: "layers",
+    readingTime: "4 min read",
+    publishDate: "2026-08-06",
+    seo: {
+      title: "GP Resin vs Gelcoat Resin | Roles in FRP Manufacturing",
+      keywords: ["GP Resin vs Gelcoat Resin", "FRP gelcoat", "general purpose resin", "FRP laminate resin", "mould surface coating"],
+      ogTitle: "GP Resin vs Gelcoat Resin",
+      ogDescription: "A practical explanation of the different roles of GP resin and gelcoat in FRP manufacturing.",
+    },
+    quickFacts: {
+      "GP Clear Resin": "General-purpose resin used to build the FRP laminate",
+      "GP Gelcoat Resin": "Polyester surface-coating gelcoat for the mould-facing surface",
+      "Relationship": "The products can be used in the same FRP manufacturing sequence for different roles",
+      "Decision trigger": "Separate the structural laminate requirement from the required surface finish",
+    },
+    comparisonTable: {
+      title: "Side-by-side comparison",
+      note: "These products serve different jobs in an FRP build-up. Confirm the product-specific TDS and process requirements before use.",
+      headers: ["Decision factor", "GP Clear Resin", "GP Gelcoat Resin"],
+      rows: [
+        ["Primary role", "Builds the laminate with reinforcement", "Provides the mould-facing surface coating"],
+        ["Published positioning", "General-purpose orthophthalic polyester resin", "High-gloss polyester surface coating"],
+        ["Use with reinforcement", "Used to wet out and bind glass-fibre reinforcement", "Not positioned as the bulk laminating resin"],
+        ["Selection question", "What does the laminate need to do?", "What surface finish and mould-facing behaviour are required?"],
+      ],
+    },
+    relatedSlugs: ["what-is-gp-polyester-resin", "what-is-gel-coat-resin", "applications-of-gp-polyester-resin"],
+    recommendedLinks: [
+      { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "For the general-purpose FRP laminate requirement." },
+      { href: "/products/gp-gelcoat-resin/", label: "View GP Gelcoat Resin", description: "For the mould-facing surface-coating requirement." },
+      { href: "/resources/what-is-gel-coat-resin/", label: "Read the gelcoat guide", description: "Understand gelcoat selection and role in a composite build-up." },
+    ],
+    faqs: [
+      { q: "Can GP Clear Resin replace gelcoat?", a: "No. The products have different published roles. GP Clear Resin is used to build the laminate, while GP Gelcoat Resin is positioned as a mould-surface coating." },
+      { q: "Can GP resin and gelcoat be used together?", a: "Yes. They can be used in the same FRP manufacturing sequence for different roles: gelcoat on the mould-facing surface and GP resin with reinforcement to build the laminate behind it." },
+      { q: "What should a buyer specify in an enquiry?", a: "State whether the enquiry is for the laminate, the visible surface finish, or both. Also share the part type, process, quantity and any required appearance." },
+    ],
+    sections: [
+      { heading: "Buyer question", body: ["GP resin and gelcoat are often requested together, but they should not be treated as two names for the same material. A clear selection starts by separating the job of building the laminate from the job of creating the mould-facing surface."] },
+      { heading: "Quick answer", body: ["GP Clear Resin is the general-purpose resin used with glass-fibre reinforcement to form the FRP laminate. GP Gelcoat Resin is the published polyester surface-coating product for the mould-facing side of a part.", "In a typical build-up, the surface layer and the structural laminate are selected for different reasons. The production team should identify both requirements rather than asking for a single resin to do both jobs."] },
+      { heading: "When to choose each product", subsections: [
+        { heading: "Choose GP Clear Resin for the laminate", body: "Use the GP Clear Resin page and TDS when the requirement is to wet out reinforcement and build the general FRP laminate in the published processes." },
+        { heading: "Choose GP Gelcoat Resin for the surface", body: "Use the GP Gelcoat Resin page and TDS when the requirement concerns the mould-facing surface coating, finish or surface behaviour." },
+        { heading: "When the project needs both", body: "Discuss the full sequence, part geometry, process and expected surface result. This helps ensure the laminate and surface layer are considered together without treating them as substitutes." },
+      ] },
+      { heading: "Procurement checklist", body: ["Include whether the purchase is for a structural laminate, a surface coating, or a complete build-up; then add the part type, process, quantity and delivery location. This makes the quotation request more precise."] },
+    ],
+  },
+  {
+    slug: "why-gp-resin-turns-yellow",
+    title: "Why GP Resin Turns Yellow",
+    description: "A practical guide to understanding yellow colour in GP resin, what to check first and when to discuss a batch or process with the supplier.",
+    category: "Troubleshooting Guide",
+    icon: "info",
+    readingTime: "4 min read",
+    publishDate: "2026-08-06",
+    seo: {
+      title: "Why GP Resin Turns Yellow | Causes and Buyer Checks",
+      keywords: ["why GP resin turns yellow", "yellow polyester resin", "GP resin colour", "polyester resin storage", "FRP resin troubleshooting"],
+      ogTitle: "Why GP Resin Turns Yellow",
+      ogDescription: "Understand expected grade colour, storage-related colour change and the information to share when discussing a GP resin batch.",
+    },
+    quickFacts: {
+      "First check": "Confirm whether the supplied grade is clear or intentionally transparent yellow",
+      "Storage factors": "Heat, direct sunlight, age and an unsealed container can affect resin condition",
+      "Do not assume": "A colour difference alone does not identify the cause or prove fitness for use",
+      "Useful records": "Batch details, storage history, photographs and the intended application",
+    },
+    relatedSlugs: ["what-is-gp-polyester-resin", "how-to-store-unsaturated-polyester-resin", "gp-resin-viscosity-explained"],
+    recommendedLinks: [
+      { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Check the published clear appearance, storage guidance and TDS." },
+      { href: "/products/gp-yellow-resin/", label: "View GP Yellow Resin", description: "Review the intentionally transparent-yellow GP grade." },
+      { href: "/resources/how-to-store-unsaturated-polyester-resin/", label: "Read storage guidance", description: "Review general storage and stock-rotation practices." },
+    ],
+    faqs: [
+      { q: "Is all yellow GP resin defective?", a: "No. Some GP grades are intentionally supplied transparent yellow. First confirm the ordered grade and its published appearance before treating yellow colour as a problem." },
+      { q: "Can storage affect the appearance of resin?", a: "Heat, direct sunlight, age and an unsealed container can affect resin condition. The product TDS and batch information should be checked before use." },
+      { q: "What should I send to the supplier if a batch looks different?", a: "Share the product name, batch details, manufacturing or receipt date if available, storage history, photographs and the intended application. Do not assume a remedy without technical review." },
+    ],
+    sections: [
+      { heading: "Understand the starting colour first", body: ["The phrase yellow GP resin can describe two different situations: a grade that is intentionally supplied transparent yellow, and a clear grade that appears different from the expected colour. These should not be treated as the same issue. Start by confirming the product name, ordered grade and the appearance stated for that grade."] },
+      { heading: "Common reasons a clear grade may look different", body: ["Resin condition can be affected by storage and age. Existing storage guidance highlights heat, direct sunlight and a poorly sealed container as factors that can affect stability and appearance over time. A visible change may also arise from handling or contamination in the process, so colour alone is not enough to identify the cause.", "Do not judge a batch only by visual appearance. Compare the batch details with the expected product, review the storage record and check the applicable TDS before committing it to a production run."] },
+      { heading: "Prevention and purchasing checks", body: ["Keep drums sealed when not in use, protect them from direct sunlight and heat, and rotate stock by batch date. When appearance matters in the finished part, include that requirement in the original product discussion rather than assuming every GP grade has the same colour characteristics."] },
+      { heading: "What to share with the supplier", body: ["Provide the product and batch details, photographs taken in neutral light, how and where the drum was stored, whether the container has been opened, and the intended FRP process. This gives the supplier context for a technical conversation without making unsupported assumptions about the cause."] },
+    ],
+  },
+  {
+    slug: "why-polyester-resin-remains-sticky-or-tacky",
+    title: "Why Polyester Resin Remains Sticky or Tacky",
+    description: "Understand common reasons a polyester resin surface may remain sticky or tacky, the checks to make and the details to share with a supplier.",
+    category: "Troubleshooting Guide",
+    icon: "info",
+    readingTime: "4 min read",
+    publishDate: "2026-08-06",
+    seo: {
+      title: "Why Polyester Resin Remains Sticky or Tacky | Troubleshooting Guide",
+      keywords: ["polyester resin sticky", "polyester resin tacky", "GP resin not curing", "FRP resin troubleshooting", "polyester resin gel time"],
+      ogTitle: "Why Polyester Resin Remains Sticky or Tacky",
+      ogDescription: "A practical, safety-conscious guide to checking a sticky or tacky polyester resin surface before changing the process.",
+    },
+    quickFacts: {
+      "What it can indicate": "A cure, process, storage or surface-condition issue that needs checking",
+      "First response": "Pause and compare the process with the product TDS and batch information",
+      "Do not do": "Do not add unapproved chemicals or change catalyst dosage by guesswork",
+      "Useful records": "Product, batch, process, ambient conditions and observed result",
+    },
+    relatedSlugs: ["understanding-gel-time-in-polyester-resin", "how-to-store-unsaturated-polyester-resin", "how-to-select-polyester-resin-for-frp-manufacturing"],
+    recommendedLinks: [
+      { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Review the published curing system and TDS for the specific GP grade." },
+      { href: "/resources/understanding-gel-time-in-polyester-resin/", label: "Read the gel time guide", description: "Understand working time, cure progression and common gel-time issues." },
+      { href: "/contact/", label: "Discuss the application", description: "Share the process and batch details for a focused technical conversation." },
+    ],
+    faqs: [
+      { q: "Does a tacky surface always mean the resin is defective?", a: "No. A sticky or tacky result can have several causes related to cure conditions, mixing or measurement, temperature, storage, surface effects or process fit. The batch and process should be reviewed before reaching a conclusion." },
+      { q: "Should I add more catalyst to correct a tacky resin?", a: "Do not change catalyst or accelerator dosage by guesswork. Follow the specific product TDS and seek supplier guidance, because cure chemistry and safety are product-specific." },
+      { q: "What should I record before contacting a supplier?", a: "Record the product and batch, the intended process, ambient conditions, storage history, timing, reinforcement or substrate and photographs of the result. This makes troubleshooting more useful." },
+    ],
+    sections: [
+      { heading: "What a sticky or tacky result means", body: ["A sticky or tacky resin surface means the finished result has not reached the condition expected by the fabricator. It is a troubleshooting signal, not a diagnosis on its own. The same visible outcome can be connected to more than one part of the material, process or environment."] },
+      { heading: "Common areas to check", body: ["Start with the exact product and batch, then compare the process with the published TDS. Check whether the resin was within its stated shelf-life and storage conditions, whether the process followed the supplier's stated system, and whether the ambient conditions differed from the normal production environment.", "For a laminate, also record the reinforcement, part shape and surface involved. These details help distinguish a general cure issue from a process-specific surface result without recommending unapproved changes."] },
+      { heading: "Prevention without guesswork", body: ["Use the specified product for the intended application, keep accurate batch and process records, follow the product TDS and maintain controlled storage. Do not attempt to compensate for a problem by adding chemicals or changing curing inputs without the product-specific guidance required for safe use."] },
+      { heading: "What to share with the supplier", body: ["Provide the product name, batch details, manufacturing date if available, storage history, process used, ambient conditions, timing and photographs. Include whether the issue appears across the part or only on one surface. This information supports a practical technical discussion."] },
+    ],
+  },
+  {
+    slug: "how-to-reduce-shrinkage-in-gp-resin-applications",
+    title: "How to Reduce Shrinkage in GP Resin Applications",
+    description: "A practical guide to understanding shrinkage in GP resin applications and the process questions to resolve before production.",
+    category: "Best Practices",
+    icon: "checklist",
+    readingTime: "4 min read",
+    publishDate: "2026-08-06",
+    seo: {
+      title: "How to Reduce Shrinkage in GP Resin Applications | FRP Guide",
+      keywords: ["GP resin shrinkage", "polyester resin shrinkage", "FRP shrinkage", "GP resin applications", "FRP process control"],
+      ogTitle: "How to Reduce Shrinkage in GP Resin Applications",
+      ogDescription: "Understand resin shrinkage as a process and application question, without relying on unsupported one-size-fits-all fixes.",
+    },
+    quickFacts: {
+      "What shrinkage means": "Dimensional change as a resin system cures",
+      "Why it varies": "Grade, reinforcement, part geometry, laminate design and cure conditions all matter",
+      "First step": "Clarify the dimensional and surface requirement for the finished part",
+      "Avoid": "Unapproved process changes or universal shrinkage claims without application data",
+    },
+    relatedSlugs: ["how-to-select-polyester-resin-for-frp-manufacturing", "applications-of-gp-polyester-resin", "understanding-gel-time-in-polyester-resin"],
+    recommendedLinks: [
+      { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Review the published general-purpose grade and TDS." },
+      { href: "/resources/how-to-select-polyester-resin-for-frp-manufacturing/", label: "Read the resin-selection guide", description: "Match resin choice to process and part requirements." },
+      { href: "/contact/", label: "Discuss your application", description: "Share the part, process and dimensional requirement before selecting a system." },
+    ],
+    faqs: [
+      { q: "Can one shrinkage recommendation apply to every GP resin application?", a: "No. Shrinkage behaviour depends on the specific grade, reinforcement, part geometry, laminate design and cure conditions. The application should be reviewed before making changes." },
+      { q: "Should a buyer ask about shrinkage before ordering GP resin?", a: "Yes, when dimensional accuracy, mould replication or surface appearance is important. Share the part type, process and acceptance requirement early in the discussion." },
+      { q: "Can catalyst changes be used as a general shrinkage fix?", a: "Do not make unapproved cure-system changes as a general fix. Follow the product TDS and request technical guidance for the specific application." },
+    ],
+    sections: [
+      { heading: "What shrinkage means in an FRP application", body: ["Shrinkage refers to dimensional change as a resin system cures. In practical FRP manufacturing, its importance depends on the part: a large moulded surface, a detailed pattern, a tight-fit component and a general fabricated item may not have the same dimensional or surface expectations."] },
+      { heading: "Why one answer does not fit every part", body: ["The finished result is influenced by the resin grade, reinforcement, laminate design, geometry, mould condition and cure environment. This is why a general statement about a resin family is not enough to predict a specific part. The production requirement must be defined before a supplier can discuss the relevant system."] },
+      { heading: "Practical prevention approach", body: ["Start with the right application and process discussion rather than an after-the-fact correction. Confirm the part geometry, reinforcement, finish, dimensional tolerance, expected production method and any current process issue. Maintain consistent handling and follow the published product guidance rather than changing cure inputs without approval."] },
+      { heading: "What to share with the supplier", body: ["Share drawings or part dimensions where appropriate, the moulding method, reinforcement, laminate build-up, visible surface requirement, quantity and the problem being observed. This gives the supplier the context needed to discuss product selection without making unsupported performance promises."] },
+    ],
+  },
+  {
+    slug: "gp-resin-viscosity-explained",
+    title: "GP Resin Viscosity Explained",
+    description: "Understand what GP resin viscosity means for hand lay-up, spray-up and general FRP processing, including what to check before buying.",
+    category: "Technical Data",
+    icon: "info",
+    readingTime: "4 min read",
+    publishDate: "2026-08-06",
+    seo: {
+      title: "GP Resin Viscosity Explained | FRP Buyer and Process Guide",
+      keywords: ["GP resin viscosity", "polyester resin viscosity", "GP Clear Resin viscosity", "FRP resin processing", "hand lay-up resin"],
+      ogTitle: "GP Resin Viscosity Explained",
+      ogDescription: "A practical explanation of GP resin viscosity, process fit and the information to check against a technical data sheet.",
+    },
+    quickFacts: {
+      "Definition": "A measure of a resin's resistance to flow",
+      "GP Clear Resin": "Published viscosity of 350-450 cPs",
+      "Why it matters": "Viscosity affects how a resin handles in a given process",
+      "Always check": "The specific product TDS, temperature and equipment or reinforcement used",
+    },
+    relatedSlugs: ["how-to-select-polyester-resin-for-frp-manufacturing", "understanding-gel-time-in-polyester-resin", "how-to-store-unsaturated-polyester-resin"],
+    recommendedLinks: [
+      { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Review the published 350-450 cPs viscosity and TDS." },
+      { href: "/products/gp-yellow-resin/", label: "View GP Yellow Resin", description: "Compare the published yellow GP grade viscosity range." },
+      { href: "/applications/resin-for-spray-up-process/", label: "Read the spray-up guide", description: "Review the process context before selecting a resin grade." },
+    ],
+    faqs: [
+      { q: "What does viscosity mean for a GP resin buyer?", a: "Viscosity describes how readily a resin flows. For buyers and production teams, it is one of the published properties used to assess process fit alongside gel time, resin type and cure system." },
+      { q: "Is a lower viscosity always better?", a: "No. The useful viscosity depends on the process, reinforcement, part geometry and equipment. Compare the TDS with the actual manufacturing requirement rather than treating lower or higher as universally better." },
+      { q: "Can storage change the way resin flows?", a: "Storage history and temperature can affect resin condition. Keep the product within its stated storage guidance and compare any concern with the batch information and TDS." },
+    ],
+    sections: [
+      { heading: "What viscosity means", body: ["Viscosity is a measure of resistance to flow. In practical terms, it influences how a resin moves, wets reinforcement and behaves in a manufacturing process. It should be read as a process-fit property, not as a stand-alone quality score."] },
+      { heading: "GP Clear Resin viscosity", body: ["GP Clear Resin has a published viscosity of 350-450 cPs. That number should be considered alongside its non-accelerated curing system, gel time, reinforcement and the process being used. The product TDS is the correct reference for the actual grade rather than a general industry figure."] },
+      { heading: "Why process context matters", body: ["Hand lay-up, spray-up and other FRP processes place different demands on resin flow. Reinforcement type, mould shape, part size, workshop temperature and equipment can all affect whether the published viscosity is a good fit for the line. Review the process before switching grades."] },
+      { heading: "What to discuss before purchase", body: ["Share the manufacturing process, reinforcement, part type, temperature conditions, equipment where relevant, expected quantity and any current resin grade. This helps a supplier compare the requirement with the published data instead of making a generic recommendation."] },
     ],
   },
 ];
