@@ -5,6 +5,23 @@ import { resources } from '../../data/resources.js';
 import { site } from '../../data/site.js';
 
 const published = resources.filter((r) => !r.draft);
+const gpAuthoritySlugs = new Set([
+  'what-is-gp-polyester-resin',
+  'applications-of-gp-polyester-resin',
+  'how-to-select-polyester-resin-for-frp-manufacturing',
+  'understanding-gel-time-in-polyester-resin',
+  'how-to-store-unsaturated-polyester-resin',
+  'gp-clear-resin-vs-gp-yellow-resin',
+  'gp-resin-vs-lamination-resin',
+  'gp-resin-vs-vinyl-ester-resin',
+  'gp-resin-vs-gelcoat-resin',
+  'why-gp-resin-turns-yellow',
+  'why-polyester-resin-remains-sticky-or-tacky',
+  'how-to-reduce-shrinkage-in-gp-resin-applications',
+  'gp-resin-viscosity-explained',
+]);
+const gpAuthorityResources = published.filter((resource) => gpAuthoritySlugs.has(resource.slug));
+const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug));
 ---
 <Base
   title="Knowledge Centre"
@@ -47,9 +64,36 @@ const published = resources.filter((r) => !r.draft);
 
   <section class="section kc-list">
     <div class="wrap">
-      <div class="kc-grid">
-        {published.map((resource) => <ResourceCard resource={resource} />)}
-      </div>
+      {gpAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="gp-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Product knowledge hub</p>
+              <h2 id="gp-resin-hub-heading">GP Resin Knowledge Hub</h2>
+              <p>Explore existing GP Resin selection, application, comparison and troubleshooting guides before discussing a requirement with Samrat Poly Resins.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/gp-clear-resin/" class="btn btn-solid">View GP Clear Resin</a>
+              <a href="/contact/" class="btn">Discuss an application</a>
+            </div>
+          </div>
+          <div class="kc-grid">
+            {gpAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
+          </div>
+        </section>
+      )}
+
+      {otherResources.length > 0 && (
+        <section class="kc-other" aria-labelledby="all-resources-heading">
+          <div class="kc-other-head">
+            <p class="eyebrow">More technical resources</p>
+            <h2 id="all-resources-heading">All other guides</h2>
+          </div>
+          <div class="kc-grid">
+            {otherResources.map((resource) => <ResourceCard resource={resource} />)}
+          </div>
+        </section>
+      )}
     </div>
   </section>
 
@@ -80,5 +124,12 @@ const published = resources.filter((r) => !r.draft);
     }
 
     .kc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.4rem; }
+    .kc-focus { padding: clamp(1.4rem, 4vw, 2.2rem); background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest); }
+    .kc-focus-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+    .kc-focus h2, .kc-other h2 { font-size: clamp(1.45rem, 3vw, 2rem); margin-top: 0.55rem; }
+    .kc-focus p:not(.eyebrow) { color: var(--ink-dim); margin-top: 0.75rem; max-width: 65ch; }
+    .kc-focus-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .kc-other { margin-top: clamp(3rem, 7vw, 5rem); }
+    .kc-other-head { margin-bottom: 1.5rem; }
   </style>
 </Base>

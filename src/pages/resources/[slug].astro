@@ -35,7 +35,25 @@ const { title, description, icon, category, publishDate, sections, quickFacts, c
 const toId = (heading) => heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 const formattedDate = new Date(publishDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 const canonicalUrl = buildCanonicalUrl(Astro.url.pathname);
-const talkToTeamLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like help selecting the right polyester resin for my requirement.")}`;
+const gpAuthoritySlugs = new Set([
+  'what-is-gp-polyester-resin',
+  'applications-of-gp-polyester-resin',
+  'how-to-select-polyester-resin-for-frp-manufacturing',
+  'understanding-gel-time-in-polyester-resin',
+  'how-to-store-unsaturated-polyester-resin',
+  'gp-clear-resin-vs-gp-yellow-resin',
+  'gp-resin-vs-lamination-resin',
+  'gp-resin-vs-vinyl-ester-resin',
+  'gp-resin-vs-gelcoat-resin',
+  'why-gp-resin-turns-yellow',
+  'why-polyester-resin-remains-sticky-or-tacky',
+  'how-to-reduce-shrinkage-in-gp-resin-applications',
+  'gp-resin-viscosity-explained',
+]);
+const isGpAuthorityResource = gpAuthoritySlugs.has(resource.slug);
+const talkToTeamLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(isGpAuthorityResource
+  ? "Hi, I'd like to discuss a GP Resin application with Samrat Poly Resins."
+  : "Hi, I'd like help selecting the right polyester resin for my requirement.")}`;
 const readingTime = getReadingTime(resource);
 
 const published = resources.filter((r) => !r.draft);
@@ -289,11 +307,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     )}
 
     <section class="article-cta">
-      <h2>Need help selecting the right polyester resin?</h2>
-      <p>Our technical team can help you choose the most suitable resin for your manufacturing requirements.</p>
+      <h2>{isGpAuthorityResource ? 'Discuss your GP Resin application with Samrat Poly Resins' : 'Need help selecting the right polyester resin?'}</h2>
+      <p>{isGpAuthorityResource ? 'Share the application, process, quantity and delivery location so the requirement can be understood before a quote discussion.' : 'Our technical team can help you choose the most suitable resin for your manufacturing requirements.'}</p>
       <div class="article-cta-buttons">
-        <a href="/contact/" class="btn btn-solid">Request a Quote</a>
-        <a href={talkToTeamLink} class="btn btn-wa" target="_blank" rel="noopener">Contact Technical Team</a>
+        <a href="/contact/" class="btn btn-solid">{isGpAuthorityResource ? 'Discuss GP Resin application' : 'Request a Quote'}</a>
+        <a href={talkToTeamLink} class="btn btn-wa" target="_blank" rel="noopener">{isGpAuthorityResource ? 'WhatsApp Samrat Poly Resins' : 'Contact Technical Team'}</a>
       </div>
     </section>
   </article>

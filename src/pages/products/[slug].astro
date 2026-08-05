@@ -493,7 +493,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 
   {gpResources.length > 0 && (
     <section class="wrap prod-resources">
-      <h2 class="rel-h">Helpful GP Resin Guides</h2>
+      <div class="gp-hub-head">
+        <p class="eyebrow">Technical resources</p>
+        <h2 class="rel-h">GP Resin Knowledge Hub</h2>
+        <p>Use these existing Samrat Poly Resins guides to review GP Resin selection, applications, handling and common process questions.</p>
+      </div>
       <div class="resources-grid">
         {gpResources.map((resource) => <ResourceCard resource={resource} />)}
       </div>
@@ -505,6 +509,10 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <h2 class="rel-h">GP Resin comparisons and troubleshooting</h2>
       <div class="resources-grid">
         {gpClusterResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="/contact/" class="btn btn-solid">Discuss your GP Resin application</a>
+        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
       </div>
     </section>
   )}
@@ -783,6 +791,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .prod-resources { padding-block: 0 3rem; }
     .gp-cluster-resources { padding-top: 0.5rem; }
     .resources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.1rem; }
+    .gp-hub-head { margin-bottom: 1.5rem; }
+    .gp-hub-head p:not(.eyebrow) { color: var(--ink-dim); margin-top: 0.7rem; max-width: 65ch; }
+    .gp-hub-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.4rem; }
 
     .gp-comparisons { padding-block: 1.5rem 2rem; }
     .gp-comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
