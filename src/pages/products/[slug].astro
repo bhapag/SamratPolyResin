@@ -497,6 +497,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <p class="eyebrow">Technical resources</p>
         <h2 class="rel-h">GP Resin Knowledge Hub</h2>
         <p>Use these existing Samrat Poly Resins guides to review GP Resin selection, applications, handling and common process questions.</p>
+        <p class="gp-hub-case-link">See how GP Clear Resin was used for <a href="#gp-roofing-sheet-case-study">FRP roofing sheet lamination in Punjab</a>.</p>
       </div>
       <div class="resources-grid">
         {gpResources.map((resource) => <ResourceCard resource={resource} />)}
@@ -539,6 +540,70 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
       </div>
+    </section>
+  )}
+
+  {isGpClearResin && (
+    <section id="gp-roofing-sheet-case-study" class="wrap gp-case-study" aria-labelledby="gp-case-study-heading">
+      <div class="section-head">
+        <p class="eyebrow">Customer application</p>
+        <h2 id="gp-case-study-heading">GP Clear Resin for FRP Roofing Sheet Lamination in Punjab</h2>
+        <p class="gp-case-study-subtitle">How Samrat GP Clear Resin supported more consistent FRP sheet lamination during warm-weather production.</p>
+      </div>
+
+      <div class="gp-case-study-grid">
+        <div class="gp-case-study-card">
+          <h3>Customer profile</h3>
+          <p>A medium-sized FRP roofing sheet manufacturer based in Punjab, North India. The company manufactures FRP roofing sheets for industrial, commercial and agricultural applications.</p>
+          <dl class="gp-case-study-details">
+            <div><dt>Industry</dt><dd>FRP Roofing Sheet Manufacturing</dd></div>
+            <div><dt>Product used</dt><dd>Samrat GP Clear Resin</dd></div>
+            <div><dt>Application</dt><dd>FRP sheet lamination</dd></div>
+            <div><dt>Location</dt><dd>Punjab, India</dd></div>
+          </dl>
+        </div>
+
+        <div class="gp-case-study-card">
+          <h3>Challenge</h3>
+          <p>During the summer months, the manufacturer was facing variation in gel time during sheet lamination. As shop-floor temperatures increased, the existing resin became harder to process consistently, creating variation in lamination timing and requiring closer production monitoring.</p>
+          <p>The customer needed a GP Clear Resin suitable for FRP roofing sheet lamination, with dependable processing behaviour and consistent batch performance.</p>
+          <h3 class="gp-case-study-subhead">Solution</h3>
+          <p>After understanding the application, production method and processing requirements, Samrat Poly Resins recommended Samrat GP Clear Resin for FRP sheet lamination. The customer first evaluated the resin through production trials before gradually introducing it into regular manufacturing.</p>
+        </div>
+      </div>
+
+      <div class="gp-case-study-outcome">
+        <div>
+          <h3>Reported outcome</h3>
+          <p>After adopting Samrat GP Clear Resin, the manufacturer reported improved day-to-day process consistency during warm-weather production.</p>
+        </div>
+        <ul>
+          <li>More consistent gel-time behaviour during summer production</li>
+          <li>Smoother lamination workflow</li>
+          <li>Fewer interruptions related to resin-processing variation</li>
+          <li>Better confidence in batch-to-batch consistency</li>
+          <li>Finish quality suitable for commercial FRP roofing sheet production</li>
+        </ul>
+      </div>
+
+      <blockquote class="gp-case-study-quote">
+        <p>“After switching to Samrat GP Clear Resin, our lamination process became more consistent. The resin performs reliably during production, and we have experienced fewer interruptions compared to our previous material.”</p>
+        <footer>Production Team, FRP Roofing Sheet Manufacturer, Punjab</footer>
+      </blockquote>
+
+      <div class="gp-case-study-suitability">
+        <h3>Why GP Clear Resin was suitable</h3>
+        <p>For FRP roofing sheet manufacturers, GP Clear Resin is commonly selected where the application requires:</p>
+        <ul>
+          <li>Clear general-purpose polyester resin</li>
+          <li>Smooth lamination performance</li>
+          <li>Suitable gel-time behaviour for FRP processing</li>
+          <li>Consistent batch quality</li>
+          <li>Supplier support for application discussion</li>
+        </ul>
+      </div>
+
+      <p class="gp-case-study-note">This case study is based on an actual customer application. Customer-identifying details have been withheld for confidentiality.</p>
     </section>
   )}
 
@@ -793,6 +858,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .resources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.1rem; }
     .gp-hub-head { margin-bottom: 1.5rem; }
     .gp-hub-head p:not(.eyebrow) { color: var(--ink-dim); margin-top: 0.7rem; max-width: 65ch; }
+    .gp-hub-case-link a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 0.18em; }
     .gp-hub-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.4rem; }
 
     .gp-comparisons { padding-block: 1.5rem 2rem; }
@@ -814,6 +880,30 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-trust-card-body span { color: var(--ink-dim); font-size: 0.84rem; line-height: 1.55; }
     @media (max-width: 760px) { .gp-trust-grid { grid-template-columns: 1fr; } }
     @media (max-width: 460px) { .gp-trust-card { grid-template-columns: 1fr; } .gp-trust-card :global(img) { height: 180px; min-height: 0; } }
+
+    .gp-case-study { padding-block: 0 3.2rem; scroll-margin-top: 90px; }
+    .gp-case-study .section-head { max-width: 760px; margin-bottom: 1.35rem; }
+    .gp-case-study-subtitle { color: var(--ink-dim); margin-top: 0.75rem; max-width: 60ch; }
+    .gp-case-study-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .gp-case-study-card, .gp-case-study-outcome, .gp-case-study-suitability { background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest); }
+    .gp-case-study-card { padding: clamp(1.2rem, 3vw, 1.7rem); }
+    .gp-case-study-card h3, .gp-case-study-outcome h3, .gp-case-study-suitability h3 { font-size: 1.05rem; text-transform: none; letter-spacing: 0; }
+    .gp-case-study-card p, .gp-case-study-outcome p, .gp-case-study-suitability p { color: var(--ink-dim); font-size: 0.9rem; line-height: 1.7; margin-top: 0.7rem; }
+    .gp-case-study-subhead { margin-top: 1.35rem; }
+    .gp-case-study-details { margin-top: 1.3rem; border-top: 1px solid var(--line); }
+    .gp-case-study-details div { display: grid; grid-template-columns: 120px 1fr; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--line); }
+    .gp-case-study-details dt { color: var(--ink-faint); font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .gp-case-study-details dd { color: var(--ink); font-size: 0.84rem; }
+    .gp-case-study-outcome { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 1.8rem; margin-top: 1rem; padding: clamp(1.2rem, 3vw, 1.7rem); }
+    .gp-case-study-outcome ul, .gp-case-study-suitability ul { color: var(--ink-dim); font-size: 0.9rem; line-height: 1.7; padding-left: 1.2rem; }
+    .gp-case-study-outcome li + li, .gp-case-study-suitability li + li { margin-top: 0.35rem; }
+    .gp-case-study-quote { margin: 1rem 0; padding: clamp(1.2rem, 3vw, 1.7rem); border-left: 3px solid var(--accent-gold); background: var(--bg-2); }
+    .gp-case-study-quote p { color: var(--ink); font-size: 1rem; line-height: 1.7; max-width: 72ch; }
+    .gp-case-study-quote footer { color: var(--ink-faint); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; margin-top: 0.9rem; text-transform: uppercase; }
+    .gp-case-study-suitability { padding: clamp(1.2rem, 3vw, 1.7rem); }
+    .gp-case-study-note { color: var(--ink-faint); font-size: 0.8rem; font-style: italic; margin-top: 1rem; }
+    @media (max-width: 760px) { .gp-case-study-grid, .gp-case-study-outcome { grid-template-columns: 1fr; } }
+    @media (max-width: 460px) { .gp-case-study-details div { grid-template-columns: 1fr; gap: 0.3rem; } }
 
     .enquire-sec { position: relative; background: linear-gradient(180deg, transparent, var(--bg-2) 64px); }
     .enquire-sec::before {
