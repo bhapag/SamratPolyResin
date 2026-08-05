@@ -34,9 +34,30 @@ const demo = !site.formEndpoint;
     </label>
   </div>
 
+  <div class="row two">
+    <label>
+      <span>Quantity required <em>(optional)</em></span>
+      <input type="text" name="quantity_required" placeholder="e.g. 500 kg per month" />
+    </label>
+    <label>
+      <span>Delivery location <em>(optional)</em></span>
+      <input type="text" name="delivery_location" autocomplete="address-level1" placeholder="City, state" />
+    </label>
+  </div>
+
+  <label class="row">
+    <span>Requirement type <em>(optional)</em></span>
+    <select name="requirement_type">
+      <option value="">Select an option</option>
+      <option value="Quote request">Quote request</option>
+      <option value="TDS request">TDS request</option>
+      <option value="Technical discussion">Technical discussion</option>
+    </select>
+  </label>
+
   <label class="row">
     <span>Requirement / message</span>
-    <textarea name="message" rows="4" required placeholder="Quantity needed, grade, delivery location, any specs…"></textarea>
+    <textarea name="message" rows="4" required placeholder="Application, grade, technical specifications, or anything else we should know…"></textarea>
   </label>
 
   <div class="enq-foot">
@@ -61,12 +82,12 @@ const demo = !site.formEndpoint;
     text-transform: uppercase; color: var(--ink-dim);
   }
   .enq label > span em { color: var(--ink-faint); font-style: normal; }
-  .enq input, .enq textarea {
+  .enq input, .enq select, .enq textarea {
     background: var(--bg); border: 1px solid var(--line-2); color: var(--ink);
     padding: 0.75rem 0.85rem; font-family: var(--font-body); font-size: 0.95rem;
     width: 100%; transition: border-color .16s;
   }
-  .enq input:focus, .enq textarea:focus { outline: none; border-color: var(--accent-gold); }
+  .enq input:focus, .enq select:focus, .enq textarea:focus { outline: none; border-color: var(--accent-gold); }
   .enq input::placeholder, .enq textarea::placeholder { color: var(--ink-faint); }
   .enq-foot { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; margin-top: 0.3rem; }
   .enq-status { font-family: var(--font-mono); font-size: 0.8rem; }
