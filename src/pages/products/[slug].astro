@@ -1,11 +1,15 @@
 ---
-import { getImage } from 'astro:assets';
+import { getImage, Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import EnquiryForm from '../../components/EnquiryForm.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
+import ResourceCard from '../../components/ResourceCard.astro';
 import { products } from '../../data/products.js';
 import { applications as applicationGuides } from '../../data/applications.js';
+import { resources } from '../../data/resources.js';
 import { site, buildProductQuoteLink, buildCanonicalUrl } from '../../data/site.js';
+import factoryGate from '../../assets/about/factory-gate.jpg';
+import qcLaboratory from '../../assets/quality/qc-laboratory.jpg';
 
 export function getStaticPaths() {
   return products.map(p => ({ params: { slug: p.slug }, props: { product: p } }));
@@ -20,6 +24,31 @@ const resolveAppImage = (filename) => appImageModules[`/src/assets/applications/
 const { product } = Astro.props;
 const { name, image, description, features, applications, category, specs } = product;
 const { tagline, usageNote, industries, whyChoose, faqs, tdsUrl } = product;
+const isGpClearResin = product.slug === 'gp-clear-resin';
+
+const gpClearSeo = {
+  title: 'GP Clear Resin Manufacturer in India | General Purpose Polyester Resin',
+  keywords: [
+    'GP Resin',
+    'GP Clear Resin',
+    'GP Resin manufacturer',
+    'GP Resin manufacturer in India',
+    'GP Resin supplier',
+    'General Purpose Polyester Resin',
+    'General Purpose Resin for FRP',
+  ],
+};
+const gpBuyerFaqs = [
+  {
+    q: 'How does GP Clear Resin differ from GP Yellow Resin?',
+    a: 'Both are general-purpose orthophthalic polyester resins for FRP work. GP Clear Resin is clear, with a 350–450 cPs viscosity and gel time under 8 minutes. <a href="/products/gp-yellow-resin/">GP Yellow Resin</a> is transparent yellow, thicker and slower-gelling. Where a colourless resin matters in the finished process, GP Clear Resin is the relevant grade to discuss.',
+  },
+  {
+    q: 'Which details should I share when requesting a GP Clear Resin quote?',
+    a: 'Please share the expected quantity, application or manufacturing process, any grade requirement, and delivery location. This helps the sales team understand the requirement before preparing a quote.',
+  },
+];
+const displayedFaqs = isGpClearResin ? [...(faqs ?? []), ...gpBuyerFaqs] : faqs;
 
 // Two-table model (Product Details + Technical Specifications) when a product
 // supplies the grouped fields; otherwise fall back to the legacy single table
@@ -54,6 +83,20 @@ const related = product.relatedSlugs?.length
   ? product.relatedSlugs.map(s => products.find(p => p.slug === s)).filter(Boolean)
   : products.filter(p => p.category === category && p.slug !== product.slug).slice(0, 3);
 const relatedHeading = product.relatedSlugs?.length ? 'Related products' : `More in ${category}`;
+
+// Curated reading for GP Clear Resin buyers. These point only to existing,
+// published resources and are intentionally limited to this product page.
+const gpResourceSlugs = [
+  'what-is-gp-polyester-resin',
+  'applications-of-gp-polyester-resin',
+  'how-to-select-polyester-resin-for-frp-manufacturing',
+  'understanding-gel-time-in-polyester-resin',
+  'how-to-store-unsaturated-polyester-resin',
+  'what-is-gel-coat-resin',
+];
+const gpResources = isGpClearResin
+  ? gpResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
 
 const waLink = buildProductQuoteLink(product.whatsappName ?? name);
 
@@ -134,9 +177,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 } : null;
 ---
 <Base
-  title={product.seo?.title ?? name}
+  title={isGpClearResin ? gpClearSeo.title : (product.seo?.title ?? name)}
   description={product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`}
-  keywords={product.seo?.keywords}
+  keywords={isGpClearResin ? gpClearSeo.keywords : product.seo?.keywords}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
@@ -173,6 +216,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <span class="prod-cat">{category}</span>
       <h1 class="prod-name" transition:name={`product-name-${product.slug}`}>{name}</h1>
       {tagline && <p class="prod-subtitle">{tagline}</p>}
+      {isGpClearResin && (
+        <p class="gp-buyer-intro">
+          Samrat Poly Resins supplies this clear general-purpose polyester resin to FRP manufacturers in India for hand lay-up, spray-up, moulding and general lamination work.
+        </p>
+      )}
       <div class="prod-quote">
         <p class="prod-quote-heading">Price</p>
         <p class="prod-quote-value">{site.priceLabel}</p>
@@ -262,6 +310,18 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <p class="prod-desc">{description}</p>
       {usageNote && <p class="prod-desc prod-usage" set:html={usageNote} />}
 
+      {isGpClearResin && (
+        <section class="gp-overview" aria-labelledby="gp-overview-heading">
+          <h2 id="gp-overview-heading" class="spec-h">What is GP Clear Resin?</h2>
+          <p>
+            GP Clear Resin is Samrat Poly Resins’ clear, orthophthalic general-purpose polyester resin for fabricators producing FRP components. It is a liquid resin grade intended to wet out glass-fibre reinforcement in routine composite manufacturing.
+          </p>
+          <p>
+            It is relevant where a buyer needs one GP resin for common hand lay-up, spray-up, moulding and general lamination processes, while retaining the published technical data, packaging and TDS for procurement review.
+          </p>
+        </section>
+      )}
+
       <div class="spec-grid">
         <div class="spec-col">
           <h2 class="spec-h">Key features</h2>
@@ -272,6 +332,26 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <ul>{applications.map(a => <li>{a}</li>)}</ul>
         </div>
       </div>
+
+      {isGpClearResin && (
+        <section class="gp-buyer-outcomes" aria-labelledby="gp-buyer-outcomes-heading">
+          <h2 id="gp-buyer-outcomes-heading" class="spec-h">What this means for FRP buyers</h2>
+          <div class="gp-outcomes-grid">
+            <div class="gp-outcome-card">
+              <h3>Clear, general-purpose base</h3>
+              <p>A clear resin grade supports processes where the resin colour matters or where pigment and surface finish are selected separately.</p>
+            </div>
+            <div class="gp-outcome-card">
+              <h3>Process flexibility</h3>
+              <p>The published viscosity and non-accelerated curing system support common hand lay-up, spray-up, moulding and lamination workflows.</p>
+            </div>
+            <div class="gp-outcome-card">
+              <h3>Procurement details are available</h3>
+              <p>Review the TDS, 225 kg drum packaging and 1,000 kg minimum order quantity before requesting a quote for your requirement.</p>
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   </article>
 
@@ -293,6 +373,21 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       </div>
     </section>
   ) : null}
+
+  {isGpClearResin && (
+    <section class="wrap gp-process" aria-labelledby="gp-process-heading">
+      <div>
+        <h2 id="gp-process-heading" class="rel-h">Suitable for common FRP processes</h2>
+        <p>
+          GP Clear Resin is used across the existing hand lay-up, spray-up and general FRP lamination guides. The right process depends on the part geometry, reinforcement, mould and production setup—not only the resin grade.
+        </p>
+        <p>
+          Explore the process guides for <a href="/applications/resin-for-hand-lay-up-process/">hand lay-up</a>, <a href="/applications/resin-for-spray-up-process/">spray-up</a> and <a href="/applications/resin-for-general-frp-lamination/">general FRP lamination</a> before finalising a requirement.
+        </p>
+      </div>
+      <a href="#enquire" class="btn btn-solid gp-process-cta">Discuss your process</a>
+    </section>
+  )}
 
   {appCards.length > 0 && (
     <section class="wrap prod-apps">
@@ -337,10 +432,34 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
-  {faqs && faqs.length > 0 && (
+  {displayedFaqs && displayedFaqs.length > 0 && (
     <section class="wrap prod-faq">
       <h2 class="extra-h">Frequently asked questions</h2>
-      <FaqAccordion faqs={faqs} />
+      <FaqAccordion faqs={displayedFaqs} />
+    </section>
+  )}
+
+  {isGpClearResin && (
+    <section class="wrap gp-comparisons" aria-labelledby="gp-comparisons-heading">
+      <h2 id="gp-comparisons-heading" class="rel-h">When to consider a different resin</h2>
+      <div class="gp-comparison-grid">
+        <article class="gp-comparison-card">
+          <h3><a href="/products/gp-yellow-resin/">GP Clear Resin vs GP Yellow Resin</a></h3>
+          <p>Both are general-purpose orthophthalic grades for FRP. Choose GP Clear Resin where a colourless grade is relevant; GP Yellow Resin is the transparent-yellow, thicker and slower-gelling alternative.</p>
+        </article>
+        <article class="gp-comparison-card">
+          <h3><a href="/products/lamination-resin/">GP Clear Resin vs Lamination Resin</a></h3>
+          <p>GP Clear Resin is the broader option for general FRP work. Lamination Resin is the product to review for door lamination, plywood lamination and FRP bonding requirements.</p>
+        </article>
+        <article class="gp-comparison-card">
+          <h3><a href="/products/vinyl-ester-resin/">GP Clear Resin vs Vinyl Ester Resin</a></h3>
+          <p>GP Clear Resin is a general-purpose orthophthalic grade. For a project with a specified chemical- or corrosion-resistance requirement, review the Vinyl Ester Resin technical data and discuss the application.</p>
+        </article>
+        <article class="gp-comparison-card">
+          <h3><a href="/products/gp-gelcoat-resin/">GP Clear Resin vs Gelcoat Resin</a></h3>
+          <p>GP Clear Resin is used to build the laminate. GP Gelcoat Resin is a mould-surface coating; the two can be used in the same FRP manufacturing sequence for different roles.</p>
+        </article>
+      </div>
     </section>
   )}
 
@@ -358,11 +477,46 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
+  {gpResources.length > 0 && (
+    <section class="wrap prod-resources">
+      <h2 class="rel-h">Helpful GP Resin Guides</h2>
+      <div class="resources-grid">
+        {gpResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+    </section>
+  )}
+
+  {isGpClearResin && (
+    <section class="wrap gp-trust" aria-labelledby="gp-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Manufacturer context</p>
+        <h2 id="gp-trust-heading">Manufacturing and quality information</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Manufactured in Punjab, India</strong>
+            <span>Learn about Samrat Poly Resins’ Doraha, Ludhiana facility and company background.</span>
+          </span>
+        </a>
+        <a href="/about/" class="gp-trust-card">
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Published quality approach</strong>
+            <span>Our company information describes checks for viscosity, gel time and cure behaviour before batch approval.</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  )}
+
   <section id="enquire" class="section enquire-sec">
     <div class="wrap enquire-inner">
       <div class="section-head">
         <p class="eyebrow">Enquiry</p>
-        <h2>Get a quote for {name}</h2>
+        <h2>{isGpClearResin ? 'Request a GP Clear Resin quote' : `Get a quote for ${name}`}</h2>
+        {isGpClearResin && <p class="gp-enquiry-note">Share your quantity, application, grade requirement and delivery location so we can understand the requirement before preparing a quote.</p>}
       </div>
       <div class="enquire-box">
         <EnquiryForm product={name} />
@@ -514,12 +668,21 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     @media (max-width: 460px) { .spec-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
 
     .prod-subtitle { color: var(--ink-dim); font-size: 1.05rem; margin-top: 0.55rem; max-width: 48ch; line-height: 1.5; }
+    .gp-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
     .prod-usage { font-size: 0.95rem; }
     .prod-desc a, .prod-usage a {
       color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px;
       transition: color .25s var(--ease-premium);
     }
     .prod-desc a:hover, .prod-usage a:hover { color: var(--accent-gold); }
+
+    .gp-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .gp-buyer-outcomes { margin-top: 2.2rem; }
+    .gp-outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }
+    .gp-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
+    .gp-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
 
     .prod-extra { padding-block: 1.5rem 0.5rem; }
     .prod-extra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.8rem, 5vw, 3.5rem); }
@@ -574,6 +737,14 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .app-card-related-sep { color: var(--line-2); }
     .app-card-cta { align-self: flex-start; margin-top: auto; padding: 0.6rem 1.1rem; font-size: 0.76rem; pointer-events: none; }
 
+    .gp-process { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; padding-block: 2rem 1rem; border-top: 1px solid var(--line); }
+    .gp-process > div { max-width: 68ch; }
+    .gp-process p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .gp-process a:not(.btn) { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
+    .gp-process a:not(.btn):hover { color: var(--accent-gold); }
+    .gp-process-cta { flex-shrink: 0; }
+    @media (max-width: 680px) { .gp-process { align-items: start; flex-direction: column; } }
+
     .related { padding-block: 2rem 3rem; }
     .rel-h { font-size: 1.1rem; color: var(--ink-dim); margin-bottom: 1.2rem; }
     .rel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.9rem; }
@@ -586,6 +757,29 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .rel-name { font-family: var(--font-display); text-transform: uppercase; font-size: 0.95rem; }
     .rel-price { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-gold-light); }
 
+    .prod-resources { padding-block: 0 3rem; }
+    .resources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.1rem; }
+
+    .gp-comparisons { padding-block: 1.5rem 2rem; }
+    .gp-comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .gp-comparison-card { padding: 1.15rem 1.2rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-comparison-card h3 { font-size: 0.92rem; text-transform: none; letter-spacing: 0; }
+    .gp-comparison-card h3 a { color: var(--ink); }
+    .gp-comparison-card h3 a:hover { color: var(--accent-gold-light); }
+    .gp-comparison-card p { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.6; margin-top: 0.65rem; }
+
+    .gp-trust { padding-block: 0 3rem; }
+    .gp-trust .section-head { margin-bottom: 1.2rem; }
+    .gp-trust-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .gp-trust-card { display: grid; grid-template-columns: minmax(130px, 0.65fr) 1fr; background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest); overflow: hidden; }
+    .gp-trust-card:hover { border-color: var(--accent-gold); box-shadow: var(--surface-shadow-hover); }
+    .gp-trust-card :global(img) { width: 100%; height: 100%; min-height: 160px; object-fit: cover; display: block; }
+    .gp-trust-card-body { display: flex; flex-direction: column; justify-content: center; gap: 0.55rem; padding: 1.2rem; }
+    .gp-trust-card-body strong { color: var(--ink); font-size: 0.94rem; }
+    .gp-trust-card-body span { color: var(--ink-dim); font-size: 0.84rem; line-height: 1.55; }
+    @media (max-width: 760px) { .gp-trust-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 460px) { .gp-trust-card { grid-template-columns: 1fr; } .gp-trust-card :global(img) { height: 180px; min-height: 0; } }
+
     .enquire-sec { position: relative; background: linear-gradient(180deg, transparent, var(--bg-2) 64px); }
     .enquire-sec::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
@@ -593,5 +787,6 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     }
     .enquire-inner { max-width: 720px; }
     .enquire-box { background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest); padding: clamp(1.4rem, 4vw, 2.2rem); }
+    .gp-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
   </style>
 </Base>
