@@ -25,6 +25,7 @@ const { product } = Astro.props;
 const { name, image, description, features, applications, category, specs } = product;
 const { tagline, usageNote, industries, whyChoose, faqs, tdsUrl } = product;
 const isGpClearResin = product.slug === 'gp-clear-resin';
+const isLaminationResin = product.slug === 'lamination-resin';
 
 const gpClearSeo = {
   title: 'GP Clear Resin Manufacturer in India | General Purpose Polyester Resin',
@@ -38,6 +39,21 @@ const gpClearSeo = {
     'General Purpose Resin for FRP',
   ],
 };
+const laminationSeo = {
+  title: 'Lamination Resin Manufacturer in India | LR Resin',
+  description: 'Lamination Resin (LR Resin) manufacturer in India for door, plywood and FRP lamination. Transparent orthophthalic polyester resin with published TDS, 35 kg PET or 225 kg drum packaging.',
+  keywords: [
+    'Lamination Resin',
+    'LR Resin',
+    'Lamination Resin manufacturer',
+    'Lamination Resin manufacturer in India',
+    'LR Resin supplier',
+    'Polyester Lamination Resin',
+    'Resin for FRP lamination',
+    'Resin for hand lay-up',
+    'Resin for FRP fabrication',
+  ],
+};
 const gpBuyerFaqs = [
   {
     q: 'How does GP Clear Resin differ from GP Yellow Resin?',
@@ -48,7 +64,21 @@ const gpBuyerFaqs = [
     a: 'Please share the expected quantity, application or manufacturing process, any grade requirement, and delivery location. This helps the sales team understand the requirement before preparing a quote.',
   },
 ];
-const displayedFaqs = isGpClearResin ? [...(faqs ?? []), ...gpBuyerFaqs] : faqs;
+const laminationBuyerFaqs = [
+  {
+    q: 'Which details should I share when requesting a Lamination Resin quote?',
+    a: 'Please share the lamination application, substrate or component, expected quantity, production method and delivery location. This helps the sales team understand the requirement before preparing a quote.',
+  },
+  {
+    q: 'Is Lamination Resin suitable for every FRP fabrication requirement?',
+    a: 'No. Lamination Resin is published for door lamination, plywood lamination, FRP bonding and clear-finish hand lay-up work. For a general FRP, chemical-resistance, surface-coating or epoxy requirement, review the relevant product data before selecting a resin system.',
+  },
+];
+const displayedFaqs = isGpClearResin
+  ? [...(faqs ?? []), ...gpBuyerFaqs]
+  : isLaminationResin
+    ? [...(faqs ?? []), ...laminationBuyerFaqs]
+    : faqs;
 
 // Two-table model (Product Details + Technical Specifications) when a product
 // supplies the grouped fields; otherwise fall back to the legacy single table
@@ -110,6 +140,21 @@ const gpClusterResourceSlugs = [
 ];
 const gpClusterResources = isGpClearResin
   ? gpClusterResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
+const laminationResourceSlugs = [
+  'what-is-lamination-resin',
+  'applications-of-lamination-resin',
+  'lamination-resin-for-hand-lay-up',
+  'lamination-resin-vs-vinyl-ester-resin',
+  'lamination-resin-vs-gelcoat-resin',
+  'common-lamination-defects-in-frp',
+  'how-to-select-polyester-resin-for-frp-manufacturing',
+  'understanding-gel-time-in-polyester-resin',
+  'how-to-store-unsaturated-polyester-resin',
+];
+const laminationResources = isLaminationResin
+  ? laminationResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
   : [];
 
 const waLink = buildProductQuoteLink(product.whatsappName ?? name);
@@ -191,9 +236,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 } : null;
 ---
 <Base
-  title={isGpClearResin ? gpClearSeo.title : (product.seo?.title ?? name)}
-  description={product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`}
-  keywords={isGpClearResin ? gpClearSeo.keywords : product.seo?.keywords}
+  title={isGpClearResin ? gpClearSeo.title : isLaminationResin ? laminationSeo.title : (product.seo?.title ?? name)}
+  description={isLaminationResin ? laminationSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
+  keywords={isGpClearResin ? gpClearSeo.keywords : isLaminationResin ? laminationSeo.keywords : product.seo?.keywords}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
@@ -233,6 +278,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       {isGpClearResin && (
         <p class="gp-buyer-intro">
           Samrat Poly Resins supplies this clear general-purpose polyester resin to FRP manufacturers in India for hand lay-up, spray-up, moulding and general lamination work.
+        </p>
+      )}
+      {isLaminationResin && (
+        <p class="lamination-buyer-intro">
+          Samrat Poly Resins supplies Lamination Resin, also known as LR Resin, to Indian B2B buyers for door, plywood and FRP lamination work where a transparent polyester resin is required.
         </p>
       )}
       <div class="prod-quote">
@@ -336,6 +386,18 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         </section>
       )}
 
+      {isLaminationResin && (
+        <section class="lamination-overview" aria-labelledby="lamination-overview-heading">
+          <h2 id="lamination-overview-heading" class="spec-h">What is Lamination Resin / LR Resin?</h2>
+          <p>
+            Lamination Resin, or LR Resin, is the published transparent orthophthalic unsaturated polyester grade for door lamination, plywood lamination and FRP bonding work. It is a liquid resin that cures at room temperature with the published MEKP and cobalt octoate system.
+          </p>
+          <p>
+            For buyers, the selection starts with the finished component and process: this LR Resin grade is positioned for lamination-focused work, while general FRP, chemical-resistance and mould-surface requirements should be reviewed against the relevant product data.
+          </p>
+        </section>
+      )}
+
       <div class="spec-grid">
         <div class="spec-col">
           <h2 class="spec-h">Key features</h2>
@@ -362,6 +424,25 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             <div class="gp-outcome-card">
               <h3>Procurement details are available</h3>
               <p>Review the TDS, 225 kg drum packaging and 1,000 kg minimum order quantity before requesting a quote for your requirement.</p>
+            </div>
+          </div>
+        </section>
+      )}
+      {isLaminationResin && (
+        <section class="lamination-buyer-outcomes" aria-labelledby="lamination-buyer-outcomes-heading">
+          <h2 id="lamination-buyer-outcomes-heading" class="spec-h">What this means for lamination buyers</h2>
+          <div class="lamination-outcomes-grid">
+            <div class="lamination-outcome-card">
+              <h3>Lamination-focused product fit</h3>
+              <p>The published applications cover door skins, plywood, decorative panels and FRP bonding, helping buyers begin with the intended component rather than a generic resin label.</p>
+            </div>
+            <div class="lamination-outcome-card">
+              <h3>Published processing data</h3>
+              <p>Review the TDS and the published 5-minute gel time, viscosity and room-temperature cure system alongside the production setup before finalising a requirement.</p>
+            </div>
+            <div class="lamination-outcome-card">
+              <h3>Procurement information is available</h3>
+              <p>Review the 35 kg PET or 225 kg drum packaging and 1,000 kg minimum order quantity before requesting an LR Resin quote.</p>
             </div>
           </div>
         </section>
@@ -400,6 +481,21 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         </p>
       </div>
       <a href="#enquire" class="btn btn-solid gp-process-cta">Discuss your process</a>
+    </section>
+  )}
+
+  {isLaminationResin && (
+    <section class="wrap lamination-process" aria-labelledby="lamination-process-heading">
+      <div>
+        <h2 id="lamination-process-heading" class="rel-h">Suitable for lamination and FRP fabrication workflows</h2>
+        <p>
+          The published Lamination Resin applications focus on door, plywood, decorative-panel and FRP bonding work. The right grade should be checked against the substrate, reinforcement, working conditions and finished-surface requirement—not only the product name.
+        </p>
+        <p>
+          Review the existing guides for <a href="/applications/door-lamination/">door lamination</a>, <a href="/applications/decorative-plywood-lamination/">decorative plywood lamination</a> and <a href="/applications/resin-for-general-frp-lamination/">general FRP lamination</a> alongside the product TDS before finalising a process.
+        </p>
+      </div>
+      <a href="#enquire" class="btn btn-solid lamination-process-cta">Discuss your lamination process</a>
     </section>
   )}
 
@@ -477,6 +573,51 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
+  {isLaminationResin && (
+    <section class="wrap lamination-comparisons" aria-labelledby="lamination-comparisons-heading">
+      <h2 id="lamination-comparisons-heading" class="rel-h">When to consider a different resin</h2>
+      <div class="lamination-comparison-grid">
+        <article class="lamination-comparison-card">
+          <h3><a href="/products/unsaturated-polyester-resin/">Lamination Resin vs GP Resin</a></h3>
+          <p>Lamination Resin is positioned for door, plywood and FRP bonding work. Review a general-purpose polyester resin where the requirement is broader FRP manufacture rather than a lamination-focused application.</p>
+        </article>
+        <article class="lamination-comparison-card">
+          <h3><a href="/products/gp-clear-resin/">Lamination Resin vs GP Clear Resin</a></h3>
+          <p>GP Clear Resin is the published general-purpose grade for common hand lay-up, spray-up, moulding and lamination work. This Lamination Resin grade is the product to review for door, plywood and FRP bonding requirements.</p>
+        </article>
+        <article class="lamination-comparison-card">
+          <h3><a href="/products/vinyl-ester-resin/">Lamination Resin vs Vinyl Ester Resin</a></h3>
+          <p>For a project with a stated chemical- or corrosion-resistance requirement, review Vinyl Ester Resin, its TDS and the specific application before selecting a system.</p>
+        </article>
+        <article class="lamination-comparison-card">
+          <h3><a href="/products/gp-gelcoat-resin/">Lamination Resin vs Gelcoat Resin</a></h3>
+          <p>Lamination Resin is used in the laminate or bonding step. Gelcoat Resin is a mould-surface coating, so the two have different roles in an FRP build-up.</p>
+        </article>
+        <article class="lamination-comparison-card">
+          <h3><a href="/products/epoxy-clear-casting-resin/">Lamination Resin vs Epoxy Resin</a></h3>
+          <p>Polyester lamination resin and epoxy are different resin systems. Where an epoxy requirement is specified, review the relevant epoxy product data and application rather than substituting by product name alone.</p>
+        </article>
+      </div>
+    </section>
+  )}
+
+  {laminationResources.length > 0 && (
+    <section class="wrap lamination-resources" aria-labelledby="lamination-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Technical resources</p>
+        <h2 id="lamination-resources-heading" class="rel-h">Lamination Resin Knowledge Hub</h2>
+        <p>Use these Samrat Poly Resins guides to compare product roles, review applications, understand hand lay-up and troubleshooting questions, and check process context alongside the Lamination Resin TDS.</p>
+      </div>
+      <div class="resources-grid">
+        {laminationResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="/contact/" class="btn btn-solid">Discuss your Lamination Resin application</a>
+        <a href="/resources/#lamination-resin-guides-heading" class="btn">Explore all Lamination Resin guides</a>
+      </div>
+    </section>
+  )}
+
   {related.length > 0 && (
     <section class="wrap related">
       <h2 class="rel-h">{relatedHeading}</h2>
@@ -523,6 +664,31 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="section-head">
         <p class="eyebrow">Manufacturer context</p>
         <h2 id="gp-trust-heading">Manufacturing and quality information</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Manufactured in Punjab, India</strong>
+            <span>Learn about Samrat Poly Resins’ Doraha, Ludhiana facility and company background.</span>
+          </span>
+        </a>
+        <a href="/about/" class="gp-trust-card">
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Published quality approach</strong>
+            <span>Our company information describes checks for viscosity, gel time and cure behaviour before batch approval.</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  )}
+
+  {isLaminationResin && (
+    <section class="wrap gp-trust" aria-labelledby="lamination-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Manufacturer context</p>
+        <h2 id="lamination-trust-heading">Manufacturing and quality information</h2>
       </div>
       <div class="gp-trust-grid">
         <a href="/about/" class="gp-trust-card">
@@ -611,8 +777,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     <div class="wrap enquire-inner">
       <div class="section-head">
         <p class="eyebrow">Enquiry</p>
-        <h2>{isGpClearResin ? 'Request a GP Clear Resin quote' : `Get a quote for ${name}`}</h2>
+        <h2>{isGpClearResin ? 'Request a GP Clear Resin quote' : isLaminationResin ? 'Request a Lamination Resin quote' : `Get a quote for ${name}`}</h2>
         {isGpClearResin && <p class="gp-enquiry-note">Share your quantity, application, grade requirement and delivery location so we can understand the requirement before preparing a quote.</p>}
+        {isLaminationResin && <p class="lamination-enquiry-note">Share the lamination application, substrate or component, expected quantity and delivery location so we can understand the requirement before preparing a quote.</p>}
       </div>
       <div class="enquire-box">
         <EnquiryForm product={name} />
@@ -765,6 +932,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 
     .prod-subtitle { color: var(--ink-dim); font-size: 1.05rem; margin-top: 0.55rem; max-width: 48ch; line-height: 1.5; }
     .gp-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
+    .lamination-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
     .prod-usage { font-size: 0.95rem; }
     .prod-desc a, .prod-usage a {
       color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px;
@@ -774,11 +942,18 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 
     .gp-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
     .gp-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .lamination-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .lamination-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
     .gp-buyer-outcomes { margin-top: 2.2rem; }
     .gp-outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }
     .gp-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
     .gp-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
     .gp-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
+    .lamination-buyer-outcomes { margin-top: 2.2rem; }
+    .lamination-outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }
+    .lamination-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .lamination-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
+    .lamination-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
 
     .prod-extra { padding-block: 1.5rem 0.5rem; }
     .prod-extra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.8rem, 5vw, 3.5rem); }
@@ -840,6 +1015,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-process a:not(.btn):hover { color: var(--accent-gold); }
     .gp-process-cta { flex-shrink: 0; }
     @media (max-width: 680px) { .gp-process { align-items: start; flex-direction: column; } }
+    .lamination-process { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; padding-block: 2rem 1rem; border-top: 1px solid var(--line); }
+    .lamination-process > div { max-width: 68ch; }
+    .lamination-process p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .lamination-process a:not(.btn) { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
+    .lamination-process a:not(.btn):hover { color: var(--accent-gold); }
+    .lamination-process-cta { flex-shrink: 0; }
+    @media (max-width: 680px) { .lamination-process { align-items: start; flex-direction: column; } }
 
     .related { padding-block: 2rem 3rem; }
     .rel-h { font-size: 1.1rem; color: var(--ink-dim); margin-bottom: 1.2rem; }
@@ -860,6 +1042,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-hub-head p:not(.eyebrow) { color: var(--ink-dim); margin-top: 0.7rem; max-width: 65ch; }
     .gp-hub-case-link a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 0.18em; }
     .gp-hub-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.4rem; }
+    .lamination-resources { padding-block: 0 3rem; }
 
     .gp-comparisons { padding-block: 1.5rem 2rem; }
     .gp-comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
@@ -868,6 +1051,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-comparison-card h3 a { color: var(--ink); }
     .gp-comparison-card h3 a:hover { color: var(--accent-gold-light); }
     .gp-comparison-card p { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.6; margin-top: 0.65rem; }
+    .lamination-comparisons { padding-block: 1.5rem 2rem; }
+    .lamination-comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .lamination-comparison-card { padding: 1.15rem 1.2rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .lamination-comparison-card h3 { font-size: 0.92rem; text-transform: none; letter-spacing: 0; }
+    .lamination-comparison-card h3 a { color: var(--ink); }
+    .lamination-comparison-card h3 a:hover { color: var(--accent-gold-light); }
+    .lamination-comparison-card p { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.6; margin-top: 0.65rem; }
 
     .gp-trust { padding-block: 0 3rem; }
     .gp-trust .section-head { margin-bottom: 1.2rem; }
@@ -913,5 +1103,6 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .enquire-inner { max-width: 720px; }
     .enquire-box { background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest); padding: clamp(1.4rem, 4vw, 2.2rem); }
     .gp-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
+    .lamination-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
   </style>
 </Base>

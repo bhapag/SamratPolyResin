@@ -51,9 +51,21 @@ const gpAuthoritySlugs = new Set([
   'gp-resin-viscosity-explained',
 ]);
 const isGpAuthorityResource = gpAuthoritySlugs.has(resource.slug);
-const talkToTeamLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(isGpAuthorityResource
-  ? "Hi, I'd like to discuss a GP Resin application with Samrat Poly Resins."
-  : "Hi, I'd like help selecting the right polyester resin for my requirement.")}`;
+const laminationAuthoritySlugs = new Set([
+  'gp-resin-vs-lamination-resin',
+  'what-is-lamination-resin',
+  'applications-of-lamination-resin',
+  'lamination-resin-for-hand-lay-up',
+  'lamination-resin-vs-vinyl-ester-resin',
+  'lamination-resin-vs-gelcoat-resin',
+  'common-lamination-defects-in-frp',
+]);
+const isLaminationAuthorityResource = laminationAuthoritySlugs.has(resource.slug);
+const talkToTeamLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(isLaminationAuthorityResource
+  ? "Hi, I'd like to discuss a Lamination Resin application with Samrat Poly Resins."
+  : isGpAuthorityResource
+    ? "Hi, I'd like to discuss a GP Resin application with Samrat Poly Resins."
+    : "Hi, I'd like help selecting the right polyester resin for my requirement.")}`;
 const readingTime = getReadingTime(resource);
 
 const published = resources.filter((r) => !r.draft);
@@ -307,11 +319,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     )}
 
     <section class="article-cta">
-      <h2>{isGpAuthorityResource ? 'Discuss your GP Resin application with Samrat Poly Resins' : 'Need help selecting the right polyester resin?'}</h2>
-      <p>{isGpAuthorityResource ? 'Share the application, process, quantity and delivery location so the requirement can be understood before a quote discussion.' : 'Our technical team can help you choose the most suitable resin for your manufacturing requirements.'}</p>
+      <h2>{isLaminationAuthorityResource ? 'Discuss your Lamination Resin application with Samrat Poly Resins' : isGpAuthorityResource ? 'Discuss your GP Resin application with Samrat Poly Resins' : 'Need help selecting the right polyester resin?'}</h2>
+      <p>{isLaminationAuthorityResource ? 'Share the component, substrate or reinforcement, process, quantity and delivery location so the requirement can be understood before a quote discussion.' : isGpAuthorityResource ? 'Share the application, process, quantity and delivery location so the requirement can be understood before a quote discussion.' : 'Our technical team can help you choose the most suitable resin for your manufacturing requirements.'}</p>
       <div class="article-cta-buttons">
-        <a href="/contact/" class="btn btn-solid">{isGpAuthorityResource ? 'Discuss GP Resin application' : 'Request a Quote'}</a>
-        <a href={talkToTeamLink} class="btn btn-wa" target="_blank" rel="noopener">{isGpAuthorityResource ? 'WhatsApp Samrat Poly Resins' : 'Contact Technical Team'}</a>
+        <a href="/contact/" class="btn btn-solid">{isLaminationAuthorityResource ? 'Discuss Lamination Resin application' : isGpAuthorityResource ? 'Discuss GP Resin application' : 'Request a Quote'}</a>
+        <a href={talkToTeamLink} class="btn btn-wa" target="_blank" rel="noopener">{isLaminationAuthorityResource || isGpAuthorityResource ? 'WhatsApp Samrat Poly Resins' : 'Contact Technical Team'}</a>
       </div>
     </section>
   </article>
