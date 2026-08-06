@@ -102,6 +102,25 @@ const uprAuthoritySlugs = new Set([
   'how-to-store-unsaturated-polyester-resin',
 ]);
 const uprAuthorityResources = published.filter((resource) => uprAuthoritySlugs.has(resource.slug));
+const glassFiberAuthoritySlugs = new Set([
+  'what-is-glass-fiber-chopped-strand-mat',
+  'csm-300-vs-csm-450-glass-fiber',
+  'glass-fiber-and-polyester-resin-compatibility',
+  'glass-fiber-for-frp-manufacturing',
+  'glass-fiber-storage-and-procurement-guide',
+]);
+const glassFiberAuthorityResources = published.filter((resource) => glassFiberAuthoritySlugs.has(resource.slug));
+const glassFiberFoundationResources = published.filter((resource) => [
+  'what-is-glass-fiber-chopped-strand-mat',
+  'csm-300-vs-csm-450-glass-fiber',
+].includes(resource.slug));
+const glassFiberSystemResources = published.filter((resource) => [
+  'glass-fiber-and-polyester-resin-compatibility',
+  'glass-fiber-for-frp-manufacturing',
+].includes(resource.slug));
+const glassFiberProcurementResources = published.filter((resource) => [
+  'glass-fiber-storage-and-procurement-guide',
+].includes(resource.slug));
 const gpAuthorityResourcesWithoutUpr = gpAuthorityResources.filter((resource) => !uprAuthoritySlugs.has(resource.slug));
 const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug));
 ---
@@ -220,6 +239,44 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
               <h3 id="gp-quartz-data-heading">Review technical data and prepare a quote</h3>
               <div class="kc-grid">
                 {gpQuartzTechnicalResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
+
+      {glassFiberAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="glass-fiber-guides-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Reinforcement knowledge hub</p>
+              <h2 id="glass-fiber-guides-heading">Glass Fiber / CSM Knowledge Hub</h2>
+              <p>Start with the published E-Glass Chopped Strand Mat range and CSM 300/450 comparison, then review the FRP material-system context before using the TDS and preparing a focused Glass Fiber enquiry.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/fibre-glass-mat/" class="btn btn-solid">View Glass Fiber Mat</a>
+              <a href="/tds/fibre-glass-mat-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Glass Fiber TDS</a>
+              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href="/contact/" class="btn">Discuss your reinforcement requirement with Samrat</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="glass-fiber-foundation-heading">
+              <h3 id="glass-fiber-foundation-heading">1. Understand the material and compare mat weight</h3>
+              <div class="kc-grid">
+                {glassFiberFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="glass-fiber-system-heading">
+              <h3 id="glass-fiber-system-heading">2. Define the FRP component and material-system role</h3>
+              <div class="kc-grid">
+                {glassFiberSystemResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="glass-fiber-procurement-heading">
+              <h3 id="glass-fiber-procurement-heading">3. Review storage and prepare the procurement discussion</h3>
+              <div class="kc-grid">
+                {glassFiberProcurementResources.map((resource) => <ResourceCard resource={resource} />)}
               </div>
             </section>
           </div>

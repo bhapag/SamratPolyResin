@@ -32,6 +32,7 @@ const isButtonGradeResin = product.slug === 'button-grade-resin';
 const isUnsaturatedPolyesterResin = product.slug === 'unsaturated-polyester-resin';
 const isGpWhiteResin = product.slug === 'gp-white-resin';
 const isGpQuartzResin = product.slug === 'gp-quartz-resin';
+const isGlassFiber = product.slug === 'fibre-glass-mat';
 
 const gpClearSeo = {
   title: 'GP Clear Resin Manufacturer in India | General Purpose Polyester Resin',
@@ -133,6 +134,25 @@ const unsaturatedPolyesterSeo = {
     'Unsaturated Polyester Resin supplier',
     'Resin for FRP Manufacturing',
     'Industrial Polyester Resin',
+  ],
+};
+const glassFiberSeo = {
+  title: 'Glass Fiber Mat Supplier in India | E-Glass CSM 300 & 450',
+  description: 'E-Glass Chopped Strand Mat (CSM) in 300 and 450 GSM for FRP reinforcement. Polyester-compatible sizing, 1040 mm rolls, 30 kg packaging and published TDS.',
+  keywords: [
+    'Glass Fiber',
+    'Glass Fiber Mat',
+    'Fiberglass Mat',
+    'E-Glass Fiber',
+    'Chopped Strand Mat',
+    'CSM',
+    'CSM 300',
+    'CSM 450',
+    '300 GSM Glass Fiber',
+    '450 GSM Glass Fiber',
+    'FRP Reinforcement Material',
+    'Polyester Resin Glass Fiber',
+    'Glass Fiber Supplier',
   ],
 };
 const gpBuyerFaqs = [
@@ -352,6 +372,17 @@ const uprResources = isUnsaturatedPolyesterResin
   ? uprResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
   : [];
 
+const glassFiberResourceSlugs = [
+  'what-is-glass-fiber-chopped-strand-mat',
+  'csm-300-vs-csm-450-glass-fiber',
+  'glass-fiber-and-polyester-resin-compatibility',
+  'glass-fiber-for-frp-manufacturing',
+  'glass-fiber-storage-and-procurement-guide',
+];
+const glassFiberResources = isGlassFiber
+  ? glassFiberResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
 const waLink = buildProductQuoteLink(product.whatsappName ?? name);
 
 // "Explore applications" cards — only populated when a product names
@@ -414,7 +445,7 @@ const productJsonLd = {
   url: buildCanonicalUrl(Astro.url.pathname),
   image: mainImage ? buildCanonicalUrl(mainImage.main.src) : undefined,
   brand: { "@type": "Organization", name: site.name },
-  manufacturer: { "@type": "Organization", name: site.name },
+  ...(!isGlassFiber ? { manufacturer: { "@type": "Organization", name: site.name } } : {}),
   ...(additionalProperty.length ? { additionalProperty } : {}),
 };
 
@@ -431,9 +462,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 } : null;
 ---
 <Base
-  title={isGpClearResin ? gpClearSeo.title : isGpWhiteResin ? gpWhiteSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isButtonGradeResin ? buttonGradeSeo.title : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.title : (product.seo?.title ?? name)}
-  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : isButtonGradeResin ? buttonGradeSeo.description : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
-  keywords={isGpClearResin ? gpClearSeo.keywords : isGpWhiteResin ? gpWhiteSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.keywords : product.seo?.keywords}
+  title={isGpClearResin ? gpClearSeo.title : isGpWhiteResin ? gpWhiteSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isButtonGradeResin ? buttonGradeSeo.title : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.title : isGlassFiber ? glassFiberSeo.title : (product.seo?.title ?? name)}
+  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : isButtonGradeResin ? buttonGradeSeo.description : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.description : isGlassFiber ? glassFiberSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
+  keywords={isGpClearResin ? gpClearSeo.keywords : isGpWhiteResin ? gpWhiteSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.keywords : isGlassFiber ? glassFiberSeo.keywords : product.seo?.keywords}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
@@ -510,14 +541,19 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           Samrat Poly Resins supplies Unsaturated Polyester Resin (UPR) to Indian B2B buyers as a category gateway for FRP and composite manufacturing. Start with the required product role, then review the specific grade data before selecting a resin.
         </p>
       )}
+      {isGlassFiber && (
+        <p class="glass-fiber-buyer-intro">
+          Samrat Poly Resins supplies E-glass chopped strand mat (CSM) to Indian FRP buyers seeking reinforcement material in CSM 300 or CSM 450. This page helps separate the reinforcement decision from the separate resin and surface-finish decisions.
+        </p>
+      )}
       <div class="prod-quote">
         <p class="prod-quote-heading">Price</p>
         <p class="prod-quote-value">{site.priceLabel}</p>
-        <p class="prod-quote-note">Industrial resin pricing varies based on:</p>
+        <p class="prod-quote-note">{isGlassFiber ? 'Glass Fiber pricing varies based on:' : 'Industrial resin pricing varies based on:'}</p>
         <ul class="prod-quote-list">
           <li>Order Quantity</li>
-          <li>Resin Grade</li>
-          <li>Current Raw Material Rates</li>
+          <li>{isGlassFiber ? 'CSM 300 or CSM 450 requirement' : 'Resin Grade'}</li>
+          <li>{isGlassFiber ? 'Delivery location' : 'Current Raw Material Rates'}</li>
         </ul>
         <a href={waLink} class="btn btn-solid prod-quote-cta" target="_blank" rel="noopener">Request Bulk Quote</a>
       </div>
@@ -686,6 +722,17 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </p>
           <p>
             The technical specifications and TDS on this page describe Samrat Poly Resins&rsquo; standard clear orthophthalic UPR, supplied as <a href="/products/gp-clear-resin/">GP Clear Resin</a>. Specialist products below have their own published data, packaging and suitability information; the standard UPR table should not be treated as their specification.
+          </p>
+        </section>
+      )}
+      {isGlassFiber && (
+        <section class="glass-fiber-overview" aria-labelledby="glass-fiber-overview-heading">
+          <h2 id="glass-fiber-overview-heading" class="spec-h">What is Glass Fiber / Fiberglass Mat?</h2>
+          <p>
+            Glass Fiber is the reinforcement material in an FRP laminate, while resin is the liquid system that binds it into the finished composite. This published product is E-glass chopped strand mat (CSM): a non-woven mat of 50 mm chopped strands with polyester-compatible sizing. It is not a general-purpose resin, a gelcoat or a ready-made FRP part.
+          </p>
+          <p>
+            The available CSM grades are identified by area weight: CSM 300 is 300 g/m² and CSM 450 is 450 g/m². Neither weight is a universal answer for every component. Use the part drawing, laminate design, reinforcement build-up, resin system and production method to discuss the appropriate requirement before purchase.
           </p>
         </section>
       )}
@@ -874,6 +921,25 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </div>
         </section>
       )}
+      {isGlassFiber && (
+        <section class="glass-fiber-buyer-outcomes" aria-labelledby="glass-fiber-buyer-outcomes-heading">
+          <h2 id="glass-fiber-buyer-outcomes-heading" class="spec-h">What this means for Glass Fiber buyers</h2>
+          <div class="glass-fiber-outcomes-grid">
+            <div class="glass-fiber-outcome-card">
+              <h3>Choose the published mat weight deliberately</h3>
+              <p>CSM 300 and CSM 450 identify the available 300 g/m² and 450 g/m² mat weights. Confirm the component and specified reinforcement build-up instead of selecting by a generic FRP label.</p>
+            </div>
+            <div class="glass-fiber-outcome-card">
+              <h3>Match reinforcement and resin roles</h3>
+              <p>Glass Fiber provides reinforcement; the resin, gelcoat and any chemical-resistance requirement are separate product decisions. Review the relevant product data as a system, not as interchangeable materials.</p>
+            </div>
+            <div class="glass-fiber-outcome-card">
+              <h3>Procurement details are published</h3>
+              <p>Review the Technical Data Sheet, 1040 mm roll width, 30 kg roll packaging and 500 kg minimum order quantity before sharing the grade, quantity and delivery location for a quote.</p>
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   </article>
 
@@ -968,6 +1034,21 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         </p>
       </div>
       <a href="#enquire" class="btn btn-solid button-process-cta">Discuss your button application</a>
+    </section>
+  )}
+
+  {isGlassFiber && (
+    <section class="wrap glass-fiber-process" aria-labelledby="glass-fiber-process-heading">
+      <div>
+        <h2 id="glass-fiber-process-heading" class="rel-h">Explore FRP component and resin context</h2>
+        <p>
+          The existing application guides cover FRP roofing sheets, water tanks, panels, doors and hand lay-up. They help buyers define the component and production context; they do not prescribe a fixed CSM 300 or CSM 450 choice for every FRP part.
+        </p>
+        <p>
+          Review the guides for <a href="/applications/resin-for-roofing-sheet-manufacturing/">FRP roofing sheets</a>, <a href="/applications/resin-for-water-tank-manufacturing/">water tanks</a>, <a href="/applications/resin-for-frp-panel-manufacturing/">FRP panels</a>, <a href="/applications/resin-for-frp-door-manufacturing/">FRP doors</a> and <a href="/applications/resin-for-hand-lay-up-process/">hand lay-up</a>. For broader technical reading, visit the <a href="/resources/">Resource Hub</a> alongside the product TDS.
+        </p>
+      </div>
+      <a href="#enquire" class="btn btn-solid glass-fiber-process-cta">Discuss your reinforcement requirement</a>
     </section>
   )}
 
@@ -1254,6 +1335,50 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href="#upr-grade-guide-heading" class="btn">Compare UPR grade roles</a>
         <a href="/resources/#upr-resin-hub-heading" class="btn">Explore the UPR Knowledge Hub</a>
         <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+      </div>
+    </section>
+  )}
+
+  {glassFiberResources.length > 0 && (
+    <section class="wrap prod-resources glass-fiber-resources" aria-labelledby="glass-fiber-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Reinforcement knowledge hub</p>
+        <h2 id="glass-fiber-resources-heading" class="rel-h">Glass Fiber / CSM Knowledge Hub</h2>
+        <p>Follow a focused buyer route: understand E-Glass Chopped Strand Mat, compare CSM 300 and CSM 450, define the FRP component and resin role, then review the Glass Fiber TDS and prepare a focused quotation request.</p>
+        <div class="gp-hub-actions">
+          <a href="/resources/#glass-fiber-guides-heading" class="btn btn-solid">Explore Glass Fiber guides</a>
+          <a href="#enquire" class="btn">Discuss your reinforcement requirement</a>
+          <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download Glass Fiber TDS</a>
+          <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        </div>
+      </div>
+      <div class="resources-grid">
+        {glassFiberResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+    </section>
+  )}
+
+  {isGlassFiber && (
+    <section class="wrap gp-trust glass-fiber-trust" aria-labelledby="glass-fiber-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Product documents and company context</p>
+        <h2 id="glass-fiber-trust-heading">A transparent route for Glass Fiber buyers</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Punjab-based company context</strong>
+            <span>Samrat Poly Resins was established in 2017 and manufactures polyester resin systems in Doraha, Ludhiana. Its published catalogue includes Glass Fiber within a wider FRP-material range.</span>
+          </span>
+        </a>
+        <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Use product-specific documentation</strong>
+            <span>The Glass Fiber TDS is the reference for the published E-Glass CSM 300 and CSM 450 details. Review the relevant resin TDS separately when planning an FRP material system.</span>
+          </span>
+        </a>
       </div>
     </section>
   )}
@@ -1890,7 +2015,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     @media (max-width: 460px) { .spec-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
 
     .prod-subtitle { color: var(--ink-dim); font-size: 1.05rem; margin-top: 0.55rem; max-width: 48ch; line-height: 1.5; }
-    .gp-buyer-intro, .gp-white-buyer-intro, .gp-quartz-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro, .gp-yellow-buyer-intro, .button-buyer-intro, .upr-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
+    .gp-buyer-intro, .gp-white-buyer-intro, .gp-quartz-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro, .gp-yellow-buyer-intro, .button-buyer-intro, .upr-buyer-intro, .glass-fiber-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
     .prod-usage { font-size: 0.95rem; }
     .prod-desc a, .prod-usage a {
       color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px;
@@ -1898,8 +2023,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     }
     .prod-desc a:hover, .prod-usage a:hover { color: var(--accent-gold); }
 
-    .gp-overview, .gp-white-overview, .gp-quartz-overview, .lamination-overview, .gelcoat-overview, .gp-yellow-overview, .button-overview, .upr-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
-    .gp-overview p, .gp-white-overview p, .gp-quartz-overview p, .lamination-overview p, .gelcoat-overview p, .gp-yellow-overview p, .button-overview p, .upr-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .gp-overview, .gp-white-overview, .gp-quartz-overview, .lamination-overview, .gelcoat-overview, .gp-yellow-overview, .button-overview, .upr-overview, .glass-fiber-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-overview p, .gp-white-overview p, .gp-quartz-overview p, .lamination-overview p, .gelcoat-overview p, .gp-yellow-overview p, .button-overview p, .upr-overview p, .glass-fiber-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
     .upr-overview a, .upr-process a:not(.btn), .upr-comparison-card a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
     .upr-overview a:hover, .upr-process a:not(.btn):hover, .upr-comparison-card a:hover { color: var(--accent-gold); }
     .upr-grade-guide { margin-top: 2.2rem; }
@@ -1945,6 +2070,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .button-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
     .button-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
     .button-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
+    .glass-fiber-buyer-outcomes { margin-top: 2.2rem; }
+    .glass-fiber-outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }
+    .glass-fiber-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .glass-fiber-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
+    .glass-fiber-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
 
     .prod-extra { padding-block: 1.5rem 0.5rem; }
     .prod-extra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.8rem, 5vw, 3.5rem); }
@@ -2051,6 +2181,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .button-process p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
     .button-process-cta { flex-shrink: 0; }
     @media (max-width: 680px) { .button-process { align-items: start; flex-direction: column; } }
+    .glass-fiber-process { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; padding-block: 2rem 1rem; border-top: 1px solid var(--line); }
+    .glass-fiber-process > div { max-width: 68ch; }
+    .glass-fiber-process p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .glass-fiber-process a:not(.btn) { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
+    .glass-fiber-process a:not(.btn):hover { color: var(--accent-gold); }
+    .glass-fiber-process-cta { flex-shrink: 0; }
+    @media (max-width: 680px) { .glass-fiber-process { align-items: start; flex-direction: column; } }
 
     .related { padding-block: 2rem 3rem; }
     .rel-h { font-size: 1.1rem; color: var(--ink-dim); margin-bottom: 1.2rem; }
