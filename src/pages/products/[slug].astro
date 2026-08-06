@@ -26,6 +26,7 @@ const { name, image, description, features, applications, category, specs } = pr
 const { tagline, usageNote, industries, whyChoose, faqs, tdsUrl } = product;
 const isGpClearResin = product.slug === 'gp-clear-resin';
 const isLaminationResin = product.slug === 'lamination-resin';
+const isGpGelcoatResin = product.slug === 'gp-gelcoat-resin';
 
 const gpClearSeo = {
   title: 'GP Clear Resin Manufacturer in India | General Purpose Polyester Resin',
@@ -54,6 +55,21 @@ const laminationSeo = {
     'Resin for FRP fabrication',
   ],
 };
+const gelcoatSeo = {
+  title: 'Gelcoat Resin Manufacturer in India | GP Gelcoat Resin',
+  description: 'GP Gelcoat Resin manufacturer in India for FRP moulded products and surface finish applications. White, high-gloss polyester gelcoat with published TDS, 50 kg or 225 kg packaging.',
+  keywords: [
+    'Gelcoat Resin',
+    'GP Gelcoat Resin',
+    'Gelcoat Resin manufacturer',
+    'Gelcoat Resin manufacturer in India',
+    'Gelcoat Resin supplier',
+    'Polyester Gelcoat Resin',
+    'Resin for FRP surface finish',
+    'Resin for moulded FRP products',
+    'Gelcoat for FRP products',
+  ],
+};
 const gpBuyerFaqs = [
   {
     q: 'How does GP Clear Resin differ from GP Yellow Resin?',
@@ -74,11 +90,23 @@ const laminationBuyerFaqs = [
     a: 'No. Lamination Resin is published for door lamination, plywood lamination, FRP bonding and clear-finish hand lay-up work. For a general FRP, chemical-resistance, surface-coating or epoxy requirement, review the relevant product data before selecting a resin system.',
   },
 ];
+const gelcoatBuyerFaqs = [
+  {
+    q: 'Which details should I share when requesting a GP Gelcoat Resin quote?',
+    a: 'Please share the moulded component, surface-finish requirement, application method, expected quantity, colour requirement if applicable, and delivery location. This helps the sales team understand the requirement before preparing a quote.',
+  },
+  {
+    q: 'Is GP Gelcoat Resin the structural resin in an FRP part?',
+    a: 'No. This product is published as a polyester surface-coating gelcoat for the mould-facing layer. The structural laminate is built separately with the appropriate laminating resin and glass-fibre reinforcement.',
+  },
+];
 const displayedFaqs = isGpClearResin
   ? [...(faqs ?? []), ...gpBuyerFaqs]
   : isLaminationResin
     ? [...(faqs ?? []), ...laminationBuyerFaqs]
-    : faqs;
+    : isGpGelcoatResin
+      ? [...(faqs ?? []), ...gelcoatBuyerFaqs]
+      : faqs;
 
 // Two-table model (Product Details + Technical Specifications) when a product
 // supplies the grouped fields; otherwise fall back to the legacy single table
@@ -155,6 +183,24 @@ const laminationResourceSlugs = [
 ];
 const laminationResources = isLaminationResin
   ? laminationResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
+const gelcoatResourceSlugs = [
+  'what-is-gel-coat-resin',
+  'gp-resin-vs-gelcoat-resin',
+  'lamination-resin-vs-gelcoat-resin',
+  'gelcoat-resin-vs-vinyl-ester-resin',
+  'gelcoat-resin-vs-epoxy-resin',
+  'applications-of-gelcoat-resin-in-frp-manufacturing',
+  'how-to-choose-gelcoat-resin-for-frp-products',
+  'gelcoat-resin-problems-peeling-cracking-tackiness',
+  'gelcoat-resin-storage-and-handling-guide',
+  'how-to-select-polyester-resin-for-frp-manufacturing',
+  'why-polyester-resin-remains-sticky-or-tacky',
+  'how-to-store-unsaturated-polyester-resin',
+];
+const gelcoatResources = isGpGelcoatResin
+  ? gelcoatResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
   : [];
 
 const waLink = buildProductQuoteLink(product.whatsappName ?? name);
@@ -236,9 +282,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 } : null;
 ---
 <Base
-  title={isGpClearResin ? gpClearSeo.title : isLaminationResin ? laminationSeo.title : (product.seo?.title ?? name)}
-  description={isLaminationResin ? laminationSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
-  keywords={isGpClearResin ? gpClearSeo.keywords : isLaminationResin ? laminationSeo.keywords : product.seo?.keywords}
+  title={isGpClearResin ? gpClearSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : (product.seo?.title ?? name)}
+  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
+  keywords={isGpClearResin ? gpClearSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : product.seo?.keywords}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
@@ -283,6 +329,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       {isLaminationResin && (
         <p class="lamination-buyer-intro">
           Samrat Poly Resins supplies Lamination Resin, also known as LR Resin, to Indian B2B buyers for door, plywood and FRP lamination work where a transparent polyester resin is required.
+        </p>
+      )}
+      {isGpGelcoatResin && (
+        <p class="gelcoat-buyer-intro">
+          Samrat Poly Resins supplies GP Gelcoat Resin to Indian B2B FRP buyers for the mould-facing surface of finished FRP products where a white, high-gloss polyester gelcoat is required.
         </p>
       )}
       <div class="prod-quote">
@@ -397,6 +448,17 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </p>
         </section>
       )}
+      {isGpGelcoatResin && (
+        <section class="gelcoat-overview" aria-labelledby="gelcoat-overview-heading">
+          <h2 id="gelcoat-overview-heading" class="spec-h">What is Gelcoat Resin / GP Gelcoat Resin?</h2>
+          <p>
+            GP Gelcoat Resin is Samrat Poly Resins’ published white, high-gloss polyester surface-coating gelcoat for the mould-facing side of an FRP part. It is applied to the mould before the reinforced laminate is built behind it.
+          </p>
+          <p>
+            For buyers, Gelcoat Resin is a surface-finish decision rather than a substitute for a laminating resin. Review the published TDS, application method, required finish and the rest of the FRP build-up before selecting a product system.
+          </p>
+        </section>
+      )}
 
       <div class="spec-grid">
         <div class="spec-col">
@@ -443,6 +505,25 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             <div class="lamination-outcome-card">
               <h3>Procurement information is available</h3>
               <p>Review the 35 kg PET or 225 kg drum packaging and 1,000 kg minimum order quantity before requesting an LR Resin quote.</p>
+            </div>
+          </div>
+        </section>
+      )}
+      {isGpGelcoatResin && (
+        <section class="gelcoat-buyer-outcomes" aria-labelledby="gelcoat-buyer-outcomes-heading">
+          <h2 id="gelcoat-buyer-outcomes-heading" class="spec-h">What this means for FRP surface-finish buyers</h2>
+          <div class="gelcoat-outcomes-grid">
+            <div class="gelcoat-outcome-card">
+              <h3>Mould-facing product role</h3>
+              <p>The published product role is the visible surface layer of an FRP moulding, helping buyers separate the finish requirement from the structural laminate requirement.</p>
+            </div>
+            <div class="gelcoat-outcome-card">
+              <h3>Vertical-mould application context</h3>
+              <p>The published thixotropic behaviour is relevant where a surface coating must resist sagging on vertical mould surfaces. Confirm the application against the TDS and actual process.</p>
+            </div>
+            <div class="gelcoat-outcome-card">
+              <h3>Procurement details are available</h3>
+              <p>Review the TDS, 50 kg or 225 kg packaging and 500 kg minimum order quantity before requesting a Gelcoat Resin quote.</p>
             </div>
           </div>
         </section>
@@ -496,6 +577,21 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         </p>
       </div>
       <a href="#enquire" class="btn btn-solid lamination-process-cta">Discuss your lamination process</a>
+    </section>
+  )}
+
+  {isGpGelcoatResin && (
+    <section class="wrap gelcoat-process" aria-labelledby="gelcoat-process-heading">
+      <div>
+        <h2 id="gelcoat-process-heading" class="rel-h">Suitable for the surface-finish step in FRP moulding</h2>
+        <p>
+          The published Gelcoat Resin applications cover mould-facing surfaces for FRP boat hulls and body panels, bathware and sanitaryware, water-tank exteriors, furniture, panels and other moulded components. The laminate behind the gelcoat remains a separate resin-and-reinforcement selection.
+        </p>
+        <p>
+          Review the existing guides for <a href="/applications/gelcoat-for-boat-marine-hull-finishing/">marine hull finishing</a>, <a href="/applications/gelcoat-for-frp-bathware-sanitaryware/">FRP bathware and sanitaryware</a> and <a href="/applications/gelcoat-for-general-frp-mould-finishing/">general FRP mould finishing</a> alongside the product TDS before finalising a process.
+        </p>
+      </div>
+      <a href="#enquire" class="btn btn-solid gelcoat-process-cta">Discuss your surface-finish requirement</a>
     </section>
   )}
 
@@ -597,6 +693,47 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <h3><a href="/products/epoxy-clear-casting-resin/">Lamination Resin vs Epoxy Resin</a></h3>
           <p>Polyester lamination resin and epoxy are different resin systems. Where an epoxy requirement is specified, review the relevant epoxy product data and application rather than substituting by product name alone.</p>
         </article>
+      </div>
+    </section>
+  )}
+
+  {isGpGelcoatResin && (
+    <section class="wrap gelcoat-comparisons" aria-labelledby="gelcoat-comparisons-heading">
+      <h2 id="gelcoat-comparisons-heading" class="rel-h">When to consider a different resin role</h2>
+      <div class="gelcoat-comparison-grid">
+        <article class="gelcoat-comparison-card">
+          <h3><a href="/products/lamination-resin/">Gelcoat Resin vs Lamination Resin</a></h3>
+          <p>Gelcoat Resin is the mould-facing surface coating. Lamination Resin is the product to review for door, plywood and FRP bonding work, so the products serve different stages of a build-up.</p>
+        </article>
+        <article class="gelcoat-comparison-card">
+          <h3><a href="/products/gp-clear-resin/">Gelcoat Resin vs GP Clear Resin</a></h3>
+          <p>GP Clear Resin is a published general-purpose laminating grade used with reinforcement to build the laminate. GP Gelcoat Resin is the surface-coating layer applied first to the mould.</p>
+        </article>
+        <article class="gelcoat-comparison-card">
+          <h3><a href="/products/vinyl-ester-resin/">Gelcoat Resin vs Vinyl Ester Resin</a></h3>
+          <p>For a project with a stated chemical- or corrosion-resistance requirement, review Vinyl Ester Resin and the application-specific technical data rather than assuming a standard Gelcoat Resin is suitable.</p>
+        </article>
+        <article class="gelcoat-comparison-card">
+          <h3><a href="/products/epoxy-clear-casting-resin/">Gelcoat Resin vs Epoxy Resin</a></h3>
+          <p>Gelcoat Resin is a polyester surface-coating product for moulded FRP parts. Where an epoxy requirement is specified, review the relevant epoxy product data and application rather than substituting by product name alone.</p>
+        </article>
+      </div>
+    </section>
+  )}
+
+  {gelcoatResources.length > 0 && (
+    <section class="wrap gelcoat-resources" aria-labelledby="gelcoat-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Product knowledge hub</p>
+        <h2 id="gelcoat-resources-heading" class="rel-h">Gelcoat Resin Knowledge Hub</h2>
+        <p>Use these Samrat Poly Resins guides to review the surface-coating role, FRP applications, resin-role comparisons, selection questions, documented troubleshooting and storage context alongside the GP Gelcoat Resin TDS.</p>
+        <div class="gp-hub-actions">
+          <a href="/resources/#gelcoat-resin-guides-heading" class="btn btn-solid">Explore Gelcoat Resin guides</a>
+          <a href="/contact/" class="btn">Discuss your Gelcoat application</a>
+        </div>
+      </div>
+      <div class="resources-grid">
+        {gelcoatResources.map((resource) => <ResourceCard resource={resource} />)}
       </div>
     </section>
   )}
@@ -709,6 +846,31 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
+  {isGpGelcoatResin && (
+    <section class="wrap gp-trust" aria-labelledby="gelcoat-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Manufacturer context</p>
+        <h2 id="gelcoat-trust-heading">Manufacturing and quality information</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Manufactured in Punjab, India</strong>
+            <span>Learn about Samrat Poly Resins’ Doraha, Ludhiana facility and company background.</span>
+          </span>
+        </a>
+        <a href="/about/" class="gp-trust-card">
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Published quality approach</strong>
+            <span>Our company information describes checks for viscosity, gel time and cure behaviour before batch approval.</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  )}
+
   {isGpClearResin && (
     <section id="gp-roofing-sheet-case-study" class="wrap gp-case-study" aria-labelledby="gp-case-study-heading">
       <div class="section-head">
@@ -777,9 +939,10 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     <div class="wrap enquire-inner">
       <div class="section-head">
         <p class="eyebrow">Enquiry</p>
-        <h2>{isGpClearResin ? 'Request a GP Clear Resin quote' : isLaminationResin ? 'Request a Lamination Resin quote' : `Get a quote for ${name}`}</h2>
+        <h2>{isGpClearResin ? 'Request a GP Clear Resin quote' : isLaminationResin ? 'Request a Lamination Resin quote' : isGpGelcoatResin ? 'Request a GP Gelcoat Resin quote' : `Get a quote for ${name}`}</h2>
         {isGpClearResin && <p class="gp-enquiry-note">Share your quantity, application, grade requirement and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isLaminationResin && <p class="lamination-enquiry-note">Share the lamination application, substrate or component, expected quantity and delivery location so we can understand the requirement before preparing a quote.</p>}
+        {isGpGelcoatResin && <p class="gelcoat-enquiry-note">Share the moulded component, surface-finish requirement, application method, expected quantity and delivery location so we can understand the requirement before preparing a quote.</p>}
       </div>
       <div class="enquire-box">
         <EnquiryForm product={name} />
@@ -931,8 +1094,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     @media (max-width: 460px) { .spec-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
 
     .prod-subtitle { color: var(--ink-dim); font-size: 1.05rem; margin-top: 0.55rem; max-width: 48ch; line-height: 1.5; }
-    .gp-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
-    .lamination-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
+    .gp-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
     .prod-usage { font-size: 0.95rem; }
     .prod-desc a, .prod-usage a {
       color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px;
@@ -940,10 +1102,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     }
     .prod-desc a:hover, .prod-usage a:hover { color: var(--accent-gold); }
 
-    .gp-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
-    .gp-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
-    .lamination-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
-    .lamination-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .gp-overview, .lamination-overview, .gelcoat-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-overview p, .lamination-overview p, .gelcoat-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
     .gp-buyer-outcomes { margin-top: 2.2rem; }
     .gp-outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }
     .gp-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
@@ -954,6 +1114,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .lamination-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
     .lamination-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
     .lamination-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
+    .gelcoat-buyer-outcomes { margin-top: 2.2rem; }
+    .gelcoat-outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }
+    .gelcoat-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gelcoat-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
+    .gelcoat-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
 
     .prod-extra { padding-block: 1.5rem 0.5rem; }
     .prod-extra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.8rem, 5vw, 3.5rem); }
@@ -1022,6 +1187,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .lamination-process a:not(.btn):hover { color: var(--accent-gold); }
     .lamination-process-cta { flex-shrink: 0; }
     @media (max-width: 680px) { .lamination-process { align-items: start; flex-direction: column; } }
+    .gelcoat-process { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; padding-block: 2rem 1rem; border-top: 1px solid var(--line); }
+    .gelcoat-process > div { max-width: 68ch; }
+    .gelcoat-process p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .gelcoat-process a:not(.btn) { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
+    .gelcoat-process a:not(.btn):hover { color: var(--accent-gold); }
+    .gelcoat-process-cta { flex-shrink: 0; }
+    @media (max-width: 680px) { .gelcoat-process { align-items: start; flex-direction: column; } }
 
     .related { padding-block: 2rem 3rem; }
     .rel-h { font-size: 1.1rem; color: var(--ink-dim); margin-bottom: 1.2rem; }
@@ -1043,6 +1215,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-hub-case-link a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 0.18em; }
     .gp-hub-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.4rem; }
     .lamination-resources { padding-block: 0 3rem; }
+    .gelcoat-resources { padding-block: 0 3rem; }
 
     .gp-comparisons { padding-block: 1.5rem 2rem; }
     .gp-comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
@@ -1058,6 +1231,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .lamination-comparison-card h3 a { color: var(--ink); }
     .lamination-comparison-card h3 a:hover { color: var(--accent-gold-light); }
     .lamination-comparison-card p { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.6; margin-top: 0.65rem; }
+    .gelcoat-comparisons { padding-block: 1.5rem 2rem; }
+    .gelcoat-comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .gelcoat-comparison-card { padding: 1.15rem 1.2rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gelcoat-comparison-card h3 { font-size: 0.92rem; text-transform: none; letter-spacing: 0; }
+    .gelcoat-comparison-card h3 a { color: var(--ink); }
+    .gelcoat-comparison-card h3 a:hover { color: var(--accent-gold-light); }
+    .gelcoat-comparison-card p { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.6; margin-top: 0.65rem; }
 
     .gp-trust { padding-block: 0 3rem; }
     .gp-trust .section-head { margin-bottom: 1.2rem; }
@@ -1104,5 +1284,6 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .enquire-box { background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest); padding: clamp(1.4rem, 4vw, 2.2rem); }
     .gp-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
     .lamination-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
+    .gelcoat-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
   </style>
 </Base>

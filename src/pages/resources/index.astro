@@ -30,7 +30,19 @@ const laminationAuthoritySlugs = new Set([
   'common-lamination-defects-in-frp',
 ]);
 const laminationAuthorityResources = published.filter((resource) => laminationAuthoritySlugs.has(resource.slug));
-const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug));
+const gelcoatAuthoritySlugs = new Set([
+  'what-is-gel-coat-resin',
+  'gp-resin-vs-gelcoat-resin',
+  'lamination-resin-vs-gelcoat-resin',
+  'gelcoat-resin-vs-vinyl-ester-resin',
+  'gelcoat-resin-vs-epoxy-resin',
+  'applications-of-gelcoat-resin-in-frp-manufacturing',
+  'how-to-choose-gelcoat-resin-for-frp-products',
+  'gelcoat-resin-problems-peeling-cracking-tackiness',
+  'gelcoat-resin-storage-and-handling-guide',
+]);
+const gelcoatAuthorityResources = published.filter((resource) => gelcoatAuthoritySlugs.has(resource.slug));
+const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug));
 ---
 <Base
   title="Knowledge Centre"
@@ -107,6 +119,25 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
           </div>
           <div class="kc-grid">
             {laminationAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
+          </div>
+        </section>
+      )}
+
+      {gelcoatAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="gelcoat-resin-guides-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Product knowledge hub</p>
+              <h2 id="gelcoat-resin-guides-heading">Gelcoat Resin Knowledge Hub</h2>
+              <p>Explore Gelcoat Resin roles, FRP applications, comparisons, selection guidance, troubleshooting and storage context before discussing a surface-finish requirement with Samrat Poly Resins, a Punjab-based manufacturer established in 2017.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/gp-gelcoat-resin/" class="btn btn-solid">View GP Gelcoat Resin</a>
+              <a href="/contact/" class="btn">Discuss a Gelcoat application</a>
+            </div>
+          </div>
+          <div class="kc-grid">
+            {gelcoatAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
           </div>
         </section>
       )}
