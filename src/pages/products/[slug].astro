@@ -36,6 +36,8 @@ const isGlassFiber = product.slug === 'fibre-glass-mat';
 const isFrpPolyesterPigment = product.slug === 'frp-polyester-pigment';
 const isMekpHardener = product.slug === 'mekp-hardener';
 const isEpoxyClearCastingResin = product.slug === 'epoxy-clear-casting-resin';
+const isEpoxyArtResin = product.slug === 'epoxy-art-resin';
+const isUvResin = product.slug === 'uv-resin';
 
 const gpClearSeo = {
   title: 'GP Clear Resin Manufacturer in India | General Purpose Polyester Resin',
@@ -201,6 +203,38 @@ const epoxyClearCastingSeo = {
     'Industrial Casting Resin',
   ],
 };
+const epoxyArtSeo = {
+  title: 'Epoxy Art Resin Supplier in India | Self-Levelling Art Resin',
+  description: 'Water-clear, self-levelling Epoxy Art Resin for published floor-art, table-top, wood-art and decorative applications. Review the current TDS, 15 kg packaging and quote requirements with Samrat Poly Resins.',
+  keywords: [
+    'Epoxy Art Resin',
+    'Art Resin',
+    'Clear Art Resin',
+    'Resin Art Epoxy',
+    'Self Levelling Epoxy Resin',
+    'Table Top Epoxy Resin',
+    'Gloss Epoxy Resin',
+    'Art Resin Manufacturer',
+    'Art Resin Supplier',
+    'Epoxy Resin for Artwork',
+  ],
+};
+const uvResinSeo = {
+  title: 'UV Resin Supplier in India | UV/LED Curing Resin',
+  description: 'UV Resin, a published clear epoxy-acrylate material for jewellery, encapsulation, doming and speciality coating requirements. Review the current TDS, 200 kg packaging and quote details with Samrat Poly Resins.',
+  keywords: [
+    'UV Resin',
+    'UV Curing Resin',
+    'UV Cure Resin',
+    'UV Clear Resin',
+    'UV Epoxy Resin',
+    'Ultraviolet Resin',
+    'UV LED Resin',
+    'UV Resin Manufacturer',
+    'UV Resin Supplier',
+    'Industrial UV Resin',
+  ],
+};
 const gpBuyerFaqs = [
   {
     q: 'How does GP Clear Resin differ from GP Yellow Resin?',
@@ -261,6 +295,26 @@ const epoxyCastingBuyerFaqs = [
     a: 'Review <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a> for its published self-levelling surface-coating role. For reinforced FRP manufacture, start with <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> or the relevant GP grade; for a mould-side FRP surface layer, review <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>. These are separate product roles, so use the relevant TDS before selection.',
   },
 ];
+const epoxyArtBuyerFaqs = [
+  {
+    q: 'What should I include when requesting an Epoxy Art Resin quotation?',
+    a: 'Share the finished surface or artwork, substrate if known, whether the requirement is for an open surface coat or a contained cast, expected quantity, clear or finish requirement, and delivery location. This helps identify the relevant published epoxy role before a quotation is prepared.',
+  },
+  {
+    q: 'When should I review a different Samrat resin product?',
+    a: 'Review <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> for its published contained clear-casting role. For reinforced FRP manufacture, start with <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> or the relevant GP grade; for a mould-side FRP surface layer, review <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>. These are separate product roles, so use the relevant TDS before selection.',
+  },
+];
+const uvBuyerFaqs = [
+  {
+    q: 'What should I include when requesting a UV Resin quotation?',
+    a: 'Share the intended application, industry or end use, expected quantity, required clear or finished appearance, any stated UV/LED equipment requirement, and delivery location. This helps identify the relevant published product role before a quotation is prepared.',
+  },
+  {
+    q: 'When should I review a different Samrat resin product?',
+    a: 'Review <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a> for its published self-levelling art and surface-coating role, or <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> for its published clear contained-casting role. For reinforced FRP manufacture, start with <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> or the relevant GP grade. These are separate product roles, so use the current TDS before selection.',
+  },
+];
 const displayedFaqs = isGpClearResin
   ? [...(faqs ?? []), ...gpBuyerFaqs]
   : isLaminationResin
@@ -271,6 +325,10 @@ const displayedFaqs = isGpClearResin
         ? [...(faqs ?? []), ...gpYellowBuyerFaqs]
         : isButtonGradeResin
           ? [...(faqs ?? []), ...buttonBuyerFaqs]
+          : isEpoxyArtResin
+            ? [...(faqs ?? []), ...epoxyArtBuyerFaqs]
+          : isUvResin
+            ? [...(faqs ?? []), ...uvBuyerFaqs]
           : isEpoxyClearCastingResin
             ? [...(faqs ?? []), ...epoxyCastingBuyerFaqs]
           : faqs;
@@ -472,6 +530,29 @@ const epoxyCastingResourceSlugs = [
 const epoxyCastingResources = isEpoxyClearCastingResin
   ? epoxyCastingResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
   : [];
+const epoxyArtResourceSlugs = [
+  'what-is-epoxy-art-resin',
+  'applications-of-epoxy-art-resin',
+  'casting-resin-vs-coating-resin',
+  'epoxy-art-resin-vs-polyester-resin',
+  'epoxy-art-resin-finish-questions',
+  'epoxy-art-resin-storage-and-procurement-guide',
+  'epoxy-art-resin-buyer-guide',
+];
+const epoxyArtResources = isEpoxyArtResin
+  ? epoxyArtResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+const uvResinResourceSlugs = [
+  'what-is-uv-resin',
+  'applications-of-uv-resin',
+  'uv-resin-vs-epoxy-art-resin',
+  'uv-resin-vs-epoxy-clear-casting-resin',
+  'uv-resin-vs-polyester-resin',
+  'uv-resin-buyer-guide',
+];
+const uvResinResources = isUvResin
+  ? uvResinResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
 
 const waLink = buildProductQuoteLink(product.whatsappName ?? name);
 
@@ -552,9 +633,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 } : null;
 ---
 <Base
-  title={isGpClearResin ? gpClearSeo.title : isGpWhiteResin ? gpWhiteSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isButtonGradeResin ? buttonGradeSeo.title : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.title : isGlassFiber ? glassFiberSeo.title : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.title : isMekpHardener ? mekpHardenerSeo.title : isEpoxyClearCastingResin ? epoxyClearCastingSeo.title : (product.seo?.title ?? name)}
-  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : isButtonGradeResin ? buttonGradeSeo.description : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.description : isGlassFiber ? glassFiberSeo.description : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.description : isMekpHardener ? mekpHardenerSeo.description : isEpoxyClearCastingResin ? epoxyClearCastingSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
-  keywords={isGpClearResin ? gpClearSeo.keywords : isGpWhiteResin ? gpWhiteSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.keywords : isGlassFiber ? glassFiberSeo.keywords : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.keywords : isMekpHardener ? mekpHardenerSeo.keywords : isEpoxyClearCastingResin ? epoxyClearCastingSeo.keywords : product.seo?.keywords}
+  title={isGpClearResin ? gpClearSeo.title : isGpWhiteResin ? gpWhiteSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isButtonGradeResin ? buttonGradeSeo.title : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.title : isGlassFiber ? glassFiberSeo.title : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.title : isMekpHardener ? mekpHardenerSeo.title : isEpoxyArtResin ? epoxyArtSeo.title : isUvResin ? uvResinSeo.title : isEpoxyClearCastingResin ? epoxyClearCastingSeo.title : (product.seo?.title ?? name)}
+  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : isButtonGradeResin ? buttonGradeSeo.description : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.description : isGlassFiber ? glassFiberSeo.description : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.description : isMekpHardener ? mekpHardenerSeo.description : isEpoxyArtResin ? epoxyArtSeo.description : isUvResin ? uvResinSeo.description : isEpoxyClearCastingResin ? epoxyClearCastingSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
+  keywords={isGpClearResin ? gpClearSeo.keywords : isGpWhiteResin ? gpWhiteSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.keywords : isGlassFiber ? glassFiberSeo.keywords : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.keywords : isMekpHardener ? mekpHardenerSeo.keywords : isEpoxyArtResin ? epoxyArtSeo.keywords : isUvResin ? uvResinSeo.keywords : isEpoxyClearCastingResin ? epoxyClearCastingSeo.keywords : product.seo?.keywords}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
@@ -646,14 +727,19 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           Samrat Poly Resins supplies MEKP Hardener to industrial buyers evaluating a catalyst / initiator for a published polyester, vinyl ester or gelcoat system. Begin with the actual resin grade and FRP application, then review the current TDS before requesting a quotation or technical discussion.
         </p>
       )}
+      {isUvResin && (
+        <p class="epoxy-art-buyer-intro">
+          Samrat Poly Resins supplies UV Resin, also called UV Curing Resin or UV Clear Resin, to buyers seeking a published UV/LED-curable epoxy-acrylate route for jewellery, encapsulation, doming and speciality coating requirements.
+        </p>
+      )}
       <div class="prod-quote">
         <p class="prod-quote-heading">Price</p>
         <p class="prod-quote-value">{site.priceLabel}</p>
-        <p class="prod-quote-note">{isGlassFiber ? 'Glass Fiber pricing varies based on:' : isFrpPolyesterPigment ? 'Pigment pricing varies based on:' : isMekpHardener ? 'MEKP Hardener pricing varies based on:' : isEpoxyClearCastingResin ? 'Casting-resin pricing varies based on:' : 'Industrial resin pricing varies based on:'}</p>
+        <p class="prod-quote-note">{isGlassFiber ? 'Glass Fiber pricing varies based on:' : isFrpPolyesterPigment ? 'Pigment pricing varies based on:' : isMekpHardener ? 'MEKP Hardener pricing varies based on:' : isEpoxyArtResin ? 'Art-resin pricing varies based on:' : isUvResin ? 'UV Resin pricing varies based on:' : isEpoxyClearCastingResin ? 'Casting-resin pricing varies based on:' : 'Industrial resin pricing varies based on:'}</p>
         <ul class="prod-quote-list">
           <li>Order Quantity</li>
-          <li>{isGlassFiber ? 'CSM 300 or CSM 450 requirement' : isFrpPolyesterPigment ? 'Required colour or RAL/Pantone reference' : isMekpHardener ? 'Base resin grade and application' : isEpoxyClearCastingResin ? 'Application, casting size and required finish' : 'Resin Grade'}</li>
-          <li>{isGlassFiber || isFrpPolyesterPigment ? 'Delivery location' : isMekpHardener ? 'Production process and delivery location' : isEpoxyClearCastingResin ? 'Delivery location' : 'Current Raw Material Rates'}</li>
+          <li>{isGlassFiber ? 'CSM 300 or CSM 450 requirement' : isFrpPolyesterPigment ? 'Required colour or RAL/Pantone reference' : isMekpHardener ? 'Base resin grade and application' : isEpoxyArtResin ? 'Finished surface or artwork application' : isUvResin ? 'Application, industry and clear/finish requirement' : isEpoxyClearCastingResin ? 'Application, casting size and required finish' : 'Resin Grade'}</li>
+          <li>{isGlassFiber || isFrpPolyesterPigment ? 'Delivery location' : isMekpHardener ? 'Production process and delivery location' : isEpoxyArtResin ? 'Required finish and delivery location' : isUvResin ? 'UV/LED equipment requirement and delivery location' : isEpoxyClearCastingResin ? 'Delivery location' : 'Current Raw Material Rates'}</li>
         </ul>
         <a href={waLink} class="btn btn-solid prod-quote-cta" target="_blank" rel="noopener">Request Bulk Quote</a>
       </div>
@@ -869,6 +955,28 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </p>
         </section>
       )}
+      {isEpoxyArtResin && (
+        <section class="gp-overview" aria-labelledby="epoxy-art-overview-heading">
+          <h2 id="epoxy-art-overview-heading" class="spec-h">What is Epoxy Art Resin?</h2>
+          <p>
+            Epoxy Art Resin is Samrat Poly Resins&rsquo; published water-clear, two-component epoxy product for artistic and decorative work. Buyers may also search for art resin, clear art resin, resin art epoxy, tabletop epoxy or gloss epoxy resin.
+          </p>
+          <p>
+            Its published role is a self-levelling, high-gloss finish on open horizontal surfaces such as floor art, table tops, wood art and decorative coatings. That is different from a clear contained casting, a mould-side FRP gelcoat or a polyester resin used with reinforcement. Start with the finished work, surface versus casting role, expected quantity and current TDS before selecting an epoxy system.
+          </p>
+        </section>
+      )}
+      {isUvResin && (
+        <section class="gp-overview" aria-labelledby="uv-resin-overview-heading">
+          <h2 id="uv-resin-overview-heading" class="spec-h">What is UV Resin / UV Curing Resin?</h2>
+          <p>
+            UV Resin is Samrat Poly Resins&rsquo; published clear epoxy-acrylate material that cures under UV/LED light. Buyers may also search for UV Curing Resin, UV Cure Resin, UV Clear Resin, ultraviolet resin or UV epoxy resin; on this page, these terms point to the same published UV Resin product route.
+          </p>
+          <p>
+            It is not a polyester FRP laminate resin and it is not the same role as a two-part, room-temperature-cure epoxy casting or art resin. Its published applications are jewellery, encapsulation, doming and specialist coating work. Start with the finished part, industry or end use, required clear or finished appearance, available UV/LED equipment and current TDS before choosing a material route.
+          </p>
+        </section>
+      )}
 
       <div class="spec-grid">
         <div class="spec-col">
@@ -1050,6 +1158,93 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               <p>Use the current TDS, published 20 kg pack and 100 kg MOQ as a starting point, then share the application, casting size, expected quantity, finish requirement and delivery location.</p>
             </div>
           </div>
+        </section>
+      )}
+      {isEpoxyArtResin && (
+        <section class="gp-buyer-outcomes" aria-labelledby="epoxy-art-buyer-outcomes-heading">
+          <h2 id="epoxy-art-buyer-outcomes-heading" class="spec-h">What this means for Epoxy Art Resin buyers</h2>
+          <div class="gp-outcomes-grid">
+            <div class="gp-outcome-card">
+              <h3>Choose for the surface role</h3>
+              <p>Use this route where the published requirement is a self-levelling, high-gloss finish for art, table-top, wood-art or decorative surface work.</p>
+            </div>
+            <div class="gp-outcome-card">
+              <h3>Keep casting and coating distinct</h3>
+              <p>A contained clear casting and an open, self-levelling surface coat are different product roles. Review the project geometry and finished appearance before choosing an epoxy.</p>
+            </div>
+            <div class="gp-outcome-card">
+              <h3>Use published procurement facts</h3>
+              <p>Review the current TDS, published 15 kg pack and 100 kg MOQ, then share the finished surface, finish requirement, expected quantity and delivery location for a quote.</p>
+            </div>
+          </div>
+        </section>
+      )}
+      {isUvResin && (
+        <section class="gp-buyer-outcomes" aria-labelledby="uv-resin-buyer-outcomes-heading">
+          <h2 id="uv-resin-buyer-outcomes-heading" class="spec-h">What this means for UV Resin buyers</h2>
+          <div class="gp-outcomes-grid">
+            <div class="gp-outcome-card">
+              <h3>Choose by the curing route</h3>
+              <p>This is a published UV/LED-curable epoxy-acrylate product route. Confirm that the production or finishing requirement is suited to light curing instead of treating it as interchangeable with a room-temperature epoxy system or polyester FRP resin.</p>
+            </div>
+            <div class="gp-outcome-card">
+              <h3>Start with the finished role</h3>
+              <p>The published applications cover jewellery, encapsulation, doming and specialist coating work. Share the finished part and appearance requirement so the material discussion begins with the intended result.</p>
+            </div>
+            <div class="gp-outcome-card">
+              <h3>Use published procurement facts</h3>
+              <p>Review the current TDS, published 200 kg packaging and 1,000 kg minimum order quantity, then share the application, industry, expected quantity, finish requirement and delivery location for a quote.</p>
+            </div>
+          </div>
+        </section>
+      )}
+      {isEpoxyArtResin && (
+        <section class="upr-grade-guide" aria-labelledby="epoxy-art-selection-heading">
+          <h2 id="epoxy-art-selection-heading" class="spec-h">Choose the resin by the finished-product role</h2>
+          <p class="upr-grade-guide-intro">These routes distinguish published product roles; they do not replace a review of the actual project and current product documentation.</p>
+          <div class="upr-grade-grid">
+            <article class="upr-grade-card">
+              <h3>Art and surface coating</h3>
+              <p>Use this Epoxy Art Resin route for the published self-levelling art, table-top, wood-art and decorative surface applications.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/epoxy-clear-casting-resin/">Clear contained casting</a></h3>
+              <p>Review Epoxy Clear Casting Resin for its separate published role in transparent cast pieces and deeper casting contexts.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/unsaturated-polyester-resin/">Reinforced FRP manufacture</a></h3>
+              <p>Review the Unsaturated Polyester Resin product family for the separate matrix-resin role in published FRP applications.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/gp-gelcoat-resin/">Mould-side FRP surface finish</a></h3>
+              <p>Review GP Gelcoat Resin where the published need is a mould-facing FRP surface layer, not an epoxy art coating.</p>
+            </article>
+          </div>
+        </section>
+      )}
+      {isUvResin && (
+        <section class="upr-grade-guide" aria-labelledby="uv-resin-selection-heading">
+          <h2 id="uv-resin-selection-heading" class="spec-h">Choose the material by the finished-product role</h2>
+          <p class="upr-grade-guide-intro">These links separate the published product roles; they do not replace a review of the actual part, process, equipment and current product documentation.</p>
+          <div class="upr-grade-grid">
+            <article class="upr-grade-card">
+              <h3>UV/LED-cured clear finish, doming or encapsulation</h3>
+              <p>Review this UV Resin route for the published jewellery, encapsulation, doming and specialist coating applications where UV/LED curing is part of the requirement.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/epoxy-art-resin/">Open decorative surface coating</a></h3>
+              <p>Review Epoxy Art Resin for its distinct published two-part, self-levelling art and surface-coating role.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/epoxy-clear-casting-resin/">Clear contained casting</a></h3>
+              <p>Review Epoxy Clear Casting Resin for its separate published two-part role in transparent cast pieces and deeper casting contexts.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/unsaturated-polyester-resin/">Reinforced FRP manufacture</a></h3>
+              <p>Review the Unsaturated Polyester Resin product family when the required role is a polyester matrix resin for published FRP applications.</p>
+            </article>
+          </div>
+          <p class="upr-grade-guide-intro">For broader product research, <a href="/resources/">explore the Samrat Poly Resins Resource Hub</a>, then use the current TDS and enquiry form to discuss the actual application.</p>
         </section>
       )}
       {isEpoxyClearCastingResin && (
@@ -1686,6 +1881,96 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
+  {epoxyArtResources.length > 0 && (
+    <section class="wrap prod-resources epoxy-art-resources" aria-labelledby="epoxy-art-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Decorative epoxy knowledge centre</p>
+        <h2 id="epoxy-art-resources-heading" class="rel-h">Epoxy Art Resin guides for professional buyers</h2>
+        <p>Follow a focused decorative-epoxy route: define the art-resin surface role, compare it with contained casting or reinforced polyester FRP, review published applications and finish questions, then use the current TDS and catalogue to prepare a focused enquiry.</p>
+      </div>
+      <div class="resources-grid">
+        {epoxyArtResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <p class="gp-hub-case-link">For published application context, see the existing <a href="/applications/epoxy-clear-casting-resin-for-river-tables/">river-table and wood-furniture guide</a> or <a href="/applications/epoxy-clear-casting-resin-casting-process/">epoxy casting process guide</a>; assess the product role and current TDS before selection.</p>
+      <div class="gp-hub-actions">
+        <a href="#enquire" class="btn btn-solid">Discuss your Epoxy Art Resin requirement</a>
+        <a href="/resources/#epoxy-art-resin-hub-heading" class="btn">Explore the Art Resin Knowledge Hub</a>
+        <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download Epoxy Art Resin TDS</a>
+        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href="/about/" class="btn">Company and facility context</a>
+      </div>
+    </section>
+  )}
+
+  {uvResinResources.length > 0 && (
+    <section class="wrap prod-resources uv-resin-resources" aria-labelledby="uv-resin-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">UV/LED curing knowledge centre</p>
+        <h2 id="uv-resin-resources-heading" class="rel-h">UV Resin guides for commercial buyers</h2>
+        <p>Define the published UV/LED product role, compare it with separate two-part epoxy and polyester-resin routes, review the current product document, then prepare a specific UV Resin enquiry.</p>
+      </div>
+      <div class="resources-grid">
+        {uvResinResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="#enquire" class="btn btn-solid">Discuss your UV Resin requirement</a>
+        <a href="/resources/#uv-resin-hub-heading" class="btn">Explore the UV Resin Knowledge Hub</a>
+        <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download UV Resin TDS</a>
+        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+      </div>
+    </section>
+  )}
+
+  {isUvResin && (
+    <section class="wrap gp-trust uv-resin-trust" aria-labelledby="uv-resin-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Company context and product documentation</p>
+        <h2 id="uv-resin-trust-heading">A documented route for UV Resin buyers</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Punjab-based company context, established 2017</strong>
+            <span>Review Samrat Poly Resins&rsquo; published Doraha, Ludhiana company information, facility context and wider coating and composite-resin portfolio before discussing a UV Resin requirement.</span>
+          </span>
+        </a>
+        <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Use the current product-specific document</strong>
+            <span>The existing company page describes its general quality-checking approach. Use the UV Resin TDS, catalogue and actual finished-product requirement for a product-specific discussion.</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  )}
+
+  {isEpoxyArtResin && (
+    <section class="wrap gp-trust epoxy-art-trust" aria-labelledby="epoxy-art-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Company context and product documentation</p>
+        <h2 id="epoxy-art-trust-heading">A documented route for Epoxy Art Resin buyers</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Punjab-based company context, established 2017</strong>
+            <span>Review Samrat Poly Resins&rsquo; published Doraha, Ludhiana company information, facility context and wider epoxy, coating and composite-resin portfolio before discussing a decorative epoxy requirement.</span>
+          </span>
+        </a>
+        <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Use the current product-specific document</strong>
+            <span>The existing company page describes its general quality-checking approach. Use the Epoxy Art Resin TDS, catalogue and actual finished-surface requirement for product-specific discussion.</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  )}
+
   {isEpoxyClearCastingResin && (
     <section class="wrap gp-trust epoxy-casting-trust" aria-labelledby="epoxy-casting-trust-heading">
       <div class="section-head">
@@ -2234,7 +2519,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     <div class="wrap enquire-inner">
       <div class="section-head">
         <p class="eyebrow">Enquiry</p>
-        <h2>{isGpClearResin ? 'Request a GP Clear Resin quote' : isGpWhiteResin ? 'Request a GP White Resin quote' : isGpQuartzResin ? 'Request a GP Quartz Resin quote' : isLaminationResin ? 'Request a Lamination Resin quote' : isGpGelcoatResin ? 'Request a GP Gelcoat Resin quote' : isGpYellowResin ? 'Request a GP Yellow Resin quote' : isButtonGradeResin ? 'Request a Button Grade Resin quote' : `Get a quote for ${name}`}</h2>
+        <h2>{isGpClearResin ? 'Request a GP Clear Resin quote' : isGpWhiteResin ? 'Request a GP White Resin quote' : isGpQuartzResin ? 'Request a GP Quartz Resin quote' : isLaminationResin ? 'Request a Lamination Resin quote' : isGpGelcoatResin ? 'Request a GP Gelcoat Resin quote' : isGpYellowResin ? 'Request a GP Yellow Resin quote' : isButtonGradeResin ? 'Request a Button Grade Resin quote' : isEpoxyArtResin ? 'Request an Epoxy Art Resin quote' : isUvResin ? 'Request a UV Resin quote' : `Get a quote for ${name}`}</h2>
         {isGpClearResin && <p class="gp-enquiry-note">Share your quantity, application, grade requirement and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isGpWhiteResin && <p class="gp-white-enquiry-note">Share the intended FRP component, expected quantity, required supplied appearance or finish, manufacturing process and delivery location so we can understand whether GP White Resin is relevant before preparing a quote.</p>}
         {isGpQuartzResin && <p class="gp-quartz-enquiry-note">Share the intended quartz, engineered-stone, artificial-marble or mineral-filled product; production process if known; filler or mineral type; expected quantity; finish requirement; and delivery location so we can understand whether GP Quartz Resin is relevant before preparing a quote.</p>}
@@ -2243,6 +2528,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         {isGpYellowResin && <p class="gp-yellow-enquiry-note">Share the expected quantity, FRP component or process, whether the transparent-yellow supplied colour is acceptable in the build-up, and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isButtonGradeResin && <p class="button-enquiry-note">Share the expected quantity, intended button or small-moulding requirement, clarity or pigment-colour requirement, casting method if known and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isMekpHardener && <p class="mekp-enquiry-note">Share the base resin grade or system, intended component or application, expected quantity, production process if known and delivery location so we can understand the requirement before preparing a quote.</p>}
+        {isEpoxyArtResin && <p class="epoxy-art-enquiry-note">Share the intended finished surface or artwork, substrate if known, whether the requirement is for an open surface coat or contained cast, expected quantity, finish requirement and delivery location so we can understand the requirement before preparing a quote.</p>}
+        {isUvResin && <p class="epoxy-art-enquiry-note">Share the intended application, industry or end use, expected quantity, clear or finish requirement, any stated UV/LED equipment requirement and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isEpoxyClearCastingResin && <p class="epoxy-casting-enquiry-note">Share the intended application, casting size or depth, industry or end-use, expected quantity, required finish and delivery location so we can understand the casting requirement before preparing a quote.</p>}
       </div>
       <div class="enquire-box">
