@@ -159,8 +159,23 @@ const mekpRoleResources = published.filter((resource) => [
 const mekpDocumentationResources = published.filter((resource) => [
   'mekp-hardener-procurement-guide',
 ].includes(resource.slug));
+const epoxyCastingAuthoritySlugs = new Set([
+  'what-is-epoxy-clear-casting-resin',
+  'casting-resin-vs-coating-resin',
+  'unsaturated-polyester-resin-vs-epoxy-resin',
+  'epoxy-clear-casting-resin-buyer-guide',
+]);
+const epoxyCastingAuthorityResources = published.filter((resource) => epoxyCastingAuthoritySlugs.has(resource.slug));
+const epoxyCastingRoleResources = published.filter((resource) => [
+  'what-is-epoxy-clear-casting-resin',
+  'casting-resin-vs-coating-resin',
+].includes(resource.slug));
+const epoxyCastingComparisonResources = published.filter((resource) => [
+  'unsaturated-polyester-resin-vs-epoxy-resin',
+  'epoxy-clear-casting-resin-buyer-guide',
+].includes(resource.slug));
 const gpAuthorityResourcesWithoutUpr = gpAuthorityResources.filter((resource) => !uprAuthoritySlugs.has(resource.slug));
-const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug) && !glassFiberAuthoritySlugs.has(resource.slug) && !pigmentAuthoritySlugs.has(resource.slug) && !mekpAuthoritySlugs.has(resource.slug));
+const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug) && !glassFiberAuthoritySlugs.has(resource.slug) && !pigmentAuthoritySlugs.has(resource.slug) && !mekpAuthoritySlugs.has(resource.slug) && !epoxyCastingAuthoritySlugs.has(resource.slug));
 ---
 <Base
   title="Knowledge Centre"
@@ -393,6 +408,40 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
         </section>
       )}
 
+      {epoxyCastingAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="epoxy-casting-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Clear epoxy knowledge hub</p>
+              <h2 id="epoxy-casting-resin-hub-heading">Epoxy Clear Casting Resin Knowledge Hub</h2>
+              <p>Follow a documented epoxy-casting route: define the clear, contained casting role; compare it with a self-levelling coating or reinforced polyester-FRP requirement; review existing casting contexts and the current product data; then prepare a focused enquiry.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/epoxy-clear-casting-resin/" class="btn btn-solid">View Epoxy Clear Casting Resin</a>
+              <a href="/tds/epoxy-clear-casting-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Clear Casting Resin TDS</a>
+              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href="/about/" class="btn">Company and facility context</a>
+              <a href="/contact/" class="btn">Discuss an epoxy casting requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="epoxy-casting-role-guides-heading">
+              <h3 id="epoxy-casting-role-guides-heading">1. Define the casting role and separate it from a coating</h3>
+              <div class="kc-grid">
+                {epoxyCastingRoleResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="epoxy-casting-buyer-guides-heading">
+              <h3 id="epoxy-casting-buyer-guides-heading">2. Compare the resin system and prepare a documented enquiry</h3>
+              <div class="kc-grid">
+                {epoxyCastingComparisonResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+          </div>
+          <p class="kc-epoxy-application-links">Published application contexts: <a href="/applications/epoxy-clear-casting-resin-for-river-tables/">river tables and wood furniture</a>, <a href="/applications/epoxy-clear-casting-resin-for-jewellery-casting/">jewellery and decorative casting</a>, and the existing <a href="/applications/epoxy-clear-casting-resin-casting-process/">epoxy casting process guide</a>. Review these alongside the product page and current TDS.</p>
+        </section>
+      )}
+
       {gpYellowAuthorityResources.length > 0 && (
         <section class="kc-focus" aria-labelledby="gp-yellow-resin-hub-heading">
           <div class="kc-focus-head">
@@ -538,6 +587,8 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
     .kc-focus-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
     .kc-subgroups { display: grid; gap: 2rem; }
     .kc-subgroup h3 { font-size: 1rem; text-transform: none; letter-spacing: 0; margin-bottom: 1rem; color: var(--ink); }
+    .kc-epoxy-application-links { padding-top: 0.4rem; }
+    .kc-epoxy-application-links a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 0.16em; }
     .kc-other { margin-top: clamp(3rem, 7vw, 5rem); }
     .kc-other-head { margin-bottom: 1.5rem; }
   </style>

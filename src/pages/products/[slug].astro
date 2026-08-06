@@ -35,6 +35,7 @@ const isGpQuartzResin = product.slug === 'gp-quartz-resin';
 const isGlassFiber = product.slug === 'fibre-glass-mat';
 const isFrpPolyesterPigment = product.slug === 'frp-polyester-pigment';
 const isMekpHardener = product.slug === 'mekp-hardener';
+const isEpoxyClearCastingResin = product.slug === 'epoxy-clear-casting-resin';
 
 const gpClearSeo = {
   title: 'GP Clear Resin Manufacturer in India | General Purpose Polyester Resin',
@@ -185,6 +186,21 @@ const mekpHardenerSeo = {
     'MEKP Supplier',
   ],
 };
+const epoxyClearCastingSeo = {
+  title: 'Epoxy Clear Casting Resin Supplier in India | Clear Casting Resin',
+  description: 'Epoxy Clear Casting Resin for published river-table, jewellery and decorative-casting applications. Review current TDS, 20 kg packaging and quote requirements with Samrat Poly Resins.',
+  keywords: [
+    'Epoxy Clear Casting Resin',
+    'Clear Casting Resin',
+    'Crystal Clear Epoxy Resin',
+    'Epoxy Casting Resin',
+    'Transparent Epoxy Resin',
+    'Casting Resin',
+    'River Table Epoxy Resin',
+    'Epoxy Resin Supplier',
+    'Industrial Casting Resin',
+  ],
+};
 const gpBuyerFaqs = [
   {
     q: 'How does GP Clear Resin differ from GP Yellow Resin?',
@@ -235,6 +251,16 @@ const buttonBuyerFaqs = [
     a: 'Button Grade Resin is the published casting grade for buttons and small decorative mouldings. For reinforced FRP production, review <a href="/products/gp-clear-resin/">GP Clear Resin</a> or <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a>; for pre-pigmented FRP sheet and panel production, review <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a>. Where a two-part epoxy system is specified, review <a href="/products/epoxy-clear-casting-resin/">Clear Casting Resin</a> and its separate technical data.',
   },
 ];
+const epoxyCastingBuyerFaqs = [
+  {
+    q: 'What should I include when requesting an Epoxy Clear Casting Resin quotation?',
+    a: 'Share the intended application, casting size or depth, industry or end-use, expected quantity, required clear or finished appearance, and delivery location. This helps distinguish a casting requirement from a self-levelling coating or a polyester FRP requirement before a quotation is prepared.',
+  },
+  {
+    q: 'When should I review a different Samrat resin product?',
+    a: 'Review <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a> for its published self-levelling surface-coating role. For reinforced FRP manufacture, start with <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> or the relevant GP grade; for a mould-side FRP surface layer, review <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>. These are separate product roles, so use the relevant TDS before selection.',
+  },
+];
 const displayedFaqs = isGpClearResin
   ? [...(faqs ?? []), ...gpBuyerFaqs]
   : isLaminationResin
@@ -245,6 +271,8 @@ const displayedFaqs = isGpClearResin
         ? [...(faqs ?? []), ...gpYellowBuyerFaqs]
         : isButtonGradeResin
           ? [...(faqs ?? []), ...buttonBuyerFaqs]
+          : isEpoxyClearCastingResin
+            ? [...(faqs ?? []), ...epoxyCastingBuyerFaqs]
           : faqs;
 
 // Two-table model (Product Details + Technical Specifications) when a product
@@ -435,6 +463,16 @@ const mekpResources = isMekpHardener
   ? mekpResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
   : [];
 
+const epoxyCastingResourceSlugs = [
+  'what-is-epoxy-clear-casting-resin',
+  'casting-resin-vs-coating-resin',
+  'unsaturated-polyester-resin-vs-epoxy-resin',
+  'epoxy-clear-casting-resin-buyer-guide',
+];
+const epoxyCastingResources = isEpoxyClearCastingResin
+  ? epoxyCastingResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
 const waLink = buildProductQuoteLink(product.whatsappName ?? name);
 
 // "Explore applications" cards — only populated when a product names
@@ -514,9 +552,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 } : null;
 ---
 <Base
-  title={isGpClearResin ? gpClearSeo.title : isGpWhiteResin ? gpWhiteSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isButtonGradeResin ? buttonGradeSeo.title : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.title : isGlassFiber ? glassFiberSeo.title : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.title : isMekpHardener ? mekpHardenerSeo.title : (product.seo?.title ?? name)}
-  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : isButtonGradeResin ? buttonGradeSeo.description : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.description : isGlassFiber ? glassFiberSeo.description : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.description : isMekpHardener ? mekpHardenerSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
-  keywords={isGpClearResin ? gpClearSeo.keywords : isGpWhiteResin ? gpWhiteSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.keywords : isGlassFiber ? glassFiberSeo.keywords : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.keywords : isMekpHardener ? mekpHardenerSeo.keywords : product.seo?.keywords}
+  title={isGpClearResin ? gpClearSeo.title : isGpWhiteResin ? gpWhiteSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isButtonGradeResin ? buttonGradeSeo.title : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.title : isGlassFiber ? glassFiberSeo.title : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.title : isMekpHardener ? mekpHardenerSeo.title : isEpoxyClearCastingResin ? epoxyClearCastingSeo.title : (product.seo?.title ?? name)}
+  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : isButtonGradeResin ? buttonGradeSeo.description : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.description : isGlassFiber ? glassFiberSeo.description : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.description : isMekpHardener ? mekpHardenerSeo.description : isEpoxyClearCastingResin ? epoxyClearCastingSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
+  keywords={isGpClearResin ? gpClearSeo.keywords : isGpWhiteResin ? gpWhiteSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.keywords : isGlassFiber ? glassFiberSeo.keywords : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.keywords : isMekpHardener ? mekpHardenerSeo.keywords : isEpoxyClearCastingResin ? epoxyClearCastingSeo.keywords : product.seo?.keywords}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
@@ -611,11 +649,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="prod-quote">
         <p class="prod-quote-heading">Price</p>
         <p class="prod-quote-value">{site.priceLabel}</p>
-        <p class="prod-quote-note">{isGlassFiber ? 'Glass Fiber pricing varies based on:' : isFrpPolyesterPigment ? 'Pigment pricing varies based on:' : isMekpHardener ? 'MEKP Hardener pricing varies based on:' : 'Industrial resin pricing varies based on:'}</p>
+        <p class="prod-quote-note">{isGlassFiber ? 'Glass Fiber pricing varies based on:' : isFrpPolyesterPigment ? 'Pigment pricing varies based on:' : isMekpHardener ? 'MEKP Hardener pricing varies based on:' : isEpoxyClearCastingResin ? 'Casting-resin pricing varies based on:' : 'Industrial resin pricing varies based on:'}</p>
         <ul class="prod-quote-list">
           <li>Order Quantity</li>
-          <li>{isGlassFiber ? 'CSM 300 or CSM 450 requirement' : isFrpPolyesterPigment ? 'Required colour or RAL/Pantone reference' : isMekpHardener ? 'Base resin grade and application' : 'Resin Grade'}</li>
-          <li>{isGlassFiber || isFrpPolyesterPigment ? 'Delivery location' : isMekpHardener ? 'Production process and delivery location' : 'Current Raw Material Rates'}</li>
+          <li>{isGlassFiber ? 'CSM 300 or CSM 450 requirement' : isFrpPolyesterPigment ? 'Required colour or RAL/Pantone reference' : isMekpHardener ? 'Base resin grade and application' : isEpoxyClearCastingResin ? 'Application, casting size and required finish' : 'Resin Grade'}</li>
+          <li>{isGlassFiber || isFrpPolyesterPigment ? 'Delivery location' : isMekpHardener ? 'Production process and delivery location' : isEpoxyClearCastingResin ? 'Delivery location' : 'Current Raw Material Rates'}</li>
         </ul>
         <a href={waLink} class="btn btn-solid prod-quote-cta" target="_blank" rel="noopener">Request Bulk Quote</a>
       </div>
@@ -820,6 +858,17 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </p>
         </section>
       )}
+      {isEpoxyClearCastingResin && (
+        <section class="gp-overview" aria-labelledby="epoxy-casting-overview-heading">
+          <h2 id="epoxy-casting-overview-heading" class="spec-h">What is Epoxy Clear Casting Resin?</h2>
+          <p>
+            Epoxy Clear Casting Resin is Samrat Poly Resins&rsquo; published two-part epoxy product for transparent cast pieces where optical clarity, a high-gloss finish and the casting role are central to the requirement. Buyers may also search for clear casting resin, crystal clear epoxy resin, transparent epoxy resin or epoxy casting resin.
+          </p>
+          <p>
+            It is not a polyester FRP laminate resin, a mould-side gelcoat or a self-levelling coating selected simply by name. Start with the finished part, casting size, required appearance and whether the requirement is for a contained cast or a surface coat, then review the relevant current product data.
+          </p>
+        </section>
+      )}
 
       <div class="spec-grid">
         <div class="spec-col">
@@ -981,6 +1030,49 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               <h3>Use published procurement facts</h3>
               <p>Review the current TDS, 25 kg carboy packaging and 25 kg minimum order quantity, then share the resin grade, application, expected quantity, process and delivery location.</p>
             </div>
+          </div>
+        </section>
+      )}
+      {isEpoxyClearCastingResin && (
+        <section class="gp-buyer-outcomes" aria-labelledby="epoxy-casting-buyer-outcomes-heading">
+          <h2 id="epoxy-casting-buyer-outcomes-heading" class="spec-h">What this means for casting-resin buyers</h2>
+          <div class="gp-outcomes-grid">
+            <div class="gp-outcome-card">
+              <h3>Choose for the casting role</h3>
+              <p>Use this product route when the requirement is a clear, contained epoxy casting such as the published river-table, jewellery or decorative-casting contexts.</p>
+            </div>
+            <div class="gp-outcome-card">
+              <h3>Separate casting from coating</h3>
+              <p>A casting resin and a self-levelling surface-coating resin have different published roles. Review the actual part geometry and finished-surface requirement before selecting an epoxy system.</p>
+            </div>
+            <div class="gp-outcome-card">
+              <h3>Prepare a specific quote</h3>
+              <p>Use the current TDS, published 20 kg pack and 100 kg MOQ as a starting point, then share the application, casting size, expected quantity, finish requirement and delivery location.</p>
+            </div>
+          </div>
+        </section>
+      )}
+      {isEpoxyClearCastingResin && (
+        <section class="upr-grade-guide" aria-labelledby="epoxy-casting-selection-heading">
+          <h2 id="epoxy-casting-selection-heading" class="spec-h">Choose the resin by the finished-product role</h2>
+          <p class="upr-grade-guide-intro">These routes distinguish published product roles; they do not replace a review of the actual project and current product documentation.</p>
+          <div class="upr-grade-grid">
+            <article class="upr-grade-card">
+              <h3>Clear casting</h3>
+              <p>Review this Epoxy Clear Casting Resin route for the published clear, contained casting applications.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/epoxy-art-resin/">Self-levelling surface coating</a></h3>
+              <p>Review Epoxy Art Resin where the published requirement is a level finish on a horizontal surface rather than a contained cast.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/unsaturated-polyester-resin/">Reinforced FRP manufacture</a></h3>
+              <p>Review the Unsaturated Polyester Resin product family for the separate matrix-resin role in published FRP applications.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/gp-gelcoat-resin/">Mould-side FRP surface finish</a></h3>
+              <p>Review GP Gelcoat Resin where the published need is a mould-facing surface layer, not a casting resin.</p>
+            </article>
           </div>
         </section>
       )}
@@ -1207,7 +1299,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
   {appCards.length > 0 && (
     <section class="wrap prod-apps">
       <h2 class="rel-h">Explore applications</h2>
-      <p class="apps-sub">{isMekpHardener ? 'Explore existing FRP manufacturing contexts where the separate base resin system should be confirmed before discussing MEKP.' : `See how ${name} performs in specific FRP manufacturing applications.`}</p>
+      <p class="apps-sub">{isMekpHardener ? 'Explore existing FRP manufacturing contexts where the separate base resin system should be confirmed before discussing MEKP.' : isEpoxyClearCastingResin ? 'Explore existing clear-casting application guides for river-table work, jewellery and decorative casting. Review the current product data for the actual requirement.' : `See how ${name} performs in specific FRP manufacturing applications.`}</p>
       <div class="apps-grid">
         {appCards.map(app => (
           <div class="app-card">
@@ -1569,6 +1661,52 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href="/resources/#mekp-hardener-hub-heading" class="btn">Explore the MEKP Knowledge Hub</a>
         <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download MEKP TDS</a>
         <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+      </div>
+    </section>
+  )}
+
+  {epoxyCastingResources.length > 0 && (
+    <section class="wrap prod-resources epoxy-casting-resources" aria-labelledby="epoxy-casting-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Clear epoxy decision guides</p>
+        <h2 id="epoxy-casting-resources-heading" class="rel-h">Epoxy Clear Casting Resin Knowledge Hub</h2>
+        <p>Use these buyer guides to define the clear-casting role, separate it from a self-levelling epoxy coating or a polyester FRP resin, review the current TDS and document a focused quotation request.</p>
+      </div>
+      <div class="resources-grid">
+        {epoxyCastingResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <p class="gp-hub-case-link">Explore the existing casting contexts for <a href="/applications/epoxy-clear-casting-resin-for-river-tables/">river tables and wood furniture</a>, <a href="/applications/epoxy-clear-casting-resin-for-jewellery-casting/">jewellery and decorative casting</a>, or the published <a href="/applications/epoxy-clear-casting-resin-casting-process/">epoxy casting process guide</a>.</p>
+      <div class="gp-hub-actions">
+        <a href="#enquire" class="btn btn-solid">Discuss your Epoxy Clear Casting Resin requirement</a>
+        <a href="/resources/#epoxy-casting-resin-hub-heading" class="btn">Explore the Epoxy Clear Casting Resin hub</a>
+        <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download Clear Casting Resin TDS</a>
+        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href="/about/" class="btn">Company and facility context</a>
+      </div>
+    </section>
+  )}
+
+  {isEpoxyClearCastingResin && (
+    <section class="wrap gp-trust epoxy-casting-trust" aria-labelledby="epoxy-casting-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Company context and product documentation</p>
+        <h2 id="epoxy-casting-trust-heading">A documented route for clear epoxy casting buyers</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Punjab-based company context, established 2017</strong>
+            <span>Review Samrat Poly Resins&rsquo; published Doraha, Ludhiana company information, facility context and wider coating and composite-resin portfolio before discussing an industrial clear-casting requirement.</span>
+          </span>
+        </a>
+        <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Use the current product-specific document</strong>
+            <span>The existing company page describes its general quality-checking approach. Use the Clear Casting Resin TDS and the actual casting requirement for product-specific technical review.</span>
+          </span>
+        </a>
       </div>
     </section>
   )}
@@ -2105,6 +2243,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         {isGpYellowResin && <p class="gp-yellow-enquiry-note">Share the expected quantity, FRP component or process, whether the transparent-yellow supplied colour is acceptable in the build-up, and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isButtonGradeResin && <p class="button-enquiry-note">Share the expected quantity, intended button or small-moulding requirement, clarity or pigment-colour requirement, casting method if known and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isMekpHardener && <p class="mekp-enquiry-note">Share the base resin grade or system, intended component or application, expected quantity, production process if known and delivery location so we can understand the requirement before preparing a quote.</p>}
+        {isEpoxyClearCastingResin && <p class="epoxy-casting-enquiry-note">Share the intended application, casting size or depth, industry or end-use, expected quantity, required finish and delivery location so we can understand the casting requirement before preparing a quote.</p>}
       </div>
       <div class="enquire-box">
         <EnquiryForm product={name} />
@@ -2592,6 +2731,6 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .lamination-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
     .gelcoat-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
     .gp-yellow-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
-    .button-enquiry-note, .mekp-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
+    .button-enquiry-note, .mekp-enquiry-note, .epoxy-casting-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
   </style>
 </Base>
