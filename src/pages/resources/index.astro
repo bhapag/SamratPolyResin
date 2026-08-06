@@ -38,6 +38,27 @@ const gpWhiteAuthoritySlugs = new Set([
   'gp-white-resin-buyer-guide',
 ]);
 const gpWhiteAuthorityResources = published.filter((resource) => gpWhiteAuthoritySlugs.has(resource.slug));
+const gpQuartzAuthoritySlugs = new Set([
+  'what-is-gp-quartz-resin',
+  'gp-quartz-resin-uses-engineered-stone-mineral-composites',
+  'gp-quartz-resin-vs-gp-clear-resin',
+  'gp-quartz-resin-vs-marble-resin',
+  'gp-quartz-resin-viscosity-gel-time-storage-guide',
+  'gp-quartz-resin-buyer-guide',
+]);
+const gpQuartzAuthorityResources = published.filter((resource) => gpQuartzAuthoritySlugs.has(resource.slug));
+const gpQuartzFoundationResources = published.filter((resource) => [
+  'what-is-gp-quartz-resin',
+  'gp-quartz-resin-uses-engineered-stone-mineral-composites',
+].includes(resource.slug));
+const gpQuartzComparisonResources = published.filter((resource) => [
+  'gp-quartz-resin-vs-gp-clear-resin',
+  'gp-quartz-resin-vs-marble-resin',
+].includes(resource.slug));
+const gpQuartzTechnicalResources = published.filter((resource) => [
+  'gp-quartz-resin-viscosity-gel-time-storage-guide',
+  'gp-quartz-resin-buyer-guide',
+].includes(resource.slug));
 const laminationAuthoritySlugs = new Set([
   'gp-resin-vs-lamination-resin',
   'what-is-lamination-resin',
@@ -82,7 +103,7 @@ const uprAuthoritySlugs = new Set([
 ]);
 const uprAuthorityResources = published.filter((resource) => uprAuthoritySlugs.has(resource.slug));
 const gpAuthorityResourcesWithoutUpr = gpAuthorityResources.filter((resource) => !uprAuthoritySlugs.has(resource.slug));
-const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug));
+const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug));
 ---
 <Base
   title="Knowledge Centre"
@@ -162,6 +183,45 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
           </div>
           <div class="kc-grid">
             {gpWhiteAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
+          </div>
+        </section>
+      )}
+
+      {gpQuartzAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="gp-quartz-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Product knowledge hub</p>
+              <h2 id="gp-quartz-resin-hub-heading">GP Quartz Resin Knowledge Hub</h2>
+              <p>Explore the published GP Quartz Resin role for artificial quartz stone, engineered stone slabs and composite mineral surfaces; then compare the relevant product role, review the technical data and prepare a focused quotation discussion.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/gp-quartz-resin/" class="btn btn-solid">View GP Quartz Resin</a>
+              <a href="/tds/gp-quartz-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download GP Quartz Resin TDS</a>
+              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href="/about/" class="btn">About Samrat Poly Resins</a>
+              <a href="/contact/" class="btn">Discuss a quartz-resin requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="gp-quartz-foundation-heading">
+              <h3 id="gp-quartz-foundation-heading">Start with the product role and published uses</h3>
+              <div class="kc-grid">
+                {gpQuartzFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="gp-quartz-comparisons-heading">
+              <h3 id="gp-quartz-comparisons-heading">Compare the relevant resin roles</h3>
+              <div class="kc-grid">
+                {gpQuartzComparisonResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="gp-quartz-data-heading">
+              <h3 id="gp-quartz-data-heading">Review technical data and prepare a quote</h3>
+              <div class="kc-grid">
+                {gpQuartzTechnicalResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
           </div>
         </section>
       )}
@@ -309,6 +369,8 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
     .kc-focus h2, .kc-other h2 { font-size: clamp(1.45rem, 3vw, 2rem); margin-top: 0.55rem; }
     .kc-focus p:not(.eyebrow) { color: var(--ink-dim); margin-top: 0.75rem; max-width: 65ch; }
     .kc-focus-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .kc-subgroups { display: grid; gap: 2rem; }
+    .kc-subgroup h3 { font-size: 1rem; text-transform: none; letter-spacing: 0; margin-bottom: 1rem; color: var(--ink); }
     .kc-other { margin-top: clamp(3rem, 7vw, 5rem); }
     .kc-other-head { margin-bottom: 1.5rem; }
   </style>

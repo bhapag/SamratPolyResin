@@ -31,6 +31,7 @@ const isGpYellowResin = product.slug === 'gp-yellow-resin';
 const isButtonGradeResin = product.slug === 'button-grade-resin';
 const isUnsaturatedPolyesterResin = product.slug === 'unsaturated-polyester-resin';
 const isGpWhiteResin = product.slug === 'gp-white-resin';
+const isGpQuartzResin = product.slug === 'gp-quartz-resin';
 
 const gpClearSeo = {
   title: 'GP Clear Resin Manufacturer in India | General Purpose Polyester Resin',
@@ -479,6 +480,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           Samrat Poly Resins supplies GP White Resin to Indian FRP manufacturers seeking a water-white general-purpose polyester resin for panels, moulding, hand layup, spray-up, cooling towers and water tanks.
         </p>
       )}
+      {isGpQuartzResin && (
+        <p class="gp-quartz-buyer-intro">
+          Samrat Poly Resins supplies GP Quartz Resin to Indian B2B buyers evaluating polyester resin for artificial quartz stone, engineered stone slabs and composite mineral surfaces. Start with the intended stone product, filler or mineral type, production process and finish requirement.
+        </p>
+      )}
       {isLaminationResin && (
         <p class="lamination-buyer-intro">
           Samrat Poly Resins supplies Lamination Resin, also known as LR Resin, to Indian B2B buyers for door-skin, plywood, decorative-panel and FRP bonding work, including the published clear-finish hand lay-up context.
@@ -616,6 +622,17 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </p>
         </section>
       )}
+      {isGpQuartzResin && (
+        <section class="gp-quartz-overview" aria-labelledby="gp-quartz-overview-heading">
+          <h2 id="gp-quartz-overview-heading" class="spec-h">What is GP Quartz Resin?</h2>
+          <p>
+            GP Quartz Resin is Samrat Poly Resins&rsquo; published orthophthalic unsaturated polyester resin for artificial quartz stone, engineered stone slabs and composite mineral surfaces. It is a selection route for a quartz-filled or mineral-filled composite requirement, not simply another clear or white general-purpose FRP grade.
+          </p>
+          <p>
+            The TDS publishes a clear-to-pale-yellow liquid appearance, 400&ndash;800 cPs viscosity, 7&ndash;10 minute gel time and non-accelerated system. These are grade-specific data points to review with the intended component, filler or mineral type, process and finish requirement; they are not a production approval for every stone formulation.
+          </p>
+        </section>
+      )}
 
       {isLaminationResin && (
         <section class="lamination-overview" aria-labelledby="lamination-overview-heading">
@@ -718,6 +735,25 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             <div class="gp-white-outcome-card">
               <h3>Procurement details are available</h3>
               <p>Review the GP White Resin TDS, 225 kg drum packaging and 1,000 kg minimum order quantity before sharing the component, required finish, process and delivery location for a quote.</p>
+            </div>
+          </div>
+        </section>
+      )}
+      {isGpQuartzResin && (
+        <section class="gp-quartz-buyer-outcomes" aria-labelledby="gp-quartz-buyer-outcomes-heading">
+          <h2 id="gp-quartz-buyer-outcomes-heading" class="spec-h">What this means for quartz and engineered-stone buyers</h2>
+          <div class="gp-quartz-outcomes-grid">
+            <div class="gp-quartz-outcome-card">
+              <h3>Stone-composite selection</h3>
+              <p>Start with the actual stone or mineral-filled product, rather than a broad polyester-resin label. The published GP Quartz role covers artificial quartz stone, engineered stone slabs and composite mineral surfaces.</p>
+            </div>
+            <div class="gp-quartz-outcome-card">
+              <h3>Published process data</h3>
+              <p>Review the TDS&rsquo;s 400&ndash;800 cPs viscosity, 7&ndash;10 minute gel time, non-accelerated system and approximate two-hour cure with the filler or mineral type and actual production conditions.</p>
+            </div>
+            <div class="gp-quartz-outcome-card">
+              <h3>Procurement details are available</h3>
+              <p>Review the GP Quartz Resin TDS, 225 kg drum packaging and 1,000 kg minimum order quantity before sharing the product, process, expected quantity, finish requirement and delivery location for a quote.</p>
             </div>
           </div>
         </section>
@@ -1387,6 +1423,114 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
+  {isGpQuartzResin && (
+    <section class="wrap gp-quartz-process" aria-labelledby="gp-quartz-process-heading">
+      <div>
+        <h2 id="gp-quartz-process-heading" class="rel-h">Start with the stone product and mineral-filled requirement</h2>
+        <p>
+          GP Quartz Resin is published for artificial quartz stone, engineered stone slabs and composite mineral surfaces. Before selecting it, define the finished component, filler or mineral type, required appearance or finish, production process and any stated specification. This keeps the discussion focused on the actual stone-composite requirement rather than assuming every polyester resin is interchangeable.
+        </p>
+        <p>
+          Use the <a href="/products/marble-resin/">Marble Resin</a> page for its separate cultured-marble and artificial-stone role, the <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> page for broader product-family selection, and the <a href="/resources/how-to-select-polyester-resin-for-frp-manufacturing/">polyester resin selection guide</a> for general decision context. Review the GP Quartz Resin TDS before confirming a grade.
+        </p>
+      </div>
+      <a href="#enquire" class="btn btn-solid gp-quartz-process-cta">Discuss your quartz-resin requirement</a>
+    </section>
+  )}
+
+  {isGpQuartzResin && (
+    <section class="wrap gp-quartz-comparisons" aria-labelledby="gp-quartz-comparisons-heading">
+      <h2 id="gp-quartz-comparisons-heading" class="rel-h">When to consider a different resin grade</h2>
+      <div class="gp-quartz-comparison-grid">
+        <article class="gp-quartz-comparison-card">
+          <h3><a href="/products/marble-resin/">GP Quartz Resin vs Marble Resin</a></h3>
+          <p>GP Quartz Resin is the published route for artificial quartz stone, engineered stone slabs and composite mineral surfaces. Review Marble Resin for its separately published cultured-marble and artificial-stone applications.</p>
+        </article>
+        <article class="gp-quartz-comparison-card">
+          <h3><a href="/products/gp-clear-resin/">GP Quartz Resin vs GP Clear Resin</a></h3>
+          <p>GP Clear Resin is the broad published general-purpose grade for common FRP work. GP Quartz Resin is the product to review when the requirement is specifically an engineered-stone or mineral-surface application.</p>
+        </article>
+        <article class="gp-quartz-comparison-card">
+          <h3><a href="/products/gp-white-resin/">GP Quartz Resin vs GP White Resin</a></h3>
+          <p>GP White Resin is published as a water-white general-purpose grade for reinforced FRP contexts. GP Quartz Resin is published for the separate quartz-stone and composite-mineral product role.</p>
+        </article>
+        <article class="gp-quartz-comparison-card">
+          <h3><a href="/products/lamination-resin/">GP Quartz Resin vs Lamination Resin</a></h3>
+          <p>Review Lamination Resin for its published door, plywood and FRP-bonding applications rather than selecting by the word &ldquo;resin&rdquo; alone.</p>
+        </article>
+        <article class="gp-quartz-comparison-card">
+          <h3><a href="/products/gp-gelcoat-resin/">GP Quartz Resin vs Gelcoat Resin</a></h3>
+          <p>GP Gelcoat Resin has a separate mould-facing surface-coating role. It should not be treated as a substitute for the mineral-filled composite resin selection.</p>
+        </article>
+      </div>
+    </section>
+  )}
+
+  {isGpQuartzResin && (
+    <section class="wrap gp-quartz-guides" aria-labelledby="gp-quartz-guides-heading">
+      <div class="section-head">
+        <p class="eyebrow">Technical resources</p>
+        <h2 id="gp-quartz-guides-heading">GP Quartz Resin selection and buyer guides</h2>
+        <p>Use these product-specific guides to clarify the stone-composite requirement, compare relevant resin roles, review the published data and prepare a focused enquiry.</p>
+      </div>
+      <div class="gp-quartz-guides-grid">
+        <a href="/resources/what-is-gp-quartz-resin/" class="gp-quartz-guide-card">
+          <strong>What Is GP Quartz Resin?</strong>
+          <span>Understand the published quartz-stone and composite-mineral product role.</span>
+        </a>
+        <a href="/resources/gp-quartz-resin-uses-engineered-stone-mineral-composites/" class="gp-quartz-guide-card">
+          <strong>GP Quartz Resin Uses</strong>
+          <span>Review the verified engineered-stone, artificial-quartz and mineral-surface contexts.</span>
+        </a>
+        <a href="/resources/gp-quartz-resin-vs-gp-clear-resin/" class="gp-quartz-guide-card">
+          <strong>GP Quartz Resin vs GP Clear Resin</strong>
+          <span>Separate a quartz-composite requirement from broad general FRP selection.</span>
+        </a>
+        <a href="/resources/gp-quartz-resin-vs-marble-resin/" class="gp-quartz-guide-card">
+          <strong>GP Quartz Resin vs Marble Resin</strong>
+          <span>Compare the published quartz-stone and cultured-marble product roles.</span>
+        </a>
+        <a href="/resources/gp-quartz-resin-viscosity-gel-time-storage-guide/" class="gp-quartz-guide-card">
+          <strong>Viscosity, gel time and storage</strong>
+          <span>Read GP Quartz Resin&rsquo;s published data in the correct grade-specific context.</span>
+        </a>
+        <a href="/resources/gp-quartz-resin-buyer-guide/" class="gp-quartz-guide-card">
+          <strong>GP Quartz Resin Buyer Guide</strong>
+          <span>Prepare the application, technical-data and quotation details to share.</span>
+        </a>
+      </div>
+      <div class="gp-quartz-guides-actions">
+        <a href="/resources/" class="btn">View Knowledge Centre</a>
+        <a href="#enquire" class="btn btn-solid">Discuss your quartz-resin requirement</a>
+      </div>
+    </section>
+  )}
+
+  {isGpQuartzResin && (
+    <section class="wrap gp-trust" aria-labelledby="gp-quartz-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Manufacturer context</p>
+        <h2 id="gp-quartz-trust-heading">A documented product and manufacturer route</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Punjab-based manufacturer, established 2017</strong>
+            <span>Review Samrat Poly Resins&rsquo; public company information, Doraha, Ludhiana location and wider resin portfolio before discussing a quartz-composite requirement.</span>
+          </span>
+        </a>
+        <a href="/about/" class="gp-trust-card">
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Product data should lead the discussion</strong>
+            <span>Our company information describes checks for viscosity, gel time and cure behaviour. Use the GP Quartz Resin TDS for grade-specific data and the actual stone-composite requirement.</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  )}
+
   {isLaminationResin && (
     <section class="wrap gp-trust" aria-labelledby="lamination-trust-heading">
       <div class="section-head">
@@ -1587,9 +1731,10 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     <div class="wrap enquire-inner">
       <div class="section-head">
         <p class="eyebrow">Enquiry</p>
-        <h2>{isGpClearResin ? 'Request a GP Clear Resin quote' : isGpWhiteResin ? 'Request a GP White Resin quote' : isLaminationResin ? 'Request a Lamination Resin quote' : isGpGelcoatResin ? 'Request a GP Gelcoat Resin quote' : isGpYellowResin ? 'Request a GP Yellow Resin quote' : isButtonGradeResin ? 'Request a Button Grade Resin quote' : `Get a quote for ${name}`}</h2>
+        <h2>{isGpClearResin ? 'Request a GP Clear Resin quote' : isGpWhiteResin ? 'Request a GP White Resin quote' : isGpQuartzResin ? 'Request a GP Quartz Resin quote' : isLaminationResin ? 'Request a Lamination Resin quote' : isGpGelcoatResin ? 'Request a GP Gelcoat Resin quote' : isGpYellowResin ? 'Request a GP Yellow Resin quote' : isButtonGradeResin ? 'Request a Button Grade Resin quote' : `Get a quote for ${name}`}</h2>
         {isGpClearResin && <p class="gp-enquiry-note">Share your quantity, application, grade requirement and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isGpWhiteResin && <p class="gp-white-enquiry-note">Share the intended FRP component, expected quantity, required supplied appearance or finish, manufacturing process and delivery location so we can understand whether GP White Resin is relevant before preparing a quote.</p>}
+        {isGpQuartzResin && <p class="gp-quartz-enquiry-note">Share the intended quartz, engineered-stone, artificial-marble or mineral-filled product; production process if known; filler or mineral type; expected quantity; finish requirement; and delivery location so we can understand whether GP Quartz Resin is relevant before preparing a quote.</p>}
         {isLaminationResin && <p class="lamination-enquiry-note">Share the lamination application, substrate or component, expected quantity and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isGpGelcoatResin && <p class="gelcoat-enquiry-note">Share the moulded component, surface-finish requirement, application method, expected quantity and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isGpYellowResin && <p class="gp-yellow-enquiry-note">Share the expected quantity, FRP component or process, whether the transparent-yellow supplied colour is acceptable in the build-up, and delivery location so we can understand the requirement before preparing a quote.</p>}
@@ -1745,7 +1890,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     @media (max-width: 460px) { .spec-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
 
     .prod-subtitle { color: var(--ink-dim); font-size: 1.05rem; margin-top: 0.55rem; max-width: 48ch; line-height: 1.5; }
-    .gp-buyer-intro, .gp-white-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro, .gp-yellow-buyer-intro, .button-buyer-intro, .upr-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
+    .gp-buyer-intro, .gp-white-buyer-intro, .gp-quartz-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro, .gp-yellow-buyer-intro, .button-buyer-intro, .upr-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
     .prod-usage { font-size: 0.95rem; }
     .prod-desc a, .prod-usage a {
       color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px;
@@ -1753,8 +1898,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     }
     .prod-desc a:hover, .prod-usage a:hover { color: var(--accent-gold); }
 
-    .gp-overview, .gp-white-overview, .lamination-overview, .gelcoat-overview, .gp-yellow-overview, .button-overview, .upr-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
-    .gp-overview p, .gp-white-overview p, .lamination-overview p, .gelcoat-overview p, .gp-yellow-overview p, .button-overview p, .upr-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .gp-overview, .gp-white-overview, .gp-quartz-overview, .lamination-overview, .gelcoat-overview, .gp-yellow-overview, .button-overview, .upr-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-overview p, .gp-white-overview p, .gp-quartz-overview p, .lamination-overview p, .gelcoat-overview p, .gp-yellow-overview p, .button-overview p, .upr-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
     .upr-overview a, .upr-process a:not(.btn), .upr-comparison-card a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
     .upr-overview a:hover, .upr-process a:not(.btn):hover, .upr-comparison-card a:hover { color: var(--accent-gold); }
     .upr-grade-guide { margin-top: 2.2rem; }
@@ -1775,6 +1920,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-white-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
     .gp-white-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
     .gp-white-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
+    .gp-quartz-buyer-outcomes { margin-top: 2.2rem; }
+    .gp-quartz-outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }
+    .gp-quartz-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-quartz-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
+    .gp-quartz-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
     .lamination-buyer-outcomes { margin-top: 2.2rem; }
     .lamination-outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }
     .lamination-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
@@ -1863,6 +2013,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-white-process a:not(.btn):hover { color: var(--accent-gold); }
     .gp-white-process-cta { flex-shrink: 0; }
     @media (max-width: 680px) { .gp-white-process { align-items: start; flex-direction: column; } }
+    .gp-quartz-process { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; padding-block: 2rem 1rem; border-top: 1px solid var(--line); }
+    .gp-quartz-process > div { max-width: 68ch; }
+    .gp-quartz-process p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .gp-quartz-process a:not(.btn) { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
+    .gp-quartz-process a:not(.btn):hover { color: var(--accent-gold); }
+    .gp-quartz-process-cta { flex-shrink: 0; }
+    @media (max-width: 680px) { .gp-quartz-process { align-items: start; flex-direction: column; } }
     .upr-process { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; padding-block: 2rem 1rem; border-top: 1px solid var(--line); }
     .upr-process > div { max-width: 68ch; }
     .upr-process p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
@@ -1928,6 +2085,22 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-comparison-card h3 a { color: var(--ink); }
     .gp-comparison-card h3 a:hover { color: var(--accent-gold-light); }
     .gp-comparison-card p { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.6; margin-top: 0.65rem; }
+    .gp-quartz-comparisons { padding-block: 1.5rem 2rem; }
+    .gp-quartz-comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .gp-quartz-comparison-card { padding: 1.15rem 1.2rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-quartz-comparison-card h3 { font-size: 0.92rem; text-transform: none; letter-spacing: 0; }
+    .gp-quartz-comparison-card h3 a { color: var(--ink); }
+    .gp-quartz-comparison-card h3 a:hover { color: var(--accent-gold-light); }
+    .gp-quartz-comparison-card p { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.6; margin-top: 0.65rem; }
+    .gp-quartz-guides { padding-block: 1rem 2.5rem; }
+    .gp-quartz-guides .section-head { max-width: 68ch; }
+    .gp-quartz-guides .section-head > p:not(.eyebrow) { color: var(--ink-dim); margin-top: 0.7rem; line-height: 1.65; }
+    .gp-quartz-guides-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.9rem; margin-top: 1.35rem; }
+    .gp-quartz-guide-card { display: grid; gap: 0.5rem; padding: 1rem 1.1rem; background: var(--bg-3); border: 1px solid var(--line); transition: border-color .25s var(--ease-premium), transform .25s var(--ease-premium); }
+    .gp-quartz-guide-card:hover { border-color: var(--accent-gold); transform: translateY(-2px); }
+    .gp-quartz-guide-card strong { color: var(--ink); font-size: 0.9rem; }
+    .gp-quartz-guide-card span { color: var(--ink-dim); font-size: 0.84rem; line-height: 1.55; }
+    .gp-quartz-guides-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
     .upr-comparisons { padding-block: 1.5rem 2rem; }
     .upr-comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
     .upr-comparison-card { padding: 1.15rem 1.2rem; background: var(--bg-3); border: 1px solid var(--line); }
