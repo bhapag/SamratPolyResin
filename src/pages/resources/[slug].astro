@@ -49,8 +49,10 @@ const gpAuthoritySlugs = new Set([
   'why-polyester-resin-remains-sticky-or-tacky',
   'how-to-reduce-shrinkage-in-gp-resin-applications',
   'gp-resin-viscosity-explained',
+  'gp-yellow-resin-uses-in-frp-manufacturing',
 ]);
 const isGpAuthorityResource = gpAuthoritySlugs.has(resource.slug);
+const isGpYellowUsesResource = resource.slug === 'gp-yellow-resin-uses-in-frp-manufacturing';
 const laminationAuthoritySlugs = new Set([
   'gp-resin-vs-lamination-resin',
   'what-is-lamination-resin',
@@ -77,6 +79,8 @@ const talkToTeamLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent
   ? "Hi, I'd like to discuss a Gelcoat Resin application with Samrat Poly Resins."
   : isLaminationAuthorityResource
   ? "Hi, I'd like to discuss a Lamination Resin application with Samrat Poly Resins."
+  : isGpYellowUsesResource
+  ? "Hi, I'd like to discuss a GP Yellow Resin application with Samrat Poly Resins."
   : isGpAuthorityResource
     ? "Hi, I'd like to discuss a GP Resin application with Samrat Poly Resins."
     : "Hi, I'd like help selecting the right polyester resin for my requirement.")}`;
@@ -333,11 +337,12 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     )}
 
     <section class="article-cta">
-      <h2>{isGelcoatAuthorityResource ? 'Discuss your Gelcoat Resin application with Samrat Poly Resins' : isLaminationAuthorityResource ? 'Discuss your Lamination Resin application with Samrat Poly Resins' : isGpAuthorityResource ? 'Discuss your GP Resin application with Samrat Poly Resins' : 'Need help selecting the right polyester resin?'}</h2>
-      <p>{isGelcoatAuthorityResource ? 'Share the moulded component, surface-finish requirement, application method, quantity and delivery location so the requirement can be understood before a quote discussion.' : isLaminationAuthorityResource ? 'Share the component, substrate or reinforcement, process, quantity and delivery location so the requirement can be understood before a quote discussion.' : isGpAuthorityResource ? 'Share the application, process, quantity and delivery location so the requirement can be understood before a quote discussion.' : 'Our technical team can help you choose the most suitable resin for your manufacturing requirements.'}</p>
+      <h2>{isGelcoatAuthorityResource ? 'Discuss your Gelcoat Resin application with Samrat Poly Resins' : isLaminationAuthorityResource ? 'Discuss your Lamination Resin application with Samrat Poly Resins' : isGpYellowUsesResource ? 'Discuss your GP Yellow Resin application with Samrat Poly Resins' : isGpAuthorityResource ? 'Discuss your GP Resin application with Samrat Poly Resins' : 'Need help selecting the right polyester resin?'}</h2>
+      <p>{isGelcoatAuthorityResource ? 'Share the moulded component, surface-finish requirement, application method, quantity and delivery location so the requirement can be understood before a quote discussion.' : isLaminationAuthorityResource ? 'Share the component, substrate or reinforcement, process, quantity and delivery location so the requirement can be understood before a quote discussion.' : isGpYellowUsesResource ? 'Share the FRP component, production method, quantity, finished-build-up context and delivery location so the requirement can be understood before a quote discussion.' : isGpAuthorityResource ? 'Share the application, process, quantity and delivery location so the requirement can be understood before a quote discussion.' : 'Our technical team can help you choose the most suitable resin for your manufacturing requirements.'}</p>
       <div class="article-cta-buttons">
-        <a href="/contact/" class="btn btn-solid">{isGelcoatAuthorityResource ? 'Discuss Gelcoat Resin application' : isLaminationAuthorityResource ? 'Discuss Lamination Resin application' : isGpAuthorityResource ? 'Discuss GP Resin application' : 'Request a Quote'}</a>
+        <a href="/contact/" class="btn btn-solid">{isGelcoatAuthorityResource ? 'Discuss Gelcoat Resin application' : isLaminationAuthorityResource ? 'Discuss Lamination Resin application' : isGpYellowUsesResource ? 'Discuss GP Yellow Resin application' : isGpAuthorityResource ? 'Discuss GP Resin application' : 'Request a Quote'}</a>
         <a href={talkToTeamLink} class="btn btn-wa" target="_blank" rel="noopener">{isGelcoatAuthorityResource || isLaminationAuthorityResource || isGpAuthorityResource ? 'WhatsApp Samrat Poly Resins' : 'Contact Technical Team'}</a>
+        {isGpYellowUsesResource && <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>}
       </div>
     </section>
   </article>

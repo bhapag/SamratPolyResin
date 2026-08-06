@@ -27,6 +27,7 @@ const { tagline, usageNote, industries, whyChoose, faqs, tdsUrl } = product;
 const isGpClearResin = product.slug === 'gp-clear-resin';
 const isLaminationResin = product.slug === 'lamination-resin';
 const isGpGelcoatResin = product.slug === 'gp-gelcoat-resin';
+const isGpYellowResin = product.slug === 'gp-yellow-resin';
 
 const gpClearSeo = {
   title: 'GP Clear Resin Manufacturer in India | General Purpose Polyester Resin',
@@ -70,6 +71,21 @@ const gelcoatSeo = {
     'Gelcoat for FRP products',
   ],
 };
+const gpYellowSeo = {
+  title: 'GP Yellow Resin Manufacturer in India | Yellow GP Resin',
+  description: 'GP Yellow Resin manufacturer in India for general FRP lamination, roofing sheets, water tanks, doors and moulded products. Transparent yellow orthophthalic polyester resin with published TDS and 225 kg drum packaging.',
+  keywords: [
+    'GP Yellow Resin',
+    'Yellow GP Resin',
+    'GP Resin',
+    'GP Resin manufacturer',
+    'GP Resin manufacturer in India',
+    'GP Resin supplier',
+    'General Purpose Polyester Resin',
+    'Resin for FRP lamination',
+    'Polyester resin for FRP products',
+  ],
+};
 const gpBuyerFaqs = [
   {
     q: 'How does GP Clear Resin differ from GP Yellow Resin?',
@@ -100,13 +116,25 @@ const gelcoatBuyerFaqs = [
     a: 'No. This product is published as a polyester surface-coating gelcoat for the mould-facing layer. The structural laminate is built separately with the appropriate laminating resin and glass-fibre reinforcement.',
   },
 ];
+const gpYellowBuyerFaqs = [
+  {
+    q: 'Which details should I share when requesting a GP Yellow Resin quote?',
+    a: 'Please share the expected quantity, FRP component or application, production method, whether the resin colour will be hidden in the finished build-up, and delivery location. This helps the sales team understand the requirement before preparing a quote.',
+  },
+  {
+    q: 'When should I consider a different resin grade?',
+    a: 'Review <a href="/products/gp-clear-resin/">GP Clear Resin</a> where a colourless resin is relevant, <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a> for the published sheet-grade use, <a href="/products/lamination-resin/">Lamination Resin</a> for its published lamination-focused applications, <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> for a stated chemical- or corrosion-resistance requirement, and <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a> for a mould-surface coating role. Review the relevant product data before selecting a system.',
+  },
+];
 const displayedFaqs = isGpClearResin
   ? [...(faqs ?? []), ...gpBuyerFaqs]
   : isLaminationResin
     ? [...(faqs ?? []), ...laminationBuyerFaqs]
     : isGpGelcoatResin
       ? [...(faqs ?? []), ...gelcoatBuyerFaqs]
-      : faqs;
+      : isGpYellowResin
+        ? [...(faqs ?? []), ...gpYellowBuyerFaqs]
+        : faqs;
 
 // Two-table model (Product Details + Technical Specifications) when a product
 // supplies the grouped fields; otherwise fall back to the legacy single table
@@ -203,6 +231,23 @@ const gelcoatResources = isGpGelcoatResin
   ? gelcoatResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
   : [];
 
+const gpYellowResourceSlugs = [
+  'what-is-gp-polyester-resin',
+  'applications-of-gp-polyester-resin',
+  'gp-yellow-resin-uses-in-frp-manufacturing',
+  'gp-clear-resin-vs-gp-yellow-resin',
+  'gp-resin-vs-lamination-resin',
+  'gp-resin-vs-vinyl-ester-resin',
+  'gp-resin-vs-gelcoat-resin',
+  'why-gp-resin-turns-yellow',
+  'understanding-gel-time-in-polyester-resin',
+  'how-to-store-unsaturated-polyester-resin',
+  'how-to-select-polyester-resin-for-frp-manufacturing',
+];
+const gpYellowResources = isGpYellowResin
+  ? gpYellowResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
 const waLink = buildProductQuoteLink(product.whatsappName ?? name);
 
 // "Explore applications" cards — only populated when a product names
@@ -282,9 +327,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 } : null;
 ---
 <Base
-  title={isGpClearResin ? gpClearSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : (product.seo?.title ?? name)}
-  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
-  keywords={isGpClearResin ? gpClearSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : product.seo?.keywords}
+  title={isGpClearResin ? gpClearSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : (product.seo?.title ?? name)}
+  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
+  keywords={isGpClearResin ? gpClearSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : product.seo?.keywords}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
@@ -334,6 +379,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       {isGpGelcoatResin && (
         <p class="gelcoat-buyer-intro">
           Samrat Poly Resins supplies GP Gelcoat Resin to Indian B2B FRP buyers for the mould-facing surface of finished FRP products where a white, high-gloss polyester gelcoat is required.
+        </p>
+      )}
+      {isGpYellowResin && (
+        <p class="gp-yellow-buyer-intro">
+          Samrat Poly Resins supplies GP Yellow Resin to Indian B2B FRP buyers for general-purpose polyester lamination, roofing sheets, water tanks, doors, panels and moulded FRP products where a transparent-yellow resin is suitable for the finished build-up.
         </p>
       )}
       <div class="prod-quote">
@@ -459,6 +509,17 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </p>
         </section>
       )}
+      {isGpYellowResin && (
+        <section class="gp-yellow-overview" aria-labelledby="gp-yellow-overview-heading">
+          <h2 id="gp-yellow-overview-heading" class="spec-h">What is GP Yellow Resin?</h2>
+          <p>
+            GP Yellow Resin is Samrat Poly Resins’ published transparent-yellow, orthophthalic unsaturated polyester, general-purpose laminating resin. It is intended for use with glass-fibre reinforcement when building the structural laminate in FRP products.
+          </p>
+          <p>
+            For buyers, it is a general FRP and lamination grade—not a mould-surface coating or a specialised grade for every requirement. Review the published viscosity, gel time, packaging, MOQ and Technical Data Sheet against the actual production process before selecting a resin system.
+          </p>
+        </section>
+      )}
 
       <div class="spec-grid">
         <div class="spec-col">
@@ -528,6 +589,25 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </div>
         </section>
       )}
+      {isGpYellowResin && (
+        <section class="gp-yellow-buyer-outcomes" aria-labelledby="gp-yellow-buyer-outcomes-heading">
+          <h2 id="gp-yellow-buyer-outcomes-heading" class="spec-h">What this means for FRP buyers</h2>
+          <div class="gp-yellow-outcomes-grid">
+            <div class="gp-yellow-outcome-card">
+              <h3>General FRP laminate role</h3>
+              <p>The published product role is a transparent-yellow general-purpose resin used with glass-fibre reinforcement for FRP lamination and moulded products where that resin colour is suitable in the finished build-up.</p>
+            </div>
+            <div class="gp-yellow-outcome-card">
+              <h3>Published process information</h3>
+              <p>Review the published 450–600 cPs viscosity, 10–15 minute gel time and room-temperature curing system alongside the manufacturing process before finalising a requirement.</p>
+            </div>
+            <div class="gp-yellow-outcome-card">
+              <h3>Procurement information is available</h3>
+              <p>Review the TDS, 225 kg drum packaging and 1,000 kg minimum order quantity before requesting a GP Yellow Resin quote.</p>
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   </article>
 
@@ -592,6 +672,21 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         </p>
       </div>
       <a href="#enquire" class="btn btn-solid gelcoat-process-cta">Discuss your surface-finish requirement</a>
+    </section>
+  )}
+
+  {isGpYellowResin && (
+    <section class="wrap gp-yellow-process" aria-labelledby="gp-yellow-process-heading">
+      <div>
+        <h2 id="gp-yellow-process-heading" class="rel-h">Published for general FRP lamination and moulded products</h2>
+        <p>
+          The existing GP Yellow Resin application pages cover water tanks, cooling towers, roofing sheets, door skins, hand lay-up, spray-up and general FRP moulded products. The relevant choice depends on the component, reinforcement, production method and finished-surface requirement—not the product name alone.
+        </p>
+        <p>
+          Review the existing guides for <a href="/applications/gp-yellow-resin-for-roofing-sheet-manufacturing/">FRP roofing sheets</a>, <a href="/applications/gp-yellow-resin-for-hand-lay-up-process/">hand lay-up</a>, <a href="/applications/gp-yellow-resin-for-spray-up-process/">spray-up</a> and <a href="/applications/gp-yellow-resin-for-water-tank-manufacturing/">water-tank manufacturing</a> alongside the product TDS before finalising a process.
+        </p>
+      </div>
+      <a href="#enquire" class="btn btn-solid gp-yellow-process-cta">Discuss your GP Yellow Resin application</a>
     </section>
   )}
 
@@ -721,6 +816,30 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
+  {isGpYellowResin && (
+    <section class="wrap gp-yellow-comparisons" aria-labelledby="gp-yellow-comparisons-heading">
+      <h2 id="gp-yellow-comparisons-heading" class="rel-h">When to consider a different resin</h2>
+      <div class="gp-yellow-comparison-grid">
+        <article class="gp-yellow-comparison-card">
+          <h3><a href="/resources/gp-clear-resin-vs-gp-yellow-resin/">GP Yellow Resin vs GP Clear Resin</a></h3>
+          <p>Both are published general-purpose orthophthalic polyester grades for FRP work. Review GP Clear Resin where a colourless resin is relevant; GP Yellow Resin is the transparent-yellow, thicker and slower-gelling alternative in the published product data.</p>
+        </article>
+        <article class="gp-yellow-comparison-card">
+          <h3><a href="/products/lamination-resin/">GP Yellow Resin vs Lamination Resin</a></h3>
+          <p>GP Yellow Resin is the general-purpose grade to review for the published FRP lamination and moulded-product applications. Lamination Resin is the product to review for its published door, plywood and FRP bonding applications.</p>
+        </article>
+        <article class="gp-yellow-comparison-card">
+          <h3><a href="/products/vinyl-ester-resin/">GP Yellow Resin vs Vinyl Ester Resin</a></h3>
+          <p>GP Yellow Resin is a general-purpose orthophthalic grade. For a project with a stated chemical- or corrosion-resistance requirement, review Vinyl Ester Resin technical data and discuss the specific application.</p>
+        </article>
+        <article class="gp-yellow-comparison-card">
+          <h3><a href="/products/gp-gelcoat-resin/">GP Yellow Resin vs Gelcoat Resin</a></h3>
+          <p>GP Yellow Resin is used with reinforcement to build the laminate. GP Gelcoat Resin is a mould-surface coating, so the two products have different roles in an FRP manufacturing sequence.</p>
+        </article>
+      </div>
+    </section>
+  )}
+
   {gelcoatResources.length > 0 && (
     <section class="wrap gelcoat-resources" aria-labelledby="gelcoat-resources-heading">
       <div class="gp-hub-head">
@@ -751,6 +870,24 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="gp-hub-actions">
         <a href="/contact/" class="btn btn-solid">Discuss your Lamination Resin application</a>
         <a href="/resources/#lamination-resin-guides-heading" class="btn">Explore all Lamination Resin guides</a>
+      </div>
+    </section>
+  )}
+
+  {gpYellowResources.length > 0 && (
+    <section class="wrap gp-yellow-resources" aria-labelledby="gp-yellow-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Technical resources</p>
+        <h2 id="gp-yellow-resources-heading" class="rel-h">Helpful GP Yellow Resin guides</h2>
+        <p>Use these existing Samrat Poly Resins guides to review GP Resin selection, the transparent-yellow product role, resin comparisons, gel time and storage alongside the GP Yellow Resin TDS.</p>
+      </div>
+      <div class="resources-grid">
+        {gpYellowResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="#enquire" class="btn btn-solid">Discuss your GP Yellow Resin application</a>
+        <a href="/resources/#gp-yellow-resin-hub-heading" class="btn">Explore GP Yellow Resin Knowledge Hub</a>
+        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
       </div>
     </section>
   )}
@@ -871,6 +1008,31 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
+  {isGpYellowResin && (
+    <section class="wrap gp-trust" aria-labelledby="gp-yellow-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Manufacturer context</p>
+        <h2 id="gp-yellow-trust-heading">Manufacturing and quality information</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Manufactured in Punjab, India</strong>
+            <span>Learn about Samrat Poly Resins’ Doraha, Ludhiana facility and company background.</span>
+          </span>
+        </a>
+        <a href="/about/" class="gp-trust-card">
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Published quality approach</strong>
+            <span>Our company information describes checks for viscosity, gel time and cure behaviour before batch approval.</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  )}
+
   {isGpClearResin && (
     <section id="gp-roofing-sheet-case-study" class="wrap gp-case-study" aria-labelledby="gp-case-study-heading">
       <div class="section-head">
@@ -939,10 +1101,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     <div class="wrap enquire-inner">
       <div class="section-head">
         <p class="eyebrow">Enquiry</p>
-        <h2>{isGpClearResin ? 'Request a GP Clear Resin quote' : isLaminationResin ? 'Request a Lamination Resin quote' : isGpGelcoatResin ? 'Request a GP Gelcoat Resin quote' : `Get a quote for ${name}`}</h2>
+        <h2>{isGpClearResin ? 'Request a GP Clear Resin quote' : isLaminationResin ? 'Request a Lamination Resin quote' : isGpGelcoatResin ? 'Request a GP Gelcoat Resin quote' : isGpYellowResin ? 'Request a GP Yellow Resin quote' : `Get a quote for ${name}`}</h2>
         {isGpClearResin && <p class="gp-enquiry-note">Share your quantity, application, grade requirement and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isLaminationResin && <p class="lamination-enquiry-note">Share the lamination application, substrate or component, expected quantity and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isGpGelcoatResin && <p class="gelcoat-enquiry-note">Share the moulded component, surface-finish requirement, application method, expected quantity and delivery location so we can understand the requirement before preparing a quote.</p>}
+        {isGpYellowResin && <p class="gp-yellow-enquiry-note">Share the expected quantity, FRP component or process, finished-build-up context and delivery location so we can understand the requirement before preparing a quote.</p>}
       </div>
       <div class="enquire-box">
         <EnquiryForm product={name} />
@@ -1094,7 +1257,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     @media (max-width: 460px) { .spec-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
 
     .prod-subtitle { color: var(--ink-dim); font-size: 1.05rem; margin-top: 0.55rem; max-width: 48ch; line-height: 1.5; }
-    .gp-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
+    .gp-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro, .gp-yellow-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
     .prod-usage { font-size: 0.95rem; }
     .prod-desc a, .prod-usage a {
       color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px;
@@ -1102,8 +1265,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     }
     .prod-desc a:hover, .prod-usage a:hover { color: var(--accent-gold); }
 
-    .gp-overview, .lamination-overview, .gelcoat-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
-    .gp-overview p, .lamination-overview p, .gelcoat-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .gp-overview, .lamination-overview, .gelcoat-overview, .gp-yellow-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-overview p, .lamination-overview p, .gelcoat-overview p, .gp-yellow-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
     .gp-buyer-outcomes { margin-top: 2.2rem; }
     .gp-outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }
     .gp-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
@@ -1119,6 +1282,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gelcoat-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
     .gelcoat-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
     .gelcoat-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
+    .gp-yellow-buyer-outcomes { margin-top: 2.2rem; }
+    .gp-yellow-outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }
+    .gp-yellow-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-yellow-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
+    .gp-yellow-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
 
     .prod-extra { padding-block: 1.5rem 0.5rem; }
     .prod-extra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.8rem, 5vw, 3.5rem); }
@@ -1194,6 +1362,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gelcoat-process a:not(.btn):hover { color: var(--accent-gold); }
     .gelcoat-process-cta { flex-shrink: 0; }
     @media (max-width: 680px) { .gelcoat-process { align-items: start; flex-direction: column; } }
+    .gp-yellow-process { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; padding-block: 2rem 1rem; border-top: 1px solid var(--line); }
+    .gp-yellow-process > div { max-width: 68ch; }
+    .gp-yellow-process p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .gp-yellow-process a:not(.btn) { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
+    .gp-yellow-process a:not(.btn):hover { color: var(--accent-gold); }
+    .gp-yellow-process-cta { flex-shrink: 0; }
+    @media (max-width: 680px) { .gp-yellow-process { align-items: start; flex-direction: column; } }
 
     .related { padding-block: 2rem 3rem; }
     .rel-h { font-size: 1.1rem; color: var(--ink-dim); margin-bottom: 1.2rem; }
@@ -1216,6 +1391,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-hub-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.4rem; }
     .lamination-resources { padding-block: 0 3rem; }
     .gelcoat-resources { padding-block: 0 3rem; }
+    .gp-yellow-resources { padding-block: 0 3rem; }
 
     .gp-comparisons { padding-block: 1.5rem 2rem; }
     .gp-comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
@@ -1238,6 +1414,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gelcoat-comparison-card h3 a { color: var(--ink); }
     .gelcoat-comparison-card h3 a:hover { color: var(--accent-gold-light); }
     .gelcoat-comparison-card p { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.6; margin-top: 0.65rem; }
+    .gp-yellow-comparisons { padding-block: 1.5rem 2rem; }
+    .gp-yellow-comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .gp-yellow-comparison-card { padding: 1.15rem 1.2rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-yellow-comparison-card h3 { font-size: 0.92rem; text-transform: none; letter-spacing: 0; }
+    .gp-yellow-comparison-card h3 a { color: var(--ink); }
+    .gp-yellow-comparison-card h3 a:hover { color: var(--accent-gold-light); }
+    .gp-yellow-comparison-card p { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.6; margin-top: 0.65rem; }
 
     .gp-trust { padding-block: 0 3rem; }
     .gp-trust .section-head { margin-bottom: 1.2rem; }
@@ -1285,5 +1468,6 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
     .lamination-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
     .gelcoat-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
+    .gp-yellow-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
   </style>
 </Base>

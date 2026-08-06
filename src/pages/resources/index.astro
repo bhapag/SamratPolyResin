@@ -18,8 +18,18 @@ const gpAuthoritySlugs = new Set([
   'why-polyester-resin-remains-sticky-or-tacky',
   'how-to-reduce-shrinkage-in-gp-resin-applications',
   'gp-resin-viscosity-explained',
+  'gp-yellow-resin-uses-in-frp-manufacturing',
 ]);
-const gpAuthorityResources = published.filter((resource) => gpAuthoritySlugs.has(resource.slug));
+const gpYellowAuthoritySlugs = new Set([
+  'gp-yellow-resin-uses-in-frp-manufacturing',
+  'gp-clear-resin-vs-gp-yellow-resin',
+  'why-gp-resin-turns-yellow',
+  'understanding-gel-time-in-polyester-resin',
+  'how-to-store-unsaturated-polyester-resin',
+  'how-to-select-polyester-resin-for-frp-manufacturing',
+]);
+const gpYellowAuthorityResources = published.filter((resource) => gpYellowAuthoritySlugs.has(resource.slug));
+const gpAuthorityResources = published.filter((resource) => gpAuthoritySlugs.has(resource.slug) && !gpYellowAuthoritySlugs.has(resource.slug));
 const laminationAuthoritySlugs = new Set([
   'gp-resin-vs-lamination-resin',
   'what-is-lamination-resin',
@@ -85,16 +95,36 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
 
   <section class="section kc-list">
     <div class="wrap">
+      {gpYellowAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="gp-yellow-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Product knowledge hub</p>
+              <h2 id="gp-yellow-resin-hub-heading">GP Yellow Resin Knowledge Hub</h2>
+              <p>Explore published GP Yellow Resin uses, grade comparison, colour guidance, gel-time, storage and selection resources before discussing an FRP requirement with Samrat Poly Resins, a Punjab-based manufacturer established in 2017.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/gp-yellow-resin/" class="btn btn-solid">View GP Yellow Resin</a>
+              <a href="/contact/" class="btn">Discuss your GP Yellow Resin application</a>
+            </div>
+          </div>
+          <div class="kc-grid">
+            {gpYellowAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
+          </div>
+        </section>
+      )}
+
       {gpAuthorityResources.length > 0 && (
         <section class="kc-focus" aria-labelledby="gp-resin-hub-heading">
           <div class="kc-focus-head">
             <div>
               <p class="eyebrow">Product knowledge hub</p>
               <h2 id="gp-resin-hub-heading">GP Resin Knowledge Hub</h2>
-              <p>Explore existing GP Resin selection, application, comparison and troubleshooting guides before discussing a requirement with Samrat Poly Resins.</p>
+              <p>Explore GP Resin selection, application, comparison and troubleshooting guides for both clear and transparent-yellow general-purpose grades before discussing a requirement with Samrat Poly Resins.</p>
             </div>
             <div class="kc-focus-actions">
               <a href="/products/gp-clear-resin/" class="btn btn-solid">View GP Clear Resin</a>
+              <a href="/products/gp-yellow-resin/" class="btn">View GP Yellow Resin</a>
               <a href="/contact/" class="btn">Discuss an application</a>
             </div>
           </div>
