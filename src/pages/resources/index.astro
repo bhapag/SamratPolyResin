@@ -121,8 +121,31 @@ const glassFiberSystemResources = published.filter((resource) => [
 const glassFiberProcurementResources = published.filter((resource) => [
   'glass-fiber-storage-and-procurement-guide',
 ].includes(resource.slug));
+const pigmentAuthoritySlugs = new Set([
+  'what-is-frp-polyester-pigment',
+  'applications-of-frp-polyester-pigment',
+  'polyester-pigment-paste-vs-gelcoat',
+  'pigment-paste-vs-pre-pigmented-polyester-resin',
+  'frp-pigment-compatibility-with-resin-systems',
+  'frp-colour-variation-buyer-checklist',
+  'frp-pigment-storage-and-procurement-guide',
+]);
+const pigmentAuthorityResources = published.filter((resource) => pigmentAuthoritySlugs.has(resource.slug));
+const pigmentFoundationResources = published.filter((resource) => [
+  'what-is-frp-polyester-pigment',
+  'applications-of-frp-polyester-pigment',
+].includes(resource.slug));
+const pigmentSystemResources = published.filter((resource) => [
+  'polyester-pigment-paste-vs-gelcoat',
+  'pigment-paste-vs-pre-pigmented-polyester-resin',
+  'frp-pigment-compatibility-with-resin-systems',
+].includes(resource.slug));
+const pigmentBuyerResources = published.filter((resource) => [
+  'frp-colour-variation-buyer-checklist',
+  'frp-pigment-storage-and-procurement-guide',
+].includes(resource.slug));
 const gpAuthorityResourcesWithoutUpr = gpAuthorityResources.filter((resource) => !uprAuthoritySlugs.has(resource.slug));
-const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug));
+const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug) && !glassFiberAuthoritySlugs.has(resource.slug) && !pigmentAuthoritySlugs.has(resource.slug));
 ---
 <Base
   title="Knowledge Centre"
@@ -277,6 +300,45 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
               <h3 id="glass-fiber-procurement-heading">3. Review storage and prepare the procurement discussion</h3>
               <div class="kc-grid">
                 {glassFiberProcurementResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
+
+      {pigmentAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="frp-pigment-guides-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Colour-system knowledge hub</p>
+              <h2 id="frp-pigment-guides-heading">FRP Polyester Pigment Knowledge Hub</h2>
+              <p>Start with the published polyester pigment-paste role, then distinguish pigment, resin and gelcoat decisions, review compatibility against the actual system, document appearance questions and prepare a focused quotation discussion.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/frp-polyester-pigment/" class="btn btn-solid">View FRP Polyester Pigment</a>
+              <a href="/tds/frp-polyester-pigment-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Pigment TDS</a>
+              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href="/about/" class="btn">About Samrat Poly Resins</a>
+              <a href="/contact/" class="btn">Discuss an FRP pigment requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="frp-pigment-foundation-heading">
+              <h3 id="frp-pigment-foundation-heading">1. Define the pigment-paste role and application context</h3>
+              <div class="kc-grid">
+                {pigmentFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="frp-pigment-system-heading">
+              <h3 id="frp-pigment-system-heading">2. Compare product roles and check the actual system</h3>
+              <div class="kc-grid">
+                {pigmentSystemResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="frp-pigment-buyer-heading">
+              <h3 id="frp-pigment-buyer-heading">3. Document colour questions and prepare procurement details</h3>
+              <div class="kc-grid">
+                {pigmentBuyerResources.map((resource) => <ResourceCard resource={resource} />)}
               </div>
             </section>
           </div>

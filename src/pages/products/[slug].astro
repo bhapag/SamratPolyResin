@@ -33,6 +33,7 @@ const isUnsaturatedPolyesterResin = product.slug === 'unsaturated-polyester-resi
 const isGpWhiteResin = product.slug === 'gp-white-resin';
 const isGpQuartzResin = product.slug === 'gp-quartz-resin';
 const isGlassFiber = product.slug === 'fibre-glass-mat';
+const isFrpPolyesterPigment = product.slug === 'frp-polyester-pigment';
 
 const gpClearSeo = {
   title: 'GP Clear Resin Manufacturer in India | General Purpose Polyester Resin',
@@ -153,6 +154,20 @@ const glassFiberSeo = {
     'FRP Reinforcement Material',
     'Polyester Resin Glass Fiber',
     'Glass Fiber Supplier',
+  ],
+};
+const frpPolyesterPigmentSeo = {
+  title: 'FRP Polyester Pigment Supplier in India | Polyester Pigment Paste',
+  description: 'FRP polyester pigment paste for UPR, vinyl ester and gelcoat systems. Available in standard and custom RAL/Pantone colours, with a published 2–5% recommended dosage.',
+  keywords: [
+    'FRP Polyester Pigment',
+    'Polyester Pigment',
+    'Polyester Pigment Paste',
+    'FRP Colour Paste',
+    'Pigment for Polyester Resin',
+    'Pigment for FRP Products',
+    'Industrial Polyester Pigment',
+    'Colour Paste Supplier',
   ],
 };
 const gpBuyerFaqs = [
@@ -383,6 +398,19 @@ const glassFiberResources = isGlassFiber
   ? glassFiberResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
   : [];
 
+const pigmentResourceSlugs = [
+  'what-is-frp-polyester-pigment',
+  'applications-of-frp-polyester-pigment',
+  'polyester-pigment-paste-vs-gelcoat',
+  'pigment-paste-vs-pre-pigmented-polyester-resin',
+  'frp-pigment-compatibility-with-resin-systems',
+  'frp-colour-variation-buyer-checklist',
+  'frp-pigment-storage-and-procurement-guide',
+];
+const pigmentResources = isFrpPolyesterPigment
+  ? pigmentResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
 const waLink = buildProductQuoteLink(product.whatsappName ?? name);
 
 // "Explore applications" cards — only populated when a product names
@@ -462,9 +490,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 } : null;
 ---
 <Base
-  title={isGpClearResin ? gpClearSeo.title : isGpWhiteResin ? gpWhiteSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isButtonGradeResin ? buttonGradeSeo.title : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.title : isGlassFiber ? glassFiberSeo.title : (product.seo?.title ?? name)}
-  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : isButtonGradeResin ? buttonGradeSeo.description : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.description : isGlassFiber ? glassFiberSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
-  keywords={isGpClearResin ? gpClearSeo.keywords : isGpWhiteResin ? gpWhiteSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.keywords : isGlassFiber ? glassFiberSeo.keywords : product.seo?.keywords}
+  title={isGpClearResin ? gpClearSeo.title : isGpWhiteResin ? gpWhiteSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isButtonGradeResin ? buttonGradeSeo.title : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.title : isGlassFiber ? glassFiberSeo.title : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.title : (product.seo?.title ?? name)}
+  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : isButtonGradeResin ? buttonGradeSeo.description : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.description : isGlassFiber ? glassFiberSeo.description : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
+  keywords={isGpClearResin ? gpClearSeo.keywords : isGpWhiteResin ? gpWhiteSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.keywords : isGlassFiber ? glassFiberSeo.keywords : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.keywords : product.seo?.keywords}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
@@ -546,14 +574,19 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           Samrat Poly Resins supplies E-glass chopped strand mat (CSM) to Indian FRP buyers seeking reinforcement material in CSM 300 or CSM 450. This page helps separate the reinforcement decision from the separate resin and surface-finish decisions.
         </p>
       )}
+      {isFrpPolyesterPigment && (
+        <p class="pigment-buyer-intro">
+          Samrat Poly Resins supplies FRP Polyester Pigment to industrial buyers who need a colour paste for an FRP resin or gelcoat system. Start with the required colour, visible-finish requirement and base system, then review the published pigment data before requesting a quotation.
+        </p>
+      )}
       <div class="prod-quote">
         <p class="prod-quote-heading">Price</p>
         <p class="prod-quote-value">{site.priceLabel}</p>
-        <p class="prod-quote-note">{isGlassFiber ? 'Glass Fiber pricing varies based on:' : 'Industrial resin pricing varies based on:'}</p>
+        <p class="prod-quote-note">{isGlassFiber ? 'Glass Fiber pricing varies based on:' : isFrpPolyesterPigment ? 'Pigment pricing varies based on:' : 'Industrial resin pricing varies based on:'}</p>
         <ul class="prod-quote-list">
           <li>Order Quantity</li>
-          <li>{isGlassFiber ? 'CSM 300 or CSM 450 requirement' : 'Resin Grade'}</li>
-          <li>{isGlassFiber ? 'Delivery location' : 'Current Raw Material Rates'}</li>
+          <li>{isGlassFiber ? 'CSM 300 or CSM 450 requirement' : isFrpPolyesterPigment ? 'Required colour or RAL/Pantone reference' : 'Resin Grade'}</li>
+          <li>{isGlassFiber || isFrpPolyesterPigment ? 'Delivery location' : 'Current Raw Material Rates'}</li>
         </ul>
         <a href={waLink} class="btn btn-solid prod-quote-cta" target="_blank" rel="noopener">Request Bulk Quote</a>
       </div>
@@ -733,6 +766,17 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </p>
           <p>
             The available CSM grades are identified by area weight: CSM 300 is 300 g/m² and CSM 450 is 450 g/m². Neither weight is a universal answer for every component. Use the part drawing, laminate design, reinforcement build-up, resin system and production method to discuss the appropriate requirement before purchase.
+          </p>
+        </section>
+      )}
+      {isFrpPolyesterPigment && (
+        <section class="pigment-overview" aria-labelledby="pigment-overview-heading">
+          <h2 id="pigment-overview-heading" class="spec-h">What is FRP Polyester Pigment / Polyester Pigment Paste?</h2>
+          <p>
+            FRP Polyester Pigment is a colour concentrate paste for an FRP resin or gelcoat system. It supplies colour to the selected base material; it is not the structural resin that binds reinforcement, the glass-fibre reinforcement itself or the mould-side gelcoat layer that creates the finished surface.
+          </p>
+          <p>
+            The published product data lists compatibility with unsaturated polyester, vinyl ester and gelcoat systems. The catalogue lists white, black, red, blue, green and yellow, while the product TDS also supports standard and custom RAL or Pantone colour matching. Confirm the required colour and the actual base system before ordering.
           </p>
         </section>
       )}
@@ -940,6 +984,25 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </div>
         </section>
       )}
+      {isFrpPolyesterPigment && (
+        <section class="pigment-buyer-outcomes" aria-labelledby="pigment-buyer-outcomes-heading">
+          <h2 id="pigment-buyer-outcomes-heading" class="spec-h">What this means for FRP colour-system buyers</h2>
+          <div class="pigment-outcomes-grid">
+            <div class="pigment-outcome-card">
+              <h3>Start with the visible colour requirement</h3>
+              <p>Use the required colour or RAL/Pantone reference as an enquiry input, together with whether the pigment is intended for a resin or a gelcoat system. Colour, surface finish and the structural laminate are separate decisions.</p>
+            </div>
+            <div class="pigment-outcome-card">
+              <h3>Match the paste to the published base system</h3>
+              <p>The TDS lists unsaturated polyester, vinyl ester and gelcoat compatibility. Confirm the actual product system rather than assuming that every resin, gelcoat or reinforcement product has the same role.</p>
+            </div>
+            <div class="pigment-outcome-card">
+              <h3>Procurement details are published</h3>
+              <p>Review the pigment TDS, 10 kg bottle packaging and 100 kg minimum order quantity before sharing colour, application, resin or gelcoat system, quantity and delivery location for a quote.</p>
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   </article>
 
@@ -1049,6 +1112,21 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         </p>
       </div>
       <a href="#enquire" class="btn btn-solid glass-fiber-process-cta">Discuss your reinforcement requirement</a>
+    </section>
+  )}
+
+  {isFrpPolyesterPigment && (
+    <section class="wrap pigment-process" aria-labelledby="pigment-process-heading">
+      <div>
+        <h2 id="pigment-process-heading" class="rel-h">Choose the pigment within the FRP material system</h2>
+        <p>
+          The published pigment applications cover FRP tanks and pipes, boat and automotive gelcoats, decorative or architectural panels, electrical enclosures and moulded components. These define the visible-colour context; they do not turn pigment paste into a substitute for the resin, gelcoat or reinforcement selected for the part.
+        </p>
+        <p>
+          Follow the colour-solution route: start with the <a href="/resources/what-is-frp-polyester-pigment/">pigment-paste guide</a> and published <a href="/resources/applications-of-frp-polyester-pigment/">application context</a>; review <a href="/resources/frp-pigment-compatibility-with-resin-systems/">compatibility</a>; then compare <a href="/resources/polyester-pigment-paste-vs-gelcoat/">pigment paste with Gelcoat</a> or <a href="/resources/pigment-paste-vs-pre-pigmented-polyester-resin/">a pre-pigmented resin</a> before using the TDS and requesting a quotation. For related material selection, review the separate roles of <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a>, <a href="/products/gp-clear-resin/">GP Clear Resin</a>, <a href="/products/gp-white-resin/">GP White Resin</a>, <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> and <a href="/products/fibre-glass-mat/">Glass Fiber</a> in the <a href="/resources/#frp-pigment-guides-heading">FRP Polyester Pigment Knowledge Hub</a>.
+        </p>
+      </div>
+      <a href="#enquire" class="btn btn-solid pigment-process-cta">Request a pigment quotation</a>
     </section>
   )}
 
@@ -1377,6 +1455,50 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <span class="gp-trust-card-body">
             <strong>Use product-specific documentation</strong>
             <span>The Glass Fiber TDS is the reference for the published E-Glass CSM 300 and CSM 450 details. Review the relevant resin TDS separately when planning an FRP material system.</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  )}
+
+  {pigmentResources.length > 0 && (
+    <section class="wrap prod-resources pigment-resources" aria-labelledby="frp-pigment-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Technical resources</p>
+        <h2 id="frp-pigment-resources-heading" class="rel-h">FRP Polyester Pigment Knowledge Hub</h2>
+        <p>Use these product-specific guides to separate colour-paste, resin and gelcoat roles; review compatibility cautiously; document appearance questions; and prepare a factual FRP pigment enquiry.</p>
+      </div>
+      <div class="resources-grid">
+        {pigmentResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="#enquire" class="btn btn-solid">Discuss your FRP Polyester Pigment requirement</a>
+        <a href="/resources/#frp-pigment-guides-heading" class="btn">View the pigment resource hub</a>
+        <a href="/tds/frp-polyester-pigment-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Pigment TDS</a>
+        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+      </div>
+    </section>
+  )}
+
+  {isFrpPolyesterPigment && (
+    <section class="wrap gp-trust pigment-trust" aria-labelledby="pigment-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Product documents and company context</p>
+        <h2 id="pigment-trust-heading">A documented route for FRP colour-system buyers</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Punjab-based manufacturer context</strong>
+            <span>Samrat Poly Resins was established in 2017 in Doraha, Ludhiana. Review the existing company and facility information alongside the published pigment product route.</span>
+          </span>
+        </a>
+        <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Use product-specific documentation</strong>
+            <span>Use the FRP Polyester Pigment TDS and product catalogue for published product information. Confirm the actual colour, base system and application before finalising a requirement.</span>
           </span>
         </a>
       </div>
@@ -2015,7 +2137,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     @media (max-width: 460px) { .spec-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
 
     .prod-subtitle { color: var(--ink-dim); font-size: 1.05rem; margin-top: 0.55rem; max-width: 48ch; line-height: 1.5; }
-    .gp-buyer-intro, .gp-white-buyer-intro, .gp-quartz-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro, .gp-yellow-buyer-intro, .button-buyer-intro, .upr-buyer-intro, .glass-fiber-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
+    .gp-buyer-intro, .gp-white-buyer-intro, .gp-quartz-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro, .gp-yellow-buyer-intro, .button-buyer-intro, .upr-buyer-intro, .glass-fiber-buyer-intro, .pigment-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
     .prod-usage { font-size: 0.95rem; }
     .prod-desc a, .prod-usage a {
       color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px;
@@ -2023,8 +2145,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     }
     .prod-desc a:hover, .prod-usage a:hover { color: var(--accent-gold); }
 
-    .gp-overview, .gp-white-overview, .gp-quartz-overview, .lamination-overview, .gelcoat-overview, .gp-yellow-overview, .button-overview, .upr-overview, .glass-fiber-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
-    .gp-overview p, .gp-white-overview p, .gp-quartz-overview p, .lamination-overview p, .gelcoat-overview p, .gp-yellow-overview p, .button-overview p, .upr-overview p, .glass-fiber-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .gp-overview, .gp-white-overview, .gp-quartz-overview, .lamination-overview, .gelcoat-overview, .gp-yellow-overview, .button-overview, .upr-overview, .glass-fiber-overview, .pigment-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-overview p, .gp-white-overview p, .gp-quartz-overview p, .lamination-overview p, .gelcoat-overview p, .gp-yellow-overview p, .button-overview p, .upr-overview p, .glass-fiber-overview p, .pigment-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
     .upr-overview a, .upr-process a:not(.btn), .upr-comparison-card a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
     .upr-overview a:hover, .upr-process a:not(.btn):hover, .upr-comparison-card a:hover { color: var(--accent-gold); }
     .upr-grade-guide { margin-top: 2.2rem; }
@@ -2075,6 +2197,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .glass-fiber-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
     .glass-fiber-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
     .glass-fiber-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
+    .pigment-buyer-outcomes { margin-top: 2.2rem; }
+    .pigment-outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }
+    .pigment-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .pigment-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
+    .pigment-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
 
     .prod-extra { padding-block: 1.5rem 0.5rem; }
     .prod-extra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.8rem, 5vw, 3.5rem); }
@@ -2188,6 +2315,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .glass-fiber-process a:not(.btn):hover { color: var(--accent-gold); }
     .glass-fiber-process-cta { flex-shrink: 0; }
     @media (max-width: 680px) { .glass-fiber-process { align-items: start; flex-direction: column; } }
+    .pigment-process { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; padding-block: 2rem 1rem; border-top: 1px solid var(--line); }
+    .pigment-process > div { max-width: 68ch; }
+    .pigment-process p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .pigment-process a:not(.btn) { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
+    .pigment-process a:not(.btn):hover { color: var(--accent-gold); }
+    .pigment-process-cta { flex-shrink: 0; }
+    @media (max-width: 680px) { .pigment-process { align-items: start; flex-direction: column; } }
 
     .related { padding-block: 2rem 3rem; }
     .rel-h { font-size: 1.1rem; color: var(--ink-dim); margin-bottom: 1.2rem; }
@@ -2214,6 +2348,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-white-resources { padding-block: 0 3rem; }
     .button-resources { padding-block: 0 3rem; }
     .upr-resources { padding-block: 0 3rem; }
+    .pigment-resources { padding-block: 0 3rem; }
 
     .gp-comparisons { padding-block: 1.5rem 2rem; }
     .gp-comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
