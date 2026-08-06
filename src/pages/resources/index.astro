@@ -144,8 +144,23 @@ const pigmentBuyerResources = published.filter((resource) => [
   'frp-colour-variation-buyer-checklist',
   'frp-pigment-storage-and-procurement-guide',
 ].includes(resource.slug));
+const mekpAuthoritySlugs = new Set([
+  'what-is-mekp-hardener',
+  'mekp-for-polyester-resin-systems',
+  'mekp-for-gelcoat-systems',
+  'mekp-hardener-procurement-guide',
+]);
+const mekpAuthorityResources = published.filter((resource) => mekpAuthoritySlugs.has(resource.slug));
+const mekpRoleResources = published.filter((resource) => [
+  'what-is-mekp-hardener',
+  'mekp-for-polyester-resin-systems',
+  'mekp-for-gelcoat-systems',
+].includes(resource.slug));
+const mekpDocumentationResources = published.filter((resource) => [
+  'mekp-hardener-procurement-guide',
+].includes(resource.slug));
 const gpAuthorityResourcesWithoutUpr = gpAuthorityResources.filter((resource) => !uprAuthoritySlugs.has(resource.slug));
-const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug) && !glassFiberAuthoritySlugs.has(resource.slug) && !pigmentAuthoritySlugs.has(resource.slug));
+const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug) && !glassFiberAuthoritySlugs.has(resource.slug) && !pigmentAuthoritySlugs.has(resource.slug) && !mekpAuthoritySlugs.has(resource.slug));
 ---
 <Base
   title="Knowledge Centre"
@@ -339,6 +354,39 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
               <h3 id="frp-pigment-buyer-heading">3. Document colour questions and prepare procurement details</h3>
               <div class="kc-grid">
                 {pigmentBuyerResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
+
+      {mekpAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="mekp-hardener-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Catalyst knowledge hub</p>
+              <h2 id="mekp-hardener-hub-heading">MEKP Hardener Knowledge Hub</h2>
+              <p>Understand MEKP&rsquo;s published catalyst / initiator role, keep the base resin and gelcoat decisions distinct, review current documentation and prepare an industrial quotation request without relying on generic process advice.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/mekp-hardener/" class="btn btn-solid">View MEKP Hardener</a>
+              <a href="/tds/mekp-hardener-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download MEKP TDS</a>
+              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href="/about/" class="btn">About Samrat Poly Resins</a>
+              <a href="/contact/" class="btn">Discuss an MEKP requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="mekp-role-guides-heading">
+              <h3 id="mekp-role-guides-heading">1. Identify the catalyst role and documented system context</h3>
+              <div class="kc-grid">
+                {mekpRoleResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="mekp-documentation-guides-heading">
+              <h3 id="mekp-documentation-guides-heading">2. Review documentation and prepare a quotation</h3>
+              <div class="kc-grid">
+                {mekpDocumentationResources.map((resource) => <ResourceCard resource={resource} />)}
               </div>
             </section>
           </div>

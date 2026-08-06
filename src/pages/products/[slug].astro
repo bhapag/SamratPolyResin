@@ -34,6 +34,7 @@ const isGpWhiteResin = product.slug === 'gp-white-resin';
 const isGpQuartzResin = product.slug === 'gp-quartz-resin';
 const isGlassFiber = product.slug === 'fibre-glass-mat';
 const isFrpPolyesterPigment = product.slug === 'frp-polyester-pigment';
+const isMekpHardener = product.slug === 'mekp-hardener';
 
 const gpClearSeo = {
   title: 'GP Clear Resin Manufacturer in India | General Purpose Polyester Resin',
@@ -168,6 +169,20 @@ const frpPolyesterPigmentSeo = {
     'Pigment for FRP Products',
     'Industrial Polyester Pigment',
     'Colour Paste Supplier',
+  ],
+};
+const mekpHardenerSeo = {
+  title: 'MEKP Hardener Supplier in India | Polyester Resin Catalyst',
+  description: 'MEKP Hardener (Methyl Ethyl Ketone Peroxide) catalyst / initiator for published polyester, vinyl ester and gelcoat systems. Review the TDS and request an industrial quote.',
+  keywords: [
+    'MEKP Hardener',
+    'MEKP Catalyst',
+    'MEKP Initiator',
+    'Polyester Resin Hardener',
+    'Catalyst for Polyester Resin',
+    'FRP Hardener',
+    'Industrial MEKP',
+    'MEKP Supplier',
   ],
 };
 const gpBuyerFaqs = [
@@ -410,6 +425,15 @@ const pigmentResourceSlugs = [
 const pigmentResources = isFrpPolyesterPigment
   ? pigmentResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
   : [];
+const mekpResourceSlugs = [
+  'what-is-mekp-hardener',
+  'mekp-for-polyester-resin-systems',
+  'mekp-for-gelcoat-systems',
+  'mekp-hardener-procurement-guide',
+];
+const mekpResources = isMekpHardener
+  ? mekpResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
 
 const waLink = buildProductQuoteLink(product.whatsappName ?? name);
 
@@ -490,9 +514,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 } : null;
 ---
 <Base
-  title={isGpClearResin ? gpClearSeo.title : isGpWhiteResin ? gpWhiteSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isButtonGradeResin ? buttonGradeSeo.title : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.title : isGlassFiber ? glassFiberSeo.title : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.title : (product.seo?.title ?? name)}
-  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : isButtonGradeResin ? buttonGradeSeo.description : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.description : isGlassFiber ? glassFiberSeo.description : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
-  keywords={isGpClearResin ? gpClearSeo.keywords : isGpWhiteResin ? gpWhiteSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.keywords : isGlassFiber ? glassFiberSeo.keywords : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.keywords : product.seo?.keywords}
+  title={isGpClearResin ? gpClearSeo.title : isGpWhiteResin ? gpWhiteSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isButtonGradeResin ? buttonGradeSeo.title : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.title : isGlassFiber ? glassFiberSeo.title : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.title : isMekpHardener ? mekpHardenerSeo.title : (product.seo?.title ?? name)}
+  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : isButtonGradeResin ? buttonGradeSeo.description : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.description : isGlassFiber ? glassFiberSeo.description : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.description : isMekpHardener ? mekpHardenerSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
+  keywords={isGpClearResin ? gpClearSeo.keywords : isGpWhiteResin ? gpWhiteSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.keywords : isGlassFiber ? glassFiberSeo.keywords : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.keywords : isMekpHardener ? mekpHardenerSeo.keywords : product.seo?.keywords}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
@@ -579,14 +603,19 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           Samrat Poly Resins supplies FRP Polyester Pigment to industrial buyers who need a colour paste for an FRP resin or gelcoat system. Start with the required colour, visible-finish requirement and base system, then review the published pigment data before requesting a quotation.
         </p>
       )}
+      {isMekpHardener && (
+        <p class="mekp-buyer-intro">
+          Samrat Poly Resins supplies MEKP Hardener to industrial buyers evaluating a catalyst / initiator for a published polyester, vinyl ester or gelcoat system. Begin with the actual resin grade and FRP application, then review the current TDS before requesting a quotation or technical discussion.
+        </p>
+      )}
       <div class="prod-quote">
         <p class="prod-quote-heading">Price</p>
         <p class="prod-quote-value">{site.priceLabel}</p>
-        <p class="prod-quote-note">{isGlassFiber ? 'Glass Fiber pricing varies based on:' : isFrpPolyesterPigment ? 'Pigment pricing varies based on:' : 'Industrial resin pricing varies based on:'}</p>
+        <p class="prod-quote-note">{isGlassFiber ? 'Glass Fiber pricing varies based on:' : isFrpPolyesterPigment ? 'Pigment pricing varies based on:' : isMekpHardener ? 'MEKP Hardener pricing varies based on:' : 'Industrial resin pricing varies based on:'}</p>
         <ul class="prod-quote-list">
           <li>Order Quantity</li>
-          <li>{isGlassFiber ? 'CSM 300 or CSM 450 requirement' : isFrpPolyesterPigment ? 'Required colour or RAL/Pantone reference' : 'Resin Grade'}</li>
-          <li>{isGlassFiber || isFrpPolyesterPigment ? 'Delivery location' : 'Current Raw Material Rates'}</li>
+          <li>{isGlassFiber ? 'CSM 300 or CSM 450 requirement' : isFrpPolyesterPigment ? 'Required colour or RAL/Pantone reference' : isMekpHardener ? 'Base resin grade and application' : 'Resin Grade'}</li>
+          <li>{isGlassFiber || isFrpPolyesterPigment ? 'Delivery location' : isMekpHardener ? 'Production process and delivery location' : 'Current Raw Material Rates'}</li>
         </ul>
         <a href={waLink} class="btn btn-solid prod-quote-cta" target="_blank" rel="noopener">Request Bulk Quote</a>
       </div>
@@ -780,6 +809,17 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </p>
         </section>
       )}
+      {isMekpHardener && (
+        <section class="mekp-overview" aria-labelledby="mekp-overview-heading">
+          <h2 id="mekp-overview-heading" class="spec-h">What is MEKP Hardener / MEKP Catalyst?</h2>
+          <p>
+            MEKP Hardener is the published catalyst / initiator component used with selected unsaturated polyester resin, vinyl ester resin and gelcoat systems. Buyers may search for a polyester resin hardener, MEKP catalyst or MEKP initiator; on this page, those terms describe the same product role in the selected curing system.
+          </p>
+          <p>
+            It does not replace the base resin, <a href="/products/fibre-glass-mat/">glass-fibre reinforcement</a>, mould-side gelcoat or <a href="/products/frp-polyester-pigment/">FRP Polyester Pigment</a>. The relevant decision is whether the current product data for the base system matches the intended FRP component and manufacturing context.
+          </p>
+        </section>
+      )}
 
       <div class="spec-grid">
         <div class="spec-col">
@@ -921,6 +961,25 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             <div class="button-outcome-card">
               <h3>Published procurement details</h3>
               <p>Review the TDS alongside the published 9.5-minute gel time, approximate two-hour cure, two-month shelf life and 225 kg drum packaging.</p>
+            </div>
+          </div>
+        </section>
+      )}
+      {isMekpHardener && (
+        <section class="mekp-buyer-outcomes" aria-labelledby="mekp-buyer-outcomes-heading">
+          <h2 id="mekp-buyer-outcomes-heading" class="spec-h">What this means for MEKP Hardener buyers</h2>
+          <div class="mekp-outcomes-grid">
+            <div class="mekp-outcome-card">
+              <h3>Start with the base system</h3>
+              <p>MEKP selection follows the intended unsaturated polyester, vinyl ester or gelcoat system. It is not a stand-alone replacement for choosing the correct resin grade.</p>
+            </div>
+            <div class="mekp-outcome-card">
+              <h3>Keep material roles distinct</h3>
+              <p>Resin provides the matrix, Glass Fiber provides reinforcement, gelcoat provides the mould-side surface role, and pigment provides colour where required. MEKP is the catalyst / initiator component.</p>
+            </div>
+            <div class="mekp-outcome-card">
+              <h3>Use published procurement facts</h3>
+              <p>Review the current TDS, 25 kg carboy packaging and 25 kg minimum order quantity, then share the resin grade, application, expected quantity, process and delivery location.</p>
             </div>
           </div>
         </section>
@@ -1130,10 +1189,25 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
+  {isMekpHardener && (
+    <section class="wrap mekp-process" aria-labelledby="mekp-process-heading">
+      <div>
+        <h2 id="mekp-process-heading" class="rel-h">Choose MEKP within the complete FRP material system</h2>
+        <p>
+          Start with the published base-system role: <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> is the category gateway, while <a href="/products/gp-clear-resin/">GP Clear</a>, <a href="/products/gp-white-resin/">GP White</a>, <a href="/products/gp-yellow-resin/">GP Yellow</a>, <a href="/products/lamination-resin/">Lamination Resin</a>, <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> and <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> have separate product roles and data. Confirm the actual resin product before treating MEKP as part of the requirement.
+        </p>
+        <p>
+          Existing application guides for <a href="/applications/resin-for-roofing-sheet-manufacturing/">FRP roofing sheets</a>, <a href="/applications/resin-for-water-tank-manufacturing/">water tanks</a>, <a href="/applications/resin-for-frp-panel-manufacturing/">FRP panels</a>, <a href="/applications/resin-for-hand-lay-up-process/">hand lay-up</a> and <a href="/applications/gelcoat-for-general-frp-mould-finishing/">mould finishing</a> provide component context. For broader decision support, visit the <a href="/resources/">Resource Hub</a>, download the current TDS and share the resin grade, application, quantity, process and delivery location for a quotation.
+        </p>
+      </div>
+      <a href="#enquire" class="btn btn-solid mekp-process-cta">Discuss your MEKP requirement</a>
+    </section>
+  )}
+
   {appCards.length > 0 && (
     <section class="wrap prod-apps">
       <h2 class="rel-h">Explore applications</h2>
-      <p class="apps-sub">See how {name} performs in specific FRP manufacturing applications.</p>
+      <p class="apps-sub">{isMekpHardener ? 'Explore existing FRP manufacturing contexts where the separate base resin system should be confirmed before discussing MEKP.' : `See how ${name} performs in specific FRP manufacturing applications.`}</p>
       <div class="apps-grid">
         {appCards.map(app => (
           <div class="app-card">
@@ -1476,6 +1550,50 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href="/resources/#frp-pigment-guides-heading" class="btn">View the pigment resource hub</a>
         <a href="/tds/frp-polyester-pigment-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Pigment TDS</a>
         <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+      </div>
+    </section>
+  )}
+
+  {mekpResources.length > 0 && (
+    <section class="wrap prod-resources mekp-resources" aria-labelledby="mekp-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">MEKP catalyst knowledge hub</p>
+        <h2 id="mekp-resources-heading" class="rel-h">MEKP Hardener guides for industrial buyers</h2>
+        <p>Start with the catalyst role, then review the selected polyester or gelcoat system, published documentation and quote details. These guides do not provide operating instructions.</p>
+      </div>
+      <div class="resources-grid">
+        {mekpResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="#enquire" class="btn btn-solid">Discuss your MEKP requirement</a>
+        <a href="/resources/#mekp-hardener-hub-heading" class="btn">Explore the MEKP Knowledge Hub</a>
+        <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download MEKP TDS</a>
+        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+      </div>
+    </section>
+  )}
+
+  {isMekpHardener && (
+    <section class="wrap gp-trust mekp-trust" aria-labelledby="mekp-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Company context and product documentation</p>
+        <h2 id="mekp-trust-heading">A documented route for MEKP Hardener buyers</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Punjab-based company context</strong>
+            <span>Samrat Poly Resins was established in 2017 in Doraha, Ludhiana. Review the existing company and facility information alongside the published resin-system range and separate MEKP catalyst product route.</span>
+          </span>
+        </a>
+        <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Use material-specific documentation</strong>
+            <span>The MEKP Hardener TDS is the current published reference for this catalyst product. Review it alongside the actual resin or gelcoat documentation; follow the official material document for handling and safety information.</span>
+          </span>
+        </a>
       </div>
     </section>
   )}
@@ -1986,6 +2104,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         {isGpGelcoatResin && <p class="gelcoat-enquiry-note">Share the moulded component, surface-finish requirement, application method, expected quantity and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isGpYellowResin && <p class="gp-yellow-enquiry-note">Share the expected quantity, FRP component or process, whether the transparent-yellow supplied colour is acceptable in the build-up, and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isButtonGradeResin && <p class="button-enquiry-note">Share the expected quantity, intended button or small-moulding requirement, clarity or pigment-colour requirement, casting method if known and delivery location so we can understand the requirement before preparing a quote.</p>}
+        {isMekpHardener && <p class="mekp-enquiry-note">Share the base resin grade or system, intended component or application, expected quantity, production process if known and delivery location so we can understand the requirement before preparing a quote.</p>}
       </div>
       <div class="enquire-box">
         <EnquiryForm product={name} />
@@ -2137,7 +2256,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     @media (max-width: 460px) { .spec-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
 
     .prod-subtitle { color: var(--ink-dim); font-size: 1.05rem; margin-top: 0.55rem; max-width: 48ch; line-height: 1.5; }
-    .gp-buyer-intro, .gp-white-buyer-intro, .gp-quartz-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro, .gp-yellow-buyer-intro, .button-buyer-intro, .upr-buyer-intro, .glass-fiber-buyer-intro, .pigment-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
+    .gp-buyer-intro, .gp-white-buyer-intro, .gp-quartz-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro, .gp-yellow-buyer-intro, .button-buyer-intro, .upr-buyer-intro, .glass-fiber-buyer-intro, .pigment-buyer-intro, .mekp-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
     .prod-usage { font-size: 0.95rem; }
     .prod-desc a, .prod-usage a {
       color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px;
@@ -2145,8 +2264,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     }
     .prod-desc a:hover, .prod-usage a:hover { color: var(--accent-gold); }
 
-    .gp-overview, .gp-white-overview, .gp-quartz-overview, .lamination-overview, .gelcoat-overview, .gp-yellow-overview, .button-overview, .upr-overview, .glass-fiber-overview, .pigment-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
-    .gp-overview p, .gp-white-overview p, .gp-quartz-overview p, .lamination-overview p, .gelcoat-overview p, .gp-yellow-overview p, .button-overview p, .upr-overview p, .glass-fiber-overview p, .pigment-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .gp-overview, .gp-white-overview, .gp-quartz-overview, .lamination-overview, .gelcoat-overview, .gp-yellow-overview, .button-overview, .upr-overview, .glass-fiber-overview, .pigment-overview, .mekp-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-overview p, .gp-white-overview p, .gp-quartz-overview p, .lamination-overview p, .gelcoat-overview p, .gp-yellow-overview p, .button-overview p, .upr-overview p, .glass-fiber-overview p, .pigment-overview p, .mekp-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
     .upr-overview a, .upr-process a:not(.btn), .upr-comparison-card a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
     .upr-overview a:hover, .upr-process a:not(.btn):hover, .upr-comparison-card a:hover { color: var(--accent-gold); }
     .upr-grade-guide { margin-top: 2.2rem; }
@@ -2202,6 +2321,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .pigment-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
     .pigment-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
     .pigment-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
+    .mekp-buyer-outcomes { margin-top: 2.2rem; }
+    .mekp-outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }
+    .mekp-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .mekp-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
+    .mekp-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
 
     .prod-extra { padding-block: 1.5rem 0.5rem; }
     .prod-extra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.8rem, 5vw, 3.5rem); }
@@ -2322,6 +2446,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .pigment-process a:not(.btn):hover { color: var(--accent-gold); }
     .pigment-process-cta { flex-shrink: 0; }
     @media (max-width: 680px) { .pigment-process { align-items: start; flex-direction: column; } }
+    .mekp-process { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; padding-block: 2rem 1rem; border-top: 1px solid var(--line); }
+    .mekp-process > div { max-width: 68ch; }
+    .mekp-process p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .mekp-process a:not(.btn) { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
+    .mekp-process a:not(.btn):hover { color: var(--accent-gold); }
+    .mekp-process-cta { flex-shrink: 0; }
+    @media (max-width: 680px) { .mekp-process { align-items: start; flex-direction: column; } }
 
     .related { padding-block: 2rem 3rem; }
     .rel-h { font-size: 1.1rem; color: var(--ink-dim); margin-bottom: 1.2rem; }
@@ -2461,6 +2592,6 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .lamination-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
     .gelcoat-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
     .gp-yellow-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
-    .button-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
+    .button-enquiry-note, .mekp-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
   </style>
 </Base>
