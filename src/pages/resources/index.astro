@@ -52,7 +52,18 @@ const gelcoatAuthoritySlugs = new Set([
   'gelcoat-resin-storage-and-handling-guide',
 ]);
 const gelcoatAuthorityResources = published.filter((resource) => gelcoatAuthoritySlugs.has(resource.slug));
-const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug));
+const buttonAuthoritySlugs = new Set([
+  'what-is-button-grade-resin',
+  'button-resin-for-polyester-button-manufacturing',
+  'how-to-choose-resin-for-button-manufacturing',
+  'button-grade-resin-vs-gp-resin',
+  'button-grade-resin-vs-clear-casting-resin',
+  'button-resin-gel-time-and-viscosity-guide',
+  'button-resin-storage-and-quote-guide',
+  'button-resin-processing-checklist',
+]);
+const buttonAuthorityResources = published.filter((resource) => buttonAuthoritySlugs.has(resource.slug));
+const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug));
 ---
 <Base
   title="Knowledge Centre"
@@ -110,6 +121,26 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
           </div>
           <div class="kc-grid">
             {gpYellowAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
+          </div>
+        </section>
+      )}
+
+      {buttonAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="button-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Product knowledge hub</p>
+              <h2 id="button-resin-hub-heading">Button Grade Resin Knowledge Hub</h2>
+              <p>Explore Button Grade Resin selection, button-manufacturing context, product-role comparisons, published processing data, storage and quote-preparation guides before discussing a casting requirement with Samrat Poly Resins.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/button-grade-resin/" class="btn btn-solid">View Button Grade Resin</a>
+              <a href="/tds/button-grade-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Button Grade Resin TDS</a>
+              <a href="/contact/" class="btn">Discuss your Button Grade Resin requirement</a>
+            </div>
+          </div>
+          <div class="kc-grid">
+            {buttonAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
           </div>
         </section>
       )}
