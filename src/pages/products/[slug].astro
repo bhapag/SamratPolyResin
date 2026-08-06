@@ -30,6 +30,7 @@ const isGpGelcoatResin = product.slug === 'gp-gelcoat-resin';
 const isGpYellowResin = product.slug === 'gp-yellow-resin';
 const isButtonGradeResin = product.slug === 'button-grade-resin';
 const isUnsaturatedPolyesterResin = product.slug === 'unsaturated-polyester-resin';
+const isGpWhiteResin = product.slug === 'gp-white-resin';
 
 const gpClearSeo = {
   title: 'GP Clear Resin Manufacturer in India | General Purpose Polyester Resin',
@@ -41,6 +42,20 @@ const gpClearSeo = {
     'GP Resin supplier',
     'General Purpose Polyester Resin',
     'General Purpose Resin for FRP',
+  ],
+};
+const gpWhiteSeo = {
+  title: 'GP White Resin Manufacturer in India | Water-White Polyester Resin',
+  description: 'GP White Resin manufacturer in India for water-white general-purpose FRP moulding, panels, water tanks, cooling towers and fabrication. Published TDS and 225 kg drum packaging.',
+  keywords: [
+    'GP White Resin',
+    'Water White Polyester Resin',
+    'White Polyester Resin',
+    'White GP Resin',
+    'General Purpose Polyester Resin',
+    'White Resin Manufacturer',
+    'White Resin Supplier',
+    'FRP White Resin',
   ],
 };
 const laminationSeo = {
@@ -229,6 +244,21 @@ const gpResources = isGpClearResin
   ? gpResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
   : [];
 
+const gpWhiteResourceSlugs = [
+  'what-is-gp-white-resin',
+  'applications-of-gp-white-resin',
+  'gp-white-resin-vs-gp-clear-resin',
+  'gp-white-resin-vs-gelcoat-resin',
+  'gp-white-resin-buyer-guide',
+  'how-to-select-polyester-resin-for-frp-manufacturing',
+  'understanding-gel-time-in-polyester-resin',
+  'gp-resin-viscosity-explained',
+  'how-to-store-unsaturated-polyester-resin',
+];
+const gpWhiteResources = isGpWhiteResin
+  ? gpWhiteResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
 const gpClusterResourceSlugs = [
   'gp-clear-resin-vs-gp-yellow-resin',
   'gp-resin-vs-lamination-resin',
@@ -400,9 +430,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 } : null;
 ---
 <Base
-  title={isGpClearResin ? gpClearSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isButtonGradeResin ? buttonGradeSeo.title : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.title : (product.seo?.title ?? name)}
+  title={isGpClearResin ? gpClearSeo.title : isGpWhiteResin ? gpWhiteSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isButtonGradeResin ? buttonGradeSeo.title : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.title : (product.seo?.title ?? name)}
   description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : isButtonGradeResin ? buttonGradeSeo.description : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
-  keywords={isGpClearResin ? gpClearSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.keywords : product.seo?.keywords}
+  keywords={isGpClearResin ? gpClearSeo.keywords : isGpWhiteResin ? gpWhiteSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.keywords : product.seo?.keywords}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
@@ -442,6 +472,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       {isGpClearResin && (
         <p class="gp-buyer-intro">
           Samrat Poly Resins supplies this clear general-purpose polyester resin to FRP manufacturers in India for hand lay-up, spray-up, moulding and general lamination work.
+        </p>
+      )}
+      {isGpWhiteResin && (
+        <p class="gp-white-buyer-intro">
+          Samrat Poly Resins supplies GP White Resin to Indian FRP manufacturers seeking a water-white general-purpose polyester resin for panels, moulding, hand layup, spray-up, cooling towers and water tanks.
         </p>
       )}
       {isLaminationResin && (
@@ -570,6 +605,18 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         </section>
       )}
 
+      {isGpWhiteResin && (
+        <section class="gp-white-overview" aria-labelledby="gp-white-overview-heading">
+          <h2 id="gp-white-overview-heading" class="spec-h">What is GP White Resin?</h2>
+          <p>
+            GP White Resin is Samrat Poly Resins' published water-white, general-purpose orthophthalic polyester resin for reinforced FRP manufacture. It is selected as a laminate resin for the published panel, moulding, hand layup, spray-up, cooling-tower and water-tank contexts.
+          </p>
+          <p>
+            Buyers often use “white resin” as a search term. This product's published supplied appearance is water white; it is not a white mould-surface gelcoat and it does not by itself determine the final colour of a pigmented, reinforced or surface-finished FRP part. Review the required supplied appearance and product role before selection.
+          </p>
+        </section>
+      )}
+
       {isLaminationResin && (
         <section class="lamination-overview" aria-labelledby="lamination-overview-heading">
           <h2 id="lamination-overview-heading" class="spec-h">What is Lamination Resin / LR Resin?</h2>
@@ -652,6 +699,25 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             <div class="gp-outcome-card">
               <h3>Procurement details are available</h3>
               <p>Review the TDS, 225 kg drum packaging and 1,000 kg minimum order quantity before requesting a quote for your requirement.</p>
+            </div>
+          </div>
+        </section>
+      )}
+      {isGpWhiteResin && (
+        <section class="gp-white-buyer-outcomes" aria-labelledby="gp-white-buyer-outcomes-heading">
+          <h2 id="gp-white-buyer-outcomes-heading" class="spec-h">What this means for GP White Resin buyers</h2>
+          <div class="gp-white-outcomes-grid">
+            <div class="gp-white-outcome-card">
+              <h3>Water-white grade selection</h3>
+              <p>Start by confirming that the published water-white supplied appearance is relevant to the FRP component or production process. The supplied resin colour and the final finished surface are separate decisions.</p>
+            </div>
+            <div class="gp-white-outcome-card">
+              <h3>Published moulding and laminate context</h3>
+              <p>The published medium-thixotropic body, viscosity below 350 cPs and 6-minute gel time are the details to review against the actual mould, reinforcement, application method and workshop conditions.</p>
+            </div>
+            <div class="gp-white-outcome-card">
+              <h3>Procurement details are available</h3>
+              <p>Review the GP White Resin TDS, 225 kg drum packaging and 1,000 kg minimum order quantity before sharing the component, required finish, process and delivery location for a quote.</p>
             </div>
           </div>
         </section>
@@ -1019,6 +1085,30 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
+  {isGpWhiteResin && (
+    <section class="wrap gp-white-comparisons" aria-labelledby="gp-white-comparisons-heading">
+      <h2 id="gp-white-comparisons-heading" class="rel-h">When to consider a different resin grade</h2>
+      <div class="gp-white-comparison-grid">
+        <article class="gp-white-comparison-card">
+          <h3><a href="/products/gp-clear-resin/">GP White Resin vs GP Clear Resin</a></h3>
+          <p>Both are published general-purpose orthophthalic polyester grades. GP White Resin is water white with a medium-thixotropic body and viscosity below 350 cPs; review GP Clear Resin where its published clear grade is more relevant to the requirement.</p>
+        </article>
+        <article class="gp-white-comparison-card">
+          <h3><a href="/products/lamination-resin/">GP White Resin vs Lamination Resin</a></h3>
+          <p>GP White Resin is the general-purpose product to review for its published FRP moulding and fabrication contexts. Lamination Resin is the product to review for its published door, plywood and FRP-bonding applications.</p>
+        </article>
+        <article class="gp-white-comparison-card">
+          <h3><a href="/products/gp-gelcoat-resin/">GP White Resin vs Gelcoat Resin</a></h3>
+          <p>GP White Resin is used with reinforcement to build a general FRP laminate. GP Gelcoat Resin is the published white, mould-facing surface-coating product; it serves a different role in the FRP build-up.</p>
+        </article>
+        <article class="gp-white-comparison-card">
+          <h3><a href="/products/unsaturated-polyester-resin/">GP White Resin and the UPR category</a></h3>
+          <p>Unsaturated Polyester Resin is the parent category. Use the UPR page to compare published grade roles, then review the GP White Resin TDS and component requirement before choosing this individual grade.</p>
+        </article>
+      </div>
+    </section>
+  )}
+
   {isButtonGradeResin && (
     <section class="wrap button-comparisons" aria-labelledby="button-comparisons-heading">
       <h2 id="button-comparisons-heading" class="rel-h">When to consider a different resin</h2>
@@ -1160,6 +1250,25 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
+  {gpWhiteResources.length > 0 && (
+    <section class="wrap gp-white-resources" aria-labelledby="gp-white-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Technical resources</p>
+        <h2 id="gp-white-resources-heading" class="rel-h">GP White Resin Knowledge Hub</h2>
+        <p>Follow this buyer route: understand the published water-white grade, review supported FRP applications, compare GP White with GP Clear or Gelcoat, then use the selection, gel-time, viscosity, storage and quotation guides alongside the GP White Resin TDS.</p>
+      </div>
+      <div class="resources-grid">
+        {gpWhiteResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="#enquire" class="btn btn-solid">Discuss your GP White Resin requirement</a>
+        <a href="/resources/#gp-white-resin-hub-heading" class="btn">View the GP White Resource Hub</a>
+        <a href="/tds/gp-white-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download GP White Resin TDS</a>
+        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+      </div>
+    </section>
+  )}
+
   {gpClusterResources.length > 0 && (
     <section class="wrap prod-resources gp-cluster-resources">
       <h2 class="rel-h">GP Clear Resin comparisons and processing guides</h2>
@@ -1235,6 +1344,46 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
       </div>
+    </section>
+  )}
+
+  {isGpWhiteResin && (
+    <section class="wrap gp-trust" aria-labelledby="gp-white-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Manufacturer context</p>
+        <h2 id="gp-white-trust-heading">Manufacturing and quality information</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={site.name + ' factory gate in ' + site.address.line2 + ', ' + site.address.state} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Manufactured in Punjab, India</strong>
+            <span>Learn about Samrat Poly Resins’ Doraha, Ludhiana facility, established in 2017, and company background.</span>
+          </span>
+        </a>
+        <a href="/about/" class="gp-trust-card">
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Published quality approach</strong>
+            <span>Our company information describes checks for viscosity, gel time and cure behaviour before batch approval; use the GP White Resin TDS for grade-specific data.</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  )}
+
+  {isGpWhiteResin && (
+    <section class="wrap gp-white-process" aria-labelledby="gp-white-process-heading">
+      <div>
+        <h2 id="gp-white-process-heading" class="rel-h">Start with the supplied appearance and FRP component</h2>
+        <p>
+          GP White Resin is the water-white general-purpose grade to review where that supplied appearance is relevant to a panel, moulded FRP component, cooling tower or water-storage application. The published product data should be considered with the reinforcement, mould, application method and actual workshop conditions.
+        </p>
+        <p>
+          Review the existing guides for <a href="/applications/resin-for-frp-panel-manufacturing/">FRP panels</a>, <a href="/applications/resin-for-water-tank-manufacturing/">water tank manufacturing</a>, <a href="/applications/resin-for-cooling-tower-manufacturing/">cooling towers</a>, <a href="/applications/resin-for-hand-lay-up-process/">hand lay-up</a> and <a href="/applications/resin-for-spray-up-process/">spray-up</a> before confirming the product requirement.
+        </p>
+      </div>
+      <a href="#enquire" class="btn btn-solid gp-white-process-cta">Discuss your GP White Resin requirement</a>
     </section>
   )}
 
@@ -1438,8 +1587,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     <div class="wrap enquire-inner">
       <div class="section-head">
         <p class="eyebrow">Enquiry</p>
-        <h2>{isGpClearResin ? 'Request a GP Clear Resin quote' : isLaminationResin ? 'Request a Lamination Resin quote' : isGpGelcoatResin ? 'Request a GP Gelcoat Resin quote' : isGpYellowResin ? 'Request a GP Yellow Resin quote' : isButtonGradeResin ? 'Request a Button Grade Resin quote' : `Get a quote for ${name}`}</h2>
+        <h2>{isGpClearResin ? 'Request a GP Clear Resin quote' : isGpWhiteResin ? 'Request a GP White Resin quote' : isLaminationResin ? 'Request a Lamination Resin quote' : isGpGelcoatResin ? 'Request a GP Gelcoat Resin quote' : isGpYellowResin ? 'Request a GP Yellow Resin quote' : isButtonGradeResin ? 'Request a Button Grade Resin quote' : `Get a quote for ${name}`}</h2>
         {isGpClearResin && <p class="gp-enquiry-note">Share your quantity, application, grade requirement and delivery location so we can understand the requirement before preparing a quote.</p>}
+        {isGpWhiteResin && <p class="gp-white-enquiry-note">Share the intended FRP component, expected quantity, required supplied appearance or finish, manufacturing process and delivery location so we can understand whether GP White Resin is relevant before preparing a quote.</p>}
         {isLaminationResin && <p class="lamination-enquiry-note">Share the lamination application, substrate or component, expected quantity and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isGpGelcoatResin && <p class="gelcoat-enquiry-note">Share the moulded component, surface-finish requirement, application method, expected quantity and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isGpYellowResin && <p class="gp-yellow-enquiry-note">Share the expected quantity, FRP component or process, whether the transparent-yellow supplied colour is acceptable in the build-up, and delivery location so we can understand the requirement before preparing a quote.</p>}
@@ -1595,7 +1745,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     @media (max-width: 460px) { .spec-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
 
     .prod-subtitle { color: var(--ink-dim); font-size: 1.05rem; margin-top: 0.55rem; max-width: 48ch; line-height: 1.5; }
-    .gp-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro, .gp-yellow-buyer-intro, .button-buyer-intro, .upr-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
+    .gp-buyer-intro, .gp-white-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro, .gp-yellow-buyer-intro, .button-buyer-intro, .upr-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
     .prod-usage { font-size: 0.95rem; }
     .prod-desc a, .prod-usage a {
       color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px;
@@ -1603,8 +1753,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     }
     .prod-desc a:hover, .prod-usage a:hover { color: var(--accent-gold); }
 
-    .gp-overview, .lamination-overview, .gelcoat-overview, .gp-yellow-overview, .button-overview, .upr-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
-    .gp-overview p, .lamination-overview p, .gelcoat-overview p, .gp-yellow-overview p, .button-overview p, .upr-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .gp-overview, .gp-white-overview, .lamination-overview, .gelcoat-overview, .gp-yellow-overview, .button-overview, .upr-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-overview p, .gp-white-overview p, .lamination-overview p, .gelcoat-overview p, .gp-yellow-overview p, .button-overview p, .upr-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
     .upr-overview a, .upr-process a:not(.btn), .upr-comparison-card a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
     .upr-overview a:hover, .upr-process a:not(.btn):hover, .upr-comparison-card a:hover { color: var(--accent-gold); }
     .upr-grade-guide { margin-top: 2.2rem; }
@@ -1620,6 +1770,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
     .gp-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
     .gp-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
+    .gp-white-buyer-outcomes { margin-top: 2.2rem; }
+    .gp-white-outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }
+    .gp-white-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-white-outcome-card h3 { font-size: 0.9rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
+    .gp-white-outcome-card p { margin-top: 0.55rem; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.6; }
     .lamination-buyer-outcomes { margin-top: 2.2rem; }
     .lamination-outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }
     .lamination-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
@@ -1701,6 +1856,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-process a:not(.btn):hover { color: var(--accent-gold); }
     .gp-process-cta { flex-shrink: 0; }
     @media (max-width: 680px) { .gp-process { align-items: start; flex-direction: column; } }
+    .gp-white-process { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; padding-block: 2rem 1rem; border-top: 1px solid var(--line); }
+    .gp-white-process > div { max-width: 68ch; }
+    .gp-white-process p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .gp-white-process a:not(.btn) { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
+    .gp-white-process a:not(.btn):hover { color: var(--accent-gold); }
+    .gp-white-process-cta { flex-shrink: 0; }
+    @media (max-width: 680px) { .gp-white-process { align-items: start; flex-direction: column; } }
     .upr-process { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; padding-block: 2rem 1rem; border-top: 1px solid var(--line); }
     .upr-process > div { max-width: 68ch; }
     .upr-process p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
@@ -1755,6 +1917,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .lamination-resources { padding-block: 0 3rem; }
     .gelcoat-resources { padding-block: 0 3rem; }
     .gp-yellow-resources { padding-block: 0 3rem; }
+    .gp-white-resources { padding-block: 0 3rem; }
     .button-resources { padding-block: 0 3rem; }
     .upr-resources { padding-block: 0 3rem; }
 
@@ -1791,6 +1954,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-yellow-comparison-card h3 a { color: var(--ink); }
     .gp-yellow-comparison-card h3 a:hover { color: var(--accent-gold-light); }
     .gp-yellow-comparison-card p { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.6; margin-top: 0.65rem; }
+    .gp-white-comparisons { padding-block: 1.5rem 2rem; }
+    .gp-white-comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .gp-white-comparison-card { padding: 1.15rem 1.2rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-white-comparison-card h3 { font-size: 0.92rem; text-transform: none; letter-spacing: 0; }
+    .gp-white-comparison-card h3 a { color: var(--ink); }
+    .gp-white-comparison-card h3 a:hover { color: var(--accent-gold-light); }
+    .gp-white-comparison-card p { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.6; margin-top: 0.65rem; }
     .button-comparisons { padding-block: 1.5rem 2rem; }
     .button-comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
     .button-comparison-card { padding: 1.15rem 1.2rem; background: var(--bg-3); border: 1px solid var(--line); }

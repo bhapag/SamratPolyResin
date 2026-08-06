@@ -53,6 +53,14 @@ const gpAuthoritySlugs = new Set([
 ]);
 const isGpAuthorityResource = gpAuthoritySlugs.has(resource.slug);
 const isGpYellowUsesResource = resource.slug === 'gp-yellow-resin-uses-in-frp-manufacturing';
+const gpWhiteAuthoritySlugs = new Set([
+  'what-is-gp-white-resin',
+  'applications-of-gp-white-resin',
+  'gp-white-resin-vs-gp-clear-resin',
+  'gp-white-resin-vs-gelcoat-resin',
+  'gp-white-resin-buyer-guide',
+]);
+const isGpWhiteAuthorityResource = gpWhiteAuthoritySlugs.has(resource.slug);
 const laminationAuthoritySlugs = new Set([
   'gp-resin-vs-lamination-resin',
   'what-is-lamination-resin',
@@ -98,6 +106,8 @@ const uprAuthoritySlugs = new Set([
 const isUprAuthorityResource = uprAuthoritySlugs.has(resource.slug);
 const talkToTeamLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(isButtonAuthorityResource
   ? "Hi, I'd like to discuss a Button Grade Resin application with Samrat Poly Resins."
+  : isGpWhiteAuthorityResource
+  ? "Hi, I'd like to discuss a GP White Resin requirement with Samrat Poly Resins."
   : isUprAuthorityResource
   ? "Hi, I'd like help selecting the right Unsaturated Polyester Resin grade from Samrat Poly Resins."
   : isGelcoatAuthorityResource
@@ -362,11 +372,14 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     )}
 
     <section class="article-cta">
-      <h2>{isButtonAuthorityResource ? 'Discuss your Button Grade Resin application with Samrat Poly Resins' : isUprAuthorityResource ? 'Discuss your Unsaturated Polyester Resin requirement with Samrat Poly Resins' : isGelcoatAuthorityResource ? 'Discuss your Gelcoat Resin application with Samrat Poly Resins' : isLaminationAuthorityResource ? 'Discuss your Lamination Resin application with Samrat Poly Resins' : isGpYellowUsesResource ? 'Discuss your GP Yellow Resin application with Samrat Poly Resins' : isGpAuthorityResource ? 'Discuss your GP Resin application with Samrat Poly Resins' : 'Need help selecting the right polyester resin?'}</h2>
-      <p>{isButtonAuthorityResource ? 'Share the intended button or small decorative moulding, clarity or pigment-colour requirement, casting method if known, quantity and delivery location so the requirement can be understood before a quote discussion.' : isUprAuthorityResource ? 'Share the component, process, required product role or finish, any stated specification, quantity and delivery location so the relevant published resin grade can be discussed before a quote discussion.' : isGelcoatAuthorityResource ? 'Share the moulded component, surface-finish requirement, application method, quantity and delivery location so the requirement can be understood before a quote discussion.' : isLaminationAuthorityResource ? 'Share the component, substrate or reinforcement, process, quantity and delivery location so the requirement can be understood before a quote discussion.' : isGpYellowUsesResource ? 'Share the FRP component, production method, quantity, finished-build-up context and delivery location so the requirement can be understood before a quote discussion.' : isGpAuthorityResource ? 'Share the application, process, quantity and delivery location so the requirement can be understood before a quote discussion.' : 'Our technical team can help you choose the most suitable resin for your manufacturing requirements.'}</p>
+      <h2>{isButtonAuthorityResource ? 'Discuss your Button Grade Resin application with Samrat Poly Resins' : isGpWhiteAuthorityResource ? 'Discuss your GP White Resin requirement with Samrat Poly Resins' : isUprAuthorityResource ? 'Discuss your Unsaturated Polyester Resin requirement with Samrat Poly Resins' : isGelcoatAuthorityResource ? 'Discuss your Gelcoat Resin application with Samrat Poly Resins' : isLaminationAuthorityResource ? 'Discuss your Lamination Resin application with Samrat Poly Resins' : isGpYellowUsesResource ? 'Discuss your GP Yellow Resin application with Samrat Poly Resins' : isGpAuthorityResource ? 'Discuss your GP Resin application with Samrat Poly Resins' : 'Need help selecting the right polyester resin?'}</h2>
+      <p>{isButtonAuthorityResource ? 'Share the intended button or small decorative moulding, clarity or pigment-colour requirement, casting method if known, quantity and delivery location so the requirement can be understood before a quote discussion.' : isGpWhiteAuthorityResource ? 'Share the FRP component, whether water-white supplied appearance or a visible surface finish is required, manufacturing process, quantity and delivery location so the relevant published product role can be discussed before a quote discussion.' : isUprAuthorityResource ? 'Share the component, process, required product role or finish, any stated specification, quantity and delivery location so the relevant published resin grade can be discussed before a quote discussion.' : isGelcoatAuthorityResource ? 'Share the moulded component, surface-finish requirement, application method, quantity and delivery location so the requirement can be understood before a quote discussion.' : isLaminationAuthorityResource ? 'Share the component, substrate or reinforcement, process, quantity and delivery location so the requirement can be understood before a quote discussion.' : isGpYellowUsesResource ? 'Share the FRP component, production method, quantity, finished-build-up context and delivery location so the requirement can be understood before a quote discussion.' : isGpAuthorityResource ? 'Share the application, process, quantity and delivery location so the requirement can be understood before a quote discussion.' : 'Our technical team can help you choose the most suitable resin for your manufacturing requirements.'}</p>
       <div class="article-cta-buttons">
-        <a href="/contact/" class="btn btn-solid">{isButtonAuthorityResource ? 'Discuss Button Grade Resin' : isUprAuthorityResource ? 'Discuss UPR requirement' : isGelcoatAuthorityResource ? 'Discuss Gelcoat Resin application' : isLaminationAuthorityResource ? 'Discuss Lamination Resin application' : isGpYellowUsesResource ? 'Discuss GP Yellow Resin application' : isGpAuthorityResource ? 'Discuss GP Resin application' : 'Request a Quote'}</a>
-        <a href={talkToTeamLink} class="btn btn-wa" target="_blank" rel="noopener">{isButtonAuthorityResource || isUprAuthorityResource || isGelcoatAuthorityResource || isLaminationAuthorityResource || isGpAuthorityResource ? 'WhatsApp Samrat Poly Resins' : 'Contact Technical Team'}</a>
+        <a href="/contact/" class="btn btn-solid">{isButtonAuthorityResource ? 'Discuss Button Grade Resin' : isGpWhiteAuthorityResource ? 'Discuss GP White Resin' : isUprAuthorityResource ? 'Discuss UPR requirement' : isGelcoatAuthorityResource ? 'Discuss Gelcoat Resin application' : isLaminationAuthorityResource ? 'Discuss Lamination Resin application' : isGpYellowUsesResource ? 'Discuss GP Yellow Resin application' : isGpAuthorityResource ? 'Discuss GP Resin application' : 'Request a Quote'}</a>
+        <a href={talkToTeamLink} class="btn btn-wa" target="_blank" rel="noopener">{isButtonAuthorityResource || isGpWhiteAuthorityResource || isUprAuthorityResource || isGelcoatAuthorityResource || isLaminationAuthorityResource || isGpAuthorityResource ? 'WhatsApp Samrat Poly Resins' : 'Contact Technical Team'}</a>
+        {isGpWhiteAuthorityResource && <a href="/products/gp-white-resin/" class="btn">View GP White Resin</a>}
+        {isGpWhiteAuthorityResource && <a href="/tds/gp-white-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download GP White Resin TDS</a>}
+        {isGpWhiteAuthorityResource && <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>}
         {isUprAuthorityResource && <a href="/products/unsaturated-polyester-resin/" class="btn">View UPR product hub</a>}
         {isUprAuthorityResource && <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>}
         {isButtonAuthorityResource && <a href="/tds/button-grade-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Button Grade Resin TDS</a>}

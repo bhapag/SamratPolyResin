@@ -30,6 +30,14 @@ const gpYellowAuthoritySlugs = new Set([
 ]);
 const gpYellowAuthorityResources = published.filter((resource) => gpYellowAuthoritySlugs.has(resource.slug));
 const gpAuthorityResources = published.filter((resource) => gpAuthoritySlugs.has(resource.slug) && !gpYellowAuthoritySlugs.has(resource.slug));
+const gpWhiteAuthoritySlugs = new Set([
+  'what-is-gp-white-resin',
+  'applications-of-gp-white-resin',
+  'gp-white-resin-vs-gp-clear-resin',
+  'gp-white-resin-vs-gelcoat-resin',
+  'gp-white-resin-buyer-guide',
+]);
+const gpWhiteAuthorityResources = published.filter((resource) => gpWhiteAuthoritySlugs.has(resource.slug));
 const laminationAuthoritySlugs = new Set([
   'gp-resin-vs-lamination-resin',
   'what-is-lamination-resin',
@@ -74,7 +82,7 @@ const uprAuthoritySlugs = new Set([
 ]);
 const uprAuthorityResources = published.filter((resource) => uprAuthoritySlugs.has(resource.slug));
 const gpAuthorityResourcesWithoutUpr = gpAuthorityResources.filter((resource) => !uprAuthoritySlugs.has(resource.slug));
-const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug));
+const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug));
 ---
 <Base
   title="Knowledge Centre"
@@ -133,6 +141,27 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
           </div>
           <div class="kc-grid">
             {uprAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
+          </div>
+        </section>
+      )}
+
+      {gpWhiteAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="gp-white-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Product knowledge hub</p>
+              <h2 id="gp-white-resin-hub-heading">GP White Resin Knowledge Hub</h2>
+              <p>Explore the published water-white GP grade, supported FRP applications, GP White comparisons, and the linked selection, gel-time, viscosity, storage and quotation guidance before reviewing the GP White Resin TDS.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/gp-white-resin/" class="btn btn-solid">View GP White Resin</a>
+              <a href="/tds/gp-white-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download GP White Resin TDS</a>
+              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href="/contact/" class="btn">Discuss your GP White Resin requirement</a>
+            </div>
+          </div>
+          <div class="kc-grid">
+            {gpWhiteAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
           </div>
         </section>
       )}
