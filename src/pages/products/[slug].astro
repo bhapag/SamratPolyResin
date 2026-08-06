@@ -29,6 +29,7 @@ const isLaminationResin = product.slug === 'lamination-resin';
 const isGpGelcoatResin = product.slug === 'gp-gelcoat-resin';
 const isGpYellowResin = product.slug === 'gp-yellow-resin';
 const isButtonGradeResin = product.slug === 'button-grade-resin';
+const isUnsaturatedPolyesterResin = product.slug === 'unsaturated-polyester-resin';
 
 const gpClearSeo = {
   title: 'GP Clear Resin Manufacturer in India | General Purpose Polyester Resin',
@@ -101,6 +102,21 @@ const buttonGradeSeo = {
     'Button Grade Resin Manufacturer in India',
     'Button Grade Resin Supplier',
     'Unsaturated Polyester Resin for Buttons',
+  ],
+};
+const unsaturatedPolyesterSeo = {
+  title: 'Unsaturated Polyester Resin Manufacturer in India | UPR Resin Supplier',
+  description: 'Samrat Poly Resins supplies Unsaturated Polyester Resin (UPR) and related polyester resin grades for FRP, lamination, gelcoat, button manufacturing and industrial composite applications.',
+  keywords: [
+    'Unsaturated Polyester Resin',
+    'UPR Resin',
+    'Polyester Resin',
+    'Polymer Resin',
+    'FRP Resin',
+    'Unsaturated Polyester Resin manufacturer',
+    'Unsaturated Polyester Resin supplier',
+    'Resin for FRP Manufacturing',
+    'Industrial Polyester Resin',
   ],
 };
 const gpBuyerFaqs = [
@@ -292,6 +308,19 @@ const buttonResources = isButtonGradeResin
   ? buttonResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
   : [];
 
+const uprResourceSlugs = [
+  'what-is-unsaturated-polyester-resin',
+  'types-of-unsaturated-polyester-resin',
+  'unsaturated-polyester-resin-vs-vinyl-ester-resin',
+  'unsaturated-polyester-resin-vs-epoxy-resin',
+  'polyester-resin-procurement-checklist',
+  'how-to-select-polyester-resin-for-frp-manufacturing',
+  'how-to-store-unsaturated-polyester-resin',
+];
+const uprResources = isUnsaturatedPolyesterResin
+  ? uprResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
 const waLink = buildProductQuoteLink(product.whatsappName ?? name);
 
 // "Explore applications" cards — only populated when a product names
@@ -371,9 +400,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 } : null;
 ---
 <Base
-  title={isGpClearResin ? gpClearSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isButtonGradeResin ? buttonGradeSeo.title : (product.seo?.title ?? name)}
-  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : isButtonGradeResin ? buttonGradeSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
-  keywords={isGpClearResin ? gpClearSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : product.seo?.keywords}
+  title={isGpClearResin ? gpClearSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isButtonGradeResin ? buttonGradeSeo.title : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.title : (product.seo?.title ?? name)}
+  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : isButtonGradeResin ? buttonGradeSeo.description : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
+  keywords={isGpClearResin ? gpClearSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.keywords : product.seo?.keywords}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
@@ -433,6 +462,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       {isButtonGradeResin && (
         <p class="button-buyer-intro">
           Samrat Poly Resins supplies Button Grade Resin, also known as Button Resin, to Indian button and small-moulding manufacturers looking for a transparent unsaturated polyester casting grade for visible finished parts.
+        </p>
+      )}
+      {isUnsaturatedPolyesterResin && (
+        <p class="upr-buyer-intro">
+          Samrat Poly Resins supplies Unsaturated Polyester Resin (UPR) to Indian B2B buyers as a category gateway for FRP and composite manufacturing. Start with the required product role, then review the specific grade data before selecting a resin.
         </p>
       )}
       <div class="prod-quote">
@@ -580,6 +614,17 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </p>
         </section>
       )}
+      {isUnsaturatedPolyesterResin && (
+        <section class="upr-overview" aria-labelledby="upr-overview-heading">
+          <h2 id="upr-overview-heading" class="spec-h">What is Unsaturated Polyester Resin (UPR)?</h2>
+          <p>
+            Unsaturated Polyester Resin, commonly called UPR or polyester resin, is the broader resin category used in many FRP and composite applications. This page helps buyers start with that category, then move to the published Samrat product grade that matches the component, process and finished-product role.
+          </p>
+          <p>
+            The technical specifications and TDS on this page describe Samrat Poly Resins&rsquo; standard clear orthophthalic UPR, supplied as <a href="/products/gp-clear-resin/">GP Clear Resin</a>. Specialist products below have their own published data, packaging and suitability information; the standard UPR table should not be treated as their specification.
+          </p>
+        </section>
+      )}
 
       <div class="spec-grid">
         <div class="spec-col">
@@ -684,6 +729,46 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               <h3>Published procurement details</h3>
               <p>Review the TDS alongside the published 9.5-minute gel time, approximate two-hour cure, two-month shelf life and 225 kg drum packaging.</p>
             </div>
+          </div>
+        </section>
+      )}
+      {isUnsaturatedPolyesterResin && (
+        <section class="upr-grade-guide" aria-labelledby="upr-grade-guide-heading">
+          <h2 id="upr-grade-guide-heading" class="spec-h">Choose the UPR grade by the product role</h2>
+          <p class="upr-grade-guide-intro">Use this as a starting point for enquiry and product-data review, not as a substitute for confirming process fit.</p>
+          <div class="upr-grade-grid">
+            <article class="upr-grade-card">
+              <h3><a href="/products/gp-clear-resin/">General FRP &amp; clear GP work</a></h3>
+              <p>Review GP Clear Resin for the published clear, general-purpose orthophthalic UPR grade used in common FRP processes.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/gp-yellow-resin/">Transparent-yellow GP work</a></h3>
+              <p>Review GP Yellow Resin where its intentionally transparent-yellow supplied colour is acceptable in the required FRP build-up.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/lamination-resin/">Door, plywood &amp; FRP bonding</a></h3>
+              <p>Review Lamination Resin for its published door-lamination, plywood-lamination and FRP-bonding applications.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/gp-gelcoat-resin/">Visible mould-side surface</a></h3>
+              <p>Review GP Gelcoat Resin when the requirement is the mould-facing surface layer rather than the structural laminate.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/button-grade-resin/">Buttons &amp; small decorative castings</a></h3>
+              <p>Review Button Grade Resin for the published transparent casting role used for buttons and small decorative mouldings.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/fire-retardant-resin/">Specified fire-performance requirement</a></h3>
+              <p>Review Fire Retardant Resin and its own published technical data when a project has a stated fire-performance requirement.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/vinyl-ester-resin/">Chemical or corrosion resistance</a></h3>
+              <p>Review Vinyl Ester Resin as the related alternative when the project specifies chemical- or corrosion-resistance requirements.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/epoxy-clear-casting-resin/">Separate epoxy system</a></h3>
+              <p>Review the separate epoxy product data where a two-part epoxy system, rather than a polyester resin system, is specified.</p>
+            </article>
           </div>
         </section>
       )}
@@ -1028,6 +1113,25 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
+  {uprResources.length > 0 && (
+    <section class="wrap upr-resources" aria-labelledby="upr-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Technical resources</p>
+        <h2 id="upr-resources-heading" class="rel-h">Unsaturated Polyester Resin Knowledge Hub</h2>
+        <p>Use these Samrat Poly Resins guides as a buyer route: understand UPR as a parent category, compare the relevant published resin system, identify the product role, review the relevant product TDS and prepare a focused FRP or industrial-resin enquiry.</p>
+      </div>
+      <div class="resources-grid">
+        {uprResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="#enquire" class="btn btn-solid">Discuss your UPR requirement</a>
+        <a href="#upr-grade-guide-heading" class="btn">Compare UPR grade roles</a>
+        <a href="/resources/#upr-resin-hub-heading" class="btn">Explore the UPR Knowledge Hub</a>
+        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+      </div>
+    </section>
+  )}
+
   {related.length > 0 && (
     <section class="wrap related">
       <h2 class="rel-h">{relatedHeading}</h2>
@@ -1081,6 +1185,46 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <span class="gp-trust-card-body">
             <strong>Manufactured in Punjab, India</strong>
             <span>Learn about Samrat Poly Resins’ Doraha, Ludhiana facility and company background.</span>
+          </span>
+        </a>
+        <a href="/about/" class="gp-trust-card">
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Published quality approach</strong>
+            <span>Our company information describes checks for viscosity, gel time and cure behaviour before batch approval.</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  )}
+
+  {isUnsaturatedPolyesterResin && (
+    <section class="wrap upr-process" aria-labelledby="upr-process-heading">
+      <div>
+        <h2 id="upr-process-heading" class="rel-h">Start with the component, process and resin role</h2>
+        <p>
+          UPR is a broad category term, while production selection depends on the part, reinforcement, process, required appearance and any stated chemical, fire or system requirement. The product pages above separate these roles so a general FRP enquiry is not mistaken for a surface-finish, lamination, casting or specialist requirement.
+        </p>
+        <p>
+          For general FRP context, review the existing guides for <a href="/applications/resin-for-hand-lay-up-process/">hand lay-up</a>, <a href="/applications/resin-for-spray-up-process/">spray-up</a> and <a href="/applications/resin-for-general-frp-lamination/">general FRP lamination</a>, then use the <a href="/resources/how-to-select-polyester-resin-for-frp-manufacturing/">polyester resin selection guide</a> alongside the relevant product TDS.
+        </p>
+      </div>
+      <a href="#enquire" class="btn btn-solid upr-process-cta">Discuss your UPR requirement</a>
+    </section>
+  )}
+
+  {isUnsaturatedPolyesterResin && (
+    <section class="wrap gp-trust" aria-labelledby="upr-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Manufacturer context</p>
+        <h2 id="upr-trust-heading">Manufacturing and quality information</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Manufactured in Punjab, India</strong>
+            <span>Learn about Samrat Poly Resins' Doraha, Ludhiana facility, established in 2017, and company background.</span>
           </span>
         </a>
         <a href="/about/" class="gp-trust-card">
@@ -1258,6 +1402,38 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
+  {isUnsaturatedPolyesterResin && (
+    <section class="wrap upr-comparisons" aria-labelledby="upr-comparisons-heading">
+      <h2 id="upr-comparisons-heading" class="rel-h">UPR terminology and product-role guidance</h2>
+      <div class="upr-comparison-grid">
+        <article class="upr-comparison-card">
+          <h3>UPR Resin vs GP Resin</h3>
+          <p>UPR is the broad resin category. On this site, the standard clear orthophthalic UPR is supplied as <a href="/products/gp-clear-resin/">GP Clear Resin</a>; specialist grades should be reviewed by their individual product role.</p>
+        </article>
+        <article class="upr-comparison-card">
+          <h3>Polyester Resin vs “Polymer Resin”</h3>
+          <p>“Polymer resin” is a broad industry term. This page is specifically about unsaturated polyester resin and the related product choices shown above, not every polymer chemistry.</p>
+        </article>
+        <article class="upr-comparison-card">
+          <h3>UPR vs Lamination Resin</h3>
+          <p>UPR describes the category; <a href="/products/lamination-resin/">Lamination Resin</a> is the published product to review for door, plywood and FRP-bonding applications.</p>
+        </article>
+        <article class="upr-comparison-card">
+          <h3>UPR vs Gelcoat Resin</h3>
+          <p><a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a> is the published mould-facing surface-coating product, not the general structural laminate selection.</p>
+        </article>
+        <article class="upr-comparison-card">
+          <h3>UPR vs Vinyl Ester Resin</h3>
+          <p>For a project with a stated chemical- or corrosion-resistance requirement, review the separate <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> technical data and discuss the application.</p>
+        </article>
+        <article class="upr-comparison-card">
+          <h3>UPR vs Epoxy Resin</h3>
+          <p>Epoxy is a separate resin system. Where an epoxy system is specified, review the applicable epoxy product data rather than assuming it is interchangeable with UPR.</p>
+        </article>
+      </div>
+    </section>
+  )}
+
   <section id="enquire" class="section enquire-sec">
     <div class="wrap enquire-inner">
       <div class="section-head">
@@ -1419,7 +1595,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     @media (max-width: 460px) { .spec-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
 
     .prod-subtitle { color: var(--ink-dim); font-size: 1.05rem; margin-top: 0.55rem; max-width: 48ch; line-height: 1.5; }
-    .gp-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro, .gp-yellow-buyer-intro, .button-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
+    .gp-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro, .gp-yellow-buyer-intro, .button-buyer-intro, .upr-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
     .prod-usage { font-size: 0.95rem; }
     .prod-desc a, .prod-usage a {
       color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px;
@@ -1427,8 +1603,18 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     }
     .prod-desc a:hover, .prod-usage a:hover { color: var(--accent-gold); }
 
-    .gp-overview, .lamination-overview, .gelcoat-overview, .gp-yellow-overview, .button-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
-    .gp-overview p, .lamination-overview p, .gelcoat-overview p, .gp-yellow-overview p, .button-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .gp-overview, .lamination-overview, .gelcoat-overview, .gp-yellow-overview, .button-overview, .upr-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-overview p, .lamination-overview p, .gelcoat-overview p, .gp-yellow-overview p, .button-overview p, .upr-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .upr-overview a, .upr-process a:not(.btn), .upr-comparison-card a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
+    .upr-overview a:hover, .upr-process a:not(.btn):hover, .upr-comparison-card a:hover { color: var(--accent-gold); }
+    .upr-grade-guide { margin-top: 2.2rem; }
+    .upr-grade-guide-intro { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .upr-grade-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.9rem; margin-top: 1rem; }
+    .upr-grade-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .upr-grade-card h3 { font-size: 0.92rem; text-transform: none; letter-spacing: 0; }
+    .upr-grade-card h3 a { color: var(--ink); }
+    .upr-grade-card h3 a:hover { color: var(--accent-gold-light); }
+    .upr-grade-card p { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.6; margin-top: 0.65rem; }
     .gp-buyer-outcomes { margin-top: 2.2rem; }
     .gp-outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }
     .gp-outcome-card { padding: 1.1rem 1.15rem; background: var(--bg-3); border: 1px solid var(--line); }
@@ -1515,6 +1701,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-process a:not(.btn):hover { color: var(--accent-gold); }
     .gp-process-cta { flex-shrink: 0; }
     @media (max-width: 680px) { .gp-process { align-items: start; flex-direction: column; } }
+    .upr-process { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; padding-block: 2rem 1rem; border-top: 1px solid var(--line); }
+    .upr-process > div { max-width: 68ch; }
+    .upr-process p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .upr-process-cta { flex-shrink: 0; }
+    @media (max-width: 680px) { .upr-process { align-items: start; flex-direction: column; } }
     .lamination-process { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; padding-block: 2rem 1rem; border-top: 1px solid var(--line); }
     .lamination-process > div { max-width: 68ch; }
     .lamination-process p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
@@ -1565,6 +1756,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gelcoat-resources { padding-block: 0 3rem; }
     .gp-yellow-resources { padding-block: 0 3rem; }
     .button-resources { padding-block: 0 3rem; }
+    .upr-resources { padding-block: 0 3rem; }
 
     .gp-comparisons { padding-block: 1.5rem 2rem; }
     .gp-comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
@@ -1573,6 +1765,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-comparison-card h3 a { color: var(--ink); }
     .gp-comparison-card h3 a:hover { color: var(--accent-gold-light); }
     .gp-comparison-card p { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.6; margin-top: 0.65rem; }
+    .upr-comparisons { padding-block: 1.5rem 2rem; }
+    .upr-comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .upr-comparison-card { padding: 1.15rem 1.2rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .upr-comparison-card h3 { font-size: 0.92rem; text-transform: none; letter-spacing: 0; }
+    .upr-comparison-card p { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.6; margin-top: 0.65rem; }
     .lamination-comparisons { padding-block: 1.5rem 2rem; }
     .lamination-comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
     .lamination-comparison-card { padding: 1.15rem 1.2rem; background: var(--bg-3); border: 1px solid var(--line); }

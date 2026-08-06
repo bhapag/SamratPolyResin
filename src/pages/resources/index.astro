@@ -63,7 +63,18 @@ const buttonAuthoritySlugs = new Set([
   'button-resin-processing-checklist',
 ]);
 const buttonAuthorityResources = published.filter((resource) => buttonAuthoritySlugs.has(resource.slug));
-const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug));
+const uprAuthoritySlugs = new Set([
+  'what-is-unsaturated-polyester-resin',
+  'types-of-unsaturated-polyester-resin',
+  'unsaturated-polyester-resin-vs-vinyl-ester-resin',
+  'unsaturated-polyester-resin-vs-epoxy-resin',
+  'polyester-resin-procurement-checklist',
+  'how-to-select-polyester-resin-for-frp-manufacturing',
+  'how-to-store-unsaturated-polyester-resin',
+]);
+const uprAuthorityResources = published.filter((resource) => uprAuthoritySlugs.has(resource.slug));
+const gpAuthorityResourcesWithoutUpr = gpAuthorityResources.filter((resource) => !uprAuthoritySlugs.has(resource.slug));
+const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug));
 ---
 <Base
   title="Knowledge Centre"
@@ -106,6 +117,26 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
 
   <section class="section kc-list">
     <div class="wrap">
+      {uprAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="upr-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Parent category knowledge hub</p>
+              <h2 id="upr-resin-hub-heading">Unsaturated Polyester Resin Knowledge Hub</h2>
+              <p>Use this parent-category route to understand UPR, compare published resin systems, choose a product role, review the relevant product data and prepare an enquiry for GP, Lamination, Gelcoat, Button, Fire Retardant or Vinyl Ester requirements.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/unsaturated-polyester-resin/" class="btn btn-solid">View Unsaturated Polyester Resin</a>
+              <a href="/contact/" class="btn">Discuss your UPR requirement</a>
+              <a href="/about/" class="btn">About Samrat Poly Resins</a>
+            </div>
+          </div>
+          <div class="kc-grid">
+            {uprAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
+          </div>
+        </section>
+      )}
+
       {gpYellowAuthorityResources.length > 0 && (
         <section class="kc-focus" aria-labelledby="gp-yellow-resin-hub-heading">
           <div class="kc-focus-head">
@@ -145,7 +176,7 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
         </section>
       )}
 
-      {gpAuthorityResources.length > 0 && (
+      {gpAuthorityResourcesWithoutUpr.length > 0 && (
         <section class="kc-focus" aria-labelledby="gp-resin-hub-heading">
           <div class="kc-focus-head">
             <div>
@@ -160,7 +191,7 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             </div>
           </div>
           <div class="kc-grid">
-            {gpAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
+            {gpAuthorityResourcesWithoutUpr.map((resource) => <ResourceCard resource={resource} />)}
           </div>
         </section>
       )}
