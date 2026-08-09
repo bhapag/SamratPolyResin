@@ -73,12 +73,12 @@ export const products = [
     // colour (both share this verified spec sheet) — the two pages target
     // different buyer intent (general FRP sheet/panel manufacturing here vs.
     // translucent roofing there) and must not share prose/FAQs. Colour
-    // describes the product as supplied to the customer. MOQ was not part of
-    // the verified sheet, so it is omitted rather than reusing the old,
-    // unverified 1000 kg figure. Density and Flash Point are excluded as
+    // describes the product as supplied to the customer. The current TDS
+    // verifies the 1,000 kg MOQ. Density and Flash Point are excluded as
     // unverified.
     productDetails: {
       "Packaging": "225 kg Drum",
+      "Minimum Order Quantity": "1,000 kg",
       "Physical Form": "Liquid",
       "Colour / Appearance": "Yellow",
       "Shelf Life": "2 Months",
@@ -97,16 +97,15 @@ export const products = [
     },
     tagline: "Pre-pigmented yellow resin for consistent FRP sheet manufacturing.",
     description:
-      "Sheet Grade Yellow Resin is an orthophthalic unsaturated polyester resin supplied pre-pigmented yellow for consistent-colour FRP sheet and panel manufacturing. Based on a water-white orthophthalic resin, it is factory-pigmented so every batch delivers uniform colour throughout the sheet, without the variability of pigmenting resin by hand at the mould. Cured with an MEKP catalyst at room temperature, it wets out reinforcement cleanly for a smooth, low-porosity laminate suited to compression moulding and hand lay-up alike. Samrat Poly Resins supplies Sheet Grade Yellow Resin in bulk 225 kg drums for FRP sheet, panel and general industrial moulding manufacturers.",
+      "Sheet Grade Yellow Resin is an orthophthalic unsaturated polyester resin supplied pre-pigmented yellow for the published FRP sheet and panel role. The current Technical Data Sheet lists it for sheet moulding and laminate applications, helping buyers separate a supplied-yellow sheet/panel requirement from a transparent-yellow general-purpose grade or a water-white roof-light resin. Review the intended sheet or panel, supplied appearance, reinforcement requirement, production context and current TDS before selecting a resin route. Samrat Poly Resins publishes 225 kg drum packaging for this product.",
     usageNote:
       'Sheet Grade Yellow Resin is typically catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> during sheet lay-up or compression moulding. Where a project needs an unpigmented general-purpose grade instead, see our <a href="/products/gp-clear-resin/">GP Clear Resin</a> or base <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin (UPR)</a>; for door and plywood lamination work, our <a href="/products/lamination-resin/">Lamination Resin</a> is more suitable, and mould-facing sheets can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> or upgraded to <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> for higher chemical resistance.',
     features: [
-      "Pre-pigmented yellow for consistent colour throughout every sheet",
-      "Water-white orthophthalic base resin, 99% purity",
-      "Gel time of 6.5 minutes for efficient sheet and panel production",
-      "Room-temperature MEKP cure, fully hardened in around 12 hours",
-      "35% styrene content for stable, repeatable sheet processing",
-      "Bulk-packed in 225 kg drums for sheet manufacturers",
+      "Pre-pigmented yellow supplied appearance for the published sheet and panel role",
+      "Orthophthalic unsaturated polyester resin",
+      "Published for sheet moulding and laminate applications",
+      "Current product-specific Technical Data Sheet available",
+      "225 kg drum packaging",
     ],
     applications: [
       "FRP sheets and panels for industrial use",
@@ -140,6 +139,18 @@ export const products = [
       {
         q: "Is Sheet Grade Yellow Resin the same as Roof Light Sheet Grade Resin?",
         a: 'They share the same base resin chemistry, but Sheet Grade Yellow Resin is factory-pigmented yellow for opaque, consistently-coloured FRP sheets and panels, while our <a href="/products/roof-light-resin/">Roof Light Sheet Grade Resin</a> is left water-white for translucent roofing and skylight sheets. Choose based on whether you need an opaque coloured sheet or a light-transmitting roofing sheet.',
+      },
+      {
+        q: "Is Sheet Grade Yellow Resin the same as GP Yellow Resin?",
+        a: 'No. Sheet Grade Yellow Resin is the published pre-pigmented yellow grade for sheet moulding and laminate applications. <a href="/products/gp-yellow-resin/">GP Yellow Resin</a> is the separately published transparent-yellow, general-purpose orthophthalic grade. Start with the actual FRP sheet or panel role, supplied appearance and current product-specific TDS before choosing between them.',
+      },
+      {
+        q: "Which information should I share for a Sheet Grade Yellow Resin quotation?",
+        a: 'Share the intended FRP sheet or panel, required supplied yellow appearance, reinforcement requirement if known, production process or finished-product context, expected quantity and delivery location. This supports a focused product and commercial discussion without confirming suitability before review.',
+      },
+      {
+        q: "Which related materials should I review for an FRP sheet requirement?",
+        a: 'Review <a href="/products/fibre-glass-mat/">Glass Fiber Mat</a> when reinforcement is part of the requirement. For a water-white roof-light or skylight sheet, review <a href="/products/roof-light-resin/">Roof Light Sheet Grade Resin</a>; for a mould-facing surface role, review <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>. Each product has a separate published role and Technical Data Sheet.',
       },
       {
         q: "What is the gel time and cure time of Sheet Grade Yellow Resin?",
@@ -1105,20 +1116,19 @@ export const products = [
         "Roof Sheet Resin",
         "Skylight Sheet Resin",
         "Roofing Polyester Resin",
-        "Transparent Roof Sheet Resin",
+        "Translucent FRP Sheet Resin",
         "FRP Roof Light Resin",
       ],
     },
-    // Same base-resin chemistry as sheet-grade-yellow-resin (shared verified
-    // spec sheet) — this page targets translucent roofing/skylight intent,
-    // distinct prose/FAQs from the sheet-grade page. "UV-resistant" and
-    // "1 year" shelf life from the old data are not part of the verified
-    // sheet and have been removed rather than kept (shelf life corrected to
-    // the verified 2 months — a meaningful difference for storage planning).
-    // MOQ was not verified this time and is omitted. Density and Flash Point
-    // are excluded as unverified.
+    // This page owns the documented water-white roof-light and skylight
+    // intent, distinct from the pre-pigmented Sheet Grade Yellow sheet/panel
+    // route. SPR-TDS-RLS Rev. 01 supports the current 2-month shelf life,
+    // 500 kg MOQ and 1.1 g/cm³ specific gravity. Flash Point remains excluded
+    // because the TDS marks it "Not Provided". Catalogue gel time differs
+    // from the TDS; the page uses the TDS value and flags the conflict.
     productDetails: {
       "Packaging": "225 kg Drum",
+      "Minimum Order Quantity": "500 kg",
       "Physical Form": "Liquid",
       "Colour / Appearance": "Water White",
       "Shelf Life": "2 Months",
@@ -1134,53 +1144,47 @@ export const products = [
       "MEKP Dosage": "1.5%",
       "Cobalt Octoate Dosage": "0.4%",
       "Purity": "99%",
+      "Specific Gravity": "1.1 g/cm³",
     },
-    tagline: "Water-white translucent resin for roof light and skylight sheets.",
+    tagline: "Water-white polyester resin for published roof-light and skylight sheet applications.",
     description:
-      "Roof Light Sheet Grade Resin is a water-white orthophthalic unsaturated polyester resin formulated for translucent FRP roof light and skylight sheets that let natural daylight into a building. Its water-white, low-viscosity liquid form is chosen specifically for optical clarity, so cured sheets stay transparent enough to transmit light rather than block it — unlike a pigmented or general-purpose sheet resin used for opaque panels. Cured with an MEKP catalyst at room temperature, it wets out fibreglass reinforcement cleanly for a smooth, bubble-free laminate suited to hand lay-up roofing sheet production. Samrat Poly Resins supplies Roof Light Sheet Grade Resin in bulk 225 kg drums for roofing sheet, skylight and daylighting panel manufacturers.",
+      "Roof Light Sheet Grade Resin is Samrat Poly Resins' water-white orthophthalic unsaturated polyester resin for the published translucent roof-light panel and skylight-sheet role. The current Technical Data Sheet identifies high optical clarity for light penetration and lists skylights, roof-light panels, greenhouses, industrial and commercial roofing, and roofing-sheet production as its application context. This is a specific sheet-grade route for buyers defining a roof-light or daylighting requirement, rather than a broad GP Clear Resin search or a pre-pigmented yellow sheet/panel route. Review the intended finished sheet, required supplied appearance, reinforcement context and current TDS before selection. The product is published in 225 kg drums with a 500 kg MOQ.",
     usageNote:
-      'Roof Light Sheet Grade Resin is typically catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> during roofing sheet lay-up. Where a project needs an opaque, pigmented sheet resin instead, see our <a href="/products/gp-clear-resin/">GP Clear Resin</a> or base <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin (UPR)</a>; for door and plywood lamination work, our <a href="/products/lamination-resin/">Lamination Resin</a> is more suitable, and roofing accessories can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> or upgraded to <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> for higher chemical and weather resistance.',
+      'For a published roof-light, skylight or daylighting-sheet requirement, review <a href="/products/fibre-glass-mat/">Glass Fiber Mat</a> as the separate reinforcement role and the current Roof Light Resin TDS as the product-specific reference. For a pre-pigmented yellow sheet or panel, review <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a>; for broad clear general-purpose FRP intent, review <a href="/products/gp-clear-resin/">GP Clear Resin</a> or the <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin (UPR)</a> family. A mould-facing surface-finish requirement is a separate <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> decision, while <a href="/products/lamination-resin/">Lamination Resin</a> is published for a different bonding-focused role.',
     features: [
-      "Water-white, high optical clarity for maximum light transmission",
-      "Low viscosity (280 cPs) for smooth hand lay-up over roofing profiles",
-      "Gel time of 6.5 minutes for efficient roofing sheet production",
-      "MEKP-catalysed room-temperature cure, hardening fully in around 12 hours",
-      "35% styrene content for consistent roofing-sheet lay-up",
-      "Bulk-packed in 225 kg drums for roofing sheet manufacturers",
+      "Water-white appearance with high optical clarity published for roof-light panels",
+      "Published for skylights, roof-light panels, greenhouses and industrial/commercial roofing",
+      "Current product-specific Technical Data Sheet available",
+      "280 cPs viscosity and 6.5-minute gel time published in the current TDS",
+      "225 kg drum packaging with a published 500 kg MOQ",
     ],
     applications: [
       "Roof light panels and skylight sheets",
-      "Daylighting panels for factories and warehouses",
-      "Greenhouse and agricultural roofing sheets",
+      "Greenhouse roofing sheets",
       "Industrial and commercial roofing",
+      "Roofing sheet production",
     ],
     industries: [
       "Roofing sheet & panel manufacturing",
-      "Industrial & warehouse construction",
+      "Industrial & commercial roofing",
       "Greenhouse & agricultural structures",
-      "Daylighting & skylight systems",
+      "Roof-light & skylight components",
     ],
     whyChoose: [
-      "ISO 9001:2015 certified quality management system",
-      "Manufacturing polyester resins since 2017",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
-      "Consistent 99% purity and water-white optical clarity",
-      "Supplied in bulk 225 kg drums",
-      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+      "Current product-specific Roof Light Resin TDS available",
+      "Published for roof-light panels, skylights, greenhouses and roofing-sheet production",
+      "Water-white appearance, 280 cPs viscosity and 6.5-minute gel time published in the TDS",
+      "225 kg drum packaging and 500 kg MOQ published in the TDS",
+      "Company and facility information available for Samrat Poly Resins in Doraha, Ludhiana",
     ],
     faqs: [
-      {
-        q: "What is Roof Light Sheet Grade Resin?",
-        a: "Roof Light Sheet Grade Resin is a water-white orthophthalic unsaturated polyester resin formulated for translucent FRP roofing sheets and skylight panels that transmit natural daylight into a building.",
-      },
-      {
-        q: "Why does Roof Light Resin need to be water-white rather than pigmented?",
-        a: 'Roof light and skylight sheets are designed to let daylight through, so the resin needs to stay optically clear rather than opaque. A water-white resin transmits light efficiently; a pigmented sheet resin, like our <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a>, is used instead where an opaque, coloured panel is required.',
-      },
-      {
-        q: "Is Roof Light Sheet Grade Resin suitable for industrial and greenhouse roofing?",
-        a: "Yes. It is commonly used for daylighting panels in factories, warehouses, greenhouses and other structures where translucent, weather-exposed roofing sheets are required.",
-      },
+      { q: "What is Roof Light Sheet Grade Resin?", a: "Roof Light Sheet Grade Resin is the site's water-white orthophthalic unsaturated polyester resin for the published translucent roof-light panel and skylight-sheet role. The current TDS also lists greenhouses and industrial/commercial roofing." },
+      { q: "What does Sheet Grade mean for this product?", a: "It identifies the published FRP roofing-sheet and roof-light panel context. The product should still be checked against the current Roof Light Resin TDS and the actual finished-sheet requirement." },
+      { q: "How is Roof Light Resin different from Sheet Grade Yellow Resin?", a: 'Roof Light Resin is supplied water-white for the published roof-light and skylight route. <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a> is the separately published pre-pigmented yellow product for sheet and panel applications. Start with the required supplied appearance and finished-sheet role.' },
+      { q: "Is Roof Light Resin the same as GP Clear Resin?", a: 'No. <a href="/products/gp-clear-resin/">GP Clear Resin</a> is the published general-purpose clear orthophthalic resin route. Roof Light Sheet Grade Resin is the separately published water-white grade for roof-light and skylight sheet intent. Review each current product-specific TDS rather than transferring values between them.' },
+      { q: "Which reinforcement should be reviewed for an FRP roof-light sheet?", a: 'Glass Fiber is a separate reinforcement role in an FRP material system. Review <a href="/products/fibre-glass-mat/">Glass Fiber Mat</a> and the actual component specification; this page does not prescribe a mat weight or laminate build-up.' },
+      { q: "Which document should I review before ordering?", a: 'Use the current <a href="/tds/roof-light-resin-tds.pdf" target="_blank" rel="noopener">Roof Light Sheet Grade Resin TDS</a> for the exact product under consideration. Do not transfer technical values or performance expectations from another resin grade.' },
+      { q: "What should I provide for a Roof Light Resin quotation?", a: "Share the finished roofing or roof-light sheet requirement, required supplied appearance, reinforcement context if known, expected quantity and delivery location. Include a drawing or buyer specification where available." },
       {
         q: "What is the gel time and cure time of Roof Light Sheet Grade Resin?",
         a: "Gel time is 6.5 minutes. Full cure at room temperature, once catalysed with MEKP (around 1.5%) and a cobalt octoate accelerator (around 0.4%), takes approximately 12 hours.",
@@ -1204,6 +1208,9 @@ export const products = [
       "gp-gelcoat-resin",
       "mekp-hardener",
     ],
+    applicationSlugs: [
+      "roof-light-sheet-resin-for-frp-roofing-and-skylight-sheets",
+    ],
   },
   {
     slug: "fire-retardant-resin",
@@ -1213,29 +1220,31 @@ export const products = [
     image: "fire-retardant-resin.jpg",
     images: ["fire-retardant-resin-2.jpg", "fire-retardant-resin-3.jpg"],
     imageAlt:
-      "Fire Retardant Resin — halogenated UL 94 V0 unsaturated polyester resin by Samrat Poly Resins",
+      "Fire Retardant Resin — halogenated unsaturated polyester resin by Samrat Poly Resins",
     tdsUrl: "/tds/fire-retardant-resin-tds.pdf",
     seo: {
-      title: "Fire Retardant Resin – Flame Retardant Polyester Resin",
+      title: "Fire Retardant Resin Manufacturer in India | FR Polyester Resin",
       description:
-        "Fire Retardant Resin — a halogenated, UL 94 V0-rated unsaturated polyester resin for fire-safety FRP components. Gel time 5.5 minutes. 35/225 kg packs.",
+        "Halogenated Fire Retardant Unsaturated Polyester Resin (FR Resin) for published industrial FRP applications. Review the current TDS, project requirement and quotation details with Samrat Poly Resins.",
       keywords: [
         "Fire Retardant Resin",
         "FR Resin",
-        "Fire Resistant Polyester Resin",
-        "Flame Retardant Resin",
         "Fire Retardant Polyester Resin",
+        "FR Polyester Resin",
+        "Fire Retardant UPR",
+        "Fire Retardant Unsaturated Polyester Resin",
         "FRP Fire Retardant Resin",
         "Halogenated Fire Retardant Resin",
-        "UL 94 V0 Resin",
       ],
     },
-    // Values verified for this halogenated grade only — do not confuse with
-    // the separate halogen-free iso-fire-retardant-resin. MOQ was not part
-    // of the verified sheet, so it is omitted rather than reusing the old,
-    // unverified 500 kg figure. Density and Flash Point are excluded as
-    // unverified; no fire-test claims beyond the verified UL 94 V0 rating.
+    // Current product data is taken from SPR-TDS-FRR Rev. 01 (July 2026).
+    // The catalogue calls this an orthophthalic grade while the TDS only says
+    // "unsaturated polyester"; the page therefore avoids presenting a base
+    // chemistry beyond the current TDS. The TDS lists a manufacturer-published
+    // UL 94 V0* statement but says its test/certification reference still needs
+    // confirmation, so that statement is not presented as a verified rating.
     productDetails: {
+      "Minimum Order Quantity": "500 kg",
       "Packaging": "35 kg / 225 kg",
       "Physical Form": "Liquid",
       "Colour / Appearance": "White",
@@ -1245,82 +1254,87 @@ export const products = [
     techSpecs: {
       "Base Resin": "Unsaturated Polyester",
       "FR Type": "Halogenated Fire-Retardant Formulation",
-      "Flammability Rating": "UL 94 V0",
       "Curing System": "Room Temperature Cure with MEKP Catalyst",
-      "Smoke / Emission": "Reduced Smoke Density and Toxic Gas Emission",
       "Viscosity": "400 cPs",
       "Gel Time": "5.5 Minutes",
       "Styrene Content": "35%",
-      "MEKP Dosage": "1.5%",
-      "Cobalt Octoate Dosage": "0.4%",
     },
-    tagline: "Halogenated, UL 94 V0-rated resin for fire-safety FRP components.",
+    tagline: "Halogenated FR polyester resin for industrial FRP requirements.",
     description:
-      "Fire Retardant Resin is a halogenated unsaturated polyester resin formulated to resist ignition and limit flame spread in FRP components. Unlike a general-purpose laminating resin, which offers no fire performance beyond that of ordinary polyester, this grade is modified with fire-retardant additives to meet a UL 94 V0 flammability rating, while also reducing smoke density and toxic gas emission if the laminate is exposed to fire. Cured at room temperature with an MEKP catalyst, it processes in the same way as a standard laminating resin, so existing hand lay-up and moulding workflows do not need to change. Samrat Poly Resins supplies Fire Retardant Resin for FRP components used in electrical enclosures, transport and construction, where fire safety is a specification requirement rather than an optional extra.",
+      "Fire Retardant Resin is Samrat Poly Resins' published halogenated unsaturated polyester product for industrial FRP requirements where a fire-performance specification forms part of the material discussion. The current TDS identifies a white liquid resin, room-temperature cure with an MEKP catalyst, 400 cPs viscosity, 5.5-minute gel time and 35 kg / 225 kg packaging. It is a specialist product role to review alongside the finished FRP component, required specification and current product documentation — not a general-purpose claim that every FRP part will meet a fire classification.",
     usageNote:
-      'Fire Retardant Resin is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> in the same way as our general-purpose grades. Where fire performance is not a requirement, our <a href="/products/gp-clear-resin/">GP Clear Resin</a> or base <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin (UPR)</a> are more cost-effective; for door and plywood lamination work, see our <a href="/products/lamination-resin/">Lamination Resin</a>, and mould-facing surfaces can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> or upgraded to <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> for higher chemical resistance.',
+      'Where a reinforced FRP component is being considered, <a href="/products/fibre-glass-mat/">Glass Fiber</a> is the separate reinforcement product to review; the required mat, laminate build-up and finished-system requirement should be specified rather than assumed. For general FRP work without a stated fire-performance requirement, review <a href="/products/gp-clear-resin/">GP Clear Resin</a> or the <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin (UPR)</a> family. <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> remains a separate mould-surface role, while <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> has its own published chemical- and corrosion-resistance product context.',
     features: [
-      "UL 94 V0 flammability rating for fire-critical FRP components",
-      "Halogenated fire-retardant formulation with reduced smoke density and toxic gas emission",
-      "Gel time of 5.5 minutes for efficient production cycles",
-      "Room-temperature cure system using MEKP and cobalt octoate",
-      "35% styrene content for consistent, controlled processing",
-      "Supplied in 35 kg or 225 kg packs",
+      "Halogenated fire-retardant formulation listed in the current TDS",
+      "Unsaturated polyester resin supplied as a white liquid",
+      "Published 400 cPs viscosity and 5.5-minute gel time",
+      "Room-temperature cure with an MEKP catalyst",
+      "35 kg / 225 kg packaging and 500 kg minimum order quantity published in the TDS",
+      "Product-specific Technical Data Sheet available for review",
     ],
     applications: [
-      "Electrical enclosures and switchgear components",
-      "Railway, automotive and marine FRP parts",
-      "Fire-rated building panels and construction components",
-      "General FRP manufacturing where flame retardancy is specified",
+      "Automotive and railway FRP components",
+      "Marine and electrical applications",
+      "FRP panels and building components",
+      "Tunnels, infrastructure and other fire-sensitive environments",
     ],
     industries: [
-      "Electrical & switchgear manufacturing",
-      "Railway & transport components",
-      "Marine & automotive FRP parts",
-      "Construction & fire-rated panels",
+      "Automotive and railway components",
+      "Marine FRP applications",
+      "Electrical FRP applications",
+      "FRP panels and building components",
     ],
     whyChoose: [
-      "ISO 9001:2015 certified quality management system",
-      "Manufacturing polyester resins since 2017",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
-      "UL 94 V0-rated formulation for fire-safety-critical components",
-      "Supplied in 35 kg or 225 kg packs",
-      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+      "A dedicated halogenated Fire Retardant Resin product route, separate from general-purpose grades",
+      "Current product-specific TDS with published supply and technical data",
+      "Published 35 kg / 225 kg packaging and 500 kg MOQ",
+      "A product-selection path that asks for the actual finished-system requirement before quotation",
     ],
     faqs: [
       {
         q: "What is Fire Retardant Resin?",
-        a: "Fire Retardant Resin is a halogenated unsaturated polyester resin formulated to resist ignition and limit flame spread in FRP components, rated to UL 94 V0 for flammability performance.",
+        a: "Fire Retardant Resin is Samrat Poly Resins' published halogenated unsaturated polyester resin for industrial FRP requirements where a fire-performance specification forms part of the product discussion. It is supplied as a white liquid and has its own Technical Data Sheet; it is not the same product role as a general-purpose polyester resin.",
       },
       {
         q: "How is Fire Retardant Resin different from General Purpose Polyester Resin?",
-        a: "General-purpose resin (such as our GP Clear Resin or UPR) has no specific fire performance. Fire Retardant Resin is modified with halogenated fire-retardant additives to meet a UL 94 V0 flammability rating and reduce smoke density and toxic gas emission, at the cost of being a more specialised, higher-cost grade.",
+        a: 'GP Clear Resin and the <a href="/products/unsaturated-polyester-resin/">UPR</a> family are published for broader general FRP roles. This Fire Retardant Resin is the specialist halogenated product route to review when a buyer has a stated fire-performance requirement. The final choice should follow the actual component, required specification and current product-specific TDS, not a product name alone.',
       },
       {
-        q: "Why is flame-retardant resin used for safety-critical components?",
-        a: "In electrical, transport and construction applications, a component that ignites easily or produces heavy smoke and toxic gas in a fire can be a serious safety hazard. Fire Retardant Resin is selected specifically to reduce these risks in FRP parts used in enclosures, panels and structural components where fire codes or safety specifications apply.",
+        q: "Is Fire Retardant Resin fireproof?",
+        a: "No. “Fire retardant” is a product classification, not a claim that a resin or finished FRP part is fireproof or non-combustible. The relevant finished-system construction, reinforcement and project test or classification requirement must be reviewed before specification.",
       },
       {
-        q: "Is Fire Retardant Resin the same as ISO Fire Retardant Resin?",
-        a: 'No. Fire Retardant Resin is a halogenated, unsaturated-polyester-based grade rated to UL 94 V0. Our <a href="/products/iso-fire-retardant-resin/">ISO Fire Retardant Resin</a> is a separate, halogen-free, isophthalic-based grade for applications needing enhanced chemical resistance alongside fire performance.',
+        q: "Does the current Fire Retardant Resin TDS provide a verified fire rating?",
+        a: "The current TDS includes a manufacturer-published “UL 94 V0*” statement. Its own note says that the test-report/certification reference is to be supplied on request and confirmed in a later revision. No corresponding test report or certificate is present in this repository, so buyers should share their exact required standard or classification for confirmation before specifying the material.",
       },
       {
-        q: "What is the gel time and curing system of Fire Retardant Resin?",
-        a: "Gel time is 5.5 minutes. It cures at room temperature with an MEKP catalyst (around 1.5%) and a cobalt octoate accelerator (around 0.4%).",
+        q: "Which applications are published for this product?",
+        a: "The current TDS lists automotive and railway components, marine and electrical applications, FRP panels and building components, and tunnels, infrastructure and fire-sensitive environments. These are application categories to discuss, not a confirmation that every finished part meets a project-specific requirement.",
       },
       {
-        q: "What is the viscosity and styrene content of Fire Retardant Resin?",
-        a: "Viscosity is approximately 400 cPs and styrene content is 35%.",
+        q: "Can Fire Retardant Resin be considered with Glass Fiber?",
+        a: 'Glass Fiber is the separate reinforcement product to review for an FRP system. See <a href="/products/fibre-glass-mat/">Glass Fiber Mat</a>, then confirm the required reinforcement, laminate construction and finished-system specification rather than assuming a mat weight or build-up.',
       },
       {
-        q: "What packaging and shelf life does Fire Retardant Resin have?",
-        a: "It is supplied in 35 kg or 225 kg packs. Shelf life is 3 months from manufacture; store between 30–35 °C.",
+        q: "What should I share when requesting a Fire Retardant Resin quote?",
+        a: "Share the finished FRP application, the exact fire standard or classification if one is specified, the relevant project or technical requirement, reinforcement context if known, expected quantity, packaging requirement and delivery location. This allows a focused technical and commercial discussion without assuming project compliance.",
+      },
+      {
+        q: "Which documents are currently available?",
+        a: 'The current <a href="/tds/fire-retardant-resin-tds.pdf" target="_blank" rel="noopener">Fire Retardant Resin TDS</a> and the <a href="/downloads/samrat-poly-resins-product-catalogue.pdf" target="_blank" rel="noopener">product catalogue</a> are available. The repository does not include an SDS, COA, fire test report or certification document for this grade.',
+      },
+      {
+        q: "What supply and technical information is published?",
+        a: "The current TDS lists 35 kg / 225 kg packaging, a 500 kg minimum order quantity, white liquid appearance, three-month shelf life, 30–35 °C storage, 400 cPs viscosity, 5.5-minute gel time and 35% styrene content. Confirm current product data before ordering.",
       },
     ],
     relatedSlugs: [
       "iso-fire-retardant-resin",
+      "unsaturated-polyester-resin",
       "gp-clear-resin",
-      "mekp-hardener",
+      "fibre-glass-mat",
+      "gp-gelcoat-resin",
+      "vinyl-ester-resin",
     ],
   },
   {
@@ -1332,103 +1346,117 @@ export const products = [
     images: ["iso-fire-retardant-resin-2.jpg"],
     tdsUrl: "/tds/iso-fire-retardant-resin-tds.pdf",
     seo: {
-      title: "ISO Fire Retardant Resin – Halogen-Free FR Resin",
+      title: "Isophthalic Fire Retardant Resin Manufacturer in India | ISO FR Resin",
       description:
-        "ISO Fire Retardant Resin — a halogen-free, ATH-filled isophthalic polyester resin, UL 94 V0 rated, for railway, marine and automotive fire-safety FRP parts.",
+        "ISO Fire Retardant Resin is Samrat Poly Resins' published halogen-free, ATH-filled isophthalic FR polyester resin. Here, ISO refers to isophthalic chemistry—not ISO certification. Review the current TDS and project requirement before selection.",
       keywords: [
         "ISO Fire Retardant Resin",
-        "Halogen Free Fire Retardant Resin",
         "Isophthalic Fire Retardant Resin",
-        "UL 94 V0 Resin",
-        "Fire Retardant Polyester Resin",
+        "Isophthalic FR Resin",
+        "ISO FR Resin",
+        "Fire Retardant Isophthalic Resin",
+        "Isophthalic Polyester Fire Retardant Resin",
       ],
     },
-    // Reorganised into productDetails/techSpecs — every value is unchanged
-    // from the original single `specs` table, just regrouped. "Usage /
-    // Application" is not repeated in the table since it's already covered
-    // by the applications list below. No new values invented.
     productDetails: {
       "Minimum Order Quantity": "500 kg",
-      "Packaging": "50 kg",
-      "Physical Form": "Semi-liquid",
+      "Packaging": "35 kg / 225 kg",
+      "Physical Form": "Liquid",
       "Colour / Appearance": "White",
+      "Shelf Life": "3 months",
+      "Storage Temperature": "30–35°C",
     },
     techSpecs: {
-      "Base Resin": "Polyester",
-      "FR Type": "Halogen Free",
-      "Flammability Rating": "UL 94 V0",
-      "Fillers": "ATH Filled",
-      "Curing System": "Room Temperature Cure",
-      "Purity": "100%",
+      "Resin Type": "Unsaturated Polyester Resin (Fire Retardant Grade)",
+      "ISO Designation": "Isophthalic-based resin chemistry (not ISO certification)",
+      "FR Type": "Halogen-free, ATH-filled formulation",
+      "Curing System": "Room-temperature cure with MEKP catalyst",
+      "Viscosity": "400 cPs",
+      "Gel Time": "5.5 minutes",
+      "Styrene Content": "35%",
+      "Purity": "≥99%",
+      "Specific Gravity / Density": "1.18 g/cm³",
+      "Flash Point": "34°C (Closed Cup)",
     },
-    tagline: "Isophthalic-based resin for demanding fire safety.",
+    tagline: "Halogen-free, ATH-filled isophthalic FR polyester resin.",
     description:
-      "An isophthalic-based fire retardant resin offering enhanced performance for demanding fire-safety applications. Halogen-free and filled with aluminium trihydrate (ATH), it combines a UL 94 V0 flammability rating with the improved chemical and mechanical resistance of an isophthalic backbone, bonding well with fibreglass mats to give strength and stability to the final product. Supplied as a white, semi-liquid resin with 100% purity, it cures at room temperature and is packed in 50 kg containers, with a minimum order quantity of 500 kg — suited to railway, marine and automotive manufacturers who need fire-rated FRP components without halogenated additives.",
+      "ISO Fire Retardant Resin is Samrat Poly Resins’ published halogen-free, ATH-filled isophthalic unsaturated polyester grade for industrial FRP discussions where a fire-performance requirement is part of product selection. In this product name, ISO refers to isophthalic resin chemistry—not ISO certification. The current TDS identifies a white liquid resin with its own technical and supply data; it does not establish a finished FRP component’s project approval or classification.",
     usageNote:
-      'ISO Fire Retardant Resin is typically reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> for railway, marine and automotive fire-rated components. Where a halogenated, unsaturated-polyester-based fire retardant grade is acceptable instead, see our <a href="/products/fire-retardant-resin/">Fire Retardant Resin</a>; for general-purpose FRP work without a fire-safety requirement, our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is more cost-effective.',
+      'For an FRP system, <a href="/products/fibre-glass-mat/">Glass Fiber</a> is the separate reinforcement product to review. Compare this isophthalic ISO FR route with the separate <a href="/products/fire-retardant-resin/">Fire Retardant Resin</a> page when the project specification identifies a different FR product requirement. For general-purpose work without a stated FR requirement, review <a href="/products/gp-clear-resin/">GP Clear Resin</a> or the broader <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> family. <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> has its own published product context for a different specialist requirement.',
     features: [
-      "Halogen-free, ATH-filled formulation",
-      "UL 94 V0 flammability rating",
-      "Isophthalic backbone for better chemical resistance",
-      "Bonds well with fibreglass reinforcement for strength and stability",
-      "Room-temperature cure, 100% purity",
-      "Supplied in 50 kg containers, minimum order 500 kg",
+      "Halogen-free, ATH-filled formulation identified in the current TDS",
+      "Published isophthalic-based product designation; ISO is not a certification claim",
+      "White liquid with published 400 cPs viscosity and 5.5-minute gel time",
+      "Published 35 kg / 225 kg packaging and 500 kg minimum order quantity",
+      "Product-specific Technical Data Sheet available for review",
     ],
     applications: [
-      "Railway applications",
-      "Marine applications",
-      "Automotive fire-rated components",
-      "FRP panels requiring fire compliance",
+      "Railway and marine applications",
+      "Automotive fire-performance component discussions",
+      "FRP panels where a fire-performance requirement is specified",
+      "Electrical enclosures, tunnels and construction applications to review against the project requirement",
     ],
     industries: [
-      "Railway & transport components",
-      "Marine & shipbuilding",
-      "Automotive FRP parts",
-      "Fire-rated panel manufacturing",
+      "Railway and transport FRP",
+      "Marine FRP",
+      "Automotive FRP components",
+      "Panels and industrial FRP where requirements are specified",
     ],
     whyChoose: [
-      "ISO 9001:2015 certified quality management system",
-      "Manufacturing polyester resins since 2017",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
-      "Halogen-free, ATH-filled formulation with 100% purity",
-      "UL 94 V0-rated formulation for fire-safety-critical components",
-      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+      "Separate isophthalic ISO FR product route with its own current TDS",
+      "Published technical and supply information for the listed grade",
+      "Halogen-free, ATH-filled formulation identified in the TDS",
+      "Industrial enquiry path for the finished component, requirement and delivery details",
     ],
     faqs: [
       {
         q: "What is ISO Fire Retardant Resin?",
-        a: "ISO Fire Retardant Resin is a halogen-free, isophthalic-based fire retardant resin, filled with aluminium trihydrate (ATH) and rated to UL 94 V0, formulated for demanding fire-safety FRP applications in railway, marine and automotive manufacturing.",
+        a: "It is Samrat Poly Resins’ published halogen-free, ATH-filled isophthalic unsaturated polyester Fire Retardant Resin grade. It is a specialist product route to review when the finished FRP application has a stated fire-performance requirement.",
+      },
+      {
+        q: "What does ISO mean in ISO Fire Retardant Resin?",
+        a: "ISO refers to the product’s published isophthalic-based resin chemistry. It does not mean the product is ISO certified, ISO approved or compliant with an ISO standard.",
+      },
+      {
+        q: "Is ISO Fire Retardant Resin an unsaturated polyester resin?",
+        a: "Yes. The current TDS identifies it as an Unsaturated Polyester Resin (Fire Retardant Grade) and describes it as isophthalic-based.",
       },
       {
         q: "What is the difference between ISO Fire Retardant Resin and Fire Retardant Resin?",
-        a: 'ISO Fire Retardant Resin is a halogen-free, isophthalic-based grade offering enhanced chemical resistance alongside fire performance. Our <a href="/products/fire-retardant-resin/">Fire Retardant Resin</a> is a halogenated, unsaturated-polyester-based grade, also rated UL 94 V0. Choose the halogen-free isophthalic grade where halogen-free specification or added chemical resistance is required.',
+        a: 'The current ISO Fire Retardant Resin TDS identifies a halogen-free, ATH-filled isophthalic-based grade. The separate <a href="/products/fire-retardant-resin/">Fire Retardant Resin</a> TDS identifies a halogenated Fire Retardant Unsaturated Polyester Resin grade. Review the exact project requirement and the current product-specific TDS; the repository does not establish a universal finished-system result for either product.',
       },
       {
-        q: "Why is ISO Fire Retardant Resin halogen-free?",
-        a: "Some fire-safety specifications require halogen-free formulations to limit toxic gas and corrosive smoke in a fire. This grade uses ATH filler rather than halogenated additives to achieve its UL 94 V0 flammability rating.",
+        q: "Is ISO Fire Retardant Resin fireproof?",
+        a: "No. Fire Retardant Resin should not be interpreted as fireproof, non-combustible or as an automatic classification for a finished FRP component. The finished system and its project requirement must be reviewed.",
       },
       {
-        q: "What is the flammability rating of ISO Fire Retardant Resin?",
-        a: "It is rated UL 94 V0.",
+        q: "Does this product have a verified fire rating in the repository?",
+        a: "The current TDS displays a UL 94 V0 statement, but the repository contains no supporting fire-test report, test method detail or tested specimen/system context. This page therefore does not present a fire rating or project compliance as verified.",
       },
       {
-        q: "What is the physical form and purity of ISO Fire Retardant Resin?",
-        a: "It is a white, semi-liquid resin with 100% purity.",
+        q: "Does this product have documented chemical or corrosion resistance?",
+        a: "The TDS describes an isophthalic backbone, but the repository does not contain a chemical-resistance chart, service-environment approval or temperature limit for this grade. Share the actual service environment during the product discussion.",
       },
       {
-        q: "What packaging and minimum order quantity does ISO Fire Retardant Resin come in?",
-        a: "It is supplied in 50 kg containers, with a minimum order quantity of 500 kg.",
+        q: "Can ISO Fire Retardant Resin be considered with Glass Fiber?",
+        a: 'Glass Fiber is the separate reinforcement product to review for an FRP system. See <a href="/products/fibre-glass-mat/">Glass Fiber Mat</a>, then confirm the actual component, reinforcement context and finished-system requirement rather than assuming a mat grade or laminate build-up.',
       },
       {
-        q: "How is ISO Fire Retardant Resin cured?",
-        a: "It cures at room temperature.",
+        q: "What should I share when requesting a quotation?",
+        a: "Share the finished FRP application, exact product/grade requirement, fire standard or classification if one is specified, technical requirement, service environment where relevant, expected quantity, packaging requirement and delivery location.",
+      },
+      {
+        q: "Which documents are currently available?",
+        a: 'The current <a href="/tds/iso-fire-retardant-resin-tds.pdf" target="_blank" rel="noopener">ISO Fire Retardant Resin TDS</a> and <a href="/downloads/samrat-poly-resins-product-catalogue.pdf" target="_blank" rel="noopener">product catalogue</a> are linked. The repository does not include an SDS, COA, fire-test report, chemical-resistance chart or certification document for this grade.',
       },
     ],
     relatedSlugs: [
       "fire-retardant-resin",
+      "unsaturated-polyester-resin",
       "gp-clear-resin",
-      "mekp-hardener",
+      "vinyl-ester-resin",
       "fibre-glass-mat",
+      "gp-gelcoat-resin",
     ],
   },
   {
@@ -2063,50 +2091,57 @@ export const products = [
     images: ["epoxy-hardener-2.jpg"],
     tdsUrl: "/tds/epoxy-hardener-tds.pdf",
     seo: {
-      title: "Epoxy Hardener – Polyamide Curing Agent",
+      title: "Epoxy Hardener Manufacturer in India | Polyamide Curing Agent",
       description:
-        "Epoxy Hardener — a polyamide curing agent for epoxy resin systems, giving a bubble-free, super-gloss cure in around 24 hours. Enquire for bulk supply.",
+        "Epoxy Hardener is Samrat Poly Resins' published polyamide curing agent for compatible epoxy resin systems. Review the current TDS and request an industrial quote for the required epoxy system.",
       keywords: [
         "Epoxy Hardener",
         "Polyamide Hardener",
         "Epoxy Curing Agent",
         "Epoxy Resin Hardener",
-        "Casting Resin Hardener",
+        "Hardener for Epoxy Resin",
+        "Epoxy Hardener Manufacturer",
+        "Epoxy Hardener Supplier",
       ],
     },
-    // Reorganised into productDetails/techSpecs — every value is unchanged
-    // from the original single `specs` table, just regrouped. "Features"
-    // and "Recommended Use" are not repeated here since they are already
-    // covered in full by the features and applications lists below (same
-    // source data, no information lost). No new values invented.
+    // Product data below follows SPR-TDS-EPH Rev. 01 (July 2026). The
+    // catalogue differs on chemical-type wording, viscosity and specific
+    // gravity, so the current TDS is used here and the discrepancy is not
+    // silently reconciled. Ratio, pot-life and cure figures stay in the TDS
+    // rather than being presented as public operating instructions.
     productDetails: {
       "Minimum Order Quantity": "100 kg",
       "Pack Size": "20 kg",
+      "Physical Form": "Liquid",
       "Colour / Appearance": "Clear / Transparent",
+      "Shelf Life": "12 months (unopened)",
+      "Storage": "Cool, dry place (15–30 °C); keep container tightly closed",
     },
     techSpecs: {
-      "Hardener Type": "Polyamide",
-      "Mixing Ratio (Resin:Hardener)": "2:1",
-      "Viscosity": "Low",
-      "Full Cure Time": "24 hours",
+      "Hardener Type": "Polyamide (amine-based curing agent)",
+      "Compatibility": "Compatible epoxy resin systems — confirm the resin/hardener pairing before ordering",
+      "Viscosity": "500 cPs (at 25 °C)",
+      "Specific Gravity / Density": "0.97 g/cm³",
+      "Amine Value": "320 mg KOH/g",
     },
-    tagline: "Polyamide hardener for a super-gloss epoxy cure.",
+    tagline: "Polyamide curing agent for compatible epoxy resin systems.",
     description:
-      "A premium-quality polyamide curing agent formulated to provide excellent curing performance when used with compatible epoxy resins. Mixed 2:1 (resin:hardener) and fully curing in around 24 hours, it delivers superior bonding strength, outstanding mechanical properties and excellent chemical and moisture resistance. It is solvent-free and low-yellowing, keeping cured epoxy work clear and glossy over time, and is supplied in 20 kg packs with a minimum order quantity of 100 kg for art, casting and industrial epoxy applications.",
+      "Epoxy Hardener is Samrat Poly Resins' published polyamide, amine-based curing agent for compatible epoxy resin systems. It is the separate hardener component of an epoxy system, not the epoxy resin itself and not a polyester-resin catalyst. The current TDS identifies a clear/transparent liquid with 500 cPs viscosity at 25 °C, 0.97 g/cm³ specific gravity and 320 mg KOH/g amine value. Review the actual epoxy resin, intended application and current Technical Data Sheet together before confirming a resin/hardener pairing. The published commercial format is a 20 kg pack with a 100 kg minimum order quantity.",
     usageNote:
-      'Epoxy Hardener is mixed 2:1 (resin:hardener) with a compatible epoxy resin such as our <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> or <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a>. For fast UV/LED-curing craft work instead of a 24-hour room-temperature cure, see our <a href="/products/uv-resin/">UV Resin</a>.',
+      'The existing <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> and <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a> product routes identify a compatible Epoxy Hardener as part of their separate two-component systems. That does not establish universal compatibility with every epoxy product or supplier. For a UV/LED-curable route that does not use this separate hardener component, review <a href="/products/uv-resin/">UV Resin</a>. For unsaturated polyester, vinyl ester or gelcoat systems, review the separate <a href="/products/mekp-hardener/">MEKP Hardener</a> product route instead.',
     features: [
-      "Polyamide hardener, clear/transparent",
-      "2:1 mix ratio (resin:hardener), 24-hour full cure",
-      "Excellent adhesion and chemical resistance",
-      "Solvent-free, low-yellowing formulation",
-      "Bubble-free, super-gloss finish",
-      "Supplied in 20 kg packs, minimum order 100 kg",
+      "Published polyamide (amine-based) epoxy curing-agent type",
+      "Clear / transparent liquid supplied form",
+      "Current TDS publishes viscosity, specific gravity and amine value",
+      "Compatible epoxy-system selection should be confirmed before ordering",
+      "20 kg packaging and 100 kg MOQ published in the current TDS",
+      "Current Technical Data Sheet available for product review",
     ],
     applications: [
       "Epoxy art and river tables",
       "Clear casting and laminating",
-      "FRP composites, industrial flooring and adhesives",
+      "FRP composites and industrial flooring",
+      "Adhesives and protective coatings",
     ],
     industries: [
       "Furniture & river table manufacturing",
@@ -2115,43 +2150,47 @@ export const products = [
       "Industrial flooring & adhesives",
     ],
     whyChoose: [
-      "ISO 9001:2015 certified quality management system",
-      "Manufacturing polyester resins since 2017",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
-      "Solvent-free, low-yellowing formulation for lasting clarity",
-      "Supplied in 20 kg packs, minimum order 100 kg",
-      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+      "Published Epoxy Hardener TDS available for review",
+      "Clear separation between epoxy-system and polyester-system hardener roles",
+      "Published technical identity: polyamide, amine-based curing agent",
+      "Published 20 kg packaging and 100 kg minimum order quantity",
+      "Enquiry can confirm the exact resin, application and documentation requirement",
     ],
     faqs: [
       {
         q: "What is Epoxy Hardener?",
-        a: "Epoxy Hardener is a premium-quality polyamide curing agent formulated to cure compatible epoxy resins into a hard, glossy, bubble-free finish.",
+        a: "Epoxy Hardener is Samrat Poly Resins' published polyamide, amine-based curing agent for compatible epoxy resin systems. It is the separate hardener component, not the epoxy resin itself.",
       },
       {
-        q: "What is the mixing ratio for Epoxy Hardener?",
-        a: "It is mixed 2:1 (resin:hardener) and fully cures in around 24 hours.",
+        q: "Which Samrat epoxy systems is this hardener linked with?",
+        a: 'The existing <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> and <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a> product routes identify a compatible Epoxy Hardener. Confirm the exact resin/hardener pairing and current TDS before ordering; universal compatibility is not claimed.',
       },
       {
-        q: "Is Epoxy Hardener solvent-free?",
-        a: "Yes. It is a solvent-free, low-yellowing formulation, so cured epoxy work stays clear and glossy rather than discolouring over time.",
+        q: "Is Epoxy Hardener the same as epoxy resin?",
+        a: "No. Epoxy resin and epoxy hardener are separate components of a compatible epoxy system. The correct pairing should be confirmed before procurement.",
       },
       {
-        q: "What resins is Epoxy Hardener compatible with?",
-        a: 'It is formulated to cure compatible epoxy resins, such as our <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> and <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a>.',
+        q: "Is Epoxy Hardener the same as MEKP Hardener?",
+        a: 'No. This product is an epoxy-system curing agent. <a href="/products/mekp-hardener/">MEKP Hardener</a> is the separate catalyst / initiator product route for published unsaturated polyester, vinyl ester and gelcoat systems; it is not an epoxy curing agent.',
       },
       {
-        q: "What chemical and moisture resistance does it offer?",
-        a: "Once cured, it delivers excellent chemical and moisture resistance alongside superior bonding strength and mechanical properties.",
+        q: "What technical data is published for Epoxy Hardener?",
+        a: 'The current <a href="/tds/epoxy-hardener-tds.pdf" target="_blank" rel="noopener">Epoxy Hardener TDS</a> publishes its polyamide type, supplied appearance, viscosity, specific gravity, amine value, shelf life, storage, packaging and MOQ. Its typical values should be reviewed against the actual resin system and application.',
       },
       {
         q: "What packaging and minimum order quantity does Epoxy Hardener come in?",
         a: "It is supplied in 20 kg packs, with a minimum order quantity of 100 kg.",
+      },
+      {
+        q: "What should I include when requesting an Epoxy Hardener quote?",
+        a: "Share the exact epoxy resin or Samrat product route being evaluated, intended application, expected quantity, packaging requirement if relevant, delivery location and required documentation. This lets the team confirm the product role before preparing a quote.",
       },
     ],
     relatedSlugs: [
       "epoxy-clear-casting-resin",
       "epoxy-art-resin",
       "uv-resin",
+      "mekp-hardener",
     ],
   },
   {
@@ -2163,96 +2202,128 @@ export const products = [
     images: ["dmc-smc-resin-2.jpg", "dmc-smc-resin-3.jpg"],
     tdsUrl: "/tds/dmc-smc-resin-tds.pdf",
     seo: {
-      title: "DMC/SMC Resin – Moulding Compound Resin",
+      title: "DMC & SMC Resin Manufacturer in India | Polyester Moulding Resin",
       description:
-        "DMC/SMC Resin — an orthophthalic polyester resin for Dough and Sheet Moulding Compounds, used in electrical housings and automotive panels.",
+        "DMC/SMC orthophthalic unsaturated polyester resin for the published Dough and Sheet Moulding Compound applications. Review the current TDS and request an industrial quote from Samrat Poly Resins.",
       keywords: [
         "DMC Resin",
         "SMC Resin",
+        "DMC SMC Resin",
         "Sheet Moulding Compound Resin",
         "Dough Moulding Compound Resin",
-        "Moulding Polyester Resin",
+        "Polyester Resin for DMC",
+        "Polyester Resin for SMC",
+        "Moulding Compound Resin",
+        "Compression Moulding Resin",
       ],
     },
-    // Reorganised into productDetails/techSpecs — every value is unchanged
-    // from the original single `specs` table, just regrouped. "Usage /
-    // Application" and "Features" are not repeated here since they are
-    // already covered in full by the applications and features lists below
-    // (same source data, no information lost). No new values invented.
+    // Current product data comes from SPR-TDS-DMC Rev. 01 (July 2026). The
+    // catalogue lists different viscosity, gel-time and specific-gravity
+    // values, so this page uses the grade-specific TDS and does not combine
+    // conflicting numbers. The TDS describes one DMC/SMC product; no separate
+    // DMC, SMC or BMC grade/formulation is documented in the repository.
     productDetails: {
-      "Minimum Order Quantity": "1000 kg",
-      "Packaging Size": "225 kg",
-      "Physical State": "Liquid",
+      "Packaging": "225 kg drum",
+      "Minimum Order Quantity": "1,000 kg",
+      "Physical Form": "Liquid",
       "Colour / Appearance": "Pale Yellow",
+      "Shelf Life": "3 months",
+      "Storage": "Below 25°C; cool and dry place",
     },
     techSpecs: {
-      "Resin Type": "Polyester",
-      "Base Type": "Orthophthalic",
-      "Grade": "Casting / Moulding, FRP Lamination, Electrical",
-      "Viscosity": "Medium",
+      "Resin Type": "Orthophthalic unsaturated polyester resin",
+      "Published Grade / Role": "DMC / SMC moulding compounds; FRP lamination; electrical components",
+      "Viscosity": "600 cPs (at 25°C)",
       "Curing Type": "Non-accelerated",
+      "Gel Time": "12–18 minutes (at 25°C; review current TDS for test context)",
+      "Styrene Content": "35%",
+      "Specific Gravity / Density": "1.12 g/cm³",
+      "Flash Point": "32°C (closed cup)",
     },
     tagline: "Orthophthalic resin for dough and sheet moulding compounds.",
     description:
-      "A premium-grade orthophthalic unsaturated polyester resin engineered for the production of Dough Moulding Compound (DMC) and Sheet Moulding Compound (SMC) composites. Pale yellow with medium viscosity and a non-accelerated cure, it provides mechanical strength, dimensional stability and processing efficiency for high-volume manufacturing with superior surface finishes. Supplied as a liquid in 225 kg drums, with a minimum order quantity of 1,000 kg, it is suited to casting, moulding, FRP lamination and electrical-grade compression moulding work where consistent batch-to-batch performance is required.",
+      "DMC/SMC Resin is Samrat Poly Resins' published orthophthalic unsaturated polyester resin for Dough Moulding Compound (DMC) and Sheet Moulding Compound (SMC) applications. The current Technical Data Sheet identifies one pale-yellow, non-accelerated liquid grade for DMC/SMC moulding compounds, electrical components and its listed application contexts. It is a moulding-compound product route, not a broad substitute for general-purpose FRP, sheet-grade or lamination resin. Review the current TDS, intended finished component and compound-system requirement together before procurement.",
     usageNote:
-      'DMC/SMC Resin is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> during compression moulding. Where a project needs a broader general-purpose grade rather than a moulding-compound-specific one, see our <a href="/products/gp-clear-resin/">GP Clear Resin</a>.',
+      'The current DMC/SMC TDS is the grade-specific reference for this product. <a href="/products/mekp-hardener/">MEKP Hardener</a> is the separate catalyst / initiator product route for published polyester-family systems, but this page does not provide a compound recipe or curing instructions. Where reinforcement is separately specified, see <a href="/products/fibre-glass-mat/">Glass Fiber</a> for its material role; the repository does not prescribe CSM 300, CSM 450 or a specific reinforcement format for this DMC/SMC Resin.',
     features: [
-      "High mechanical strength and dimensional stability",
-      "Fast curing with excellent fibre wet-out and low shrinkage",
-      "Chemical, corrosion and moisture resistance",
-      "Electrical insulation properties",
-      "Non-accelerated cure system for controlled processing",
-      "Supplied in 225 kg drums, minimum order 1000 kg",
+      "One published orthophthalic unsaturated polyester route for DMC and SMC moulding-compound applications",
+      "Pale-yellow, non-accelerated liquid resin with 600 cPs viscosity published in the current TDS",
+      "Current Technical Data Sheet lists 12–18 minute gel time at 25°C, 35% styrene content and 1.12 g/cm³ specific gravity",
+      "TDS-published applications include DMC/SMC moulding compounds, electrical housings, manhole covers, automotive panels, transport components, water tanks and sanitaryware",
+      "225 kg drum packaging and 1,000 kg MOQ published in the current TDS",
+      "Product selection can begin with the compound type, finished component, required specification and current documentation",
     ],
     applications: [
+      "DMC and SMC moulding compounds",
       "Electrical housings and manhole covers",
       "Automotive panels and transportation components",
       "Water tanks and sanitaryware",
-      "Dough and sheet moulding compound (DMC/SMC) production",
     ],
     industries: [
-      "Electrical & switchgear manufacturing",
-      "Automotive & transport components",
-      "Water tanks & sanitaryware",
-      "Compression moulding & DMC/SMC manufacturing",
+      "DMC / SMC moulding-compound procurement",
+      "Electrical-housing and manhole-cover manufacturing",
+      "Automotive and transportation-component manufacturing",
+      "Water-tank and sanitaryware manufacturing",
     ],
     whyChoose: [
-      "ISO 9001:2015 certified quality management system",
-      "Manufacturing polyester resins since 2017",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
-      "High mechanical strength with consistent dimensional stability",
-      "Supplied in 225 kg drums, minimum order 1,000 kg",
-      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+      "Published DMC/SMC-specific product route instead of a generic UPR selection",
+      "Current TDS provides the published liquid-resin supply data for the listed grade",
+      "One documented product listing for DMC and SMC contexts; confirm the actual compound/system requirement before ordering",
+      "Published 225 kg drum format, 1,000 kg MOQ, three-month shelf life and below-25°C storage guidance",
+      "Industrial RFQ can identify the DMC or SMC context, finished component, specification, quantity and delivery location",
     ],
     faqs: [
       {
         q: "What is DMC/SMC Resin?",
-        a: "DMC/SMC Resin is an orthophthalic unsaturated polyester resin engineered for producing Dough Moulding Compound (DMC) and Sheet Moulding Compound (SMC) composites used in electrical, automotive and sanitaryware components.",
+        a: "DMC/SMC Resin is Samrat Poly Resins' published orthophthalic unsaturated polyester resin for Dough Moulding Compound (DMC) and Sheet Moulding Compound (SMC) applications. The current TDS describes one pale-yellow, non-accelerated liquid grade for the listed moulding-compound contexts.",
       },
       {
-        q: "What is the viscosity and colour of DMC/SMC Resin?",
-        a: "It is pale yellow in colour with medium viscosity.",
+        q: "What does DMC mean?",
+        a: "In the current product TDS, DMC means Dough Moulding Compound. The document identifies this resin for DMC and SMC moulding-compound applications, but does not publish a separate DMC formulation or processing recipe.",
       },
       {
-        q: "How is DMC/SMC Resin cured?",
-        a: 'It is a non-accelerated system, catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> for room-temperature cure.',
+        q: "What does SMC mean?",
+        a: "In the current product TDS, SMC means Sheet Moulding Compound. It refers to the moulding-compound context for this product, not to Samrat's separately published FRP Sheet Grade Resin products.",
       },
       {
-        q: "Does DMC/SMC Resin offer electrical insulation properties?",
-        a: "Yes. It provides electrical insulation properties suited to electrical housings and switchgear components.",
+        q: "Is DMC the same as BMC?",
+        a: "The current product listing and TDS use DMC (Dough Moulding Compound) and SMC (Sheet Moulding Compound). They do not establish DMC as an interchangeable BMC term or publish a BMC product designation, so BMC should be confirmed separately rather than assumed.",
       },
       {
-        q: "What is DMC/SMC Resin used for?",
-        a: "It is used for electrical housings, manhole covers, automotive panels, transportation components, water tanks, sanitaryware and general DMC/SMC compression moulding.",
+        q: "Does Samrat publish separate DMC and SMC resin grades?",
+        a: "The repository contains one DMC/SMC Resin product and one current product-specific TDS that names both DMC and SMC contexts. It does not publish separate DMC-grade and SMC-grade formulations, so share the actual compound requirement for confirmation.",
       },
       {
-        q: "What packaging and minimum order quantity does DMC/SMC Resin come in?",
-        a: "It is supplied in 225 kg drums, with a minimum order quantity of 1,000 kg.",
+        q: "Is DMC/SMC Resin an unsaturated polyester resin?",
+        a: 'Yes. The current TDS identifies it as an orthophthalic unsaturated polyester resin. <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> is the broader family page; this product is the published DMC/SMC moulding-compound route within that family.',
+      },
+      {
+        q: "How is DMC/SMC Resin different from GP Resin?",
+        a: 'GP Resin is the general-purpose FRP route. DMC/SMC Resin is the separately published moulding-compound route. Review <a href="/products/gp-clear-resin/">GP Clear Resin</a> for general-purpose FRP requirements and use the DMC/SMC TDS for a documented moulding-compound requirement.',
+      },
+      {
+        q: "Is SMC Resin the same as Sheet Grade Resin?",
+        a: 'No. This product is published for Sheet Moulding Compound (SMC) context. <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a> and <a href="/products/roof-light-resin/">Roof Light Sheet Grade Resin</a> are separately published FRP sheet and panel product routes. Do not transfer product data between them.',
+      },
+      {
+        q: "Which technical specifications are published for DMC/SMC Resin?",
+        a: 'The current TDS publishes pale-yellow liquid appearance, 600 cPs viscosity at 25°C, non-accelerated curing type, 12–18 minute gel time at 25°C, 35% styrene content, 1.12 g/cm³ specific gravity, 32°C closed-cup flash point, three-month shelf life, below-25°C storage, 225 kg packaging and 1,000 kg MOQ. Use the current <a href="/tds/dmc-smc-resin-tds.pdf" target="_blank" rel="noopener">DMC/SMC Resin TDS</a> for the complete test context.',
+      },
+      {
+        q: "Does this product have documented low-shrink, electrical or fire ratings?",
+        a: "The TDS lists low shrinkage and electrical insulation among its key characteristics, but the repository does not provide a shrinkage value, low-profile or Class-A designation, electrical test result, fire rating or finished-part certification. Do not treat liquid-resin data as a finished compound or moulded-part rating.",
+      },
+      {
+        q: "What should I share for a DMC/SMC Resin quotation?",
+        a: "Share whether the requirement is DMC or SMC, the finished component or application, any stated product or performance specification, compound/process context if known, expected quantity, packaging need, delivery location and required documentation. This supports a focused discussion without requiring a public formulation recipe.",
       },
     ],
     relatedSlugs: [
+      "unsaturated-polyester-resin",
       "gp-clear-resin",
+      "sheet-grade-yellow-resin",
+      "lamination-resin",
+      "fire-retardant-resin",
       "mekp-hardener",
       "fibre-glass-mat",
     ],
@@ -2821,7 +2892,7 @@ export const products = [
     description:
       "MEKP Hardener (Methyl Ethyl Ketone Peroxide) is Samrat Poly Resins' published industrial catalyst / initiator for selected unsaturated polyester resin, vinyl ester resin and gelcoat systems. In FRP procurement and shop-floor language it may be called a hardener, catalyst or initiator because its role is to start curing in the selected resin system. It is not a structural resin, glass-fibre reinforcement or a finished-surface gelcoat. Review the actual resin grade, intended FRP application and current Technical Data Sheet before selecting the complete material system.",
     usageNote:
-      'MEKP Hardener is a separate catalyst component for published resin systems including <a href="/products/gp-clear-resin/">GP Clear Resin</a>, <a href="/products/gp-white-resin/">GP White Resin</a>, <a href="/products/gp-yellow-resin/">GP Yellow Resin</a>, <a href="/products/lamination-resin/">Lamination Resin</a>, <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a> and <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a>. <a href="/products/fibre-glass-mat/">Glass Fiber</a> is the separate reinforcement component, while <a href="/products/frp-polyester-pigment/">FRP Polyester Pigment</a> is a separate colour component. Confirm the published product data for the actual system; this page does not provide operating instructions.',
+      'MEKP Hardener is a separate catalyst component for published resin systems including <a href="/products/gp-clear-resin/">GP Clear Resin</a>, <a href="/products/gp-white-resin/">GP White Resin</a>, <a href="/products/gp-yellow-resin/">GP Yellow Resin</a>, <a href="/products/lamination-resin/">Lamination Resin</a>, <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a> and <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a>. <a href="/products/fibre-glass-mat/">Glass Fiber</a> is the separate reinforcement component, while <a href="/products/frp-polyester-pigment/">FRP Polyester Pigment</a> is a separate colour component. For a published compatible two-component epoxy route, review <a href="/products/epoxy-hardener/">Epoxy Hardener</a> and the <a href="/resources/epoxy-hardener-vs-mekp-hardener/">Epoxy Hardener vs MEKP guide</a> instead; MEKP does not replace that separate epoxy curing-agent component. Confirm the published product data for the actual system; this page does not provide operating instructions.',
     features: [
       "Published catalyst / initiator role for selected polyester-family resin systems",
       "Compatible-system guidance for unsaturated polyester, vinyl ester and gelcoat buyers",
@@ -2890,6 +2961,7 @@ export const products = [
       "gp-gelcoat-resin",
       "vinyl-ester-resin",
       "fibre-glass-mat",
+      "epoxy-hardener",
     ],
   },
   {

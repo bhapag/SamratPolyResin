@@ -18,6 +18,7 @@ const {
   title, cardImage, cardImageAlt, cardDescription, seo, intro, whatTheyManufacture, whySuitable,
   requiredCharacteristics, manufacturingProcess, advantages, commonProducts,
   faqs, relatedProductSlugs, ctaHeading, ctaText,
+  relatedLinksHeading, recommendedLinks,
   ogImage, ogImageAlt, ogImageWidth, ogImageHeight,
 } = application;
 
@@ -159,6 +160,20 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       </section>
     )}
 
+    {recommendedLinks && recommendedLinks.length > 0 && (
+      <section class="app-related-reading">
+        <h2>{relatedLinksHeading ?? 'Related technical resources'}</h2>
+        <div class="app-reading-grid">
+          {recommendedLinks.map((link) => (
+            <a href={link.href} class="app-reading-card">
+              <strong>{link.label}</strong>
+              <span>{link.description}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
     <section class="app-cta">
       <h2>{ctaHeading}</h2>
       <p>{ctaText}</p>
@@ -229,8 +244,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       box-shadow: 0 0 0 1px rgba(var(--gold-rgb), .3), 0 1px 4px rgba(0, 0, 0, .3);
     }
 
-    .app-faq, .app-related { margin-top: 3.2rem; }
-    .app-faq h2, .app-related h2 { font-size: clamp(1.3rem, 3vw, 1.6rem); margin-bottom: 1.2rem; }
+    .app-faq, .app-related, .app-related-reading { margin-top: 3.2rem; }
+    .app-faq h2, .app-related h2, .app-related-reading h2 { font-size: clamp(1.3rem, 3vw, 1.6rem); margin-bottom: 1.2rem; }
 
     .rel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.9rem; }
     .rel-card {
@@ -241,6 +256,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .rel-card:hover { border-color: var(--accent-gold); transform: translateY(-2px); box-shadow: var(--surface-shadow-hover); }
     .rel-name { font-family: var(--font-display); text-transform: uppercase; font-size: 0.95rem; }
     .rel-price { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-gold-light); }
+    .app-reading-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }
+    .app-reading-card { display: flex; flex-direction: column; gap: 0.45rem; padding: 1rem 1.1rem; background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest); transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium); }
+    .app-reading-card:hover { border-color: var(--accent-gold); transform: translateY(-2px); box-shadow: var(--surface-shadow-hover); }
+    .app-reading-card strong { font-family: var(--font-display); text-transform: uppercase; font-size: 0.95rem; }
+    .app-reading-card span { color: var(--ink-dim); font-size: 0.86rem; line-height: 1.5; }
 
     .app-cta {
       margin-top: 3.4rem; padding: clamp(1.8rem, 5vw, 2.6rem);

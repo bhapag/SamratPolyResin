@@ -167,7 +167,7 @@ export const applications = [
     },
     intro: "Corrugated FRP roofing and cladding sheets cover everything from factory sheds and warehouses to poultry farms and rural housing, prized for being lighter than metal roofing, resistant to rust, and far cheaper to install than a fully engineered structure. Behind every one of those sheets is a continuous or semi-continuous lamination process where resin has to wet out reinforcement evenly across a long, narrow sheet run without leaving the thin spots or dry patches that show up as cracks a few months later.",
     whatTheyManufacture: "Roofing sheet manufacturers produce corrugated and flat FRP sheets in standard profiles for industrial roofing, cladding and daylighting panels, along with ridge caps, flashing pieces and ancillary fittings used to complete a roof installation. Sheet widths and corrugation profiles are typically standardised to match common steel roofing profiles so FRP sheets can be installed alongside them.",
-    whySuitable: 'Roofing sheets are laminated in thin, wide sections, which makes wet-out speed and consistency more important than in thicker structural laminates — any dry patch shows up immediately as a weak point once the sheet is under roof load or wind uplift. <a href="/products/gp-clear-resin/">GP Clear Resin</a>\'s low 350–450 cPs viscosity spreads evenly across wide sheet moulds, and its sub-8-minute gel time keeps a continuous production line moving without long waits between sheets. Where the sheet needs to stay translucent for daylighting rather than opaque, Samrat Poly Resins\' dedicated <a href="/products/roof-light-resin/">Roof Light Sheet Grade Resin</a> is the more purpose-built choice — GP Clear Resin is the right fit for standard opaque roofing and cladding sheet runs.',
+    whySuitable: 'The site publishes <a href="/products/gp-clear-resin/">GP Clear Resin</a> as a general-purpose clear orthophthalic FRP route. Where a finished sheet has the documented roof-light, skylight or translucent-sheet requirement, review the separate <a href="/products/roof-light-resin/">Roof Light Sheet Grade Resin</a> page and current product-specific TDS instead of treating a broad clear-resin search as an automatic substitute.',
     requiredCharacteristics: [
       "Low viscosity for fast, even spread across wide, thin sheet moulds",
       "Fast, consistent gel time to keep a continuous or semi-continuous production line moving",
@@ -2351,5 +2351,64 @@ export const applications = [
     relatedProductSlugs: ["mekp-hardener", "fibre-glass-mat"],
     ctaHeading: "Need Vinyl Ester Resin for your pultrusion line?",
     ctaText: "Get a bulk quote for Vinyl Ester Resin, or talk to our technical team about cure kinetics and die temperature for your specific profile and production speed.",
+  },
+  {
+    slug: "roof-light-sheet-resin-for-frp-roofing-and-skylight-sheets",
+    title: "Roof Light Sheet Resin for FRP Roofing and Skylight Sheets",
+    cardImage: "frp-roofing-sheets.jpg",
+    cardImageAlt: "Corrugated FRP roofing sheets installed over an industrial structure",
+    cardDescription: "A selection-level guide for buyers evaluating the published water-white Roof Light Sheet Grade Resin route for FRP roof-light panels and skylight-sheet requirements.",
+    cardBenefit: "Separate the sheet requirement, resin role and reinforcement discussion.",
+    seo: {
+      title: "Roof Light Sheet Resin for FRP Roofing and Skylight Sheets",
+      description: "A buyer guide to the published Roof Light Sheet Grade Resin role for FRP roof-light panels, skylight sheets, greenhouses and industrial or commercial roofing contexts.",
+      keywords: ["Roof Light Sheet Resin", "FRP Roofing Sheet Resin", "FRP Skylight Resin", "Polyester Resin for FRP Roofing Sheets"],
+    },
+    intro: "Roof-light and skylight-sheet buyers are not simply choosing a generic polyester resin. They need to define the finished FRP sheet, required supplied appearance, reinforcement context and current product-specific documentation before evaluating the published Roof Light Sheet Grade Resin route.",
+    whatTheyManufacture: "FRP roof-light panels and skylight sheets are used as part of roofing systems where the finished component requirement calls for a roof-light or skylight role. The current Roof Light Resin TDS also lists greenhouses and industrial or commercial roofing as application contexts.",
+    whySuitable: 'Samrat Poly Resins publishes <a href="/products/roof-light-resin/">Roof Light Sheet Grade Resin</a> as a water-white orthophthalic unsaturated polyester resin for roof-light panels and skylight sheets. Its current TDS is the controlling document for the exact material under consideration. This application guide helps a buyer connect that published product role to the finished sheet; it does not confirm suitability for every roofing component.',
+    requiredCharacteristics: [
+      "A published roof-light, skylight, greenhouse or roofing-sheet context that matches the finished component",
+      "Water-white supplied appearance where that is required by the component brief",
+      "Current product-specific TDS review before a grade is approved",
+      "Separate review of the Glass Fiber reinforcement requirement rather than an assumed CSM weight",
+      "A documented finished-sheet, quantity and delivery requirement for a focused quotation discussion",
+    ],
+    manufacturingProcess: 'This is a material-selection page, not a roof-sheet manufacturing instruction. The resin, <a href="/products/fibre-glass-mat/">Glass Fiber</a>, any surface-finish requirement and the finished component specification are separate parts of the FRP system. Review the current TDS and the actual production or buyer specification with the supplier before deciding on a product route.',
+    advantages: [
+      "Connects the documented Roof Light Resin role to roof-light and skylight-sheet procurement questions",
+      "Keeps supplied appearance, resin grade and reinforcement as separate selection decisions",
+      "Helps buyers distinguish this route from Sheet Grade Yellow and general-purpose clear resin",
+      "Directs the selection conversation to the current TDS instead of assumptions from a generic resin name",
+    ],
+    commonProducts: [
+      "FRP roof-light panels",
+      "FRP skylight sheets",
+      "Greenhouse roofing components where the published product role is relevant",
+      "Industrial or commercial roofing-sheet components subject to current product-data review",
+    ],
+    faqs: [
+      {
+        q: "Does this application page specify a complete FRP roof-sheet construction?",
+        a: "No. It identifies the published Roof Light Resin route at buyer level. Reinforcement form, laminate design, surface requirements and final suitability must be reviewed against the actual component specification and current product data.",
+      },
+      {
+        q: "How is Roof Light Sheet Grade Resin different from Sheet Grade Yellow Resin?",
+        a: 'Roof Light Sheet Grade Resin is the published water-white route for roof-light and skylight-sheet intent. <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a> is the separately published pre-pigmented yellow route for sheet and panel applications. Start with the finished-sheet and supplied-appearance requirement.',
+      },
+      {
+        q: "Which other material should be reviewed for an FRP roof-light sheet?",
+        a: 'Review <a href="/products/fibre-glass-mat/">Glass Fiber Mat</a> as the separate reinforcement role. The current component specification should determine the reinforcement form and weight; this guide does not prescribe a laminate recipe.',
+      },
+    ],
+    relatedProductSlugs: ["fibre-glass-mat", "sheet-grade-yellow-resin", "gp-clear-resin", "gp-gelcoat-resin"],
+    relatedLinksHeading: "Continue the Roof Light Sheet Grade Resin review",
+    recommendedLinks: [
+      { href: "/resources/roof-light-resin-applications-frp-roofing-sheets/", label: "Review Roof Light Resin applications", description: "Use the published roof-light, skylight and roofing-sheet contexts before selection." },
+      { href: "/resources/sheet-grade-yellow-resin-vs-roof-light-resin/", label: "Compare Roof Light and Sheet Grade Yellow", description: "Separate water-white roof-light intent from the pre-pigmented yellow sheet/panel route." },
+      { href: "/resources/glass-fiber-and-polyester-resin-compatibility/", label: "Understand the Glass Fiber relationship", description: "Keep resin, reinforcement and surface-finish roles separate in an FRP system." },
+    ],
+    ctaHeading: "Discuss a Roof Light Sheet Grade Resin requirement",
+    ctaText: "Share the finished roof-light or roofing sheet, required supplied appearance, reinforcement context if known, expected quantity and delivery location so the product role and current TDS can be reviewed.",
   },
 ];

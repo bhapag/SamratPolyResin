@@ -159,6 +159,29 @@ const mekpRoleResources = published.filter((resource) => [
 const mekpDocumentationResources = published.filter((resource) => [
   'mekp-hardener-procurement-guide',
 ].includes(resource.slug));
+const epoxyHardenerAuthoritySlugs = new Set([
+  'what-is-epoxy-hardener',
+  'epoxy-resin-vs-epoxy-hardener',
+  'epoxy-hardener-compatibility-guide',
+  'epoxy-hardener-vs-mekp-hardener',
+  'epoxy-hardener-vs-uv-resin-curing',
+  'epoxy-hardener-for-clear-casting-and-art-resin',
+  'epoxy-hardener-procurement-guide',
+]);
+const epoxyHardenerAuthorityResources = published.filter((resource) => epoxyHardenerAuthoritySlugs.has(resource.slug));
+const epoxyHardenerFoundationResources = published.filter((resource) => [
+  'what-is-epoxy-hardener',
+  'epoxy-resin-vs-epoxy-hardener',
+].includes(resource.slug));
+const epoxyHardenerSelectionResources = published.filter((resource) => [
+  'epoxy-hardener-compatibility-guide',
+  'epoxy-hardener-for-clear-casting-and-art-resin',
+  'epoxy-hardener-vs-mekp-hardener',
+  'epoxy-hardener-vs-uv-resin-curing',
+].includes(resource.slug));
+const epoxyHardenerProcurementResources = published.filter((resource) => [
+  'epoxy-hardener-procurement-guide',
+].includes(resource.slug));
 const epoxyCastingAuthoritySlugs = new Set([
   'what-is-epoxy-clear-casting-resin',
   'casting-resin-vs-coating-resin',
@@ -216,8 +239,118 @@ const uvResinComparisonResources = published.filter((resource) => [
 const uvResinBuyerResources = published.filter((resource) => [
   'uv-resin-buyer-guide',
 ].includes(resource.slug));
+const sheetGradeAuthoritySlugs = new Set([
+  'what-is-sheet-grade-yellow-resin',
+  'applications-of-sheet-grade-yellow-resin',
+  'sheet-grade-yellow-resin-vs-gp-yellow-resin',
+  'sheet-grade-yellow-resin-vs-roof-light-resin',
+  'how-to-choose-resin-for-frp-sheet-and-panel-manufacturing',
+  'frp-sheet-resin-procurement-guide',
+]);
+const sheetGradeAuthorityResources = published.filter((resource) => sheetGradeAuthoritySlugs.has(resource.slug));
+const sheetGradeFoundationResources = published.filter((resource) => [
+  'what-is-sheet-grade-yellow-resin',
+  'applications-of-sheet-grade-yellow-resin',
+].includes(resource.slug));
+const sheetGradeDecisionResources = published.filter((resource) => [
+  'sheet-grade-yellow-resin-vs-gp-yellow-resin',
+  'sheet-grade-yellow-resin-vs-roof-light-resin',
+  'how-to-choose-resin-for-frp-sheet-and-panel-manufacturing',
+].includes(resource.slug));
+const sheetGradeProcurementResources = published.filter((resource) => [
+  'frp-sheet-resin-procurement-guide',
+].includes(resource.slug));
+const roofLightAuthoritySlugs = new Set([
+  'what-is-roof-light-sheet-grade-resin',
+  'roof-light-resin-applications-frp-roofing-sheets',
+  'roof-light-resin-vs-gp-clear-resin',
+  'frp-roofing-sheet-resin-selection-guide',
+  'roof-light-resin-procurement-guide',
+]);
+const roofLightAuthorityResources = published.filter((resource) => roofLightAuthoritySlugs.has(resource.slug));
+const roofLightFoundationResources = published.filter((resource) => [
+  'what-is-roof-light-sheet-grade-resin',
+  'roof-light-resin-applications-frp-roofing-sheets',
+].includes(resource.slug));
+const roofLightDecisionResources = published.filter((resource) => [
+  'sheet-grade-yellow-resin-vs-roof-light-resin',
+  'roof-light-resin-vs-gp-clear-resin',
+  'frp-roofing-sheet-resin-selection-guide',
+].includes(resource.slug));
+const roofLightProcurementResources = published.filter((resource) => [
+  'roof-light-resin-procurement-guide',
+].includes(resource.slug));
+const dmcSmcAuthoritySlugs = new Set([
+  'what-is-dmc-smc-resin',
+  'dmc-vs-smc',
+  'smc-resin-vs-sheet-grade-resin',
+  'dmc-smc-resin-vs-gp-resin',
+  'dmc-smc-resin-applications',
+  'dmc-smc-resin-technical-specifications',
+  'dmc-smc-resin-procurement-checklist',
+]);
+const dmcSmcAuthorityResources = published.filter((resource) => dmcSmcAuthoritySlugs.has(resource.slug));
+const dmcSmcFoundationResources = published.filter((resource) => [
+  'what-is-dmc-smc-resin',
+  'dmc-vs-smc',
+].includes(resource.slug));
+const dmcSmcDecisionResources = published.filter((resource) => [
+  'smc-resin-vs-sheet-grade-resin',
+  'dmc-smc-resin-vs-gp-resin',
+  'dmc-smc-resin-applications',
+].includes(resource.slug));
+const dmcSmcVerificationResources = published.filter((resource) => [
+  'dmc-smc-resin-technical-specifications',
+  'dmc-smc-resin-procurement-checklist',
+].includes(resource.slug));
+const fireRetardantAuthoritySlugs = new Set([
+  'what-is-fire-retardant-resin',
+  'fire-retardant-polyester-resin-applications-and-benefits',
+  'fire-retardant-resin-vs-gp-resin',
+  'fire-retardant-resin-fireproof-vs-fire-retardant',
+  'frp-fire-performance-requirements-buyer-guide',
+  'fire-retardant-resin-and-glass-fiber',
+  'fire-retardant-resin-procurement-checklist',
+]);
+const fireRetardantAuthorityResources = published.filter((resource) => fireRetardantAuthoritySlugs.has(resource.slug));
+const fireRetardantFoundationResources = published.filter((resource) => [
+  'what-is-fire-retardant-resin',
+  'fire-retardant-polyester-resin-applications-and-benefits',
+].includes(resource.slug));
+const fireRetardantDecisionResources = published.filter((resource) => [
+  'fire-retardant-resin-vs-gp-resin',
+  'fire-retardant-resin-fireproof-vs-fire-retardant',
+  'frp-fire-performance-requirements-buyer-guide',
+].includes(resource.slug));
+const fireRetardantSystemResources = published.filter((resource) => [
+  'fire-retardant-resin-and-glass-fiber',
+  'fire-retardant-resin-procurement-checklist',
+].includes(resource.slug));
+const isoFireRetardantAuthoritySlugs = new Set([
+  'what-is-iso-fire-retardant-resin',
+  'iso-fire-retardant-resin-vs-fire-retardant-resin',
+  'iso-fire-retardant-resin-applications',
+  'iso-fire-retardant-resin-vs-upr',
+  'iso-fire-retardant-resin-vs-vinyl-ester-resin',
+  'iso-fire-retardant-resin-fire-requirements',
+  'iso-fire-retardant-resin-procurement-checklist',
+]);
+const isoFireRetardantAuthorityResources = published.filter((resource) => isoFireRetardantAuthoritySlugs.has(resource.slug));
+const isoFireRetardantFoundationResources = published.filter((resource) => [
+  'what-is-iso-fire-retardant-resin',
+  'iso-fire-retardant-resin-applications',
+].includes(resource.slug));
+const isoFireRetardantDecisionResources = published.filter((resource) => [
+  'iso-fire-retardant-resin-vs-fire-retardant-resin',
+  'iso-fire-retardant-resin-vs-upr',
+  'iso-fire-retardant-resin-vs-vinyl-ester-resin',
+].includes(resource.slug));
+const isoFireRetardantRequirementsResources = published.filter((resource) => [
+  'iso-fire-retardant-resin-fire-requirements',
+  'iso-fire-retardant-resin-procurement-checklist',
+].includes(resource.slug));
 const gpAuthorityResourcesWithoutUpr = gpAuthorityResources.filter((resource) => !uprAuthoritySlugs.has(resource.slug));
-const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug) && !glassFiberAuthoritySlugs.has(resource.slug) && !pigmentAuthoritySlugs.has(resource.slug) && !mekpAuthoritySlugs.has(resource.slug) && !epoxyCastingAuthoritySlugs.has(resource.slug) && !epoxyArtAuthoritySlugs.has(resource.slug) && !uvResinAuthoritySlugs.has(resource.slug));
+const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug) && !glassFiberAuthoritySlugs.has(resource.slug) && !pigmentAuthoritySlugs.has(resource.slug) && !mekpAuthoritySlugs.has(resource.slug) && !epoxyHardenerAuthoritySlugs.has(resource.slug) && !epoxyCastingAuthoritySlugs.has(resource.slug) && !epoxyArtAuthoritySlugs.has(resource.slug) && !uvResinAuthoritySlugs.has(resource.slug) && !sheetGradeAuthoritySlugs.has(resource.slug) && !roofLightAuthoritySlugs.has(resource.slug) && !dmcSmcAuthoritySlugs.has(resource.slug) && !fireRetardantAuthoritySlugs.has(resource.slug) && !isoFireRetardantAuthoritySlugs.has(resource.slug));
 ---
 <Base
   title="Knowledge Centre"
@@ -450,6 +583,44 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
         </section>
       )}
 
+      {epoxyHardenerAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="epoxy-hardener-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Epoxy system knowledge hub</p>
+              <h2 id="epoxy-hardener-hub-heading">Epoxy Hardener Knowledge Hub</h2>
+              <p>Identify the separate polyamide hardener role, confirm the exact epoxy resin pairing, distinguish it from MEKP and UV routes, then use the current TDS to prepare a focused industrial enquiry.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/epoxy-hardener/" class="btn btn-solid">View Epoxy Hardener</a>
+              <a href="/tds/epoxy-hardener-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Epoxy Hardener TDS</a>
+              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href="/contact/" class="btn">Discuss an epoxy-system requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="epoxy-hardener-foundation-heading">
+              <h3 id="epoxy-hardener-foundation-heading">1. Identify the separate component roles</h3>
+              <div class="kc-grid">
+                {epoxyHardenerFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="epoxy-hardener-selection-heading">
+              <h3 id="epoxy-hardener-selection-heading">2. Confirm the product route and compatibility</h3>
+              <div class="kc-grid">
+                {epoxyHardenerSelectionResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="epoxy-hardener-procurement-heading">
+              <h3 id="epoxy-hardener-procurement-heading">3. Review documentation and prepare an RFQ</h3>
+              <div class="kc-grid">
+                {epoxyHardenerProcurementResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
+
       {epoxyCastingAuthorityResources.length > 0 && (
         <section class="kc-focus" aria-labelledby="epoxy-casting-resin-hub-heading">
           <div class="kc-focus-head">
@@ -550,6 +721,196 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
               <h3 id="uv-resin-buyer-heading">3. Review documentation and prepare the enquiry</h3>
               <div class="kc-grid">
                 {uvResinBuyerResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
+
+      {sheetGradeAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="sheet-grade-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Sheet and panel knowledge hub</p>
+              <h2 id="sheet-grade-resin-hub-heading">Sheet Grade Yellow Resin Knowledge Hub</h2>
+              <p>Start with the published pre-pigmented yellow sheet/panel role, separate it from transparent-yellow GP Resin and water-white roof-light resin, then document the FRP material-system and quotation requirements.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/sheet-grade-yellow-resin/" class="btn btn-solid">View Sheet Grade Yellow Resin</a>
+              <a href="/tds/sheet-grade-yellow-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Sheet Grade Yellow TDS</a>
+              <a href="/contact/" class="btn">Discuss a sheet or panel requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="sheet-grade-foundation-heading">
+              <h3 id="sheet-grade-foundation-heading">1. Define the published sheet and panel role</h3>
+              <div class="kc-grid">
+                {sheetGradeFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="sheet-grade-decision-heading">
+              <h3 id="sheet-grade-decision-heading">2. Separate related resin routes</h3>
+              <div class="kc-grid">
+                {sheetGradeDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="sheet-grade-procurement-heading">
+              <h3 id="sheet-grade-procurement-heading">3. Review documents and prepare a quotation</h3>
+              <div class="kc-grid">
+                {sheetGradeProcurementResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
+
+      {dmcSmcAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="dmc-smc-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Moulding-compound resin selection</p>
+              <h2 id="dmc-smc-resin-hub-heading">DMC / SMC Resin Knowledge Hub</h2>
+              <p>Start with the published Dough and Sheet Moulding Compound terms, separate them from conventional FRP sheet-grade and general-purpose resin routes, then review liquid-resin data, finished-system boundaries and RFQ details.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/dmc-smc-resin/" class="btn btn-solid">View DMC/SMC Resin</a>
+              <a href="/resources/dmc-vs-smc/" class="btn">Compare DMC and SMC</a>
+              <a href="/tds/dmc-smc-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download DMC/SMC Resin TDS</a>
+              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href="/contact/" class="btn">Discuss a DMC or SMC requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="dmc-smc-foundation-heading">
+              <h3 id="dmc-smc-foundation-heading">1. Define the DMC and SMC terms in the published product route</h3>
+              <div class="kc-grid">
+                {dmcSmcFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="dmc-smc-decision-heading">
+              <h3 id="dmc-smc-decision-heading">2. Separate moulding-compound selection from sheet-grade, GP and application questions</h3>
+              <div class="kc-grid">
+                {dmcSmcDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="dmc-smc-verification-heading">
+              <h3 id="dmc-smc-verification-heading">3. Review the current TDS and prepare a focused RFQ</h3>
+              <div class="kc-grid">
+                {dmcSmcVerificationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
+
+      {roofLightAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="roof-light-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">FRP roofing-sheet knowledge hub</p>
+              <h2 id="roof-light-resin-hub-heading">Roof Light Sheet Grade Resin Knowledge Hub</h2>
+              <p>Start with the published water-white roof-light and skylight-sheet role, compare it with the separate yellow sheet and GP Clear routes, then review the FRP material-system context and current product-specific TDS.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/roof-light-resin/" class="btn btn-solid">View Roof Light Sheet Grade Resin</a>
+              <a href="/tds/roof-light-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Roof Light Resin TDS</a>
+              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href="/applications/roof-light-sheet-resin-for-frp-roofing-and-skylight-sheets/" class="btn">Explore roof-light sheet context</a>
+              <a href="/about/" class="btn">Company and facility context</a>
+              <a href="/contact/" class="btn">Discuss a roofing-sheet requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="roof-light-foundation-heading">
+              <h3 id="roof-light-foundation-heading">1. Define the published roof-light and finished-sheet role</h3>
+              <div class="kc-grid">
+                {roofLightFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="roof-light-decision-heading">
+              <h3 id="roof-light-decision-heading">2. Separate the relevant resin routes and material-system questions</h3>
+              <div class="kc-grid">
+                {roofLightDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="roof-light-procurement-heading">
+              <h3 id="roof-light-procurement-heading">3. Review the TDS and prepare a Roof Light Resin quotation</h3>
+              <div class="kc-grid">
+                {roofLightProcurementResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
+
+      {fireRetardantAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="fire-retardant-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">FRP fire-performance selection</p>
+              <h2 id="fire-retardant-resin-hub-heading">Fire Retardant Resin Knowledge Hub</h2>
+              <p>Use the published Fire Retardant Resin product data as a starting point, then separate application categories, finished-system requirements, material roles and quotation details before specifying an FR grade.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/fire-retardant-resin/" class="btn btn-solid">View Fire Retardant Resin</a>
+              <a href="/tds/fire-retardant-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Fire Retardant Resin TDS</a>
+              <a href="/contact/" class="btn">Discuss an FR Resin requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="fire-retardant-foundation-heading">
+              <h3 id="fire-retardant-foundation-heading">1. Understand the published product role and application categories</h3>
+              <div class="kc-grid">
+                {fireRetardantFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="fire-retardant-decision-heading">
+              <h3 id="fire-retardant-decision-heading">2. Compare product roles and define the actual requirement</h3>
+              <div class="kc-grid">
+                {fireRetardantDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="fire-retardant-system-heading">
+              <h3 id="fire-retardant-system-heading">3. Review material roles and prepare a focused enquiry</h3>
+              <div class="kc-grid">
+                {fireRetardantSystemResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
+
+      {isoFireRetardantAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="iso-fire-retardant-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Isophthalic FR resin selection</p>
+              <h2 id="iso-fire-retardant-resin-hub-heading">ISO Fire Retardant Resin Knowledge Hub</h2>
+              <p>Explore the published ISO / isophthalic FR resin route, separate it from the standard Fire Retardant Resin and broader UPR routes, then review finished-system requirements and RFQ details. Here, ISO refers to isophthalic chemistry, not ISO certification.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/iso-fire-retardant-resin/" class="btn btn-solid">View ISO Fire Retardant Resin</a>
+              <a href="/tds/iso-fire-retardant-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download ISO FR Resin TDS</a>
+              <a href="/contact/" class="btn">Discuss an ISO FR requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="iso-fire-retardant-foundation-heading">
+              <h3 id="iso-fire-retardant-foundation-heading">1. Understand the ISO / isophthalic product route and listed applications</h3>
+              <div class="kc-grid">
+                {isoFireRetardantFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="iso-fire-retardant-decision-heading">
+              <h3 id="iso-fire-retardant-decision-heading">2. Compare published resin routes without assuming a performance hierarchy</h3>
+              <div class="kc-grid">
+                {isoFireRetardantDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="iso-fire-retardant-requirements-heading">
+              <h3 id="iso-fire-retardant-requirements-heading">3. Define the finished-system requirement and prepare an enquiry</h3>
+              <div class="kc-grid">
+                {isoFireRetardantRequirementsResources.map((resource) => <ResourceCard resource={resource} />)}
               </div>
             </section>
           </div>

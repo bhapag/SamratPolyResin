@@ -141,6 +141,16 @@ const epoxyArtAuthoritySlugs = new Set([
   'epoxy-art-resin-buyer-guide',
 ]);
 const isEpoxyArtAuthorityResource = epoxyArtAuthoritySlugs.has(resource.slug);
+const epoxyHardenerAuthoritySlugs = new Set([
+  'what-is-epoxy-hardener',
+  'epoxy-resin-vs-epoxy-hardener',
+  'epoxy-hardener-compatibility-guide',
+  'epoxy-hardener-vs-mekp-hardener',
+  'epoxy-hardener-vs-uv-resin-curing',
+  'epoxy-hardener-for-clear-casting-and-art-resin',
+  'epoxy-hardener-procurement-guide',
+]);
+const isEpoxyHardenerAuthorityResource = epoxyHardenerAuthoritySlugs.has(resource.slug);
 const uvResinAuthoritySlugs = new Set([
   'what-is-uv-resin',
   'applications-of-uv-resin',
@@ -150,14 +160,61 @@ const uvResinAuthoritySlugs = new Set([
   'uv-resin-buyer-guide',
 ]);
 const isUvResinAuthorityResource = uvResinAuthoritySlugs.has(resource.slug);
-const talkToTeamLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(isGlassFiberAuthorityResource
+const sheetGradeAuthoritySlugs = new Set([
+  'what-is-sheet-grade-yellow-resin',
+  'applications-of-sheet-grade-yellow-resin',
+  'sheet-grade-yellow-resin-vs-gp-yellow-resin',
+  'sheet-grade-yellow-resin-vs-roof-light-resin',
+  'how-to-choose-resin-for-frp-sheet-and-panel-manufacturing',
+  'frp-sheet-resin-procurement-guide',
+]);
+const isSheetGradeAuthorityResource = sheetGradeAuthoritySlugs.has(resource.slug);
+const roofLightAuthoritySlugs = new Set([
+  'what-is-roof-light-sheet-grade-resin',
+  'roof-light-resin-applications-frp-roofing-sheets',
+  'roof-light-resin-vs-gp-clear-resin',
+  'frp-roofing-sheet-resin-selection-guide',
+  'roof-light-resin-procurement-guide',
+]);
+const isRoofLightAuthorityResource = roofLightAuthoritySlugs.has(resource.slug);
+const isoFireRetardantAuthoritySlugs = new Set([
+  'what-is-iso-fire-retardant-resin',
+  'iso-fire-retardant-resin-vs-fire-retardant-resin',
+  'iso-fire-retardant-resin-applications',
+  'iso-fire-retardant-resin-vs-upr',
+  'iso-fire-retardant-resin-vs-vinyl-ester-resin',
+  'iso-fire-retardant-resin-fire-requirements',
+  'iso-fire-retardant-resin-procurement-checklist',
+]);
+const isIsoFireRetardantAuthorityResource = isoFireRetardantAuthoritySlugs.has(resource.slug);
+const dmcSmcAuthoritySlugs = new Set([
+  'what-is-dmc-smc-resin',
+  'dmc-vs-smc',
+  'smc-resin-vs-sheet-grade-resin',
+  'dmc-smc-resin-vs-gp-resin',
+  'dmc-smc-resin-applications',
+  'dmc-smc-resin-technical-specifications',
+  'dmc-smc-resin-procurement-checklist',
+]);
+const isDmcSmcAuthorityResource = dmcSmcAuthoritySlugs.has(resource.slug);
+const talkToTeamLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(isDmcSmcAuthorityResource
+  ? "Hi, I'd like to discuss a DMC/SMC Resin requirement with Samrat Poly Resins. My DMC or SMC context, finished component, specification, quantity, delivery location and documentation requirement are:"
+  : isIsoFireRetardantAuthorityResource
+  ? "Hi, I'd like to discuss an ISO Fire Retardant Resin requirement with Samrat Poly Resins. The ISO designation refers to isophthalic chemistry. My FRP component, required documentation or fire requirement, quantity and delivery location are:"
+  : isGlassFiberAuthorityResource
   ? "Hi, I'd like to discuss a Glass Fiber / CSM reinforcement requirement with Samrat Poly Resins."
   : isPigmentAuthorityResource
   ? "Hi, I'd like to discuss an FRP Polyester Pigment requirement with Samrat Poly Resins."
   : isUvResinAuthorityResource
   ? "Hi, I'd like to discuss a UV Resin requirement with Samrat Poly Resins."
+  : isSheetGradeAuthorityResource
+  ? "Hi, I'd like to discuss a Sheet Grade Yellow Resin requirement for an FRP sheet or panel with Samrat Poly Resins."
+  : isRoofLightAuthorityResource
+  ? "Hi, I'd like to discuss a Roof Light Sheet Grade Resin requirement for an FRP roofing or roof-light sheet with Samrat Poly Resins."
   : isEpoxyArtAuthorityResource
   ? "Hi, I'd like to discuss an Epoxy Art Resin requirement with Samrat Poly Resins."
+  : isEpoxyHardenerAuthorityResource
+  ? "Hi, I'd like to discuss a compatible Epoxy Hardener and epoxy resin-system requirement with Samrat Poly Resins. My exact resin product, intended application, quantity and delivery location are:"
   : isButtonAuthorityResource
   ? "Hi, I'd like to discuss a Button Grade Resin application with Samrat Poly Resins."
   : isGpQuartzAuthorityResource
@@ -428,11 +485,35 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     )}
 
     <section class="article-cta">
-      <h2>{isGlassFiberAuthorityResource ? 'Discuss your Glass Fiber / CSM requirement with Samrat Poly Resins' : isPigmentAuthorityResource ? 'Discuss your FRP Polyester Pigment requirement with Samrat Poly Resins' : isUvResinAuthorityResource ? 'Discuss your UV Resin requirement with Samrat Poly Resins' : isEpoxyArtAuthorityResource ? 'Discuss your Epoxy Art Resin requirement with Samrat Poly Resins' : isButtonAuthorityResource ? 'Discuss your Button Grade Resin application with Samrat Poly Resins' : isGpQuartzAuthorityResource ? 'Discuss your GP Quartz Resin requirement with Samrat Poly Resins' : isGpWhiteAuthorityResource ? 'Discuss your GP White Resin requirement with Samrat Poly Resins' : isUprAuthorityResource ? 'Discuss your Unsaturated Polyester Resin requirement with Samrat Poly Resins' : isGelcoatAuthorityResource ? 'Discuss your Gelcoat Resin application with Samrat Poly Resins' : isLaminationAuthorityResource ? 'Discuss your Lamination Resin application with Samrat Poly Resins' : isGpYellowUsesResource ? 'Discuss your GP Yellow Resin application with Samrat Poly Resins' : isGpAuthorityResource ? 'Discuss your GP Resin application with Samrat Poly Resins' : 'Need help selecting the right polyester resin?'}</h2>
-      <p>{isGlassFiberAuthorityResource ? 'Share the intended FRP component, whether CSM 300 or CSM 450 is required or under review, resin system if known, quantity, delivery location and any drawing or purchase specification so the reinforcement requirement can be understood before a quote discussion.' : isPigmentAuthorityResource ? 'Share the FRP component, intended resin or gelcoat system if known, colour reference or appearance requirement, quantity and delivery location so the correct published product role can be discussed before a quote conversation.' : isUvResinAuthorityResource ? 'Share the intended application, industry or end use, finished product, clear or finish requirement, any stated UV/LED equipment requirement, quantity and delivery location so the published UV Resin role can be discussed before a quote conversation.' : isEpoxyArtAuthorityResource ? 'Share the finished artwork or decorative surface, substrate if known, whether the requirement is an open surface coat or contained cast, expected quantity, finish requirement and delivery location so the published Art Resin role can be discussed before a quote conversation.' : isButtonAuthorityResource ? 'Share the intended button or small decorative moulding, clarity or pigment-colour requirement, casting method if known, quantity and delivery location so the requirement can be understood before a quote discussion.' : isGpQuartzAuthorityResource ? 'Share the intended engineered-stone, artificial-quartz, artificial-marble or mineral-filled product; filler or mineral type; process if known; expected quantity; finish requirement; and delivery location so the relevant published product role can be discussed before a quote discussion.' : isGpWhiteAuthorityResource ? 'Share the FRP component, whether water-white supplied appearance or a visible surface finish is required, manufacturing process, quantity and delivery location so the relevant published product role can be discussed before a quote discussion.' : isUprAuthorityResource ? 'Share the component, process, required product role or finish, any stated specification, quantity and delivery location so the relevant published resin grade can be discussed before a quote discussion.' : isGelcoatAuthorityResource ? 'Share the moulded component, surface-finish requirement, application method, quantity and delivery location so the requirement can be understood before a quote discussion.' : isLaminationAuthorityResource ? 'Share the component, substrate or reinforcement, process, quantity and delivery location so the requirement can be understood before a quote discussion.' : isGpYellowUsesResource ? 'Share the FRP component, production method, quantity, finished-build-up context and delivery location so the requirement can be understood before a quote discussion.' : isGpAuthorityResource ? 'Share the application, process, quantity and delivery location so the requirement can be understood before a quote discussion.' : 'Our technical team can help you choose the most suitable resin for your manufacturing requirements.'}</p>
+      {isDmcSmcAuthorityResource ? (
+        <>
+          <h2>Discuss your DMC / SMC Resin requirement with Samrat Poly Resins</h2>
+          <p>Share whether the requirement is DMC or SMC, the finished component, any stated liquid-resin or finished-compound requirement, quantity, packaging need, delivery location and documentation requirement. The published route is one orthophthalic UPR product; it does not establish a BMC designation, compound formulation or finished-part rating.</p>
+        </>
+      ) : (
+      <h2>{isIsoFireRetardantAuthorityResource ? 'Discuss your ISO Fire Retardant Resin requirement with Samrat Poly Resins' : isGlassFiberAuthorityResource ? 'Discuss your Glass Fiber / CSM requirement with Samrat Poly Resins' : isPigmentAuthorityResource ? 'Discuss your FRP Polyester Pigment requirement with Samrat Poly Resins' : isUvResinAuthorityResource ? 'Discuss your UV Resin requirement with Samrat Poly Resins' : isEpoxyArtAuthorityResource ? 'Discuss your Epoxy Art Resin requirement with Samrat Poly Resins' : isButtonAuthorityResource ? 'Discuss your Button Grade Resin application with Samrat Poly Resins' : isGpQuartzAuthorityResource ? 'Discuss your GP Quartz Resin requirement with Samrat Poly Resins' : isGpWhiteAuthorityResource ? 'Discuss your GP White Resin requirement with Samrat Poly Resins' : isUprAuthorityResource ? 'Discuss your Unsaturated Polyester Resin requirement with Samrat Poly Resins' : isGelcoatAuthorityResource ? 'Discuss your Gelcoat Resin application with Samrat Poly Resins' : isLaminationAuthorityResource ? 'Discuss your Lamination Resin application with Samrat Poly Resins' : isGpYellowUsesResource ? 'Discuss your GP Yellow Resin application with Samrat Poly Resins' : isGpAuthorityResource ? 'Discuss your GP Resin application with Samrat Poly Resins' : 'Need help selecting the right polyester resin?'}</h2>
+      <p>{isIsoFireRetardantAuthorityResource ? 'Share the finished FRP component, whether the isophthalic ISO FR route is required, the original fire-performance requirement if one is specified, documentation needed, service environment where relevant, quantity and delivery location. ISO here refers to isophthalic chemistry, not certification.' : isGlassFiberAuthorityResource ? 'Share the intended FRP component, whether CSM 300 or CSM 450 is required or under review, resin system if known, quantity, delivery location and any drawing or purchase specification so the reinforcement requirement can be understood before a quote discussion.' : isPigmentAuthorityResource ? 'Share the FRP component, intended resin or gelcoat system if known, colour reference or appearance requirement, quantity and delivery location so the correct published product role can be discussed before a quote conversation.' : isUvResinAuthorityResource ? 'Share the intended application, industry or end use, finished product, clear or finish requirement, any stated UV/LED equipment requirement, quantity and delivery location so the published UV Resin role can be discussed before a quote conversation.' : isEpoxyArtAuthorityResource ? 'Share the finished artwork or decorative surface, substrate if known, whether the requirement is an open surface coat or contained cast, expected quantity, finish requirement and delivery location so the published Art Resin role can be discussed before a quote conversation.' : isButtonAuthorityResource ? 'Share the intended button or small decorative moulding, clarity or pigment-colour requirement, casting method if known, quantity and delivery location so the requirement can be understood before a quote discussion.' : isGpQuartzAuthorityResource ? 'Share the intended engineered-stone, artificial-quartz, artificial-marble or mineral-filled product; filler or mineral type; process if known; expected quantity; finish requirement; and delivery location so the relevant published product role can be discussed before a quote discussion.' : isGpWhiteAuthorityResource ? 'Share the FRP component, whether water-white supplied appearance or a visible surface finish is required, manufacturing process, quantity and delivery location so the relevant published product role can be discussed before a quote discussion.' : isUprAuthorityResource ? 'Share the component, process, required product role or finish, any stated specification, quantity and delivery location so the relevant published resin grade can be discussed before a quote discussion.' : isGelcoatAuthorityResource ? 'Share the moulded component, surface-finish requirement, application method, quantity and delivery location so the requirement can be understood before a quote discussion.' : isLaminationAuthorityResource ? 'Share the component, substrate or reinforcement, process, quantity and delivery location so the requirement can be understood before a quote discussion.' : isGpYellowUsesResource ? 'Share the FRP component, production method, quantity, finished-build-up context and delivery location so the requirement can be understood before a quote discussion.' : isGpAuthorityResource ? 'Share the application, process, quantity and delivery location so the requirement can be understood before a quote discussion.' : 'Our technical team can help you choose the most suitable resin for your manufacturing requirements.'}</p>
+      )}
       <div class="article-cta-buttons">
-        <a href="/contact/" class="btn btn-solid">{isGlassFiberAuthorityResource ? 'Discuss Glass Fiber requirement' : isPigmentAuthorityResource ? 'Discuss FRP Polyester Pigment' : isUvResinAuthorityResource ? 'Discuss UV Resin' : isEpoxyArtAuthorityResource ? 'Discuss Epoxy Art Resin' : isButtonAuthorityResource ? 'Discuss Button Grade Resin' : isGpQuartzAuthorityResource ? 'Discuss GP Quartz Resin' : isGpWhiteAuthorityResource ? 'Discuss GP White Resin' : isUprAuthorityResource ? 'Discuss UPR requirement' : isGelcoatAuthorityResource ? 'Discuss Gelcoat Resin application' : isLaminationAuthorityResource ? 'Discuss Lamination Resin application' : isGpYellowUsesResource ? 'Discuss GP Yellow Resin application' : isGpAuthorityResource ? 'Discuss GP Resin application' : 'Request a Quote'}</a>
-        <a href={talkToTeamLink} class="btn btn-wa" target="_blank" rel="noopener">{isGlassFiberAuthorityResource || isPigmentAuthorityResource || isUvResinAuthorityResource || isEpoxyArtAuthorityResource || isButtonAuthorityResource || isGpQuartzAuthorityResource || isGpWhiteAuthorityResource || isUprAuthorityResource || isGelcoatAuthorityResource || isLaminationAuthorityResource || isGpAuthorityResource ? 'WhatsApp Samrat Poly Resins' : 'Contact Technical Team'}</a>
+        {isDmcSmcAuthorityResource ? (
+          <a href="/contact/" class="btn btn-solid">Discuss DMC / SMC requirement</a>
+        ) : (
+        <a href="/contact/" class="btn btn-solid">{isIsoFireRetardantAuthorityResource ? 'Discuss ISO FR requirement' : isGlassFiberAuthorityResource ? 'Discuss Glass Fiber requirement' : isPigmentAuthorityResource ? 'Discuss FRP Polyester Pigment' : isUvResinAuthorityResource ? 'Discuss UV Resin' : isEpoxyArtAuthorityResource ? 'Discuss Epoxy Art Resin' : isButtonAuthorityResource ? 'Discuss Button Grade Resin' : isGpQuartzAuthorityResource ? 'Discuss GP Quartz Resin' : isGpWhiteAuthorityResource ? 'Discuss GP White Resin' : isUprAuthorityResource ? 'Discuss UPR requirement' : isGelcoatAuthorityResource ? 'Discuss Gelcoat Resin application' : isLaminationAuthorityResource ? 'Discuss Lamination Resin application' : isGpYellowUsesResource ? 'Discuss GP Yellow Resin application' : isGpAuthorityResource ? 'Discuss GP Resin application' : 'Request a Quote'}</a>
+        )}
+        {isDmcSmcAuthorityResource ? (
+          <a href={talkToTeamLink} class="btn btn-wa" target="_blank" rel="noopener">WhatsApp Samrat Poly Resins</a>
+        ) : (
+        <a href={talkToTeamLink} class="btn btn-wa" target="_blank" rel="noopener">{isIsoFireRetardantAuthorityResource || isGlassFiberAuthorityResource || isPigmentAuthorityResource || isUvResinAuthorityResource || isEpoxyArtAuthorityResource || isButtonAuthorityResource || isGpQuartzAuthorityResource || isGpWhiteAuthorityResource || isUprAuthorityResource || isGelcoatAuthorityResource || isLaminationAuthorityResource || isGpAuthorityResource ? 'WhatsApp Samrat Poly Resins' : 'Contact Technical Team'}</a>
+        )}
+        {isDmcSmcAuthorityResource && <a href="/products/dmc-smc-resin/" class="btn">View DMC/SMC Resin</a>}
+        {isDmcSmcAuthorityResource && <a href="/resources/#dmc-smc-resin-hub-heading" class="btn">Explore DMC / SMC guides</a>}
+        {isDmcSmcAuthorityResource && <a href="/tds/dmc-smc-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Review DMC/SMC Resin TDS</a>}
+        {isDmcSmcAuthorityResource && <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>}
+        {isDmcSmcAuthorityResource && <a href="/about/" class="btn">Company and facility context</a>}
+        {isIsoFireRetardantAuthorityResource && <a href="/products/iso-fire-retardant-resin/" class="btn">View ISO Fire Retardant Resin</a>}
+        {isIsoFireRetardantAuthorityResource && <a href="/resources/#iso-fire-retardant-resin-hub-heading" class="btn">Explore ISO FR guides</a>}
+        {isIsoFireRetardantAuthorityResource && <a href="/tds/iso-fire-retardant-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Review ISO FR Resin TDS</a>}
+        {isIsoFireRetardantAuthorityResource && <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>}
         {isUvResinAuthorityResource && <a href="/products/uv-resin/" class="btn">View UV Resin</a>}
         {isUvResinAuthorityResource && <a href="/resources/#uv-resin-hub-heading" class="btn">Explore UV Resin guides</a>}
         {isUvResinAuthorityResource && <a href="/tds/uv-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download UV Resin TDS</a>}

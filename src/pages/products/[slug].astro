@@ -37,7 +37,13 @@ const isFrpPolyesterPigment = product.slug === 'frp-polyester-pigment';
 const isMekpHardener = product.slug === 'mekp-hardener';
 const isEpoxyClearCastingResin = product.slug === 'epoxy-clear-casting-resin';
 const isEpoxyArtResin = product.slug === 'epoxy-art-resin';
+const isEpoxyHardener = product.slug === 'epoxy-hardener';
+const isDmcSmcResin = product.slug === 'dmc-smc-resin';
 const isUvResin = product.slug === 'uv-resin';
+const isSheetGradeYellowResin = product.slug === 'sheet-grade-yellow-resin';
+const isRoofLightResin = product.slug === 'roof-light-resin';
+const isFireRetardantResin = product.slug === 'fire-retardant-resin';
+const isIsoFireRetardantResin = product.slug === 'iso-fire-retardant-resin';
 
 const gpClearSeo = {
   title: 'GP Clear Resin Manufacturer in India | General Purpose Polyester Resin',
@@ -108,6 +114,51 @@ const gpYellowSeo = {
     'General Purpose Polyester Resin',
     'Resin for FRP lamination',
     'Polyester resin for FRP products',
+  ],
+};
+const sheetGradeYellowSeo = {
+  title: 'Sheet Grade Yellow Resin Manufacturer in India | FRP Sheet Resin',
+  description: 'Pre-pigmented yellow orthophthalic polyester resin for published FRP sheet, panel, sheet-moulding and laminate applications. Review the current TDS, 225 kg drum packaging and quotation details with Samrat Poly Resins.',
+  keywords: [
+    'Sheet Grade Yellow Resin',
+    'Sheet Grade Resin',
+    'Yellow Sheet Grade Resin',
+    'Yellow Polyester Resin',
+    'FRP Sheet Resin',
+    'Polyester Resin for FRP Sheets',
+    'FRP Panel Resin',
+    'Sheet Grade Polyester Resin',
+    'Sheet Grade Resin Manufacturer',
+    'Sheet Grade Resin Supplier',
+  ],
+};
+const roofLightSeo = {
+  title: 'Roof Light Resin Manufacturer in India | FRP Roofing Sheet Resin',
+  description: 'Water-white orthophthalic polyester resin for published translucent roof-light panels, skylight sheets, greenhouses and industrial roofing. Review the current TDS, 225 kg drum packaging and 500 kg MOQ with Samrat Poly Resins.',
+  keywords: [
+    'Roof Light Resin',
+    'Roof Light Sheet Grade Resin',
+    'FRP Roof Light Resin',
+    'FRP Roofing Sheet Resin',
+    'Polyester Resin for FRP Roofing Sheets',
+    'Roof Light Resin Manufacturer',
+    'Roof Light Resin Supplier',
+    'Roofing Polyester Resin',
+    'Sheet Grade Resin Manufacturer India',
+  ],
+};
+const fireRetardantSeo = {
+  title: 'Fire Retardant Resin Manufacturer in India | FR Polyester Resin',
+  description: 'Halogenated Fire Retardant Unsaturated Polyester Resin (FR Resin) for published industrial FRP applications. Review the current TDS, project requirement and quotation details with Samrat Poly Resins.',
+  keywords: [
+    'Fire Retardant Resin',
+    'FR Resin',
+    'Fire Retardant Polyester Resin',
+    'FR Polyester Resin',
+    'Fire Retardant UPR',
+    'Fire Retardant Unsaturated Polyester Resin',
+    'FRP Fire Retardant Resin',
+    'Halogenated Fire Retardant Resin',
   ],
 };
 const buttonGradeSeo = {
@@ -217,6 +268,19 @@ const epoxyArtSeo = {
     'Art Resin Manufacturer',
     'Art Resin Supplier',
     'Epoxy Resin for Artwork',
+  ],
+};
+const epoxyHardenerSeo = {
+  title: 'Epoxy Hardener Manufacturer in India | Polyamide Curing Agent',
+  description: 'Epoxy Hardener is Samrat Poly Resins\' published polyamide curing agent for compatible epoxy resin systems. Review the current TDS and request an industrial quote for the required epoxy system.',
+  keywords: [
+    'Epoxy Hardener',
+    'Epoxy Resin Hardener',
+    'Polyamide Curing Agent',
+    'Epoxy Curing Agent',
+    'Hardener for Epoxy Resin',
+    'Epoxy Hardener Manufacturer',
+    'Epoxy Hardener Supplier',
   ],
 };
 const uvResinSeo = {
@@ -340,7 +404,15 @@ const detailEntries = product.productDetails ? Object.entries(product.productDet
 const techEntries = product.techSpecs ? Object.entries(product.techSpecs) : null;
 const legacySpecEntries = !detailEntries && !techEntries && specs ? Object.entries(specs) : [];
 
-const gallery = [image, ...(product.images ?? [])];
+// The supplied ISO FR and Epoxy Hardener marketing artwork includes
+// unsupported performance, compatibility and compliance statements. Until
+// evidence-backed, claim-safe product photography is available, use the
+// existing neutral product fallback instead of presenting that artwork as
+// product proof.
+// DMC/SMC source artwork contains performance and certification language that
+// is not substantiated by the current product documentation. Use the neutral
+// product fallback until a claim-safe product image is available.
+const gallery = isIsoFireRetardantResin || isEpoxyHardener || isDmcSmcResin ? [] : [image, ...(product.images ?? [])];
 
 // Resolve each gallery photo to an optimised, compressed webp — one size for
 // the large main viewer, one for the thumbnail strip. The thumbnail's
@@ -459,6 +531,69 @@ const gpYellowResourceSlugs = [
 ];
 const gpYellowResources = isGpYellowResin
   ? gpYellowResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
+const sheetGradeYellowResourceSlugs = [
+  'what-is-sheet-grade-yellow-resin',
+  'applications-of-sheet-grade-yellow-resin',
+  'sheet-grade-yellow-resin-vs-gp-yellow-resin',
+  'sheet-grade-yellow-resin-vs-roof-light-resin',
+  'how-to-choose-resin-for-frp-sheet-and-panel-manufacturing',
+  'frp-sheet-resin-procurement-guide',
+];
+const sheetGradeYellowResources = isSheetGradeYellowResin
+  ? sheetGradeYellowResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
+const roofLightResourceSlugs = [
+  'what-is-roof-light-sheet-grade-resin',
+  'roof-light-resin-applications-frp-roofing-sheets',
+  'sheet-grade-yellow-resin-vs-roof-light-resin',
+  'roof-light-resin-vs-gp-clear-resin',
+  'frp-roofing-sheet-resin-selection-guide',
+  'roof-light-resin-procurement-guide',
+];
+const roofLightResources = isRoofLightResin
+  ? roofLightResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
+const fireRetardantResourceSlugs = [
+  'what-is-fire-retardant-resin',
+  'fire-retardant-polyester-resin-applications-and-benefits',
+  'fire-retardant-resin-vs-gp-resin',
+  'fire-retardant-resin-fireproof-vs-fire-retardant',
+  'frp-fire-performance-requirements-buyer-guide',
+  'fire-retardant-resin-and-glass-fiber',
+  'fire-retardant-resin-procurement-checklist',
+];
+const fireRetardantResources = isFireRetardantResin
+  ? fireRetardantResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
+const isoFireRetardantResourceSlugs = [
+  'what-is-iso-fire-retardant-resin',
+  'iso-fire-retardant-resin-vs-fire-retardant-resin',
+  'iso-fire-retardant-resin-applications',
+  'iso-fire-retardant-resin-vs-upr',
+  'iso-fire-retardant-resin-vs-vinyl-ester-resin',
+  'iso-fire-retardant-resin-fire-requirements',
+  'iso-fire-retardant-resin-procurement-checklist',
+];
+const isoFireRetardantResources = isIsoFireRetardantResin
+  ? isoFireRetardantResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
+const dmcSmcResourceSlugs = [
+  'what-is-dmc-smc-resin',
+  'dmc-vs-smc',
+  'smc-resin-vs-sheet-grade-resin',
+  'dmc-smc-resin-vs-gp-resin',
+  'dmc-smc-resin-applications',
+  'dmc-smc-resin-technical-specifications',
+  'dmc-smc-resin-procurement-checklist',
+];
+const dmcSmcResources = isDmcSmcResin
+  ? dmcSmcResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
   : [];
 
 const buttonResourceSlugs = [
@@ -633,9 +768,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 } : null;
 ---
 <Base
-  title={isGpClearResin ? gpClearSeo.title : isGpWhiteResin ? gpWhiteSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isButtonGradeResin ? buttonGradeSeo.title : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.title : isGlassFiber ? glassFiberSeo.title : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.title : isMekpHardener ? mekpHardenerSeo.title : isEpoxyArtResin ? epoxyArtSeo.title : isUvResin ? uvResinSeo.title : isEpoxyClearCastingResin ? epoxyClearCastingSeo.title : (product.seo?.title ?? name)}
-  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : isButtonGradeResin ? buttonGradeSeo.description : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.description : isGlassFiber ? glassFiberSeo.description : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.description : isMekpHardener ? mekpHardenerSeo.description : isEpoxyArtResin ? epoxyArtSeo.description : isUvResin ? uvResinSeo.description : isEpoxyClearCastingResin ? epoxyClearCastingSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
-  keywords={isGpClearResin ? gpClearSeo.keywords : isGpWhiteResin ? gpWhiteSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.keywords : isGlassFiber ? glassFiberSeo.keywords : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.keywords : isMekpHardener ? mekpHardenerSeo.keywords : isEpoxyArtResin ? epoxyArtSeo.keywords : isUvResin ? uvResinSeo.keywords : isEpoxyClearCastingResin ? epoxyClearCastingSeo.keywords : product.seo?.keywords}
+  title={isGpClearResin ? gpClearSeo.title : isGpWhiteResin ? gpWhiteSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isSheetGradeYellowResin ? sheetGradeYellowSeo.title : isRoofLightResin ? roofLightSeo.title : isFireRetardantResin ? fireRetardantSeo.title : isButtonGradeResin ? buttonGradeSeo.title : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.title : isGlassFiber ? glassFiberSeo.title : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.title : isMekpHardener ? mekpHardenerSeo.title : isEpoxyHardener ? epoxyHardenerSeo.title : isEpoxyArtResin ? epoxyArtSeo.title : isUvResin ? uvResinSeo.title : isEpoxyClearCastingResin ? epoxyClearCastingSeo.title : (product.seo?.title ?? name)}
+  description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : isSheetGradeYellowResin ? sheetGradeYellowSeo.description : isRoofLightResin ? roofLightSeo.description : isFireRetardantResin ? fireRetardantSeo.description : isButtonGradeResin ? buttonGradeSeo.description : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.description : isGlassFiber ? glassFiberSeo.description : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.description : isMekpHardener ? mekpHardenerSeo.description : isEpoxyHardener ? epoxyHardenerSeo.description : isEpoxyArtResin ? epoxyArtSeo.description : isUvResin ? uvResinSeo.description : isEpoxyClearCastingResin ? epoxyClearCastingSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
+  keywords={isGpClearResin ? gpClearSeo.keywords : isGpWhiteResin ? gpWhiteSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isSheetGradeYellowResin ? sheetGradeYellowSeo.keywords : isRoofLightResin ? roofLightSeo.keywords : isFireRetardantResin ? fireRetardantSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.keywords : isGlassFiber ? glassFiberSeo.keywords : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.keywords : isMekpHardener ? mekpHardenerSeo.keywords : isEpoxyHardener ? epoxyHardenerSeo.keywords : isEpoxyArtResin ? epoxyArtSeo.keywords : isUvResin ? uvResinSeo.keywords : isEpoxyClearCastingResin ? epoxyClearCastingSeo.keywords : product.seo?.keywords}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
@@ -654,7 +789,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
                  alt={product.imageAlt ?? name} id="prodMainImg"
                  transition:name={`product-photo-${product.slug}`} />
           )}
-          <span class="img-fallback" aria-hidden="true">{name.split(' ').map(w=>w[0]).join('').slice(0,3)}</span>
+          <span class="img-fallback" aria-hidden="true">{isDmcSmcResin ? 'DMC' : name.split(' ').map(w=>w[0]).join('').slice(0,3)}</span>
         </div>
         {gallery.length > 1 && (
           <div class="prod-thumbs" role="list">
@@ -702,6 +837,26 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           Samrat Poly Resins supplies GP Yellow Resin to Indian B2B FRP buyers for general-purpose polyester lamination and moulded-product work where an intentionally transparent-yellow supplied grade is acceptable in the process or finished build-up.
         </p>
       )}
+      {isSheetGradeYellowResin && (
+        <p class="sheet-grade-buyer-intro">
+          Samrat Poly Resins supplies Sheet Grade Yellow Resin to Indian B2B FRP sheet and panel manufacturers seeking a published pre-pigmented yellow orthophthalic polyester route for sheet moulding and laminate applications.
+        </p>
+      )}
+      {isRoofLightResin && (
+        <p class="roof-light-buyer-intro">
+          Samrat Poly Resins supplies Roof Light Sheet Grade Resin to Indian B2B FRP roofing-sheet and panel buyers seeking the published water-white route for translucent roof-light panels and skylight sheets.
+        </p>
+      )}
+      {isFireRetardantResin && (
+        <p class="fire-retardant-buyer-intro">
+          Samrat Poly Resins supplies this halogenated Fire Retardant Unsaturated Polyester Resin to industrial FRP buyers with a stated fire-performance requirement. Start with the finished component and required project standard or classification, then review the current product TDS before selecting a grade.
+        </p>
+      )}
+      {isIsoFireRetardantResin && (
+        <p class="fire-retardant-buyer-intro">
+          Samrat Poly Resins supplies this halogen-free, ATH-filled isophthalic Fire Retardant Unsaturated Polyester Resin for industrial FRP discussions where a fire-performance requirement is stated. In this product name, ISO means isophthalic resin chemistry&mdash;not ISO certification. Review the current TDS and the actual project requirement before selecting a grade.
+        </p>
+      )}
       {isButtonGradeResin && (
         <p class="button-buyer-intro">
           Samrat Poly Resins supplies Button Grade Resin, also known as Button Resin, to Indian button and small-moulding manufacturers looking for a transparent unsaturated polyester casting grade for visible finished parts.
@@ -727,6 +882,16 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           Samrat Poly Resins supplies MEKP Hardener to industrial buyers evaluating a catalyst / initiator for a published polyester, vinyl ester or gelcoat system. Begin with the actual resin grade and FRP application, then review the current TDS before requesting a quotation or technical discussion.
         </p>
       )}
+      {isEpoxyHardener && (
+        <p class="epoxy-art-buyer-intro">
+          Samrat Poly Resins supplies Epoxy Hardener to industrial and commercial buyers evaluating the separate curing component for a compatible epoxy resin system. This published polyamide, amine-based product is not the epoxy resin itself and is not the MEKP catalyst route used for polyester, vinyl ester or gelcoat systems.
+        </p>
+      )}
+      {isDmcSmcResin && (
+        <p class="upr-buyer-intro">
+          Samrat Poly Resins supplies DMC/SMC Resin to industrial buyers evaluating an orthophthalic unsaturated polyester resin for the published Dough Moulding Compound and Sheet Moulding Compound contexts. The current documentation identifies one DMC/SMC product route; it does not publish a compound recipe, a separate BMC grade or finished-part ratings.
+        </p>
+      )}
       {isUvResin && (
         <p class="epoxy-art-buyer-intro">
           Samrat Poly Resins supplies UV Resin, also called UV Curing Resin or UV Clear Resin, to buyers seeking a published UV/LED-curable epoxy-acrylate route for jewellery, encapsulation, doming and speciality coating requirements.
@@ -735,11 +900,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="prod-quote">
         <p class="prod-quote-heading">Price</p>
         <p class="prod-quote-value">{site.priceLabel}</p>
-        <p class="prod-quote-note">{isGlassFiber ? 'Glass Fiber pricing varies based on:' : isFrpPolyesterPigment ? 'Pigment pricing varies based on:' : isMekpHardener ? 'MEKP Hardener pricing varies based on:' : isEpoxyArtResin ? 'Art-resin pricing varies based on:' : isUvResin ? 'UV Resin pricing varies based on:' : isEpoxyClearCastingResin ? 'Casting-resin pricing varies based on:' : 'Industrial resin pricing varies based on:'}</p>
+        <p class="prod-quote-note">{isGlassFiber ? 'Glass Fiber pricing varies based on:' : isFrpPolyesterPigment ? 'Pigment pricing varies based on:' : isMekpHardener ? 'MEKP Hardener pricing varies based on:' : isEpoxyHardener ? 'Epoxy Hardener pricing varies based on:' : isDmcSmcResin ? 'DMC/SMC Resin pricing varies based on:' : isEpoxyArtResin ? 'Art-resin pricing varies based on:' : isUvResin ? 'UV Resin pricing varies based on:' : isSheetGradeYellowResin ? 'Sheet Grade Yellow Resin pricing varies based on:' : isRoofLightResin ? 'Roof Light Sheet Grade Resin pricing varies based on:' : isFireRetardantResin ? 'Fire Retardant Resin pricing varies based on:' : isIsoFireRetardantResin ? 'ISO Fire Retardant Resin pricing varies based on:' : isEpoxyClearCastingResin ? 'Casting-resin pricing varies based on:' : 'Industrial resin pricing varies based on:'}</p>
         <ul class="prod-quote-list">
           <li>Order Quantity</li>
-          <li>{isGlassFiber ? 'CSM 300 or CSM 450 requirement' : isFrpPolyesterPigment ? 'Required colour or RAL/Pantone reference' : isMekpHardener ? 'Base resin grade and application' : isEpoxyArtResin ? 'Finished surface or artwork application' : isUvResin ? 'Application, industry and clear/finish requirement' : isEpoxyClearCastingResin ? 'Application, casting size and required finish' : 'Resin Grade'}</li>
-          <li>{isGlassFiber || isFrpPolyesterPigment ? 'Delivery location' : isMekpHardener ? 'Production process and delivery location' : isEpoxyArtResin ? 'Required finish and delivery location' : isUvResin ? 'UV/LED equipment requirement and delivery location' : isEpoxyClearCastingResin ? 'Delivery location' : 'Current Raw Material Rates'}</li>
+          <li>{isGlassFiber ? 'CSM 300 or CSM 450 requirement' : isFrpPolyesterPigment ? 'Required colour or RAL/Pantone reference' : isMekpHardener ? 'Base resin grade and application' : isEpoxyHardener ? 'Exact epoxy resin or compatible system being evaluated' : isDmcSmcResin ? 'DMC or SMC requirement, finished component and stated specification' : isEpoxyArtResin ? 'Finished surface or artwork application' : isUvResin ? 'Application, industry and clear/finish requirement' : isSheetGradeYellowResin ? 'Sheet or panel requirement and supplied yellow appearance' : isRoofLightResin ? 'Roof-light or roofing-sheet requirement and supplied appearance' : isFireRetardantResin || isIsoFireRetardantResin ? 'Finished FRP application and required fire standard or classification' : isEpoxyClearCastingResin ? 'Application, casting size and required finish' : 'Resin Grade'}</li>
+          <li>{isGlassFiber || isFrpPolyesterPigment ? 'Delivery location' : isMekpHardener ? 'Production process and delivery location' : isEpoxyHardener ? 'Application, documentation requirement and delivery location' : isDmcSmcResin ? 'Quantity, packaging need, documentation requirement and delivery location' : isEpoxyArtResin ? 'Required finish and delivery location' : isUvResin ? 'UV/LED equipment requirement and delivery location' : isSheetGradeYellowResin ? 'Reinforcement requirement, quantity and delivery location' : isRoofLightResin ? 'Reinforcement context, quantity and delivery location' : isFireRetardantResin ? 'Project specification, quantity and delivery location' : isIsoFireRetardantResin ? 'Service environment, quantity and delivery location' : isEpoxyClearCastingResin ? 'Delivery location' : 'Current Raw Material Rates'}</li>
         </ul>
         <a href={waLink} class="btn btn-solid prod-quote-cta" target="_blank" rel="noopener">Request Bulk Quote</a>
       </div>
@@ -754,7 +919,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             download
             aria-label={`Download Technical Data Sheet PDF for ${name}`}
           >
-            Download Technical Data Sheet (PDF)
+            {isFireRetardantResin ? 'Review Fire Retardant Resin TDS (PDF)' : isIsoFireRetardantResin ? 'Review ISO Fire Retardant Resin TDS (PDF)' : 'Download Technical Data Sheet (PDF)'}
           </a>
         </div>
       )}
@@ -820,6 +985,122 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 
       <p class="prod-desc">{description}</p>
       {usageNote && <p class="prod-desc prod-usage" set:html={usageNote} />}
+
+      {isDmcSmcResin && (
+        <section class="gp-overview" aria-labelledby="dmc-smc-overview-heading">
+          <h2 id="dmc-smc-overview-heading" class="spec-h">What is DMC / SMC Resin?</h2>
+          <p>
+            DMC/SMC Resin is the site&rsquo;s published orthophthalic unsaturated polyester resin route for Dough Moulding Compound (DMC) and Sheet Moulding Compound (SMC). The current TDS identifies one pale-yellow, non-accelerated liquid grade for those named moulding-compound contexts, alongside its listed electrical-component and industrial applications.
+          </p>
+          <p>
+            This is not a generic description of every polyester resin or every compound system. The repository does not publish separate DMC and SMC formulations, a BMC designation, a filler/reinforcement formula, a moulding recipe or finished-part ratings. Use the current product document and actual component requirement to confirm whether this listed route is relevant.
+          </p>
+        </section>
+      )}
+
+      {isDmcSmcResin && (
+        <section class="upr-grade-guide" aria-labelledby="dmc-smc-terms-heading">
+          <h2 id="dmc-smc-terms-heading" class="spec-h">DMC and SMC: what the published product name means</h2>
+          <p class="upr-grade-guide-intro">Samrat&rsquo;s current TDS names one DMC/SMC Resin product for two compound contexts. These cues clarify terminology without treating different compound forms as the same formulation.</p>
+          <div class="upr-grade-grid">
+            <article class="upr-grade-card">
+              <h3>DMC = Dough Moulding Compound</h3>
+              <p>The TDS expands DMC as Dough Moulding Compound and includes it in the documented product role. It does not provide a separate DMC-grade formulation or production recipe.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3>SMC = Sheet Moulding Compound</h3>
+              <p>The TDS expands SMC as Sheet Moulding Compound. This is a moulding-compound context, not a reference to Samrat&rsquo;s separately published FRP sheet-grade resin products.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3>BMC is not a published synonym here</h3>
+              <p>The current product listing and TDS do not equate DMC with BMC or publish a BMC grade. Do not use BMC as a substitute term without confirming the actual requirement.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3>Resin data is not finished-compound data</h3>
+              <p>The TDS publishes liquid-resin supply data. Finished compound and moulded-part results can depend on the total system, so this page does not claim formulation, part performance or an approval.</p>
+            </article>
+          </div>
+        </section>
+      )}
+
+      {isDmcSmcResin && (
+        <section class="upr-grade-guide" aria-labelledby="dmc-smc-selection-heading">
+          <h2 id="dmc-smc-selection-heading" class="spec-h">Choose the resin by the documented product role</h2>
+          <p class="upr-grade-guide-intro">Use these concise routes to avoid confusing a moulding-compound requirement with a general FRP, sheet, lamination or fire-performance requirement.</p>
+          <div class="upr-grade-grid">
+            <article class="upr-grade-card">
+              <h3>DMC or SMC moulding compound</h3>
+              <p>Review this DMC/SMC Resin and its current TDS when the requirement is specifically a published Dough or Sheet Moulding Compound context.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/unsaturated-polyester-resin/">General UPR or GP Resin</a></h3>
+              <p>Unsaturated Polyester Resin is the broader family. Review <a href="/products/gp-clear-resin/">GP Clear Resin</a> for general-purpose FRP rather than assuming a general grade fits a DMC/SMC requirement.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/sheet-grade-yellow-resin/">FRP sheet or panel resin</a></h3>
+              <p>Sheet Grade Yellow Resin and <a href="/products/roof-light-resin/">Roof Light Sheet Grade Resin</a> are separate FRP sheet/panel routes. &ldquo;Sheet&rdquo; in SMC does not make their data interchangeable.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/lamination-resin/">Lamination requirement</a></h3>
+              <p>Lamination Resin is the published route for door, plywood and FRP bonding work; it is not positioned as this moulding-compound product.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/fire-retardant-resin/">Specified fire-performance requirement</a></h3>
+              <p>This DMC/SMC Resin page does not establish fire-retardant performance. If a project names a fire requirement, review the separate Fire Retardant Resin route and share the specification.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/fibre-glass-mat/">Reinforcement requirement</a></h3>
+              <p>Glass Fiber is a separate reinforcement-material decision. The current DMC/SMC documentation does not prescribe CSM 300, CSM 450 or a reinforcement design.</p>
+            </article>
+          </div>
+          <p class="upr-grade-guide-intro">Before purchase, review the current <a href="/tds/dmc-smc-resin-tds.pdf" target="_blank" rel="noopener">DMC/SMC Resin TDS</a> and <a href={site.catalogue.url} target="_blank" rel="noopener">product catalogue</a>. Share whether the requirement is DMC or SMC, the finished component, any stated specification, expected quantity, packaging need, delivery location and required documentation. This page intentionally does not provide formulation or process instructions.</p>
+        </section>
+      )}
+
+      {isEpoxyHardener && (
+        <section class="upr-grade-guide" aria-labelledby="epoxy-hardener-selection-heading">
+          <h2 id="epoxy-hardener-selection-heading" class="spec-h">Select the correct epoxy-system component</h2>
+          <p class="upr-grade-guide-intro">This page identifies the published Epoxy Hardener role and helps prevent a wrong-product enquiry. It does not provide a mixing procedure or confirm suitability before the resin/hardener pairing is reviewed.</p>
+          <div class="upr-grade-grid">
+            <article class="upr-grade-card">
+              <h3>Epoxy resin and hardener are separate components</h3>
+              <p>Epoxy resin is the resin component. This Epoxy Hardener is the separate polyamide curing-agent component for a compatible epoxy system. Do not order one component as though it replaces the other.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/epoxy-clear-casting-resin/">Clear contained casting</a></h3>
+              <p>Review Epoxy Clear Casting Resin for its separately published clear-casting role. Its product route identifies a compatible Epoxy Hardener; confirm the actual pairing and current documentation before procurement.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/epoxy-art-resin/">Art and decorative surface work</a></h3>
+              <p>Review Epoxy Art Resin for its separately published two-component art and decorative surface role. It is not a claim that every art resin uses this hardener.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/mekp-hardener/">Polyester, vinyl ester or gelcoat system</a></h3>
+              <p>Review MEKP Hardener when the selected base product is a published unsaturated polyester, vinyl ester or gelcoat system. MEKP is a different catalyst / initiator route and is not an epoxy hardener.</p>
+            </article>
+          </div>
+          <p class="upr-grade-guide-intro">Before ordering, share the exact epoxy resin or product route, intended application, quantity, packaging requirement if relevant, delivery location and any required documentation. Use the <a href="/tds/epoxy-hardener-tds.pdf" target="_blank" rel="noopener">Epoxy Hardener TDS</a> rather than transferring values from another epoxy system.</p>
+          <div class="upr-grade-grid">
+            <article class="upr-grade-card">
+              <h3><a href="/resources/what-is-epoxy-hardener/">What is Epoxy Hardener?</a></h3>
+              <p>Understand the published polyamide curing-agent role and why it is a separate component of the epoxy system.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/resources/epoxy-hardener-compatibility-guide/">Check hardener compatibility</a></h3>
+              <p>Confirm the exact resin product and current TDS before assuming any hardener/resin pairing is valid.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/resources/epoxy-hardener-vs-mekp-hardener/">Epoxy Hardener vs MEKP</a></h3>
+              <p>Separate a compatible epoxy system from the catalyst route used for published polyester-family resin systems.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/resources/epoxy-hardener-procurement-guide/">Prepare an Epoxy Hardener RFQ</a></h3>
+              <p>Use the product-specific TDS and a focused commercial brief to request the correct component.</p>
+            </article>
+          </div>
+          <p class="upr-grade-guide-intro">For a more specific system check, compare <a href="/resources/epoxy-resin-vs-epoxy-hardener/">Epoxy Resin and Epoxy Hardener</a>, review the published <a href="/resources/epoxy-hardener-for-clear-casting-and-art-resin/">Clear Casting and Art Resin relationship</a>, or distinguish this separate curing-agent route from <a href="/resources/epoxy-hardener-vs-uv-resin-curing/">UV Resin curing</a>.</p>
+        </section>
+      )}
 
       {isGpClearResin && (
         <section class="gp-overview" aria-labelledby="gp-overview-heading">
@@ -889,6 +1170,39 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </p>
         </section>
       )}
+      {isSheetGradeYellowResin && (
+        <section class="sheet-grade-overview" aria-labelledby="sheet-grade-overview-heading">
+          <h2 id="sheet-grade-overview-heading" class="spec-h">What is Sheet Grade Yellow Resin?</h2>
+          <p>
+            Sheet Grade Yellow Resin is Samrat Poly Resins&rsquo; published pre-pigmented yellow orthophthalic unsaturated polyester resin for sheet moulding and laminate applications. Here, “sheet grade” identifies the intended sheet and panel manufacturing role, rather than a broad general-purpose resin search.
+          </p>
+          <p>
+            It is relevant when the FRP sheet or panel requirement calls for a supplied yellow resin route. The resin is one part of a wider material decision: review the intended sheet or panel, reinforcement, surface-finish requirement and current product-specific TDS. This does not make the grade a substitute for a water-white roof-light resin, a general-purpose GP Yellow Resin, a bonding-focused Lamination Resin or a mould-facing Gelcoat Resin.
+          </p>
+        </section>
+      )}
+      {isRoofLightResin && (
+        <section class="roof-light-overview" aria-labelledby="roof-light-overview-heading">
+          <h2 id="roof-light-overview-heading" class="spec-h">What is Roof Light Sheet Grade Resin?</h2>
+          <p>
+            Roof Light Sheet Grade Resin is Samrat Poly Resins&rsquo; published water-white orthophthalic unsaturated polyester resin for translucent roof-light panels and skylight sheets. Here, &ldquo;sheet grade&rdquo; identifies the documented roofing-sheet and roof-light-panel context, rather than a broad clear-resin search.
+          </p>
+          <p>
+            The current TDS publishes high optical clarity for light penetration and lists skylights, roof-light panels, greenhouses, industrial and commercial roofing, and roofing-sheet production. It is relevant when that documented sheet role and supplied appearance match the buyer requirement; confirm the finished sheet, reinforcement context and current product-specific TDS before selection.
+          </p>
+        </section>
+      )}
+      {isFireRetardantResin && (
+        <section class="fire-retardant-overview" aria-labelledby="fire-retardant-overview-heading">
+          <h2 id="fire-retardant-overview-heading" class="spec-h">What is Fire Retardant Resin?</h2>
+          <p>
+            Fire Retardant Resin, also called FR Resin or Fire Retardant Polyester Resin, is Samrat Poly Resins&rsquo; published halogenated unsaturated polyester product for industrial FRP requirements where fire-performance criteria are part of the purchasing discussion. It is a liquid resin with a published white supplied appearance, not a finished FRP component or a fireproof material.
+          </p>
+          <p>
+            The selection question is whether the finished FRP application has a stated standard, classification or test requirement. The resin, reinforcement, laminate construction and other finished-system factors may all matter. Review the current TDS for this exact grade and share the project requirement before treating it as a substitute for a general-purpose resin.
+          </p>
+        </section>
+      )}
       {isButtonGradeResin && (
         <section class="button-overview" aria-labelledby="button-overview-heading">
           <h2 id="button-overview-heading" class="spec-h">What is Button Grade Resin?</h2>
@@ -951,7 +1265,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             Epoxy Clear Casting Resin is Samrat Poly Resins&rsquo; published two-part epoxy product for transparent cast pieces where optical clarity, a high-gloss finish and the casting role are central to the requirement. Buyers may also search for clear casting resin, crystal clear epoxy resin, transparent epoxy resin or epoxy casting resin.
           </p>
           <p>
-            It is not a polyester FRP laminate resin, a mould-side gelcoat or a self-levelling coating selected simply by name. Start with the finished part, casting size, required appearance and whether the requirement is for a contained cast or a surface coat, then review the relevant current product data.
+            It is not a polyester FRP laminate resin, a mould-side gelcoat or a self-levelling coating selected simply by name. Start with the finished part, casting size, required appearance and whether the requirement is for a contained cast or a surface coat, then review the relevant current product data. When procuring the separate curing component, review the published <a href="/products/epoxy-hardener/">Epoxy Hardener</a> route and its <a href="/resources/epoxy-hardener-compatibility-guide/">compatibility guide</a> before ordering.
           </p>
         </section>
       )}
@@ -962,7 +1276,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             Epoxy Art Resin is Samrat Poly Resins&rsquo; published water-clear, two-component epoxy product for artistic and decorative work. Buyers may also search for art resin, clear art resin, resin art epoxy, tabletop epoxy or gloss epoxy resin.
           </p>
           <p>
-            Its published role is a self-levelling, high-gloss finish on open horizontal surfaces such as floor art, table tops, wood art and decorative coatings. That is different from a clear contained casting, a mould-side FRP gelcoat or a polyester resin used with reinforcement. Start with the finished work, surface versus casting role, expected quantity and current TDS before selecting an epoxy system.
+            Its published role is a self-levelling, high-gloss finish on open horizontal surfaces such as floor art, table tops, wood art and decorative coatings. That is different from a clear contained casting, a mould-side FRP gelcoat or a polyester resin used with reinforcement. Start with the finished work, surface versus casting role, expected quantity and current TDS before selecting an epoxy system. When procuring the separate curing component, review the published <a href="/products/epoxy-hardener/">Epoxy Hardener</a> route and its <a href="/resources/epoxy-hardener-compatibility-guide/">compatibility guide</a> before ordering.
           </p>
         </section>
       )}
@@ -1100,6 +1414,179 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               <h3>Procurement information is available</h3>
               <p>Review the TDS, 225 kg drum packaging and 1,000 kg minimum order quantity before requesting a GP Yellow Resin quote.</p>
             </div>
+          </div>
+        </section>
+      )}
+      {isSheetGradeYellowResin && (
+        <section class="gp-buyer-outcomes" aria-labelledby="sheet-grade-buyer-outcomes-heading">
+          <h2 id="sheet-grade-buyer-outcomes-heading" class="spec-h">What this means for sheet and panel buyers</h2>
+          <div class="gp-outcomes-grid">
+            <div class="gp-outcome-card">
+              <h3>Sheet/panel-specific product role</h3>
+              <p>The current TDS publishes this grade for sheet moulding and laminate applications. Use it as the starting point for a specific FRP sheet or panel requirement, not as a catch-all GP resin selection.</p>
+            </div>
+            <div class="gp-outcome-card">
+              <h3>Supplied appearance is a selection point</h3>
+              <p>Confirm whether a pre-pigmented yellow supplied appearance suits the finished-product requirement. For a water-white resin intended for translucent roof-light panels, review the separate Roof Light Sheet Grade Resin route.</p>
+            </div>
+            <div class="gp-outcome-card">
+              <h3>Define the full material requirement</h3>
+              <p>Share the sheet or panel, reinforcement requirement if known, visible surface role, expected quantity and delivery location. Use the current TDS and catalogue as documents for the product discussion.</p>
+            </div>
+          </div>
+        </section>
+      )}
+      {isRoofLightResin && (
+        <section class="gp-buyer-outcomes" aria-labelledby="roof-light-buyer-outcomes-heading">
+          <h2 id="roof-light-buyer-outcomes-heading" class="spec-h">What this means for roof-light sheet buyers</h2>
+          <div class="gp-outcomes-grid">
+            <div class="gp-outcome-card">
+              <h3>Start with the finished-sheet role</h3>
+              <p>The published product role is translucent roof-light panels and skylight sheets. Review it where the finished sheet is intended to admit natural light, not simply because the requirement is for any clear polyester resin.</p>
+            </div>
+            <div class="gp-outcome-card">
+              <h3>Supplied appearance guides selection</h3>
+              <p>This grade is published water white. For a pre-pigmented yellow sheet or panel requirement, review Sheet Grade Yellow Resin; use the product-specific TDS for the actual route under consideration.</p>
+            </div>
+            <div class="gp-outcome-card">
+              <h3>Document the material requirement</h3>
+              <p>Share the roof-light or roofing-sheet application, required supplied appearance, reinforcement context if known, expected quantity and delivery location before requesting a quote.</p>
+            </div>
+          </div>
+        </section>
+      )}
+      {isFireRetardantResin && (
+        <section class="gp-buyer-outcomes" aria-labelledby="fire-retardant-buyer-outcomes-heading">
+          <h2 id="fire-retardant-buyer-outcomes-heading" class="spec-h">What this means for Fire Retardant Resin buyers</h2>
+          <div class="gp-outcomes-grid">
+            <div class="gp-outcome-card">
+              <h3>Start with the stated requirement</h3>
+              <p>Choose this specialist route when a finished FRP application has a stated fire-performance requirement. A general FRP label alone is not enough to select or approve a grade.</p>
+            </div>
+            <div class="gp-outcome-card">
+              <h3>Separate published data from project verification</h3>
+              <p>The current TDS publishes the resin type, supplied form, viscosity, gel time, storage, packaging and MOQ. It does not replace a review of the specific finished-system test or classification required by the project.</p>
+            </div>
+            <div class="gp-outcome-card">
+              <h3>Build a useful quotation request</h3>
+              <p>Share the finished component, required standard or classification, technical specification, reinforcement context, quantity and delivery location. This keeps the enquiry focused without asking the buyer to formulate a system.</p>
+            </div>
+          </div>
+        </section>
+      )}
+      {isFireRetardantResin && (
+        <section class="fire-performance-note" aria-labelledby="fire-performance-note-heading">
+          <h2 id="fire-performance-note-heading" class="spec-h">Fire-performance information: what the current documents establish</h2>
+          <p>
+            SPR-TDS-FRR Rev. 01 (July 2026) identifies this product as a halogenated fire-retardant unsaturated polyester formulation. The same TDS includes a manufacturer-published “UL 94 V0*” statement, while its note says that the test-report or certification reference is to be supplied on request and confirmed in a later revision.
+          </p>
+          <p>
+            No corresponding fire-test report or certificate is present in this repository. For that reason, this page does not present a fire rating, compliance status, smoke result or finished-part classification as verified. If your project has a required standard or class, include the original requirement in the enquiry so the exact product and system can be discussed.
+          </p>
+        </section>
+      )}
+      {isFireRetardantResin && (
+        <section class="upr-grade-guide" aria-labelledby="fire-retardant-selection-heading">
+          <h2 id="fire-retardant-selection-heading" class="spec-h">Before specifying a Fire Retardant Resin</h2>
+          <p class="upr-grade-guide-intro">Use these product-role cues to begin the discussion. They do not certify a finished FRP component or replace the current TDS and project requirement.</p>
+          <div class="upr-grade-grid">
+            <article class="upr-grade-card">
+              <h3>Stated fire-performance requirement</h3>
+              <p>Review this Fire Retardant Resin route with the actual finished component, required standard or classification, current product data and relevant system information.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/gp-clear-resin/">General FRP without a stated FR requirement</a></h3>
+              <p>Review GP Clear Resin or the broader UPR family when the product role is ordinary general FRP work rather than a stated fire-performance requirement.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/iso-fire-retardant-resin/">Separate ISO Fire Retardant product</a></h3>
+              <p>Samrat publishes a separate ISO Fire Retardant Resin page. Review its own current data and the actual project requirement rather than assuming the two FR products are interchangeable.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/fibre-glass-mat/">Reinforcement is a separate decision</a></h3>
+              <p>Glass Fiber is the reinforcement product to review for an FRP system. Confirm the component specification instead of assuming one mat grade or laminate build-up.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/gp-gelcoat-resin/">Mould-side surface role</a></h3>
+              <p>GP Gelcoat Resin is a separate mould-facing surface product. A surface-finish decision is not automatically included in the selection of the laminate resin.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/vinyl-ester-resin/">Different specialist requirement</a></h3>
+              <p>Vinyl Ester Resin has its own published chemical- and corrosion-resistance context. Review its product data where those requirements, rather than fire-performance criteria, are central.</p>
+            </article>
+          </div>
+        </section>
+      )}
+      {isIsoFireRetardantResin && (
+        <section class="fire-retardant-overview" aria-labelledby="iso-fire-retardant-overview-heading">
+          <h2 id="iso-fire-retardant-overview-heading" class="spec-h">What is ISO Fire Retardant Resin?</h2>
+          <p>
+            The current ISO Fire Retardant Resin TDS identifies this product as a halogen-free, ATH-filled, isophthalic-based Unsaturated Polyester Resin Fire Retardant grade. Here, <strong>ISO refers to isophthalic resin chemistry</strong>; it does not mean ISO certification, ISO approval or compliance with an ISO standard.
+          </p>
+          <p>
+            This is a separate specialist product route from Samrat&rsquo;s halogenated <a href="/products/fire-retardant-resin/">Fire Retardant Resin</a>. The choice should follow the actual finished FRP component, any stated fire-performance requirement, the current TDS and the required documentation&mdash;not the word &ldquo;ISO&rdquo; alone.
+          </p>
+        </section>
+      )}
+      {isIsoFireRetardantResin && (
+        <section class="gp-buyer-outcomes" aria-labelledby="iso-fire-retardant-buyer-outcomes-heading">
+          <h2 id="iso-fire-retardant-buyer-outcomes-heading" class="spec-h">What this means for ISO FR Resin buyers</h2>
+          <div class="gp-outcomes-grid">
+            <div class="gp-outcome-card">
+              <h3>Start with the product distinction</h3>
+              <p>The current ISO FR TDS identifies a halogen-free, ATH-filled isophthalic-based grade, while the separate Fire Retardant Resin TDS identifies a halogenated grade. Review the project requirement instead of assuming either route is interchangeable.</p>
+            </div>
+            <div class="gp-outcome-card">
+              <h3>Use published applications as discussion categories</h3>
+              <p>Railway and marine applications, automotive components, FRP panels, electrical enclosures, tunnels and construction appear in the TDS. These categories do not confirm a project approval or a finished-part classification.</p>
+            </div>
+            <div class="gp-outcome-card">
+              <h3>Keep the enquiry technically specific</h3>
+              <p>Share the component, fire standard or classification if specified, required documentation, service environment where relevant, reinforcement context, quantity and delivery location.</p>
+            </div>
+          </div>
+        </section>
+      )}
+      {isIsoFireRetardantResin && (
+        <section class="fire-performance-note" aria-labelledby="iso-fire-performance-note-heading">
+          <h2 id="iso-fire-performance-note-heading" class="spec-h">Fire-performance information: what the current documents establish</h2>
+          <p>
+            SPR-TDS-IFR Rev. 01 (July 2026) displays a UL 94 V0 statement for this ISO Fire Retardant Resin product. It does not provide a supporting fire-test report, test method detail, tested specimen or finished FRP system configuration in the repository.
+          </p>
+          <p>
+            For that reason, this page does not present a fire rating, compliance status, low-smoke result or finished-component classification as verified. Fire Retardant Resin does not mean fireproof or non-combustible; the relevant resin, reinforcement, construction, thickness, surface system and documented or tested configuration may matter to a project requirement.
+          </p>
+        </section>
+      )}
+      {isIsoFireRetardantResin && (
+        <section class="upr-grade-guide" aria-labelledby="iso-fire-retardant-selection-heading">
+          <h2 id="iso-fire-retardant-selection-heading" class="spec-h">Which resin product route should you review?</h2>
+          <p class="upr-grade-guide-intro">These concise cues support product selection; they do not replace the current TDS, service-environment review or a project-specific requirement.</p>
+          <div class="upr-grade-grid">
+            <article class="upr-grade-card">
+              <h3>Isophthalic, halogen-free FR requirement</h3>
+              <p>Review this ISO Fire Retardant Resin route when that is the stated chemistry or product requirement, together with the finished FRP component and required documentation.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/fire-retardant-resin/">Separate Fire Retardant Resin route</a></h3>
+              <p>Review the standard Fire Retardant Resin TDS where the project identifies the separate halogenated FR product route. Do not assume the two grades share a finished-system result.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/unsaturated-polyester-resin/">General UPR / GP route</a></h3>
+              <p>For general FRP work without a stated specialist FR requirement, begin with the relevant UPR or GP product data rather than treating an ISO FR grade as a universal upgrade.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/vinyl-ester-resin/">Different specialist requirement</a></h3>
+              <p>Vinyl Ester Resin has its own published product context. Where a service environment or chemical requirement is central, review its current data instead of inferring a chemical-resistance result from this ISO FR product name.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/fibre-glass-mat/">Reinforcement is separate</a></h3>
+              <p>Glass Fiber is the reinforcement product to review for an FRP system. The repository does not prescribe a universal mat grade, layer count or laminate design for ISO FR Resin.</p>
+            </article>
+            <article class="upr-grade-card">
+              <h3><a href="/products/gp-gelcoat-resin/">Mould-side surface role</a></h3>
+              <p>Gelcoat is a separate mould-facing surface product. Selecting an ISO Fire Retardant Resin does not automatically establish the required surface-system role or finished-component classification.</p>
+            </article>
           </div>
         </section>
       )}
@@ -1641,6 +2128,82 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
+  {isSheetGradeYellowResin && (
+    <section class="wrap gp-comparisons" aria-labelledby="sheet-grade-selection-heading">
+      <h2 id="sheet-grade-selection-heading" class="rel-h">Choose the product role for the FRP sheet or panel</h2>
+      <div class="gp-comparison-grid">
+        <article class="gp-comparison-card">
+          <h3><a href="/products/gp-yellow-resin/">Sheet Grade Yellow Resin vs GP Yellow Resin</a></h3>
+          <p>Sheet Grade Yellow Resin is the published pre-pigmented yellow route for sheet moulding and laminate applications. GP Yellow Resin is the separately published transparent-yellow general-purpose grade. Start with whether the requirement is specifically a sheet/panel role and whether the supplied appearance is appropriate.</p>
+        </article>
+        <article class="gp-comparison-card">
+          <h3><a href="/products/roof-light-resin/">Sheet Grade Yellow Resin vs Roof Light Sheet Grade Resin</a></h3>
+          <p>Review this product where the supplied yellow sheet/panel route is relevant. Review Roof Light Sheet Grade Resin where the published requirement is a water-white resin for translucent roof-light or skylight panels. Confirm the intended finished appearance before selection.</p>
+        </article>
+        <article class="gp-comparison-card">
+          <h3><a href="/products/gp-clear-resin/">Sheet Grade Yellow Resin vs GP Clear Resin</a></h3>
+          <p>GP Clear Resin is the published clear general-purpose grade for broader FRP manufacturing. This Sheet Grade Yellow Resin is the more specific product route to review for a pre-pigmented yellow sheet or panel requirement.</p>
+        </article>
+        <article class="gp-comparison-card">
+          <h3><a href="/products/lamination-resin/">Sheet/panel manufacture vs Lamination Resin</a></h3>
+          <p>Sheet Grade Yellow Resin is published for sheet moulding and laminate applications. Lamination Resin is the separate product to review for its published door, plywood and FRP-bonding roles.</p>
+        </article>
+        <article class="gp-comparison-card">
+          <h3><a href="/products/gp-gelcoat-resin/">Structural sheet role vs Gelcoat Resin</a></h3>
+          <p>Where a mould-facing surface layer is required, review GP Gelcoat Resin separately. It has a different product role from the reinforced laminate or sheet resin requirement.</p>
+        </article>
+        <article class="gp-comparison-card">
+          <h3><a href="/products/vinyl-ester-resin/">When to review Vinyl Ester Resin</a></h3>
+          <p>For a stated chemical- or corrosion-resistance requirement, review Vinyl Ester Resin and its product-specific TDS rather than assuming a general orthophthalic sheet-grade resin is appropriate.</p>
+        </article>
+        <article class="gp-comparison-card">
+          <h3><a href="/products/unsaturated-polyester-resin/">Sheet grade within the UPR family</a></h3>
+          <p>Unsaturated Polyester Resin is the parent category. This product is a specific yellow sheet/panel route within that broader family; the standard UPR data is not this grade&rsquo;s specification.</p>
+        </article>
+        <article class="gp-comparison-card">
+          <h3><a href="/products/fibre-glass-mat/">Reinforcement and existing application context</a></h3>
+          <p>Review Glass Fiber Mat where reinforcement is part of the FRP sheet requirement. The existing <a href="/applications/gp-yellow-resin-for-roofing-sheet-manufacturing/">FRP roofing-sheet guide</a> provides a separate general GP Yellow comparison context; use the Sheet Grade Yellow TDS for this product&rsquo;s actual data.</p>
+        </article>
+      </div>
+    </section>
+  )}
+
+  {isRoofLightResin && (
+    <section class="wrap gp-comparisons" aria-labelledby="roof-light-selection-heading">
+      <h2 id="roof-light-selection-heading" class="rel-h">Choose the product role for the roof-light or roofing-sheet requirement</h2>
+      <div class="gp-comparison-grid">
+        <article class="gp-comparison-card">
+          <h3><a href="/products/sheet-grade-yellow-resin/">Roof Light Resin vs Sheet Grade Yellow Resin</a></h3>
+          <p>Roof Light Sheet Grade Resin is the published water-white route for translucent roof-light panels and skylight sheets. Sheet Grade Yellow Resin is the separately published pre-pigmented yellow route for sheet and panel applications. Start with the required supplied appearance and finished-sheet role.</p>
+        </article>
+        <article class="gp-comparison-card">
+          <h3><a href="/products/gp-clear-resin/">Roof Light Resin vs GP Clear Resin</a></h3>
+          <p>GP Clear Resin is the published general-purpose clear orthophthalic route. Roof Light Sheet Grade Resin is the specific product to review for the documented water-white roof-light and skylight-sheet intent. Review each current TDS rather than treating one clear-looking resin as an automatic substitute.</p>
+        </article>
+        <article class="gp-comparison-card">
+          <h3><a href="/products/unsaturated-polyester-resin/">Roof Light Resin within the UPR family</a></h3>
+          <p>Unsaturated Polyester Resin is the parent category. Roof Light Sheet Grade Resin is a named product route within that family, with its own appearance, technical data and published applications; standard UPR data is not this product&rsquo;s specification.</p>
+        </article>
+        <article class="gp-comparison-card">
+          <h3><a href="/products/fibre-glass-mat/">Review the separate Glass Fiber role</a></h3>
+          <p>Glass Fiber is the separate reinforcement component to review where it is part of the FRP roof-light sheet requirement. Confirm the actual component specification rather than assuming one CSM grade or laminate build-up applies to every sheet.</p>
+        </article>
+        <article class="gp-comparison-card">
+          <h3><a href="/products/gp-gelcoat-resin/">When to review Gelcoat Resin</a></h3>
+          <p>Roof Light Resin is a sheet-resin decision. If a mould-facing surface finish is a separate requirement, review GP Gelcoat Resin as its own product role rather than assuming it is included in the laminate-resin selection.</p>
+        </article>
+        <article class="gp-comparison-card">
+          <h3><a href="/products/lamination-resin/">When Lamination Resin is more relevant</a></h3>
+          <p>Lamination Resin is the published product to review for door, plywood and FRP bonding roles. It is not the default choice for the documented roof-light and skylight sheet route.</p>
+        </article>
+        <article class="gp-comparison-card">
+          <h3><a href="/applications/resin-for-roofing-sheet-manufacturing/">Existing FRP roofing-sheet context</a></h3>
+          <p>Review the existing roofing-sheet application guide alongside this product&rsquo;s TDS. It provides broader component context; this page remains the product-specific route for Roof Light Sheet Grade Resin.</p>
+        </article>
+      </div>
+    </section>
+  )}
+
   {isGpWhiteResin && (
     <section class="wrap gp-white-comparisons" aria-labelledby="gp-white-comparisons-heading">
       <h2 id="gp-white-comparisons-heading" class="rel-h">When to consider a different resin grade</h2>
@@ -1737,6 +2300,94 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href="#enquire" class="btn btn-solid">Discuss your GP Yellow Resin application</a>
         <a href="/resources/#gp-yellow-resin-hub-heading" class="btn">Explore GP Yellow Resin Knowledge Hub</a>
         <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+      </div>
+    </section>
+  )}
+
+  {sheetGradeYellowResources.length > 0 && (
+    <section class="wrap sheet-grade-resources" aria-labelledby="sheet-grade-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Technical resources</p>
+        <h2 id="sheet-grade-resources-heading" class="rel-h">Sheet Grade Yellow Resin guides</h2>
+        <p>Use these Samrat Poly Resins guides to define the published yellow sheet/panel role, compare the relevant resin routes, review the separate Glass Fiber material role and prepare a documented quotation request.</p>
+      </div>
+      <div class="resources-grid">
+        {sheetGradeYellowResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="#enquire" class="btn btn-solid">Discuss your Sheet Grade Yellow Resin requirement</a>
+        <a href="/resources/#sheet-grade-resin-hub-heading" class="btn">Explore the Sheet Grade Yellow Knowledge Hub</a>
+        <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download Sheet Grade Yellow TDS</a>
+        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+      </div>
+    </section>
+  )}
+
+  {dmcSmcResources.length > 0 && (
+    <section class="wrap prod-resources" aria-labelledby="dmc-smc-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Moulding-compound buyer guides</p>
+        <h2 id="dmc-smc-resources-heading" class="rel-h">DMC / SMC Resin Knowledge Hub</h2>
+        <p>Start with <a href="/resources/dmc-vs-smc/">DMC vs SMC</a> to define the published compound terms. If a requirement uses the word &ldquo;sheet,&rdquo; use <a href="/resources/smc-resin-vs-sheet-grade-resin/">SMC Resin vs Sheet Grade Resin</a> to keep it distinct from conventional FRP sheet-grade selection, then review the current TDS and prepare a focused industrial RFQ.</p>
+      </div>
+      <div class="resources-grid">
+        {dmcSmcResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="#enquire" class="btn btn-solid">Discuss your DMC / SMC Resin requirement</a>
+        <a href="/resources/#dmc-smc-resin-hub-heading" class="btn">Explore DMC / SMC buyer guides</a>
+        <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download DMC / SMC Resin TDS</a>
+        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+      </div>
+    </section>
+  )}
+
+  {isDmcSmcResin && (
+    <section class="wrap gp-trust dmc-smc-trust" aria-labelledby="dmc-smc-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Company context and product verification</p>
+        <h2 id="dmc-smc-trust-heading">Verify the company, DMC/SMC product route and published data</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Punjab-based company context</strong>
+            <span>Samrat Poly Resins was established in {site.established} in Doraha, Ludhiana. Review the published facility, contact and company information alongside this separate moulding-compound product route.</span>
+          </span>
+        </a>
+        <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Use the current product-specific TDS</strong>
+            <span>The DMC/SMC Resin TDS identifies the orthophthalic UPR, one published liquid grade, its supply data and listed applications. It is not represented here as a BMC designation, compound formulation, finished-part test report or approval.</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  )}
+
+  {isSheetGradeYellowResin && (
+    <section class="wrap gp-trust sheet-grade-trust" aria-labelledby="sheet-grade-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Manufacturer and documentation</p>
+        <h2 id="sheet-grade-trust-heading">A documented route for FRP sheet and panel buyers</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Punjab-based manufacturer context</strong>
+            <span>Explore Samrat Poly Resins&rsquo; Doraha, Ludhiana facility and company background, established in {site.established}.</span>
+          </span>
+        </a>
+        <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Product-specific documentation</strong>
+            <span>Review the current Sheet Grade Yellow Resin TDS alongside the published product data before discussing an FRP sheet or panel requirement.</span>
+          </span>
+        </a>
       </div>
     </section>
   )}
@@ -1996,6 +2647,31 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
+  {isEpoxyHardener && (
+    <section class="wrap gp-trust epoxy-hardener-trust" aria-labelledby="epoxy-hardener-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Company context and product documentation</p>
+        <h2 id="epoxy-hardener-trust-heading">Verify the company, hardener route and published data</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Punjab-based company context, established 2017</strong>
+            <span>Review Samrat Poly Resins&rsquo; published Doraha, Ludhiana company information, facility context, contact details and broader epoxy-product routes before discussing an Epoxy Hardener requirement.</span>
+          </span>
+        </a>
+        <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Use the current product-specific TDS</strong>
+            <span>The Epoxy Hardener TDS identifies a polyamide, amine-based curing agent and its published supply data. Use it with the exact epoxy resin and intended application; it does not establish universal resin/hardener compatibility or a third-party certificate.</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  )}
+
   {isMekpHardener && (
     <section class="wrap gp-trust mekp-trust" aria-labelledby="mekp-trust-heading">
       <div class="section-head">
@@ -2070,6 +2746,116 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       </div>
       <div class="resources-grid">
         {gpResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+    </section>
+  )}
+
+  {roofLightResources.length > 0 && (
+    <section class="wrap prod-resources" aria-labelledby="roof-light-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Roofing-sheet resources</p>
+        <h2 id="roof-light-resources-heading" class="rel-h">Roof Light Sheet Grade Resin guides</h2>
+        <p>Start with the documented roof-light role, then compare the separate sheet-grade and GP Clear routes, review the FRP material-system context and prepare a focused quotation request.</p>
+        <p class="gp-hub-case-link"><a href="/applications/roof-light-sheet-resin-for-frp-roofing-and-skylight-sheets/">Explore the finished-sheet application guide</a> or return to the <a href="/resources/">Resource Hub</a>.</p>
+      </div>
+      <div class="resources-grid">
+        {roofLightResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="/resources/#roof-light-resin-hub-heading" class="btn">Explore Roof Light resources</a>
+        <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Review Roof Light Resin TDS</a>
+        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href="#enquire" class="btn btn-solid">Request Roof Light Resin Quote</a>
+      </div>
+    </section>
+  )}
+
+  {fireRetardantResources.length > 0 && (
+    <section class="wrap prod-resources" aria-labelledby="fire-retardant-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">FR resin selection resources</p>
+        <h2 id="fire-retardant-resources-heading" class="rel-h">Fire Retardant Resin buyer guides</h2>
+        <p>Review the published product role, application categories, finished-system questions and quotation details before treating an FR Resin requirement as a product-selection decision.</p>
+        <p class="gp-hub-case-link">The guides distinguish a resin product description from a finished FRP requirement; they do not present an unverified fire rating or project approval.</p>
+      </div>
+      <div class="resources-grid">
+        {fireRetardantResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="/resources/#fire-retardant-resin-hub-heading" class="btn">Explore FR Resin resources</a>
+        <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Review Fire Retardant Resin TDS</a>
+        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href="#enquire" class="btn btn-solid">Discuss an FR Resin requirement</a>
+      </div>
+    </section>
+  )}
+
+  {isoFireRetardantResources.length > 0 && (
+    <section class="wrap prod-resources" aria-labelledby="iso-fire-retardant-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Isophthalic FR resin resources</p>
+        <h2 id="iso-fire-retardant-resources-heading" class="rel-h">ISO Fire Retardant Resin buyer guides</h2>
+        <p>Use these guides to understand the published isophthalic FR product route, compare it with the separate standard FR and Vinyl Ester routes, and prepare the documentation needed for a focused industrial enquiry.</p>
+        <p class="gp-hub-case-link">Here, <strong>ISO</strong> refers to isophthalic chemistry, not ISO certification. The guides distinguish product data from a finished FRP fire-performance requirement.</p>
+      </div>
+      <div class="resources-grid">
+        {isoFireRetardantResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="/resources/#iso-fire-retardant-resin-hub-heading" class="btn">Explore ISO FR Resin resources</a>
+        <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Review ISO Fire Retardant Resin TDS</a>
+        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href="#enquire" class="btn btn-solid">Discuss an ISO FR requirement</a>
+      </div>
+    </section>
+  )}
+
+  {isIsoFireRetardantResin && (
+    <section class="wrap gp-trust" aria-labelledby="iso-fire-retardant-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Manufacturer context and grade documentation</p>
+        <h2 id="iso-fire-retardant-trust-heading">Verify the company, product route and published data</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Punjab manufacturer context</strong>
+            <span>Samrat Poly Resins was established in 2017 in Doraha, Ludhiana. Review the published company, facility and contact information alongside this separate ISO Fire Retardant Resin product route.</span>
+          </span>
+        </a>
+        <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Use the grade-specific TDS</strong>
+            <span>The current ISO Fire Retardant Resin TDS publishes the resin family, supplied appearance, viscosity, gel time, specific gravity, packaging, MOQ, shelf life and storage information. It is not represented here as a fire-test report, certificate or finished-system approval.</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  )}
+
+  {isRoofLightResin && (
+    <section class="wrap gp-trust roof-light-trust" aria-labelledby="roof-light-trust-heading">
+      <div class="section-head">
+        <p class="eyebrow">Manufacturer context and product documentation</p>
+        <h2 id="roof-light-trust-heading">Verify the company, product route and published data</h2>
+      </div>
+      <div class="gp-trust-grid">
+        <a href="/about/" class="gp-trust-card">
+          <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Punjab manufacturer context</strong>
+            <span>Samrat Poly Resins was established in 2017 in Doraha, Ludhiana. Review the existing company, facility and contact information alongside the Roof Light product route.</span>
+          </span>
+        </a>
+        <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
+          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <span class="gp-trust-card-body">
+            <strong>Review grade-specific documentation</strong>
+            <span>The current Roof Light Resin TDS publishes the grade-specific resin type, supplied appearance, viscosity, gel time, packaging, MOQ, shelf life and storage information. Use it for the exact requirement.</span>
+          </span>
+        </a>
       </div>
     </section>
   )}
@@ -2519,13 +3305,18 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     <div class="wrap enquire-inner">
       <div class="section-head">
         <p class="eyebrow">Enquiry</p>
-        <h2>{isGpClearResin ? 'Request a GP Clear Resin quote' : isGpWhiteResin ? 'Request a GP White Resin quote' : isGpQuartzResin ? 'Request a GP Quartz Resin quote' : isLaminationResin ? 'Request a Lamination Resin quote' : isGpGelcoatResin ? 'Request a GP Gelcoat Resin quote' : isGpYellowResin ? 'Request a GP Yellow Resin quote' : isButtonGradeResin ? 'Request a Button Grade Resin quote' : isEpoxyArtResin ? 'Request an Epoxy Art Resin quote' : isUvResin ? 'Request a UV Resin quote' : `Get a quote for ${name}`}</h2>
+        <h2>{isGpClearResin ? 'Request a GP Clear Resin quote' : isGpWhiteResin ? 'Request a GP White Resin quote' : isGpQuartzResin ? 'Request a GP Quartz Resin quote' : isLaminationResin ? 'Request a Lamination Resin quote' : isGpGelcoatResin ? 'Request a GP Gelcoat Resin quote' : isGpYellowResin ? 'Request a GP Yellow Resin quote' : isSheetGradeYellowResin ? 'Request a Sheet Grade Yellow Resin quote' : isRoofLightResin ? 'Request a Roof Light Sheet Grade Resin quote' : isFireRetardantResin ? 'Request a Fire Retardant Resin quote' : isIsoFireRetardantResin ? 'Request an ISO Fire Retardant Resin quote' : isDmcSmcResin ? 'Request a DMC/SMC Resin quote' : isButtonGradeResin ? 'Request a Button Grade Resin quote' : isEpoxyArtResin ? 'Request an Epoxy Art Resin quote' : isUvResin ? 'Request a UV Resin quote' : `Get a quote for ${name}`}</h2>
         {isGpClearResin && <p class="gp-enquiry-note">Share your quantity, application, grade requirement and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isGpWhiteResin && <p class="gp-white-enquiry-note">Share the intended FRP component, expected quantity, required supplied appearance or finish, manufacturing process and delivery location so we can understand whether GP White Resin is relevant before preparing a quote.</p>}
         {isGpQuartzResin && <p class="gp-quartz-enquiry-note">Share the intended quartz, engineered-stone, artificial-marble or mineral-filled product; production process if known; filler or mineral type; expected quantity; finish requirement; and delivery location so we can understand whether GP Quartz Resin is relevant before preparing a quote.</p>}
         {isLaminationResin && <p class="lamination-enquiry-note">Share the lamination application, substrate or component, expected quantity and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isGpGelcoatResin && <p class="gelcoat-enquiry-note">Share the moulded component, surface-finish requirement, application method, expected quantity and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isGpYellowResin && <p class="gp-yellow-enquiry-note">Share the expected quantity, FRP component or process, whether the transparent-yellow supplied colour is acceptable in the build-up, and delivery location so we can understand the requirement before preparing a quote.</p>}
+        {isSheetGradeYellowResin && <p class="sheet-grade-enquiry-note">Share the intended FRP sheet or panel, required supplied yellow appearance, reinforcement requirement if known, visible surface requirement, production context, expected quantity and delivery location so we can understand the requirement before preparing a quote.</p>}
+        {isRoofLightResin && <p class="roof-light-enquiry-note">Share the intended roof-light or roofing sheet, required supplied appearance, reinforcement context if known, expected quantity and delivery location so we can understand the requirement before preparing a quote.</p>}
+        {isFireRetardantResin && <p class="fire-retardant-enquiry-note">Share the finished FRP component, the exact fire standard or classification if one is specified, relevant project or technical requirement, reinforcement context if known, expected quantity, packaging requirement and delivery location. This supports a focused product discussion without implying a finished-system approval.</p>}
+        {isIsoFireRetardantResin && <p class="fire-retardant-enquiry-note">Share the finished FRP component, whether an isophthalic or halogen-free FR grade is specified, the exact fire standard or classification if one is named, required documentation, service environment where relevant, quantity, packaging requirement and delivery location. This supports a focused product discussion without implying a finished-system approval.</p>}
+        {isDmcSmcResin && <p class="upr-buyer-intro">Share whether the requirement is DMC or SMC, the finished component or application, any stated product or performance specification, compound/process context if known, expected quantity, packaging need, delivery location and required documentation. This supports product selection without requesting a public formulation recipe.</p>}
         {isButtonGradeResin && <p class="button-enquiry-note">Share the expected quantity, intended button or small-moulding requirement, clarity or pigment-colour requirement, casting method if known and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isMekpHardener && <p class="mekp-enquiry-note">Share the base resin grade or system, intended component or application, expected quantity, production process if known and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isEpoxyArtResin && <p class="epoxy-art-enquiry-note">Share the intended finished surface or artwork, substrate if known, whether the requirement is for an open surface coat or contained cast, expected quantity, finish requirement and delivery location so we can understand the requirement before preparing a quote.</p>}
@@ -2682,7 +3473,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     @media (max-width: 460px) { .spec-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
 
     .prod-subtitle { color: var(--ink-dim); font-size: 1.05rem; margin-top: 0.55rem; max-width: 48ch; line-height: 1.5; }
-    .gp-buyer-intro, .gp-white-buyer-intro, .gp-quartz-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro, .gp-yellow-buyer-intro, .button-buyer-intro, .upr-buyer-intro, .glass-fiber-buyer-intro, .pigment-buyer-intro, .mekp-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
+    .gp-buyer-intro, .gp-white-buyer-intro, .gp-quartz-buyer-intro, .lamination-buyer-intro, .gelcoat-buyer-intro, .gp-yellow-buyer-intro, .sheet-grade-buyer-intro, .roof-light-buyer-intro, .fire-retardant-buyer-intro, .button-buyer-intro, .upr-buyer-intro, .glass-fiber-buyer-intro, .pigment-buyer-intro, .mekp-buyer-intro, .epoxy-art-buyer-intro { color: var(--ink-dim); margin-top: 1rem; max-width: 56ch; font-size: 0.95rem; line-height: 1.65; }
     .prod-usage { font-size: 0.95rem; }
     .prod-desc a, .prod-usage a {
       color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px;
@@ -2690,8 +3481,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     }
     .prod-desc a:hover, .prod-usage a:hover { color: var(--accent-gold); }
 
-    .gp-overview, .gp-white-overview, .gp-quartz-overview, .lamination-overview, .gelcoat-overview, .gp-yellow-overview, .button-overview, .upr-overview, .glass-fiber-overview, .pigment-overview, .mekp-overview { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
-    .gp-overview p, .gp-white-overview p, .gp-quartz-overview p, .lamination-overview p, .gelcoat-overview p, .gp-yellow-overview p, .button-overview p, .upr-overview p, .glass-fiber-overview p, .pigment-overview p, .mekp-overview p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
+    .gp-overview, .gp-white-overview, .gp-quartz-overview, .lamination-overview, .gelcoat-overview, .gp-yellow-overview, .sheet-grade-overview, .roof-light-overview, .fire-retardant-overview, .button-overview, .upr-overview, .glass-fiber-overview, .pigment-overview, .mekp-overview, .fire-performance-note { margin-top: 2rem; padding: 1.25rem 1.35rem; background: var(--bg-3); border: 1px solid var(--line); }
+    .gp-overview p, .gp-white-overview p, .gp-quartz-overview p, .lamination-overview p, .gelcoat-overview p, .gp-yellow-overview p, .sheet-grade-overview p, .roof-light-overview p, .fire-retardant-overview p, .button-overview p, .upr-overview p, .glass-fiber-overview p, .pigment-overview p, .mekp-overview p, .fire-performance-note p { color: var(--ink-dim); font-size: 0.92rem; line-height: 1.65; margin-top: 0.7rem; }
     .upr-overview a, .upr-process a:not(.btn), .upr-comparison-card a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
     .upr-overview a:hover, .upr-process a:not(.btn):hover, .upr-comparison-card a:hover { color: var(--accent-gold); }
     .upr-grade-guide { margin-top: 2.2rem; }
