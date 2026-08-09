@@ -2259,18 +2259,19 @@ export const products = [
   },
   {
     slug: "pet-resin",
-    name: "PET Resin",
+    name: "PET Resin / Polyester Putty Resin",
     category: "Industrial & Specialty Resins",
     price: "₹115 / kg",
     image: "pet-resin.jpg",
     images: ["pet-resin-2.jpg"],
     tdsUrl: "/tds/pet-resin-tds.pdf",
     seo: {
-      title: "PET Resin – PET-Modified Polyester Resin",
+      title: "PET Resin / Polyester Putty Resin",
       description:
-        "PET Resin — a PET-modified unsaturated polyester resin (liquid) for FRP sheet lamination and panel manufacturing. Sheet grade, bulk supply from 1,000 kg.",
+        "PET Resin / Polyester Putty Resin — a PET-modified unsaturated polyester resin for FRP sheet lamination and panel manufacturing. Sheet grade, bulk supply.",
       keywords: [
         "PET Resin",
+        "Polyester Putty Resin",
         "PET-Modified Polyester Resin",
         "PET-Modified Unsaturated Polyester Resin",
         "Sheet Grade PET Resin",
@@ -2301,7 +2302,7 @@ export const products = [
     },
     tagline: "PET-modified liquid polyester resin for sheet and panel lamination.",
     description:
-      "PET Resin is a premium-quality PET-modified unsaturated polyester resin — a liquid, styrene-compatible resin system incorporating polyethylene terephthalate content, not a solid thermoplastic PET material. Pale-yellow in appearance, it is manufactured for PET sheet and fibre sheet products as well as FRP sheet lamination and panel manufacturing, offering mechanical strength, impact resistance, dimensional stability and low moisture absorption with good wet-out for sheet and panel processing. Manufactured in India and supplied in 75 kg packs, with a minimum order quantity of 1,000 kg.",
+      "PET Resin / Polyester Putty Resin is a premium-quality PET-modified unsaturated polyester resin — a liquid, styrene-compatible resin system incorporating polyethylene terephthalate content, not a solid thermoplastic PET material. Pale-yellow in appearance, it is manufactured for PET sheet and fibre sheet products as well as FRP sheet lamination and panel manufacturing, offering mechanical strength, impact resistance, dimensional stability and low moisture absorption with good wet-out for sheet and panel processing. Manufactured in India and supplied in 75 kg packs, with a minimum order quantity of 1,000 kg.",
     features: [
       "PET-modified, liquid unsaturated polyester resin — sheet grade",
       "High strength and toughness, with low moisture absorption",
@@ -2327,8 +2328,8 @@ export const products = [
     ],
     faqs: [
       {
-        q: "What is PET Resin?",
-        a: "PET Resin is a PET-modified unsaturated polyester resin — a liquid, styrene-compatible resin system incorporating polyethylene terephthalate content — used for PET sheet, fibre sheet and FRP sheet lamination work. It is not a solid thermoplastic PET material.",
+        q: "What is PET Resin / Polyester Putty Resin?",
+        a: "PET Resin / Polyester Putty Resin is a PET-modified unsaturated polyester resin — a liquid, styrene-compatible resin system incorporating polyethylene terephthalate content — used for PET sheet, fibre sheet and FRP sheet lamination work. It is not a solid thermoplastic PET material.",
       },
       {
         q: "Is PET Resin the same as bottle-grade PET used for beverage bottles?",
