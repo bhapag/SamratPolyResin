@@ -283,6 +283,18 @@ export const products = [
         q: "Is Unsaturated Polyester Resin the same as fiberglass resin?",
         a: "\"Fiberglass resin\" is a common industry term for the unsaturated polyester resin used with glass fibre reinforcement in FRP manufacturing. Samrat Poly Resins' UPR grade is suitable for this use, typically paired with glass fibre matting and an MEKP catalyst.",
       },
+      {
+        q: "Does this UPR page describe every Samrat Poly Resins grade?",
+        a: "No. The technical specifications and TDS on this page describe Samrat Poly Resins' standard clear orthophthalic UPR, supplied as <a href=\"/products/gp-clear-resin/\">GP Clear Resin</a>. Lamination, gelcoat, button, fire-retardant and vinyl ester products have their own published data and should be reviewed separately.",
+      },
+      {
+        q: "Which polyester resin grade should I review for my application?",
+        a: "Start with the component and process. <a href=\"/products/gp-clear-resin/\">GP Clear Resin</a> is the published standard clear UPR for general FRP work; <a href=\"/products/lamination-resin/\">Lamination Resin</a> is published for door, plywood and FRP bonding; <a href=\"/products/gp-gelcoat-resin/\">GP Gelcoat Resin</a> is for the mould-facing surface layer. Review the individual product data for a specialist, chemical-resistance, fire-performance, casting or other stated requirement.",
+      },
+      {
+        q: "What details should I share when requesting an Unsaturated Polyester Resin quote?",
+        a: "Please share the component or application, manufacturing process, required finish or product role, expected quantity and delivery location. This helps the sales team identify the relevant published product data before preparing a quote.",
+      },
     ],
     relatedSlugs: [
       "gp-clear-resin",
@@ -570,14 +582,18 @@ export const products = [
     images: ["gp-white-resin-2.jpg"],
     tdsUrl: "/tds/gp-white-resin-tds.pdf",
     seo: {
-      title: "GP White Resin – Water-White Polyester Resin",
+      title: "GP White Resin Manufacturer in India | Water-White Polyester Resin",
       description:
-        "GP White Resin — a water-white, general-purpose orthophthalic polyester resin for FRP moulding, panels and water tanks. 6-minute gel time. 225 kg drums.",
+        "GP White Resin manufacturer in India for water-white general-purpose FRP moulding, panels, water tanks, cooling towers and fabrication. Published TDS and 225 kg drum packaging.",
       keywords: [
         "GP White Resin",
         "Water White Polyester Resin",
+        "White Polyester Resin",
+        "White GP Resin",
         "General Purpose Polyester Resin",
         "FRP Resin",
+        "White Resin Manufacturer",
+        "White Resin Supplier",
         "Polyester Moulding Resin",
       ],
     },
@@ -603,7 +619,7 @@ export const products = [
     },
     tagline: "Water-white general-purpose resin for FRP moulding.",
     description:
-      "GP White Resin is a premium general-purpose orthophthalic unsaturated polyester resin offering excellent fibreglass wet-out, reliable curing and high mechanical strength. Supplied as a water-white, medium-thixotropic liquid with a viscosity below 350 cPs, its body resists sagging on angled and vertical mould surfaces while still wetting out reinforcement quickly, helped by a fast 6-minute gel time. With 30–35% styrene content and a non-accelerated cure system, it is catalysed with an MEKP catalyst and cobalt octoate accelerator at room temperature for controlled, repeatable processing. Samrat Poly Resins supplies GP White Resin in bulk 225 kg drums for panel, moulding, hand layup, spray-up, cooling tower and water tank manufacturers who need a water-white general-purpose grade.",
+      "GP White Resin is Samrat Poly Resins' water-white, general-purpose orthophthalic unsaturated polyester resin for FRP panels, general moulding, hand layup, spray-up, cooling towers and water storage tanks. The published grade is a medium-thixotropic liquid with viscosity below 350 cPs and a 6-minute gel time. Its non-accelerated system is used with MEKP catalyst and cobalt octoate accelerator at room temperature. For buyers searching for white polyester resin, the relevant question is whether this water-white supplied appearance, general-purpose laminate role and published process data match the intended FRP component; it is not a substitute for a mould-surface gelcoat or a statement about the final colour of every reinforced part.",
     usageNote:
       'GP White Resin is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> for hand layup and spray-up. Where a fully clear (rather than water-white) grade is preferred, see our <a href="/products/gp-clear-resin/">GP Clear Resin</a>; mould-facing surfaces can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a>, and projects needing higher chemical resistance can step up to <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a>.',
     features: [
@@ -664,6 +680,18 @@ export const products = [
         q: "What packaging and minimum order quantity does GP White Resin come in?",
         a: "It is supplied in 225 kg drums, with a minimum order quantity of 1000 kg.",
       },
+      {
+        q: "Can GP White Resin be used for FRP manufacturing?",
+        a: "This published general-purpose grade is used for FRP panels, general moulding, hand layup, spray-up, cooling towers, water storage tanks and general industrial FRP fabrication. Review the product TDS and actual component requirement before selection.",
+      },
+      {
+        q: "What details should I share when requesting a GP White Resin quote?",
+        a: "Please share the intended FRP component or application, expected quantity, required supplied appearance or finish, manufacturing process, and delivery location. This helps the sales team understand whether the published GP White Resin grade is relevant before preparing a quote.",
+      },
+      {
+        q: "When should I consider a different resin grade?",
+        a: 'Review <a href="/products/gp-clear-resin/">GP Clear Resin</a> where a clear GP grade is relevant, <a href="/products/lamination-resin/">Lamination Resin</a> for its published door, plywood and FRP-bonding applications, <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a> for a mould-facing surface role, and <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> where a project has a stated chemical- or corrosion-resistance requirement. Review the relevant product data before selecting a system.',
+      },
     ],
     relatedSlugs: [
       "gp-clear-resin",
@@ -681,15 +709,21 @@ export const products = [
     images: ["gp-quartz-resin-2.jpg"],
     tdsUrl: "/tds/gp-quartz-resin-tds.pdf",
     seo: {
-      title: "GP Quartz Resin – Resin for Engineered Stone",
+      title: "GP Quartz Resin Manufacturer in India | Engineered Stone Resin",
       description:
-        "GP Quartz Resin — a polyester resin engineered for artificial quartz stone and engineered stone countertop manufacturing. Gel time 12–20 minutes.",
+        "GP Quartz Resin for artificial quartz stone, engineered stone slabs and composite mineral surfaces. Orthophthalic polyester resin with published TDS, 400–800 cPs viscosity and 7–10 minute gel time.",
       keywords: [
         "GP Quartz Resin",
+        "Quartz Resin",
         "Quartz Stone Resin",
         "Engineered Stone Resin",
+        "Resin for Quartz Slabs",
+        "Resin for Artificial Quartz",
         "Artificial Marble Resin",
-        "Polyester Resin",
+        "Polyester Resin for Quartz",
+        "Quartz Resin Manufacturer",
+        "Quartz Resin Supplier",
+        "Mineral Filled Polyester Resin",
       ],
     },
     // Values verified against SPR-TDS-GQR Rev. 01 (July 2026) — do not edit
@@ -717,18 +751,18 @@ export const products = [
       "Cobalt Octoate Dosage": "0.4%",
       "Purity": "99%",
     },
-    tagline: "Premium resin engineered for quartz and engineered stone surfaces.",
+    tagline: "Orthophthalic polyester resin for engineered stone and quartz casting.",
     description:
-      "Samrat GP Quartz Resin is an orthophthalic-based, general-purpose unsaturated polyester resin engineered for manufacturing artificial quartz stone, engineered stone slabs and composite mineral surfaces. Its clear-to-pale-yellow liquid form and controlled viscosity support smooth, uniform resin distribution and consistent curing performance for demanding industrial production. Supplied with a viscosity of 400–800 cPs and a gel time of 7–10 minutes, it cures under a non-accelerated system with an MEKP catalyst and cobalt octoate accelerator, reaching full cure in around 2 hours. At 99% purity, it is packed in 225 kg drums, with a minimum order quantity of 1,000 kg.",
+      "Samrat GP Quartz Resin is an orthophthalic unsaturated polyester resin published for artificial quartz stone, engineered stone slabs and composite mineral surfaces. It is a specific product route for buyers evaluating a quartz-filled or mineral-filled composite requirement, rather than a broad general-FRP selection. The published TDS lists a clear-to-pale-yellow liquid appearance, 400–800 cPs viscosity, 7–10 minute gel time, a non-accelerated curing system and approximately two-hour cure time. Review the exact TDS with the intended component, filler or mineral type, production process and finish requirement before selection.",
     usageNote:
-      'GP Quartz Resin is cured with an <a href="/products/mekp-hardener/">MEKP catalyst</a> and cobalt octoate accelerator under a non-accelerated system. For cultured marble and artificial stone work outside quartz surfacing, see our <a href="/products/marble-resin/">Marble Resin</a>; for general-purpose FRP manufacturing rather than stone casting, our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is more suitable.',
+      'GP Quartz Resin is published with a non-accelerated system using an <a href="/products/mekp-hardener/">MEKP catalyst</a> and cobalt octoate accelerator; use the GP Quartz Resin TDS rather than transferring process settings from another grade. For cultured marble and artificial-stone work outside the published quartz-surfacing context, review <a href="/products/marble-resin/">Marble Resin</a>. For broad general FRP manufacture, review <a href="/products/gp-clear-resin/">GP Clear Resin</a> or the <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> product hub. <a href="/products/gp-white-resin/">GP White Resin</a>, <a href="/products/lamination-resin/">Lamination Resin</a> and <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a> have separate published roles and data.',
     features: [
+      "Published for artificial quartz stone, engineered stone slabs and composite mineral surfaces",
       "Clear to pale yellow liquid appearance",
-      "Controlled viscosity (400–800 cPs) for consistent processing",
-      "Non-accelerated curing system",
-      "Gel time of 7–10 minutes",
-      "99% purity for consistent batch-to-batch quality",
-      "Supplied in 225 kg drums; minimum order 1,000 kg",
+      "Published viscosity: 400–800 cPs",
+      "Non-accelerated curing system with 7–10 minute gel time",
+      "Published purity: 99%; approximate cure time: 2 hours",
+      "225 kg drum packaging; minimum order quantity: 1,000 kg",
     ],
     applications: [
       "Artificial quartz stone manufacturing and engineered stone slabs",
@@ -777,7 +811,15 @@ export const products = [
       },
       {
         q: "Is GP Quartz Resin suitable for high filler loading?",
-        a: "Its controlled viscosity is formulated to support smooth, uniform resin distribution and consistent curing performance, the properties needed for engineered stone and quartz casting work.",
+        a: "GP Quartz Resin is published for engineered stone and composite mineral surfaces, with a 400–800 cPs viscosity range. Confirm the actual filler or mineral type, intended product and production process against the current TDS before treating it as suitable for a specific formulation.",
+      },
+      {
+        q: "Which details should I share before requesting a GP Quartz Resin quotation?",
+        a: "Please share the intended engineered-stone, artificial-quartz, artificial-marble or mineral-filled product; the production process if known; filler or mineral type; expected quantity; required finish; and delivery location. This helps the sales team understand whether the published GP Quartz Resin role is relevant before preparing a quote.",
+      },
+      {
+        q: "When should I consider another resin grade?",
+        a: 'Review <a href="/products/marble-resin/">Marble Resin</a> for its published cultured-marble and artificial-stone role, <a href="/products/gp-clear-resin/">GP Clear Resin</a> or <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> for broad general FRP selection, <a href="/products/gp-white-resin/">GP White Resin</a> where its water-white general-purpose FRP role is relevant, <a href="/products/lamination-resin/">Lamination Resin</a> for published lamination applications, and <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a> for a mould-surface role. Review the relevant product data before selecting a system.',
       },
     ],
     relatedSlugs: [
@@ -1400,15 +1442,19 @@ export const products = [
       "FRP Polyester Pigment — multicolour resin colour paste by Samrat Poly Resins",
     tdsUrl: "/tds/frp-polyester-pigment-tds.pdf",
     seo: {
-      title: "FRP Polyester Pigment – Resin Colour Paste",
+      title: "FRP Polyester Pigment Supplier in India | Polyester Pigment Paste",
       description:
-        "FRP Polyester Pigment — a heat-stable colour paste for polyester, vinyl ester and gelcoat systems, in custom RAL and Pantone shades. 2–5% dosage.",
+        "FRP polyester pigment paste for UPR, vinyl ester and gelcoat systems. Available in standard and custom RAL/Pantone colours, with a published 2–5% recommended dosage.",
       keywords: [
         "FRP Polyester Pigment",
         "Polyester Resin Pigment",
+        "Polyester Pigment Paste",
         "Gel Coat Pigment",
         "FRP Colour Paste",
         "Resin Pigment Paste",
+        "Pigment for Polyester Resin",
+        "Pigment for FRP Products",
+        "Colour Paste Supplier",
       ],
     },
     // Reorganised into productDetails/techSpecs, values cross-checked against
@@ -1435,9 +1481,9 @@ export const products = [
       "Light Fastness": "7–8 (Blue Wool Scale)",
       "Specific Gravity / Density": "1.45 g/cm³",
     },
-    tagline: "Heat-stable colour paste for polyester resins.",
+    tagline: "Colour paste for FRP resin and gelcoat systems.",
     description:
-      "FRP Polyester Pigment is Samrat Poly Resins' colorant paste for FRP products made with unsaturated polyester, vinyl ester and gelcoat systems. Blended into the resin or gelcoat at a recommended 2–5% dosage before catalysing, its high tinting strength (≥95%) delivers full colour at that low dosage without the mechanical trade-offs that heavier pigment loading can bring. It withstands the exothermic heat of curing (rated up to 180°C) and carries a 7–8 Blue Wool Scale light-fastness rating for the pigment's own colour retention — a genuinely strong result, though a finished part's overall weathering also depends on the UV stability of the surrounding resin or gelcoat, not the pigment alone. Supplied as a paste in 10 kg bottles, with a minimum order quantity of 100 kg, it is available in a wide range of standard and custom colours, including RAL and Pantone matches.",
+      "FRP Polyester Pigment is Samrat Poly Resins' colour paste for FRP products made with unsaturated polyester, vinyl ester and gelcoat systems. It is not a structural resin, glass-fibre reinforcement or a gelcoat in its own right; it is the colour component blended into the separately selected resin or gelcoat. At the published 2–5% recommended dosage before catalysing, its high tinting strength (≥95%) provides colour at a controlled addition level. The TDS lists heat resistance up to 180°C and 7–8 Blue Wool Scale light fastness for the pigment itself; finished-part weathering still depends on the surrounding resin or gelcoat system. Supplied as a paste in 10 kg bottles with a 100 kg minimum order quantity, it is available in standard and custom colours, including RAL and Pantone matches.",
     usageNote:
       'FRP Polyester Pigment is stirred thoroughly into <a href="/products/gp-clear-resin/">GP Clear Resin</a>, <a href="/products/gp-yellow-resin/">GP Yellow Resin</a> or a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> before catalysing with an <a href="/products/mekp-hardener/">MEKP hardener</a> — mixing pigment in after catalysing risks uneven colour as working time runs out. It is also compatible with <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> binder systems. For a pre-pigmented, factory-coloured sheet resin instead of adding pigment yourself, see our <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a>.',
     features: [
@@ -1505,6 +1551,10 @@ export const products = [
         q: "How is FRP Polyester Pigment used?",
         a: 'It is stirred thoroughly into the resin or gelcoat first, before adding an <a href="/products/mekp-hardener/">MEKP hardener</a> and accelerator — mixing pigment in after catalysing risks uneven colour as working time runs out.',
       },
+      {
+        q: "What information should I share for an FRP Polyester Pigment quote?",
+        a: "Share the required colour or RAL/Pantone reference if known, the FRP application, intended resin or gelcoat system, quantity, industry and delivery location. The actual colour and system requirement should be confirmed before ordering.",
+      },
     ],
     relatedSlugs: [
       "gp-clear-resin",
@@ -1526,15 +1576,24 @@ export const products = [
       "Glass Fiber — E-glass chopped strand mat (CSM) reinforcement roll by Samrat Poly Resins",
     tdsUrl: "/tds/fibre-glass-mat-tds.pdf",
     seo: {
-      title: "Glass Fiber Mat – E-Glass Chopped Strand Mat",
+      title: "Glass Fiber Mat Supplier in India | E-Glass CSM 300 & 450",
       description:
-        "Glass Fiber — E-glass chopped strand mat reinforcement, polyester-sized, in 300/450 gsm for marine, automotive and construction FRP composites.",
+        "E-Glass Chopped Strand Mat (CSM) in 300 and 450 GSM for FRP reinforcement. Polyester-compatible sizing, 1040 mm rolls, 30 kg packaging and published TDS.",
       keywords: [
+        "Glass Fiber",
         "Glass Fiber Mat",
+        "Fiberglass Mat",
+        "E-Glass Fiber",
         "Chopped Strand Mat",
+        "CSM",
+        "CSM 300",
+        "CSM 450",
+        "300 GSM Glass Fiber",
+        "450 GSM Glass Fiber",
         "FRP Reinforcement",
-        "E-Glass Mat",
-        "Fibreglass Mat",
+        "FRP Reinforcement Material",
+        "Polyester Resin Glass Fiber",
+        "Glass Fiber Supplier",
       ],
     },
     // Reorganised into productDetails/techSpecs, values cross-checked against
@@ -1565,11 +1624,11 @@ export const products = [
       "Tensile Strength (Glass Filament)": "≥ 2,000 MPa",
       "Moisture Content": "≤ 0.10%",
     },
-    tagline: "Reinforcement that gives composites their strength.",
+    tagline: "E-glass chopped strand mat for FRP reinforcement.",
     description:
-      "Glass Fiber is Samrat Poly Resins' E-glass chopped strand mat (CSM) — a non-woven reinforcement made from 50 mm chopped E-glass strands bound with an emulsion binder, supplied with a polyester-compatible sizing. As the reinforcement in an FRP laminate, it carries the load-bearing strength that resin alone cannot provide: the individual glass filaments have very high tensile strength, though the strength of the finished laminate depends on the resin system, fibre loading and how thoroughly the resin wets out every strand. Supplied in industrial-grade 1040 mm wide rolls at 300 g/m² and 450 g/m², with a minimum order quantity of 500 kg, it wets out cleanly with polyester and vinyl ester resin systems for hand layup and spray-up reinforcement across marine, automotive and construction FRP work.",
+      "Glass Fiber, also called fibreglass mat or chopped strand mat (CSM), is an E-glass reinforcement material for FRP manufacture — it is not a resin. Samrat Poly Resins supplies industrial-grade, polyester-compatible CSM in 300 g/m² and 450 g/m² rolls for buyers building reinforced FRP components. The mat contains 50 mm chopped E-glass strands held together with an emulsion binder; the chosen resin binds the reinforcement into the finished laminate. Review the published 1040 mm roll width, 30 kg roll weight, 500 kg minimum order quantity and Technical Data Sheet against the intended component and resin system before requesting a quote.",
     usageNote:
-      'Glass Fiber is wet out with a catalysed resin such as <a href="/products/gp-clear-resin/">GP Clear Resin</a> or <a href="/products/gp-yellow-resin/">GP Yellow Resin</a>, using an <a href="/products/mekp-hardener/">MEKP hardener</a>, for hand layup and spray-up work. Its chemical resistance in a finished laminate comes from the resin that encapsulates it rather than from the fibre itself, so projects facing harsher chemical exposure should look at <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> as the resin-side upgrade. Mould-facing surfaces can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> first.',
+      'Glass Fiber supplies the reinforcement role; the resin is selected separately for the required FRP component and product role. Review <a href="/products/gp-clear-resin/">GP Clear Resin</a> or the parent <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> page for general FRP resin context, <a href="/products/gp-white-resin/">GP White Resin</a> where its published supplied appearance is relevant, and <a href="/products/lamination-resin/">Lamination Resin</a> for its published bonding and lamination contexts. For a mould-facing surface, review <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a>; for a specified chemical- or corrosion-resistance requirement, review the separate <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> data. Final system suitability should be confirmed against the applicable product data.',
     features: [
       "E-glass chopped strand mat, 50 mm fibre length",
       "300 g/m² and 450 g/m² weights available",
@@ -1612,6 +1671,10 @@ export const products = [
         a: "It is available in 300 g/m² and 450 g/m² weights.",
       },
       {
+        q: "How should I choose between CSM 300 and CSM 450?",
+        a: "CSM 300 and CSM 450 identify the two published area weights: 300 g/m² and 450 g/m². The right option depends on the component drawing, laminate design, required reinforcement build-up, resin system and production method. Share those details so the requirement can be discussed against the Technical Data Sheet instead of assuming one weight is suitable for every FRP part.",
+      },
+      {
         q: "What is the roll width and packaging?",
         a: "It is supplied in 1040 mm wide rolls, approximately 30 kg per roll.",
       },
@@ -1622,6 +1685,10 @@ export const products = [
       {
         q: "What is the minimum order quantity for Glass Fiber?",
         a: "Minimum order quantity is 500 kg.",
+      },
+      {
+        q: "What should I share when requesting a Glass Fiber quote?",
+        a: "Please share whether CSM 300 or CSM 450 is required, the intended FRP component or application, the resin system under consideration, required quantity, delivery location and any drawing or purchase specification available. This helps the sales team understand the reinforcement requirement before preparing a quote.",
       },
       {
         q: "How is Glass Fiber used with resin?",
@@ -1637,9 +1704,10 @@ export const products = [
       },
     ],
     relatedSlugs: [
+      "unsaturated-polyester-resin",
       "gp-clear-resin",
-      "gp-yellow-resin",
-      "mekp-hardener",
+      "gp-white-resin",
+      "lamination-resin",
       "gp-gelcoat-resin",
       "vinyl-ester-resin",
     ],
@@ -2717,56 +2785,67 @@ export const products = [
     images: ["mekp-hardener-2.jpg"],
     tdsUrl: "/tds/mekp-hardener-tds.pdf",
     seo: {
-      title: "MEKP Hardener – Polyester Resin Catalyst",
+      title: "MEKP Hardener Supplier in India | Polyester Resin Catalyst",
       description:
-        "MEKP Hardener (Methyl Ethyl Ketone Peroxide) — the standard catalyst for curing polyester and vinyl ester resins and gelcoats. Enquire for bulk supply.",
+        "MEKP Hardener (Methyl Ethyl Ketone Peroxide) catalyst / initiator for published polyester, vinyl ester and gelcoat systems. Review the TDS and request an industrial quote.",
       keywords: [
         "MEKP Hardener",
         "MEKP Catalyst",
+        "MEKP Initiator",
         "Polyester Resin Catalyst",
-        "Resin Curing Agent",
+        "Polyester Resin Hardener",
+        "Catalyst for Polyester Resin",
+        "FRP Hardener",
+        "Industrial MEKP",
+        "MEKP Supplier",
         "Gelcoat Catalyst",
       ],
     },
-    // No productDetails/techSpecs table yet — no verified dosage rate,
-    // packaging size or MOQ has been supplied as this product's own spec
-    // sheet (other product pages state their own recommended MEKP dosage as
-    // part of *their* verified specs, but that is not the same as a verified
-    // spec sheet for this hardener itself). Per standing instruction, values
-    // are never invented to fill the table; this section will be added once
-    // a finalized TDS is provided for MEKP Hardener.
-    tagline: "The catalyst that kicks off resin curing.",
+    productDetails: {
+      "Product type": "Methyl Ethyl Ketone Peroxide (MEKP) - organic peroxide initiator",
+      Grade: "Industrial grade",
+      Function: "Curing catalyst / initiator for unsaturated polyester, vinyl ester and gelcoat systems",
+      "Compatible systems": "Unsaturated polyester resins, vinyl ester resins and gelcoats",
+      Appearance: "Clear, colourless liquid",
+    },
+    techSpecs: {
+      Purity: "98%",
+      "Specific gravity / density": "1.17 g/cm³ (at 25 °C)",
+      "Active oxygen content": "9.0%",
+      "Shelf life": "6 months (unopened)",
+      Packaging: "25 kg carboy",
+      "Minimum order quantity": "25 kg",
+    },
+    tagline: "Catalyst / initiator for published polyester resin systems.",
     description:
-      "Methyl Ethyl Ketone Peroxide (MEKP) is the catalyst used to initiate curing in unsaturated polyester resins, vinyl ester resins and gelcoats. Essential across composite applications such as FRP products, boat building, automotive parts and laminates, it decomposes on mixing to generate free radicals that start polymerisation — an exothermic reaction that hardens the resin. Used alongside a cobalt octoate accelerator in most polyester and gelcoat systems, dosage is adjusted to suit the resin grade, ambient workshop temperature and the gel time required, as specified on each resin's own technical data sheet. Samrat Poly Resins supplies MEKP Hardener as the standard catalyst paired with its polyester, vinyl ester and gelcoat resin ranges.",
+      "MEKP Hardener (Methyl Ethyl Ketone Peroxide) is Samrat Poly Resins' published industrial catalyst / initiator for selected unsaturated polyester resin, vinyl ester resin and gelcoat systems. In FRP procurement and shop-floor language it may be called a hardener, catalyst or initiator because its role is to start curing in the selected resin system. It is not a structural resin, glass-fibre reinforcement or a finished-surface gelcoat. Review the actual resin grade, intended FRP application and current Technical Data Sheet before selecting the complete material system.",
     usageNote:
-      'MEKP Hardener is used to catalyse general-purpose resins such as <a href="/products/gp-clear-resin/">GP Clear Resin</a> and <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>, chemical-resistant <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a>, and reinforcement such as <a href="/products/fibre-glass-mat/">glass fibre</a> laminates. Dosage should follow the specific resin\'s own technical data sheet.',
+      'MEKP Hardener is a separate catalyst component for published resin systems including <a href="/products/gp-clear-resin/">GP Clear Resin</a>, <a href="/products/gp-white-resin/">GP White Resin</a>, <a href="/products/gp-yellow-resin/">GP Yellow Resin</a>, <a href="/products/lamination-resin/">Lamination Resin</a>, <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a> and <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a>. <a href="/products/fibre-glass-mat/">Glass Fiber</a> is the separate reinforcement component, while <a href="/products/frp-polyester-pigment/">FRP Polyester Pigment</a> is a separate colour component. Confirm the published product data for the actual system; this page does not provide operating instructions.',
     features: [
-      "Initiates curing of polyester and vinyl ester resins",
-      "Generates free radicals for polymerisation",
-      "Essential for gelcoats and laminates",
-      "Standard catalyst for room-temperature cure",
-      "Paired with a cobalt octoate accelerator in most polyester systems",
-      "Dosage adjustable to suit resin grade and workshop conditions",
+      "Published catalyst / initiator role for selected polyester-family resin systems",
+      "Compatible-system guidance for unsaturated polyester, vinyl ester and gelcoat buyers",
+      "Separate material role from structural resin, glass-fibre reinforcement and surface gelcoat",
+      "Industrial-grade product with a published Technical Data Sheet",
+      "25 kg carboy packaging and 25 kg minimum order quantity",
+      "Quote discussion can begin with the resin grade, application and expected quantity",
     ],
     applications: [
-      "Curing FRP products and laminates",
-      "Boat building and automotive parts",
-      "Gelcoat and casting work",
-      "Curing vinyl ester resin for chemical-resistant tanks and pipelines",
+      "Published polyester resin systems for FRP products and laminates",
+      "Published gelcoat systems for moulded FRP surface-finish work",
+      "Published vinyl ester resin systems for specified chemical-storage and pipeline contexts",
+      "Composite manufacturing applications where the selected base resin is confirmed first",
     ],
     industries: [
       "FRP & composites manufacturing",
-      "Boat & marine building",
-      "Automotive parts manufacturing",
-      "Gelcoat & casting work",
+      "FRP roofing, panel and tank manufacturing",
+      "FRP moulded-product and surface-finish manufacture",
+      "Industrial composite and resin-system procurement",
     ],
     whyChoose: [
-      "ISO 9001:2015 certified quality management system",
-      "Manufacturing polyester resins since 2017",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
-      "Reliable, consistent-quality catalyst for room-temperature cure",
-      "Compatible with polyester and vinyl ester resins, and gelcoats",
-      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+      "Published MEKP Hardener Technical Data Sheet available for review",
+      "Clear product role beside the relevant polyester, vinyl ester and gelcoat pages",
+      "25 kg carboy packaging and 25 kg MOQ published in the current TDS",
+      "Industrial enquiry can capture resin grade, application, process and delivery location",
     ],
     faqs: [
       {
@@ -2778,25 +2857,32 @@ export const products = [
         a: 'It is used with unsaturated polyester resins such as <a href="/products/gp-clear-resin/">GP Clear Resin</a>, gelcoats such as our <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>, and vinyl ester resins such as our <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a>.',
       },
       {
-        q: "How does MEKP Hardener work?",
-        a: "It decomposes on mixing to generate free radicals that start polymerisation — an exothermic reaction that hardens the resin from a liquid into a rigid, cured solid.",
+        q: "Why is MEKP referred to as a hardener, catalyst or initiator?",
+        a: "These terms describe MEKP's curing role within a selected polyester-family resin system. MEKP is not the structural resin, the glass-fibre reinforcement or the mould-side gelcoat itself.",
       },
       {
-        q: "Does MEKP Hardener cure resin at room temperature?",
-        a: "Yes. It is the standard catalyst for room-temperature cure, typically used alongside a cobalt octoate accelerator.",
+        q: "Is MEKP Hardener a resin or reinforcement material?",
+        a: "No. MEKP Hardener is the separately selected catalyst / initiator. The resin, <a href=\"/products/fibre-glass-mat/\">glass-fibre reinforcement</a>, gelcoat and any <a href=\"/products/frp-polyester-pigment/\">FRP Polyester Pigment</a> have distinct material roles within an FRP system.",
       },
       {
-        q: "What dosage of MEKP Hardener should I use?",
-        a: "Dosage varies by resin system, ambient workshop temperature and the gel time required — always follow the specific resin's own technical data sheet.",
+        q: "What should I share when requesting an MEKP Hardener quote?",
+        a: "Please share the base resin grade or system, finished component or application, expected quantity, production process if known, and delivery location. This helps the team understand the procurement requirement before preparing a quote.",
       },
       {
         q: "Is MEKP Hardener used with gelcoats?",
-        a: "Yes. It is essential for curing gelcoats as well as general-purpose and structural laminating resins.",
+        a: "The published compatible systems include gelcoats, alongside unsaturated polyester resins and vinyl ester resins. Review the actual gelcoat product data and intended application before selecting the system.",
       },
       {
         q: "What applications use MEKP Hardener?",
-        a: "It is used for curing FRP products and laminates, boat building and automotive parts, gelcoat and casting work, and vinyl ester resin for chemical-resistant tanks and pipelines.",
+        a: "The current TDS lists FRP products and laminates, boat building and automotive parts, gelcoat and casting work, and composite manufacturing. Suitability still depends on the separately selected resin system and the application requirements.",
       },
+    ],
+    applicationSlugs: [
+      "resin-for-water-tank-manufacturing",
+      "resin-for-roofing-sheet-manufacturing",
+      "resin-for-frp-panel-manufacturing",
+      "resin-for-hand-lay-up-process",
+      "gelcoat-for-general-frp-mould-finishing",
     ],
     relatedSlugs: [
       "gp-clear-resin",
