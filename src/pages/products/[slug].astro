@@ -23,7 +23,7 @@ const resolveAppImage = (filename) => appImageModules[`/src/assets/applications/
 
 const { product } = Astro.props;
 const { name, image, description, features, applications, category, specs } = product;
-const { tagline, usageNote, industries, whyChoose, faqs, tdsUrl } = product;
+const { tagline, usageNote, industries, whyChoose, faqs, tdsUrl, sdsUrl } = product;
 const isGpClearResin = product.slug === 'gp-clear-resin';
 const isLaminationResin = product.slug === 'lamination-resin';
 const isGpGelcoatResin = product.slug === 'gp-gelcoat-resin';
@@ -912,6 +912,21 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             aria-label={`Download Technical Data Sheet PDF for ${name}`}
           >
             {isFireRetardantResin ? 'Review Fire Retardant Resin TDS (PDF)' : isIsoFireRetardantResin ? 'Review ISO Fire Retardant Resin TDS (PDF)' : 'Download Technical Data Sheet (PDF)'}
+          </a>
+        </div>
+      )}
+
+      {sdsUrl && (
+        <div class="prod-cta">
+          <a
+            href={sdsUrl}
+            class="btn btn-solid"
+            target="_blank"
+            rel="noopener"
+            download
+            aria-label={`Download Safety Data Sheet PDF for ${name}`}
+          >
+            Download Safety Data Sheet (SDS) (PDF)
           </a>
         </div>
       )}

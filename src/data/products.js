@@ -56,6 +56,7 @@ export const products = [
     imageAlt:
       "Sheet Grade Yellow Resin — pre-pigmented yellow orthophthalic polyester resin for FRP sheets by Samrat Poly Resins",
     tdsUrl: "/tds/sheet-grade-yellow-resin-tds.pdf",
+    sdsUrl: "/sds/sheet-grade-yellow-resin-sds.pdf",
     seo: {
       title: "Sheet Grade Yellow Resin – Polyester Resin for FRP Sheets",
       description:
@@ -185,6 +186,7 @@ export const products = [
     image: "unsaturated-polyester-resin-2.jpg",
     images: ["unsaturated-polyester-resin.jpg", "unsaturated-polyester-resin-3.jpg", "unsaturated-polyester-resin-4.jpg"],
     tdsUrl: "/tds/unsaturated-polyester-resin-tds.pdf",
+    sdsUrl: "/sds/unsaturated-polyester-resin-sds.pdf",
     imageAlt:
       "Unsaturated Polyester Resin (UPR) — clear orthophthalic general-purpose polyester resin by Samrat Poly Resins",
     seo: {
@@ -325,6 +327,7 @@ export const products = [
     imageAlt:
       "Lamination Resin (LR Resin) — transparent orthophthalic unsaturated polyester lamination resin by Samrat Poly Resins",
     tdsUrl: "/tds/lamination-resin-tds.pdf",
+    sdsUrl: "/sds/lamination-resin-sds.pdf",
     seo: {
       title: "Lamination Resin (LR Resin)",
       description:
@@ -456,6 +459,7 @@ export const products = [
     imageAlt:
       "GP Clear Resin — clear orthophthalic general-purpose unsaturated polyester resin by Samrat Poly Resins",
     tdsUrl: "/tds/gp-clear-resin-tds.pdf",
+    sdsUrl: "/sds/gp-clear-resin-sds.pdf",
     seo: {
       title: "GP Clear Resin – General Purpose Polyester Resin",
       description:
@@ -592,6 +596,7 @@ export const products = [
     image: "gp-white-resin.jpg",
     images: ["gp-white-resin-2.jpg"],
     tdsUrl: "/tds/gp-white-resin-tds.pdf",
+    sdsUrl: "/sds/gp-white-resin-sds.pdf",
     seo: {
       title: "GP White Resin Manufacturer in India | Water-White Polyester Resin",
       description:
@@ -719,6 +724,7 @@ export const products = [
     image: "gp-quartz-resin.jpg",
     images: ["gp-quartz-resin-2.jpg"],
     tdsUrl: "/tds/gp-quartz-resin-tds.pdf",
+    sdsUrl: "/sds/gp-quartz-resin-sds.pdf",
     seo: {
       title: "GP Quartz Resin Manufacturer in India | Engineered Stone Resin",
       description:
@@ -849,6 +855,7 @@ export const products = [
     imageAlt:
       "GP Gelcoat Resin — white high-gloss polyester surface-coating gelcoat by Samrat Poly Resins",
     tdsUrl: "/tds/gp-gelcoat-resin-tds.pdf",
+    sdsUrl: "/sds/gp-gelcoat-resin-sds.pdf",
     seo: {
       title: "GP Gelcoat Resin – Mould Surface Coating",
       description:
@@ -990,6 +997,7 @@ export const products = [
     imageAlt:
       "Button Grade Resin — transparent unsaturated polyester casting resin for buttons by Samrat Poly Resins",
     tdsUrl: "/tds/button-grade-resin-tds.pdf",
+    sdsUrl: "/sds/button-grade-resin-sds.pdf",
     seo: {
       title: "Button Grade Resin – Polyester Casting Resin for Buttons",
       description:
@@ -1106,6 +1114,7 @@ export const products = [
     imageAlt:
       "Roof Light Sheet Grade Resin — water-white translucent orthophthalic polyester resin for roofing sheets by Samrat Poly Resins",
     tdsUrl: "/tds/roof-light-resin-tds.pdf",
+    sdsUrl: "/sds/roof-light-resin-sds.pdf",
     seo: {
       title: "Roof Light Sheet Grade Resin – Translucent Roofing Resin",
       description:
@@ -1222,6 +1231,7 @@ export const products = [
     imageAlt:
       "Fire Retardant Resin — halogenated unsaturated polyester resin by Samrat Poly Resins",
     tdsUrl: "/tds/fire-retardant-resin-tds.pdf",
+    sdsUrl: "/sds/fire-retardant-resin-sds.pdf",
     seo: {
       title: "Fire Retardant Resin Manufacturer in India | FR Polyester Resin",
       description:
@@ -1345,6 +1355,7 @@ export const products = [
     image: "iso-fire-retardant-resin.jpg",
     images: ["iso-fire-retardant-resin-2.jpg"],
     tdsUrl: "/tds/iso-fire-retardant-resin-tds.pdf",
+    sdsUrl: "/sds/iso-fire-retardant-resin-sds.pdf",
     seo: {
       title: "Isophthalic Fire Retardant Resin Manufacturer in India | ISO FR Resin",
       description:
@@ -1469,6 +1480,7 @@ export const products = [
     imageAlt:
       "FRP Polyester Pigment — multicolour resin colour paste by Samrat Poly Resins",
     tdsUrl: "/tds/frp-polyester-pigment-tds.pdf",
+    sdsUrl: "/sds/frp-polyester-pigment-sds.pdf",
     seo: {
       title: "FRP Polyester Pigment Supplier in India | Polyester Pigment Paste",
       description:
@@ -1603,6 +1615,7 @@ export const products = [
     imageAlt:
       "Glass Fiber — E-glass chopped strand mat (CSM) reinforcement roll by Samrat Poly Resins",
     tdsUrl: "/tds/fibre-glass-mat-tds.pdf",
+    sdsUrl: "/sds/fibre-glass-mat-sds.pdf",
     seo: {
       title: "Glass Fiber Mat Supplier in India | E-Glass CSM 300 & 450",
       description:
@@ -1750,6 +1763,7 @@ export const products = [
     imageAlt:
       "Epoxy Clear Casting Resin — crystal-clear two-part epoxy for river table and decorative casting by Samrat Poly Resins",
     tdsUrl: "/tds/epoxy-clear-casting-resin-tds.pdf",
+    sdsUrl: "/sds/epoxy-clear-casting-resin-sds.pdf",
     seo: {
       title: "Epoxy Clear Casting Resin – Two-Part Epoxy",
       description:
@@ -1883,6 +1897,7 @@ export const products = [
     image: "epoxy-art-resin.jpg",
     images: ["epoxy-art-resin-2.jpg", "epoxy-art-resin-3.jpg"],
     tdsUrl: "/tds/epoxy-art-resin-tds.pdf",
+    sdsUrl: "/sds/epoxy-art-resin-sds.pdf",
     seo: {
       title: "Epoxy Art Resin – Self-Levelling Clear Epoxy",
       description:
@@ -1987,6 +2002,7 @@ export const products = [
     image: "uv-resin.jpg",
     images: ["uv-resin-2.jpg"],
     tdsUrl: "/tds/uv-resin-tds.pdf",
+    sdsUrl: "/sds/uv-resin-sds.pdf",
     seo: {
       title: "UV Resin – Fast-Curing Epoxy Acrylate Resin",
       description:
@@ -2090,6 +2106,7 @@ export const products = [
     image: "epoxy-hardener.jpg",
     images: ["epoxy-hardener-2.jpg"],
     tdsUrl: "/tds/epoxy-hardener-tds.pdf",
+    sdsUrl: "/sds/epoxy-hardener-sds.pdf",
     seo: {
       title: "Epoxy Hardener Manufacturer in India | Polyamide Curing Agent",
       description:
@@ -2201,6 +2218,7 @@ export const products = [
     image: "dmc-smc-resin.jpg",
     images: ["dmc-smc-resin-2.jpg", "dmc-smc-resin-3.jpg"],
     tdsUrl: "/tds/dmc-smc-resin-tds.pdf",
+    sdsUrl: "/sds/dmc-smc-resin-sds.pdf",
     seo: {
       title: "DMC & SMC Resin Manufacturer in India | Polyester Moulding Resin",
       description:
@@ -2856,6 +2874,7 @@ export const products = [
     image: "mekp-hardener.jpg",
     images: ["mekp-hardener-2.jpg"],
     tdsUrl: "/tds/mekp-hardener-tds.pdf",
+    sdsUrl: "/sds/mekp-hardener-sds.pdf",
     seo: {
       title: "MEKP Hardener Supplier in India | Polyester Resin Catalyst",
       description:
@@ -2974,6 +2993,7 @@ export const products = [
     imageAlt:
       "GP Yellow Resin — transparent yellow, general-purpose orthophthalic polyester laminating resin by Samrat Poly Resins",
     tdsUrl: "/tds/gp-yellow-resin-tds.pdf",
+    sdsUrl: "/sds/gp-yellow-resin-sds.pdf",
     seo: {
       title: "GP Yellow Resin – Laminating Polyester Resin",
       description:
