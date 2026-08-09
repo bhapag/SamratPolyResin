@@ -404,15 +404,7 @@ const detailEntries = product.productDetails ? Object.entries(product.productDet
 const techEntries = product.techSpecs ? Object.entries(product.techSpecs) : null;
 const legacySpecEntries = !detailEntries && !techEntries && specs ? Object.entries(specs) : [];
 
-// The supplied ISO FR and Epoxy Hardener marketing artwork includes
-// unsupported performance, compatibility and compliance statements. Until
-// evidence-backed, claim-safe product photography is available, use the
-// existing neutral product fallback instead of presenting that artwork as
-// product proof.
-// DMC/SMC source artwork contains performance and certification language that
-// is not substantiated by the current product documentation. Use the neutral
-// product fallback until a claim-safe product image is available.
-const gallery = isIsoFireRetardantResin || isEpoxyHardener || isDmcSmcResin ? [] : [image, ...(product.images ?? [])];
+const gallery = [image, ...(product.images ?? [])];
 
 // Resolve each gallery photo to an optimised, compressed webp — one size for
 // the large main viewer, one for the thumbnail strip. The thumbnail's

@@ -7,10 +7,7 @@ const resolveProductImage = (filename) => productImageModules[`/src/assets/produ
 
 const { product } = Astro.props;
 const { slug, name, image, tagline, category } = product;
-// These marketing assets contain unsupported safety, performance or
-// compatibility claims, so keep their cards neutral until claim-safe product
-// photography is available.
-const img = ['iso-fire-retardant-resin', 'epoxy-hardener'].includes(slug) ? null : resolveProductImage(image);
+const img = resolveProductImage(image);
 ---
 <a href={`/products/${slug}/`} class="card" data-product-card data-category={category} data-search={`${name} ${tagline}`.toLowerCase()}>
   <div class:list={['card-img', { noimg: !img }]}>
