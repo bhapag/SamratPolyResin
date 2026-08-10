@@ -93,7 +93,8 @@ export function buildCanonicalUrl(pathname) {
 // Shared WhatsApp product-quote link builder — used by every per-product
 // WhatsApp CTA (product page's "WhatsApp" and "Request Bulk Quote" buttons)
 // so they always send the exact same message format for the exact same product.
-export function buildProductQuoteLink(productName) {
+export function buildProductQuoteLink(productName, requirementFields = '') {
+  const additionalFields = requirementFields.trim() ? `\n${requirementFields.trim()}\n` : '';
   const message = `Hello,
 
 I'm interested in ${productName}.
@@ -101,7 +102,7 @@ I'm interested in ${productName}.
 Please provide a quotation for:
 
 Product: ${productName}
-Quantity:
+${additionalFields}Quantity:
 
 Thank you.`;
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;

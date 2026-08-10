@@ -2348,112 +2348,124 @@ export const products = [
   },
   {
     slug: "pet-resin",
-    name: "PET Resin / Polyester Putty Resin",
+    name: "PET Resin",
     category: "Industrial & Specialty Resins",
     price: "₹115 / kg",
     image: "pet-resin.jpg",
     images: ["pet-resin-2.jpg"],
+    imageAlt:
+      "PET Resin - PET-modified liquid unsaturated polyester sheet-grade resin by Samrat Poly Resins",
     tdsUrl: "/tds/pet-resin-tds.pdf",
     sdsUrl: "/sds/pet-resin-sds.pdf",
     seo: {
-      title: "PET Resin / Polyester Putty Resin",
+      title: "PET Resin - PET-Modified Polyester Resin for Sheets",
       description:
-        "PET Resin / Polyester Putty Resin — a PET-modified unsaturated polyester resin for FRP sheet lamination and panel manufacturing. Sheet grade, bulk supply.",
+        "PET Resin is Samrat Poly Resins' published PET-modified liquid unsaturated polyester sheet grade for fibre sheets, PET sheets, FRP sheet lamination and panel manufacturing. Review the current TDS before ordering.",
       keywords: [
         "PET Resin",
-        "Polyester Putty Resin",
         "PET-Modified Polyester Resin",
         "PET-Modified Unsaturated Polyester Resin",
-        "Sheet Grade PET Resin",
+        "Sheet Grade Polyester Resin",
         "FRP Sheet Lamination Resin",
+        "Polyester Resin for Fibre Sheets",
       ],
     },
-    // Corrected per SPR-TDS-PET (July 2026): this is a PET-modified liquid
-    // unsaturated polyester resin, not a solid thermoplastic bottle-grade
-    // PET resin. The previous IV value (0.90 dl/g) and all bottle/
-    // packaging/ISBM claims did not appear in the TDS and have been
-    // removed — every value below is TDS-verified.
+    // The dedicated July 2026 PET TDS identifies a PET-modified liquid
+    // unsaturated polyester sheet grade. The catalogue separately labels a
+    // different PET item as thermoplastic chips, so the page intentionally
+    // avoids treating the two forms as interchangeable.
     productDetails: {
+      "Documented Product Role": "PET-modified liquid sheet-grade resin",
       "Minimum Order Quantity": "1000 kg",
       "Packaging Size": "75 kg",
       "Colour / Appearance": "Pale Yellow",
+      "Storage": "Cool, dry place away from direct sunlight; keep container tightly closed",
+      "Shelf Life": "6 months (unopened)",
       "Country of Origin": "India",
     },
     techSpecs: {
       "Resin Type": "PET-Modified Unsaturated Polyester Resin (Liquid)",
       "Grade": "Sheet Grade",
-      "Physical Form": "Liquid",
       "Viscosity": "450–650 cPs (at 25°C)",
       "Solid Content": "60–64%",
       "Specific Gravity": "1.05–1.12 g/cm³ (at 25°C)",
       "HDT": "70–85°C (cured)",
-      "Shelf Life": "6 Months (Unopened)",
-      "End Use": "Fibre Sheets, PET Sheets",
+      "Flash Point": "Approx. 30°C",
+      "Published End Use": "Fibre sheets, PET sheets",
     },
-    tagline: "PET-modified liquid polyester resin for sheet and panel lamination.",
+    tagline: "PET-modified liquid unsaturated polyester sheet grade for published sheet and laminate applications.",
     description:
-      "PET Resin / Polyester Putty Resin is a premium-quality PET-modified unsaturated polyester resin — a liquid, styrene-compatible resin system incorporating polyethylene terephthalate content, not a solid thermoplastic PET material. Pale-yellow in appearance, it is manufactured for PET sheet and fibre sheet products as well as FRP sheet lamination and panel manufacturing, offering mechanical strength, impact resistance, dimensional stability and low moisture absorption with good wet-out for sheet and panel processing. Manufactured in India and supplied in 75 kg packs, with a minimum order quantity of 1,000 kg.",
+      "PET Resin is Samrat Poly Resins' published PET-modified unsaturated polyester resin: a pale-yellow liquid sheet grade. Its dedicated Technical Data Sheet positions it for PET sheets and fibre sheet products, plus FRP sheet lamination and panel manufacturing. The page is aligned to that liquid-resin TDS; it does not present this material as thermoplastic PET chips, a ready-made putty or a body-filler formulation. Review the current TDS and confirm the required form and application before ordering.",
     features: [
-      "PET-modified, liquid unsaturated polyester resin — sheet grade",
-      "High strength and toughness, with low moisture absorption",
-      "Durable and recyclable PET content",
-      "Good wet-out for sheet and laminate processing",
-      "Supplied in 75 kg packs, minimum order 1000 kg",
+      "PET-modified liquid unsaturated polyester resin identified as sheet grade in the current TDS",
+      "Published pale-yellow supply appearance with 450–650 cPs viscosity at 25°C",
+      "Documented sheet, fibre-sheet, FRP sheet-lamination and panel-manufacturing context",
+      "Published 75 kg packaging, 1,000 kg minimum order quantity and six-month unopened shelf life",
+      "Product-specific TDS available for the listed liquid-resin grade",
     ],
     applications: [
-      "PET sheets and fibre sheet products",
-      "FRP sheet lamination and panel manufacturing",
+      "PET sheets and fibre sheet products (as listed in the TDS)",
+      "FRP sheet lamination and panel manufacturing (as listed in the TDS)",
     ],
     industries: [
       "FRP sheet & panel manufacturing",
       "Fibre & sheet manufacturing",
     ],
     whyChoose: [
-      "ISO 9001:2015 certified quality management system",
-      "Manufacturing polyester resins since 2017",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
-      "Consistent 450–650 cPs viscosity for reliable sheet and laminate processing",
-      "Supplied in 75 kg packs, minimum order 1,000 kg",
-      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+      "Dedicated PET-modified liquid sheet-grade product route with its own current TDS",
+      "Published technical and supply data for the listed grade",
+      "Documented sheet and laminate applications to review against the finished product requirement",
+      "Clear procurement path for the required form, application, quantity and delivery location",
     ],
     faqs: [
       {
-        q: "What is PET Resin / Polyester Putty Resin?",
-        a: "PET Resin / Polyester Putty Resin is a PET-modified unsaturated polyester resin — a liquid, styrene-compatible resin system incorporating polyethylene terephthalate content — used for PET sheet, fibre sheet and FRP sheet lamination work. It is not a solid thermoplastic PET material.",
+        q: "What is PET Resin on this page?",
+        a: "The current PET Resin TDS identifies a PET-modified unsaturated polyester resin supplied as a pale-yellow liquid sheet grade. It is positioned for PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing.",
       },
       {
-        q: "Is PET Resin the same as bottle-grade PET used for beverage bottles?",
-        a: "No. This is a liquid unsaturated polyester resin for FRP sheet lamination and panel manufacturing, not the solid thermoplastic PET resin or chips processed by injection stretch blow moulding into bottles, preforms or packaging.",
+        q: "What does PET mean in this product's published documentation?",
+        a: "The dedicated TDS describes this as PET-modified resin that incorporates polyethylene terephthalate content into a liquid, styrene-compatible unsaturated polyester resin system. It does not present the product as solid thermoplastic PET material.",
       },
       {
-        q: "What is the viscosity of PET Resin?",
-        a: "450–650 cPs at 25°C, with a solid content of 60–64% and specific gravity of 1.05–1.12 g/cm³.",
+        q: "Is this the same as thermoplastic PET chips or pellets?",
+        a: "No. The dedicated product TDS for this URL identifies a liquid unsaturated polyester resin. The current catalogue separately uses the name PET Resin for a thermoplastic chip product with a different form and different data. Share the required material form and review the current product document before ordering.",
       },
       {
-        q: "What grade is this PET Resin?",
-        a: "It is a sheet grade resin, suited to PET sheet and fibre sheet products as well as FRP sheet lamination and panel manufacturing.",
+        q: "Is this a finished Polyester Putty or body filler?",
+        a: "No finished putty or body-filler formulation is published for this product. Although the current TDS heading includes the words Polyester Putty Resin, its description, properties and recommended applications identify a liquid PET-modified sheet grade. This page therefore treats it as raw liquid resin and asks putty or filler buyers to confirm the exact requirement before selection.",
       },
       {
-        q: "What applications is PET Resin suited for?",
-        a: "It is used for PET sheets and fibre sheet products, and for FRP sheet lamination and panel manufacturing.",
+        q: "Is PET Resin an unsaturated polyester resin?",
+        a: "Yes. The current TDS identifies the product as PET-modified unsaturated polyester resin supplied in liquid form.",
       },
       {
-        q: "Is PET Resin recyclable?",
-        a: "It incorporates PET content and is formulated to be durable and recyclable, consistent with standard sheet and laminate resin systems.",
+        q: "What applications are published for this PET Resin?",
+        a: "The TDS lists PET sheets and fibre sheet products, plus FRP sheet lamination and panel manufacturing. It does not publish automotive body filler, repair putty, wood filler, stone filler or a finished-putty application for this grade.",
       },
       {
-        q: "What packaging and minimum order quantity does PET Resin come in?",
-        a: "It is supplied in 75 kg packs, with a minimum order quantity of 1,000 kg.",
+        q: "How is PET Resin different from GP Resin or Lamination Resin?",
+        a: "This product's current TDS identifies a PET-modified sheet grade for the listed sheet and laminate contexts. GP Clear Resin is Samrat's separate general-purpose FRP route, while Lamination Resin has its own published door, plywood and FRP lamination context. Compare the current product-specific documents against the actual finished product instead of transferring data between grades.",
       },
       {
-        q: "Where is this PET Resin manufactured?",
-        a: "It is manufactured in India.",
+        q: "Does the liquid-resin TDS establish finished sheet or putty performance?",
+        a: "No. The TDS publishes liquid-resin supply and typical technical data. Finished-product results depend on the complete material system and the specific application, so this page does not claim sanding, adhesion, shrinkage, hardness, flexibility or body-filler performance.",
+      },
+      {
+        q: "Which technical properties are published?",
+        a: "The current TDS lists sheet grade, pale-yellow liquid form, 450–650 cPs viscosity at 25°C, 60–64% solid content, 1.05–1.12 g/cm³ specific gravity at 25°C, 70–85°C cured HDT, approximate 30°C flash point, storage guidance and six-month unopened shelf life. Treat these as typical published data and confirm the current document before procurement.",
+      },
+      {
+        q: "What packaging, documentation and quote details should I provide?",
+        a: "The current TDS lists 75 kg packaging and a 1,000 kg minimum order quantity. Review the <a href=\"/tds/pet-resin-tds.pdf\" target=\"_blank\" rel=\"noopener\">PET Resin TDS</a> and <a href=\"/downloads/samrat-poly-resins-product-catalogue.pdf\" target=\"_blank\" rel=\"noopener\">product catalogue</a>, then share the required material form, intended sheet or laminate application, required data, quantity, packaging need and delivery location when requesting a quote.",
       },
     ],
     relatedSlugs: [
+      "unsaturated-polyester-resin",
+      "gp-clear-resin",
+      "lamination-resin",
+      "sheet-grade-yellow-resin",
       "dmc-smc-resin",
       "marble-resin",
-      "vinyl-ester-resin",
     ],
   },
   {
@@ -2463,95 +2475,117 @@ export const products = [
     price: "₹125 / kg",
     image: "marble-resin.jpg",
     images: ["marble-resin-2.jpg"],
+    imageAlt: "Illustrative Marble Resin product graphic by Samrat Poly Resins; review the TDS for verified grade data",
     tdsUrl: "/tds/marble-resin-tds.pdf",
     sdsUrl: "/sds/marble-resin-sds.pdf",
     seo: {
-      title: "Marble Resin – Resin for Cultured Marble",
+      title: "Marble Resin Manufacturer in India | Cultured Marble Resin",
       description:
-        "Marble Resin — a water-white polyester resin for cultured marble slabs, countertops and wash basins, with a high-gloss finish and strong adhesion.",
+        "Water-white unsaturated polyester Marble Resin for the TDS-listed cultured-marble and artificial-stone contexts. Review published data, 200 kg pack details and enquire.",
       keywords: [
         "Marble Resin",
         "Cultured Marble Resin",
         "Artificial Marble Resin",
         "Polyester Marble Resin",
-        "Marble Casting Resin",
+        "Polyester Resin for Marble",
+        "Polyester Resin for Artificial Marble",
+        "Marble Resin Manufacturer India",
+        "Marble Resin Supplier India",
       ],
     },
-    // Reorganised into productDetails/techSpecs — every value is unchanged
-    // from the original single `specs` table, just regrouped. "Usage /
-    // Application" is not repeated in the table since it's already covered
-    // by the applications list below. No new values invented.
+    // Current TDS (SPR-TDS-MBR Rev. 01, July 2026) and the catalogue use
+    // compatible product-role language but differ on viscosity and gel time.
+    // Both source values are shown below rather than silently reconciled.
     productDetails: {
-      "Pack Size": "200 kg",
-      "Colour / Appearance": "Water White",
+      "Documented Product Role": "Liquid resin for cultured-marble and artificial-stone contexts",
+      "Physical Form": "Liquid (TDS)",
+      "Colour / Appearance": "Water White (TDS)",
+      "Packaging": "200 kg pack",
+      "Minimum Order Quantity": "200 kg",
+      "Shelf Life": "3 months",
+      "Storage": "20–30 °C; cool, dry place away from direct sunlight",
     },
     techSpecs: {
-      "Resin Type": "Polyester",
-      "Viscosity": "Medium",
-      "Curing Time": "20–40 min",
+      "Resin Family": "Unsaturated polyester resin (TDS); catalogue labels it Orthophthalic UPR",
+      "Viscosity": "450 cPs at 25 °C (TDS); catalogue lists 300 cPs",
+      "Gel Time": "15–20 minutes at 25 °C (TDS typical data); catalogue lists 15 minutes",
+      "Curing Time": "20–40 minutes at 25 °C (TDS)",
+      "Specific Gravity / Density": "1.12 g/cm³",
+      "Styrene Content": "35% (TDS)",
+      "Flash Point": "32 °C, closed cup (TDS)",
     },
-    tagline: "Polyester resin for cultured marble and artificial stone.",
+    tagline: "Water-white liquid unsaturated polyester resin for documented cultured-marble and artificial-stone contexts.",
     description:
-      "A premium-grade unsaturated polyester resin specially formulated for manufacturing cultured marble and artificial stone products. Water-white with medium viscosity, it offers excellent filler compatibility, smooth flow and a high-gloss finish, curing in 20–40 minutes with strong adhesion and consistent batch-to-batch quality. Supplied in 200 kg packs, it is also used for edge bonding of marble slabs, giving fabricators a single resin for casting, bonding and finishing work.",
+      "Samrat Marble Resin is a water-white liquid unsaturated polyester resin. Its current Technical Data Sheet positions the supplied resin for cultured marble and artificial stone, including the listed slab, vanity-top, countertop, wash-basin, wall-panel and architectural-product contexts. Samrat supplies the liquid resin, not finished marble slabs, countertops, wash basins or other completed stone products. The current catalogue separately calls the product a filled resin for cultured marble and onyx production; it does not publish a filler type, filler level or formulation. Review the current product document with the actual finished product before selecting a grade.",
     usageNote:
-      'Marble Resin is cured with a room-temperature catalyst system in the same way as our general-purpose grades. For quartz and engineered-stone surfacing rather than cultured marble, see our <a href="/products/gp-quartz-resin/">GP Quartz Resin</a>; for general FRP work, our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is available.',
+      'Use the dedicated Marble Resin TDS for its supplied-resin data. The catalogue gives a separate short product summary and differs on viscosity and gel time, so its figures are not merged into a single claimed specification. For a quartz or engineered-stone requirement, review <a href="/products/gp-quartz-resin/">GP Quartz Resin</a>; both documents use some artificial-stone terminology, so the exact finished product and current TDS should guide selection. For broad general FRP, door/plywood lamination or a specified two-part epoxy system, review <a href="/products/gp-clear-resin/">GP Clear Resin</a>, <a href="/products/lamination-resin/">Lamination Resin</a> or <a href="/products/epoxy-clear-casting-resin/">Clear Casting Resin</a> respectively.',
     features: [
-      "Excellent filler compatibility and smooth flow",
-      "High-gloss finish, low shrinkage",
-      "Water and chemical resistant once cured",
-      "Strong adhesion — also suited to marble slab edge bonding",
-      "Supplied in 200 kg packs",
+      "TDS-identified water-white liquid unsaturated polyester resin",
+      "TDS-listed cultured-marble and artificial-stone product contexts",
+      "Published typical TDS data for viscosity, gel time, curing time, density, storage and shelf life",
+      "TDS describes fully cured water and chemical resistance at a general level; it does not publish a chemical-compatibility chart or application approval",
+      "200 kg packaging and 200 kg minimum order quantity published in the current TDS",
     ],
     applications: [
       "Cultured marble slabs and vanity tops",
       "Kitchen and bathroom countertops, wash basins",
       "Wall panels, window sills and decorative architectural components",
-      "Marble slab edge bonding",
+      "Marble sheets, statues, railings and balusters",
     ],
     industries: [
       "Cultured marble & artificial stone manufacturing",
       "Countertop & vanity top manufacturing",
-      "Bathroom & sanitaryware fittings",
+      "Wash-basin and bathroom-product manufacturing",
       "Architectural & decorative components",
-    ],
-    whyChoose: [
-      "ISO 9001:2015 certified quality management system",
-      "Manufacturing polyester resins since 2017",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
-      "Water-white colour with a high-gloss, low-shrinkage cure",
-      "Supplied in 200 kg packs",
-      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
     ],
     faqs: [
       {
         q: "What is Marble Resin?",
-        a: "Marble Resin is a premium-grade unsaturated polyester resin formulated for manufacturing cultured marble and artificial stone products, including slabs, countertops and wash basins.",
+        a: "Marble Resin is Samrat Poly Resins' supplied water-white liquid unsaturated polyester resin for the current TDS-listed cultured-marble and artificial-stone contexts. It is a raw resin product, not a finished slab, countertop, wash basin or other completed marble product.",
       },
       {
-        q: "What is the curing time of Marble Resin?",
-        a: "Curing time is 20–40 minutes.",
+        q: "Is Marble Resin an unsaturated polyester resin?",
+        a: "Yes. The Marble Resin TDS identifies the product as unsaturated polyester resin. The current catalogue additionally labels it Orthophthalic Unsaturated Polyester Resin; this page keeps that source distinction visible rather than treating the catalogue summary as a replacement for the TDS.",
       },
       {
-        q: "Is Marble Resin water and chemical resistant?",
-        a: "Yes, once cured it is water and chemical resistant, suited to countertops, wash basins and wall panels.",
+        q: "What applications are published for Marble Resin?",
+        a: "The current TDS lists cultured-marble slabs and vanity tops; kitchen and bathroom countertops and wash basins; wall panels, window sills and architectural components; and marble sheets, statues, railings and balusters. The catalogue separately mentions cultured marble, onyx production and decorative panels. Confirm the actual finished product against the current TDS before selection.",
       },
       {
-        q: "Can Marble Resin be used for edge bonding?",
-        a: "Yes. Its strong adhesion makes it suitable for marble slab edge bonding as well as full casting work.",
+        q: "Is Marble Resin used for artificial or cultured marble?",
+        a: "Yes. The current TDS explicitly names cultured marble and artificial stone. The catalogue also mentions cultured marble and onyx production. Neither document publishes a formulation, finished-system qualification or a universal suitability claim for every artificial-stone design.",
       },
       {
         q: "What is the difference between Marble Resin and GP Quartz Resin?",
-        a: 'Marble Resin is formulated for cultured marble and artificial stone casting and bonding. Our <a href="/products/gp-quartz-resin/">GP Quartz Resin</a> is engineered specifically for high filler-loading quartz and engineered-stone surfacing. Choose based on whether your product is cultured marble or quartz-based.',
+        a: 'Marble Resin is the TDS-listed route for cultured marble and artificial stone. <a href="/products/gp-quartz-resin/">GP Quartz Resin</a> is documented for artificial quartz stone, engineered-stone slabs and composite mineral surfaces. The documents overlap around some artificial-marble or artificial-stone wording, so they do not establish a universal boundary or a performance ranking. Start with the exact finished product, mineral or filler context, required appearance and the grade-specific TDS.',
       },
       {
-        q: "What packaging does Marble Resin come in?",
-        a: "It is supplied in 200 kg packs.",
+        q: "How is Marble Resin different from PET Resin or GP Resin?",
+        a: 'This Marble Resin is documented for cultured-marble and artificial-stone contexts. <a href="/products/pet-resin/">PET Resin</a> is Samrat\'s separately documented liquid PET-modified sheet grade, not a finished putty or broad stone-resin route. <a href="/products/gp-clear-resin/">GP Clear Resin</a> is the separate general-purpose FRP product route. Compare the published product role and data rather than transferring values between grades.',
+      },
+      {
+        q: "Does Marble Resin determine the final appearance or performance of a finished marble product?",
+        a: "No. The TDS describes supplied-resin data and uses terms such as smooth flow, high-gloss finish, low shrinkage and fully cured water or chemical resistance. The finished marble or mineral composite can also depend on the complete formulation, construction, cure state, surface system and tested configuration. The current documents do not publish a finished-product performance guarantee.",
+      },
+      {
+        q: "Is Marble Resin water or chemical resistant?",
+        a: "The TDS describes water and chemical resistance after full cure at a general level. It does not publish a chemical-compatibility chart, a specific chemical recommendation, a service-temperature limit or a finished countertop, basin or panel approval. Share the actual service requirement for confirmation before selecting a system.",
+      },
+      {
+        q: "Which technical properties should buyers review?",
+        a: "The current TDS lists water-white liquid form, 450 cPs viscosity at 25 °C, 15-20 minute gel time at 25 °C, 20-40 minute curing time at 25 °C, 1.12 g/cm³ specific gravity, 35% styrene content, 32 °C closed-cup flash point, storage and shelf life. The catalogue lists 300 cPs viscosity and 15-minute gel time, so the two sources should not be silently combined. Review the current TDS for the exact grade under consideration.",
+      },
+      {
+        q: "What packaging and quote details are published?",
+        a: "The current TDS lists 200 kg packaging and a 200 kg minimum order quantity. Review the <a href=\"/tds/marble-resin-tds.pdf\" target=\"_blank\" rel=\"noopener\">Marble Resin TDS</a> and <a href=\"/downloads/samrat-poly-resins-product-catalogue.pdf\" target=\"_blank\" rel=\"noopener\">product catalogue</a>, then share the finished marble or stone product, available requirement or drawing, appearance or finish requirement, quantity, packaging requirement, delivery location and documentation needed when requesting a quote.",
       },
     ],
     relatedSlugs: [
       "gp-quartz-resin",
       "gp-clear-resin",
-      "dmc-smc-resin",
+      "pet-resin",
+      "lamination-resin",
+      "epoxy-clear-casting-resin",
     ],
   },
   {
@@ -2566,53 +2600,50 @@ export const products = [
     tdsUrl: "/tds/vinyl-ester-resin-tds.pdf",
     sdsUrl: "/sds/vinyl-ester-resin-sds.pdf",
     seo: {
-      title: "Vinyl Ester Resin – Chemical-Resistant Resin",
+      title: "Vinyl Ester Resin Manufacturer in India | Industrial FRP Resin",
       description:
-        "Vinyl Ester Resin — a Bisphenol-A epoxy vinyl ester for chemical tanks, pipelines and filament winding, resisting acids, alkalis and solvents.",
+        "Bisphenol-A epoxy vinyl ester resin for documented industrial FRP tanks, pipelines, ducts, scrubbers, filament winding and pultrusion applications. Review the current TDS before ordering.",
       keywords: [
         "Vinyl Ester Resin",
-        "Chemical Resistant Resin",
-        "Corrosion Resistant Resin",
-        "FRP Tank Resin",
-        "Filament Winding Resin",
+        "Vinyl Ester Resin Manufacturer India",
+        "Bisphenol-A Epoxy Vinyl Ester Resin",
+        "Vinyl Ester Resin for FRP",
+        "Industrial Vinyl Ester Resin",
+        "Chemical and Corrosion Resistant Resin",
       ],
     },
-    // productDetails/techSpecs cross-checked against SPR-TDS-VER Rev. 01
-    // (chemist-verified) — do not edit without an updated TDS. HDT is
-    // explicitly labelled "with post-cure" since independent sources put
-    // standard, non-post-cured bisphenol vinyl ester HDT closer to 100°C;
-    // the TDS's single 110°C figure isn't tied to a specific cure schedule,
-    // so it is not presented as an unconditional result. No Colour/
-    // Appearance field — not part of this TDS, not invented.
+    // Cross-checked against SPR-TDS-VER Rev. 01 and the current catalogue.
+    // Values are typical TDS data, not guaranteed specifications. The TDS
+    // gives 110°C as thermal data but does not publish its test/cure condition,
+    // so it is not represented as a service-temperature limit on the page.
     productDetails: {
+      "Grade": "Industrial Grade",
       "Minimum Order Quantity": "225 kg",
       "Packaging": "225 kg Drum",
       "Shelf Life": "6 months",
-      "Storage Temperature": "Below 25 °C",
+      "Storage": "Below 25°C; cool, dry place away from direct sunlight",
     },
     techSpecs: {
       "Resin Type": "Bisphenol-A Epoxy Vinyl Ester",
-      "Curing System": "MEKP Catalyst — Room Temp, Heat Cure (60–120°C) or Post-Cure",
       "Viscosity": "350 cPs (at 25°C)",
-      "Gel Time": "15–20 minutes (1.5% MEKP)",
+      "Gel Time": "15–20 minutes at 25°C (see TDS test condition)",
       "Styrene Content": "40%",
       "Specific Gravity / Density": "1.05 g/cm³",
-      "Heat Deflection Temperature (HDT)": "Up to 110°C (with post-cure)",
+      "Thermal Data": "110°C (TDS typical data; not a stated service-temperature limit)",
       "Flash Point": "32°C (closed cup)",
-      "MEKP Dosage": "1.5%",
     },
-    tagline: "High-performance resin for chemical and corrosion resistance.",
+    tagline: "Industrial-grade Bisphenol-A epoxy vinyl ester resin for documented chemical- and corrosion-service FRP applications.",
     description:
-      "Vinyl Ester Resin is Samrat Poly Resins' Bisphenol-A based epoxy vinyl ester system — a chemistry that sits between our general-purpose orthophthalic grades (GP Clear Resin, GP Yellow Resin) and a true two-part epoxy system like our Epoxy Clear Casting Resin. Its epoxy backbone gives it genuinely superior chemical resistance and toughness over standard polyester, while it still cures with the same MEKP catalyst and free-radical mechanism as our other polyester-family resins, not the amine-based two-part reaction a true epoxy uses. With a viscosity of 350 cPs and a 15–20 minute gel time at 1.5% MEKP, it processes by hand layup, spray-up, filament winding or pultrusion. A room-temperature cure is standard; where maximum heat deflection performance is needed, an optional heat cure (60–120°C) and post-cure can raise its heat deflection temperature to around 110°C. Samrat Poly Resins supplies Vinyl Ester Resin in 225 kg drums for FRP fabricators building tanks, pipelines and structures that must withstand sustained chemical or corrosive exposure beyond what a standard orthophthalic resin is rated for.",
+      "Vinyl Ester Resin is Samrat Poly Resins' documented industrial-grade Bisphenol-A epoxy vinyl ester resin for industrial FRP applications where chemical and corrosion resistance is a stated product-selection requirement. The current Technical Data Sheet lists FRP tanks and chemical storage vessels; pipelines, ducts and scrubbers; cooling towers, pressure vessels and offshore structures; and marine, pultrusion and filament-winding applications. It describes resistance to water, acids, alkalis and solvents at a product-data level. This is not a chemical-compatibility chart, a finished-component approval or a recommendation for every service medium. Buyers should share the actual FRP component, service medium, concentration and operating temperature where relevant before selecting a resin system.",
     usageNote:
-      'Vinyl Ester Resin is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a>, using the same lay-up techniques as our general-purpose grades. Where chemical resistance beyond ordinary orthophthalic performance isn\'t required, <a href="/products/gp-clear-resin/">GP Clear Resin</a> or <a href="/products/gp-yellow-resin/">GP Yellow Resin</a> are more cost-effective for general FRP work, and <a href="/products/lamination-resin/">Lamination Resin</a> remains the better choice for fast-cycle door and plywood lamination rather than chemical-resistant structural work. Mould-facing surfaces can still be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> ahead of a vinyl ester laminate. For decorative, unreinforced casting work rather than structural chemical-resistant laminating, our two-part <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> uses a different, amine-cured epoxy chemistry entirely and is not a substitute for this product.',
+      'Vinyl Ester Resin is the resin or matrix component in an FRP system; <a href="/products/fibre-glass-mat/">Glass Fiber</a> is the separate reinforcement decision. The TDS lists hand lay-up, spray-up, filament winding, casting and pultrusion as processing methods, but this product page does not provide operating instructions. For general FRP without a stated chemical- or corrosion-service requirement, review <a href="/products/gp-clear-resin/">GP Clear Resin</a> or <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a>. <a href="/products/lamination-resin/">Lamination Resin</a> and <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a> have separate lamination and mould-surface roles. <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> is a separate two-component epoxy route for published decorative casting, not a substitute for this industrial FRP resin.',
     features: [
-      "Bisphenol-A epoxy vinyl ester chemistry — genuinely superior chemical resistance to standard orthophthalic polyester",
-      "Resists water, acids, alkalis and solvents",
-      "Lower shrinkage on cure than standard orthophthalic polyester",
-      "Cures with the same MEKP catalyst system as our general-purpose grades — room temperature, heat cure or post-cure",
-      "350 cPs viscosity suited to hand layup, spray-up, filament winding and pultrusion",
-      "Heat deflection temperature up to 110°C with post-cure",
+      "Documented industrial-grade Bisphenol-A epoxy vinyl ester chemistry",
+      "TDS lists chemical and corrosion resistance to water, acids, alkalis and solvents",
+      "Published 350 cPs viscosity at 25°C",
+      "TDS identifies low shrinkage on cure without publishing a percentage",
+      "Published for documented industrial FRP applications",
+      "Product-specific Technical Data Sheet available",
     ],
     applications: [
       "FRP tanks and chemical storage vessels",
@@ -2624,61 +2655,65 @@ export const products = [
       "Chemical storage & processing",
       "Cooling towers & industrial plants",
       "Pipelines, ducts & scrubbers",
-      "Offshore & marine structures",
+      "Marine & industrial composite applications",
     ],
     whyChoose: [
-      "ISO 9001:2015 certified quality management system",
-      "Manufacturing polyester resins since 2017",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
-      "Exceptional chemical and corrosion resistance for demanding environments",
-      "Superior toughness and thermal stability versus general-purpose grades",
-      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+      "Published industrial-grade chemistry and technical data",
+      "Documented chemical- and corrosion-service application context",
+      "225 kg drum packaging and 225 kg minimum order quantity",
+      "Product-specific TDS available for technical review",
+      "Clear separation from GP, fire-retardant and conventional epoxy product routes",
+      "Industrial enquiry route for the actual service requirement",
     ],
     faqs: [
       {
         q: "What is Vinyl Ester Resin?",
-        a: "Vinyl Ester Resin is a Bisphenol-A based epoxy vinyl ester resin — a chemistry that combines an epoxy backbone with the same MEKP-catalysed, styrene-based cure system as our general-purpose polyester grades. It sits between standard orthophthalic polyester and a true two-part epoxy system in both chemical resistance and cost.",
+        a: "Samrat's current TDS identifies Vinyl Ester Resin as an industrial-grade Bisphenol-A based epoxy vinyl ester resin. It is published for industrial FRP applications where chemical and corrosion resistance is part of the material-selection discussion.",
       },
       {
-        q: "What is the difference between Vinyl Ester Resin and GP Clear Resin or GP Yellow Resin?",
-        a: 'Vinyl Ester Resin\'s epoxy backbone gives it genuinely superior chemical, corrosion and water resistance than either general-purpose grade. <a href="/products/gp-clear-resin/">GP Clear Resin</a> and <a href="/products/gp-yellow-resin/">GP Yellow Resin</a> are more cost-effective orthophthalic resins for everyday FRP work that doesn\'t face sustained chemical exposure.',
+        q: "How is Vinyl Ester Resin different from GP or standard UPR routes?",
+        a: 'Samrat publishes <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> and <a href="/products/gp-clear-resin/">GP Clear Resin</a> as separate broad and general-purpose FRP routes. This product\'s TDS instead identifies a Bisphenol-A epoxy vinyl ester grade with a documented chemical- and corrosion-service context. Select by the actual component and service requirement, not by resin family name alone.',
       },
       {
         q: "What is the difference between Vinyl Ester Resin and Epoxy Clear Casting Resin?",
-        a: 'They are different resin chemistries entirely, despite both offering strong performance. Vinyl Ester Resin cures with an MEKP catalyst in a styrene-based system, the same as our general-purpose polyester grades, and is used as a structural laminating resin with glass fibre reinforcement. Our <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> is a true two-part, amine-cured epoxy system used unreinforced for clear decorative casting. They are not interchangeable.',
+        a: 'They are separately published material routes. Vinyl Ester Resin is the industrial FRP product described in its own TDS as Bisphenol-A epoxy vinyl ester. <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> is a separate two-component epoxy product for published decorative casting. “Epoxy vinyl ester” does not mean this is a clear-casting or art epoxy substitute.',
       },
       {
-        q: "What chemicals does Vinyl Ester Resin resist?",
-        a: "It resists water, acids, alkalis and solvents, making it suitable for chemical storage tanks, pipelines and scrubbers facing sustained exposure beyond what standard orthophthalic resin is rated for.",
+        q: "What chemical and corrosion information is published?",
+        a: "The current TDS describes resistance to water, acids, alkalis and solvents. It does not publish a chemical-compatibility chart, concentration limits, a service-temperature range or a finished-FRP approval. Share the actual medium, concentration, temperature and component requirement before selection.",
       },
       {
-        q: "Does Vinyl Ester Resin shrink on cure?",
-        a: "It is formulated for lower shrinkage than standard orthophthalic polyester, supporting dimensional stability in tanks and structural parts, though no specific shrinkage percentage has been published for this grade.",
+        q: "Does the TDS publish shrinkage, mechanical or thermal test results?",
+        a: "The TDS identifies low shrinkage on cure but does not publish a shrinkage percentage or a mechanical-property table. It lists 110°C as typical thermal data without a stated test or cure condition, so it should not be treated as an operating-temperature limit for a finished part.",
       },
       {
-        q: "What is the heat resistance of Vinyl Ester Resin?",
-        a: "Its heat deflection temperature (HDT) reaches up to around 110°C, but that figure is achieved with a post-cure step — a room-temperature-only cure will typically have a somewhat lower HDT. Where maximum thermal performance matters, discuss the recommended heat-cure and post-cure schedule with our technical team.",
+        q: "Is Vinyl Ester Resin fire retardant?",
+        a: 'No fire-retardant rating, fire classification or fire-performance claim is published for this Vinyl Ester product. If a project has a fire requirement, review the separate <a href="/products/fire-retardant-resin/">Fire Retardant Resin</a> route and share the project specification; do not assume a normal Vinyl Ester Resin establishes finished-system fire performance.',
       },
       {
-        q: "How is Vinyl Ester Resin cured?",
-        a: 'It is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> at room temperature, the same base system as our general-purpose polyester grades. It also supports an optional heat cure (60–120°C) and post-cure step for higher heat deflection performance where that\'s required.',
+        q: "Can Vinyl Ester Resin be used with Glass Fiber?",
+        a: 'The TDS lists industrial FRP processing methods, and <a href="/products/fibre-glass-mat/">Glass Fiber</a> is Samrat\'s separate reinforcement product route. Resin and reinforcement have different roles; the required reinforcement, laminate construction and finished-component requirement should be confirmed for the application rather than assumed from this page.',
       },
       {
-        q: "What applications and processes is Vinyl Ester Resin used for?",
-        a: "It is used for FRP tanks and chemical storage vessels, pipelines, ducts and scrubbers, cooling towers, pressure vessels and offshore structures, and marine components — processed by hand layup, spray-up, filament winding or pultrusion.",
+        q: "How does Vinyl Ester Resin relate to the separate Bisphenol Resin product?",
+        a: 'They are separate Samrat product routes with their own TDS documents. Do not treat “Bisphenol” as a synonym for this Vinyl Ester grade or assume interchangeability. Review the exact product TDS and intended application before choosing between <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> and <a href="/products/bisphenol-resin/">Bisphenol Resin</a>.',
+      },
+      {
+        q: "What should I provide when requesting a Vinyl Ester Resin quote?",
+        a: "Share the finished FRP component, exact grade if known, service medium and concentration where relevant, operating temperature where relevant, any stated fire or technical requirement, expected quantity, packaging requirement, delivery location and required documentation. This supports grade selection without assuming a chemical-compatibility or finished-system approval.",
       },
     ],
     relatedSlugs: [
+      "unsaturated-polyester-resin",
       "gp-clear-resin",
-      "mekp-hardener",
       "fibre-glass-mat",
       "fiberglass-epoxy-resin",
       "gp-gelcoat-resin",
+      "fire-retardant-resin",
+      "bisphenol-resin",
     ],
-    // Card-only stubs (draft: true) approved via Step 1 audit + Step 3 —
-    // slugs prefixed "vinyl-ester-resin-for-" for consistency with the GP
-    // Yellow and Epoxy Clear Casting Resin ecosystems. See applications.js
-    // for the stub entries themselves.
+    // Existing Vinyl Ester application guides. Their separate pages remain
+    // the deeper application context; this product page stays selection-led.
     applicationSlugs: [
       "vinyl-ester-resin-for-chemical-storage-tanks",
       "vinyl-ester-resin-for-pipelines-ducts-scrubbers",
@@ -2693,93 +2728,130 @@ export const products = [
     price: "₹800 / kg",
     image: "fiberglass-epoxy-resin.jpg",
     images: ["fiberglass-epoxy-resin-2.jpg", "fiberglass-epoxy-resin-3.jpg"],
+    imageAlt: "Illustrative Fiberglass Epoxy Resin product graphic by Samrat Poly Resins; verify the current TDS for grade data",
     tdsUrl: "/tds/fiberglass-epoxy-resin-tds.pdf",
     sdsUrl: "/sds/fiberglass-epoxy-resin-sds.pdf",
     seo: {
-      title: "Fiberglass Epoxy Resin – Structural Epoxy System",
+      title: "Fiberglass Epoxy Resin Manufacturer in India | Composite Epoxy",
       description:
-        "Fiberglass Epoxy Resin — a low-viscosity, room-temperature-cure epoxy for structural fibreglass laminates in marine, wind and construction FRP work.",
+        "Fiberglass Epoxy Resin for Samrat's TDS-listed fabric reinforcement, hand lay-up and lamination contexts. Review current technical documents and request an industrial quote.",
       keywords: [
         "Fiberglass Epoxy Resin",
-        "Structural Epoxy Resin",
-        "Epoxy Laminating Resin",
-        "Fibreglass Resin",
+        "Fibreglass Epoxy Resin",
+        "Epoxy Resin for Fiberglass",
+        "Epoxy Resin for Fibreglass",
         "Composite Epoxy Resin",
+        "Epoxy Laminating Resin",
+        "Epoxy Resin for Composite Laminates",
+        "Fiberglass Epoxy Resin Manufacturer India",
+        "Fiberglass Epoxy Resin Supplier India",
       ],
     },
-    // Reorganised into productDetails/techSpecs — every value is unchanged
-    // from the original single `specs` table, just regrouped. "Usage /
-    // Application" is not repeated in the table since it's already covered
-    // by the applications list below. No new values invented.
+    // Current product data is cross-checked against SPR-TDS-FER Rev. 01
+    // (July 2026) and the product catalogue. The sources differ on resin
+    // chemistry wording, viscosity, gel-time / pot-life label and specific
+    // gravity, so this page keeps both records visible instead of merging
+    // them. The documents identify an amine hardener as part of the system,
+    // but do not name a specific compatible Samrat product or say whether it
+    // is included in this product's commercial pack.
     productDetails: {
-      "Reinforcement Form": "Fabric",
+      "Published grade / role": "General-purpose epoxy system for fibreglass reinforcement and lamination (current TDS)",
+      "Reinforcement form": "Fabric (current TDS)",
+      "Packaging": "20 kg pack",
+      "Minimum order quantity": "100 kg",
+      "Shelf life": "12 months (unopened)",
+      "Storage": "20-30°C; cool, dry place",
     },
     techSpecs: {
-      "Resin System": "Epoxy",
-      "Viscosity": "Low",
-      "Curing Type": "Room Temperature Cure",
+      "Resin type": "Epoxy (current TDS); catalogue calls it Bisphenol-A Epoxy Resin",
+      "Curing system": "Room-temperature cure; TDS identifies an amine hardener but does not name a confirmed product pairing",
+      "Published processing": "Hand lay-up and lamination (current TDS); catalogue separately lists filament winding",
+      "Viscosity": "700 cPs at 25°C (TDS); catalogue lists 900 cPs",
+      "Gel / pot-life data": "35-45 minutes at 25°C (TDS gel time); catalogue lists 35 minutes as Gel Time / Pot Life",
+      "Specific gravity / density": "1.15 g/cm³ (TDS); catalogue lists 1.16 g/cm³",
+      "Thermal data": "75°C HDT / thermal data (TDS; no test context or continuous-service limit published)",
+      "Flash point": ">100°C (TDS)",
     },
-    tagline: "Structural epoxy system for fibreglass reinforcement.",
+    tagline: "Documented epoxy-system route for fibreglass fabric reinforcement and lamination.",
     description:
-      "A premium-quality epoxy resin specially formulated for fibreglass reinforcement, composite manufacturing, lamination and structural applications. Low-viscosity and room-temperature curing, it offers outstanding mechanical strength, superior adhesion, excellent wet-out of fibreglass fabrics and exceptional chemical resistance. Its low viscosity is matched to fabric reinforcement rather than chopped strand mat, giving structural laminators the wet-out and strength needed for marine, wind-energy, construction and automotive components.",
+      "Samrat Fiberglass Epoxy Resin is the current TDS-listed general-purpose epoxy-system route for fibreglass reinforcement, composite manufacturing, hand lay-up and lamination. The detailed TDS identifies fabric reinforcement and lists boat or marine components, wind-turbine components, and construction, electrical and automotive FRP laminates as application contexts. It does not publish a finished-part approval, numerical mechanical test results, a reinforcement schedule or a universal compatibility statement for every glass-fibre product.",
     usageNote:
-      'Fiberglass Epoxy Resin is reinforced with fibreglass fabric for structural laminates. Where a lower-cost, general-purpose polyester system is sufficient instead of a structural epoxy, see our <a href="/products/gp-clear-resin/">GP Clear Resin</a>; for chemical-resistant polyester tank and pipeline work, our <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> is available.',
+      'The TDS identifies an amine hardener as part of the epoxy system, but it does not name a specific compatible Samrat hardener or state whether hardener is included with this product. <a href="/products/epoxy-hardener/">Epoxy Hardener</a> is a separate polyamide curing-agent route; confirm the exact resin/hardener pairing before procurement. <a href="/products/fibre-glass-mat/">Glass Fiber</a> is a separate reinforcement product. The Fiberglass Epoxy TDS says fabric reinforcement and does not prescribe CSM 300, CSM 450, a resin-to-glass ratio or a laminate design.',
     features: [
-      "Low viscosity for excellent fabric wet-out",
-      "Room-temperature cure",
-      "Outstanding mechanical strength and adhesion",
-      "Exceptional chemical resistance",
-      "Formulated for fabric reinforcement in structural laminates",
+      "Current TDS identifies an epoxy system and a general-purpose grade",
+      "TDS-listed fabric-reinforcement, hand lay-up and lamination contexts",
+      "Published supplied-resin viscosity, gel-time, density, packaging, MOQ, storage and shelf-life data",
+      "Catalogue-versus-TDS chemistry and property differences disclosed before ordering",
+      "Separate resin, hardener and reinforcement roles made clear for RFQs",
     ],
     applications: [
-      "Boat building and marine components",
-      "Wind turbine components",
-      "Construction, electrical and automotive FRP laminates",
+      "TDS-listed boat building and marine components",
+      "TDS-listed wind-turbine components",
+      "TDS-listed construction, electrical and automotive FRP laminates",
+      "Catalogue-listed structural laminates and filament winding — confirm document route before selection",
     ],
     industries: [
-      "Marine & boat building",
-      "Wind energy components",
-      "Construction & electrical FRP laminates",
-      "Automotive structural components",
+      "Fibreglass composite and laminating buyers",
+      "Marine, wind, construction, electrical and automotive requirements named in the TDS",
+      "Structural-laminate and filament-winding enquiries named in the catalogue",
     ],
     whyChoose: [
-      "ISO 9001:2015 certified quality management system",
-      "Manufacturing polyester resins since 2017",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
-      "Outstanding mechanical strength and fabric wet-out",
-      "Room-temperature cure — no special curing equipment required",
-      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+      "Current product-specific TDS and catalogue available for review",
+      "Published 20 kg packaging, 100 kg MOQ, storage and shelf-life information",
+      "TDS-listed resin-system and fabric-reinforcement context",
+      "Transparent disclosure that the source documents use different chemistry labels and values",
+      "Focused enquiry route for the finished composite, system components and documentation need",
     ],
     faqs: [
       {
         q: "What is Fiberglass Epoxy Resin?",
-        a: "Fiberglass Epoxy Resin is a premium-quality epoxy resin formulated for fibreglass fabric reinforcement, composite manufacturing and structural laminating applications.",
+        a: "The current Fiberglass Epoxy Resin TDS identifies a general-purpose epoxy system for fibreglass reinforcement, composite manufacturing, hand lay-up and lamination. It names fabric as the reinforcement form. Review the current TDS and finished composite requirement before selecting it.",
       },
       {
-        q: "What reinforcement is Fiberglass Epoxy Resin designed for?",
-        a: "It is formulated for fabric reinforcement, giving good wet-out of woven fibreglass fabric for structural laminates.",
+        q: "Is Fiberglass Epoxy Resin supplied as resin only or as a complete system?",
+        a: 'The current TDS identifies an amine hardener as part of the epoxy system, but it does not say whether hardener is included with the Fiberglass Epoxy Resin pack or name a specific compatible Samrat product. Confirm whether the requirement is resin only or a complete system before ordering. <a href="/products/epoxy-hardener/">Epoxy Hardener</a> is a separately listed product route.',
       },
       {
-        q: "How is Fiberglass Epoxy Resin cured?",
-        a: "It cures at room temperature, without needing special curing equipment.",
+        q: "Is Epoxy Laminating Resin an accurate term for this product?",
+        a: "The TDS lists fibreglass reinforcement and lamination, with hand lay-up and lamination as published processing methods. The catalogue separately calls the product an epoxy system for structural fiberglass laminating. Use the exact current document and application rather than assuming every laminating-epoxy requirement is identical.",
       },
       {
-        q: "What is the difference between Fiberglass Epoxy Resin and Vinyl Ester Resin?",
-        a: 'Fiberglass Epoxy Resin is an epoxy system formulated for structural fabric-reinforced laminates in marine, wind and construction work. Our <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> is a polyester-family resin engineered for chemical and corrosion resistance in tanks and pipelines. Choose based on whether your project needs structural laminating strength or chemical resistance.',
+        q: "What reinforcement is documented for Fiberglass Epoxy Resin?",
+        a: 'The Fiberglass Epoxy Resin TDS names fabric reinforcement. <a href="/products/fibre-glass-mat/">Glass Fiber</a> is the separate reinforcement product and its TDS says it is compatible with epoxy systems generally, but the Fiberglass Epoxy TDS does not prescribe a CSM weight, fabric type or reinforcement design for this grade.',
       },
       {
-        q: "What chemical resistance does Fiberglass Epoxy Resin offer?",
-        a: "It offers exceptional chemical resistance alongside its structural mechanical strength and adhesion.",
+        q: "How does Fiberglass Epoxy Resin differ from Clear Casting or Epoxy Art Resin?",
+        a: 'Fiberglass Epoxy Resin is the published fiberglass-reinforcement and lamination route. <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> has a separate clear, contained-casting role, while <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a> has a separate self-levelling decorative-surface role. These product roles do not establish a universal performance ranking.',
       },
       {
-        q: "What applications is Fiberglass Epoxy Resin used for?",
-        a: "It is used for boat building and marine components, wind turbine components, and construction, electrical and automotive FRP laminates.",
+        q: "How does Fiberglass Epoxy Resin differ from polyester Lamination Resin or UPR?",
+        a: 'Fiberglass Epoxy Resin is an epoxy-system route. <a href="/products/lamination-resin/">Lamination Resin</a>, <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> and <a href="/products/gp-clear-resin/">GP Clear Resin</a> are separate polyester-product routes with their own current documents and application roles. Select by the actual specified system and finished component rather than assuming one family is universally better.',
+      },
+      {
+        q: "Is Fiberglass Epoxy Resin chemical, water, heat or UV resistant?",
+        a: "The TDS uses broad chemical-resistance wording for water, acids, alkalis and solvents and lists 75°C as HDT / thermal data. It does not provide a chemical-compatibility chart, concentration limits, test context, continuous-service temperature, UV result, weathering result or finished-component approval. Do not treat the broad wording as a project-specific compatibility recommendation.",
+      },
+      {
+        q: "Which technical data should Fiberglass Epoxy buyers review?",
+        a: "The detailed TDS lists epoxy type, general-purpose grade, room-temperature cure, hand lay-up and lamination, 700 cPs viscosity at 25°C, 35-45 minute gel time at 25°C, 1.15 g/cm³ density, 75°C HDT / thermal data, storage, shelf life, packaging and MOQ. The catalogue uses a Bisphenol-A epoxy label and different viscosity, time and density figures, so do not combine the two records without confirmation.",
+      },
+      {
+        q: "Does resin data establish finished fiberglass-composite performance?",
+        a: "No. Finished performance can depend on the resin and hardener system, reinforcement, laminate construction, cure state, thickness, component design and tested configuration. The documents do not publish a laminate design, a finished mechanical rating or a project approval.",
+      },
+      {
+        q: "What should I include in a Fiberglass Epoxy Resin quote request?",
+        a: "Share the finished composite or fiberglass application, whether resin only or a complete system is required, the reinforcement form if known, the exact TDS or catalogue reference being evaluated, required published properties, quantity, packaging need, delivery location and documentation requirement. Do not rely on a product name alone to establish the resin/hardener pairing or a finished-system result.",
       },
     ],
     relatedSlugs: [
-      "vinyl-ester-resin",
-      "gp-clear-resin",
+      "epoxy-hardener",
       "fibre-glass-mat",
+      "epoxy-clear-casting-resin",
+      "epoxy-art-resin",
+      "lamination-resin",
+      "unsaturated-polyester-resin",
+      "vinyl-ester-resin",
     ],
   },
   {
@@ -2789,86 +2861,121 @@ export const products = [
     price: "₹125 / kg",
     image: "bisphenol-resin.jpg",
     images: ["bisphenol-resin-2.jpg"],
+    imageAlt: "Bisphenol Resin product graphic by Samrat Poly Resins",
     tdsUrl: "/tds/bisphenol-resin-tds.pdf",
     sdsUrl: "/sds/bisphenol-resin-sds.pdf",
     seo: {
-      title: "Bisphenol Resin – Industrial Epoxy Resin",
+      title: "Bisphenol Resin Manufacturer in India | Industrial Resin System",
       description:
-        "Bisphenol Resin — a bisphenol-based epoxy for industrial flooring, tooling and electrical encapsulation, with strong chemical and moisture resistance.",
+        "Bisphenol Resin for the current TDS-listed laminating, casting, coating and encapsulation contexts. Review the current TDS and confirm the document route before ordering from Samrat Poly Resins.",
       keywords: [
         "Bisphenol Resin",
-        "Bisphenol Epoxy Resin",
-        "Industrial Epoxy Resin",
-        "Epoxy Flooring Resin",
-        "Electrical Encapsulation Resin",
+        "Bisphenol Resin Manufacturer India",
+        "Bisphenol Resin Supplier India",
+        "Bisphenol A Resin System",
+        "Bisphenol Resin for Laminating",
+        "Bisphenol Resin for Casting",
+        "Bisphenol Resin for Coating",
+        "Bisphenol Resin for Encapsulation",
+        "Industrial Bisphenol Resin",
       ],
     },
-    // No productDetails/techSpecs table yet — no verified numeric spec sheet
-    // (viscosity, mix ratio, cure time, packaging, MOQ, etc.) has been
-    // supplied for this grade. Per standing instruction, values are never
-    // invented to fill the table; this section will be added once a
-    // finalized TDS is provided for Bisphenol Resin.
-    tagline: "Bisphenol-based epoxy for demanding industrial use.",
+    productDetails: {
+      Grade: "Premium grade (current TDS)",
+      Packaging: "20 kg pack",
+      "Minimum order quantity": "100 kg",
+      "Shelf life": "12 months (unopened)",
+      Storage: "20-30°C; cool, dry place away from direct sunlight",
+    },
+    techSpecs: {
+      "Resin type": "Bisphenol A & epichlorohydrin based (thermosetting) - current TDS wording",
+      Viscosity: "600 cPs (at 25°C)",
+      "Gel time": "35-45 minutes (at 25°C; TDS typical data)",
+      "Styrene content": "Not applicable",
+      "Specific gravity / density": "1.10 g/cm³ (at 25°C)",
+      "Thermal data": "80°C (fully cured; not a published continuous-service limit)",
+      "Flash point": ">100°C",
+    },
+    tagline: "Current TDS route for laminating, casting, coating and encapsulation.",
     description:
-      "A premium-quality bisphenol-based epoxy resin for high-performance industrial and composite applications requiring exceptional mechanical strength, superior chemical resistance and excellent adhesion. It offers outstanding durability, low shrinkage, excellent electrical insulation and resistance to moisture, solvents and corrosive chemicals, with excellent wet-out of fibreglass reinforcements. Samrat Poly Resins supplies Bisphenol Resin for industrial flooring, tooling, electrical encapsulation and structural bonding work where long-term durability and chemical resistance are priorities.",
+      "The current Bisphenol Resin TDS identifies a premium-grade Bisphenol A & epichlorohydrin-based thermosetting resin system. The TDS describes a low-viscosity liquid for laminating, casting, coating and encapsulation, and lists FRP composites, flooring and protective coatings, electrical encapsulation, tooling, structural bonding, and casting or coating as its application contexts. It is not presented here as a general-purpose unsaturated polyester resin or as a documented finished-component approval.",
     usageNote:
-      'Bisphenol Resin is reinforced with fibreglass for laminating and structural work, in the same way as our other epoxy and structural resin grades. Where a lower-cost, general-purpose polyester system is sufficient instead of a bisphenol epoxy, see our <a href="/products/gp-clear-resin/">GP Clear Resin</a>; for chemical-resistant polyester tank and pipeline work, our <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> is available.',
+      'The current TDS identifies a room-temperature cure with an amine hardener, but this page does not provide ratios or process instructions. <a href="/products/fibre-glass-mat/">Glass Fiber</a> is a separate reinforcement decision for an FRP composite. For a broad general-purpose polyester requirement, review <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> or <a href="/products/gp-clear-resin/">GP Clear Resin</a>. The separately listed <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> has its own TDS and product route; confirm the exact documentation before treating either product as interchangeable.',
     features: [
-      "Outstanding durability and low shrinkage",
-      "Excellent electrical insulation",
-      "Resists moisture, solvents and corrosive chemicals",
-      "Excellent wet-out of fibreglass reinforcements",
-      "Excellent adhesion for structural bonding work",
+      "Current TDS identifies a Bisphenol A & epichlorohydrin-based thermosetting resin system",
+      "Published typical viscosity, gel-time, density and thermal data",
+      "TDS-listed laminating, casting, coating and encapsulation contexts",
+      "Published 20 kg packaging, 100 kg MOQ, storage and shelf-life information",
+      "Product-specific TDS available, with catalogue differences disclosed before procurement",
     ],
     applications: [
       "Laminating and FRP composites",
       "Industrial flooring and protective coatings",
       "Electrical encapsulation, tooling and structural bonding",
+      "High-end casting and coating applications",
     ],
     industries: [
-      "Industrial flooring & coatings",
-      "Electrical encapsulation & tooling",
-      "FRP & composites manufacturing",
-      "Structural bonding applications",
+      "FRP composite laminating",
+      "Industrial flooring and protective coatings",
+      "Electrical encapsulation and tooling",
+      "Casting and coating procurement",
     ],
     whyChoose: [
-      "ISO 9001:2015 certified quality management system",
-      "Manufacturing polyester resins since 2017",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
-      "Outstanding durability with excellent chemical and moisture resistance",
-      "Excellent electrical insulation for tooling and encapsulation work",
-      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+      "Current product-specific TDS with published supplied-resin data",
+      "Defined TDS-listed application contexts for buyer discussion",
+      "Published packaging, MOQ, shelf-life and storage information",
+      "Clear selection routes beside UPR, Vinyl Ester, fire-retardant and epoxy-system products",
+      "Transparent catalogue-versus-TDS discrepancy notice before ordering",
     ],
     faqs: [
       {
         q: "What is Bisphenol Resin?",
-        a: "Bisphenol Resin is a premium-quality bisphenol-based epoxy resin for high-performance industrial and composite applications requiring exceptional mechanical strength, chemical resistance and adhesion.",
+        a: "The current Bisphenol Resin TDS identifies a premium-grade Bisphenol A & epichlorohydrin-based thermosetting resin system. It lists laminating, casting, coating and encapsulation as product contexts. Review the current TDS with the intended application before selecting the grade.",
       },
       {
-        q: "What electrical properties does Bisphenol Resin offer?",
-        a: "It offers excellent electrical insulation, making it suitable for electrical encapsulation and tooling work.",
+        q: "Does “Bisphenol” mean Bisphenol A for this product?",
+        a: "The current TDS uses the exact wording “Bisphenol A & epichlorohydrin based (thermosetting)”. The page uses that document wording and does not infer a wider product-family identity from the name alone.",
       },
       {
-        q: "Does Bisphenol Resin resist chemicals and moisture?",
-        a: "Yes. It resists moisture, solvents and corrosive chemicals, with outstanding durability and low shrinkage on cure.",
+        q: "Is Bisphenol Resin an unsaturated polyester resin or Vinyl Ester Resin?",
+        a: "The current TDS does not identify this product as unsaturated polyester resin or Vinyl Ester Resin; it lists styrene content as not applicable. The catalogue uses a different Bisphenol-A epoxy vinyl ester description and different values. Confirm the exact document route with Samrat Poly Resins before ordering; do not treat the labels as interchangeable.",
       },
       {
         q: "Is Bisphenol Resin suitable for fibreglass laminating?",
-        a: "Yes. It offers excellent wet-out of fibreglass reinforcements, suited to laminating and FRP composite work.",
+        a: "Laminating and FRP composites are listed in the current TDS. <a href=\"/products/fibre-glass-mat/\">Glass Fiber</a> is a separate reinforcement product; the TDS does not prescribe a mat weight, resin-to-glass ratio or laminate design.",
       },
       {
         q: "What is the difference between Bisphenol Resin and Vinyl Ester Resin?",
-        a: 'Bisphenol Resin is an epoxy system suited to industrial flooring, tooling, encapsulation and structural bonding. Our <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> is a polyester-family resin engineered specifically for chemical-resistant tanks and pipelines. Choose based on your application.',
+        a: 'They are separately listed Samrat product routes with their own TDS documents. The current Bisphenol Resin TDS and the separate <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> TDS use different product descriptions and values. Select against the exact document, application and stated requirement; neither page treats one as an automatic substitute for the other.',
       },
       {
         q: "What applications is Bisphenol Resin used for?",
-        a: "It is used for laminating and FRP composites, industrial flooring and protective coatings, and electrical encapsulation, tooling and structural bonding.",
+        a: "The current TDS lists laminating and FRP composites; industrial flooring and protective coatings; electrical encapsulation, tooling and structural bonding; and high-end casting and coating applications. It does not publish a tank, pipe, marine or chemical-specific approval.",
+      },
+      {
+        q: "Does Samrat publish chemical compatibility or a corrosion-service approval for Bisphenol Resin?",
+        a: "No product-specific chemical-compatibility chart, chemical concentration limit, corrosion-life claim or finished-system approval is published in the current Bisphenol Resin TDS. Share the actual service condition and documentation requirement during enquiry rather than inferring a compatibility recommendation.",
+      },
+      {
+        q: "What temperature data is published?",
+        a: "The current TDS lists 80°C under thermal data for a fully cured material. It does not publish a continuous service-temperature limit, so this value should not be treated as one.",
+      },
+      {
+        q: "Is Bisphenol Resin fire retardant?",
+        a: "No fire classification, rating, test result or fire-retardant claim is published for this product. Where a project specifies fire performance, share the exact requirement and review the separate <a href=\"/products/fire-retardant-resin/\">Fire Retardant Resin</a> route instead of assuming this product meets it.",
+      },
+      {
+        q: "Which documents and details should I provide for a quote?",
+        a: "Review the current TDS and product catalogue, then share the intended application, the exact document or product reference being evaluated, required technical or service requirement, expected quantity, packaging need, delivery location and documentation requirement. Where relevant, include the service medium, concentration and temperature without assuming a compatibility recommendation.",
       },
     ],
     relatedSlugs: [
       "vinyl-ester-resin",
+      "unsaturated-polyester-resin",
       "fiberglass-epoxy-resin",
       "gp-clear-resin",
+      "fibre-glass-mat",
+      "fire-retardant-resin",
     ],
   },
   {

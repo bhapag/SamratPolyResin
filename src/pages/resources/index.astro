@@ -59,6 +59,31 @@ const gpQuartzTechnicalResources = published.filter((resource) => [
   'gp-quartz-resin-viscosity-gel-time-storage-guide',
   'gp-quartz-resin-buyer-guide',
 ].includes(resource.slug));
+const marbleResinAuthoritySlugs = new Set([
+  'what-is-marble-resin',
+  'marble-resin-raw-resin-vs-finished-marble-composite',
+  'marble-resin-applications-cultured-marble-artificial-stone',
+  'gp-quartz-resin-vs-marble-resin',
+  'marble-resin-vs-pet-resin',
+  'marble-resin-vs-gp-resin',
+  'marble-resin-vs-epoxy-clear-casting-resin',
+  'marble-resin-technical-specifications-and-rfq',
+]);
+const marbleResinAuthorityResources = published.filter((resource) => marbleResinAuthoritySlugs.has(resource.slug));
+const marbleResinFoundationResources = published.filter((resource) => [
+  'what-is-marble-resin',
+  'marble-resin-raw-resin-vs-finished-marble-composite',
+  'marble-resin-applications-cultured-marble-artificial-stone',
+].includes(resource.slug));
+const marbleResinComparisonResources = published.filter((resource) => [
+  'gp-quartz-resin-vs-marble-resin',
+  'marble-resin-vs-pet-resin',
+  'marble-resin-vs-gp-resin',
+  'marble-resin-vs-epoxy-clear-casting-resin',
+].includes(resource.slug));
+const marbleResinVerificationResources = published.filter((resource) => [
+  'marble-resin-technical-specifications-and-rfq',
+].includes(resource.slug));
 const laminationAuthoritySlugs = new Set([
   'gp-resin-vs-lamination-resin',
   'what-is-lamination-resin',
@@ -182,6 +207,33 @@ const epoxyHardenerSelectionResources = published.filter((resource) => [
 const epoxyHardenerProcurementResources = published.filter((resource) => [
   'epoxy-hardener-procurement-guide',
 ].includes(resource.slug));
+const fiberglassEpoxyAuthoritySlugs = new Set([
+  'what-is-fiberglass-epoxy-resin',
+  'fiberglass-epoxy-resin-system-and-hardener',
+  'fiberglass-epoxy-resin-vs-clear-casting-and-art-resin',
+  'fiberglass-epoxy-resin-vs-polyester-lamination-upr-gp',
+  'fiberglass-epoxy-resin-vs-vinyl-ester-resin',
+  'fiberglass-epoxy-resin-applications',
+  'fiberglass-epoxy-resin-technical-specifications-and-document-check',
+  'fiberglass-epoxy-resin-data-vs-finished-composite-performance',
+  'fiberglass-epoxy-resin-procurement-checklist',
+]);
+const fiberglassEpoxyAuthorityResources = published.filter((resource) => fiberglassEpoxyAuthoritySlugs.has(resource.slug));
+const fiberglassEpoxyFoundationResources = published.filter((resource) => [
+  'what-is-fiberglass-epoxy-resin',
+  'fiberglass-epoxy-resin-system-and-hardener',
+  'fiberglass-epoxy-resin-applications',
+].includes(resource.slug));
+const fiberglassEpoxyComparisonResources = published.filter((resource) => [
+  'fiberglass-epoxy-resin-vs-clear-casting-and-art-resin',
+  'fiberglass-epoxy-resin-vs-polyester-lamination-upr-gp',
+  'fiberglass-epoxy-resin-vs-vinyl-ester-resin',
+].includes(resource.slug));
+const fiberglassEpoxyVerificationResources = published.filter((resource) => [
+  'fiberglass-epoxy-resin-technical-specifications-and-document-check',
+  'fiberglass-epoxy-resin-data-vs-finished-composite-performance',
+  'fiberglass-epoxy-resin-procurement-checklist',
+].includes(resource.slug));
 const epoxyCastingAuthoritySlugs = new Set([
   'what-is-epoxy-clear-casting-resin',
   'casting-resin-vs-coating-resin',
@@ -303,6 +355,27 @@ const dmcSmcVerificationResources = published.filter((resource) => [
   'dmc-smc-resin-technical-specifications',
   'dmc-smc-resin-procurement-checklist',
 ].includes(resource.slug));
+const petResinAuthoritySlugs = new Set([
+  'what-is-pet-modified-polyester-resin',
+  'pet-resin-liquid-grade-vs-thermoplastic-pet',
+  'pet-resin-applications-sheet-lamination-and-panels',
+  'pet-resin-vs-gp-resin',
+  'pet-resin-vs-lamination-resin',
+  'pet-resin-technical-specifications-and-rfq',
+]);
+const petResinAuthorityResources = published.filter((resource) => petResinAuthoritySlugs.has(resource.slug));
+const petResinFoundationResources = published.filter((resource) => [
+  'what-is-pet-modified-polyester-resin',
+  'pet-resin-liquid-grade-vs-thermoplastic-pet',
+].includes(resource.slug));
+const petResinDecisionResources = published.filter((resource) => [
+  'pet-resin-applications-sheet-lamination-and-panels',
+  'pet-resin-vs-gp-resin',
+  'pet-resin-vs-lamination-resin',
+].includes(resource.slug));
+const petResinVerificationResources = published.filter((resource) => [
+  'pet-resin-technical-specifications-and-rfq',
+].includes(resource.slug));
 const fireRetardantAuthoritySlugs = new Set([
   'what-is-fire-retardant-resin',
   'fire-retardant-polyester-resin-applications-and-benefits',
@@ -349,8 +422,56 @@ const isoFireRetardantRequirementsResources = published.filter((resource) => [
   'iso-fire-retardant-resin-fire-requirements',
   'iso-fire-retardant-resin-procurement-checklist',
 ].includes(resource.slug));
+const vinylEsterAuthoritySlugs = new Set([
+  'what-is-vinyl-ester-resin',
+  'vinyl-ester-resin-vs-isophthalic-resin',
+  'vinyl-ester-resin-vs-epoxy-resin',
+  'vinyl-ester-resin-for-chemical-service-frp',
+  'vinyl-ester-resin-technical-specifications',
+  'vinyl-ester-resin-procurement-checklist',
+]);
+const vinylEsterAuthorityResources = published.filter((resource) => vinylEsterAuthoritySlugs.has(resource.slug));
+const vinylEsterFoundationResources = published.filter((resource) => [
+  'what-is-vinyl-ester-resin',
+  'vinyl-ester-resin-for-chemical-service-frp',
+].includes(resource.slug));
+const vinylEsterDecisionResources = published.filter((resource) => [
+  'vinyl-ester-resin-vs-isophthalic-resin',
+  'vinyl-ester-resin-vs-epoxy-resin',
+].includes(resource.slug));
+const vinylEsterLinkedComparisonResources = published.filter((resource) => [
+  'unsaturated-polyester-resin-vs-vinyl-ester-resin',
+  'gp-resin-vs-vinyl-ester-resin',
+].includes(resource.slug));
+const vinylEsterVerificationResources = published.filter((resource) => [
+  'vinyl-ester-resin-technical-specifications',
+  'vinyl-ester-resin-procurement-checklist',
+].includes(resource.slug));
+const bisphenolAuthoritySlugs = new Set([
+  'what-is-bisphenol-resin',
+  'bisphenol-resin-technical-data-and-document-check',
+  'bisphenol-resin-applications',
+  'bisphenol-resin-vs-upr-and-gp-resin',
+  'bisphenol-resin-vs-epoxy-resin',
+  'bisphenol-resin-data-vs-finished-component-performance',
+  'bisphenol-resin-procurement-checklist',
+]);
+const bisphenolAuthorityResources = published.filter((resource) => bisphenolAuthoritySlugs.has(resource.slug));
+const bisphenolFoundationResources = published.filter((resource) => [
+  'what-is-bisphenol-resin',
+  'bisphenol-resin-applications',
+].includes(resource.slug));
+const bisphenolDecisionResources = published.filter((resource) => [
+  'bisphenol-resin-technical-data-and-document-check',
+  'bisphenol-resin-vs-upr-and-gp-resin',
+  'bisphenol-resin-vs-epoxy-resin',
+].includes(resource.slug));
+const bisphenolVerificationResources = published.filter((resource) => [
+  'bisphenol-resin-data-vs-finished-component-performance',
+  'bisphenol-resin-procurement-checklist',
+].includes(resource.slug));
 const gpAuthorityResourcesWithoutUpr = gpAuthorityResources.filter((resource) => !uprAuthoritySlugs.has(resource.slug));
-const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug) && !glassFiberAuthoritySlugs.has(resource.slug) && !pigmentAuthoritySlugs.has(resource.slug) && !mekpAuthoritySlugs.has(resource.slug) && !epoxyHardenerAuthoritySlugs.has(resource.slug) && !epoxyCastingAuthoritySlugs.has(resource.slug) && !epoxyArtAuthoritySlugs.has(resource.slug) && !uvResinAuthoritySlugs.has(resource.slug) && !sheetGradeAuthoritySlugs.has(resource.slug) && !roofLightAuthoritySlugs.has(resource.slug) && !dmcSmcAuthoritySlugs.has(resource.slug) && !fireRetardantAuthoritySlugs.has(resource.slug) && !isoFireRetardantAuthoritySlugs.has(resource.slug));
+const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !marbleResinAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug) && !glassFiberAuthoritySlugs.has(resource.slug) && !pigmentAuthoritySlugs.has(resource.slug) && !mekpAuthoritySlugs.has(resource.slug) && !epoxyHardenerAuthoritySlugs.has(resource.slug) && !fiberglassEpoxyAuthoritySlugs.has(resource.slug) && !epoxyCastingAuthoritySlugs.has(resource.slug) && !epoxyArtAuthoritySlugs.has(resource.slug) && !uvResinAuthoritySlugs.has(resource.slug) && !sheetGradeAuthoritySlugs.has(resource.slug) && !roofLightAuthoritySlugs.has(resource.slug) && !dmcSmcAuthoritySlugs.has(resource.slug) && !petResinAuthoritySlugs.has(resource.slug) && !fireRetardantAuthoritySlugs.has(resource.slug) && !isoFireRetardantAuthoritySlugs.has(resource.slug) && !vinylEsterAuthoritySlugs.has(resource.slug) && !bisphenolAuthoritySlugs.has(resource.slug));
 ---
 <Base
   title="Knowledge Centre"
@@ -467,6 +588,45 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
               <h3 id="gp-quartz-data-heading">Review technical data and prepare a quote</h3>
               <div class="kc-grid">
                 {gpQuartzTechnicalResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
+
+      {marbleResinAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="marble-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Marble and artificial-stone resin selection</p>
+              <h2 id="marble-resin-hub-heading">Marble Resin Knowledge Hub</h2>
+              <p>Start with Samrat&apos;s documented liquid Marble Resin route for cultured marble and artificial stone. Then separate raw resin from finished composite performance, compare the relevant product roles, keep the Marble TDS and catalogue differences visible, and prepare a focused RFQ. GP Quartz has its own published quartz and engineered-stone role; the documents overlap in some terminology, so this hub does not invent a universal boundary.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/marble-resin/" class="btn btn-solid">View Marble Resin</a>
+              <a href="/tds/marble-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Marble Resin TDS</a>
+              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Review Product Catalogue</a>
+              <a href="/about/" class="btn">About Samrat Poly Resins</a>
+              <a href="/contact/" class="btn">Request Marble Resin Quote</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="marble-resin-foundation-heading">
+              <h3 id="marble-resin-foundation-heading">1. Confirm the resin role, material form and published applications</h3>
+              <div class="kc-grid">
+                {marbleResinFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="marble-resin-comparisons-heading">
+              <h3 id="marble-resin-comparisons-heading">2. Compare the right product route without assuming a performance ranking</h3>
+              <div class="kc-grid">
+                {marbleResinComparisonResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="marble-resin-verification-heading">
+              <h3 id="marble-resin-verification-heading">3. Verify the document record and prepare a focused RFQ</h3>
+              <div class="kc-grid">
+                {marbleResinVerificationResources.map((resource) => <ResourceCard resource={resource} />)}
               </div>
             </section>
           </div>
@@ -615,6 +775,44 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
               <h3 id="epoxy-hardener-procurement-heading">3. Review documentation and prepare an RFQ</h3>
               <div class="kc-grid">
                 {epoxyHardenerProcurementResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
+
+      {fiberglassEpoxyAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="fiberglass-epoxy-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Composite epoxy selection</p>
+              <h2 id="fiberglass-epoxy-resin-hub-heading">Fiberglass Epoxy Resin Knowledge Hub</h2>
+              <p>Start with the documented epoxy-system and fabric-reinforcement role, confirm the hardener and <a href="/resources/fiberglass-epoxy-resin-technical-specifications-and-document-check/">TDS-versus-catalogue boundary</a>, compare separate epoxy and polyester routes, then prepare a focused industrial composite enquiry.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/fiberglass-epoxy-resin/" class="btn btn-solid">View Fiberglass Epoxy Resin</a>
+              <a href="/tds/fiberglass-epoxy-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Fiberglass Epoxy TDS</a>
+              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Review Product Catalogue</a>
+              <a href="/products/fiberglass-epoxy-resin/#enquire" class="btn">Discuss a composite epoxy requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="fiberglass-epoxy-foundation-heading">
+              <h3 id="fiberglass-epoxy-foundation-heading">1. Define the published system, reinforcement and application boundary</h3>
+              <div class="kc-grid">
+                {fiberglassEpoxyFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="fiberglass-epoxy-comparison-heading">
+              <h3 id="fiberglass-epoxy-comparison-heading">2. Compare product routes without an unsupported performance ranking</h3>
+              <div class="kc-grid">
+                {fiberglassEpoxyComparisonResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="fiberglass-epoxy-verification-heading">
+              <h3 id="fiberglass-epoxy-verification-heading">3. Check the records, separate finished performance and prepare an RFQ</h3>
+              <div class="kc-grid">
+                {fiberglassEpoxyVerificationResources.map((resource) => <ResourceCard resource={resource} />)}
               </div>
             </section>
           </div>
@@ -803,6 +1001,46 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
         </section>
       )}
 
+      {petResinAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="pet-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">PET Resin documentation and selection</p>
+              <h2 id="pet-resin-hub-heading">PET Resin Knowledge Hub</h2>
+              <p>Use the dedicated liquid PET-modified UPR TDS to establish the material form first. Then review the published sheet and panel contexts, separate it from GP and Lamination Resin routes, and prepare a document-led RFQ without treating the PET label as interchangeable with thermoplastic chips or finished putty.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/pet-resin/" class="btn btn-solid">View PET Resin</a>
+              <a href="/resources/pet-resin-liquid-grade-vs-thermoplastic-pet/" class="btn">Clarify PET material form</a>
+              <a href="/tds/pet-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download PET Resin TDS</a>
+              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href="/about/" class="btn">Company and facility context</a>
+              <a href="/contact/" class="btn">Discuss a PET Resin requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="pet-resin-foundation-heading">
+              <h3 id="pet-resin-foundation-heading">1. Confirm the published resin identity and material form</h3>
+              <div class="kc-grid">
+                {petResinFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="pet-resin-decision-heading">
+              <h3 id="pet-resin-decision-heading">2. Review published applications and separate relevant resin routes</h3>
+              <div class="kc-grid">
+                {petResinDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="pet-resin-verification-heading">
+              <h3 id="pet-resin-verification-heading">3. Review the current TDS and prepare a focused RFQ</h3>
+              <div class="kc-grid">
+                {petResinVerificationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
+
       {roofLightAuthorityResources.length > 0 && (
         <section class="kc-focus" aria-labelledby="roof-light-resin-hub-heading">
           <div class="kc-focus-head">
@@ -911,6 +1149,82 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
               <h3 id="iso-fire-retardant-requirements-heading">3. Define the finished-system requirement and prepare an enquiry</h3>
               <div class="kc-grid">
                 {isoFireRetardantRequirementsResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
+
+      {vinylEsterAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="vinyl-ester-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Industrial FRP service selection</p>
+              <h2 id="vinyl-ester-resin-hub-heading">Vinyl Ester Resin Knowledge Hub</h2>
+              <p>Explore the published Bisphenol-A epoxy vinyl ester route for industrial FRP, then define the actual service requirement, compare distinct product families, review liquid-resin data and prepare a focused RFQ.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/vinyl-ester-resin/" class="btn btn-solid">View Vinyl Ester Resin</a>
+              <a href="/tds/vinyl-ester-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Vinyl Ester Resin TDS</a>
+              <a href="/contact/" class="btn">Discuss a Vinyl Ester requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="vinyl-ester-foundation-heading">
+              <h3 id="vinyl-ester-foundation-heading">1. Understand the published product route and define the service requirement</h3>
+              <div class="kc-grid">
+                {vinylEsterFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="vinyl-ester-decision-heading">
+              <h3 id="vinyl-ester-decision-heading">2. Compare distinct resin families without assuming a performance hierarchy</h3>
+              <div class="kc-grid">
+                {vinylEsterDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
+                {vinylEsterLinkedComparisonResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="vinyl-ester-verification-heading">
+              <h3 id="vinyl-ester-verification-heading">3. Verify the published data and prepare an industrial enquiry</h3>
+              <div class="kc-grid">
+                {vinylEsterVerificationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
+
+      {bisphenolAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="bisphenol-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Document-led industrial resin selection</p>
+              <h2 id="bisphenol-resin-hub-heading">Bisphenol Resin Knowledge Hub</h2>
+              <p>Start with the current Bisphenol Resin TDS, keep its differing catalogue BPR entry visible, then define the actual application, compare separate product routes and prepare a focused RFQ. <a href="/resources/bisphenol-resin-technical-data-and-document-check/">Compare the document records before selection</a>; for a separately specified Vinyl Ester requirement, review the <a href="/products/vinyl-ester-resin/">separate Vinyl Ester route</a>. These guides do not resolve the document conflict by assumption.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/bisphenol-resin/" class="btn btn-solid">View Bisphenol Resin</a>
+              <a href="/tds/bisphenol-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Bisphenol Resin TDS</a>
+              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Review Product Catalogue</a>
+              <a href="/contact/" class="btn">Discuss a Bisphenol requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="bisphenol-foundation-heading">
+              <h3 id="bisphenol-foundation-heading">1. Identify the published product route and application boundary</h3>
+              <div class="kc-grid">
+                {bisphenolFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="bisphenol-decision-heading">
+              <h3 id="bisphenol-decision-heading">2. Check the document record and compare separate resin routes</h3>
+              <div class="kc-grid">
+                {bisphenolDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="bisphenol-verification-heading">
+              <h3 id="bisphenol-verification-heading">3. Separate finished-system questions and prepare an RFQ</h3>
+              <div class="kc-grid">
+                {bisphenolVerificationResources.map((resource) => <ResourceCard resource={resource} />)}
               </div>
             </section>
           </div>

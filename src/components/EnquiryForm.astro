@@ -1,7 +1,10 @@
 ---
 import { site } from '../data/site.js';
 // optional: pass product={name} to pre-fill the enquiry
-const { product } = Astro.props;
+const {
+  product,
+  messagePlaceholder = 'Application, grade, technical specifications, or anything else we should know…',
+} = Astro.props;
 const demo = !site.formEndpoint;
 ---
 <form class="enq" id="enquiryForm" data-demo={demo ? 'true' : 'false'}>
@@ -57,7 +60,7 @@ const demo = !site.formEndpoint;
 
   <label class="row">
     <span>Requirement / message</span>
-    <textarea name="message" rows="4" required placeholder="Application, grade, technical specifications, or anything else we should know…"></textarea>
+    <textarea name="message" rows="4" required placeholder={messagePlaceholder}></textarea>
   </label>
 
   <div class="enq-foot">
