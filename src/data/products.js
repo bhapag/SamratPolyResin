@@ -2354,6 +2354,7 @@ export const products = [
     image: "pet-resin.jpg",
     images: ["pet-resin-2.jpg"],
     tdsUrl: "/tds/pet-resin-tds.pdf",
+    sdsUrl: "/sds/pet-resin-sds.pdf",
     seo: {
       title: "PET Resin / Polyester Putty Resin",
       description:
@@ -2463,6 +2464,7 @@ export const products = [
     image: "marble-resin.jpg",
     images: ["marble-resin-2.jpg"],
     tdsUrl: "/tds/marble-resin-tds.pdf",
+    sdsUrl: "/sds/marble-resin-sds.pdf",
     seo: {
       title: "Marble Resin – Resin for Cultured Marble",
       description:
@@ -2562,6 +2564,7 @@ export const products = [
     imageAlt:
       "Vinyl Ester Resin — Bisphenol-A epoxy vinyl ester resin for chemical-resistant FRP by Samrat Poly Resins",
     tdsUrl: "/tds/vinyl-ester-resin-tds.pdf",
+    sdsUrl: "/sds/vinyl-ester-resin-sds.pdf",
     seo: {
       title: "Vinyl Ester Resin – Chemical-Resistant Resin",
       description:
@@ -2691,6 +2694,7 @@ export const products = [
     image: "fiberglass-epoxy-resin.jpg",
     images: ["fiberglass-epoxy-resin-2.jpg", "fiberglass-epoxy-resin-3.jpg"],
     tdsUrl: "/tds/fiberglass-epoxy-resin-tds.pdf",
+    sdsUrl: "/sds/fiberglass-epoxy-resin-sds.pdf",
     seo: {
       title: "Fiberglass Epoxy Resin – Structural Epoxy System",
       description:
@@ -2786,6 +2790,7 @@ export const products = [
     image: "bisphenol-resin.jpg",
     images: ["bisphenol-resin-2.jpg"],
     tdsUrl: "/tds/bisphenol-resin-tds.pdf",
+    sdsUrl: "/sds/bisphenol-resin-sds.pdf",
     seo: {
       title: "Bisphenol Resin – Industrial Epoxy Resin",
       description:
