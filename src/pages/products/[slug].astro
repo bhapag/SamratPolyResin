@@ -410,10 +410,10 @@ const detailEntries = product.productDetails ? Object.entries(product.productDet
 const techEntries = product.techSpecs ? Object.entries(product.techSpecs) : null;
 const legacySpecEntries = !detailEntries && !techEntries && specs ? Object.entries(specs) : [];
 
-// The Fiberglass Epoxy directory currently contains illustrative marketing
-// graphics rather than a verifiable product photograph. Do not use them as
-// visual evidence on this document-led technical product route.
-const gallery = isFiberglassEpoxyResin ? [] : [image, ...(product.images ?? [])];
+// Keep the existing Fiberglass Epoxy product graphics visible in the gallery.
+// They remain clearly identified on the page as illustrative graphics rather
+// than technical evidence for the supplied grade.
+const gallery = [image, ...(product.images ?? [])];
 
 // Resolve each gallery photo to an optimised, compressed webp — one size for
 // the large main viewer, one for the thumbnail strip. The thumbnail's
@@ -886,7 +886,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <p class="marble-image-note">Illustrative product graphic. Use the <a href={tdsUrl} target="_blank" rel="noopener" download>current Marble Resin TDS</a> for verified supplied-resin data, documented applications and grade selection.</p>
         )}
         {isFiberglassEpoxyResin && (
-          <p class="marble-image-note">A verified product photograph is not currently published for this grade, so illustrative marketing graphics are not used as product evidence here. Use the <a href={tdsUrl} target="_blank" rel="noopener" download>current Fiberglass Epoxy Resin TDS</a> and catalogue as the product-data reference; the two documents do not publish identical values.</p>
+          <p class="marble-image-note">Illustrative Fiberglass Epoxy Resin product graphics. They are not technical evidence for the supplied grade; use the <a href={tdsUrl} target="_blank" rel="noopener" download>current Fiberglass Epoxy Resin TDS</a> and catalogue as the product-data reference.</p>
         )}
       </div>
     </div>
