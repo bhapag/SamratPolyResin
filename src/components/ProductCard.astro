@@ -42,10 +42,25 @@ const img = resolveProductImage(image);
     box-shadow: var(--surface-shadow-hover);
   }
   .card:hover .card-arrow { transform: translateX(4px); color: var(--accent-gold); }
+  /* Press feedback — same idea as the sitewide .btn:active (translateY +
+     scale, faster transition-duration on the way down), so tapping a card
+     on mobile (where :hover never fires) still gets an immediate tactile
+     response instead of nothing happening until the page navigates. */
+  .card:active { transform: translateY(-1px) scale(0.99); transition-duration: .12s; }
 
+  /* Product photos are supplied as complete marketing posters (light/cream
+     background, brand lockup, spec callouts baked into the artwork), not
+     cropped product-only photography — see the object-fit note below. Every
+     one of them was sitting on this card's old near-black gradient, so
+     every product card sitewide showed a hard-edged light rectangle
+     dropped into a dark box: the single most visible surface clash on the
+     site, repeated on every product grid. A warm neutral frame matching the
+     posters' own tone reads as one deliberately-styled "photo plate"
+     instead — same fix applied to .prod-img/.prod-thumb on the product page. */
   .card-img {
     position: relative; aspect-ratio: 1 / 1; overflow: hidden;
-    background: linear-gradient(135deg, #1a1e24, #23282f);
+    background: linear-gradient(135deg, #f2eee3, #e6e0cf);
+    border-bottom: 1px solid var(--image-frame-border);
     display: grid; place-items: center;
   }
   /* contain, not cover — these are complete marketing posters (text, logo,

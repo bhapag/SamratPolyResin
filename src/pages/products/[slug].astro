@@ -4132,9 +4132,16 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 
     .prod { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(1.5rem, 5vw, 3.5rem); padding-block: 2.2rem 3rem; }
     .prod-media-sticky { position: sticky; top: 90px; }
+    /* Same warm neutral frame as ProductCard's .card-img — the supplied
+       product photos are full marketing posters on a light background, and
+       the old near-black gradient here clashed with every one of them at
+       this large, highly visible size. Matching the poster's own tone
+       instead makes the whole frame read as an intentional light "photo
+       plate," not a colour mismatch — kept in the same gold-bordered plate
+       treatment as before. */
     .prod-img {
       position: relative; aspect-ratio: 1 / 1; border: 1px solid var(--image-frame-border); border-radius: 14px;
-      background: linear-gradient(135deg, #1a1e24, #23282f);
+      background: linear-gradient(135deg, #f2eee3, #e6e0cf);
       display: grid; place-items: center; overflow: hidden;
       box-shadow: var(--image-frame-shadow);
       transition: box-shadow .4s var(--ease-premium);
@@ -4163,7 +4170,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .prod-thumbs { display: flex; gap: 0.7rem; margin-top: 0.9rem; flex-wrap: wrap; }
     .prod-thumb {
       position: relative;
-      padding: 0; border: 1px solid var(--line); background: var(--bg-3); cursor: pointer;
+      padding: 0; border: 1px solid var(--line); background: linear-gradient(135deg, #f2eee3, #e6e0cf); cursor: pointer;
       width: 76px; aspect-ratio: 1 / 1; overflow: hidden; transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium);
     }
     .prod-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
@@ -4582,7 +4589,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     @media (max-width: 760px) { .gp-case-study-grid, .gp-case-study-outcome { grid-template-columns: 1fr; } }
     @media (max-width: 460px) { .gp-case-study-details div { grid-template-columns: 1fr; gap: 0.3rem; } }
 
-    .enquire-sec { position: relative; background: linear-gradient(180deg, transparent, var(--bg-2) 64px); }
+    /* Every "Enquire / Discuss your requirement" CTA on this page — and
+       there are dozens, per-product — jumps here via #enquire. Without a
+       scroll-margin, the sticky 68px header landed directly on top of the
+       section heading on arrival; matching the same scroll-margin-top
+       already used for .cat-block/.article-section/.gp-case-study lands it
+       cleanly below the header instead, same as any other in-page jump. */
+    .enquire-sec { position: relative; scroll-margin-top: 90px; background: linear-gradient(180deg, transparent, var(--bg-2) 64px); }
     .enquire-sec::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, var(--line-2) 20%, var(--line-2) 80%, transparent);

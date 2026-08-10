@@ -577,6 +577,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       border-color: var(--accent-gold); transform: translateY(-3px) scale(1.012);
       box-shadow: var(--surface-shadow-hover);
     }
+    .cat-tile:active { transform: translateY(-1px) scale(0.99); transition-duration: .12s; }
     .cat-tile-name { font-family: var(--font-display); text-transform: uppercase; font-size: 1rem; letter-spacing: 0.03em; }
     .cat-tile-count { font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-gold-light); }
 
@@ -905,6 +906,23 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     @media (max-width: 560px) { .applications-gallery { grid-template-columns: 1fr; } }
 
     /* ---------- industries we serve ---------- */
+    /* Same raised-panel band as .featured/.facility above and
+       .contact-teaser/footer below. Without it, "Proven Applications" →
+       "Industries We Serve" → "About teaser" ran as one unbroken ~3000px
+       stretch of flat, unvarying page background — the longest monotone
+       run on the homepage — before the next section finally introduced
+       any tonal change. This restores a light/dark rhythm through that
+       stretch using the exact existing recipe, not a new one. */
+    .industries {
+      position: relative;
+      background: linear-gradient(180deg, transparent, var(--bg-2) 64px, var(--bg-2) calc(100% - 64px), transparent);
+    }
+    .industries::before, .industries::after {
+      content: ''; position: absolute; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line-2) 20%, var(--line-2) 80%, transparent);
+    }
+    .industries::before { top: 0; }
+    .industries::after { bottom: 0; }
     .industries-desc { color: var(--ink-dim); margin-top: 1rem; max-width: 62ch; }
     .industry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-top: 2.4rem; }
     .industry-card {

@@ -295,12 +295,27 @@ const organizationJsonLd = {
     .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
     .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+    /* Always laid out (not display:none) so max-height/opacity can actually
+       transition — display can't be animated. visibility is switched via a
+       transition-delay instead of JS: on open it flips to visible with zero
+       delay (revealed immediately, before the panel finishes expanding); on
+       close its delay matches the collapse duration, so focus/tab order and
+       the accessibility tree only drop the links once the panel has
+       visually finished closing, not before. prefers-reduced-motion is
+       already handled globally (global.css forces every transition-duration
+       to ~0 under that media query), so this needs no extra guard here. */
     .mobile-nav {
-      display: none;
+      display: flex;
       flex-direction: column;
       background: var(--bg);
       border-top: 1px solid var(--line);
       padding: 0.4rem var(--pad) 1rem;
+      max-height: 0; opacity: 0; visibility: hidden; overflow: hidden;
+      transition: max-height .35s var(--ease-premium), opacity .25s var(--ease-premium), visibility 0s linear .35s;
+    }
+    .mobile-nav.is-open {
+      max-height: 420px; opacity: 1; visibility: visible;
+      transition: max-height .35s var(--ease-premium), opacity .3s var(--ease-premium) .05s, visibility 0s linear 0s;
     }
     .mobile-nav a {
       display: block; padding: 0.95rem 0.15rem;
@@ -316,7 +331,6 @@ const organizationJsonLd = {
     @media (max-width: 760px) {
       .nav { display: none; }
       .nav-toggle { display: flex; }
-      .mobile-nav.is-open { display: flex; }
     }
 
     .site-footer {
