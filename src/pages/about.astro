@@ -55,6 +55,7 @@ const years = new Date().getFullYear() - Number(site.established);
         <li><span>GSTIN</span>{site.gst}</li>
         <li><span>Established</span>{site.established} ({years}+ yrs)</li>
         <li><span>Product Range</span>{products.length}+ resin grades</li>
+        <li><span>Certification</span><a href="/certificates/iso-9001-2015-certificate.jpg" target="_blank" rel="noopener">ISO 9001:2015 (Quality Management System)</a></li>
       </ul>
     </div>
   </section>
@@ -102,6 +103,11 @@ const years = new Date().getFullYear() - Number(site.established);
     .about-facts { list-style: none; display: flex; flex-direction: column; gap: 1.1rem; align-self: start; }
     .about-facts li { border-left: 2px solid var(--accent-gold); padding-left: 0.9rem; font-size: 0.95rem; line-height: 1.5; }
     .about-facts span { display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.25rem; }
+    .about-facts a {
+      color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px;
+      transition: color .25s var(--ease-premium);
+    }
+    .about-facts a:hover { color: var(--accent-gold); }
     @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
 
     .about-cats { position: relative; background: linear-gradient(180deg, transparent, var(--bg-2) 64px); }
