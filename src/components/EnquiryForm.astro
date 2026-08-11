@@ -3,15 +3,38 @@ import { site } from '../data/site.js';
 // optional: pass product={name} to pre-fill the enquiry
 const {
   product,
+  productSlug,
+  pageContext,
   messagePlaceholder = 'Application, grade, technical specifications, or anything else we should know…',
 } = Astro.props;
 const demo = !site.formEndpoint;
 ---
-<form class="enq" id="enquiryForm" data-demo={demo ? 'true' : 'false'}>
+<form
+  class="enq"
+  id="enquiryForm"
+  data-demo={demo ? 'true' : 'false'}
+  data-lead-form
+  data-product-slug={productSlug}
+  data-product-name={product}
+  data-page-context={pageContext}
+>
   <!-- Web3Forms access key -->
   <input type="hidden" name="access_key" value={site.formEndpoint} />
   <input type="hidden" name="subject" value={`New enquiry — ${site.name}`} />
   <input type="hidden" name="from_name" value={site.name} />
+  <!-- Populated client-side and sent with Web3Forms; never shown in the form UI. -->
+  <input type="hidden" name="utm_source" value="" />
+  <input type="hidden" name="utm_medium" value="" />
+  <input type="hidden" name="utm_campaign" value="" />
+  <input type="hidden" name="utm_content" value="" />
+  <input type="hidden" name="utm_term" value="" />
+  <input type="hidden" name="initial_landing_page" value="" />
+  <input type="hidden" name="current_page" value="" />
+  <input type="hidden" name="referrer" value="" />
+  <input type="hidden" name="first_touch_channel" value="" />
+  <input type="hidden" name="product_slug" value="" />
+  <input type="hidden" name="product_name" value="" />
+  <input type="hidden" name="page_context" value="" />
   <!-- honeypot -->
   <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
 
@@ -114,6 +137,7 @@ const demo = !site.formEndpoint;
       e.preventDefault();
       const isDemo = form.dataset.demo === 'true';
       statusEl.className = 'enq-status';
+      document.dispatchEvent(new CustomEvent('samrat:prepare-lead-form', { detail: { form } }));
 
       if (isDemo) {
         statusEl.textContent = '✓ Looks good — connect a form key to actually send.';
@@ -131,6 +155,7 @@ const demo = !site.formEndpoint;
         });
         const data = await res.json();
         if (data.success) {
+          document.dispatchEvent(new CustomEvent('samrat:lead-submitted', { detail: { form } }));
           statusEl.textContent = '✓ Enquiry sent — we’ll be in touch shortly.';
           statusEl.classList.add('ok');
           form.reset();

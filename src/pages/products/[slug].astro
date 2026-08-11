@@ -844,6 +844,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 ---
 <Base
   title={isGpClearResin ? gpClearSeo.title : isGpWhiteResin ? gpWhiteSeo.title : isLaminationResin ? laminationSeo.title : isGpGelcoatResin ? gelcoatSeo.title : isGpYellowResin ? gpYellowSeo.title : isSheetGradeYellowResin ? sheetGradeYellowSeo.title : isRoofLightResin ? roofLightSeo.title : isFireRetardantResin ? fireRetardantSeo.title : isButtonGradeResin ? buttonGradeSeo.title : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.title : isGlassFiber ? glassFiberSeo.title : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.title : isMekpHardener ? mekpHardenerSeo.title : isEpoxyHardener ? epoxyHardenerSeo.title : isEpoxyArtResin ? epoxyArtSeo.title : isUvResin ? uvResinSeo.title : isEpoxyClearCastingResin ? epoxyClearCastingSeo.title : (product.seo?.title ?? name)}
+  trackingProductSlug={product.slug}
+  trackingProductName={name}
   description={isLaminationResin ? laminationSeo.description : isGpGelcoatResin ? gelcoatSeo.description : isGpYellowResin ? gpYellowSeo.description : isSheetGradeYellowResin ? sheetGradeYellowSeo.description : isRoofLightResin ? roofLightSeo.description : isFireRetardantResin ? fireRetardantSeo.description : isButtonGradeResin ? buttonGradeSeo.description : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.description : isGlassFiber ? glassFiberSeo.description : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.description : isMekpHardener ? mekpHardenerSeo.description : isEpoxyHardener ? epoxyHardenerSeo.description : isEpoxyArtResin ? epoxyArtSeo.description : isUvResin ? uvResinSeo.description : isEpoxyClearCastingResin ? epoxyClearCastingSeo.description : (product.seo?.description ?? `${name} — ${product.tagline} Manufactured by ${site.name}.`)}
   keywords={isGpClearResin ? gpClearSeo.keywords : isGpWhiteResin ? gpWhiteSeo.keywords : isLaminationResin ? laminationSeo.keywords : isGpGelcoatResin ? gelcoatSeo.keywords : isGpYellowResin ? gpYellowSeo.keywords : isSheetGradeYellowResin ? sheetGradeYellowSeo.keywords : isRoofLightResin ? roofLightSeo.keywords : isFireRetardantResin ? fireRetardantSeo.keywords : isButtonGradeResin ? buttonGradeSeo.keywords : isUnsaturatedPolyesterResin ? unsaturatedPolyesterSeo.keywords : isGlassFiber ? glassFiberSeo.keywords : isFrpPolyesterPigment ? frpPolyesterPigmentSeo.keywords : isMekpHardener ? mekpHardenerSeo.keywords : isEpoxyHardener ? epoxyHardenerSeo.keywords : isEpoxyArtResin ? epoxyArtSeo.keywords : isUvResin ? uvResinSeo.keywords : isEpoxyClearCastingResin ? epoxyClearCastingSeo.keywords : product.seo?.keywords}
 >
@@ -4091,6 +4093,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="enquire-box">
         <EnquiryForm
           product={name}
+          productSlug={product.slug}
+          pageContext="product"
           messagePlaceholder={isBisphenolResin
             ? 'Intended application, exact TDS or catalogue reference, technical or service requirement, required documentation, quantity and delivery location'
             : isMarbleResin

@@ -6,6 +6,7 @@ import { site, buildCanonicalUrl } from '../data/site.js';
 const {
   title, description, ogType = 'website', ogTitle, ogDescription, ogImageAlt,
   ogImage, ogImageWidth = 1200, ogImageHeight = 630, keywords, noindex = false,
+  trackingProductSlug, trackingProductName,
 } = Astro.props;
 const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
 const desc = description ?? `${site.name}: manufacturer of coating and composite resins from ${site.address.line2}, ${site.address.state}. Established ${site.established}.`;
@@ -89,7 +90,7 @@ const organizationJsonLd = {
   gtag('config', 'G-20DFSNPJ80');
 </script>
 </head>
-<body>
+<body data-product-slug={trackingProductSlug} data-product-name={trackingProductName}>
   <a href="#main-content" class="skip-link">Skip to content</a>
   <header class="site-header" transition:persist>
     <div class="wrap header-inner">
@@ -238,6 +239,10 @@ const organizationJsonLd = {
       document.querySelectorAll(IMG_SELECTOR).forEach((el) => tag(el, 'js-reveal-img', 0));
       document.querySelectorAll(HEAD_SELECTOR).forEach((el) => tag(el, 'js-reveal', 0));
     });
+  </script>
+
+  <script>
+    import '../scripts/lead-attribution.ts';
   </script>
 
   <style>
