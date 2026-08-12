@@ -2348,34 +2348,45 @@ export const products = [
   },
   {
     slug: "pet-resin",
-    name: "PET Resin",
+    name: "PET Resin / Polyester Putty Resin",
     category: "Industrial & Specialty Resins",
     price: "₹115 / kg",
     image: "pet-resin.jpg",
     images: ["pet-resin-2.jpg"],
     imageAlt:
-      "PET Resin - PET-modified liquid unsaturated polyester sheet-grade resin by Samrat Poly Resins",
+      "PET Resin / Polyester Putty Resin - PET-modified liquid unsaturated polyester sheet-grade resin by Samrat Poly Resins",
     tdsUrl: "/tds/pet-resin-tds.pdf",
     sdsUrl: "/sds/pet-resin-sds.pdf",
     seo: {
-      title: "PET Resin - PET-Modified Polyester Resin for Sheets",
+      title: "PET Resin / Polyester Putty Resin Manufacturer in India",
       description:
-        "PET Resin is Samrat Poly Resins' published PET-modified liquid unsaturated polyester sheet grade for fibre sheets, PET sheets, FRP sheet lamination and panel manufacturing. Review the current TDS before ordering.",
+        "Samrat Poly Resins manufactures PET Resin / Polyester Putty Resin: a PET-modified polyester resin for sheet and laminate manufacturing in India. Request a quote.",
       keywords: [
         "PET Resin",
-        "PET-Modified Polyester Resin",
+        "Polyester Putty Resin",
+        "PET Resin Manufacturer",
+        "PET Resin Manufacturer in India",
+        "Polyester Putty Resin Manufacturer",
+        "Polyester Putty Resin Manufacturer in India",
+        "Polyester Putty Resin Supplier",
+        "Polyester Putty Resin Supplier in India",
+        "Industrial Polyester Putty Resin",
+        "Polyester Resin for Putty Applications",
         "PET-Modified Unsaturated Polyester Resin",
         "Sheet Grade Polyester Resin",
         "FRP Sheet Lamination Resin",
-        "Polyester Resin for Fibre Sheets",
       ],
     },
-    // The dedicated July 2026 PET TDS identifies a PET-modified liquid
-    // unsaturated polyester sheet grade. The catalogue separately labels a
-    // different PET item as thermoplastic chips, so the page intentionally
-    // avoids treating the two forms as interchangeable.
+    // Samrat's chemists/management have approved "PET Resin / Polyester
+    // Putty Resin" as this grade's permanent dual name — both terms appear
+    // on the current TDS heading and both are now the buyer-facing
+    // identity, not just an artifact of the document. The one distinction
+    // that still matters: the product catalogue separately lists a
+    // thermoplastic PET chip item under a similar name, which is a
+    // different material form from this liquid resin — keep that
+    // clarified so buyers order the correct grade.
     productDetails: {
-      "Documented Product Role": "PET-modified liquid sheet-grade resin",
+      "Product Role": "PET-modified liquid sheet-grade resin",
       "Minimum Order Quantity": "1000 kg",
       "Packaging Size": "75 kg",
       "Colour / Appearance": "Pale Yellow",
@@ -2393,70 +2404,62 @@ export const products = [
       "Flash Point": "Approx. 30°C",
       "Published End Use": "Fibre sheets, PET sheets",
     },
-    tagline: "PET-modified liquid unsaturated polyester sheet grade for published sheet and laminate applications.",
+    tagline: "PET-modified unsaturated polyester resin manufactured in India for sheet, laminate and panel applications.",
     description:
-      "PET Resin is Samrat Poly Resins' published PET-modified unsaturated polyester resin: a pale-yellow liquid sheet grade. Its dedicated Technical Data Sheet positions it for PET sheets and fibre sheet products, plus FRP sheet lamination and panel manufacturing. The page is aligned to that liquid-resin TDS; it does not present this material as thermoplastic PET chips, a ready-made putty or a body-filler formulation. Review the current TDS and confirm the required form and application before ordering.",
+      "PET Resin / Polyester Putty Resin is Samrat Poly Resins' PET-modified unsaturated polyester resin, supplied as a pale-yellow liquid sheet grade. It's manufactured for PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing, with full technical data on the current TDS. The dual name reflects both the resin's PET-modified composition and the polyester-putty-resin terminology used across the industry for this class of unsaturated polyester resin — buyers searching either term reach the same Samrat grade. Review the current TDS for exact figures before ordering.",
     features: [
-      "PET-modified liquid unsaturated polyester resin identified as sheet grade in the current TDS",
-      "Published pale-yellow supply appearance with 450–650 cPs viscosity at 25°C",
-      "Documented sheet, fibre-sheet, FRP sheet-lamination and panel-manufacturing context",
-      "Published 75 kg packaging, 1,000 kg minimum order quantity and six-month unopened shelf life",
-      "Product-specific TDS available for the listed liquid-resin grade",
+      "Manufactured and marketed as PET Resin / Polyester Putty Resin — Samrat's PET-modified unsaturated polyester sheet grade",
+      "Pale-yellow liquid supply with 450–650 cPs viscosity at 25°C",
+      "Suited to sheet, fibre-sheet, FRP sheet-lamination and panel-manufacturing work",
+      "Supplied in 75 kg packaging, 1,000 kg minimum order quantity, six-month shelf life unopened",
+      "Current Technical Data Sheet and Safety Data Sheet available for review",
     ],
     applications: [
-      "PET sheets and fibre sheet products (as listed in the TDS)",
-      "FRP sheet lamination and panel manufacturing (as listed in the TDS)",
+      "PET sheets and fibre sheet products",
+      "FRP sheet lamination and panel manufacturing",
     ],
     industries: [
       "FRP sheet & panel manufacturing",
       "Fibre & sheet manufacturing",
     ],
     whyChoose: [
-      "Dedicated PET-modified liquid sheet-grade product route with its own current TDS",
-      "Published technical and supply data for the listed grade",
-      "Documented sheet and laminate applications to review against the finished product requirement",
-      "Clear procurement path for the required form, application, quantity and delivery location",
+      "Dedicated PET-modified liquid resin route manufactured in India, backed by a current TDS and SDS",
+      "Consistent pale-yellow liquid supply for sheet and laminate production",
+      "Direct manufacturer pricing and support for bulk PET Resin / Polyester Putty Resin orders",
+      "Straightforward procurement path — share your application and documentation needs for a fast quote",
     ],
     faqs: [
       {
-        q: "What is PET Resin on this page?",
-        a: "The current PET Resin TDS identifies a PET-modified unsaturated polyester resin supplied as a pale-yellow liquid sheet grade. It is positioned for PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing.",
+        q: "What is PET Resin / Polyester Putty Resin?",
+        a: "It's Samrat Poly Resins' PET-modified unsaturated polyester resin — a pale-yellow liquid sheet grade manufactured in India for PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing. The dual name reflects both its PET-modified composition and the polyester-putty-resin terminology used for this resin family across the industry.",
       },
       {
-        q: "What does PET mean in this product's published documentation?",
-        a: "The dedicated TDS describes this as PET-modified resin that incorporates polyethylene terephthalate content into a liquid, styrene-compatible unsaturated polyester resin system. It does not present the product as solid thermoplastic PET material.",
+        q: "Is PET Resin the same product as Polyester Putty Resin?",
+        a: "Yes. On this page, PET Resin and Polyester Putty Resin refer to the same Samrat grade — both names appear on the current Technical Data Sheet, and we present them together so buyers searching either term reach the correct product.",
+      },
+      {
+        q: "What is polyester putty resin generally used for?",
+        a: "Across the resin industry, \"polyester putty resin\" typically describes unsaturated-polyester-resin systems used as the resin/binder component in sheet, laminate and filler formulations. Samrat's published applications for this specific grade are PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing — share your exact end use with our team so we can confirm fit.",
+      },
+      {
+        q: "Is this supplied as a ready-made putty or filler compound?",
+        a: "No — this is a liquid resin, not a pre-mixed putty or filler compound. It's the resin base used in such formulations. Tell us the finished product you're making and we'll confirm the right grade.",
       },
       {
         q: "Is this the same as thermoplastic PET chips or pellets?",
-        a: "No. The dedicated product TDS for this URL identifies a liquid unsaturated polyester resin. The current catalogue separately uses the name PET Resin for a thermoplastic chip product with a different form and different data. Share the required material form and review the current product document before ordering.",
+        a: "No. This is a liquid, PET-modified unsaturated polyester resin. Samrat's product catalogue separately lists a thermoplastic PET item with a different physical form and different data — let us know which material form you need so we point you to the right product.",
       },
       {
-        q: "Is this a finished Polyester Putty or body filler?",
-        a: "No finished putty or body-filler formulation is published for this product. Although the current TDS heading includes the words Polyester Putty Resin, its description, properties and recommended applications identify a liquid PET-modified sheet grade. This page therefore treats it as raw liquid resin and asks putty or filler buyers to confirm the exact requirement before selection.",
-      },
-      {
-        q: "Is PET Resin an unsaturated polyester resin?",
-        a: "Yes. The current TDS identifies the product as PET-modified unsaturated polyester resin supplied in liquid form.",
-      },
-      {
-        q: "What applications are published for this PET Resin?",
-        a: "The TDS lists PET sheets and fibre sheet products, plus FRP sheet lamination and panel manufacturing. It does not publish automotive body filler, repair putty, wood filler, stone filler or a finished-putty application for this grade.",
-      },
-      {
-        q: "How is PET Resin different from GP Resin or Lamination Resin?",
-        a: "This product's current TDS identifies a PET-modified sheet grade for the listed sheet and laminate contexts. GP Clear Resin is Samrat's separate general-purpose FRP route, while Lamination Resin has its own published door, plywood and FRP lamination context. Compare the current product-specific documents against the actual finished product instead of transferring data between grades.",
-      },
-      {
-        q: "Does the liquid-resin TDS establish finished sheet or putty performance?",
-        a: "No. The TDS publishes liquid-resin supply and typical technical data. Finished-product results depend on the complete material system and the specific application, so this page does not claim sanding, adhesion, shrinkage, hardness, flexibility or body-filler performance.",
+        q: "How is this different from GP Resin or Lamination Resin?",
+        a: "This grade is a PET-modified sheet resin for the applications listed above. GP Clear Resin is Samrat's general-purpose FRP route, while Lamination Resin is tuned for door, plywood and FRP lamination work. Compare the current product-specific TDS for each against your actual finished product before choosing.",
       },
       {
         q: "Which technical properties are published?",
-        a: "The current TDS lists sheet grade, pale-yellow liquid form, 450–650 cPs viscosity at 25°C, 60–64% solid content, 1.05–1.12 g/cm³ specific gravity at 25°C, 70–85°C cured HDT, approximate 30°C flash point, storage guidance and six-month unopened shelf life. Treat these as typical published data and confirm the current document before procurement.",
+        a: "Sheet grade, pale-yellow liquid form, 450–650 cPs viscosity at 25°C, 60–64% solid content, 1.05–1.12 g/cm³ specific gravity, 70–85°C cured HDT and an approximate 30°C flash point. Full detail, storage guidance and shelf life are on the current TDS — confirm it before procurement.",
       },
       {
-        q: "What packaging, documentation and quote details should I provide?",
-        a: "The current TDS lists 75 kg packaging and a 1,000 kg minimum order quantity. Review the <a href=\"/tds/pet-resin-tds.pdf\" target=\"_blank\" rel=\"noopener\">PET Resin TDS</a> and <a href=\"/downloads/samrat-poly-resins-product-catalogue.pdf\" target=\"_blank\" rel=\"noopener\">product catalogue</a>, then share the required material form, intended sheet or laminate application, required data, quantity, packaging need and delivery location when requesting a quote.",
+        q: "Are the TDS and SDS available, and what should I share for a quote?",
+        a: "Yes — download the current <a href=\"/tds/pet-resin-tds.pdf\" target=\"_blank\" rel=\"noopener\">PET Resin / Polyester Putty Resin TDS</a> and SDS from this page, or review the <a href=\"/downloads/samrat-poly-resins-product-catalogue.pdf\" target=\"_blank\" rel=\"noopener\">product catalogue</a>. For a quote, share your intended sheet or laminate application, required quantity, packaging need and delivery location.",
       },
     ],
     relatedSlugs: [
