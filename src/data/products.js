@@ -2406,7 +2406,7 @@ export const products = [
     },
     tagline: "PET-modified unsaturated polyester resin manufactured in India for sheet, laminate and panel applications.",
     description:
-      "PET Resin / Polyester Putty Resin is Samrat Poly Resins' PET-modified unsaturated polyester resin, supplied as a pale-yellow liquid sheet grade. It is manufactured for PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing. Both names appear on the current TDS and refer to this same Samrat grade; review that product-specific document for the published technical data before ordering.",
+      "PET Resin / Polyester Putty Resin is Samrat Poly Resins' PET-modified unsaturated polyester resin, supplied as a pale-yellow liquid sheet grade. It is manufactured for PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing. Both names appear on the current TDS and refer to this same Samrat grade; its product-specific technical data is listed below.",
     features: [
       "Manufactured and marketed as PET Resin / Polyester Putty Resin — Samrat's PET-modified unsaturated polyester sheet grade",
       "Pale-yellow liquid supply with 450–650 cPs viscosity at 25°C",
@@ -2901,7 +2901,7 @@ export const products = [
     },
     tagline: "Bisphenol A and epichlorohydrin-based thermosetting resin for laminating, casting, coating and encapsulation.",
     description:
-      "The current Bisphenol Resin TDS identifies a premium-grade Bisphenol A & epichlorohydrin-based thermosetting resin system. The TDS describes a low-viscosity liquid for laminating, casting, coating and encapsulation, and lists FRP composites, flooring and protective coatings, electrical encapsulation, tooling, structural bonding, and casting or coating as its application contexts. It is not presented here as a general-purpose unsaturated polyester resin or as a documented finished-component approval.",
+      "The current Bisphenol Resin TDS identifies a premium-grade Bisphenol A & epichlorohydrin-based thermosetting resin system. The TDS describes a low-viscosity liquid for laminating, casting, coating and encapsulation, and lists FRP composites, flooring and protective coatings, electrical encapsulation, tooling, structural bonding, and casting or coating as its application contexts. This is a separate specialist thermosetting product route from Samrat's general-purpose UPR and Vinyl Ester Resin grades.",
     usageNote:
       'The current product-specific TDS is the technical authority for this Bisphenol Resin grade. The catalogue remains a general range overview and should not replace the grade-specific data. The TDS identifies a room-temperature cure with an amine hardener, but this page does not provide ratios or process instructions. <a href="/products/fibre-glass-mat/">Glass Fiber</a> is a separate reinforcement decision for an FRP composite. For a broad general-purpose polyester requirement, review <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> or <a href="/products/gp-clear-resin/">GP Clear Resin</a>. <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> is a separate product route with its own TDS.',
     features: [
@@ -2928,7 +2928,6 @@ export const products = [
       "Defined TDS-listed application contexts for buyer discussion",
       "Published packaging, MOQ, shelf-life and storage information",
       "Clear selection routes beside UPR, Vinyl Ester, fire-retardant and epoxy-system products",
-      "Clear TDS-led selection route beside UPR, Vinyl Ester and conventional epoxy products",
     ],
     faqs: [
       {

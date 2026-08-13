@@ -189,6 +189,8 @@ const organizationJsonLd = {
         toggle.setAttribute('aria-expanded', String(!isOpen));
         panel.classList.toggle('is-open', !isOpen);
       });
+      const desktopNav = window.matchMedia('(min-width: 761px)');
+      desktopNav.addEventListener('change', (event) => { if (event.matches) closeMenu(); });
       panel.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
     });
@@ -337,6 +339,7 @@ const organizationJsonLd = {
       .nav { display: none; }
       .nav-toggle { display: flex; }
     }
+    @media (min-width: 761px) { .mobile-nav { display: none; } }
 
     .site-footer {
       position: relative; margin-top: 2rem;
