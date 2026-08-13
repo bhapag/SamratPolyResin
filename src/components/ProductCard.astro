@@ -7,17 +7,8 @@ const resolveProductImage = (filename) => productImageModules[`/src/assets/produ
 
 const { product } = Astro.props;
 const { slug, name, image, tagline, category } = product;
-// The current PET and Bisphenol artwork contains chemistry, application and
-// performance claims that are not supported by the product-specific TDS files.
-// Keep that unverified artwork out of the buyer journey until documented,
-// product-specific images are available.
-const hasUnverifiedArtwork = slug === 'pet-resin' || slug === 'bisphenol-resin';
-const img = hasUnverifiedArtwork ? null : resolveProductImage(image);
-const imageFallback = slug === 'pet-resin'
-  ? 'PET'
-  : slug === 'bisphenol-resin'
-    ? 'BIS'
-  : name.split(' ').map(w=>w[0]).join('').slice(0,3);
+const img = resolveProductImage(image);
+const imageFallback = name.split(' ').map(w=>w[0]).join('').slice(0,3);
 ---
 <a href={`/products/${slug}/`} class="card" data-product-card data-category={category} data-search={`${name} ${tagline}`.toLowerCase()}>
   <div class:list={['card-img', { noimg: !img }]}>

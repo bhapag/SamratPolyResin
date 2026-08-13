@@ -412,10 +412,8 @@ const legacySpecEntries = !detailEntries && !techEntries && specs ? Object.entri
 
 // Keep the existing Fiberglass Epoxy product graphics visible in the gallery.
 // They remain clearly identified on the page as illustrative graphics rather
-// than technical evidence for the supplied grade. The current PET and
-// Bisphenol artwork is excluded because it contains chemistry, application and
-// performance claims that conflict with or exceed the product-specific TDS.
-const gallery = isPetResin || isBisphenolResin ? [] : [image, ...(product.images ?? [])];
+// than technical evidence for the supplied grade.
+const gallery = [image, ...(product.images ?? [])];
 
 // Resolve each gallery photo to an optimised, compressed webp — one size for
 // the large main viewer, one for the thumbnail strip. The thumbnail's
