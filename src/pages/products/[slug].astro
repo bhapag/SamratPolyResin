@@ -2472,7 +2472,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               <p class="app-card-desc">{app.cardDescription}</p>
               <p class="app-card-benefit">✓ {app.cardBenefit}</p>
               <div class="app-card-rec">
-                <span class="app-card-rec-label">Recommended product</span>
+                <span class="app-card-rec-label">{isMekpHardener ? 'Related system product' : 'Recommended product'}</span>
                 <span class="app-card-rec-value">{name}</span>
               </div>
               {app.relatedProducts.length > 0 && (

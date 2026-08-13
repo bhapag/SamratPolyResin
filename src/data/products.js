@@ -2868,9 +2868,9 @@ export const products = [
     tdsUrl: "/tds/bisphenol-resin-tds.pdf",
     sdsUrl: "/sds/bisphenol-resin-sds.pdf",
     seo: {
-      title: "Bisphenol Resin Manufacturer in India | Industrial Resin System",
+      title: "Bisphenol Resin Manufacturer in India",
       description:
-        "Bisphenol Resin with product-specific TDS data for laminating, casting, coating and encapsulation contexts. Review technical details and request an industrial quote.",
+        "Bisphenol Resin for laminating, casting, coating and encapsulation applications. View technical details and request a quote from Samrat Poly Resins.",
       keywords: [
         "Bisphenol Resin",
         "Bisphenol Resin Manufacturer India",

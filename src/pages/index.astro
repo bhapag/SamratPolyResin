@@ -45,11 +45,11 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     <div class="wrap hero-inner">
       <p class="eyebrow">Trusted industrial resin manufacturer</p>
       <h1 class="hero-title">
-        Engineered for<br/>
-        <span class="hl" data-text="quality">quality</span>.<br/>
-        Built for<br/>
-        <span class="hl" data-text="performance">performance</span>.
+        Polyester, Epoxy<br/>
+        &amp; Composite Resin<br/>
+        <span class="hl" data-text="Manufacturer">Manufacturer</span>
       </h1>
+      <p class="hero-tagline">Engineered for <strong>quality</strong>. Built for <strong>performance</strong>.</p>
       <p class="hero-sub">
         {site.name} manufactures premium GP Polyester, Gel Coat, Fire Retardant,
         Epoxy and Specialty Resin systems for FRP manufacturers and industrial
@@ -513,6 +513,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     @media (prefers-reduced-motion: no-preference) {
       .hero-inner .eyebrow,
       .hero-inner .hero-title,
+      .hero-inner .hero-tagline,
       .hero-inner .hero-sub,
       .hero-inner .hero-cta,
       .hero-inner .hero-trust {
@@ -520,9 +521,10 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       }
       .hero-inner .eyebrow    { animation-delay: .05s; }
       .hero-inner .hero-title { animation-delay: .15s; }
-      .hero-inner .hero-sub   { animation-delay: .28s; }
-      .hero-inner .hero-trust { animation-delay: .40s; }
-      .hero-inner .hero-cta   { animation-delay: .52s; }
+      .hero-inner .hero-tagline { animation-delay: .27s; }
+      .hero-inner .hero-sub   { animation-delay: .36s; }
+      .hero-inner .hero-trust { animation-delay: .48s; }
+      .hero-inner .hero-cta   { animation-delay: .60s; }
     }
     @keyframes hero-fade-up {
       from { opacity: 0; transform: translateY(16px); }
@@ -532,10 +534,15 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       font-size: clamp(2.6rem, 9vw, 6.2rem); font-weight: 700; margin-top: 1.5rem;
       letter-spacing: 0.005em;
     }
-    /* premium gold highlight for QUALITY/PERFORMANCE now lives in the shared
-       global `.hl` rule (src/styles/global.css) so the homepage hero and the
-       About page hero use the exact same treatment instead of two copies */
-    .hero-sub { color: var(--ink-dim); font-size: clamp(1rem, 2.2vw, 1.2rem); max-width: 62ch; margin-top: 1.5rem; line-height: 1.7; }
+    /* The premium gold headline highlight lives in the shared `.hl` rule
+       (src/styles/global.css), keeping the homepage and About hero treatment
+       visually consistent without duplicating the effect here. */
+    .hero-tagline {
+      color: var(--ink); font-size: clamp(0.95rem, 1.8vw, 1.12rem); font-weight: 600;
+      letter-spacing: 0.025em; margin-top: 1.35rem;
+    }
+    .hero-tagline strong { color: var(--accent-gold-light); }
+    .hero-sub { color: var(--ink-dim); font-size: clamp(1rem, 2.2vw, 1.2rem); max-width: 62ch; margin-top: 0.75rem; line-height: 1.7; }
 
     .hero-trust { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2rem; }
     /* glass-panel badges: translucent gradient fill + backdrop blur + a

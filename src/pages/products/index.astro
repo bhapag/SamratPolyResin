@@ -6,7 +6,7 @@ import { products, CATEGORIES } from '../../data/products.js';
 const byCat = CATEGORIES.map(cat => ({ cat, items: products.filter(p => p.category === cat) })).filter(g => g.items.length);
 const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 ---
-<Base title="Products" description="Full product range from Samrat Poly Resins — polyester, GP, fire-retardant and coating resins, hardeners and FRP raw materials.">
+<Base title="Polyester, Epoxy & FRP Resin Products" description="Explore Samrat Poly Resins’ range of polyester, epoxy, GP, fire-retardant and specialty resins, hardeners and FRP raw materials.">
   <section class="section prod-hero">
     <div class="wrap">
       <p class="eyebrow">Product range</p>

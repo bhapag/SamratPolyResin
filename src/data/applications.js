@@ -1403,8 +1403,8 @@ export const applications = [
     title: "GP Yellow Resin for Water Tank Manufacturing",
     cardDescription: "Water tank panels need a resin that wets out glass reinforcement cleanly and cures into a strong, leak-resistant laminate — GP Yellow Resin's orthophthalic base and MEKP/cobalt cure suit this structural role wherever the tank's exterior is finished over the resin's natural yellow tint.",
     cardBenefit: "Consistent laminate behind a finished exterior.",
-    cardImage: "gp-yellow-water-tank.jpg",
-    cardImageAlt: "Yellow multilayer rotomoulded plastic water storage tank",
+    cardImage: "frp-water-tanks.jpg",
+    cardImageAlt: "Sectional FRP water storage tank built from glass-fibre-reinforced polyester panels",
     seo: {
       title: "GP Yellow Resin for Water Tank Manufacturing",
       description: "GP Yellow Resin as a structural laminating resin for FRP water tank panels — same MEKP/cobalt cure as GP Clear Resin, thicker body, slower gel.",
@@ -2191,8 +2191,6 @@ export const applications = [
         q: "What should I include in an RFQ for a pipeline, duct or scrubber project?",
         a: "Share the finished component, service medium, concentration and operating temperature where relevant, any required specification or testing, documentation requirement, quantity and delivery location.",
       },
-      {
-      },
     ],
     relatedProductSlugs: ["vinyl-ester-resin", "fibre-glass-mat", "gp-clear-resin"],
     relatedLinksHeading: "Verify a Vinyl Ester FRP service requirement",
@@ -2259,8 +2257,6 @@ export const applications = [
         q: "What should I include in a filament-winding RFQ?",
         a: "Share the finished component, the specified process, any service requirement, required documentation or testing, quantity, packaging and delivery location.",
       },
-      {
-      },
     ],
     relatedProductSlugs: ["vinyl-ester-resin", "fibre-glass-mat"],
     relatedLinksHeading: "Review Vinyl Ester Resin before a filament-winding RFQ",
@@ -2325,8 +2321,6 @@ export const applications = [
       {
         q: "What should I include in a pultrusion RFQ?",
         a: "Share the finished component, stated process, service requirement where relevant, documentation or testing need, quantity, packaging and delivery location.",
-      },
-      {
       },
     ],
     relatedProductSlugs: ["vinyl-ester-resin", "fibre-glass-mat"],
