@@ -361,7 +361,6 @@ const petResinAuthoritySlugs = new Set([
   'pet-resin-applications-sheet-lamination-and-panels',
   'pet-resin-vs-gp-resin',
   'pet-resin-vs-lamination-resin',
-  'pet-resin-technical-specifications-and-rfq',
 ]);
 const petResinAuthorityResources = published.filter((resource) => petResinAuthoritySlugs.has(resource.slug));
 const petResinFoundationResources = published.filter((resource) => [
@@ -372,9 +371,6 @@ const petResinDecisionResources = published.filter((resource) => [
   'pet-resin-applications-sheet-lamination-and-panels',
   'pet-resin-vs-gp-resin',
   'pet-resin-vs-lamination-resin',
-].includes(resource.slug));
-const petResinVerificationResources = published.filter((resource) => [
-  'pet-resin-technical-specifications-and-rfq',
 ].includes(resource.slug));
 const fireRetardantAuthoritySlugs = new Set([
   'what-is-fire-retardant-resin',
@@ -449,7 +445,6 @@ const vinylEsterVerificationResources = published.filter((resource) => [
 ].includes(resource.slug));
 const bisphenolAuthoritySlugs = new Set([
   'what-is-bisphenol-resin',
-  'bisphenol-resin-technical-data-and-document-check',
   'bisphenol-resin-applications',
   'bisphenol-resin-vs-upr-and-gp-resin',
   'bisphenol-resin-vs-epoxy-resin',
@@ -462,7 +457,6 @@ const bisphenolFoundationResources = published.filter((resource) => [
   'bisphenol-resin-applications',
 ].includes(resource.slug));
 const bisphenolDecisionResources = published.filter((resource) => [
-  'bisphenol-resin-technical-data-and-document-check',
   'bisphenol-resin-vs-upr-and-gp-resin',
   'bisphenol-resin-vs-epoxy-resin',
 ].includes(resource.slug));
@@ -1031,12 +1025,6 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
                 {petResinDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
               </div>
             </section>
-            <section class="kc-subgroup" aria-labelledby="pet-resin-verification-heading">
-              <h3 id="pet-resin-verification-heading">3. Review the current TDS and prepare a focused RFQ</h3>
-              <div class="kc-grid">
-                {petResinVerificationResources.map((resource) => <ResourceCard resource={resource} />)}
-              </div>
-            </section>
           </div>
         </section>
       )}
@@ -1199,7 +1187,7 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <div>
               <p class="eyebrow">Document-led industrial resin selection</p>
               <h2 id="bisphenol-resin-hub-heading">Bisphenol Resin Knowledge Hub</h2>
-              <p>Start with the current Bisphenol Resin TDS, keep its differing catalogue BPR entry visible, then define the actual application, compare separate product routes and prepare a focused RFQ. <a href="/resources/bisphenol-resin-technical-data-and-document-check/">Compare the document records before selection</a>; for a separately specified Vinyl Ester requirement, review the <a href="/products/vinyl-ester-resin/">separate Vinyl Ester route</a>. These guides do not resolve the document conflict by assumption.</p>
+              <p>Start with the current product-specific Bisphenol Resin TDS, then define the actual application, compare separate resin routes and prepare a focused RFQ. For a separately specified Vinyl Ester requirement, review the <a href="/products/vinyl-ester-resin/">separate Vinyl Ester route</a> and its own TDS. The catalogue remains a general overview of Samrat&rsquo;s wider product range.</p>
             </div>
             <div class="kc-focus-actions">
               <a href="/products/bisphenol-resin/" class="btn btn-solid">View Bisphenol Resin</a>
@@ -1216,7 +1204,7 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="bisphenol-decision-heading">
-              <h3 id="bisphenol-decision-heading">2. Check the document record and compare separate resin routes</h3>
+              <h3 id="bisphenol-decision-heading">2. Compare separate resin routes</h3>
               <div class="kc-grid">
                 {bisphenolDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
               </div>

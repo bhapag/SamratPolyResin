@@ -7,7 +7,17 @@ const resolveProductImage = (filename) => productImageModules[`/src/assets/produ
 
 const { product } = Astro.props;
 const { slug, name, image, tagline, category } = product;
-const img = resolveProductImage(image);
+// The current PET and Bisphenol artwork contains chemistry, application and
+// performance claims that are not supported by the product-specific TDS files.
+// Keep that unverified artwork out of the buyer journey until documented,
+// product-specific images are available.
+const hasUnverifiedArtwork = slug === 'pet-resin' || slug === 'bisphenol-resin';
+const img = hasUnverifiedArtwork ? null : resolveProductImage(image);
+const imageFallback = slug === 'pet-resin'
+  ? 'PET'
+  : slug === 'bisphenol-resin'
+    ? 'BIS'
+  : name.split(' ').map(w=>w[0]).join('').slice(0,3);
 ---
 <a href={`/products/${slug}/`} class="card" data-product-card data-category={category} data-search={`${name} ${tagline}`.toLowerCase()}>
   <div class:list={['card-img', { noimg: !img }]}>
@@ -15,7 +25,7 @@ const img = resolveProductImage(image);
       <Image src={img} alt={name} loading="lazy" widths={[320, 480, 640]} sizes="(max-width: 640px) 100vw, 320px"
              transition:name={`product-photo-${slug}`} />
     )}
-    <span class="img-fallback" aria-hidden="true">{name.split(' ').map(w=>w[0]).join('').slice(0,3)}</span>
+    <span class="img-fallback" aria-hidden="true">{imageFallback}</span>
   </div>
   <div class="card-body">
     <span class="card-cat">{category}</span>

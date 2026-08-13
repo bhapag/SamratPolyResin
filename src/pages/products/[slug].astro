@@ -412,8 +412,10 @@ const legacySpecEntries = !detailEntries && !techEntries && specs ? Object.entri
 
 // Keep the existing Fiberglass Epoxy product graphics visible in the gallery.
 // They remain clearly identified on the page as illustrative graphics rather
-// than technical evidence for the supplied grade.
-const gallery = [image, ...(product.images ?? [])];
+// than technical evidence for the supplied grade. The current PET and
+// Bisphenol artwork is excluded because it contains chemistry, application and
+// performance claims that conflict with or exceed the product-specific TDS.
+const gallery = isPetResin || isBisphenolResin ? [] : [image, ...(product.images ?? [])];
 
 // Resolve each gallery photo to an optimised, compressed webp — one size for
 // the large main viewer, one for the thumbnail strip. The thumbnail's
@@ -615,7 +617,6 @@ const vinylEsterResources = isVinylEsterResin
 
 const bisphenolResourceSlugs = [
   'what-is-bisphenol-resin',
-  'bisphenol-resin-technical-data-and-document-check',
   'bisphenol-resin-applications',
   'bisphenol-resin-vs-upr-and-gp-resin',
   'bisphenol-resin-vs-epoxy-resin',
@@ -645,7 +646,6 @@ const petResinResourceSlugs = [
   'pet-resin-applications-sheet-lamination-and-panels',
   'pet-resin-vs-gp-resin',
   'pet-resin-vs-lamination-resin',
-  'pet-resin-technical-specifications-and-rfq',
 ];
 const petResinResources = isPetResin
   ? petResinResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
@@ -872,7 +872,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               <small>Document-led product route</small>
             </span>
           ) : (
-            <span class="img-fallback" aria-hidden="true">{isDmcSmcResin ? 'DMC' : name.split(' ').map(w=>w[0]).join('').slice(0,3)}</span>
+            <span class="img-fallback" aria-hidden="true">{isDmcSmcResin ? 'DMC' : isPetResin ? 'PET' : isBisphenolResin ? 'BIS' : name.split(' ').map(w=>w[0]).join('').slice(0,3)}</span>
           )}
         </div>
         {gallery.length > 1 && (
@@ -1004,7 +1004,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       )}
       {isBisphenolResin && (
         <p class="upr-buyer-intro">
-          Samrat Poly Resins supplies Bisphenol Resin for the current TDS-listed laminating, casting, coating and encapsulation contexts. The detailed TDS identifies a Bisphenol A &amp; epichlorohydrin-based thermosetting resin system, while the catalogue uses a different Bisphenol description and values. Review the exact current document route before requesting a quotation or selecting a system.
+          Samrat Poly Resins supplies Bisphenol Resin for laminating, casting, coating and encapsulation contexts. The current product-specific TDS identifies a Bisphenol A &amp; epichlorohydrin-based thermosetting resin system and is the technical authority for this grade.
         </p>
       )}
       {isUvResin && (
@@ -1018,7 +1018,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <p class="prod-quote-note">{isGlassFiber ? 'Glass Fiber pricing varies based on:' : isFrpPolyesterPigment ? 'Pigment pricing varies based on:' : isMekpHardener ? 'MEKP Hardener pricing varies based on:' : isEpoxyHardener ? 'Epoxy Hardener pricing varies based on:' : isFiberglassEpoxyResin ? 'Fiberglass Epoxy Resin pricing varies based on:' : isDmcSmcResin ? 'DMC/SMC Resin pricing varies based on:' : isPetResin ? 'PET Resin pricing varies based on:' : isMarbleResin ? 'Marble Resin pricing varies based on:' : isVinylEsterResin ? 'Vinyl Ester Resin pricing varies based on:' : isBisphenolResin ? 'Bisphenol Resin pricing varies based on:' : isEpoxyArtResin ? 'Art-resin pricing varies based on:' : isUvResin ? 'UV Resin pricing varies based on:' : isSheetGradeYellowResin ? 'Sheet Grade Yellow Resin pricing varies based on:' : isRoofLightResin ? 'Roof Light Sheet Grade Resin pricing varies based on:' : isFireRetardantResin ? 'Fire Retardant Resin pricing varies based on:' : isIsoFireRetardantResin ? 'ISO Fire Retardant Resin pricing varies based on:' : isEpoxyClearCastingResin ? 'Casting-resin pricing varies based on:' : 'Industrial resin pricing varies based on:'}</p>
         <ul class="prod-quote-list">
           <li>Order Quantity</li>
-          <li>{isGlassFiber ? 'CSM 300 or CSM 450 requirement' : isFrpPolyesterPigment ? 'Required colour or RAL/Pantone reference' : isMekpHardener ? 'Base resin grade and application' : isEpoxyHardener ? 'Exact epoxy resin or compatible system being evaluated' : isFiberglassEpoxyResin ? 'Finished composite, resin-only or system requirement, reinforcement form and document reference' : isDmcSmcResin ? 'DMC or SMC requirement, finished component and stated specification' : isPetResin ? 'Required liquid-resin form and intended sheet or laminate application' : isMarbleResin ? 'Finished marble or stone product, document reference and appearance requirement' : isVinylEsterResin ? 'Finished FRP component, service medium and relevant technical requirement' : isBisphenolResin ? 'Intended application, exact document route and technical requirement' : isEpoxyArtResin ? 'Finished surface or artwork application' : isUvResin ? 'Application, industry and clear/finish requirement' : isSheetGradeYellowResin ? 'Sheet or panel requirement and supplied yellow appearance' : isRoofLightResin ? 'Roof-light or roofing-sheet requirement and supplied appearance' : isFireRetardantResin || isIsoFireRetardantResin ? 'Finished FRP application and required fire standard or classification' : isEpoxyClearCastingResin ? 'Application, casting size and required finish' : 'Resin Grade'}</li>
+          <li>{isGlassFiber ? 'CSM 300 or CSM 450 requirement' : isFrpPolyesterPigment ? 'Required colour or RAL/Pantone reference' : isMekpHardener ? 'Base resin grade and application' : isEpoxyHardener ? 'Exact epoxy resin or compatible system being evaluated' : isFiberglassEpoxyResin ? 'Finished composite, resin-only or system requirement, reinforcement form and document reference' : isDmcSmcResin ? 'DMC or SMC requirement, finished component and stated specification' : isPetResin ? 'Required liquid-resin form and intended sheet or laminate application' : isMarbleResin ? 'Finished marble or stone product, document reference and appearance requirement' : isVinylEsterResin ? 'Finished FRP component, service medium and relevant technical requirement' : isBisphenolResin ? 'Intended application and technical requirement' : isEpoxyArtResin ? 'Finished surface or artwork application' : isUvResin ? 'Application, industry and clear/finish requirement' : isSheetGradeYellowResin ? 'Sheet or panel requirement and supplied yellow appearance' : isRoofLightResin ? 'Roof-light or roofing-sheet requirement and supplied appearance' : isFireRetardantResin || isIsoFireRetardantResin ? 'Finished FRP application and required fire standard or classification' : isEpoxyClearCastingResin ? 'Application, casting size and required finish' : 'Resin Grade'}</li>
           <li>{isGlassFiber || isFrpPolyesterPigment ? 'Delivery location' : isMekpHardener ? 'Production process and delivery location' : isEpoxyHardener ? 'Application, documentation requirement and delivery location' : isFiberglassEpoxyResin ? 'Quantity, packaging, required documentation and delivery location' : isDmcSmcResin ? 'Quantity, packaging need, documentation requirement and delivery location' : isPetResin || isMarbleResin ? 'Quantity, packaging need, document requirement and delivery location' : isVinylEsterResin || isBisphenolResin ? 'Quantity, packaging, required documentation and delivery location' : isEpoxyArtResin ? 'Required finish and delivery location' : isUvResin ? 'UV/LED equipment requirement and delivery location' : isSheetGradeYellowResin ? 'Reinforcement requirement, quantity and delivery location' : isRoofLightResin ? 'Reinforcement context, quantity and delivery location' : isFireRetardantResin ? 'Project specification, quantity and delivery location' : isIsoFireRetardantResin ? 'Service environment, quantity and delivery location' : isEpoxyClearCastingResin ? 'Delivery location' : 'Current Raw Material Rates'}</li>
         </ul>
         <a href={waLink} class="btn btn-solid prod-quote-cta" target="_blank" rel="noopener">{isMarbleResin ? 'Request Marble Resin Quote' : isVinylEsterResin ? 'Request Vinyl Ester Resin Quote' : isBisphenolResin ? 'Request Bisphenol Resin Quote' : isFiberglassEpoxyResin ? 'Request Fiberglass Epoxy Resin Quote' : 'Request Bulk Quote'}</a>
@@ -1201,26 +1201,26 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             The current product-specific TDS identifies a premium-grade Bisphenol A &amp; epichlorohydrin-based thermosetting resin system. It describes a low-viscosity liquid and lists laminating, casting, coating and encapsulation as product contexts. This is the exact TDS terminology used on this page; the document does not identify the product as a general-purpose UPR or as Vinyl Ester Resin.
           </p>
           <p>
-            The current catalogue describes its BPR entry differently: as a Bisphenol-A epoxy vinyl ester resin for chemical processing and marine, with different viscosity, gel-time and density values. Do not treat the catalogue label and detailed TDS as evidence that the two descriptions are interchangeable. Share the exact document or reference you are evaluating before procurement.
+            Use the current product-specific TDS for this grade&rsquo;s identity and technical data. The product catalogue is a general overview of Samrat&rsquo;s wider resin range; it is not a replacement for the detailed grade-specific TDS.
           </p>
         </section>
       )}
 
       {isBisphenolResin && (
         <section class="gp-buyer-outcomes" aria-labelledby="bisphenol-document-heading">
-          <h2 id="bisphenol-document-heading" class="spec-h">Verify the current document route before selection</h2>
+          <h2 id="bisphenol-document-heading" class="spec-h">Use the current product-specific data</h2>
           <div class="gp-outcomes-grid">
             <div class="gp-outcome-card">
-              <h3>Detailed TDS route</h3>
-              <p>The current detailed TDS publishes the resin wording, supplied-resin data, packaging, MOQ, shelf life, storage, listed curing system and listed application contexts. Review it for the exact requirement under discussion.</p>
+              <h3>Product-specific TDS</h3>
+              <p>The current TDS publishes this grade&rsquo;s resin wording, supplied-resin data, packaging, MOQ, shelf life, storage, listed curing system and application contexts.</p>
             </div>
             <div class="gp-outcome-card">
-              <h3>Catalogue difference disclosed</h3>
-              <p>The catalogue BPR entry gives a different product description and lists 400 cPs viscosity, 20-minute gel time and 1.06 specific gravity. The values on this page are clearly labelled as current TDS data, not a silent reconciliation.</p>
+              <h3>General range catalogue</h3>
+              <p>Use the catalogue to explore Samrat&rsquo;s broader product range. Use the current Bisphenol Resin TDS when checking this grade&rsquo;s chemistry, properties and commercial data.</p>
             </div>
             <div class="gp-outcome-card">
-              <h3>No inferred product family</h3>
-              <p>“Bisphenol” alone does not establish that this material is a general UPR, Vinyl Ester or conventional epoxy substitute. Select from the current product document and the finished application, not the broad name alone.</p>
+              <h3>Application-led selection</h3>
+              <p>Match the current TDS to the finished application and stated requirement. Bisphenol Resin, UPR, Vinyl Ester Resin and conventional epoxy products remain separate selection routes.</p>
             </div>
           </div>
         </section>
@@ -1253,7 +1253,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <div class="upr-grade-grid">
             <article class="upr-grade-card">
               <h3>Bisphenol Resin</h3>
-              <p>Review this route for the current TDS-listed laminating, casting, coating and encapsulation contexts, with the document reference confirmed before order placement.</p>
+              <p>Review this route for the current TDS-listed laminating, casting, coating and encapsulation contexts, using the product-specific TDS before order placement.</p>
             </article>
             <article class="upr-grade-card">
               <h3><a href="/products/unsaturated-polyester-resin/">UPR or GP Resin</a></h3>
@@ -1261,7 +1261,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             </article>
             <article class="upr-grade-card">
               <h3><a href="/products/vinyl-ester-resin/">Separate Vinyl Ester Resin</a></h3>
-              <p>Vinyl Ester Resin has a separate TDS and specialist industrial FRP route. The BPR catalogue wording is not a basis for treating the products as interchangeable; review the exact product documentation.</p>
+              <p>Vinyl Ester Resin has a separate TDS and specialist industrial FRP route. Use each product&rsquo;s current TDS and intended application rather than treating the products as interchangeable.</p>
             </article>
             <article class="upr-grade-card">
               <h3><a href="/products/iso-fire-retardant-resin/">Isophthalic or fire requirement</a></h3>
@@ -1282,7 +1282,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       {isBisphenolResin && (
         <section class="upr-grade-guide" aria-labelledby="bisphenol-rfq-heading">
           <h2 id="bisphenol-rfq-heading" class="spec-h">Before ordering Bisphenol Resin</h2>
-          <p class="upr-grade-guide-intro">Share the intended finished application, the exact TDS or catalogue reference being evaluated, any stated chemistry or technical requirement, expected quantity, packaging need, delivery location and required documentation. For a service environment, include the medium, concentration and temperature where relevant; this supports a product discussion without implying a chemical-compatibility recommendation, formulation or finished-system approval.</p>
+          <p class="upr-grade-guide-intro">Review the current product-specific TDS, then share the intended finished application, any stated chemistry or technical requirement, expected quantity, packaging need, delivery location and required documentation. For a service environment, include the medium, concentration and temperature where relevant; this supports a product discussion without implying a chemical-compatibility recommendation, formulation or finished-system approval.</p>
           <div class="gp-hub-actions">
             <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Review Bisphenol Resin TDS</a>
             <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Review Product Catalogue</a>
@@ -1298,7 +1298,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             PET Resin / Polyester Putty Resin is Samrat Poly Resins' PET-modified unsaturated polyester resin — a pale-yellow liquid, styrene-compatible sheet grade manufactured for PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing. The current TDS documents polyethylene terephthalate content in the resin system alongside its full technical profile.
           </p>
           <p>
-            We publish it under both names because both appear on the current TDS heading, and buyers search for this resin family using either term. One distinction worth knowing: our product catalogue separately lists a thermoplastic PET item in chip form — a different material from this liquid resin — so if you're comparing listings, confirm the liquid sheet-grade form when you enquire.
+            PET Resin and Polyester Putty Resin are the two approved names shown together on the current TDS for this same grade. This product is supplied as a liquid resin; thermoplastic PET chips are a different material form.
           </p>
         </section>
       )}
@@ -3464,7 +3464,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="gp-hub-head">
         <p class="eyebrow">Document-led industrial resin guides</p>
         <h2 id="bisphenol-resources-heading" class="rel-h">Bisphenol Resin buyer guides</h2>
-        <p>Start with the <a href="/resources/what-is-bisphenol-resin/">current Bisphenol Resin identity</a> and its <a href="/resources/bisphenol-resin-technical-data-and-document-check/">TDS-versus-catalogue document check</a>. Then review the published application boundary, separate product routes and prepare a focused industrial enquiry. For a separately specified Vinyl Ester requirement, use the <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin product route and its own TDS</a> rather than assuming the catalogue BPR label establishes equivalence.</p>
+        <p>Start with the <a href="/resources/what-is-bisphenol-resin/">current Bisphenol Resin identity</a>, then review the documented application contexts, compare separate product routes and prepare a focused industrial enquiry. For a separately specified Vinyl Ester requirement, use the <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin product route and its own TDS</a>.</p>
         <p class="gp-hub-case-link">These guides do not treat Bisphenol Resin as automatically UPR, Vinyl Ester, a conventional epoxy substitute, a chemical-specific service approval or a fire-retardant grade.</p>
       </div>
       <div class="resources-grid">
@@ -3490,7 +3490,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 33vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Published company and contact context</strong>
-            <span>Samrat Poly Resins&rsquo; company information identifies its Doraha, Ludhiana, Punjab location and establishment in {site.established}. Review the published company, facility and contact details beside the exact Bisphenol Resin document route.</span>
+            <span>Samrat Poly Resins&rsquo; company information identifies its Doraha, Ludhiana, Punjab location and establishment in {site.established}. Review the published company, facility and contact details beside the current Bisphenol Resin TDS.</span>
           </span>
         </a>
         <a href="/about/" class="gp-trust-card">
@@ -3500,11 +3500,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             <span>This genuine facility image provides manufacturer context only. It is not presented as proof of a dedicated Bisphenol production line, capacity, batch result, chemical-service approval or finished-component performance.</span>
           </span>
         </a>
-        <a href="/resources/bisphenol-resin-technical-data-and-document-check/" class="gp-trust-card">
+        <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
           <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 33vw" loading="lazy" />
           <span class="gp-trust-card-body">
-            <strong>Keep the document record visible</strong>
-            <span>The detailed TDS and catalogue BPR entry differ. Use the document-check guide and current TDS to identify the record being quoted; neither is presented as a certificate, compatibility chart or approval.</span>
+            <strong>Review the current product-specific TDS</strong>
+            <span>Use the Bisphenol Resin TDS for this grade&rsquo;s chemistry wording, typical supplied-resin data and published application contexts. It is not a certificate, compatibility chart or finished-system approval.</span>
           </span>
         </a>
       </div>
@@ -4053,7 +4053,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         {isPetResin && <p class="upr-buyer-intro">Share your intended PET-sheet, fibre-sheet, FRP-sheet or panel application, expected quantity, packaging need and delivery location so we can prepare a quote. If you need thermoplastic PET chips or a finished putty/filler compound instead, let us know so we can point you to the right product.</p>}
         {isMarbleResin && <p class="upr-buyer-intro">Share the finished marble, artificial-stone, quartz, onyx or other stone-composite product; the current TDS or catalogue reference being evaluated; required appearance or finish; any written technical requirement; expected quantity; packaging need; delivery location; and documentation required. This supports a grade discussion without implying a formulation, finished-product approval or chemical-compatibility recommendation.</p>}
         {isVinylEsterResin && <p class="upr-buyer-intro">Share the finished FRP component, exact grade if known, service medium and concentration where relevant, operating temperature where relevant, any stated fire or technical requirement, expected quantity, packaging need, delivery location and required documentation. This supports grade selection without implying chemical compatibility or finished-system approval.</p>}
-        {isBisphenolResin && <p class="upr-buyer-intro">Share the intended finished application, the exact TDS or catalogue reference being evaluated, any stated chemistry or technical requirement, expected quantity, packaging need, delivery location and required documentation. Where a service environment matters, include the medium, concentration and temperature where relevant; this supports product selection without implying chemical compatibility, a formulation or finished-system approval.</p>}
+        {isBisphenolResin && <p class="upr-buyer-intro">Review the current Bisphenol Resin TDS, then share the intended finished application, any stated chemistry or technical requirement, expected quantity, packaging need, delivery location and required documentation. Where a service environment matters, include the medium, concentration and temperature where relevant; this supports product selection without implying chemical compatibility, a formulation or finished-system approval.</p>}
         {isFiberglassEpoxyResin && <p class="upr-buyer-intro">Share the finished fiberglass or composite component, whether resin only or a complete system is required, the current TDS or catalogue reference, reinforcement form if known, relevant listed process context, required published data or documentation, quantity, packaging need and delivery location. The current documents do not name a confirmed compatible hardener, prescribe a laminate design or establish finished-component approval.</p>}
         {isButtonGradeResin && <p class="button-enquiry-note">Share the expected quantity, intended button or small-moulding requirement, clarity or pigment-colour requirement, casting method if known and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isMekpHardener && <p class="mekp-enquiry-note">Share the base resin grade or system, intended component or application, expected quantity, production process if known and delivery location so we can understand the requirement before preparing a quote.</p>}
@@ -4067,7 +4067,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           productSlug={product.slug}
           pageContext="product"
           messagePlaceholder={isBisphenolResin
-            ? 'Intended application, exact TDS or catalogue reference, technical or service requirement, required documentation, quantity and delivery location'
+            ? 'Intended application, technical or service requirement, required documentation, quantity, packaging need and delivery location'
             : isMarbleResin
             ? 'Finished marble or stone product, TDS or catalogue reference, appearance or finish requirement, documentation needed, quantity and delivery location'
             : isFiberglassEpoxyResin

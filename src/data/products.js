@@ -2406,7 +2406,7 @@ export const products = [
     },
     tagline: "PET-modified unsaturated polyester resin manufactured in India for sheet, laminate and panel applications.",
     description:
-      "PET Resin / Polyester Putty Resin is Samrat Poly Resins' PET-modified unsaturated polyester resin, supplied as a pale-yellow liquid sheet grade. It's manufactured for PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing, with full technical data on the current TDS. The dual name reflects both the resin's PET-modified composition and the polyester-putty-resin terminology used across the industry for this class of unsaturated polyester resin — buyers searching either term reach the same Samrat grade. Review the current TDS for exact figures before ordering.",
+      "PET Resin / Polyester Putty Resin is Samrat Poly Resins' PET-modified unsaturated polyester resin, supplied as a pale-yellow liquid sheet grade. It is manufactured for PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing. Both names appear on the current TDS and refer to this same Samrat grade; review that product-specific document for the published technical data before ordering.",
     features: [
       "Manufactured and marketed as PET Resin / Polyester Putty Resin — Samrat's PET-modified unsaturated polyester sheet grade",
       "Pale-yellow liquid supply with 450–650 cPs viscosity at 25°C",
@@ -2431,19 +2431,19 @@ export const products = [
     faqs: [
       {
         q: "What is PET Resin / Polyester Putty Resin?",
-        a: "It's Samrat Poly Resins' PET-modified unsaturated polyester resin — a pale-yellow liquid sheet grade manufactured in India for PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing. The dual name reflects both its PET-modified composition and the polyester-putty-resin terminology used for this resin family across the industry.",
+        a: "It is Samrat Poly Resins' PET-modified unsaturated polyester resin — a pale-yellow liquid sheet grade manufactured in India for PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing. PET Resin and Polyester Putty Resin are the approved names shown together on the current TDS for this grade.",
       },
       {
         q: "Is PET Resin the same product as Polyester Putty Resin?",
         a: "Yes. On this page, PET Resin and Polyester Putty Resin refer to the same Samrat grade — both names appear on the current Technical Data Sheet, and we present them together so buyers searching either term reach the correct product.",
       },
       {
-        q: "What is polyester putty resin generally used for?",
-        a: "Across the resin industry, \"polyester putty resin\" typically describes unsaturated-polyester-resin systems used as the resin/binder component in sheet, laminate and filler formulations. Samrat's published applications for this specific grade are PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing — share your exact end use with our team so we can confirm fit.",
+        q: "What is this PET Resin / Polyester Putty Resin grade used for?",
+        a: "Samrat's current TDS lists PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing. Share the exact finished sheet, laminate or panel requirement so the product-specific data can be reviewed against the intended use.",
       },
       {
         q: "Is this supplied as a ready-made putty or filler compound?",
-        a: "No — this is a liquid resin, not a pre-mixed putty or filler compound. It's the resin base used in such formulations. Tell us the finished product you're making and we'll confirm the right grade.",
+        a: "No — this product is supplied as a liquid resin, not as a pre-mixed putty or filler compound. Tell us the finished product you are manufacturing so the correct Samrat grade and document can be reviewed.",
       },
       {
         q: "Is this the same as thermoplastic PET chips or pellets?",
@@ -2563,8 +2563,8 @@ export const products = [
         a: 'Marble Resin is the TDS-listed route for cultured marble and artificial stone. <a href="/products/gp-quartz-resin/">GP Quartz Resin</a> is documented for artificial quartz stone, engineered-stone slabs and composite mineral surfaces. The documents overlap around some artificial-marble or artificial-stone wording, so they do not establish a universal boundary or a performance ranking. Start with the exact finished product, mineral or filler context, required appearance and the grade-specific TDS.',
       },
       {
-        q: "How is Marble Resin different from PET Resin or GP Resin?",
-        a: 'This Marble Resin is documented for cultured-marble and artificial-stone contexts. <a href="/products/pet-resin/">PET Resin</a> is Samrat\'s separately documented liquid PET-modified sheet grade, not a finished putty or broad stone-resin route. <a href="/products/gp-clear-resin/">GP Clear Resin</a> is the separate general-purpose FRP product route. Compare the published product role and data rather than transferring values between grades.',
+        q: "How is Marble Resin different from PET Resin / Polyester Putty Resin or GP Resin?",
+        a: 'This Marble Resin is documented for cultured-marble and artificial-stone contexts. <a href="/products/pet-resin/">PET Resin / Polyester Putty Resin</a> is Samrat\'s separately documented liquid PET-modified sheet grade; it is not ready-made putty or a broad stone-resin route. <a href="/products/gp-clear-resin/">GP Clear Resin</a> is the separate general-purpose FRP product route. Compare the published product role and data rather than transferring values between grades.',
       },
       {
         q: "Does Marble Resin determine the final appearance or performance of a finished marble product?",
@@ -2870,7 +2870,7 @@ export const products = [
     seo: {
       title: "Bisphenol Resin Manufacturer in India | Industrial Resin System",
       description:
-        "Bisphenol Resin for the current TDS-listed laminating, casting, coating and encapsulation contexts. Review the current TDS and confirm the document route before ordering from Samrat Poly Resins.",
+        "Bisphenol Resin with product-specific TDS data for laminating, casting, coating and encapsulation contexts. Review technical details and request an industrial quote.",
       keywords: [
         "Bisphenol Resin",
         "Bisphenol Resin Manufacturer India",
@@ -2899,17 +2899,17 @@ export const products = [
       "Thermal data": "80°C (fully cured; not a published continuous-service limit)",
       "Flash point": ">100°C",
     },
-    tagline: "Current TDS route for laminating, casting, coating and encapsulation.",
+    tagline: "Bisphenol A and epichlorohydrin-based thermosetting resin for laminating, casting, coating and encapsulation.",
     description:
       "The current Bisphenol Resin TDS identifies a premium-grade Bisphenol A & epichlorohydrin-based thermosetting resin system. The TDS describes a low-viscosity liquid for laminating, casting, coating and encapsulation, and lists FRP composites, flooring and protective coatings, electrical encapsulation, tooling, structural bonding, and casting or coating as its application contexts. It is not presented here as a general-purpose unsaturated polyester resin or as a documented finished-component approval.",
     usageNote:
-      'The current TDS identifies a room-temperature cure with an amine hardener, but this page does not provide ratios or process instructions. <a href="/products/fibre-glass-mat/">Glass Fiber</a> is a separate reinforcement decision for an FRP composite. For a broad general-purpose polyester requirement, review <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> or <a href="/products/gp-clear-resin/">GP Clear Resin</a>. The separately listed <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> has its own TDS and product route; confirm the exact documentation before treating either product as interchangeable.',
+      'The current product-specific TDS is the technical authority for this Bisphenol Resin grade. The catalogue remains a general range overview and should not replace the grade-specific data. The TDS identifies a room-temperature cure with an amine hardener, but this page does not provide ratios or process instructions. <a href="/products/fibre-glass-mat/">Glass Fiber</a> is a separate reinforcement decision for an FRP composite. For a broad general-purpose polyester requirement, review <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> or <a href="/products/gp-clear-resin/">GP Clear Resin</a>. <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> is a separate product route with its own TDS.',
     features: [
       "Current TDS identifies a Bisphenol A & epichlorohydrin-based thermosetting resin system",
       "Published typical viscosity, gel-time, density and thermal data",
       "TDS-listed laminating, casting, coating and encapsulation contexts",
       "Published 20 kg packaging, 100 kg MOQ, storage and shelf-life information",
-      "Product-specific TDS available, with catalogue differences disclosed before procurement",
+      "Current product-specific TDS available as the technical selection reference",
     ],
     applications: [
       "Laminating and FRP composites",
@@ -2928,7 +2928,7 @@ export const products = [
       "Defined TDS-listed application contexts for buyer discussion",
       "Published packaging, MOQ, shelf-life and storage information",
       "Clear selection routes beside UPR, Vinyl Ester, fire-retardant and epoxy-system products",
-      "Transparent catalogue-versus-TDS discrepancy notice before ordering",
+      "Clear TDS-led selection route beside UPR, Vinyl Ester and conventional epoxy products",
     ],
     faqs: [
       {
@@ -2941,7 +2941,7 @@ export const products = [
       },
       {
         q: "Is Bisphenol Resin an unsaturated polyester resin or Vinyl Ester Resin?",
-        a: "The current TDS does not identify this product as unsaturated polyester resin or Vinyl Ester Resin; it lists styrene content as not applicable. The catalogue uses a different Bisphenol-A epoxy vinyl ester description and different values. Confirm the exact document route with Samrat Poly Resins before ordering; do not treat the labels as interchangeable.",
+        a: 'The current product-specific TDS does not identify this product as unsaturated polyester resin or Vinyl Ester Resin; it lists styrene content as not applicable. <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> is a separate Samrat product with its own TDS and should not be treated as interchangeable.',
       },
       {
         q: "Is Bisphenol Resin suitable for fibreglass laminating?",
@@ -2969,7 +2969,7 @@ export const products = [
       },
       {
         q: "Which documents and details should I provide for a quote?",
-        a: "Review the current TDS and product catalogue, then share the intended application, the exact document or product reference being evaluated, required technical or service requirement, expected quantity, packaging need, delivery location and documentation requirement. Where relevant, include the service medium, concentration and temperature without assuming a compatibility recommendation.",
+        a: "Review the current product-specific TDS, then share the intended application, required technical or service requirement, expected quantity, packaging need, delivery location and documentation requirement. Where relevant, include the service medium, concentration and temperature without assuming a compatibility recommendation.",
       },
     ],
     relatedSlugs: [

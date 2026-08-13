@@ -7,3 +7,10 @@
 #  there would hijack it.)
 /products/crystal-clear-resin/  /products/gp-clear-resin/  301
 /products/crystal-clear-resin   /products/gp-clear-resin/  301
+
+# Consolidated duplicate resource intent (2026-08-13)
+# Product pages now own current specifications and commercial/RFQ intent.
+/resources/pet-resin-technical-specifications-and-rfq/  /products/pet-resin/  301
+/resources/pet-resin-technical-specifications-and-rfq   /products/pet-resin/  301
+/resources/bisphenol-resin-technical-data-and-document-check/  /products/bisphenol-resin/  301
+/resources/bisphenol-resin-technical-data-and-document-check   /products/bisphenol-resin/  301
