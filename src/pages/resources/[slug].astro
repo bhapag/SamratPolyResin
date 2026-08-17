@@ -9,7 +9,10 @@ import FaqAccordion from '../../components/FaqAccordion.astro';
 import ResourceIcon from '../../components/ResourceIcon.astro';
 import TechIcon from '../../components/TechIcon.astro';
 import Callout from '../../components/Callout.astro';
+import ProductCTA from '../../components/ProductCTA.astro';
 import { resources, getReadingTime } from '../../data/resources.js';
+import { products } from '../../data/products.js';
+import { resourceProductLinks } from '../../data/resourceProductLinks.js';
 import { site, buildCanonicalUrl } from '../../data/site.js';
 
 export function getStaticPaths() {
@@ -31,6 +34,9 @@ const resolveSharedPhoto = (filename) => {
 
 const { resource } = Astro.props;
 const { title, description, icon, category, publishDate, sections, quickFacts, comparisonTable, faqs, relatedSlugs, recommendedLinks = [] } = resource;
+
+const linkedProductSlug = resourceProductLinks[resource.slug];
+const linkedProduct = linkedProductSlug ? products.find((p) => p.slug === linkedProductSlug) : null;
 
 const toId = (heading) => heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 const formattedDate = new Date(publishDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -373,6 +379,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       </aside>
 
       <div class="article-content">
+        {linkedProduct && <ProductCTA product={linkedProduct} />}
         {sections.map((s) => {
           const isRich = typeof s !== 'string';
           const heading = isRich ? s.heading : s;
