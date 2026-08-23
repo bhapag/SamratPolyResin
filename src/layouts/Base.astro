@@ -8,7 +8,16 @@ const {
   ogImage, ogImageWidth = 1200, ogImageHeight = 630, keywords, noindex = false,
   trackingProductSlug, trackingProductName,
 } = Astro.props;
-const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
+// Google's SERP title display is pixel-width limited (~60 characters is the
+// safe practical budget). Appending the brand suffix unconditionally pushed
+// most page titles past that budget, truncating the actual keyword content
+// mid-word. Only append the suffix when it still fits; otherwise the page's
+// own title stands alone — the brand is still conveyed via og:site_name and
+// every meta description, so nothing is lost, just no longer truncated.
+const brandSuffix = ` — ${site.name}`;
+const pageTitle = title
+  ? (title.length + brandSuffix.length <= 60 ? `${title}${brandSuffix}` : title)
+  : `${site.name} — ${site.tagline}`;
 const desc = description ?? `${site.name}: manufacturer of coating and composite resins from ${site.address.line2}, ${site.address.state}. Established ${site.established}.`;
 const finalOgTitle = ogTitle ?? pageTitle;
 const finalOgDesc = ogDescription ?? desc;

@@ -34,7 +34,10 @@ const [whyWord, chooseWord, samratWord, polyWord, resinsWord] = `Why choose ${si
 const domesticStates = site.statesServed.filter((s) => !s.startsWith('Export '));
 const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).map((s) => s.replace('Export ', ''));
 ---
-<Base>
+<Base
+  title="Samrat Poly Resins | Polyester, Epoxy & FRP Resin Manufacturer"
+  description="Samrat Poly Resins: ISO 9001:2015 certified manufacturer of polyester, epoxy, gelcoat and fire-retardant resins for FRP industries. Based in Ludhiana, Punjab — request a quote."
+>
   <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="hero-media" aria-hidden="true">
