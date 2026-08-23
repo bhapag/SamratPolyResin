@@ -4170,9 +4170,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       content: '✓'; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
       display: flex; align-items: center; justify-content: center;
       width: 16px; height: 16px; border-radius: 50%;
-      background: linear-gradient(180deg, var(--accent-gold-light), var(--accent-gold-dark));
-      color: #17120c; font-size: 0.56rem; font-weight: 700; line-height: 1;
-      box-shadow: 0 0 0 1px rgba(var(--gold-rgb), .3), 0 1px 4px rgba(0, 0, 0, .3);
+      background: transparent; border: 1.5px solid var(--line-2);
+      color: var(--accent-gold-light); font-size: 0.56rem; font-weight: 700; line-height: 1;
       transition: box-shadow .25s var(--ease-premium), transform .25s var(--ease-premium);
     }
     .prod-quote-list li:hover::before {
@@ -4222,9 +4221,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       content: '✓'; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
       display: flex; align-items: center; justify-content: center;
       width: 18px; height: 18px; border-radius: 50%;
-      background: linear-gradient(180deg, var(--accent-gold-light), var(--accent-gold-dark));
-      color: #17120c; font-size: 0.6rem; font-weight: 700; line-height: 1;
-      box-shadow: 0 0 0 1px rgba(var(--gold-rgb), .3), 0 1px 4px rgba(0, 0, 0, .3);
+      background: transparent; border: 1.5px solid var(--line-2);
+      color: var(--accent-gold-light); font-size: 0.6rem; font-weight: 700; line-height: 1;
       transition: box-shadow .25s var(--ease-premium), transform .25s var(--ease-premium);
     }
     .spec-col li:hover::before {
@@ -4323,7 +4321,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
-    .app-card:hover { border-color: var(--accent-gold); transform: translateY(-2px); box-shadow: var(--surface-shadow-hover); }
+    .app-card:hover { border-color: var(--line-2); transform: translateY(-2px); box-shadow: var(--surface-shadow-hover); }
     .app-card-img {
       position: relative; aspect-ratio: 4 / 3; overflow: hidden;
       background: linear-gradient(135deg, #1a1e24, #23282f);
@@ -4441,7 +4439,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
-    .rel-card:hover { border-color: var(--accent-gold); transform: translateY(-2px); box-shadow: var(--surface-shadow-hover); }
+    .rel-card:hover { border-color: var(--line-2); transform: translateY(-2px); box-shadow: var(--surface-shadow-hover); }
     .rel-name { font-family: var(--font-display); text-transform: uppercase; font-size: 0.95rem; }
     .rel-price { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-gold-light); }
 
@@ -4479,7 +4477,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gp-quartz-guides .section-head > p:not(.eyebrow) { color: var(--ink-dim); margin-top: 0.7rem; line-height: 1.65; }
     .gp-quartz-guides-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.9rem; margin-top: 1.35rem; }
     .gp-quartz-guide-card { display: grid; gap: 0.5rem; padding: 1rem 1.1rem; background: var(--bg-3); border: 1px solid var(--line); transition: border-color .25s var(--ease-premium), transform .25s var(--ease-premium); }
-    .gp-quartz-guide-card:hover { border-color: var(--accent-gold); transform: translateY(-2px); }
+    .gp-quartz-guide-card:hover { border-color: var(--line-2); transform: translateY(-2px); }
     .gp-quartz-guide-card strong { color: var(--ink); font-size: 0.9rem; }
     .gp-quartz-guide-card span { color: var(--ink-dim); font-size: 0.84rem; line-height: 1.55; }
     .gp-quartz-guides-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }

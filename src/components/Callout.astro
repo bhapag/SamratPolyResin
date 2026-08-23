@@ -60,9 +60,8 @@ const c = {
     content: '✓'; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
     display: flex; align-items: center; justify-content: center;
     width: 16px; height: 16px; border-radius: 50%;
-    background: linear-gradient(180deg, var(--accent-gold-light), var(--accent-gold-dark));
-    color: #17120c; font-size: 0.56rem; font-weight: 700; line-height: 1;
-    box-shadow: 0 0 0 1px rgba(var(--gold-rgb), .3), 0 1px 4px rgba(0, 0, 0, .3);
+    background: transparent; border: 1.5px solid var(--line-2);
+    color: var(--accent-gold-light); font-size: 0.56rem; font-weight: 700; line-height: 1;
     transition: box-shadow .25s var(--ease-premium), transform .25s var(--ease-premium);
   }
   .callout-body :global(li):hover::before {

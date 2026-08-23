@@ -359,7 +359,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     <a href="/">Home</a><span>/</span><a href="/resources/">Resources</a><span>/</span><span class="cur">{title}</span>
   </div>
 
-  <article class="wrap article">
+  <article class="wrap article ledger">
     <header class="article-head">
       <span class="article-icon" aria-hidden="true"><ResourceIcon name={icon} /></span>
       <p class="article-category">{category}</p>
@@ -661,6 +661,17 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .crumb .cur { color: var(--ink-dim); }
 
     .article { padding-block: 2.6rem 4rem; max-width: 900px; }
+    /* THE TECHNICAL LEDGER: this whole article — quick facts, spec tables,
+       callouts, FAQ — reads as a warm paper document rather than a dark
+       screen, matching the printed-TDS register buyers already expect from
+       this content. Extra side padding + a lifted panel treatment so the
+       paper reads as a distinct document sitting on the dark page, not an
+       edge-to-edge colour swap. */
+    .article.ledger {
+      padding-inline: clamp(1.4rem, 4vw, 3.2rem);
+      margin-block: 1rem 3rem;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .35);
+    }
     .article-head { padding-bottom: 2.6rem; border-bottom: 1px solid var(--line); }
     .article-icon {
       display: flex; align-items: center; justify-content: center;
@@ -773,7 +784,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
     .article-related-card:hover {
-      border-color: var(--accent-gold); transform: translateY(-3px) scale(1.012);
+      border-color: var(--line-2); transform: translateY(-3px) scale(1.012);
       box-shadow: var(--surface-shadow-hover);
     }
     .article-related-cat {
@@ -808,7 +819,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium);
     }
-    .prevnext-link:hover { border-color: var(--accent-gold); transform: translateY(-2px); }
+    .prevnext-link:hover { border-color: var(--line-2); transform: translateY(-2px); }
     .prevnext-next { text-align: right; align-items: flex-end; grid-column: 2; }
     .prevnext-dir {
       font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em;

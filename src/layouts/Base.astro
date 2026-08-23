@@ -2,6 +2,16 @@
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import { site, buildCanonicalUrl } from '../data/site.js';
+import { products, CATEGORIES } from '../data/products.js';
+
+// Mega-menu / mobile-nav product groupings — same CATEGORIES/products data
+// the Products index and homepage already use, so the header can't drift
+// out of sync with the real catalog (add a product to products.js and it
+// appears here automatically, nothing to hand-maintain in the header).
+const productsByCategory = CATEGORIES.map((cat) => ({
+  name: cat,
+  items: products.filter((p) => p.category === cat),
+}));
 
 const {
   title, description, ogType = 'website', ogTitle, ogDescription, ogImageAlt,
@@ -109,7 +119,30 @@ const organizationJsonLd = {
       </a>
       <nav class="nav" aria-label="Primary">
         <a href="/">Home</a>
-        <a href="/products/">Products</a>
+        <div class="nav-item nav-item-mega">
+          <a href="/products/" class="nav-mega-trigger" aria-haspopup="true" aria-expanded="false">
+            Products
+            <svg class="nav-caret" viewBox="0 0 12 8" width="10" height="7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1.5 L6 6.5 L11 1.5" /></svg>
+          </a>
+          <div class="nav-mega" id="megaProducts">
+            <div class="nav-mega-grid">
+              {productsByCategory.map((cat) => (
+                <div class="nav-mega-col">
+                  <p class="nav-mega-col-head">{cat.name}</p>
+                  <ul>
+                    {cat.items.map((p) => (
+                      <li><a href={`/products/${p.slug}/`}>{p.name}</a></li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <div class="nav-mega-foot">
+              <a href="/products/" class="nav-mega-viewall">View full product range<span aria-hidden="true"> →</span></a>
+              <a href={site.catalogue.url} target="_blank" rel="noopener" download class="nav-mega-catalogue">Download catalogue (PDF)</a>
+            </div>
+          </div>
+        </div>
         <a href="/about/">About</a>
         <a href="/resources/">Resources</a>
         <a href="/contact/">Contact</a>
@@ -123,7 +156,22 @@ const organizationJsonLd = {
     </div>
     <nav class="mobile-nav" id="mobileNav" aria-label="Primary mobile">
       <a href="/">Home</a>
-      <a href="/products/">Products</a>
+      <details class="mobile-products">
+        <summary>Products</summary>
+        <div class="mobile-products-body">
+          {productsByCategory.map((cat) => (
+            <details class="mobile-cat">
+              <summary>{cat.name} <span class="mobile-cat-count">{cat.items.length}</span></summary>
+              <ul>
+                {cat.items.map((p) => (
+                  <li><a href={`/products/${p.slug}/`}>{p.name}</a></li>
+                ))}
+              </ul>
+            </details>
+          ))}
+          <a href="/products/" class="mobile-view-all">View full product range<span aria-hidden="true"> →</span></a>
+        </div>
+      </details>
       <a href="/about/">About</a>
       <a href="/resources/">Resources</a>
       <a href="/contact/">Contact</a>
@@ -206,6 +254,30 @@ const organizationJsonLd = {
   </script>
 
   <script>
+    // Products mega-menu: the panel already opens/closes purely via CSS
+    // (:hover / :focus-within), so this only keeps aria-expanded in sync
+    // for assistive tech and lets Escape close it while a link inside has
+    // focus (CSS :focus-within can't be dismissed by a keypress on its own).
+    document.addEventListener('astro:page-load', () => {
+      const item = document.querySelector('.nav-item-mega');
+      const trigger = item?.querySelector('.nav-mega-trigger');
+      if (!item || !trigger || item.dataset.wired === 'true') return;
+      item.dataset.wired = 'true';
+
+      const setOpen = (open) => trigger.setAttribute('aria-expanded', String(open));
+      item.addEventListener('mouseenter', () => setOpen(true));
+      item.addEventListener('mouseleave', () => setOpen(false));
+      item.addEventListener('focusin', () => setOpen(true));
+      item.addEventListener('focusout', (e) => {
+        if (!item.contains(e.relatedTarget)) setOpen(false);
+      });
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') { setOpen(false); trigger.blur(); }
+      });
+    });
+  </script>
+
+  <script>
     // Sitewide scroll-reveal + stagger system. Progressive enhancement only:
     // if this doesn't run (JS disabled/slow), content stays normally visible —
     // nothing is hidden by default in CSS, this script hides-then-reveals.
@@ -279,7 +351,7 @@ const organizationJsonLd = {
         to   { opacity: 1; transform: translateY(0); }
       }
     }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .header-inner { position: relative; display: flex; align-items: center; justify-content: space-between; height: 68px; }
     .brand { display: flex; align-items: center; gap: 0.7rem; }
     .brand-mark {
       width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0;
@@ -288,12 +360,65 @@ const organizationJsonLd = {
     .brand-mark.big { width: 64px; height: 64px; display: block; }
     .brand-name { font-family: var(--font-display); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; font-size: 1.05rem; }
     .nav { display: flex; align-items: center; gap: clamp(0.8rem, 2.5vw, 1.8rem); }
-    .nav a {
+    .nav > a, .nav-mega-trigger {
       font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em;
       text-transform: uppercase; color: var(--ink-dim); transition: color .25s var(--ease-premium);
     }
-    .nav a:hover { color: var(--accent-gold-light); }
+    .nav > a:hover, .nav-mega-trigger:hover { color: var(--accent-gold-light); }
     .nav-wa { color: #25d366 !important; }
+
+    /* --- Products mega-menu: opens on hover (mouse) and on focus-within
+       (keyboard tab order lands on a real link inside), so it works without
+       JS. The trigger itself is a normal link to /products/ — the panel is
+       a pure enhancement on top, never the only way to reach the page. --- */
+    /* .nav-mega positions itself against .header-inner (the nearest
+       positioned ancestor), not against this narrow trigger — so the panel
+       centers under the full header width instead of under one small link
+       and risking an off-screen overflow near the right edge. */
+    .nav-item-mega { display: flex; align-items: center; }
+    .nav-mega-trigger { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .nav-caret { transition: transform .25s var(--ease-premium); flex-shrink: 0; }
+    .nav-item-mega:hover .nav-caret, .nav-item-mega:focus-within .nav-caret { transform: rotate(180deg); }
+
+    .nav-mega {
+      position: absolute; top: calc(100% + 1px); left: 50%; transform: translate(-50%, 8px);
+      width: min(920px, 86vw);
+      background: var(--bg-2); border: 1px solid var(--line-2);
+      box-shadow: var(--surface-shadow-hover);
+      padding: 1.8rem 2rem 1.4rem;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity .2s var(--ease-premium), transform .2s var(--ease-premium), visibility 0s linear .2s;
+      z-index: 55;
+    }
+    .nav-item-mega:hover .nav-mega, .nav-item-mega:focus-within .nav-mega {
+      opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0);
+      transition: opacity .2s var(--ease-premium), transform .2s var(--ease-premium), visibility 0s linear 0s;
+    }
+    .nav-mega-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem 1.8rem; }
+    .nav-mega-col-head {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent-gold-light); padding-bottom: 0.55rem; margin-bottom: 0.6rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-mega-col ul { display: flex; flex-direction: column; gap: 0.5rem; }
+    .nav-mega-col a {
+      font-size: 0.86rem; color: var(--ink-dim); line-height: 1.4;
+      transition: color .2s var(--ease-premium);
+    }
+    .nav-mega-col a:hover { color: var(--ink); }
+    .nav-mega-foot {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;
+      margin-top: 1.6rem; padding-top: 1.2rem; border-top: 1px solid var(--line);
+    }
+    .nav-mega-viewall { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink); letter-spacing: 0.02em; }
+    .nav-mega-viewall:hover { color: var(--accent-gold-light); }
+    .nav-mega-catalogue {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em;
+      color: var(--ink-faint); border: 1px solid var(--line-2); padding: 0.5rem 0.85rem;
+      transition: border-color .2s var(--ease-premium), color .2s var(--ease-premium);
+    }
+    .nav-mega-catalogue:hover { border-color: var(--ink-dim); color: var(--ink); }
+    @media (max-width: 1080px) { .nav-mega-grid { grid-template-columns: repeat(3, 1fr); } }
 
     .nav-toggle {
       display: none;
@@ -330,19 +455,58 @@ const organizationJsonLd = {
       transition: max-height .35s var(--ease-premium), opacity .25s var(--ease-premium), visibility 0s linear .35s;
     }
     .mobile-nav.is-open {
-      max-height: 420px; opacity: 1; visibility: visible;
+      /* generous enough for every category collapsed, or ~2 expanded — the
+         panel itself scrolls (overflow-y below) so a fully expanded product
+         list never gets clipped, it just scrolls inside the panel */
+      max-height: min(78dvh, 640px); opacity: 1; visibility: visible; overflow-y: auto;
       transition: max-height .35s var(--ease-premium), opacity .3s var(--ease-premium) .05s, visibility 0s linear 0s;
     }
-    .mobile-nav a {
+    .mobile-nav > a, .mobile-nav > details > summary {
       display: block; padding: 0.95rem 0.15rem;
       font-family: var(--font-mono); font-size: 0.95rem; letter-spacing: 0.05em;
       text-transform: uppercase; color: var(--ink-dim);
       border-bottom: 1px solid var(--line);
       transition: color .2s var(--ease-premium);
     }
-    .mobile-nav a:last-child { border-bottom: none; }
-    .mobile-nav a:hover, .mobile-nav a:active { color: var(--accent-gold-light); }
+    .mobile-nav > a:last-child { border-bottom: none; }
+    .mobile-nav > a:hover, .mobile-nav > a:active { color: var(--accent-gold-light); }
     .mobile-nav-wa { color: #25d366 !important; }
+
+    /* --- mobile Products disclosure: native <details>/<summary>, no JS --- */
+    .mobile-products > summary {
+      display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer; list-style: none;
+    }
+    .mobile-products > summary::-webkit-details-marker { display: none; }
+    .mobile-products > summary::after {
+      content: '+'; font-size: 1.2rem; color: var(--ink-faint); transition: transform .2s var(--ease-premium);
+    }
+    .mobile-products[open] > summary::after { content: '−'; }
+    .mobile-products-body { padding: 0.3rem 0 0.6rem; }
+    .mobile-cat { border-bottom: 1px solid var(--line); }
+    .mobile-cat:last-of-type { border-bottom: none; }
+    .mobile-cat > summary {
+      display: flex; align-items: center; justify-content: space-between; gap: 0.6rem;
+      list-style: none; cursor: pointer; padding: 0.8rem 0.15rem 0.8rem 1rem;
+      font-family: var(--font-mono); font-size: 0.82rem; letter-spacing: 0.03em; color: var(--ink);
+    }
+    .mobile-cat > summary::-webkit-details-marker { display: none; }
+    .mobile-cat-count {
+      font-size: 0.68rem; color: var(--ink-faint); border: 1px solid var(--line-2);
+      padding: 0.1rem 0.4rem; flex-shrink: 0;
+    }
+    .mobile-cat ul { display: flex; flex-direction: column; padding: 0 0.15rem 0.7rem 1.6rem; }
+    .mobile-cat li a {
+      display: block; padding: 0.6rem 0; font-size: 0.86rem; color: var(--ink-dim);
+      border-bottom: 1px dashed var(--line);
+    }
+    .mobile-cat li:last-child a { border-bottom: none; }
+    .mobile-cat li a:hover, .mobile-cat li a:active { color: var(--accent-gold-light); }
+    .mobile-view-all {
+      display: block; margin: 0.6rem 0.15rem 0.2rem; padding: 0.7rem 0;
+      font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.04em; color: var(--ink);
+      border-top: 1px solid var(--line);
+    }
 
     @media (max-width: 760px) {
       .nav { display: none; }

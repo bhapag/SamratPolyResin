@@ -24,7 +24,6 @@ const applications = [
 
 const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like to enquire about your resins.")}`;
 const featured = products.slice(0, 6);
-const [whyWord, chooseWord, samratWord, polyWord, resinsWord] = `Why choose ${site.name}`.split(' ');
 
 // site.statesServed mixes domestic states and "Export <country>" entries in
 // one list (used as-is, unfiltered, by the separate "Industries We Serve"
@@ -130,7 +129,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">Why choose us</p>
-        <h2><span class="why-heading-gold">{whyWord}</span> <span class="why-heading-white">{chooseWord}</span> <span class="why-heading-red">{samratWord}</span> <span class="why-heading-poly">{polyWord}</span> <span class="why-heading-blue">{resinsWord}</span></h2>
+        <h2>Why choose <span class="hl" data-text={site.name}>{site.name}</span></h2>
       </div>
       <div class="why-grid">
         <div class="why-card why-card-cert">
@@ -321,7 +320,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
         <div class="applications-text">
           <div class="section-head">
             <p class="eyebrow">Proven Applications</p>
-            <h2>Where Our Resin Builds <span class="excellence-gold" data-text="Excellence">Excellence</span></h2>
+            <h2>Where Our Resin Builds <span class="hl" data-text="Excellence">Excellence</span></h2>
           </div>
           <p class="applications-lead">Trusted by manufacturers who demand consistency, durability and uncompromising quality.</p>
           <ul class="applications-capabilities">
@@ -584,7 +583,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
     .cat-tile:hover {
-      border-color: var(--accent-gold); transform: translateY(-3px) scale(1.012);
+      border-color: var(--line-2); transform: translateY(-3px) scale(1.012);
       box-shadow: var(--surface-shadow-hover);
     }
     .cat-tile:active { transform: translateY(-1px) scale(0.99); transition-duration: .12s; }
@@ -606,24 +605,6 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.4rem; }
 
     /* ---------- why choose us ---------- */
-    .why-heading-gold {
-      background: linear-gradient(180deg, #e8c66a 0%, #d4af37 50%, #c29a2e 100%);
-      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
-    }
-    .why-heading-white { color: var(--ink); }
-    .why-heading-red {
-      background: linear-gradient(180deg, #cc5560 0%, #ac3d47 55%, #a83a42 100%);
-      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
-    }
-    .why-heading-poly {
-      background: linear-gradient(180deg, #ffffff 0%, #f4f2ee 55%, #d9d6cf 100%);
-      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
-    }
-    .why-heading-blue {
-      background: linear-gradient(180deg, #6a86d6 0%, #4c6cc2 55%, #3f5cb0 100%);
-      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
-    }
-
     .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); grid-auto-rows: 1fr; gap: 1.1rem; }
     /* Only 2 cards live in this grid, so use auto-fit (not auto-fill): with
        auto-fill the two cards would sit squeezed at the left, leaving empty
@@ -636,16 +617,15 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
     .why-card:hover {
-      border-color: var(--accent-gold); transform: translateY(-3px) scale(1.012);
+      border-color: var(--line-2); transform: translateY(-3px) scale(1.012);
       box-shadow: var(--surface-shadow-hover);
     }
     .why-head { display: flex; align-items: center; gap: 0.8rem; }
     .why-check {
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       width: 28px; height: 28px; border-radius: 50%;
-      background: linear-gradient(180deg, var(--accent-gold-light), var(--accent-gold-dark)); color: #17120c;
+      background: transparent; border: 1.5px solid var(--line-2); color: var(--accent-gold-light);
       font-weight: 700; font-size: 0.9rem;
-      box-shadow: 0 0 0 1px rgba(var(--gold-rgb), 0.3), 0 2px 6px rgba(0, 0, 0, .3);
     }
     .why-title { font-size: 0.95rem; color: var(--ink); }
     .why-desc { color: var(--ink-dim); font-size: 0.86rem; line-height: 1.6; flex: 1; }
@@ -724,9 +704,8 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .why-quality-check {
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       width: 24px; height: 24px; border-radius: 50%;
-      background: linear-gradient(180deg, var(--accent-gold-light), var(--accent-gold-dark)); color: #17120c;
+      background: transparent; border: 1.5px solid var(--line-2); color: var(--accent-gold-light);
       font-weight: 700; font-size: 0.72rem;
-      box-shadow: 0 0 0 1px rgba(var(--gold-rgb), 0.3), 0 2px 6px rgba(0, 0, 0, .3);
       transition: box-shadow .25s var(--ease-premium), transform .25s var(--ease-premium);
     }
     .why-quality-feature:hover .why-quality-check {
@@ -777,9 +756,8 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .facility-check {
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       width: 24px; height: 24px; border-radius: 50%;
-      background: linear-gradient(180deg, var(--accent-gold-light), var(--accent-gold-dark)); color: #17120c;
+      background: transparent; border: 1.5px solid var(--line-2); color: var(--accent-gold-light);
       font-weight: 700; font-size: 0.72rem;
-      box-shadow: 0 0 0 1px rgba(var(--gold-rgb), 0.3), 0 2px 6px rgba(0, 0, 0, .3);
       transition: box-shadow .25s var(--ease-premium), transform .25s var(--ease-premium);
     }
     .facility-feature:hover .facility-check {
@@ -829,32 +807,9 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .applications-video video { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; background: #000; }
     @media (max-width: 860px) { .applications-intro { grid-template-columns: 1fr; } .applications-video video { aspect-ratio: 16 / 10; } .applications-video { order: 2; } }
 
-    /* premium metallic-gold "Excellence": layered gradient + text-shadow bevel
-       for depth, drop-shadow for a soft outer glow, and a ::before duplicate
-       of the text (via attr(data-text)) that carries an animated diagonal
-       shine band — clipped to the same glyphs so it reads as light moving
-       across polished metal, not a decorative overlay shape. */
-    .excellence-gold {
-      position: relative; display: inline-block;
-      background: linear-gradient(180deg, #fff8e0 0%, #f2d488 13%, #d4af37 30%, #8f6a1a 50%, #d4af37 72%, #f6dea0 88%, #c9a227 100%);
-      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
-      text-shadow: 0 1px 0 rgba(255, 248, 224, 0.4), 0 -1px 1px rgba(0, 0, 0, 0.45);
-      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.35)) drop-shadow(0 0 22px rgba(212, 175, 55, 0.16));
-    }
-    .excellence-gold::before {
-      content: attr(data-text);
-      position: absolute; inset: 0;
-      background: linear-gradient(100deg, transparent 40%, rgba(255, 255, 255, 0.85) 48%, rgba(255, 241, 199, 0.95) 52%, transparent 60%);
-      background-size: 300% 100%;
-      background-position: -300% 0;
-      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
-      animation: excellence-shine 7s ease-in-out infinite;
-      pointer-events: none;
-    }
-    @keyframes excellence-shine {
-      0%, 62% { background-position: -300% 0; }
-      82%, 100% { background-position: 300% 0; }
-    }
+    /* the "Excellence" headline accent now reuses the shared .hl treatment
+       (global.css) instead of maintaining a second, near-identical gold
+       text-shine effect — one signature gold headline moment sitewide. */
 
     .applications-lead {
       font-size: clamp(1.1rem, 2.3vw, 1.4rem); font-weight: 500;
@@ -872,9 +827,8 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .cap-check {
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       width: 22px; height: 22px; border-radius: 50%;
-      background: linear-gradient(180deg, var(--accent-gold-light), var(--accent-gold-dark)); color: #17120c;
+      background: transparent; border: 1.5px solid var(--line-2); color: var(--accent-gold-light);
       font-weight: 700; font-size: 0.68rem;
-      box-shadow: 0 0 0 1px rgba(var(--gold-rgb), 0.3);
       transition: box-shadow .25s var(--ease-premium), transform .25s var(--ease-premium);
     }
     .applications-capabilities li:hover .cap-check {
@@ -894,7 +848,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
     .applications-gallery-card:hover {
-      border-color: var(--accent-gold); transform: translateY(-3px) scale(1.012);
+      border-color: var(--line-2); transform: translateY(-3px) scale(1.012);
       box-shadow: var(--surface-shadow-hover);
     }
     .applications-gallery-card img {
@@ -941,7 +895,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
     .industry-card:hover {
-      border-color: var(--accent-gold); transform: translateY(-3px) scale(1.012);
+      border-color: var(--line-2); transform: translateY(-3px) scale(1.012);
       box-shadow: var(--surface-shadow-hover);
     }
     .industry-icon {
