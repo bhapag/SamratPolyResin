@@ -5,6 +5,12 @@ import { products, CATEGORIES } from '../../data/products.js';
 
 const byCat = CATEGORIES.map(cat => ({ cat, items: products.filter(p => p.category === cat) })).filter(g => g.items.length);
 const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+// GP Resins and Epoxy & Casting each have a dedicated family page (see
+// gp-resins.astro / epoxy-resins.astro) that owns the bare "GP resin" /
+// "epoxy resin" search intent — link the category heading straight to it
+// instead of only the in-page anchor.
+const familyPageSlugs = { 'GP Resins': 'gp-resins', 'Epoxy & Casting': 'epoxy-resins' };
 ---
 <Base title="Polyester, Epoxy & FRP Resin Products" description="Explore Samrat Poly Resins’ range of polyester, epoxy, GP, fire-retardant and specialty resins, hardeners and FRP raw materials.">
   <section class="section prod-hero">
@@ -46,7 +52,12 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
         <p class="prod-filter-empty" id="prodFilterEmpty" hidden>No products match your search.</p>
         {byCat.map(group => (
           <div class="cat-block" id={catId(group.cat)} data-cat-block={group.cat}>
-            <h2 class="cat-title"><span>{group.cat}</span><span class="cat-count">{String(group.items.length).padStart(2,'0')}</span></h2>
+            <h2 class="cat-title">
+              {familyPageSlugs[group.cat]
+                ? <a href={`/products/${familyPageSlugs[group.cat]}/`}><span>{group.cat}</span></a>
+                : <span>{group.cat}</span>}
+              <span class="cat-count">{String(group.items.length).padStart(2,'0')}</span>
+            </h2>
             <div class="grid">
               {group.items.map(p => <ProductCard product={p} />)}
             </div>
@@ -218,7 +229,10 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
       font-size: 1.25rem; color: var(--ink-dim); margin-bottom: 1.3rem;
       padding-bottom: 0.7rem; border-bottom: 1px solid var(--line);
     }
-    .cat-title span:first-child { color: var(--ink); letter-spacing: 0.05em; }
+    .cat-title span:first-child,
+    .cat-title a:first-child { color: var(--ink); letter-spacing: 0.05em; }
+    .cat-title a:first-child { transition: color .2s var(--ease-premium); }
+    .cat-title a:first-child:hover { color: var(--accent-gold-light); }
     .cat-count { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-gold); margin-left: auto; }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.4rem; }
   </style>

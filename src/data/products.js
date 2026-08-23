@@ -726,7 +726,7 @@ export const products = [
     tdsUrl: "/tds/gp-quartz-resin-tds.pdf",
     sdsUrl: "/sds/gp-quartz-resin-sds.pdf",
     seo: {
-      title: "GP Quartz Resin Manufacturer in India | Engineered Stone Resin",
+      title: "GP Quartz Resin Manufacturer in India",
       description:
         "GP Quartz Resin for artificial quartz stone, engineered stone slabs and composite mineral surfaces. Orthophthalic polyester resin with published TDS, 400–800 cPs viscosity and 7–10 minute gel time.",
       keywords: [
@@ -1357,7 +1357,7 @@ export const products = [
     tdsUrl: "/tds/iso-fire-retardant-resin-tds.pdf",
     sdsUrl: "/sds/iso-fire-retardant-resin-sds.pdf",
     seo: {
-      title: "Isophthalic Fire Retardant Resin Manufacturer in India | ISO FR Resin",
+      title: "ISO Fire Retardant Resin Manufacturer in India",
       description:
         "ISO Fire Retardant Resin is Samrat Poly Resins' published halogen-free, ATH-filled isophthalic FR polyester resin. Here, ISO refers to isophthalic chemistry—not ISO certification. Review the current TDS and project requirement before selection.",
       keywords: [
@@ -2220,7 +2220,7 @@ export const products = [
     tdsUrl: "/tds/dmc-smc-resin-tds.pdf",
     sdsUrl: "/sds/dmc-smc-resin-sds.pdf",
     seo: {
-      title: "DMC & SMC Resin Manufacturer in India | Polyester Moulding Resin",
+      title: "DMC & SMC Resin Manufacturer in India",
       description:
         "DMC/SMC orthophthalic unsaturated polyester resin for the published Dough and Sheet Moulding Compound applications. Review the current TDS and request an industrial quote from Samrat Poly Resins.",
       keywords: [
@@ -2603,7 +2603,7 @@ export const products = [
     tdsUrl: "/tds/vinyl-ester-resin-tds.pdf",
     sdsUrl: "/sds/vinyl-ester-resin-sds.pdf",
     seo: {
-      title: "Vinyl Ester Resin Manufacturer in India | Industrial FRP Resin",
+      title: "Vinyl Ester Resin Manufacturer in India",
       description:
         "Bisphenol-A epoxy vinyl ester resin for documented industrial FRP tanks, pipelines, ducts, scrubbers, filament winding and pultrusion applications. Review the current TDS before ordering.",
       keywords: [
@@ -2735,7 +2735,7 @@ export const products = [
     tdsUrl: "/tds/fiberglass-epoxy-resin-tds.pdf",
     sdsUrl: "/sds/fiberglass-epoxy-resin-sds.pdf",
     seo: {
-      title: "Fiberglass Epoxy Resin Manufacturer in India | Composite Epoxy",
+      title: "Fiberglass Epoxy Resin Manufacturer in India",
       description:
         "Fiberglass Epoxy Resin for Samrat's TDS-listed fabric reinforcement, hand lay-up and lamination contexts. Review current technical documents and request an industrial quote.",
       keywords: [

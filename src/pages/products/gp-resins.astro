@@ -1,0 +1,131 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import EnquiryForm from '../../components/EnquiryForm.astro';
+import { products } from '../../data/products.js';
+import { applications } from '../../data/applications.js';
+import { resources } from '../../data/resources.js';
+
+// "GP Resins" is an existing category in products.js (8 grades) that had no
+// dedicated commercial page — only an anchored section on the shared
+// /products/ index, which can't own a distinct <title>/description for the
+// bare "GP resin" / "GP polyester resin" search intent. This page gives that
+// intent a single, real commercial owner without inventing any new product
+// or fact — every grade, application and resource linked below already
+// exists elsewhere in the codebase.
+const grades = products.filter((p) => p.category === 'GP Resins');
+
+const relatedApplicationSlugs = [
+  'resin-for-general-frp-lamination',
+  'resin-for-general-frp-moulded-products',
+  'resin-for-roofing-sheet-manufacturing',
+  'resin-for-water-tank-manufacturing',
+  'door-lamination',
+  'resin-for-hand-lay-up-process',
+];
+const relatedApplications = relatedApplicationSlugs
+  .map((slug) => applications.find((a) => a.slug === slug))
+  .filter(Boolean);
+
+const relatedResourceSlugs = [
+  'what-is-gp-polyester-resin',
+  'types-of-unsaturated-polyester-resin',
+  'how-to-select-polyester-resin-for-frp-manufacturing',
+  'gp-clear-resin-vs-gp-yellow-resin',
+  'gp-resin-vs-lamination-resin',
+  'understanding-gel-time-in-polyester-resin',
+];
+const relatedResources = relatedResourceSlugs
+  .map((slug) => resources.find((r) => r.slug === slug && !r.draft))
+  .filter(Boolean);
+---
+<Base
+  title="GP Resin Manufacturer in India"
+  description="Samrat Poly Resins manufactures General Purpose (GP) polyester resin in 7 grades — clear, white, yellow, quartz and more — for FRP fabrication across India."
+>
+  <section class="section fam-hero">
+    <div class="wrap">
+      <p class="eyebrow">Product family</p>
+      <h1>GP Resin — General Purpose Polyester Resin</h1>
+      <p class="fam-hero-sub">
+        GP Resin (General Purpose polyester resin) is Samrat Poly Resins' largest product family —
+        {grades.length} grades manufactured for FRP lamination, moulding, roofing sheets, doors and
+        general fabrication. Each grade is a distinct, published product with its own technical data
+        sheet; this page is the starting point for choosing the right one.
+      </p>
+    </div>
+  </section>
+
+  <section class="section fam-grades">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">{grades.length} grades</p>
+        <h2>GP Resin grades</h2>
+      </div>
+      <div class="grid">
+        {grades.map((p) => <ProductCard product={p} />)}
+      </div>
+    </div>
+  </section>
+
+  {relatedApplications.length > 0 && (
+    <section class="section fam-links">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Applications</p>
+          <h2>Where GP Resin is used</h2>
+        </div>
+        <ul class="fam-link-list">
+          {relatedApplications.map((a) => (
+            <li><a href={`/applications/${a.slug}/`}>{a.title}</a></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  {relatedResources.length > 0 && (
+    <section class="section fam-links">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Resources</p>
+          <h2>Understanding GP Resin</h2>
+        </div>
+        <ul class="fam-link-list">
+          {relatedResources.map((r) => (
+            <li><a href={`/resources/${r.slug}/`}>{r.title}</a></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <section class="section fam-enquire">
+    <div class="wrap fam-enquire-inner">
+      <div class="section-head">
+        <p class="eyebrow">Enquiry</p>
+        <h2>Ask about a GP Resin grade</h2>
+        <p class="fam-enquiry-note">Share the grade (if known), intended FRP application, expected quantity and delivery location so we can point you to the right grade or prepare a quote.</p>
+      </div>
+      <div class="fam-enquire-box">
+        <EnquiryForm pageContext="gp-resins-family" messagePlaceholder="Grade (if known), application, quantity, delivery location" />
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .fam-hero { padding-bottom: 0; }
+    .fam-hero h1 { font-size: clamp(2rem, 5.5vw, 3.2rem); margin-top: 0.6rem; }
+    .fam-hero-sub { color: var(--ink-dim); margin-top: 1rem; max-width: 68ch; line-height: 1.7; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.4rem; }
+    .fam-link-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.6rem 1.5rem; }
+    .fam-link-list a {
+      color: var(--ink-dim); font-size: 0.95rem; line-height: 1.6;
+      transition: color .2s var(--ease-premium);
+    }
+    .fam-link-list a:hover { color: var(--accent-gold-light); }
+    .fam-enquire-inner { max-width: 720px; }
+    .fam-enquiry-note { color: var(--ink-dim); margin-top: 0.7rem; }
+    .fam-enquire-box { background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest); padding: clamp(1.4rem, 4vw, 2.2rem); }
+  </style>
+</Base>
