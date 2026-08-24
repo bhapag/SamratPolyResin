@@ -1358,7 +1358,12 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
       margin-top: 0.6rem; letter-spacing: 0.04em; text-transform: uppercase;
     }
 
-    .kc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.4rem; }
+    /* min(280px, 100%) instead of a bare 280px — at extreme narrow widths
+       (~320px, once nested .kc-focus padding is subtracted) a plain
+       minmax(280px, 1fr) track forces itself 1px wider than the available
+       row, overflowing the page by that 1px; capping the minimum at the
+       container's own width removes the forced overshoot. */
+    .kc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 1.4rem; }
     .kc-focus { padding: clamp(1.4rem, 4vw, 2.2rem); background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest); }
     .kc-focus-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
     .kc-focus h2, .kc-other h2 { font-size: clamp(1.45rem, 3vw, 2rem); margin-top: 0.55rem; }

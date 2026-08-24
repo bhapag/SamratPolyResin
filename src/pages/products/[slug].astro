@@ -1071,7 +1071,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               <table class="specs-table">
                 <tbody>
                   {detailEntries.map(([k, v]) => (
-                    <tr><th>{k}</th><td>{v}</td></tr>
+                    <tr><th scope="row">{k}</th><td>{v}</td></tr>
                   ))}
                 </tbody>
               </table>
@@ -1084,7 +1084,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               <table class="specs-table">
                 <tbody>
                   {techEntries.map(([k, v]) => (
-                    <tr><th>{k}</th><td>{v}</td></tr>
+                    <tr><th scope="row">{k}</th><td>{v}</td></tr>
                   ))}
                 </tbody>
               </table>
@@ -1097,7 +1097,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               <table class="specs-table">
                 <tbody>
                   {legacySpecEntries.map(([k, v]) => (
-                    <tr><th>{k}</th><td>{v}</td></tr>
+                    <tr><th scope="row">{k}</th><td>{v}</td></tr>
                   ))}
                 </tbody>
               </table>

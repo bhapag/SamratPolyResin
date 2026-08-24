@@ -52,6 +52,7 @@ const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'
         </div>
       </div>
       <div class="contact-form">
+        <h2 class="contact-form-heading">Send an enquiry</h2>
         <EnquiryForm />
       </div>
     </div>
@@ -82,6 +83,11 @@ const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'
       color: var(--ink-faint);
     }
     .contact-form { background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest); padding: clamp(1.4rem, 4vw, 2.2rem); align-self: start; }
+    .contact-form-heading {
+      font-size: 1.1rem; text-transform: none; letter-spacing: 0; color: var(--ink);
+      background: none; -webkit-text-fill-color: unset; text-shadow: none;
+      margin-bottom: 1.2rem;
+    }
     @media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; } }
   </style>
 </Base>

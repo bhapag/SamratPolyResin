@@ -274,14 +274,33 @@ const organizationJsonLd = {
       item.dataset.wired = 'true';
 
       const setOpen = (open) => trigger.setAttribute('aria-expanded', String(open));
-      item.addEventListener('mouseenter', () => setOpen(true));
+      item.addEventListener('mouseenter', () => { item.classList.remove('force-closed'); setOpen(true); });
       item.addEventListener('mouseleave', () => setOpen(false));
-      item.addEventListener('focusin', () => setOpen(true));
+      item.addEventListener('focusin', () => {
+        // Escape (below) moves focus back to the trigger itself, which
+        // fires this same focusin — skip exactly that one so the menu
+        // doesn't reopen the instant it was closed. Any other focusin
+        // (a real Tab arriving from outside, a click) clears force-closed
+        // normally.
+        if (item.dataset.suppressReopen === 'true') { delete item.dataset.suppressReopen; return; }
+        item.classList.remove('force-closed');
+        setOpen(true);
+      });
       item.addEventListener('focusout', (e) => {
         if (!item.contains(e.relatedTarget)) setOpen(false);
       });
       item.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') { setOpen(false); trigger.blur(); }
+        if (e.key !== 'Escape') return;
+        // :focus-within (the CSS that shows the panel) can't be dismissed
+        // by a keypress alone — blurring whichever element deep inside the
+        // panel currently has focus doesn't help, since focus needs to
+        // leave the whole .nav-item-mega subtree. Force-close via a class
+        // instead, and return focus to the trigger (standard menu-button
+        // behaviour) rather than dropping focus into nothing.
+        setOpen(false);
+        item.classList.add('force-closed');
+        item.dataset.suppressReopen = 'true';
+        trigger.focus();
       });
     });
   </script>
@@ -403,6 +422,12 @@ const organizationJsonLd = {
     .nav-item-mega:hover .nav-mega, .nav-item-mega:focus-within .nav-mega {
       opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0) scale(1);
       transition: opacity .18s var(--ease-premium), transform .22s var(--ease-premium), visibility 0s linear 0s;
+    }
+    /* Escape-key override (Base.astro script) — :focus-within alone can't
+       be dismissed by a keypress, so this wins over the rule above even
+       while focus is still technically inside the panel. */
+    .nav-item-mega.force-closed .nav-mega {
+      opacity: 0 !important; visibility: hidden !important; pointer-events: none !important;
     }
     /* Vertical hairlines between columns (not just row gap) so the panel
        reads as a structured catalogue index rather than four loose lists
