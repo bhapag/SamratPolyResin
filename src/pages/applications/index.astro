@@ -1,0 +1,190 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import { applications } from '../../data/applications.js';
+
+const appImageModules = import.meta.glob('/src/assets/applications/*', { eager: true });
+const resolveAppImage = (filename) => (filename ? appImageModules[`/src/assets/applications/${filename}`]?.default : undefined);
+
+const published = applications.filter((a) => !a.draft);
+
+// Groups are derived from each entry's own slug/title prefix (not a
+// hand-maintained mapping that could drift from applications.js) — every
+// entry already names its resin family or process in the slug itself
+// ("gp-yellow-resin-for-…", "gelcoat-for-…", "vinyl-ester-resin-for-…",
+// "…-lamination", "epoxy-clear-casting-resin-…"); anything left over is a
+// general FRP process/end-product guide.
+function groupFor(a) {
+  if (/^gp-yellow-resin-for-/.test(a.slug)) return 'GP Yellow Resin Applications';
+  if (/^gelcoat-for-/.test(a.slug)) return 'Gelcoat Applications';
+  if (/^vinyl-ester-resin-for-/.test(a.slug)) return 'Vinyl Ester Resin Applications';
+  if (/^epoxy-clear-casting-resin-/.test(a.slug)) return 'Epoxy Clear Casting Resin Applications';
+  if (/^roof-light-sheet-resin-/.test(a.slug)) return 'Roof Light Sheet Resin Applications';
+  if (/lamination/.test(a.slug) && !/general-frp-lamination/.test(a.slug)) return 'Lamination Applications';
+  return 'General FRP Applications';
+}
+
+const groupOrder = [
+  'General FRP Applications',
+  'Lamination Applications',
+  'Gelcoat Applications',
+  'GP Yellow Resin Applications',
+  'Vinyl Ester Resin Applications',
+  'Epoxy Clear Casting Resin Applications',
+  'Roof Light Sheet Resin Applications',
+];
+
+const grouped = groupOrder
+  .map((name) => ({ name, items: published.filter((a) => groupFor(a) === name) }))
+  .filter((g) => g.items.length > 0);
+
+// The first General FRP entry (water tanks — the broadest, most universal
+// use case) leads the page as a large poster, same idea as the homepage's
+// hero treatment; everything else — including the rest of its own group —
+// sits in the grouped grid below it.
+const lead = grouped[0]?.items[0];
+if (lead) grouped[0].items = grouped[0].items.filter((a) => a.slug !== lead.slug);
+
+const catId = (name) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+---
+<Base
+  title="FRP Application Guides — Resin by Use Case"
+  description="How Samrat Poly Resins' polyester, epoxy, gelcoat and vinyl ester grades are used in FRP water tanks, roofing, lamination, marine and casting applications."
+>
+  <div class="wrap crumb">
+    <a href="/">Home</a><span>/</span><span class="cur">Applications</span>
+  </div>
+
+  <section class="section apps-hero">
+    <div class="wrap">
+      <p class="eyebrow">Application guides</p>
+      <h1>Where our resins are put to work</h1>
+      <p class="apps-hero-sub">{published.length} documented use cases — from water tanks and roofing sheets to marine hulls and jewellery casting — matched to the Samrat Poly Resins grade each one actually uses.</p>
+    </div>
+  </section>
+
+  {lead && (
+    <section class="section apps-lead-section">
+      <div class="wrap">
+        <a href={`/applications/${lead.slug}/`} class="apps-lead">
+          <div class="apps-lead-img">
+            {resolveAppImage(lead.cardImage) && (
+              <Image src={resolveAppImage(lead.cardImage)} alt={lead.cardImageAlt ?? lead.title} loading="eager" widths={[500, 800, 1100]} sizes="(max-width: 860px) 100vw, 640px" />
+            )}
+          </div>
+          <div class="apps-lead-body">
+            <span class="apps-lead-tag">Most common application</span>
+            <h2>{lead.title}</h2>
+            <p>{lead.cardDescription}</p>
+            {lead.cardBenefit && <p class="apps-lead-benefit">{lead.cardBenefit}</p>}
+            <span class="apps-lead-link">Read the application guide<span aria-hidden="true"> →</span></span>
+          </div>
+        </a>
+      </div>
+    </section>
+  )}
+
+  <section class="section apps-groups">
+    <div class="wrap">
+      {grouped.map((group) => (
+        <div class="apps-group" id={catId(group.name)}>
+          <h2 class="apps-group-title">
+            <span>{group.name}</span>
+            <span class="apps-group-count">{String(group.items.length).padStart(2, '0')}</span>
+          </h2>
+          <div class="apps-grid">
+            {group.items.map((a) => (
+              <a href={`/applications/${a.slug}/`} class="apps-card">
+                <div class:list={['apps-card-img', { noimg: !resolveAppImage(a.cardImage) }]}>
+                  {resolveAppImage(a.cardImage) ? (
+                    <Image src={resolveAppImage(a.cardImage)} alt={a.cardImageAlt ?? a.title} loading="lazy" widths={[320, 480]} sizes="(max-width: 640px) 100vw, 320px" />
+                  ) : (
+                    <span class="apps-card-fallback" aria-hidden="true">{a.title.split(' ').map((w) => w[0]).join('').slice(0, 3)}</span>
+                  )}
+                </div>
+                <div class="apps-card-body">
+                  <h3>{a.title}</h3>
+                  <p>{a.cardDescription}</p>
+                  <span class="apps-card-arrow" aria-hidden="true">→</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section apps-cta">
+    <div class="wrap apps-cta-inner">
+      <div>
+        <p class="eyebrow">Not sure which grade fits your process?</p>
+        <h2>Talk to our technical team.</h2>
+      </div>
+      <div class="apps-cta-links">
+        <a href="/contact/" class="btn btn-solid">Contact us</a>
+        <a href="/products/" class="btn">Browse all products</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .apps-hero { padding-bottom: 0; }
+    .apps-hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); margin-top: 0.6rem; }
+    .apps-hero-sub { color: var(--ink-dim); margin-top: 0.9rem; max-width: 62ch; line-height: 1.7; }
+
+    .apps-lead-section { padding-block: 2.2rem 0; }
+    .apps-lead {
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
+      background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
+      transition: border-color .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+    }
+    .apps-lead:hover { border-color: var(--line-2); box-shadow: var(--surface-shadow-hover); }
+    .apps-lead-img { position: relative; overflow: hidden; aspect-ratio: 4 / 3; background: linear-gradient(135deg, #f2eee3, #e6e0cf); }
+    .apps-lead-img :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease-premium); }
+    .apps-lead:hover .apps-lead-img :global(img) { transform: scale(1.03); }
+    .apps-lead-body { display: flex; flex-direction: column; justify-content: center; padding: clamp(1.6rem, 4vw, 3rem); }
+    .apps-lead-tag { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-gold-light); }
+    .apps-lead-body h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin-top: 0.6rem; }
+    .apps-lead-body p { color: var(--ink-dim); margin-top: 0.9rem; line-height: 1.7; }
+    .apps-lead-benefit { color: var(--ink); font-weight: 600; }
+    .apps-lead-link { display: inline-flex; align-items: center; margin-top: 1.3rem; font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink); transition: color .2s var(--ease-premium); }
+    .apps-lead:hover .apps-lead-link { color: var(--accent-gold-light); }
+    @media (max-width: 760px) { .apps-lead { grid-template-columns: 1fr; } }
+
+    .apps-groups { padding-top: 3rem; }
+    .apps-group { margin-bottom: 3.4rem; scroll-margin-top: 90px; }
+    .apps-group:last-child { margin-bottom: 0; }
+    .apps-group-title {
+      display: flex; align-items: baseline; gap: 1rem;
+      font-size: 1.15rem; color: var(--ink-dim); margin-bottom: 1.3rem;
+      padding-bottom: 0.7rem; border-bottom: 1px solid var(--line);
+    }
+    .apps-group-title span:first-child { color: var(--ink); letter-spacing: 0.05em; }
+    .apps-group-count { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-gold); margin-left: auto; }
+
+    .apps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.4rem; }
+    .apps-card {
+      display: flex; flex-direction: column;
+      background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
+      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+    }
+    .apps-card:hover { border-color: var(--line-2); transform: translateY(-4px) scale(1.012); box-shadow: var(--surface-shadow-hover); }
+    .apps-card:hover .apps-card-arrow { transform: translateX(4px); color: var(--accent-gold); }
+    .apps-card:active { transform: translateY(-1px) scale(0.99); transition-duration: .12s; }
+    .apps-card-img { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: linear-gradient(135deg, #f2eee3, #e6e0cf); display: grid; place-items: center; }
+    .apps-card-img :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .apps-card-fallback { font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; color: var(--line-2); letter-spacing: 0.05em; }
+    .apps-card-img.noimg { border-bottom: 1px solid var(--line); }
+    .apps-card-body { padding: 1.1rem 1.2rem 1.2rem; display: flex; flex-direction: column; flex: 1; }
+    .apps-card-body h3 { font-size: 1rem; text-transform: none; letter-spacing: 0; color: var(--ink); font-weight: 600; }
+    .apps-card-body p { color: var(--ink-dim); font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.55; flex: 1; }
+    .apps-card-arrow {
+      align-self: flex-end; margin-top: 0.8rem; font-size: 1.05rem; color: var(--ink-dim);
+      transition: transform .3s var(--ease-premium), color .3s var(--ease-premium);
+    }
+
+    .apps-cta-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .apps-cta-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+  </style>
+</Base>

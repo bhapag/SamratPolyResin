@@ -4,6 +4,14 @@ import Base from '../layouts/Base.astro';
 import { site } from '../data/site.js';
 import { products, CATEGORIES } from '../data/products.js';
 import factoryGate from '../assets/about/factory-gate.jpg';
+import productionInfrastructure from '../assets/facility/production-infrastructure.jpg';
+import qcLaboratory from '../assets/quality/qc-laboratory.jpg';
+
+const facilityPhotos = [
+  { src: factoryGate, alt: `${site.name} factory gate, ${site.address.line2}`, caption: 'Factory Gate' },
+  { src: productionInfrastructure, alt: 'Stainless-steel resin processing reactors at the Samrat Poly Resins manufacturing facility', caption: 'Production Reactors' },
+  { src: qcLaboratory, alt: 'Quality inspection laboratory at Samrat Poly Resins', caption: 'Quality Inspection Laboratory' },
+];
 
 const years = new Date().getFullYear() - Number(site.established);
 ---
@@ -29,7 +37,7 @@ const years = new Date().getFullYear() - Number(site.established);
     <div class="wrap about-grid">
       <div class="about-copy">
         <figure class="about-photo">
-          <Image src={factoryGate} alt={`${site.name} factory gate, ${site.address.line2}`} widths={[400, 800, 1448]} sizes="(max-width: 860px) 100vw, 480px" loading="lazy" />
+          <Image src={facilityPhotos[0].src} alt={facilityPhotos[0].alt} widths={[400, 800, 1448]} sizes="(max-width: 860px) 100vw, 480px" loading="lazy" />
           <figcaption>Our facility — {site.address.line2}, {site.address.state}</figcaption>
         </figure>
         <p>
@@ -57,6 +65,23 @@ const years = new Date().getFullYear() - Number(site.established);
         <li><span>Product Range</span>{products.length}+ resin grades</li>
         <li><span>Certification</span><a href="/certificates/iso-9001-2015-certificate-current.jpg" target="_blank" rel="noopener">ISO 9001:2015 (Quality Management System)</a></li>
       </ul>
+    </div>
+  </section>
+
+  <section class="section about-facility">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Inside the facility</p>
+        <h2>Where the resin is made</h2>
+      </div>
+      <div class="about-facility-grid">
+        {facilityPhotos.slice(1).map((photo) => (
+          <figure class="about-facility-photo">
+            <Image src={photo.src} alt={photo.alt} widths={[400, 700, 1000]} sizes="(max-width: 760px) 100vw, 460px" loading="lazy" />
+            <figcaption>{photo.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -109,6 +134,25 @@ const years = new Date().getFullYear() - Number(site.established);
     }
     .about-facts a:hover { color: var(--accent-gold); }
     @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
+
+    .about-facility { padding-top: 0; }
+    .about-facility-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+    .about-facility-photo {
+      border: 1px solid var(--image-frame-border); overflow: hidden; box-shadow: var(--image-frame-shadow);
+      transition: box-shadow .4s var(--ease-premium);
+    }
+    .about-facility-photo:hover { box-shadow: 0 1px 0 rgba(255, 255, 255, .08) inset, 0 22px 48px rgba(0, 0, 0, .46); }
+    .about-facility-photo :global(img) {
+      width: 100%; height: clamp(220px, 28vw, 320px); object-fit: cover; display: block;
+      transition: transform .5s var(--ease-premium);
+    }
+    .about-facility-photo:hover :global(img) { transform: scale(1.035); }
+    .about-facility-photo figcaption {
+      padding: 0.7rem 0.9rem; border-top: 1px solid var(--line); background: var(--bg-3);
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink-faint);
+    }
+    @media (max-width: 620px) { .about-facility-grid { grid-template-columns: 1fr; } }
 
     .about-cats { position: relative; background: linear-gradient(180deg, transparent, var(--bg-2) 64px); }
     .about-cats::before {

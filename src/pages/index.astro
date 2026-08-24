@@ -351,6 +351,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
           </figure>
         ))}
       </div>
+      <a href="/applications/" class="applications-viewall">View all application guides<span aria-hidden="true"> →</span></a>
     </div>
   </section>
 
@@ -868,6 +869,13 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .applications-gallery-title { font-family: var(--font-display); font-size: 1.05rem; color: var(--ink); letter-spacing: 0.01em; }
     @media (max-width: 860px) { .applications-gallery { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 560px) { .applications-gallery { grid-template-columns: 1fr; } }
+
+    .applications-viewall {
+      display: inline-flex; align-items: center; margin-top: 1.6rem;
+      font-family: var(--font-mono); font-size: 0.82rem; letter-spacing: 0.03em; color: var(--ink);
+      transition: color .2s var(--ease-premium);
+    }
+    .applications-viewall:hover { color: var(--accent-gold-light); }
 
     /* ---------- industries we serve ---------- */
     /* Same raised-panel band as .featured/.facility above and
