@@ -1067,47 +1067,52 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           download
           aria-label={`Download ${site.catalogue.title} (PDF)`}
         >
-          📘 Download Product Catalogue (PDF)
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H15l5 5v11.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19.5z"/><path d="M15 3v4a1 1 0 0 0 1 1h4"/><path d="M8 13.2h8M8 16.6h8M8 9.8h4"/></svg>
+          Download Product Catalogue (PDF)
         </a>
         <p class="prod-catalogue-desc">{site.catalogue.description}</p>
       </div>
 
-      {detailEntries && (
-        <div class="specs-table-wrap">
-          <h2 class="spec-h">Product details</h2>
-          <table class="specs-table">
-            <tbody>
-              {detailEntries.map(([k, v]) => (
-                <tr><th>{k}</th><td>{v}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+      {(detailEntries || techEntries || legacySpecEntries.length > 0) && (
+        <div class="ledger specs-ledger">
+          {detailEntries && (
+            <div class="specs-table-wrap">
+              <h2 class="spec-h">Product details</h2>
+              <table class="specs-table">
+                <tbody>
+                  {detailEntries.map(([k, v]) => (
+                    <tr><th>{k}</th><td>{v}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
 
-      {techEntries && (
-        <div class="specs-table-wrap">
-          <h2 class="spec-h">Technical specifications</h2>
-          <table class="specs-table">
-            <tbody>
-              {techEntries.map(([k, v]) => (
-                <tr><th>{k}</th><td>{v}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+          {techEntries && (
+            <div class="specs-table-wrap">
+              <h2 class="spec-h">Technical specifications</h2>
+              <table class="specs-table">
+                <tbody>
+                  {techEntries.map(([k, v]) => (
+                    <tr><th>{k}</th><td>{v}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
 
-      {legacySpecEntries.length > 0 && (
-        <div class="specs-table-wrap">
-          <h2 class="spec-h">Product details</h2>
-          <table class="specs-table">
-            <tbody>
-              {legacySpecEntries.map(([k, v]) => (
-                <tr><th>{k}</th><td>{v}</td></tr>
-              ))}
-            </tbody>
-          </table>
+          {legacySpecEntries.length > 0 && (
+            <div class="specs-table-wrap">
+              <h2 class="spec-h">Product details</h2>
+              <table class="specs-table">
+                <tbody>
+                  {legacySpecEntries.map(([k, v]) => (
+                    <tr><th>{k}</th><td>{v}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       )}
 
@@ -4198,7 +4203,15 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .prod-catalogue-link:hover { color: var(--accent-gold); }
     .prod-catalogue-desc { color: var(--ink-dim); font-size: 0.82rem; margin-top: 0.5rem; line-height: 1.5; }
 
+    /* Spec tables sit on the opt-in Technical Ledger warm-paper surface
+       (see global.css .ledger) instead of the dark industrial page — specs
+       are the one place on a product page a buyer reads like a document. */
+    .specs-ledger {
+      margin-top: 2.4rem; padding: 1.9rem clamp(1.2rem, 4vw, 2.2rem);
+      border: 1px solid var(--ledger-line);
+    }
     .specs-table-wrap { margin-top: 2rem; }
+    .specs-ledger .specs-table-wrap:first-child { margin-top: 0; }
     .specs-table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); font-size: 0.88rem; }
     .specs-table th, .specs-table td { padding: 0.6rem 0.9rem; border-top: 1px solid var(--line); text-align: left; font-weight: 400; }
     .specs-table tr:first-child th, .specs-table tr:first-child td { border-top: none; }

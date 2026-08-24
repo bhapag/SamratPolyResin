@@ -486,7 +486,9 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
   <section class="section kc-downloads">
     <div class="wrap">
       <div class="kc-downloads-card">
-        <span class="kc-downloads-icon" aria-hidden="true">📘</span>
+        <span class="kc-downloads-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H15l5 5v11.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19.5z"/><path d="M15 3v4a1 1 0 0 0 1 1h4"/><path d="M8 13.2h8M8 16.6h8M8 9.8h4"/></svg>
+        </span>
         <div class="kc-downloads-body">
           <h2 class="kc-downloads-title">{site.catalogue.title}</h2>
           <p class="kc-downloads-desc">{site.catalogue.description}</p>
@@ -1347,7 +1349,7 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
       display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap;
       padding: 1.4rem 1.6rem; background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
     }
-    .kc-downloads-icon { font-size: 2rem; flex-shrink: 0; line-height: 1; }
+    .kc-downloads-icon { flex-shrink: 0; display: flex; color: var(--accent-gold); }
     .kc-downloads-body { flex: 1; min-width: 200px; }
     .kc-downloads-title { font-size: 1.05rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
     .kc-downloads-desc { color: var(--ink-dim); font-size: 0.9rem; margin-top: 0.4rem; max-width: 60ch; }
