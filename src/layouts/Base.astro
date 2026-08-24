@@ -128,7 +128,7 @@ const organizationJsonLd = {
             <div class="nav-mega-grid">
               {productsByCategory.map((cat) => (
                 <div class="nav-mega-col">
-                  <p class="nav-mega-col-head">{cat.name}</p>
+                  <p class="nav-mega-col-head"><span>{cat.name}</span><span class="nav-mega-col-count">{cat.items.length}</span></p>
                   <ul>
                     {cat.items.map((p) => (
                       <li><a href={`/products/${p.slug}/`}>{p.name}</a></li>
@@ -186,6 +186,13 @@ const organizationJsonLd = {
   </main>
 
   <footer class="site-footer">
+    <div class="wrap footer-cta">
+      <p class="footer-cta-text">Need a resin grade matched to your process?</p>
+      <div class="footer-cta-links">
+        <a href="/contact/" class="btn btn-solid">Talk to our technical team</a>
+        <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
     <div class="wrap footer-grid">
       <div>
         <img src="/logo.jpg" alt={`${site.name} logo`} class="brand-mark big" width="64" height="64" />
@@ -383,26 +390,36 @@ const organizationJsonLd = {
     .nav-item-mega:hover .nav-caret, .nav-item-mega:focus-within .nav-caret { transform: rotate(180deg); }
 
     .nav-mega {
-      position: absolute; top: calc(100% + 1px); left: 50%; transform: translate(-50%, 8px);
-      width: min(920px, 86vw);
+      position: absolute; top: calc(100% + 1px); left: 50%; transform: translate(-50%, 6px) scale(0.99);
+      transform-origin: top center;
+      width: min(960px, 88vw);
       background: var(--bg-2); border: 1px solid var(--line-2);
       box-shadow: var(--surface-shadow-hover);
-      padding: 1.8rem 2rem 1.4rem;
+      padding: 2rem 2.2rem 1.5rem;
       opacity: 0; visibility: hidden; pointer-events: none;
-      transition: opacity .2s var(--ease-premium), transform .2s var(--ease-premium), visibility 0s linear .2s;
+      transition: opacity .18s var(--ease-premium), transform .22s var(--ease-premium), visibility 0s linear .18s;
       z-index: 55;
     }
     .nav-item-mega:hover .nav-mega, .nav-item-mega:focus-within .nav-mega {
-      opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0);
-      transition: opacity .2s var(--ease-premium), transform .2s var(--ease-premium), visibility 0s linear 0s;
+      opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0) scale(1);
+      transition: opacity .18s var(--ease-premium), transform .22s var(--ease-premium), visibility 0s linear 0s;
     }
-    .nav-mega-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem 1.8rem; }
+    /* Vertical hairlines between columns (not just row gap) so the panel
+       reads as a structured catalogue index rather than four loose lists
+       floating in open space — the divider only appears between columns,
+       via border-left on every column after the first. */
+    .nav-mega-grid { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 0; row-gap: 1.8rem; }
+    .nav-mega-col { padding-inline: 1.5rem; }
+    .nav-mega-col:nth-child(4n+1) { padding-left: 0; }
+    .nav-mega-col:not(:nth-child(4n+1)) { border-left: 1px solid var(--line); }
     .nav-mega-col-head {
-      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--accent-gold-light); padding-bottom: 0.55rem; margin-bottom: 0.6rem;
+      display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem;
+      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--accent-gold-light); padding-bottom: 0.6rem; margin-bottom: 0.7rem;
       border-bottom: 1px solid var(--line);
     }
-    .nav-mega-col ul { display: flex; flex-direction: column; gap: 0.5rem; }
+    .nav-mega-col-count { color: var(--ink-faint); flex-shrink: 0; }
+    .nav-mega-col ul { display: flex; flex-direction: column; gap: 0.55rem; }
     .nav-mega-col a {
       font-size: 0.86rem; color: var(--ink-dim); line-height: 1.4;
       transition: color .2s var(--ease-premium);
@@ -410,7 +427,7 @@ const organizationJsonLd = {
     .nav-mega-col a:hover { color: var(--ink); }
     .nav-mega-foot {
       display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;
-      margin-top: 1.6rem; padding-top: 1.2rem; border-top: 1px solid var(--line);
+      margin-top: 1.7rem; padding-top: 1.3rem; border-top: 1px solid var(--line);
     }
     .nav-mega-viewall { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink); letter-spacing: 0.02em; }
     .nav-mega-viewall:hover { color: var(--accent-gold-light); }
@@ -420,7 +437,11 @@ const organizationJsonLd = {
       transition: border-color .2s var(--ease-premium), color .2s var(--ease-premium);
     }
     .nav-mega-catalogue:hover { border-color: var(--ink-dim); color: var(--ink); }
-    @media (max-width: 1080px) { .nav-mega-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 1080px) {
+      .nav-mega-grid { grid-template-columns: repeat(3, 1fr); }
+      .nav-mega-col:nth-child(4n+1) { padding-left: 1.5rem; border-left: 1px solid var(--line); }
+      .nav-mega-col:nth-child(3n+1) { padding-left: 0; border-left: none; }
+    }
 
     .nav-toggle {
       display: none;
@@ -524,6 +545,12 @@ const organizationJsonLd = {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, var(--line-2) 20%, var(--line-2) 80%, transparent);
     }
+    .footer-cta {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.2rem;
+      padding-block: 2.8rem 2.4rem; border-bottom: 1px solid var(--line);
+    }
+    .footer-cta-text { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.01em; font-size: clamp(1.15rem, 2.6vw, 1.5rem); color: var(--ink); }
+    .footer-cta-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
     .footer-grid {
       display: grid; grid-template-columns: 1.3fr 0.9fr 1fr 1fr; gap: 2.5rem;
       padding-block: 3.5rem 2rem;

@@ -294,12 +294,16 @@ h1, h2 {
   color: var(--ink); transition: border-color .25s var(--ease-premium), transform .2s var(--ease-premium);
 }
 .doc-link:hover { border-color: var(--ink-dim); transform: translateY(-1px); }
+.doc-link:hover .doc-link-arrow { transform: translateY(2px); }
 .doc-link:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
+.doc-link-icon { flex-shrink: 0; display: flex; color: var(--ink-faint); }
+.doc-link-body { display: flex; flex-direction: column; gap: 0.15rem; flex: 1; min-width: 0; }
 .doc-link-kind {
   font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--accent-gold-light); flex-shrink: 0;
 }
-.doc-link-icon { flex-shrink: 0; display: flex; color: var(--ink-faint); }
+.doc-link-title { font-size: 0.86rem; color: var(--ink); font-family: var(--font-body); letter-spacing: 0; }
+.doc-link-arrow { flex-shrink: 0; color: var(--ink-faint); transition: transform .2s var(--ease-premium); }
 
 /* --- badge — square/flag label, not a pill. Used for grade/category/type
    markers (e.g. "TDS-BACKED", "EXPORT GRADE") --- */

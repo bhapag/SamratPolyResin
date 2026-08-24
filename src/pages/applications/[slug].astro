@@ -91,22 +91,27 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     <span class="cur">{title}</span>
   </div>
 
-  <article class="wrap app-article">
-    <header class="app-head">
+  <!-- Full-bleed cinematic hero (real application photo, not a boxed thumbnail)
+       — deliberately different from the Resources article template's
+       text-first Ledger opening, so an Application page reads as "the plant"
+       (a real manufactured thing, in use) rather than a technical document. -->
+  <header class:list={['app-hero', { noimg: !heroImg }]}>
+    {heroImg && (
+      <div class="app-hero-media" aria-hidden="true">
+        <img src={heroImg.src} width={heroImg.attributes.width} height={heroImg.attributes.height} alt="" />
+      </div>
+    )}
+    <div class="app-hero-scrim" aria-hidden="true"></div>
+    {!heroImg && <span class="app-hero-fallback" aria-hidden="true">{title.split(' ').map(w => w[0]).join('').slice(0, 3)}</span>}
+    <div class="wrap app-hero-inner">
       <p class="app-eyebrow">Application guide</p>
       <h1>{title}</h1>
       <p class="app-lead">{intro}</p>
-    </header>
-
-    <div class:list={['app-hero-img', { noimg: !heroImg }]}>
-      {heroImg ? (
-        <img src={heroImg.src} width={heroImg.attributes.width} height={heroImg.attributes.height}
-             alt={cardImageAlt ?? title} />
-      ) : (
-        <span class="app-hero-img-fallback" aria-hidden="true">{title.split(' ').map(w => w[0]).join('').slice(0, 3)}</span>
-      )}
+      {parentProduct && <a href={`/products/${parentProduct.slug}/`} class="app-hero-tag">{parentProduct.name}<span aria-hidden="true"> →</span></a>}
     </div>
+  </header>
 
+  <article class="wrap app-article">
     <div class="app-content">
       <section class="app-section">
         <h2>What this industry manufactures</h2>
@@ -120,7 +125,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 
       <section class="app-section">
         <h2>Required resin characteristics</h2>
-        <ul class="app-list">{requiredCharacteristics.map((c) => <li>{c}</li>)}</ul>
+        <ol class="app-specs">{requiredCharacteristics.map((c, i) => (
+          <li><span class="app-specs-num">{String(i + 1).padStart(2, '0')}</span><span>{c}</span></li>
+        ))}</ol>
       </section>
 
       <section class="app-section">
@@ -152,6 +159,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <div class="rel-grid">
           {relatedProducts.map((p) => (
             <a href={`/products/${p.slug}/`} class="rel-card">
+              <span class="rel-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L20 6.5 L20 15.5 L12 20 L4 15.5 L4 6.5 Z" /><path d="M12 11 L12 20" /><path d="M4 6.5 L12 11 L20 6.5" /></svg>
+              </span>
               <span class="rel-name">{p.name}</span>
               <span class="rel-price">{site.priceLabel}</span>
             </a>
@@ -199,28 +209,40 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .crumb a:hover { color: var(--accent-gold-light); }
     .crumb .cur { color: var(--ink-dim); }
 
-    .app-article { padding-block: 2.6rem 4rem; max-width: 800px; }
-    .app-head { padding-bottom: 2.4rem; border-bottom: 1px solid var(--line); }
+    .app-article { padding-block: 3rem 4rem; max-width: 800px; }
 
-    /* Fixed-ratio frame so every application page's hero photo scales
-       proportionally at every breakpoint instead of stretching to fit
-       whatever height its surrounding content happens to produce. */
-    .app-hero-img {
-      position: relative; aspect-ratio: 16 / 9; overflow: hidden; margin-top: 2.2rem;
-      border: 1px solid var(--image-frame-border); border-radius: 14px;
-      background: linear-gradient(135deg, #1a1e24, #23282f);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: var(--image-frame-shadow);
+    /* Full-bleed cinematic hero — same register as the homepage hero (real
+       facility/application photography, dimmed, text overlaid) so an
+       Application page announces itself as "the plant" before a single
+       word of technical copy loads. noimg falls back to a dark gradient
+       panel with the title's initials instead of a broken/empty frame. */
+    .app-hero { position: relative; overflow: hidden; min-height: clamp(320px, 46vw, 460px); display: flex; align-items: flex-end; }
+    .app-hero.noimg { background: linear-gradient(135deg, #171b21, #23282f); }
+    .app-hero-media { position: absolute; inset: 0; z-index: 0; }
+    .app-hero-media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.3) contrast(1.06) brightness(.8); }
+    .app-hero-scrim {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(9, 11, 18, .35) 0%, rgba(9, 11, 18, .8) 68%, var(--bg) 100%);
     }
-    .app-hero-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-    .app-hero-img-fallback { font-family: var(--font-display); font-weight: 700; font-size: 2.6rem; color: var(--line-2); }
-    @media (max-width: 560px) { .app-hero-img { aspect-ratio: 4 / 3; } }
+    .app-hero.noimg .app-hero-scrim { background: none; }
+    .app-hero-fallback {
+      position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 700; font-size: clamp(3rem, 10vw, 6rem); color: var(--line-2);
+    }
+    .app-hero-inner { position: relative; z-index: 2; padding-block: 2.2rem clamp(2rem, 5vw, 3rem); }
     .app-eyebrow {
       font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.2em;
       text-transform: uppercase; color: var(--accent-gold); font-weight: 500;
     }
-    .app-head h1 { font-size: clamp(2rem, 5vw, 3rem); margin-top: 0.9rem; text-transform: none; letter-spacing: 0; }
-    .app-lead { color: var(--ink-dim); margin-top: 1.2rem; font-size: 1.05rem; max-width: 62ch; line-height: 1.7; }
+    .app-hero-inner h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin-top: 0.9rem; text-transform: none; letter-spacing: 0; max-width: 18ch; }
+    .app-lead { color: var(--ink-dim); margin-top: 1.1rem; font-size: 1.02rem; max-width: 58ch; line-height: 1.7; }
+    .app-hero-tag {
+      display: inline-flex; align-items: center; margin-top: 1.3rem;
+      font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.04em; color: var(--ink);
+      border: 1px solid var(--line-2); padding: 0.55rem 0.95rem; background: rgba(0, 0, 0, .25);
+      transition: border-color .25s var(--ease-premium), color .25s var(--ease-premium);
+    }
+    .app-hero-tag:hover { border-color: var(--accent-gold); color: var(--accent-gold-light); }
 
     .app-section { margin-top: 2.6rem; }
     .app-section h2 { font-size: clamp(1.3rem, 3vw, 1.6rem); margin-bottom: 1rem; }
@@ -243,6 +265,18 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       color: var(--accent-gold-light); font-size: 0.6rem; font-weight: 700; line-height: 1;
     }
 
+    /* "Required resin characteristics" — a numbered spec list rather than
+       another checkmark bullet list, so this section reads as engineering
+       requirements, not just more prose bullets. */
+    .app-specs { list-style: none; display: flex; flex-direction: column; }
+    .app-specs li {
+      display: flex; align-items: baseline; gap: 1rem;
+      padding: 0.9rem 0; border-top: 1px solid var(--line);
+      color: var(--ink); font-size: 0.95rem; line-height: 1.6; max-width: 68ch;
+    }
+    .app-specs li:last-child { border-bottom: 1px solid var(--line); }
+    .app-specs-num { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-gold-light); flex-shrink: 0; }
+
     .app-faq, .app-related, .app-related-reading { margin-top: 3.2rem; }
     .app-faq h2, .app-related h2, .app-related-reading h2 { font-size: clamp(1.3rem, 3vw, 1.6rem); margin-bottom: 1.2rem; }
 
@@ -253,6 +287,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
     .rel-card:hover { border-color: var(--line-2); transform: translateY(-2px); box-shadow: var(--surface-shadow-hover); }
+    .rel-card:hover .rel-card-icon { color: var(--accent-gold-light); }
+    .rel-card-icon { color: var(--ink-faint); transition: color .3s var(--ease-premium); }
     .rel-name { font-family: var(--font-display); text-transform: uppercase; font-size: 0.95rem; }
     .rel-price { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-gold-light); }
     .app-reading-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; }

@@ -1022,55 +1022,45 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href={waLink} class="btn btn-solid prod-quote-cta" target="_blank" rel="noopener">{isMarbleResin ? 'Request Marble Resin Quote' : isVinylEsterResin ? 'Request Vinyl Ester Resin Quote' : isBisphenolResin ? 'Request Bisphenol Resin Quote' : isFiberglassEpoxyResin ? 'Request Fiberglass Epoxy Resin Quote' : 'Request Bulk Quote'}</a>
       </div>
 
-      {tdsUrl && (
-        <div class="prod-cta">
-          <a
-            href={tdsUrl}
-            class="btn btn-solid"
-            target="_blank"
-            rel="noopener"
-            download
-            aria-label={`Download Technical Data Sheet PDF for ${name}`}
-          >
-            {isFireRetardantResin ? 'Review Fire Retardant Resin TDS (PDF)' : isIsoFireRetardantResin ? 'Review ISO Fire Retardant Resin TDS (PDF)' : isPetResin ? 'Review PET Resin TDS (PDF)' : isMarbleResin ? 'Review Marble Resin TDS (PDF)' : isVinylEsterResin ? 'Review Vinyl Ester Resin TDS (PDF)' : isBisphenolResin ? 'Review Bisphenol Resin TDS (PDF)' : isFiberglassEpoxyResin ? 'Review Fiberglass Epoxy Resin TDS (PDF)' : 'Download Technical Data Sheet (PDF)'}
-          </a>
-        </div>
-      )}
-
-      {sdsUrl && (
-        <div class="prod-cta">
-          <a
-            href={sdsUrl}
-            class="btn btn-solid"
-            target="_blank"
-            rel="noopener"
-            download
-            aria-label={`Download Safety Data Sheet PDF for ${name}`}
-          >
-            Download Safety Data Sheet (SDS) (PDF)
-          </a>
-        </div>
-      )}
-
       <div class="prod-cta">
         <a href="#enquire" class="btn btn-solid">{isMarbleResin ? 'Discuss Your Marble Resin Requirement' : isVinylEsterResin ? 'Discuss Your Vinyl Ester Requirement' : isBisphenolResin ? 'Discuss Your Bisphenol Resin Requirement' : isFiberglassEpoxyResin ? 'Discuss Your Fiberglass Epoxy Requirement' : 'Enquire / get quote'}</a>
         <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
       </div>
 
-      <div class="prod-catalogue-note">
-        <p class="prod-catalogue-heading">Need our complete product range?</p>
-        <a
-          href={site.catalogue.url}
-          class="prod-catalogue-link"
-          target="_blank"
-          rel="noopener"
-          download
-          aria-label={`Download ${site.catalogue.title} (PDF)`}
-        >
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H15l5 5v11.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19.5z"/><path d="M15 3v4a1 1 0 0 0 1 1h4"/><path d="M8 13.2h8M8 16.6h8M8 9.8h4"/></svg>
-          Download Product Catalogue (PDF)
-        </a>
-        <p class="prod-catalogue-desc">{site.catalogue.description}</p>
+      {/* Technical documents — grouped and visually distinct from the
+         commercial CTAs above (gold solid buttons), so a buyer scanning the
+         page can tell "opens a PDF" from "starts a conversation" at a glance,
+         using the shared .doc-link component (global.css). */}
+      <div class="prod-docs">
+          <p class="prod-docs-heading">Technical documents</p>
+          {tdsUrl && (
+            <a href={tdsUrl} class="doc-link" target="_blank" rel="noopener" download
+               aria-label={`Download Technical Data Sheet PDF for ${name}`}>
+              <span class="doc-link-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H15l5 5v11.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19.5z"/><path d="M15 3v4a1 1 0 0 0 1 1h4"/><path d="M8 13.2h8M8 16.6h8M8 9.8h4"/></svg>
+              </span>
+              <span class="doc-link-body"><span class="doc-link-kind">TDS</span><span class="doc-link-title">Technical Data Sheet</span></span>
+              <span class="doc-link-arrow" aria-hidden="true">↓</span>
+            </a>
+          )}
+          {sdsUrl && (
+            <a href={sdsUrl} class="doc-link" target="_blank" rel="noopener" download
+               aria-label={`Download Safety Data Sheet PDF for ${name}`}>
+              <span class="doc-link-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L20 6.5 L20 12.5 C20 17 16.5 20.5 12 22 C7.5 20.5 4 17 4 12.5 L4 6.5 Z"/><path d="M9 12 L11 14 L15.5 9.5"/></svg>
+              </span>
+              <span class="doc-link-body"><span class="doc-link-kind">SDS</span><span class="doc-link-title">Safety Data Sheet</span></span>
+              <span class="doc-link-arrow" aria-hidden="true">↓</span>
+            </a>
+          )}
+          <a href={site.catalogue.url} class="doc-link" target="_blank" rel="noopener" download
+             aria-label={`Download ${site.catalogue.title} (PDF)`}>
+            <span class="doc-link-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V4.5A1.5 1.5 0 0 1 5.5 3H18a1 1 0 0 1 1 1v15.2"/><path d="M6.5 3v18"/><path d="M6.5 21H19a1 1 0 0 0 1-1v-.5a1 1 0 0 0-1-1H6.8"/></svg>
+            </span>
+            <span class="doc-link-body"><span class="doc-link-kind">Catalogue</span><span class="doc-link-title">Full Product Range</span></span>
+            <span class="doc-link-arrow" aria-hidden="true">↓</span>
+          </a>
       </div>
 
       {(detailEntries || techEntries || legacySpecEntries.length > 0) && (
@@ -4187,21 +4177,15 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .prod-desc { color: var(--ink-dim); margin-top: 1.6rem; font-size: 1rem; }
     .prod-cta { display: flex; gap: 0.8rem; margin-top: 1.4rem; flex-wrap: wrap; }
 
-    /* Secondary document callout — deliberately a text link, not a .btn,
-       so it never competes visually with the Enquire/WhatsApp/TDS buttons. */
-    .prod-catalogue-note {
-      margin-top: 1.4rem; padding: 1rem 1.2rem; max-width: 420px;
-      background: var(--bg-3); border: 1px solid var(--line);
+    /* Technical documents — deliberately NOT .btn-solid, so it reads as
+       "reference material" rather than competing with the Enquire/WhatsApp
+       commercial actions above it. One .doc-link per document, all the
+       same shape, so TDS/SDS/Catalogue are instantly recognisable as a set. */
+    .prod-docs { margin-top: 1.8rem; max-width: 420px; display: flex; flex-direction: column; gap: 0.6rem; }
+    .prod-docs-heading {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-faint);
     }
-    .prod-catalogue-heading { font-size: 0.88rem; font-weight: 600; color: var(--ink); }
-    .prod-catalogue-link {
-      display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.5rem;
-      font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent-gold-light);
-      text-decoration: underline; text-underline-offset: 2px;
-      transition: color .25s var(--ease-premium);
-    }
-    .prod-catalogue-link:hover { color: var(--accent-gold); }
-    .prod-catalogue-desc { color: var(--ink-dim); font-size: 0.82rem; margin-top: 0.5rem; line-height: 1.5; }
 
     /* Spec tables sit on the opt-in Technical Ledger warm-paper surface
        (see global.css .ledger) instead of the dark industrial page — specs
