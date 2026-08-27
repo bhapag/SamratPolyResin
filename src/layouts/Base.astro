@@ -53,7 +53,7 @@ const organizationJsonLd = {
   url: site.url,
   logo: buildCanonicalUrl('/logo.jpg'),
   image: buildCanonicalUrl('/logo.jpg'),
-  telephone: site.phoneDial,
+  telephone: site.phones.map((phone) => phone.dial),
   email: site.email,
   foundingDate: site.established,
   address: {
@@ -222,7 +222,9 @@ const organizationJsonLd = {
       <div>
         <h3 class="foot-h">Contact</h3>
         <p class="foot-dim">
-          <a href={`tel:${site.phoneDial}`}>{site.phoneDisplay}</a><br/>
+          {site.phones.map((phone) => (
+            <><a href={`tel:${phone.dial}`}>{phone.display}</a><br/></>
+          ))}
           <a href={`mailto:${site.email}`}>{site.email}</a><br/>
           <a href={waLink} target="_blank" rel="noopener">WhatsApp enquiry</a>
         </p>

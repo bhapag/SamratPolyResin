@@ -41,8 +41,10 @@ export const site = {
   },
 
   // --- CONTACT (swap these) ---
-  phoneDisplay: "+91 74638 81652",     // shown on the page
-  phoneDial: "+917463881652",          // used for the tel: link
+  phones: [
+    { display: "+91 74638 81652", dial: "+917463881652" },
+    { display: "+91 74638 81005", dial: "+917463881005" },
+  ],
   whatsapp: "917463881005",            // digits only, country code, no +
   email: "info@samratpolyresins.in",
 
