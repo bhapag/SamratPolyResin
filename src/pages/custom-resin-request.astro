@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import CustomResinRequestForm from '../components/CustomResinRequestForm.astro';
+---
+
+<Base
+  title="Custom Resin Specification Request"
+  description="Tell Samrat Poly Resins what resin you need and the customer-requested target properties you want its technical team to review."
+>
+  <section class="section request-page-intro">
+    <div class="wrap request-intro-grid">
+      <div>
+        <p class="eyebrow">Customer request · Technical review</p>
+        <h1>Tell us what resin you need—and how you want it.</h1>
+      </div>
+      <div class="request-intro-copy">
+        <p>
+          Share the product, application and any target properties you already know.
+          You can leave technical fields blank and ask our team to recommend what to review.
+        </p>
+        <p class="request-intro-note">
+          This is a customer specification request, not an official Technical Data Sheet,
+          product approval or confirmation of feasibility.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="request-page-form">
+    <div class="wrap">
+      <CustomResinRequestForm />
+    </div>
+  </section>
+
+  <style>
+    .request-page-intro { padding-bottom: clamp(2rem, 6vw, 4rem); }
+    .request-intro-grid {
+      display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+      align-items: end; gap: clamp(2rem, 7vw, 5rem);
+    }
+    .request-page-intro h1 { max-width: 14ch; margin-top: 0.75rem; font-size: clamp(2.4rem, 7vw, 4.8rem); }
+    .request-intro-copy { color: var(--ink-dim); font-size: 1.02rem; line-height: 1.75; }
+    .request-intro-note {
+      margin-top: 1rem; border-left: 2px solid var(--accent-gold); padding-left: 0.9rem;
+      color: var(--ink-faint); font-size: 0.85rem;
+    }
+    .request-page-form { padding: 0 0 clamp(4.5rem, 10vw, 8rem); }
+    @media (max-width: 760px) {
+      .request-intro-grid { grid-template-columns: 1fr; align-items: start; gap: 1.4rem; }
+      .request-page-intro h1 { max-width: none; }
+    }
+  </style>
+</Base>

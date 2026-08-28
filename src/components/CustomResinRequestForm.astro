@@ -1,0 +1,653 @@
+---
+import { site } from '../data/site.js';
+import { products, CATEGORIES } from '../data/products.js';
+
+const productGroups = CATEGORIES
+  .map((category) => ({
+    category,
+    items: products.filter((product) => product.category === category),
+  }))
+  .filter((group) => group.items.length > 0);
+
+const disclaimer = 'This document records customer-requested target specifications only. Submission does not constitute acceptance, certification, a final Technical Data Sheet, or a guarantee of product performance. Requested properties are subject to technical feasibility, raw-material availability, production capability, testing where applicable, and written confirmation.';
+---
+
+<div class="request-shell">
+  <div class="request-meta" aria-label="Request information">
+    <div>
+      <span class="request-meta-label">Request Reference</span>
+      <strong id="requestReference">Generating…</strong>
+    </div>
+    <div>
+      <span class="request-meta-label">Typical completion time</span>
+      <strong>2–5 minutes</strong>
+    </div>
+  </div>
+
+  <form
+    id="customResinRequestForm"
+    class="request-form"
+    data-whatsapp={site.whatsapp}
+    data-email={site.email}
+    data-disclaimer={disclaimer}
+    novalidate
+  >
+    <fieldset class="request-section">
+      <legend>
+        <span class="section-number">01</span>
+        <span><strong>Your details</strong><small>How should our team reach you?</small></span>
+      </legend>
+      <div class="form-grid two">
+        <label class="form-field">
+          <span>Name <b aria-hidden="true">*</b></span>
+          <input id="requestName" name="name" type="text" autocomplete="name" required placeholder="Your name" />
+        </label>
+        <label class="form-field">
+          <span>Company <em>(optional)</em></span>
+          <input id="requestCompany" name="company" type="text" autocomplete="organization" placeholder="Company or workshop" />
+        </label>
+        <label class="form-field">
+          <span>Location <em>(optional)</em></span>
+          <input id="requestLocation" name="location" type="text" autocomplete="address-level2" placeholder="City, state or country" />
+        </label>
+        <div class="contact-methods">
+          <div class="form-grid two compact">
+            <label class="form-field">
+              <span>Phone / WhatsApp</span>
+              <input id="requestPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Mobile number" aria-describedby="contactMethodHelp contactMethodError" />
+            </label>
+            <label class="form-field">
+              <span>Email</span>
+              <input id="requestEmail" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@company.com" aria-describedby="contactMethodHelp contactMethodError" />
+            </label>
+          </div>
+          <p id="contactMethodHelp" class="field-help">Provide at least one contact method.</p>
+          <p id="contactMethodError" class="field-error" role="alert" hidden>Please provide a Phone / WhatsApp number or an email address.</p>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="request-section">
+      <legend>
+        <span class="section-number">02</span>
+        <span><strong>What do you need?</strong><small>Start with the product and intended use.</small></span>
+      </legend>
+      <div class="form-grid two">
+        <label class="form-field">
+          <span>Product / Resin Needed <b aria-hidden="true">*</b></span>
+          <select id="requestProduct" name="product" required>
+            <option value="">Select a product or resin</option>
+            {productGroups.map((group) => (
+              <optgroup label={group.category}>
+                {group.items.map((product) => <option value={product.name}>{product.name}</option>)}
+              </optgroup>
+            ))}
+            <option value="Other / Not Sure">Other / Not Sure</option>
+          </select>
+        </label>
+        <label class="form-field">
+          <span>Application <em>(optional)</em></span>
+          <input id="requestApplication" name="application" type="text" placeholder="What are you making?" />
+        </label>
+        <label class="form-field form-span-two">
+          <span>Approximate Quantity <em>(optional)</em></span>
+          <input id="requestQuantity" name="quantity" type="text" placeholder="For planning only, e.g. trial quantity or monthly estimate" />
+          <small>Sharing a quantity does not confirm an MOQ or order acceptance.</small>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="request-section">
+      <legend>
+        <span class="section-number">03</span>
+        <span><strong>Your preferred requirements</strong><small>All fields in this section are optional.</small></span>
+      </legend>
+      <p class="section-intro">Enter only what you know. Leave the rest blank or ask the technical team to recommend suitable targets.</p>
+      <div class="form-grid two">
+        <label class="form-field">
+          <span>Viscosity <em>(optional)</em></span>
+          <input id="requestViscosity" name="requested_viscosity" type="text" placeholder="Your preferred target or range" />
+        </label>
+        <label class="form-field">
+          <span>Gel Time <em>(optional)</em></span>
+          <input id="requestGelTime" name="requested_gel_time" type="text" placeholder="Your preferred target or range" />
+        </label>
+        <label class="form-field">
+          <span>Cure / Working Time <em>(optional)</em></span>
+          <input id="requestCureTime" name="requested_cure_time" type="text" placeholder="Your preferred working time" />
+        </label>
+        <label class="form-field">
+          <span>Colour / Appearance <em>(optional)</em></span>
+          <input id="requestColour" name="requested_colour" type="text" placeholder="Colour, clarity or finish preference" />
+        </label>
+      </div>
+
+      <label class="recommend-check">
+        <input id="requestRecommendation" name="technical_team_recommend" type="checkbox" />
+        <span><strong>Technical Team to Recommend</strong><small>Select this if you do not know the target properties yet.</small></span>
+      </label>
+
+      <div class="custom-requirements">
+        <div class="custom-requirements-head">
+          <div>
+            <h3>Additional requirements</h3>
+            <p>Add a property and the target or preference you want reviewed.</p>
+          </div>
+          <button id="addCustomRequirement" type="button" class="btn btn-compact">+ Add Another Requirement</button>
+        </div>
+        <div id="customRequirementRows" class="custom-requirement-rows" aria-live="polite"></div>
+        <p class="field-help">Blank or incomplete custom rows are not included in the request summary.</p>
+      </div>
+    </fieldset>
+
+    <details class="advanced-requirements">
+      <summary>
+        <span><strong>More technical requirements</strong><small>Optional targets for technical review</small></span>
+        <span class="details-marker" aria-hidden="true">+</span>
+      </summary>
+      <div class="advanced-body">
+        <div class="form-grid two">
+          <label class="form-field"><span>Specific Gravity <em>(optional)</em></span><input id="requestSpecificGravity" name="specific_gravity" type="text" placeholder="Requested target or range" /></label>
+          <label class="form-field"><span>Solids Content <em>(optional)</em></span><input id="requestSolids" name="solids_content" type="text" placeholder="Requested target or range" /></label>
+          <label class="form-field"><span>Hardness <em>(optional)</em></span><input id="requestHardness" name="hardness" type="text" placeholder="Requested scale and target, if known" /></label>
+          <label class="form-field"><span>Tensile / Flexural Requirement <em>(optional)</em></span><input id="requestStrength" name="tensile_flexural" type="text" placeholder="Requested property or target" /></label>
+          <label class="form-field"><span>Temperature / Heat Requirement <em>(optional)</em></span><input id="requestHeat" name="temperature_heat" type="text" placeholder="Service condition or requested target" /></label>
+          <label class="form-field"><span>Fire-Retardant Requirement <em>(optional)</em></span><input id="requestFire" name="fire_retardant" type="text" placeholder="Requested target or project requirement" /><small>Recorded as a request only—not a rating, certification or compliance claim.</small></label>
+          <label class="form-field"><span>Process / Fabrication Method <em>(optional)</em></span><input id="requestProcess" name="process_method" type="text" placeholder="e.g. hand lay-up, casting or moulding" /></label>
+          <label class="form-field"><span>Surface Finish <em>(optional)</em></span><input id="requestFinish" name="surface_finish" type="text" placeholder="Requested finish or appearance" /></label>
+          <label class="form-field"><span>Packaging Preference <em>(optional)</em></span><input id="requestPackaging" name="packaging_preference" type="text" placeholder="Preference only; subject to confirmation" /></label>
+          <label class="form-field"><span>Other Requested Property <em>(optional)</em></span><input id="requestOtherProperty" name="other_property" type="text" placeholder="Any other target for review" /></label>
+        </div>
+      </div>
+    </details>
+
+    <fieldset class="request-section">
+      <legend>
+        <span class="section-number">04</span>
+        <span><strong>Anything else?</strong><small>Describe the behaviour, problem or special requirement.</small></span>
+      </legend>
+      <label class="form-field">
+        <span>Notes <em>(optional)</em></span>
+        <textarea id="requestNotes" name="notes" rows="5" placeholder="Tell us about the application, desired behaviour, current material, current problem or any special requirement."></textarea>
+      </label>
+      <p class="attachment-note">Files are not automatically uploaded or attached through WhatsApp or email from this page. Send supporting files separately after opening your chosen app.</p>
+    </fieldset>
+
+    <section class="request-section send-section" aria-labelledby="sendRequestHeading">
+      <div class="send-heading">
+        <span class="section-number">05</span>
+        <span><strong id="sendRequestHeading">Send request</strong><small>Review the prepared message in your chosen app before sending.</small></span>
+      </div>
+      <div class="send-actions">
+        <a id="sendWhatsapp" class="btn btn-wa" href="#" target="_blank" rel="noopener">Send via WhatsApp</a>
+        <a id="sendEmail" class="btn" href="#">Send via Email</a>
+        <button id="printRequest" type="button" class="btn">Print / Save as PDF</button>
+      </div>
+      <p id="requestStatus" class="request-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <aside class="request-disclaimer">
+      <strong>Customer-requested targets only</strong>
+      <p>{disclaimer}</p>
+    </aside>
+  </form>
+
+  <section id="printSummary" class="print-summary" aria-label="Printable custom resin specification request">
+    <header class="print-header">
+      <img src="/logo.jpg" alt={`${site.name} logo`} width="64" height="64" />
+      <div>
+        <p class="print-brand">{site.name}</p>
+        <p class="print-title">Custom Resin Specification Request</p>
+        <p>Customer-requested targets for technical review</p>
+      </div>
+    </header>
+    <dl class="print-meta">
+      <div><dt>Request Reference</dt><dd id="printReference"></dd></div>
+      <div><dt>Date</dt><dd id="printDate"></dd></div>
+    </dl>
+    <div id="printGroups" class="print-groups"></div>
+    <div class="print-disclaimer">
+      <strong>Important</strong>
+      <p>{disclaimer}</p>
+    </div>
+    <footer class="print-footer">
+      <span>{site.name}</span>
+      <span>{site.phones.map((phone) => phone.display).join(' · ')} · {site.email}</span>
+    </footer>
+  </section>
+</div>
+
+<template id="customRequirementTemplate">
+  <div class="custom-requirement-row">
+    <label class="form-field">
+      <span>Requested Property</span>
+      <input name="custom_property[]" type="text" placeholder="e.g. reduced shrinkage" />
+    </label>
+    <label class="form-field">
+      <span>Target / Preference</span>
+      <input name="custom_target[]" type="text" placeholder="Describe the requested target" />
+    </label>
+    <button type="button" class="remove-requirement" aria-label="Remove this custom requirement">Remove</button>
+  </div>
+</template>
+
+<script>
+  type SummaryItem = { label: string; value: string };
+  type SummaryGroup = { heading: string; items: SummaryItem[] };
+
+  const initCustomResinRequest = () => {
+    const form = document.getElementById('customResinRequestForm') as HTMLFormElement | null;
+    if (!form || form.dataset.wired === 'true') return;
+    form.dataset.wired = 'true';
+
+    const phone = document.getElementById('requestPhone') as HTMLInputElement;
+    const email = document.getElementById('requestEmail') as HTMLInputElement;
+    const contactError = document.getElementById('contactMethodError') as HTMLElement;
+    const referenceEl = document.getElementById('requestReference') as HTMLElement;
+    const statusEl = document.getElementById('requestStatus') as HTMLElement;
+    const whatsappLink = document.getElementById('sendWhatsapp') as HTMLAnchorElement;
+    const emailLink = document.getElementById('sendEmail') as HTMLAnchorElement;
+    const printButton = document.getElementById('printRequest') as HTMLButtonElement;
+    const addButton = document.getElementById('addCustomRequirement') as HTMLButtonElement;
+    const rows = document.getElementById('customRequirementRows') as HTMLElement;
+    const rowTemplate = document.getElementById('customRequirementTemplate') as HTMLTemplateElement;
+    const printGroups = document.getElementById('printGroups') as HTMLElement;
+    const printReference = document.getElementById('printReference') as HTMLElement;
+    const printDate = document.getElementById('printDate') as HTMLElement;
+
+    const todayKey = () => {
+      const now = new Date();
+      return `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}`;
+    };
+
+    const generateReference = () => {
+      const date = todayKey();
+      const storageKey = 'samrat-custom-resin-request-reference';
+      try {
+        const stored = localStorage.getItem(storageKey);
+        if (stored?.startsWith(`CRSR-${date}-`)) return stored;
+      } catch {
+        // Storage can be unavailable in strict privacy modes; generation still works.
+      }
+      let randomValue = Math.floor(Math.random() * (36 ** 4));
+      if (window.crypto?.getRandomValues) {
+        const values = new Uint32Array(1);
+        window.crypto.getRandomValues(values);
+        randomValue = values[0] % (36 ** 4);
+      }
+      const reference = `CRSR-${date}-${randomValue.toString(36).toUpperCase().padStart(4, '0')}`;
+      try { localStorage.setItem(storageKey, reference); } catch { /* no-op */ }
+      return reference;
+    };
+
+    const reference = generateReference();
+    form.dataset.reference = reference;
+    referenceEl.textContent = reference;
+
+    const valueOf = (id: string) => {
+      const field = document.getElementById(id) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null;
+      return field?.value.trim() ?? '';
+    };
+
+    const compactItems = (items: SummaryItem[]) => items.filter((item) => item.value !== '');
+
+    const collectGroups = (): SummaryGroup[] => {
+      const groups: SummaryGroup[] = [
+        {
+          heading: 'Your Details',
+          items: compactItems([
+            { label: 'Name', value: valueOf('requestName') },
+            { label: 'Company', value: valueOf('requestCompany') },
+            { label: 'Location', value: valueOf('requestLocation') },
+            { label: 'Phone', value: valueOf('requestPhone') },
+            { label: 'Email', value: valueOf('requestEmail') },
+          ]),
+        },
+        {
+          heading: 'What You Need',
+          items: compactItems([
+            { label: 'Product', value: valueOf('requestProduct') },
+            { label: 'Application', value: valueOf('requestApplication') },
+            { label: 'Approximate Quantity', value: valueOf('requestQuantity') },
+          ]),
+        },
+        {
+          heading: 'Preferred Requirements',
+          items: compactItems([
+            { label: 'Requested Viscosity', value: valueOf('requestViscosity') },
+            { label: 'Requested Gel Time', value: valueOf('requestGelTime') },
+            { label: 'Requested Cure / Working Time', value: valueOf('requestCureTime') },
+            { label: 'Requested Colour / Appearance', value: valueOf('requestColour') },
+            {
+              label: 'Technical Team to Recommend',
+              value: (document.getElementById('requestRecommendation') as HTMLInputElement).checked ? 'Yes' : '',
+            },
+          ]),
+        },
+        {
+          heading: 'More Technical Requirements',
+          items: compactItems([
+            { label: 'Specific Gravity', value: valueOf('requestSpecificGravity') },
+            { label: 'Solids Content', value: valueOf('requestSolids') },
+            { label: 'Hardness', value: valueOf('requestHardness') },
+            { label: 'Tensile / Flexural Requirement', value: valueOf('requestStrength') },
+            { label: 'Temperature / Heat Requirement', value: valueOf('requestHeat') },
+            { label: 'Fire-Retardant Requirement', value: valueOf('requestFire') },
+            { label: 'Process / Fabrication Method', value: valueOf('requestProcess') },
+            { label: 'Surface Finish', value: valueOf('requestFinish') },
+            { label: 'Packaging Preference', value: valueOf('requestPackaging') },
+            { label: 'Other Requested Property', value: valueOf('requestOtherProperty') },
+          ]),
+        },
+        {
+          heading: 'Anything Else',
+          items: compactItems([{ label: 'Notes', value: valueOf('requestNotes') }]),
+        },
+      ];
+
+      rows.querySelectorAll<HTMLElement>('.custom-requirement-row').forEach((row) => {
+        const property = (row.querySelector('[name="custom_property[]"]') as HTMLInputElement).value.trim();
+        const target = (row.querySelector('[name="custom_target[]"]') as HTMLInputElement).value.trim();
+        if (property && target) groups[2].items.push({ label: `Custom Requirement — ${property}`, value: target });
+      });
+
+      return groups.filter((group) => group.items.length > 0);
+    };
+
+    const buildTextSummary = () => {
+      const date = new Intl.DateTimeFormat('en-IN', { dateStyle: 'medium' }).format(new Date());
+      const lines = [
+        'CUSTOM RESIN SPECIFICATION REQUEST',
+        `For: Samrat Poly Resins`,
+        `Request Reference: ${reference}`,
+        `Date: ${date}`,
+      ];
+      for (const group of collectGroups()) {
+        lines.push('', group.heading.toUpperCase());
+        group.items.forEach((item) => lines.push(`${item.label}: ${item.value}`));
+      }
+      lines.push('', 'IMPORTANT', form.dataset.disclaimer ?? '');
+      return lines.join('\n');
+    };
+
+    const updateDeliveryLinks = () => {
+      const hasRequiredFields = valueOf('requestName') !== '' && valueOf('requestProduct') !== '';
+      const hasContactMethod = valueOf('requestPhone') !== '' || valueOf('requestEmail') !== '';
+      const emailIsValid = valueOf('requestEmail') === '' || email.validity.valid;
+      if (!hasRequiredFields || !hasContactMethod || !emailIsValid) {
+        whatsappLink.href = '#';
+        emailLink.href = '#';
+        return;
+      }
+      const body = buildTextSummary();
+      const product = valueOf('requestProduct') || 'Product Not Selected';
+      const subject = `Custom Resin Specification Request — ${product} — ${reference}`;
+      whatsappLink.href = `https://wa.me/${form.dataset.whatsapp}?text=${encodeURIComponent(body)}`;
+      emailLink.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    };
+
+    const clearContactError = () => {
+      phone.setCustomValidity('');
+      contactError.hidden = true;
+    };
+
+    const validateRequest = () => {
+      clearContactError();
+      if (!phone.value.trim() && !email.value.trim()) {
+        phone.setCustomValidity('Provide a Phone / WhatsApp number or an email address.');
+        contactError.hidden = false;
+      }
+      const valid = form.reportValidity();
+      if (!valid) {
+        statusEl.textContent = 'Please complete the required fields and provide at least one contact method.';
+        statusEl.className = 'request-status error';
+      }
+      return valid;
+    };
+
+    const addCustomRow = () => {
+      const fragment = rowTemplate.content.cloneNode(true) as DocumentFragment;
+      const row = fragment.querySelector('.custom-requirement-row') as HTMLElement;
+      const removeButton = row.querySelector('.remove-requirement') as HTMLButtonElement;
+      removeButton.addEventListener('click', () => {
+        const nextFocus = addButton;
+        row.remove();
+        updateDeliveryLinks();
+        nextFocus.focus();
+      });
+      rows.appendChild(fragment);
+      const firstInput = rows.lastElementChild?.querySelector('input') as HTMLInputElement | null;
+      firstInput?.focus();
+    };
+
+    const renderPrintSummary = () => {
+      printReference.textContent = reference;
+      printDate.textContent = new Intl.DateTimeFormat('en-IN', { dateStyle: 'long' }).format(new Date());
+      printGroups.replaceChildren();
+      for (const group of collectGroups()) {
+        const section = document.createElement('section');
+        section.className = 'print-group';
+        const heading = document.createElement('h2');
+        heading.textContent = group.heading;
+        const list = document.createElement('dl');
+        for (const item of group.items) {
+          const row = document.createElement('div');
+          const term = document.createElement('dt');
+          const description = document.createElement('dd');
+          term.textContent = item.label;
+          description.textContent = item.value;
+          row.append(term, description);
+          list.append(row);
+        }
+        section.append(heading, list);
+        printGroups.append(section);
+      }
+    };
+
+    addButton.addEventListener('click', addCustomRow);
+    form.addEventListener('input', () => {
+      if (phone.value.trim() || email.value.trim()) clearContactError();
+      statusEl.textContent = '';
+      statusEl.className = 'request-status';
+      updateDeliveryLinks();
+    });
+    form.addEventListener('change', updateDeliveryLinks);
+
+    whatsappLink.addEventListener('click', (event) => {
+      updateDeliveryLinks();
+      if (!validateRequest()) { event.preventDefault(); return; }
+      statusEl.textContent = 'WhatsApp compose opened. Review the prepared message and send it from WhatsApp.';
+      statusEl.className = 'request-status success';
+    });
+
+    emailLink.addEventListener('click', (event) => {
+      updateDeliveryLinks();
+      if (!validateRequest()) { event.preventDefault(); return; }
+      statusEl.textContent = 'Email draft opened. Review the prepared message and send it from your email app.';
+      statusEl.className = 'request-status success';
+    });
+
+    printButton.addEventListener('click', () => {
+      if (!validateRequest()) return;
+      renderPrintSummary();
+      statusEl.textContent = 'Print preview opened. Choose “Save as PDF” in the print dialog if needed.';
+      statusEl.className = 'request-status success';
+      window.print();
+    });
+
+    window.addEventListener('beforeprint', renderPrintSummary);
+    updateDeliveryLinks();
+  };
+
+  document.addEventListener('astro:page-load', initCustomResinRequest);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCustomResinRequest, { once: true });
+  } else {
+    initCustomResinRequest();
+  }
+</script>
+
+<style>
+  .request-shell { max-width: 900px; margin-inline: auto; }
+  .request-meta {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px;
+    margin-bottom: 1rem; border: 1px solid var(--line); background: var(--line);
+  }
+  .request-meta > div { display: flex; flex-direction: column; gap: 0.3rem; padding: 1rem 1.15rem; background: var(--bg-2); }
+  .request-meta-label {
+    font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .request-meta strong { font-family: var(--font-mono); color: var(--accent-gold-light); font-size: 0.9rem; }
+  .request-form { display: flex; flex-direction: column; gap: 1rem; }
+  .request-section, .advanced-requirements {
+    border: 1px solid var(--line); background: var(--bg-2); box-shadow: var(--surface-shadow-rest);
+  }
+  fieldset.request-section { margin: 0; padding: clamp(1.2rem, 4vw, 2rem); min-width: 0; }
+  .request-section legend {
+    display: flex; align-items: flex-start; gap: 0.8rem; width: 100%; padding: 0 0 1.25rem;
+  }
+  .request-section legend > span:last-child, .send-heading > span:last-child,
+  .advanced-requirements summary > span:first-child { display: flex; flex-direction: column; gap: 0.2rem; }
+  .request-section legend strong, .send-heading strong, .advanced-requirements summary strong {
+    font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.035em;
+    color: var(--ink); font-size: 1.1rem;
+  }
+  .request-section legend small, .send-heading small, .advanced-requirements summary small {
+    color: var(--ink-dim); font-size: 0.82rem; line-height: 1.45;
+  }
+  .section-number {
+    display: inline-grid; place-items: center; flex: 0 0 2rem; height: 2rem;
+    border: 1px solid rgba(var(--gold-rgb), .42); color: var(--accent-gold);
+    font-family: var(--font-mono); font-size: 0.7rem;
+  }
+  .section-intro { color: var(--ink-dim); margin: -0.2rem 0 1.2rem; max-width: 68ch; }
+  .form-grid { display: grid; gap: 1.1rem; }
+  .form-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .form-grid.compact { gap: 0.8rem; }
+  .form-span-two, .contact-methods { grid-column: 1 / -1; }
+  .form-field { display: flex; flex-direction: column; gap: 0.42rem; min-width: 0; }
+  .form-field > span {
+    font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-dim);
+  }
+  .form-field > span b { color: var(--accent-gold); }
+  .form-field > span em { color: var(--ink-faint); font-style: normal; letter-spacing: 0.02em; text-transform: none; }
+  .form-field input, .form-field select, .form-field textarea {
+    width: 100%; min-width: 0; border: 1px solid var(--line-2); background: var(--bg);
+    color: var(--ink); padding: 0.78rem 0.85rem; border-radius: 0;
+    font: 0.95rem/1.45 var(--font-body); transition: border-color .18s var(--ease-premium), box-shadow .18s var(--ease-premium);
+  }
+  .form-field textarea { resize: vertical; min-height: 8rem; }
+  .form-field select { color-scheme: dark; }
+  .form-field input::placeholder, .form-field textarea::placeholder { color: var(--ink-faint); }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+    outline: none; border-color: var(--accent-gold); box-shadow: 0 0 0 2px rgba(var(--gold-rgb), .12);
+  }
+  .form-field input:focus-visible, .form-field select:focus-visible, .form-field textarea:focus-visible {
+    outline: 2px solid var(--accent-gold); outline-offset: 1px;
+  }
+  .form-field small, .field-help { color: var(--ink-faint); font-size: 0.78rem; line-height: 1.55; }
+  .field-help { margin-top: 0.45rem; }
+  .field-error { color: #ff8f8f; font-size: 0.82rem; margin-top: 0.45rem; }
+  .recommend-check {
+    display: flex; align-items: flex-start; gap: 0.8rem; margin-top: 1.2rem;
+    border: 1px solid var(--line-2); background: var(--bg); padding: 1rem; cursor: pointer;
+  }
+  .recommend-check input { width: 1.15rem; height: 1.15rem; margin-top: 0.15rem; accent-color: var(--accent-gold); flex: 0 0 auto; }
+  .recommend-check span { display: flex; flex-direction: column; gap: 0.25rem; }
+  .recommend-check strong { color: var(--ink); font-size: 0.95rem; }
+  .recommend-check small { color: var(--ink-dim); line-height: 1.45; }
+  .custom-requirements { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
+  .custom-requirements-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .custom-requirements h3 { font-size: 1rem; color: var(--ink); }
+  .custom-requirements p { color: var(--ink-dim); font-size: 0.85rem; margin-top: 0.25rem; }
+  .btn-compact { padding: 0.6rem 0.8rem; font-size: 0.75rem; flex: 0 0 auto; }
+  .custom-requirement-rows { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1rem; }
+  .custom-requirement-rows:empty { display: none; }
+  .custom-requirement-row {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; align-items: end; gap: 0.8rem;
+    padding: 1rem; border: 1px solid var(--line); background: var(--bg-3);
+  }
+  .remove-requirement {
+    min-height: 44px; border: 1px solid var(--line-2); background: transparent; color: #ff9e9e;
+    padding: 0.65rem 0.8rem; font-family: var(--font-mono); font-size: 0.72rem; cursor: pointer;
+  }
+  .remove-requirement:hover, .remove-requirement:focus-visible { border-color: #ff9e9e; outline: none; }
+  .advanced-requirements { overflow: clip; }
+  .advanced-requirements summary {
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    padding: 1.25rem clamp(1.2rem, 4vw, 2rem); cursor: pointer; list-style: none;
+  }
+  .advanced-requirements summary::-webkit-details-marker { display: none; }
+  .advanced-requirements summary:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: -3px; }
+  .details-marker {
+    display: grid; place-items: center; flex: 0 0 2rem; height: 2rem; border: 1px solid var(--line-2);
+    color: var(--accent-gold); font-family: var(--font-mono); font-size: 1.2rem; transition: transform .2s var(--ease-premium);
+  }
+  .advanced-requirements[open] .details-marker { transform: rotate(45deg); }
+  .advanced-body { padding: 0 clamp(1.2rem, 4vw, 2rem) clamp(1.2rem, 4vw, 2rem); border-top: 1px solid var(--line); padding-top: 1.25rem; }
+  .attachment-note {
+    margin-top: 0.8rem; border-left: 2px solid var(--accent-gold); padding-left: 0.8rem;
+    color: var(--ink-dim); font-size: 0.82rem; line-height: 1.55;
+  }
+  .send-section { padding: clamp(1.2rem, 4vw, 2rem); }
+  .send-heading { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.2rem; }
+  .send-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .request-status { min-height: 1.3rem; margin-top: 0.85rem; color: var(--ink-dim); font-size: 0.82rem; line-height: 1.5; }
+  .request-status.success { color: #64dc94; }
+  .request-status.error { color: #ff8f8f; }
+  .request-disclaimer {
+    border: 1px solid rgba(var(--gold-rgb), .28); background: rgba(var(--gold-rgb), .06);
+    padding: 1rem 1.15rem; color: var(--ink-dim); font-size: 0.82rem; line-height: 1.65;
+  }
+  .request-disclaimer strong { display: block; color: var(--accent-gold-light); margin-bottom: 0.2rem; }
+  .print-summary { display: none; }
+
+  @media (max-width: 700px) {
+    .form-grid.two { grid-template-columns: 1fr; }
+    .form-span-two, .contact-methods { grid-column: auto; }
+    .custom-requirements-head { align-items: stretch; flex-direction: column; }
+    .btn-compact { align-self: flex-start; }
+    .custom-requirement-row { grid-template-columns: 1fr; align-items: stretch; }
+    .remove-requirement { width: 100%; }
+  }
+  @media (max-width: 560px) {
+    .request-meta { grid-template-columns: 1fr; }
+    .form-field input, .form-field select, .form-field textarea { font-size: 1rem; min-height: 48px; }
+    .send-actions { flex-direction: column; }
+    .send-actions .btn { width: 100%; justify-content: center; min-height: 48px; }
+    .advanced-requirements summary { align-items: flex-start; }
+  }
+
+  @media print {
+    @page { size: A4; margin: 14mm; }
+    :global(html), :global(body) { background: #fff !important; color: #111 !important; }
+    :global(.site-header), :global(.site-footer), :global(.wa-float), :global(.request-page-intro) { display: none !important; }
+    :global(main) { display: block !important; }
+    .request-meta, .request-form { display: none !important; }
+    .request-shell { max-width: none; margin: 0; }
+    .print-summary { display: block !important; font: 10pt/1.45 Arial, sans-serif; color: #111; }
+    .print-header { display: flex; align-items: center; gap: 12pt; padding-bottom: 10pt; border-bottom: 2px solid #b78a32; }
+    .print-header img { width: 48pt; height: 48pt; border-radius: 50%; object-fit: cover; }
+    .print-brand { margin: 0 0 2pt; color: #173f78; font-size: 12pt; font-weight: 700; text-transform: uppercase; }
+    .print-title { margin: 0; color: #111; font: 700 18pt/1.2 Arial, sans-serif; text-transform: uppercase; letter-spacing: .02em; }
+    .print-header p:last-child { margin: 3pt 0 0; color: #555; }
+    .print-meta { display: grid; grid-template-columns: 1fr 1fr; margin: 12pt 0; border: 1px solid #bbb; }
+    .print-meta div { padding: 7pt; }
+    .print-meta div + div { border-left: 1px solid #bbb; }
+    .print-meta dt { color: #555; font-size: 8pt; text-transform: uppercase; letter-spacing: .06em; }
+    .print-meta dd { margin: 2pt 0 0; font-weight: 700; }
+    :global(.print-group) { break-inside: avoid; page-break-inside: avoid; margin: 0 0 10pt; }
+    :global(.print-group h2) { margin: 0; padding: 5pt 7pt; background: #173f78; color: #fff; font: 700 10pt/1.2 Arial, sans-serif; text-transform: uppercase; }
+    :global(.print-group dl) { margin: 0; border: 1px solid #bbb; border-top: 0; }
+    :global(.print-group dl div) { display: grid; grid-template-columns: 34% 66%; break-inside: avoid; border-top: 1px solid #ddd; }
+    :global(.print-group dl div:first-child) { border-top: 0; }
+    :global(.print-group dt), :global(.print-group dd) { margin: 0; padding: 5pt 7pt; overflow-wrap: anywhere; }
+    :global(.print-group dt) { color: #444; font-weight: 700; border-right: 1px solid #ddd; }
+    .print-disclaimer { break-inside: avoid; margin-top: 12pt; padding: 8pt; border: 1px solid #b78a32; color: #333; font-size: 8.5pt; }
+    .print-disclaimer strong { color: #8a631d; }
+    .print-disclaimer p { margin: 3pt 0 0; }
+    .print-footer { display: flex; justify-content: space-between; gap: 12pt; margin-top: 12pt; padding-top: 7pt; border-top: 1px solid #bbb; color: #555; font-size: 8pt; }
+  }
+</style>
