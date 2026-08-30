@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import ProductCard from '../components/ProductCard.astro';
 import { products, CATEGORIES } from '../data/products.js';
@@ -25,6 +25,13 @@ const applications = [
 const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like to enquire about your resins.")}`;
 const featured = products.slice(0, 6);
 
+// Hero background video: the still facility photo remains the poster/fallback
+// (shown instantly, and permanently for prefers-reduced-motion or if video
+// playback fails) — the video plays on top of it once it can. Poster needs a
+// single static URL (not a responsive <Image>), so it's generated separately
+// via getImage() from the exact same source photo already used below.
+const heroPoster = await getImage({ src: productionInfrastructure, width: 1920, format: 'webp' });
+
 // site.statesServed mixes domestic states and "Export <country>" entries in
 // one list (used as-is, unfiltered, by the separate "Industries We Serve"
 // section further down this page). The Pan India Supply / Export Markets
@@ -41,6 +48,17 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
   <section class="hero">
     <div class="hero-media" aria-hidden="true">
       <Image src={productionInfrastructure} alt="" loading="eager" widths={[800, 1280, 1920, 2400]} sizes="100vw" />
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster={heroPoster.src}
+      >
+        <source src="/videos/hero-background.mp4" type="video/mp4" />
+      </video>
     </div>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-grid-lines" aria-hidden="true"></div>
@@ -471,9 +489,34 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       from { transform: scale(1.06) translateY(0); }
       to   { transform: scale(1.12) translateY(-1.5%); }
     }
+    /* Background video — sits directly on top of the still photo (which stays
+       mounted underneath as the poster/fallback), same fixed frame, same
+       desaturated cinematic treatment as the photo it replaces so the two
+       never look like two different design languages. No extra CSS drift
+       animation here: the footage supplies its own motion already, and
+       stacking a second animated transform on top read as busy in review. */
+    .hero-video {
+      position: absolute; inset: 0; z-index: 1;
+      width: 100%; height: 100%; object-fit: cover; object-position: center 35%;
+      /* Brighter / less desaturated than the still photo's filter — footage
+         needs more of its own light and colour to read as resin, drums and
+         metal rather than a flat dark plate; the scrim (unchanged) still
+         carries all of the text-legibility work. */
+      filter: grayscale(0) contrast(1.08) brightness(1.28);
+      pointer-events: none;
+    }
+    /* Respect reduced-motion by never even starting playback: the poster
+       frame (identical still photo) remains the entire experience. */
+    @media (prefers-reduced-motion: reduce) {
+      .hero-video { display: none; }
+    }
     .hero-scrim {
       position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(180deg, rgba(9, 11, 18, .78) 0%, rgba(9, 11, 18, .88) 45%, var(--bg) 96%),
+      /* Lightened from .78/.88 so the (now brighter) video actually reads —
+         the bottom of the hero still fades to the fully opaque page
+         background at 96% so it still resolves cleanly into the section
+         below it. */
+      background: linear-gradient(180deg, rgba(9, 11, 18, .58) 0%, rgba(9, 11, 18, .68) 45%, var(--bg) 96%),
                   radial-gradient(120% 90% at 82% -10%, rgba(212, 175, 55, .16), transparent 55%),
                   radial-gradient(70% 60% at 4% 108%, rgba(30, 58, 138, .2), transparent 62%);
     }
