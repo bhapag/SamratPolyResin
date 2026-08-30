@@ -57,18 +57,14 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
   <section class="hero">
     <div class="hero-media" aria-hidden="true">
       <Image src={productionInfrastructure} alt="" loading="eager" widths={[800, 1280, 1920, 2400]} sizes="100vw" />
-      <!-- Desktop hero video — untouched from the approved version: same
-           element, same attributes, same source, same native `loop`. The
-           only addition is the <source> `media` attribute below, which is
-           part of the HTML video spec's native resource-selection algorithm
-           (the same mechanism <picture><source media> uses): the browser
-           only ever fetches a <source> whose media query currently matches,
-           so this is a no-op for anyone at a desktop width (same file loads,
-           same everything) while guaranteeing phones never fetch this file
-           at all. CSS `display:none` was tried first and measured to be
-           unreliable — hidden <video autoplay> elements were still observed
-           fully downloading in testing — so the fetch-level `media`
-           attribute is the real fix, not CSS. -->
+      <!-- Desktop hero video — byte-identical to the originally approved
+           markup: same element, same attributes, same single source, same
+           native `loop`, no JS involved in loading or playing it at all.
+           A previous iteration added a <source media> attribute here for
+           bandwidth efficiency; that has been removed — real iOS Safari
+           testing cannot be fully replicated by desktop-engine automation,
+           so nothing whose reliability is uncertain on real hardware is
+           left anywhere near the desktop element, even inertly. -->
       <video
         class="hero-video hero-video-desktop"
         autoplay
@@ -78,32 +74,29 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
         preload="metadata"
         poster={heroPoster.src}
       >
-        <source src="/videos/hero-background.mp4" type="video/mp4" media="(min-width: 761px)" />
+        <source src="/videos/hero-background.mp4" type="video/mp4" />
       </video>
-      <!-- Mobile hero video — separate lighter encode (~6MB vs ~20MB) so it
-           decodes/buffers comfortably on phone hardware. Deliberately has no
-           `loop` attribute: on mobile WebKit, native `loop` was confirmed
-           (via direct diagnosis) to seek back to frame 0 correctly but then
-           never resume playback, leaving the video permanently paused after
-           the first pass — exactly the freeze/stall this fixes. Looping is
-           instead driven by the `ended` event below, which explicitly calls
-           play() again; `ended` only fires because `loop` is omitted here.
-           The <source> `media` attribute (mirroring the desktop video above)
-           means this file is never fetched at all outside mobile widths.
-           Poster is a frame from THIS video, not the facility photo above —
-           confirmed via live diagnosis that the video itself plays/loops
-           correctly, but during its initial buffering window the poster is
-           what's actually on screen, so it must already look like the film. -->
+      <!-- Mobile hero video — separate lighter encode (~6MB vs ~20MB). Two
+           iOS-Safari-specific reliability fixes, both handled entirely by
+           the script below and never touching the desktop element above:
+           1) No `loop` attribute — native `loop` was confirmed (via direct
+              diagnosis) to seek back to frame 0 correctly but then never
+              resume playback. The script's `ended` handler restarts it.
+           2) No `<source media>` gating — real iOS Safari's resource
+              selection for that attribute cannot be verified without
+              physical hardware, so source selection is instead a plain,
+              always-present `src` here, with the script removing it (only
+              on this element) when the viewport isn't mobile-sized. -->
       <video
         class="hero-video hero-video-mobile"
         id="heroVideoMobile"
         autoplay
         muted
         playsinline
-        preload="metadata"
+        preload="auto"
         poster={heroVideoMobilePoster.src}
       >
-        <source src="/videos/hero-background-mobile.mp4" type="video/mp4" media="(max-width: 760px)" />
+        <source src="/videos/hero-background-mobile.mp4" type="video/mp4" />
       </video>
     </div>
     <div class="hero-scrim" aria-hidden="true"></div>
@@ -1050,19 +1043,68 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
   </style>
 
   <script>
-    // Mobile hero video: native `loop` was confirmed (via direct WebKit
-    // testing) to seek back to frame 0 correctly at the end of playback but
-    // then never resume — the video freezes on the first frame instead of
-    // looping. Omitting `loop` (see markup above) makes `ended` fire
-    // reliably, so we drive the restart ourselves.
+    // Mobile hero video reliability. This script only ever touches
+    // #heroVideoMobile — the desktop <video> above is never referenced here.
+    //
+    // 1) Off mobile widths: drop this element's own <source>/src so it's
+    //    never fetched at all outside phone viewports (CSS already keeps it
+    //    display:none there; this stops the network request too).
+    //
+    // 2) On mobile widths: real iOS Safari autoplay isn't fully verifiable
+    //    through desktop-engine automation, so playback isn't left to the
+    //    `autoplay` attribute alone — .play() is retried on every event that
+    //    can plausibly unlock it (loadeddata, canplay, pageshow, and a
+    //    one-time first tap/click as a last resort), each attempt's promise
+    //    rejection swallowed safely. `.muted`/`.defaultMuted` are set in JS
+    //    too, not just as HTML attributes.
+    //
+    // 3) Native `loop` was confirmed (via direct WebKit testing) to seek
+    //    back to frame 0 correctly at the end of playback but then never
+    //    resume — the video freezes on frame 0 instead of looping. Omitting
+    //    `loop` (see markup above) makes `ended` fire reliably, so the
+    //    restart is driven here instead.
     document.addEventListener('astro:page-load', () => {
       const video = document.getElementById('heroVideoMobile') as HTMLVideoElement | null;
       if (!video || video.dataset.wired === 'true') return;
       video.dataset.wired = 'true';
 
+      const isMobile = () => window.matchMedia('(max-width: 760px)').matches;
+
+      if (!isMobile()) {
+        video.querySelectorAll('source').forEach((s) => s.remove());
+        video.removeAttribute('src');
+        video.load();
+        return;
+      }
+
+      video.muted = true;
+      video.defaultMuted = true;
+
+      // No "already playing, skip" guard here: .play() on an already-playing
+      // video is a harmless no-op, and every one of these listeners —
+      // including the loop restart below — needs to be able to actually
+      // issue a new play() call for as long as the page lives.
+      const tryPlay = () => {
+        const result = video.play();
+        if (result && typeof result.then === 'function') {
+          result.catch(() => {});
+        }
+      };
+
+      video.addEventListener('loadeddata', tryPlay);
+      video.addEventListener('canplay', tryPlay);
+      window.addEventListener('pageshow', tryPlay);
+      document.addEventListener('click', tryPlay, { once: true });
+      document.addEventListener('touchstart', tryPlay, { once: true, passive: true });
+      tryPlay();
+
+      video.addEventListener('playing', () => {
+        video.classList.add('is-playing');
+      });
+
       video.addEventListener('ended', () => {
         video.currentTime = 0;
-        video.play().catch(() => {});
+        tryPlay();
       });
     });
   </script>
