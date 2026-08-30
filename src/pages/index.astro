@@ -93,6 +93,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
         autoplay
         muted
         playsinline
+        webkit-playsinline="true"
         preload="auto"
         poster={heroVideoMobilePoster.src}
       >
@@ -1091,11 +1092,22 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
         }
       };
 
+      // iOS Safari under Low Power Mode or Low Data Mode can refuse to
+      // autoplay even a muted+playsinline video until the user has
+      // interacted with the page at all — no error is raised, play() just
+      // silently never resolves. document-level listeners (not attached to
+      // the video itself, since `.hero-video` is pointer-events:none) retry
+      // on the first tap/click/keypress anywhere on the page as a recovery
+      // path for exactly that case; none of this affects normal autoplay,
+      // which still fires first via loadeddata/canplay/pageshow.
+      video.load();
       video.addEventListener('loadeddata', tryPlay);
       video.addEventListener('canplay', tryPlay);
       window.addEventListener('pageshow', tryPlay);
       document.addEventListener('click', tryPlay, { once: true });
       document.addEventListener('touchstart', tryPlay, { once: true, passive: true });
+      document.addEventListener('pointerdown', tryPlay, { once: true });
+      document.addEventListener('keydown', tryPlay, { once: true });
       tryPlay();
 
       video.addEventListener('playing', () => {
