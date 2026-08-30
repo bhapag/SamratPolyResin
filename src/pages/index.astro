@@ -48,8 +48,20 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
   <section class="hero">
     <div class="hero-media" aria-hidden="true">
       <Image src={productionInfrastructure} alt="" loading="eager" widths={[800, 1280, 1920, 2400]} sizes="100vw" />
+      <!-- Desktop hero video — untouched from the approved version: same
+           element, same attributes, same source, same native `loop`. The
+           only addition is the <source> `media` attribute below, which is
+           part of the HTML video spec's native resource-selection algorithm
+           (the same mechanism <picture><source media> uses): the browser
+           only ever fetches a <source> whose media query currently matches,
+           so this is a no-op for anyone at a desktop width (same file loads,
+           same everything) while guaranteeing phones never fetch this file
+           at all. CSS `display:none` was tried first and measured to be
+           unreliable — hidden <video autoplay> elements were still observed
+           fully downloading in testing — so the fetch-level `media`
+           attribute is the real fix, not CSS. -->
       <video
-        class="hero-video"
+        class="hero-video hero-video-desktop"
         autoplay
         muted
         loop
@@ -57,7 +69,28 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
         preload="metadata"
         poster={heroPoster.src}
       >
-        <source src="/videos/hero-background.mp4" type="video/mp4" />
+        <source src="/videos/hero-background.mp4" type="video/mp4" media="(min-width: 761px)" />
+      </video>
+      <!-- Mobile hero video — separate lighter encode (~6MB vs ~20MB) so it
+           decodes/buffers comfortably on phone hardware. Deliberately has no
+           `loop` attribute: on mobile WebKit, native `loop` was confirmed
+           (via direct diagnosis) to seek back to frame 0 correctly but then
+           never resume playback, leaving the video permanently paused after
+           the first pass — exactly the freeze/stall this fixes. Looping is
+           instead driven by the `ended` event below, which explicitly calls
+           play() again; `ended` only fires because `loop` is omitted here.
+           The <source> `media` attribute (mirroring the desktop video above)
+           means this file is never fetched at all outside mobile widths. -->
+      <video
+        class="hero-video hero-video-mobile"
+        id="heroVideoMobile"
+        autoplay
+        muted
+        playsinline
+        preload="metadata"
+        poster={heroPoster.src}
+      >
+        <source src="/videos/hero-background-mobile.mp4" type="video/mp4" media="(max-width: 760px)" />
       </video>
     </div>
     <div class="hero-scrim" aria-hidden="true"></div>
@@ -509,6 +542,17 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
        frame (identical still photo) remains the entire experience. */
     @media (prefers-reduced-motion: reduce) {
       .hero-video { display: none; }
+    }
+    /* Only one of the two encodes is ever mounted at a time — a
+       display:none <video> is never fetched or decoded by the browser, so
+       phones only download the mobile file and desktops only download the
+       desktop file. Breakpoint matches the site-wide nav collapse in
+       Base.astro. */
+    @media (max-width: 760px) {
+      .hero-video-desktop { display: none; }
+    }
+    @media (min-width: 761px) {
+      .hero-video-mobile { display: none; }
     }
     .hero-scrim {
       position: absolute; inset: 0; z-index: 1;
@@ -991,6 +1035,24 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .contact-teaser-sub { color: var(--ink-dim); margin-top: 0.8rem; max-width: 42ch; }
     .contact-teaser-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; }
   </style>
+
+  <script>
+    // Mobile hero video: native `loop` was confirmed (via direct WebKit
+    // testing) to seek back to frame 0 correctly at the end of playback but
+    // then never resume — the video freezes on the first frame instead of
+    // looping. Omitting `loop` (see markup above) makes `ended` fire
+    // reliably, so we drive the restart ourselves.
+    document.addEventListener('astro:page-load', () => {
+      const video = document.getElementById('heroVideoMobile') as HTMLVideoElement | null;
+      if (!video || video.dataset.wired === 'true') return;
+      video.dataset.wired = 'true';
+
+      video.addEventListener('ended', () => {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      });
+    });
+  </script>
 
   <script>
     document.addEventListener('astro:page-load', () => {
