@@ -6,6 +6,7 @@ import { products, CATEGORIES } from '../data/products.js';
 import { site } from '../data/site.js';
 import qcLaboratory from '../assets/quality/qc-laboratory.jpg';
 import productionInfrastructure from '../assets/facility/production-infrastructure.jpg';
+import heroVideoPosterMobile from '../assets/hero/hero-video-poster-mobile.jpg';
 import frpWaterTanks from '../assets/applications/frp-water-tanks.jpg';
 import frpRoofingSheets from '../assets/applications/frp-roofing-sheets.jpg';
 import coolingTowers from '../assets/applications/cooling-towers.jpg';
@@ -31,6 +32,14 @@ const featured = products.slice(0, 6);
 // single static URL (not a responsive <Image>), so it's generated separately
 // via getImage() from the exact same source photo already used below.
 const heroPoster = await getImage({ src: productionInfrastructure, width: 1920, format: 'webp' });
+
+// Mobile-only poster: a still frame extracted directly from the mobile hero
+// video itself, NOT the old facility photo above. The desktop <video> keeps
+// the facility-photo poster untouched — this is deliberately separate so
+// that while the mobile video is buffering (or in the rare case it can't
+// play at all), what's on screen is still a frame from the same footage,
+// never the unrelated old photo.
+const heroVideoMobilePoster = await getImage({ src: heroVideoPosterMobile, width: 1280, format: 'webp' });
 
 // site.statesServed mixes domestic states and "Export <country>" entries in
 // one list (used as-is, unfiltered, by the separate "Industries We Serve"
@@ -80,7 +89,11 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
            instead driven by the `ended` event below, which explicitly calls
            play() again; `ended` only fires because `loop` is omitted here.
            The <source> `media` attribute (mirroring the desktop video above)
-           means this file is never fetched at all outside mobile widths. -->
+           means this file is never fetched at all outside mobile widths.
+           Poster is a frame from THIS video, not the facility photo above —
+           confirmed via live diagnosis that the video itself plays/loops
+           correctly, but during its initial buffering window the poster is
+           what's actually on screen, so it must already look like the film. -->
       <video
         class="hero-video hero-video-mobile"
         id="heroVideoMobile"
@@ -88,7 +101,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
         muted
         playsinline
         preload="metadata"
-        poster={heroPoster.src}
+        poster={heroVideoMobilePoster.src}
       >
         <source src="/videos/hero-background-mobile.mp4" type="video/mp4" media="(max-width: 760px)" />
       </video>
