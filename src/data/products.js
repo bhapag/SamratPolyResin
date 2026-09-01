@@ -43,7 +43,6 @@ export const CATEGORIES = [
   "Epoxy & Casting",
   "Industrial & Specialty Resins",
   "Hardeners",
-  "Elite Products",
 ];
 
 export const products = [
@@ -3239,12 +3238,14 @@ export const products = [
   //  New products added 2026-09-01. Cobalt Octoate joins the existing
   //  Hardeners category (chemically it accelerates/promotes a peroxide-
   //  initiated cure, not a hardener itself — see its description). The other
-  //  five form a new "Elite Products" category for non-resin FRP consumables
-  //  (application tools, thinners, fillers, mould-release wax). No numeric
-  //  specs (purity, dosage, viscosity, density, concentration, mesh size,
-  //  etc.) are asserted for any of these six — none is backed by verified
-  //  product data yet, so productDetails below is deliberately non-numeric,
-  //  and techSpecs is omitted entirely rather than filled with placeholders.
+  //  five (non-resin FRP consumables: application tools, thinners, fillers,
+  //  mould-release wax) briefly had their own "Elite Products" category,
+  //  since removed — they now join the existing FRP Allied Products
+  //  category instead. No numeric specs (purity, dosage, viscosity, density,
+  //  concentration, mesh size, etc.) are asserted for any of these six —
+  //  none is backed by verified product data yet, so productDetails below
+  //  is deliberately non-numeric, and techSpecs is omitted entirely rather
+  //  than filled with placeholders.
   // ==========================================================================
   {
     slug: "cobalt-octoate",
@@ -3286,6 +3287,8 @@ export const products = [
       "Commonly used alongside peroxide-initiated cure systems such as MEKP",
       "Supplied as a separate accelerator component, not a standalone hardener or resin",
       "Catalogued under Hardeners for browsing convenience alongside other curing-system components",
+      "Chemically distinct from, and not a substitute for, the peroxide catalyst it is paired with",
+      "Suited to workshops already running an MEKP-initiated, room-temperature cure process",
     ],
     applications: [
       "Unsaturated polyester resin curing systems where a cobalt-based accelerator is specified",
@@ -3296,12 +3299,15 @@ export const products = [
       "FRP & composites manufacturing",
       "Polyester resin processing",
       "Industrial resin-system procurement",
+      "FRP tank, panel and moulded-product manufacturing",
+      "Gelcoat and surface-finish production",
     ],
     whyChoose: [
       "ISO 9001:2015 certified quality management system",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the resin system, application and expected quantity",
+      "Part of Samrat Poly Resins' broader FRP and composite raw-material range",
     ],
     faqs: [
       {
@@ -3320,13 +3326,36 @@ export const products = [
         q: "What should I share when requesting a Cobalt Octoate quote?",
         a: "Please share the base resin system, intended application, expected quantity and delivery location so the team can understand the requirement before preparing a quote.",
       },
+      {
+        q: "Does Cobalt Octoate come with a Safety Data Sheet?",
+        a: "Request the current Safety Data Sheet (SDS) at the time of enquiry for storage, handling and PPE guidance.",
+      },
+      {
+        q: "Can Cobalt Octoate be supplied in bulk quantities?",
+        a: "Share your expected quantity when requesting a quote — packaging and bulk-order options are confirmed at that stage.",
+      },
     ],
     relatedSlugs: ["mekp-hardener"],
+    resourceSlugs: [
+      "what-is-cobalt-octoate",
+      "accelerator-vs-catalyst-vs-initiator",
+      "how-cobalt-accelerators-work-in-polyester-curing",
+      "cobalt-octoate-vs-mekp-different-roles",
+      "cobalt-accelerator-in-hand-lay-up",
+      "cobalt-accelerator-in-gelcoat-systems",
+      "how-temperature-affects-polyester-cure",
+      "gel-time-and-cobalt-dosage-relationship",
+      "troubleshooting-polyester-cure-speed",
+      "common-frp-curing-problems",
+      "selecting-a-cobalt-accelerator",
+      "cobalt-octoate-storage-and-handling",
+      "cobalt-accelerators-vs-cobalt-free-accelerators",
+    ],
   },
   {
     slug: "styrene-monomer",
     name: "Styrene Monomer",
-    category: "Elite Products",
+    category: "FRP Allied Products",
     price: "",
     image: "styrene-monomer.png",
     imageAlt:
@@ -3353,10 +3382,14 @@ export const products = [
     tagline: "Reactive monomer / reactive diluent for compatible unsaturated polyester resin systems.",
     description:
       "Styrene Monomer is Samrat Poly Resins' reactive monomer / reactive diluent, positioned for use in compatible unsaturated polyester resin systems. It helps reduce viscosity and supports processing and flow in suitable formulations. Styrene Monomer is not itself a polyester resin — it is a separate reactive component used alongside a selected base resin. Review the actual resin system and current product data before finalising a formulation.",
+    usageNote:
+      'Styrene Monomer is typically used to adjust the working viscosity of an already-selected unsaturated polyester resin system such as our <a href="/products/gp-clear-resin/">GP Clear Resin</a> or <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a>, or as part of gelcoat formulation work such as our <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>. It is a reactive diluent, not a standalone resin — confirm the base resin system and current product data before ordering.',
     features: [
       "Reactive monomer / reactive diluent for compatible unsaturated polyester resin systems",
       "Helps reduce viscosity and support processing / flow in suitable formulations",
       "Supplied as a separate reactive component, not a standalone resin",
+      "Participates in the curing reaction itself rather than evaporating away like a conventional solvent",
+      "Positioned for formulation and process-adjustment use alongside a selected base resin",
     ],
     applications: [
       "Unsaturated polyester resin systems where viscosity reduction / flow support is needed",
@@ -3367,12 +3400,14 @@ export const products = [
       "FRP & composites manufacturing",
       "Polyester resin processing",
       "Industrial resin-system procurement",
+      "Gelcoat and surface-finish formulation",
     ],
     whyChoose: [
       "ISO 9001:2015 certified quality management system",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the resin system, application and expected quantity",
+      "Part of Samrat Poly Resins' broader FRP and composite raw-material range",
     ],
     faqs: [
       {
@@ -3387,12 +3422,33 @@ export const products = [
         q: "What should I share when requesting a Styrene Monomer quote?",
         a: "Please share the base resin system, intended application, expected quantity and delivery location so the team can understand the requirement before preparing a quote.",
       },
+      {
+        q: "Does Styrene Monomer require special handling?",
+        a: "It is a flammable, volatile liquid — request the current Safety Data Sheet (SDS) for storage, ventilation and PPE guidance before use.",
+      },
+      {
+        q: "Can Styrene Monomer be supplied in bulk quantities?",
+        a: "Share your expected quantity when requesting a quote — packaging and bulk-order options are confirmed at that stage.",
+      },
+    ],
+    relatedSlugs: ["gp-clear-resin", "unsaturated-polyester-resin", "gp-gelcoat-resin"],
+    resourceSlugs: [
+      "what-is-styrene-monomer",
+      "styrene-as-reactive-diluent",
+      "why-styrene-reduces-resin-viscosity",
+      "styrene-and-fibreglass-wet-out",
+      "styrene-in-gelcoat-systems",
+      "styrene-and-polyester-cure-chemistry",
+      "styrene-vs-low-voc-resin-systems",
+      "styrene-monomer-storage-handling-safety",
+      "common-styrene-related-processing-issues",
+      "styrene-monomer-buyer-guide",
     ],
   },
   {
     slug: "nc-thinner",
     name: "NC Thinner",
-    category: "Elite Products",
+    category: "FRP Allied Products",
     price: "",
     image: "nc-thinner.png",
     imageAlt:
@@ -3419,10 +3475,14 @@ export const products = [
     tagline: "Nitrocellulose thinner / professional thinner for compatible NC lacquer and coating systems.",
     description:
       "NC Thinner is Samrat Poly Resins' nitrocellulose thinner / professional thinner, a solvent blend positioned for compatible NC lacquer and coating systems. It is used for viscosity adjustment and to support application. NC Thinner is not a resin, hardener or catalyst — it is a separate solvent component used alongside a selected NC lacquer or coating system. Review the actual coating system and current product data before use.",
+    usageNote:
+      "NC Thinner is supplied as a standalone solvent blend for nitrocellulose-based lacquer and coating systems sourced separately — it is not paired with a specific Samrat resin product, and thinning ratio should be matched to the coating manufacturer's own recommendations rather than assumed from a different thinner or coating type.",
     features: [
       "Nitrocellulose thinner / professional thinner for compatible NC lacquer and coating systems",
       "Used for viscosity adjustment and application support",
       "Supplied as a separate solvent blend, not a resin, hardener or catalyst",
+      "Supports flow and levelling for spray or brush application",
+      "Positioned for professional and industrial finishing work, not just furniture use",
     ],
     applications: [
       "NC lacquer and coating systems requiring viscosity adjustment",
@@ -3433,12 +3493,14 @@ export const products = [
       "Wood finishing & furniture coating",
       "Industrial and professional coating application",
       "General finishing & fabrication",
+      "Automotive and industrial refinishing",
     ],
     whyChoose: [
       "ISO 9001:2015 certified quality management system",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the intended coating system, application and expected quantity",
+      "Part of Samrat Poly Resins' broader FRP and composite raw-material range",
     ],
     faqs: [
       {
@@ -3453,12 +3515,30 @@ export const products = [
         q: "What should I share when requesting an NC Thinner quote?",
         a: "Please share the intended coating system, application, expected quantity and delivery location so the team can understand the requirement before preparing a quote.",
       },
+      {
+        q: "Is NC Thinner flammable?",
+        a: "Yes — like most lacquer thinners, it is a flammable liquid. Request the current Safety Data Sheet (SDS) for storage and handling guidance.",
+      },
+      {
+        q: "Can NC Thinner be used with any coating type?",
+        a: "It is formulated specifically for nitrocellulose-based coatings — check the coating manufacturer's guidance before using it with a different coating chemistry.",
+      },
+    ],
+    resourceSlugs: [
+      "what-is-nc-thinner",
+      "nc-thinner-in-spray-application",
+      "nc-thinner-for-wood-finishing",
+      "nc-thinner-viscosity-flow-and-blushing",
+      "solvent-evaporation-and-coating-defects",
+      "nc-thinner-vs-general-purpose-thinner",
+      "nc-thinner-in-industrial-coatings",
+      "nc-thinner-selection-and-storage-guide",
     ],
   },
   {
     slug: "paint-brushes",
     name: "Paint Brushes",
-    category: "Elite Products",
+    category: "FRP Allied Products",
     price: "",
     image: "paint-brushes.png",
     imageAlt:
@@ -3485,11 +3565,14 @@ export const products = [
     tagline: "Professional application brushes suitable for resin, hand lay-up, gelcoat and FRP repair work.",
     description:
       "Paint Brushes from Samrat Poly Resins are professional application tools suitable for resin application, hand lay-up, gelcoat application, FRP repair and composite fabrication work. They are supplied as manual application tools, not a chemical or resin product, and are intended to support consistent application alongside a separately selected resin, gelcoat or coating system.",
+    usageNote:
+      'Paint Brushes are typically used to apply and work in resin or gelcoat during hand lay-up — for example our <a href="/products/gp-clear-resin/">GP Clear Resin</a> or <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>, catalysed with <a href="/products/mekp-hardener/">MEKP Hardener</a> and <a href="/products/cobalt-octoate/">Cobalt Octoate</a>. They are an application tool, not a chemical component of the resin system itself — confirm the actual resin/gelcoat system separately.',
     features: [
       "Professional application tools suitable for resin, gelcoat and coating work",
       "Suitable for hand lay-up, FRP repair and composite fabrication processes",
       "Supplied in multiple brush sizes for different fabrication needs",
       "Manual application tool, not a chemical or resin product",
+      "Useful for reaching mould corners, edges and detail work a roller can't cover",
     ],
     applications: [
       "Resin application during hand lay-up work",
@@ -3500,12 +3583,14 @@ export const products = [
       "FRP & composites manufacturing",
       "FRP repair and maintenance",
       "General fabrication workshops",
+      "Marine and panel moulding",
     ],
     whyChoose: [
       "ISO 9001:2015 certified quality management system",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the intended application and expected quantity",
+      "Part of Samrat Poly Resins' broader FRP and composite raw-material range",
     ],
     faqs: [
       {
@@ -3520,12 +3605,29 @@ export const products = [
         q: "Do the brushes come in different sizes?",
         a: "Yes, multiple brush sizes are available to suit different fabrication and application requirements — share your intended use when requesting a quote.",
       },
+      {
+        q: "Can brushes used with catalysed resin be cleaned and reused?",
+        a: "Many workshops treat brushes used with catalysed resin as effectively consumable, since cured resin is difficult to fully remove from bristles — plan for a working supply rather than expecting indefinite reuse.",
+      },
+      {
+        q: "Can Paint Brushes be ordered in bulk for a workshop?",
+        a: "Share your expected quantity and range of sizes when requesting a quote — bulk workshop supply is confirmed at that stage.",
+      },
+    ],
+    relatedSlugs: ["gp-gelcoat-resin", "mekp-hardener", "cobalt-octoate"],
+    resourceSlugs: [
+      "selecting-brushes-for-resin-and-gelcoat-application",
+      "brush-vs-roller-vs-squeegee-in-frp-work",
+      "brush-technique-for-hand-lay-up-and-mould-corners",
+      "using-brushes-for-frp-repair",
+      "workshop-tool-checklist-for-open-moulding",
+      "caring-for-and-replacing-application-brushes",
     ],
   },
   {
     slug: "soap-stone-powder",
     name: "Soap Stone Powder",
-    category: "Elite Products",
+    category: "FRP Allied Products",
     price: "",
     image: "soap-stone-powder.png",
     imageAlt:
@@ -3552,11 +3654,14 @@ export const products = [
     tagline: "Soapstone / talc-type mineral powder used as a filler / extender in suitable industrial formulations.",
     description:
       "Soap Stone Powder from Samrat Poly Resins is a soapstone / talc-type industrial mineral powder, used as a functional filler or extender in suitable resin compounds, putties, coatings, plastics or other industrial formulations depending on the specific requirement. It is not a resin, catalyst, accelerator or reinforcement fibre. Review the actual formulation and current product data before use.",
+    usageNote:
+      'Soap Stone Powder is typically blended into a base resin system as a functional filler or extender — for example in filled, mineral-loaded formulations such as our <a href="/products/marble-resin/">Marble Resin</a>, or into a putty/filler compound built on a resin such as our <a href="/products/gp-clear-resin/">GP Clear Resin</a>. It is not a resin or reinforcement material itself — confirm the base system and required filler loading separately.',
     features: [
       "Soapstone / talc-type industrial mineral powder",
       "Usable as a functional filler / extender across suitable formulations",
       "Fine powder form",
       "Supplied as a separate mineral filler, not a resin or reinforcement material",
+      "Blends into resin compounds, putties, coatings and plastics depending on formulation",
     ],
     applications: [
       "Filler / extender in suitable resin compounds and putties",
@@ -3567,12 +3672,14 @@ export const products = [
       "FRP & composites manufacturing",
       "Putty & filler compound manufacturing",
       "Paints, coatings & industrial formulations",
+      "Plastics and general industrial manufacturing",
     ],
     whyChoose: [
       "ISO 9001:2015 certified quality management system",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the intended formulation and expected quantity",
+      "Part of Samrat Poly Resins' broader FRP and composite raw-material range",
     ],
     faqs: [
       {
@@ -3587,12 +3694,32 @@ export const products = [
         q: "What should I share when requesting a Soap Stone Powder quote?",
         a: "Please share the intended formulation or use, expected quantity and delivery location so the team can understand the requirement before preparing a quote.",
       },
+      {
+        q: "Does soapstone powder need to be kept dry before use?",
+        a: "Yes — moisture can cause a fine powder to clump, making it harder to disperse evenly when used. Keep it sealed and stored in a dry area.",
+      },
+      {
+        q: "Can Soap Stone Powder be supplied in bulk quantities?",
+        a: "Share your expected quantity when requesting a quote — packaging and bulk-order options are confirmed at that stage.",
+      },
+    ],
+    relatedSlugs: ["marble-resin", "gp-clear-resin"],
+    resourceSlugs: [
+      "what-is-soapstone-talc-powder",
+      "mineral-fillers-in-polyester-resin",
+      "filler-vs-reinforcement",
+      "soapstone-powder-in-putty-and-filler-compounds",
+      "soapstone-powder-in-paints-and-coatings",
+      "soapstone-vs-calcium-carbonate-as-a-filler",
+      "filler-dispersion-and-mixing-considerations",
+      "soapstone-powder-storage-and-handling",
+      "mineral-filler-selection-guide",
     ],
   },
   {
     slug: "wax-polish",
     name: "Wax Polish",
-    category: "Elite Products",
+    category: "FRP Allied Products",
     price: "",
     image: "wax-polish.png",
     imageAlt:
@@ -3619,11 +3746,14 @@ export const products = [
     tagline: "FRP mould release / parting wax for mould preparation and part release in composite moulding.",
     description:
       "Wax Polish from Samrat Poly Resins is positioned, in the FRP context, as a mould release / parting wax. It is used for mould preparation, creating a release barrier and supporting polished tooling/mould surfaces across composite/FRP moulding workflows. In this catalogue it is not presented as a furniture polish, shoe polish, automotive detailing wax, resin, catalyst or hardener — its role here is mould-side release and surface preparation. Review the actual mould substrate and process before use.",
+    usageNote:
+      'Wax Polish is used to prepare a mould before <a href="/products/gp-gelcoat-resin/">gelcoat</a> and resin are applied, typically as one of the first steps in an open-moulding sequence, often alongside <a href="/products/paint-brushes/">application brushes</a> during mould preparation and gelcoat application. It is a mould-release product, not a resin, catalyst or hardener.',
     features: [
       "FRP mould release / parting wax for composite moulding workflows",
       "Supports mould preparation and a clean release barrier",
       "Helps maintain a polished tooling / mould surface",
       "Applied and buffed on a suitable mould surface — not a resin, catalyst or hardener",
+      "Positioned for repeated use across a production run, with routine mould-care reapplication",
     ],
     applications: [
       "Mould preparation before FRP hand lay-up or gelcoat moulding",
@@ -3634,12 +3764,14 @@ export const products = [
       "FRP & composites manufacturing",
       "FRP moulding & tooling",
       "Marine and general FRP component fabrication",
+      "Panel and large-format composite moulding",
     ],
     whyChoose: [
       "ISO 9001:2015 certified quality management system",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the mould/tooling context and expected quantity",
+      "Part of Samrat Poly Resins' broader FRP and composite raw-material range",
     ],
     faqs: [
       {
@@ -3654,6 +3786,27 @@ export const products = [
         q: "What should I share when requesting a Wax Polish quote?",
         a: "Please share the mould/tooling context, intended FRP process, expected quantity and delivery location so the team can understand the requirement before preparing a quote.",
       },
+      {
+        q: "Does Wax Polish go on before or after gelcoat?",
+        a: "Before — mould release preparation is one of the first steps in the moulding sequence, completed before gelcoat is applied to the mould.",
+      },
+      {
+        q: "Can Wax Polish be supplied in bulk quantities?",
+        a: "Share your expected quantity when requesting a quote — packaging and bulk-order options are confirmed at that stage.",
+      },
+    ],
+    relatedSlugs: ["gp-gelcoat-resin", "paint-brushes"],
+    resourceSlugs: [
+      "what-is-frp-mould-release-wax",
+      "how-to-apply-and-buff-mould-release-wax",
+      "preparing-a-new-frp-mould",
+      "mould-surface-preparation-basics",
+      "wax-vs-pva-release-agent",
+      "gelcoat-application-and-mould-release-sequence",
+      "common-mould-release-failures",
+      "mould-care-between-production-runs",
+      "wax-release-for-marine-and-panel-moulding",
+      "choosing-a-release-agent-for-frp-moulding",
     ],
   },
 ];

@@ -440,6 +440,16 @@ const related = product.relatedSlugs?.length
   : products.filter(p => p.category === category && p.slug !== product.slug).slice(0, 3);
 const relatedHeading = product.relatedSlugs?.length ? 'Related products' : `More in ${category}`;
 
+// Generic "Related Reading" support — any product can list resource slugs
+// here to surface a reading-hub section, without needing its own isXxx
+// special case + hardcoded block (the pattern every earlier product below
+// uses). Existing special-cased products are unaffected; this only renders
+// when a product sets the new field and isn't already handled by one of
+// those bespoke blocks.
+const genericResources = (product.resourceSlugs ?? [])
+  .map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft))
+  .filter(Boolean);
+
 // Curated reading for GP Clear Resin buyers. These point only to existing,
 // published resources and are intentionally limited to this product page.
 const gpResourceSlugs = [
@@ -3293,6 +3303,19 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             <span class="rel-price">{site.priceLabel}</span>
           </a>
         ))}
+      </div>
+    </section>
+  )}
+
+  {genericResources.length > 0 && (
+    <section class="wrap prod-resources" aria-labelledby="generic-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Technical resources</p>
+        <h2 id="generic-resources-heading" class="rel-h">{name} Knowledge Hub</h2>
+        <p>Guides covering what {name} is, how it's used and what to check before ordering.</p>
+      </div>
+      <div class="resources-grid">
+        {genericResources.map((resource) => <ResourceCard resource={resource} />)}
       </div>
     </section>
   )}
