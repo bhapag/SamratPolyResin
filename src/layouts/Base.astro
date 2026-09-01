@@ -3,6 +3,7 @@ import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import { site, buildCanonicalUrl } from '../data/site.js';
 import { products, CATEGORIES } from '../data/products.js';
+import AmbientBackground from '../components/AmbientBackground.astro';
 
 // Mega-menu / mobile-nav product groupings — same CATEGORIES/products data
 // the Products index and homepage already use, so the header can't drift
@@ -110,6 +111,7 @@ const organizationJsonLd = {
 </script>
 </head>
 <body data-product-slug={trackingProductSlug} data-product-name={trackingProductName}>
+  <AmbientBackground />
   <a href="#main-content" class="skip-link">Skip to content</a>
   <header class="site-header" transition:persist>
     <div class="wrap header-inner">
@@ -181,6 +183,47 @@ const organizationJsonLd = {
     </nav>
   </header>
 
+  <!-- Deliberately `is:inline` and placed immediately after the button and
+       panel it controls, NOT wrapped in an `astro:page-load` listener like
+       the rest of this file's scripts.
+       Measured root cause of a real bug: `astro:page-load`, on the initial
+       page load, doesn't fire until `window.load` does — i.e. after every
+       image and the hero video have finished loading, not merely after the
+       DOM is parsed. Wiring the hamburger's click handler inside that
+       listener left it completely dead for however long the page's
+       heaviest asset (the hero video, worse on a slow connection) took to
+       load. `is:inline` skips Astro's bundling entirely (no dependency on
+       the ClientRouter chunk being fetched/parsed) and runs as a plain
+       classic script the instant the parser reaches this point — which is
+       already after `#navToggle` and `#mobileNav` above it, so both exist
+       the moment this executes. The header carries `transition:persist`,
+       so this element and this listener are never torn down or re-created
+       by a later client-side navigation — wiring it once, this early, is
+       sufficient for the whole session. -->
+  <script is:inline>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var panel = document.getElementById('mobileNav');
+      if (!toggle || !panel || toggle.dataset.wired === 'true') return;
+      toggle.dataset.wired = 'true';
+
+      function closeMenu() {
+        toggle.setAttribute('aria-expanded', 'false');
+        panel.classList.remove('is-open');
+      }
+      toggle.addEventListener('click', function () {
+        var isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        panel.classList.toggle('is-open', !isOpen);
+      });
+      var desktopNav = window.matchMedia('(min-width: 761px)');
+      desktopNav.addEventListener('change', function (event) { if (event.matches) closeMenu(); });
+      var links = panel.querySelectorAll('a');
+      for (var i = 0; i < links.length; i++) links[i].addEventListener('click', closeMenu);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+    })();
+  </script>
+
   <main id="main-content">
     <slot />
   </main>
@@ -241,29 +284,6 @@ const organizationJsonLd = {
   <a href={waLink} class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" transition:persist>
     <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5 0-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.3 4.7L7 20.4A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
   </a>
-
-  <script>
-    document.addEventListener('astro:page-load', () => {
-      const toggle = document.getElementById('navToggle');
-      const panel = document.getElementById('mobileNav');
-      if (!toggle || !panel || toggle.dataset.wired === 'true') return;
-      toggle.dataset.wired = 'true';
-
-      const closeMenu = () => {
-        toggle.setAttribute('aria-expanded', 'false');
-        panel.classList.remove('is-open');
-      };
-      toggle.addEventListener('click', () => {
-        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!isOpen));
-        panel.classList.toggle('is-open', !isOpen);
-      });
-      const desktopNav = window.matchMedia('(min-width: 761px)');
-      desktopNav.addEventListener('change', (event) => { if (event.matches) closeMenu(); });
-      panel.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
-    });
-  </script>
 
   <script>
     // Products mega-menu: the panel already opens/closes purely via CSS

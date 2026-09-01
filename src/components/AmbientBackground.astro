@@ -1,0 +1,187 @@
+---
+// Sitewide ambient background — continues the APPROVED hero's cinematic
+// video atmosphere at a much lower visual strength through the rest of the
+// site, so pages read as one continuous world instead of a plain dark page
+// below the hero. Reuses the exact approved hero video files and poster
+// images; nothing new is generated.
+//
+// One instance only: mounted once in Base.astro, so it's the single source
+// of ambient video for every page (no per-section/per-card video tags).
+// `transition:persist` keeps this same DOM node (and video playback state)
+// alive across client-side navigations, so it never restarts or flickers
+// between pages.
+//
+// Sits fixed behind everything (z-index: -1). Nothing about the existing
+// page/section CSS needed to change for this to show through: no page
+// section in this codebase sets its own opaque background — only actual
+// cards, panels, forms and tables do (see global.css), and those stay
+// exactly as opaque as they already are. The video is only ever visible in
+// the gutters between and around them.
+import { getImage } from 'astro:assets';
+import heroVideoPosterMobile from '../assets/hero/hero-video-poster-mobile.jpg';
+
+// Both breakpoints use the same approved hero video-frame image as their
+// poster/fallback — never the old facility photo. This component renders a
+// plain <img> on every page load with no JS gating, so whatever image is
+// used here is visible sitewide from first paint.
+const ambientPosterDesktop = await getImage({ src: heroVideoPosterMobile, width: 1920, format: 'webp' });
+const ambientPosterMobile = await getImage({ src: heroVideoPosterMobile, width: 1280, format: 'webp' });
+---
+<div class="ambient-bg" id="ambientBg" aria-hidden="true" transition:persist>
+  <img src={ambientPosterDesktop.src} alt="" class="ambient-layer ambient-poster ambient-desktop" />
+  <img src={ambientPosterMobile.src} alt="" class="ambient-layer ambient-poster ambient-mobile" />
+  <!-- `poster` set on both, even though the <img> layers beneath already
+       show the same frame: a sourceless <video> with no poster paints as
+       an opaque black rectangle by default (confirmed — this hid the
+       poster layer entirely during testing), so the video needs its own
+       poster too for the moments before/unless it actually activates. -->
+  <video class="ambient-layer ambient-video ambient-desktop" id="ambientVideoDesktop" muted playsinline preload="none" poster={ambientPosterDesktop.src}>
+    <source data-src="/videos/hero-background.mp4" type="video/mp4" />
+  </video>
+  <video class="ambient-layer ambient-video ambient-mobile" id="ambientVideoMobile" muted playsinline preload="none" poster={ambientPosterMobile.src}>
+    <source data-src="/videos/hero-background-mobile.mp4" type="video/mp4" />
+  </video>
+  <div class="ambient-scrim"></div>
+</div>
+
+<script>
+  // Reuses the same iOS-Safari-reliability pattern already proven on the
+  // homepage hero's mobile video: no <source media>, no native `loop`
+  // (verified unreliable on real iOS Safari after seeking back to 0) — a
+  // plain <source data-src> that's only ever assigned a real `src` for the
+  // breakpoint actually in use, and a manual `ended` → currentTime=0 →
+  // play() restart.
+  document.addEventListener('astro:page-load', () => {
+    const root = document.getElementById('ambientBg');
+    if (!root) return;
+
+    const desktopVideo = document.getElementById('ambientVideoDesktop') as HTMLVideoElement | null;
+    const mobileVideo = document.getElementById('ambientVideoMobile') as HTMLVideoElement | null;
+    if (!desktopVideo || !mobileVideo) return;
+
+    const isMobile = () => window.matchMedia('(max-width: 760px)').matches;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const activeVideo = () => (isMobile() ? mobileVideo : desktopVideo);
+
+    const ensureActivated = () => {
+      if (reducedMotion) return;
+      const video = activeVideo();
+      if (video.dataset.activated === 'true') return;
+      video.dataset.activated = 'true';
+      const source = video.querySelector('source');
+      const src = source?.dataset.src;
+      if (source && src) source.src = src;
+      video.load();
+      video.muted = true;
+      video.defaultMuted = true;
+      const tryPlay = () => {
+        const p = video.play();
+        if (p && typeof p.then === 'function') p.catch(() => {});
+      };
+      video.addEventListener('loadeddata', tryPlay);
+      video.addEventListener('canplay', tryPlay);
+      video.addEventListener('ended', () => {
+        video.currentTime = 0;
+        tryPlay();
+      });
+      tryPlay();
+    };
+
+    const pauseAmbient = () => {
+      const video = activeVideo();
+      if (video.dataset.activated === 'true') video.pause();
+    };
+    const resumeAmbient = () => {
+      if (reducedMotion) return;
+      ensureActivated();
+      const video = activeVideo();
+      if (video.dataset.activated === 'true') {
+        const p = video.play();
+        if (p && typeof p.then === 'function') p.catch(() => {});
+      }
+    };
+
+    // Discard any scroll listener left over from a previous page — the
+    // persisted .ambient-bg node can carry a reference across a
+    // client-side navigation to a .hero element that no longer exists.
+    const prevHandler = (root as any)._heroScrollHandler as (() => void) | undefined;
+    if (prevHandler) window.removeEventListener('scroll', prevHandler);
+
+    // Homepage only: the real hero video is already decoding at full
+    // strength above the fold — don't also decode/play the ambient layer
+    // while it's still substantially on screen. Every other page (no
+    // .hero present) activates immediately. Deliberately a plain
+    // rAF-throttled scroll check rather than IntersectionObserver — this
+    // is a small, predictable synchronous calculation either way, and
+    // testing showed a freshly created observer's first callback isn't
+    // reliably synchronous with real layout on a cold page load (the
+    // ambient video ended up activated and playing at the same time as
+    // the hero — exactly what this gating exists to prevent).
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      const checkHero = () => {
+        const rect = hero.getBoundingClientRect();
+        const heroStillDominant = rect.top < window.innerHeight * 0.4 && rect.bottom > 0;
+        if (heroStillDominant) pauseAmbient();
+        else resumeAmbient();
+      };
+      let ticking = false;
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          ticking = false;
+          checkHero();
+        });
+      };
+      checkHero();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      (root as any)._heroScrollHandler = onScroll;
+    } else {
+      resumeAmbient();
+    }
+  });
+</script>
+
+<style>
+  .ambient-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .ambient-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+  /* Same filter recipe on the poster and the video so there's no visible
+     brightness/colour jump the moment playback actually starts — the video
+     just quietly takes over from the still frame already sitting there. */
+  .ambient-poster,
+  .ambient-video {
+    opacity: 0.38;
+    filter: grayscale(0) brightness(0.54) contrast(1.06) saturate(0.9);
+  }
+  .ambient-mobile { display: none; }
+  @media (max-width: 760px) {
+    .ambient-desktop { display: none; }
+    .ambient-mobile { display: block; }
+    .ambient-poster,
+    .ambient-video { opacity: 0.34; filter: grayscale(0) brightness(0.5) contrast(1.05) saturate(0.9); }
+  }
+  .ambient-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(9, 11, 18, 0.3) 0%, rgba(9, 11, 18, 0.18) 35%, rgba(9, 11, 18, 0.34) 100%),
+      linear-gradient(90deg, rgba(9, 11, 18, 0.18) 0%, transparent 22%, transparent 78%, rgba(9, 11, 18, 0.18) 100%);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ambient-video { display: none !important; }
+  }
+</style>

@@ -26,19 +26,22 @@ const applications = [
 const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like to enquire about your resins.")}`;
 const featured = products.slice(0, 6);
 
-// Hero background video: the still facility photo remains the poster/fallback
-// (shown instantly, and permanently for prefers-reduced-motion or if video
-// playback fails) — the video plays on top of it once it can. Poster needs a
-// single static URL (not a responsive <Image>), so it's generated separately
-// via getImage() from the exact same source photo already used below.
-const heroPoster = await getImage({ src: productionInfrastructure, width: 1920, format: 'webp' });
-
-// Mobile-only poster: a still frame extracted directly from the mobile hero
-// video itself, NOT the old facility photo above. The desktop <video> keeps
-// the facility-photo poster untouched — this is deliberately separate so
-// that while the mobile video is buffering (or in the rare case it can't
-// play at all), what's on screen is still a frame from the same footage,
-// never the unrelated old photo.
+// Hero background video: a still frame from the approved hero footage itself
+// is the poster/fallback everywhere in the hero (shown instantly, and
+// permanently for prefers-reduced-motion or if video playback fails) — the
+// video plays on top of it once it can. Both sizes come from the SAME
+// source frame (src/assets/hero/hero-video-poster-mobile.jpg), just
+// rendered at the resolution each breakpoint needs, so there is never a
+// visible swap between two different images while the hero loads.
+//
+// This used to be the old facility/production photo (productionInfrastructure,
+// still used elsewhere on this page, e.g. the About section below — that
+// usage is untouched). That photo predates the hero video and was reported
+// briefly visible during hero load, especially on mobile where it didn't
+// match the mobile video's own poster — a real flash between two different
+// images, not just an expected loading fallback. Fixed by using the same
+// video-frame poster on every hero layer instead.
+const heroPoster = await getImage({ src: heroVideoPosterMobile, width: 1920, format: 'webp' });
 const heroVideoMobilePoster = await getImage({ src: heroVideoPosterMobile, width: 1280, format: 'webp' });
 
 // site.statesServed mixes domestic states and "Export <country>" entries in
@@ -56,7 +59,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
   <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="hero-media" aria-hidden="true">
-      <Image src={productionInfrastructure} alt="" loading="eager" widths={[800, 1280, 1920, 2400]} sizes="100vw" />
+      <Image src={heroVideoPosterMobile} alt="" loading="eager" widths={[800, 1280, 1920, 2400]} sizes="100vw" />
       <!-- Desktop hero video — byte-identical to the originally approved
            markup: same element, same attributes, same single source, same
            native `loop`, no JS involved in loading or playing it at all.
@@ -94,7 +97,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
         muted
         playsinline
         webkit-playsinline="true"
-        preload="auto"
+        preload="metadata"
         poster={heroVideoMobilePoster.src}
       >
         <source src="/videos/hero-background-mobile.mp4" type="video/mp4" />
