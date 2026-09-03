@@ -13,7 +13,7 @@ import ProductCTA from '../../components/ProductCTA.astro';
 import { resources, getReadingTime } from '../../data/resources.js';
 import { products } from '../../data/products.js';
 import { resourceProductLinks } from '../../data/resourceProductLinks.js';
-import { site, buildCanonicalUrl } from '../../data/site.js';
+import { site, buildWhatsAppLink, buildCanonicalUrl } from '../../data/site.js';
 
 export function getStaticPaths() {
   return resources.filter((r) => !r.draft).map((r) => ({ params: { slug: r.slug }, props: { resource: r } }));
@@ -252,51 +252,16 @@ const dmcSmcAuthoritySlugs = new Set([
   'dmc-smc-resin-procurement-checklist',
 ]);
 const isDmcSmcAuthorityResource = dmcSmcAuthoritySlugs.has(resource.slug);
-const talkToTeamLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(isDmcSmcAuthorityResource
-  ? "Hi, I'd like to discuss a DMC/SMC Resin requirement with Samrat Poly Resins. My DMC or SMC context, finished component, specification, quantity, delivery location and documentation requirement are:"
-  : isMarbleResinAuthorityResource
-  ? "Hi, I'd like to discuss a Marble Resin requirement with Samrat Poly Resins. My finished marble or stone product, TDS or catalogue reference, appearance or technical requirement, quantity, delivery location and documentation requirement are:"
-  : isPetResinAuthorityResource
-  ? "Hi, I'd like to discuss Samrat PET Resin. My required material form, intended sheet or laminate application, documentation requirement, quantity and delivery location are:"
-  : isVinylEsterAuthorityResource
-  ? "Hi, I'd like to discuss a Vinyl Ester Resin requirement with Samrat Poly Resins. My finished FRP component, service medium and concentration where relevant, operating temperature where relevant, technical-document requirement, quantity and delivery location are:"
-  : isBisphenolAuthorityResource
-  ? "Hi, I'd like to discuss a Bisphenol Resin requirement with Samrat Poly Resins. My intended application, stated technical requirement, service conditions where relevant, quantity, delivery location and documentation requirement are:"
-  : isIsoFireRetardantAuthorityResource
-  ? "Hi, I'd like to discuss an ISO Fire Retardant Resin requirement with Samrat Poly Resins. The ISO designation refers to isophthalic chemistry. My FRP component, required documentation or fire requirement, quantity and delivery location are:"
-  : isGlassFiberAuthorityResource
-  ? "Hi, I'd like to discuss a Glass Fiber / CSM reinforcement requirement with Samrat Poly Resins."
-  : isPigmentAuthorityResource
-  ? "Hi, I'd like to discuss an FRP Polyester Pigment requirement with Samrat Poly Resins."
-  : isUvResinAuthorityResource
-  ? "Hi, I'd like to discuss a UV Resin requirement with Samrat Poly Resins."
-  : isSheetGradeAuthorityResource
-  ? "Hi, I'd like to discuss a Sheet Grade Yellow Resin requirement for an FRP sheet or panel with Samrat Poly Resins."
-  : isRoofLightAuthorityResource
-  ? "Hi, I'd like to discuss a Roof Light Sheet Grade Resin requirement for an FRP roofing or roof-light sheet with Samrat Poly Resins."
-  : isEpoxyArtAuthorityResource
-  ? "Hi, I'd like to discuss an Epoxy Art Resin requirement with Samrat Poly Resins."
-  : isFiberglassEpoxyAuthorityResource
-  ? "Hi, I'd like to discuss a Fiberglass Epoxy Resin requirement with Samrat Poly Resins. My finished composite application, resin-only or complete-system requirement, document reference, reinforcement form if known, quantity, delivery location and documentation requirement are:"
-  : isEpoxyHardenerAuthorityResource
-  ? "Hi, I'd like to discuss a compatible Epoxy Hardener and epoxy resin-system requirement with Samrat Poly Resins. My exact resin product, intended application, quantity and delivery location are:"
-  : isButtonAuthorityResource
-  ? "Hi, I'd like to discuss a Button Grade Resin application with Samrat Poly Resins."
-  : isGpQuartzAuthorityResource
-  ? "Hi, I'd like to discuss a GP Quartz Resin requirement with Samrat Poly Resins."
-  : isGpWhiteAuthorityResource
-  ? "Hi, I'd like to discuss a GP White Resin requirement with Samrat Poly Resins."
-  : isUprAuthorityResource
-  ? "Hi, I'd like help selecting the right Unsaturated Polyester Resin grade from Samrat Poly Resins."
-  : isGelcoatAuthorityResource
-  ? "Hi, I'd like to discuss a Gelcoat Resin application with Samrat Poly Resins."
-  : isLaminationAuthorityResource
-  ? "Hi, I'd like to discuss a Lamination Resin application with Samrat Poly Resins."
-  : isGpYellowUsesResource
-  ? "Hi, I'd like to discuss a GP Yellow Resin application with Samrat Poly Resins."
-  : isGpAuthorityResource
-    ? "Hi, I'd like to discuss a GP Resin application with Samrat Poly Resins."
-    : "Hi, I'd like help selecting the right polyester resin for my requirement.")}`;
+// This article's specific product, when it has an unambiguous one (via
+// resourceProductLinks, resolved above as `linkedProduct`) — otherwise a
+// generic message. Replaces a former 21-way per-category ternary that
+// produced long, field-list-style messages; the related-links/TDS section
+// below still uses the isXxxAuthorityResource flags directly and is
+// untouched.
+const talkToTeamProductName = linkedProduct ? (linkedProduct.whatsappName ?? linkedProduct.name) : null;
+const talkToTeamLink = talkToTeamProductName
+  ? buildWhatsAppLink('product', talkToTeamProductName)
+  : buildWhatsAppLink('generic');
 const readingTime = getReadingTime(resource);
 
 const published = resources.filter((r) => !r.draft);

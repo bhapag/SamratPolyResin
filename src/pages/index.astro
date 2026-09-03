@@ -3,7 +3,7 @@ import { Image, getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import ProductCard from '../components/ProductCard.astro';
 import { products, CATEGORIES } from '../data/products.js';
-import { site } from '../data/site.js';
+import { site, buildWhatsAppLink } from '../data/site.js';
 import qcLaboratory from '../assets/quality/qc-laboratory.jpg';
 import productionInfrastructure from '../assets/facility/production-infrastructure.jpg';
 import heroVideoPosterMobile from '../assets/hero/hero-video-poster-mobile.jpg';
@@ -23,7 +23,7 @@ const applications = [
   { image: frpPortableCabin, tag: 'Modular Structures', name: 'FRP Portable Cabins', alt: 'Prefabricated FRP portable cabin used as a modular site office or security cabin' },
 ];
 
-const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like to enquire about your resins.")}`;
+const waLink = buildWhatsAppLink('generic');
 const featured = products.slice(0, 6);
 
 // Hero background video: a still frame from the approved hero footage itself

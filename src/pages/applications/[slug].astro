@@ -4,7 +4,7 @@ import Base from '../../layouts/Base.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
 import { applications } from '../../data/applications.js';
 import { products } from '../../data/products.js';
-import { site, buildProductQuoteLink, buildCanonicalUrl } from '../../data/site.js';
+import { site, buildWhatsAppLink, buildCanonicalUrl } from '../../data/site.js';
 
 export function getStaticPaths() {
   return applications.filter((a) => !a.draft).map((a) => ({ params: { slug: a.slug }, props: { application: a } }));
@@ -36,7 +36,13 @@ const relatedProducts = (relatedProductSlugs ?? [])
   .map((s) => products.find((p) => p.slug === s))
   .filter(Boolean);
 
-const waLink = buildProductQuoteLink(parentProduct?.whatsappName ?? parentProduct?.name ?? site.name);
+// "Request Bulk Quote" below is a quote-intent CTA — use the specific
+// product when this application has one, otherwise the quote fallback
+// (never the company name, which isn't a product).
+const applicationWaName = parentProduct?.whatsappName ?? parentProduct?.name ?? null;
+const waLink = applicationWaName
+  ? buildWhatsAppLink('quote', applicationWaName)
+  : buildWhatsAppLink('quoteFallback');
 const canonicalUrl = buildCanonicalUrl(Astro.url.pathname);
 
 const breadcrumbJsonLd = {

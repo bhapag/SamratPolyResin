@@ -92,20 +92,25 @@ export function buildCanonicalUrl(pathname) {
   return new URL(pathname, site.url).toString();
 }
 
-// Shared WhatsApp product-quote link builder — used by every per-product
-// WhatsApp CTA (product page's "WhatsApp" and "Request Bulk Quote" buttons)
-// so they always send the exact same message format for the exact same product.
-export function buildProductQuoteLink(productName, requirementFields = '') {
-  const additionalFields = requirementFields.trim() ? `\n${requirementFields.trim()}\n` : '';
-  const message = `Hello,
+// Shared WhatsApp message system — every WhatsApp CTA on the site should
+// route through getWhatsAppMessage()/buildWhatsAppLink() rather than
+// building its own text, so every message stays short and consistent.
+// Four intents only:
+//   generic       — no product context (floating button, nav, footer, Contact)
+//   product       — a specific product is known ("Enquire"/"WhatsApp" CTAs)
+//   quote         — a specific product's "Get/Request Quote" CTA
+//   quoteFallback — a "Request Quote" CTA with no specific product
+const whatsAppMessageBuilders = {
+  generic: () => `Hello, I'd like to discuss a resin requirement.`,
+  product: (productName) => `Hello, I'm interested in ${productName}. Please share details.`,
+  quote: (productName) => `Hello, I'd like a quote for ${productName}.`,
+  quoteFallback: () => `Hello, I'd like to discuss a quotation for resin materials.`,
+};
 
-I'm interested in ${productName}.
+export function getWhatsAppMessage(intent, productName) {
+  return whatsAppMessageBuilders[intent](productName);
+}
 
-Please provide a quotation for:
-
-Product: ${productName}
-${additionalFields}Quantity:
-
-Thank you.`;
-  return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
+export function buildWhatsAppLink(intent, productName) {
+  return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(getWhatsAppMessage(intent, productName))}`;
 }

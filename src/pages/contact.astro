@@ -1,9 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import EnquiryForm from '../components/EnquiryForm.astro';
-import { site } from '../data/site.js';
+import { site, buildWhatsAppLink } from '../data/site.js';
 
-const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like to enquire about your resins.")}`;
+const waLink = buildWhatsAppLink('generic');
 ---
 <Base title="Contact" description={`Get in touch with ${site.name} — request a quote by phone, WhatsApp, email or the enquiry form.`}>
   <section class="section contact">

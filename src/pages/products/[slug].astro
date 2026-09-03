@@ -7,7 +7,7 @@ import ResourceCard from '../../components/ResourceCard.astro';
 import { products } from '../../data/products.js';
 import { applications as applicationGuides } from '../../data/applications.js';
 import { resources } from '../../data/resources.js';
-import { site, buildProductQuoteLink, buildCanonicalUrl } from '../../data/site.js';
+import { site, buildWhatsAppLink, buildCanonicalUrl } from '../../data/site.js';
 import factoryGate from '../../assets/about/factory-gate.jpg';
 import productionInfrastructure from '../../assets/facility/production-infrastructure.jpg';
 import qcLaboratory from '../../assets/quality/qc-laboratory.jpg';
@@ -763,16 +763,13 @@ const uvResinResources = isUvResin
   ? uvResinResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
   : [];
 
-const bisphenolQuoteFields = isBisphenolResin
-  ? 'Intended application:\nTDS or catalogue reference:\nTechnical or service requirement:\nRequired documentation:\nDelivery location:'
-  : '';
-const marbleQuoteFields = isMarbleResin
-  ? 'Finished marble or stone product:\nCurrent TDS or catalogue reference:\nAppearance or finish requirement:\nRequired documentation:\nQuantity, packaging and delivery location:'
-  : '';
-const fiberglassEpoxyQuoteFields = isFiberglassEpoxyResin
-  ? 'Finished fiberglass or composite application:\nResin only or complete system required:\nReinforcement form if known:\nCurrent TDS or catalogue reference:\nTechnical data and documentation required:\nQuantity, packaging and delivery location:'
-  : '';
-const waLink = buildProductQuoteLink(product.whatsappName ?? name, bisphenolQuoteFields || marbleQuoteFields || fiberglassEpoxyQuoteFields);
+// Two distinct WhatsApp CTAs on this page: the pricing block's "Request
+// Bulk Quote" button is a quote request, the separate plain "WhatsApp"
+// button next to the enquiry form is a product enquiry — each now sends
+// its own short, correctly-intended message instead of one shared payload.
+const productWaName = product.whatsappName ?? name;
+const productWaLink = buildWhatsAppLink('product', productWaName);
+const quoteWaLink = buildWhatsAppLink('quote', productWaName);
 
 // "Explore applications" cards — only populated when a product names
 // applicationSlugs (currently gp-clear-resin only). Cards for draft entries
@@ -1029,12 +1026,12 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <li>{isGlassFiber ? 'CSM 300 or CSM 450 requirement' : isFrpPolyesterPigment ? 'Required colour or RAL/Pantone reference' : isMekpHardener ? 'Base resin grade and application' : isEpoxyHardener ? 'Exact epoxy resin or compatible system being evaluated' : isFiberglassEpoxyResin ? 'Finished composite, resin-only or system requirement, reinforcement form and document reference' : isDmcSmcResin ? 'DMC or SMC requirement, finished component and stated specification' : isPetResin ? 'Required liquid-resin form and intended sheet or laminate application' : isMarbleResin ? 'Finished marble or stone product, document reference and appearance requirement' : isVinylEsterResin ? 'Finished FRP component, service medium and relevant technical requirement' : isBisphenolResin ? 'Intended application and technical requirement' : isEpoxyArtResin ? 'Finished surface or artwork application' : isUvResin ? 'Application, industry and clear/finish requirement' : isSheetGradeYellowResin ? 'Sheet or panel requirement and supplied yellow appearance' : isRoofLightResin ? 'Roof-light or roofing-sheet requirement and supplied appearance' : isFireRetardantResin || isIsoFireRetardantResin ? 'Finished FRP application and required fire standard or classification' : isEpoxyClearCastingResin ? 'Application, casting size and required finish' : 'Resin Grade'}</li>
           <li>{isGlassFiber || isFrpPolyesterPigment ? 'Delivery location' : isMekpHardener ? 'Production process and delivery location' : isEpoxyHardener ? 'Application, documentation requirement and delivery location' : isFiberglassEpoxyResin ? 'Quantity, packaging, required documentation and delivery location' : isDmcSmcResin ? 'Quantity, packaging need, documentation requirement and delivery location' : isPetResin || isMarbleResin ? 'Quantity, packaging need, document requirement and delivery location' : isVinylEsterResin || isBisphenolResin ? 'Quantity, packaging, required documentation and delivery location' : isEpoxyArtResin ? 'Required finish and delivery location' : isUvResin ? 'UV/LED equipment requirement and delivery location' : isSheetGradeYellowResin ? 'Reinforcement requirement, quantity and delivery location' : isRoofLightResin ? 'Reinforcement context, quantity and delivery location' : isFireRetardantResin ? 'Project specification, quantity and delivery location' : isIsoFireRetardantResin ? 'Service environment, quantity and delivery location' : isEpoxyClearCastingResin ? 'Delivery location' : 'Current Raw Material Rates'}</li>
         </ul>
-        <a href={waLink} class="btn btn-solid prod-quote-cta" target="_blank" rel="noopener">{isMarbleResin ? 'Request Marble Resin Quote' : isVinylEsterResin ? 'Request Vinyl Ester Resin Quote' : isBisphenolResin ? 'Request Bisphenol Resin Quote' : isFiberglassEpoxyResin ? 'Request Fiberglass Epoxy Resin Quote' : 'Request Bulk Quote'}</a>
+        <a href={quoteWaLink} class="btn btn-solid prod-quote-cta" target="_blank" rel="noopener">{isMarbleResin ? 'Request Marble Resin Quote' : isVinylEsterResin ? 'Request Vinyl Ester Resin Quote' : isBisphenolResin ? 'Request Bisphenol Resin Quote' : isFiberglassEpoxyResin ? 'Request Fiberglass Epoxy Resin Quote' : 'Request Bulk Quote'}</a>
       </div>
 
       <div class="prod-cta">
         <a href="#enquire" class="btn btn-solid">{isMarbleResin ? 'Discuss Your Marble Resin Requirement' : isVinylEsterResin ? 'Discuss Your Vinyl Ester Requirement' : isBisphenolResin ? 'Discuss Your Bisphenol Resin Requirement' : isFiberglassEpoxyResin ? 'Discuss Your Fiberglass Epoxy Requirement' : 'Enquire / get quote'}</a>
-        <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
+        <a href={productWaLink} class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
       </div>
 
       {/* Technical documents — grouped and visually distinct from the

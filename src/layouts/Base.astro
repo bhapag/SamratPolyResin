@@ -1,7 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
-import { site, buildCanonicalUrl } from '../data/site.js';
+import { site, buildCanonicalUrl, buildWhatsAppLink } from '../data/site.js';
 import { products, CATEGORIES } from '../data/products.js';
 import AmbientBackground from '../components/AmbientBackground.astro';
 
@@ -32,7 +32,7 @@ const pageTitle = title
 const desc = description ?? `${site.name}: manufacturer of coating and composite resins from ${site.address.line2}, ${site.address.state}. Established ${site.established}.`;
 const finalOgTitle = ogTitle ?? pageTitle;
 const finalOgDesc = ogDescription ?? desc;
-const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi, I'd like to enquire about your resins.")}`;
+const waLink = buildWhatsAppLink('generic');
 const canonicalUrl = buildCanonicalUrl(Astro.url.pathname);
 // Default social-share image is the sitewide `site.ogImage` (1200x630).
 // Any page can override it by passing an `ogImage` prop (a root-relative
