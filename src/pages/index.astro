@@ -2,6 +2,7 @@
 import { Image, getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import ProductCard from '../components/ProductCard.astro';
+import BrandFilm from '../components/home/BrandFilm.astro';
 import { products, CATEGORIES } from '../data/products.js';
 import { site, buildWhatsAppLink } from '../data/site.js';
 import qcLaboratory from '../assets/quality/qc-laboratory.jpg';
@@ -373,6 +374,8 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       </figure>
     </div>
   </section>
+
+  <BrandFilm />
 
   <!-- ================= APPLICATION SHOWCASE ================= -->
   <section class="section applications">

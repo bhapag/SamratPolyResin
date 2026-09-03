@@ -1,0 +1,212 @@
+---
+// Foreground manufacturer Brand Film — a NEW section, independent of the
+// hero video and the sitewide AmbientBackground layer (does not replace or
+// touch either). Runs a managed cycle: the supplied video plays once in
+// full, then the supplied still photo holds for 5 seconds, then the video
+// plays again — forever. See the <script> below for the single-timer state
+// machine that drives it.
+import { site, buildWhatsAppLink } from '../../data/site.js';
+
+const waLink = buildWhatsAppLink('generic');
+---
+
+<section class="section brandfilm">
+  <div class="wrap brandfilm-grid">
+    <div class="brandfilm-text">
+      <div class="section-head">
+        <p class="eyebrow">{site.name}</p>
+        <h2>Manufacturing, In Motion</h2>
+      </div>
+      <p class="brandfilm-desc">
+        A closer look at how {site.name} manufactures polyester, epoxy and composite
+        resin systems for FRP manufacturers and industrial applications across India.
+      </p>
+      <div class="brandfilm-cta">
+        <a href="/products/" class="btn btn-solid">Explore products</a>
+        <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5 0-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2 2.8 1.2 2.8.8 3.3.8.5 0 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="brandfilm-media">
+      <div class="brandfilm-frame" id="brandFilmFrame">
+        <video
+          class="brandfilm-layer brandfilm-video is-active"
+          id="brandFilmVideo"
+          muted
+          playsinline
+          preload="none"
+          poster="/videos/samrat-poly-resins-brand-film-still.png"
+          aria-label={`${site.name} manufacturing brand film`}
+          disablepictureinpicture
+          disableremoteplayback
+        >
+          <source data-src="/videos/samrat-poly-resins-brand-film.mp4" type="video/mp4" />
+        </video>
+        <img
+          class="brandfilm-layer brandfilm-photo"
+          id="brandFilmPhoto"
+          src="/videos/samrat-poly-resins-brand-film-still.png"
+          alt={`${site.name} manufacturing — brand film still`}
+          width="941"
+          height="1672"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const root = document.getElementById('brandFilmFrame');
+    if (!root || root.dataset.wired === 'true') return;
+    root.dataset.wired = 'true';
+
+    const video = document.getElementById('brandFilmVideo') as HTMLVideoElement | null;
+    const photo = document.getElementById('brandFilmPhoto') as HTMLImageElement | null;
+    if (!video || !photo) return;
+
+    // Reduced motion: static supplied photo only. No video load, no cycle.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      video.style.display = 'none';
+      photo.classList.add('is-active');
+      return;
+    }
+
+    let activated = false;
+    // The single managed timer for the whole cycle — always cleared before
+    // being reassigned, so pausing/resuming off-screen or a fast re-entry
+    // can never stack a second one.
+    let photoTimer: ReturnType<typeof window.setTimeout> | undefined;
+
+    const showVideo = () => { video.classList.add('is-active'); photo.classList.remove('is-active'); };
+    const showPhoto = () => { photo.classList.add('is-active'); video.classList.remove('is-active'); };
+
+    const attemptPlay = () => {
+      video.muted = true;
+      const result = video.play();
+      if (result && typeof result.then === 'function') {
+        result.catch(() => {
+          video.addEventListener('canplay', () => { video.muted = true; video.play().catch(() => {}); }, { once: true });
+        });
+      }
+    };
+
+    // Attach the real source only once the section is actually approaching
+    // the viewport — see the IntersectionObserver below.
+    const ensureActivated = () => {
+      if (activated) return;
+      activated = true;
+      const source = video.querySelector('source');
+      const src = source?.dataset.src;
+      if (source && src) source.src = src;
+      video.load();
+      attemptPlay();
+    };
+
+    // The one place the cycle advances: video ends -> show the photo for
+    // exactly 5s -> hide it, rewind the video, play it again. Native
+    // `ended` (not `loop`) is what makes the 5s still interval possible.
+    video.addEventListener('ended', () => {
+      showPhoto();
+      if (photoTimer) window.clearTimeout(photoTimer);
+      photoTimer = window.setTimeout(() => {
+        photoTimer = undefined;
+        showVideo();
+        video.currentTime = 0;
+        attemptPlay();
+      }, 5000);
+    });
+
+    // Off-screen: pause decoding. Back on-screen: resume — but only if the
+    // cycle is currently in its video phase; during the photo phase the
+    // video is already paused and the 5s timer keeps running regardless of
+    // visibility, so the cycle's timing never drifts.
+    //
+    // A plain rAF-throttled scroll check, not IntersectionObserver: testing
+    // (both here and on the sitewide AmbientBackground component earlier)
+    // showed a freshly created observer's first callback isn't reliably
+    // synchronous with real layout state on a cold load in this project's
+    // test environment — confirmed independently of this component, since
+    // the site's own pre-existing `.lazy-video` observer (cats/applications
+    // section videos) exhibited the identical non-firing behavior in the
+    // same session. A synchronous rect check sidesteps that entirely.
+    const checkVisibility = () => {
+      const rect = root.getBoundingClientRect();
+      const nearOrInViewport = rect.top < window.innerHeight + 200 && rect.bottom > -200;
+      if (nearOrInViewport) {
+        ensureActivated();
+        if (video.classList.contains('is-active') && video.paused && video.src) attemptPlay();
+      } else if (!video.paused) {
+        video.pause();
+      }
+    };
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => { ticking = false; checkVisibility(); });
+    };
+
+    checkVisibility();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  });
+</script>
+
+<style>
+  .brandfilm-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    gap: clamp(2rem, 6vw, 4.5rem);
+    align-items: center;
+  }
+  .brandfilm-text { max-width: 46ch; }
+  .brandfilm-desc { color: var(--ink-dim); margin-top: 1.1rem; line-height: 1.7; }
+  .brandfilm-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 1.8rem; }
+
+  .brandfilm-media { display: flex; justify-content: center; }
+  .brandfilm-frame {
+    position: relative;
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 1080 / 1916;
+    border: 1px solid rgba(var(--gold-rgb), .22);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, .4), 0 0 0 1px rgba(255, 255, 255, .04) inset, 0 1px 0 rgba(255, 255, 255, .07) inset;
+    transition: transform .4s var(--ease-premium), box-shadow .4s var(--ease-premium), border-color .4s var(--ease-premium);
+  }
+  .brandfilm-frame:hover {
+    transform: translateY(-4px);
+    border-color: rgba(var(--gold-rgb), .45);
+    box-shadow: 0 26px 56px rgba(0, 0, 0, .45), 0 0 26px rgba(var(--gold-rgb), .14), 0 0 0 1px rgba(255, 255, 255, .05) inset, 0 1px 0 rgba(255, 255, 255, .08) inset;
+  }
+  .brandfilm-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+    transition: opacity 320ms var(--ease-premium);
+  }
+  .brandfilm-layer.is-active { opacity: 1; }
+  .brandfilm-video { z-index: 1; }
+  .brandfilm-photo { z-index: 2; }
+
+  @media (max-width: 860px) {
+    .brandfilm-grid { grid-template-columns: 1fr; }
+    .brandfilm-text { max-width: none; }
+    .brandfilm-media { order: -1; margin-bottom: 0.5rem; }
+    .brandfilm-frame { max-width: 300px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .brandfilm-frame:hover { transform: none; }
+  }
+</style>
