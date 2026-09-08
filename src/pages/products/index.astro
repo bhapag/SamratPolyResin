@@ -1,16 +1,16 @@
 ---
 import Base from '../../layouts/Base.astro';
 import ProductCard from '../../components/ProductCard.astro';
-import { products, CATEGORIES } from '../../data/products.js';
+import { products, CATEGORIES, CATEGORY_HUBS } from '../../data/products.js';
 
 const byCat = CATEGORIES.map(cat => ({ cat, items: products.filter(p => p.category === cat) })).filter(g => g.items.length);
 const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
-// GP Resins and Epoxy & Casting each have a dedicated family page (see
-// gp-resins.astro / epoxy-resins.astro) that owns the bare "GP resin" /
-// "epoxy resin" search intent — link the category heading straight to it
-// instead of only the in-page anchor.
-const familyPageSlugs = { 'GP Resins': 'gp-resins', 'Epoxy & Casting': 'epoxy-resins' };
+// Categories with a dedicated family/hub page link their heading straight to
+// it instead of only the in-page anchor. The mapping now lives in
+// products.js (CATEGORY_HUBS) so the header mega-menu and mobile nav link the
+// same set of hubs and can't drift out of sync with this page.
+const familyPageSlugs = CATEGORY_HUBS;
 ---
 <Base title="Polyester, Epoxy & FRP Resin Products" description="Explore Samrat Poly Resins’ range of polyester, epoxy, GP, fire-retardant and specialty resins, hardeners and FRP raw materials.">
   <section class="section prod-hero">

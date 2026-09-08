@@ -2,7 +2,7 @@
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import { site, buildCanonicalUrl, buildWhatsAppLink } from '../data/site.js';
-import { products, CATEGORIES } from '../data/products.js';
+import { products, CATEGORIES, CATEGORY_HUBS } from '../data/products.js';
 import AmbientBackground from '../components/AmbientBackground.astro';
 
 // Mega-menu / mobile-nav product groupings — same CATEGORIES/products data
@@ -12,6 +12,10 @@ import AmbientBackground from '../components/AmbientBackground.astro';
 const productsByCategory = CATEGORIES.map((cat) => ({
   name: cat,
   items: products.filter((p) => p.category === cat),
+  // Hub page for this category, when one actually exists (CATEGORY_HUBS in
+  // products.js). Categories without a hub stay as plain, unlinked labels —
+  // the mega-menu must never link to a page that doesn't exist.
+  hub: CATEGORY_HUBS[cat] ? `/products/${CATEGORY_HUBS[cat]}/` : null,
 }));
 
 const {
@@ -130,7 +134,12 @@ const organizationJsonLd = {
             <div class="nav-mega-grid">
               {productsByCategory.map((cat) => (
                 <div class="nav-mega-col">
-                  <p class="nav-mega-col-head"><span>{cat.name}</span><span class="nav-mega-col-count">{cat.items.length}</span></p>
+                  <p class="nav-mega-col-head">
+                    {cat.hub
+                      ? <a class="nav-mega-col-link" href={cat.hub}>{cat.name}</a>
+                      : <span>{cat.name}</span>}
+                    <span class="nav-mega-col-count">{cat.items.length}</span>
+                  </p>
                   <ul>
                     {cat.items.map((p) => (
                       <li><a href={`/products/${p.slug}/`}>{p.name}</a></li>
@@ -166,6 +175,13 @@ const organizationJsonLd = {
             <details class="mobile-cat">
               <summary>{cat.name} <span class="mobile-cat-count">{cat.items.length}</span></summary>
               <ul>
+                {/* The <summary> stays a pure disclosure control — making it a
+                    link would break the toggle and its keyboard behaviour. The
+                    hub link is offered as the first list item instead, which is
+                    both crawlable and reachable by keyboard/screen reader. */}
+                {cat.hub && (
+                  <li><a class="mobile-cat-hub" href={cat.hub}>View all {cat.name}</a></li>
+                )}
                 {cat.items.map((p) => (
                   <li><a href={`/products/${p.slug}/`}>{p.name}</a></li>
                 ))}
@@ -467,6 +483,16 @@ const organizationJsonLd = {
       border-bottom: 1px solid var(--line);
     }
     .nav-mega-col-count { color: var(--ink-faint); flex-shrink: 0; }
+    /* Category headings that have a real hub page are links. Styled to match
+       the plain-label headings exactly so the menu's appearance is unchanged
+       — only hover/focus reveal that they're interactive. */
+    .nav-mega-col-link {
+      color: inherit; text-decoration: none;
+      transition: color .2s var(--ease-premium);
+    }
+    .nav-mega-col-link:hover { color: var(--accent-gold); text-decoration: underline; }
+    .nav-mega-col-link:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
+    .mobile-cat-hub { color: var(--accent-gold-light) !important; }
     .nav-mega-col ul { display: flex; flex-direction: column; gap: 0.55rem; }
     .nav-mega-col a {
       font-size: 0.86rem; color: var(--ink-dim); line-height: 1.4;

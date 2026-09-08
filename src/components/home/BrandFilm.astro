@@ -5,9 +5,22 @@
 // full, then the supplied still photo holds for 5 seconds, then the video
 // plays again — forever. See the <script> below for the single-timer state
 // machine that drives it.
+import { Image, getImage } from 'astro:assets';
 import { site, buildWhatsAppLink } from '../../data/site.js';
+import brandFilmStill from '../../assets/brand-film/samrat-poly-resins-brand-film-still.png';
 
 const waLink = buildWhatsAppLink('generic');
+
+// The supplied master is a 1.7 MB PNG (941x1672). It was previously served
+// straight from public/ — unprocessed — as both the <video> poster and the
+// intermission <img>, into a frame that is at most ~340 CSS px wide.
+// Routing it through Astro's image pipeline emits sized WebP derivatives
+// instead. The original master is untouched and still present in
+// public/videos/ and src/assets/brand-film/ (byte-identical, SHA-256
+// eb349919...c38cf26).
+// `poster` takes a single URL, so it gets one derivative sized for a 340px
+// slot at ~3x DPR; the <img> below is served responsively.
+const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, format: 'webp' });
 ---
 
 <section class="section brandfilm">
@@ -38,20 +51,21 @@ const waLink = buildWhatsAppLink('generic');
           muted
           playsinline
           preload="none"
-          poster="/videos/samrat-poly-resins-brand-film-still.png"
+          poster={brandFilmPoster.src}
           aria-label={`${site.name} manufacturing brand film`}
           disablepictureinpicture
           disableremoteplayback
         >
           <source data-src="/videos/samrat-poly-resins-brand-film.mp4" type="video/mp4" />
         </video>
-        <img
+        <Image
           class="brandfilm-layer brandfilm-photo"
           id="brandFilmPhoto"
-          src="/videos/samrat-poly-resins-brand-film-still.png"
+          src={brandFilmStill}
           alt={`${site.name} manufacturing — brand film still`}
-          width="941"
-          height="1672"
+          widths={[340, 680, 1020]}
+          sizes="(max-width: 860px) 300px, 340px"
+          format="webp"
           loading="lazy"
         />
       </div>

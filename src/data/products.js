@@ -45,6 +45,20 @@ export const CATEGORIES = [
   "Hardeners",
 ];
 
+// Category → dedicated family/hub page slug.
+//
+// Single source of truth for every place that needs to link a category name
+// to its own landing page (products index headings, header mega-menu, mobile
+// nav). ONLY categories that have a real, published hub page under
+// src/pages/products/ appear here — a category with no hub renders as a
+// plain label rather than a link to a page that doesn't exist.
+//
+// Add an entry here only when the corresponding .astro page actually exists.
+export const CATEGORY_HUBS = {
+  "GP Resins": "gp-resins",
+  "Epoxy & Casting": "epoxy-resins",
+};
+
 export const products = [
   {
     slug: "sheet-grade-yellow-resin",

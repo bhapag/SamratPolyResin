@@ -4,7 +4,7 @@ import Base from '../../layouts/Base.astro';
 import EnquiryForm from '../../components/EnquiryForm.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
 import ResourceCard from '../../components/ResourceCard.astro';
-import { products } from '../../data/products.js';
+import { products, CATEGORY_HUBS } from '../../data/products.js';
 import { applications as applicationGuides } from '../../data/applications.js';
 import { resources } from '../../data/resources.js';
 import { site, buildWhatsAppLink, buildCanonicalUrl } from '../../data/site.js';
@@ -793,6 +793,15 @@ const appCards = await Promise.all(
   })
 ).then(list => list.filter(Boolean));
 
+// Where this product's category has its own hub page, the breadcrumb gains a
+// real category step (Home / Products / GP Resins / GP Clear Resin). That
+// gives every grade a contextual up-link to its family page — previously the
+// only route to a hub was the /products/ index — and makes the visible
+// hierarchy match the site's actual structure.
+const categoryHubUrl = CATEGORY_HUBS[product.category]
+  ? `/products/${CATEGORY_HUBS[product.category]}/`
+  : null;
+
 // BreadcrumbList — mirrors the visible breadcrumb below exactly, no extra data.
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
@@ -800,7 +809,10 @@ const breadcrumbJsonLd = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: buildCanonicalUrl('/') },
     { "@type": "ListItem", position: 2, name: "Products", item: buildCanonicalUrl('/products/') },
-    { "@type": "ListItem", position: 3, name, item: buildCanonicalUrl(Astro.url.pathname) },
+    ...(categoryHubUrl
+      ? [{ "@type": "ListItem", position: 3, name: product.category, item: buildCanonicalUrl(categoryHubUrl) }]
+      : []),
+    { "@type": "ListItem", position: categoryHubUrl ? 4 : 3, name, item: buildCanonicalUrl(Astro.url.pathname) },
   ],
 };
 
@@ -859,7 +871,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
   {faqJsonLd && <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />}
 
   <div class="wrap crumb">
-    <a href="/">Home</a><span>/</span><a href="/products/">Products</a><span>/</span><span class="cur">{name}</span>
+    <a href="/">Home</a><span>/</span><a href="/products/">Products</a><span>/</span>{categoryHubUrl && (<><a href={categoryHubUrl}>{product.category}</a><span>/</span></>)}<span class="cur">{name}</span>
   </div>
 
   <article class="wrap prod">

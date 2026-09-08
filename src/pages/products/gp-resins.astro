@@ -5,16 +5,80 @@ import EnquiryForm from '../../components/EnquiryForm.astro';
 import { products } from '../../data/products.js';
 import { applications } from '../../data/applications.js';
 import { resources } from '../../data/resources.js';
-import { site } from '../../data/site.js';
+import { site, buildCanonicalUrl } from '../../data/site.js';
 
-// "GP Resins" is an existing category in products.js (8 grades) that had no
-// dedicated commercial page — only an anchored section on the shared
-// /products/ index, which can't own a distinct <title>/description for the
-// bare "GP resin" / "GP polyester resin" search intent. This page gives that
-// intent a single, real commercial owner without inventing any new product
-// or fact — every grade, application and resource linked below already
-// exists elsewhere in the codebase.
+// "GP Resins" is an existing category in products.js that had no dedicated
+// commercial page — only an anchored section on the shared /products/ index,
+// which can't own a distinct <title>/description for the bare "GP resin" /
+// "GP polyester resin" search intent. This page gives that intent a single,
+// real commercial owner without inventing any new product or fact.
+//
+// SOURCING RULE FOR THIS PAGE: every technical value rendered below is read
+// at build time from `techSpecs` in products.js (itself derived from each
+// grade's published TDS). Nothing is hardcoded, estimated or averaged. Where
+// a grade does not publish a given parameter the table prints "See TDS"
+// rather than inferring a value.
 const grades = products.filter((p) => p.category === 'GP Resins');
+
+// Comparison table — only parameters that most grades actually publish, so
+// the table stays informative instead of mostly empty.
+const COMPARE_FIELDS = ['Viscosity', 'Gel Time', 'Styrene Content', 'Curing System'];
+const spec = (p, field) => {
+  const t = p.techSpecs ?? {};
+  // Button Grade publishes "Curing Time" where others publish "Cure Time";
+  // read whichever key the grade actually uses rather than normalising data.
+  if (field === 'Curing System') return t['Curing System'] ?? null;
+  return t[field] ?? null;
+};
+
+// Gel-time spread, derived from the real published values so the selection
+// copy below cannot drift away from products.js. Takes the first number in
+// each published string ("5 Minutes" -> 5, "10–15 minutes" -> 10,
+// "< 8 minutes" -> 8) purely to order the grades; the sentence always prints
+// the grade's own published wording, never a recomputed figure.
+const gelParsed = grades
+  .map((p) => {
+    const raw = spec(p, 'Gel Time');
+    const n = raw ? parseFloat(String(raw).replace(/[^0-9.]+/, '')) : NaN;
+    return { name: p.name, raw, n };
+  })
+  .filter((g) => g.raw && Number.isFinite(g.n))
+  .sort((a, b) => a.n - b.n);
+const gelFastest = gelParsed[0] ?? null;
+const gelSlowest = gelParsed[gelParsed.length - 1] ?? null;
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: buildCanonicalUrl('/') },
+    { "@type": "ListItem", position: 2, name: "Products", item: buildCanonicalUrl('/products/') },
+    { "@type": "ListItem", position: 3, name: "GP Resins", item: buildCanonicalUrl(Astro.url.pathname) },
+  ],
+};
+
+// CollectionPage + ItemList describing exactly the grades listed on the page.
+// No offers, price, availability or rating — none of that is published for
+// these grades, and inventing it would be false structured data.
+const collectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": buildCanonicalUrl(Astro.url.pathname),
+  name: "GP Resin — General Purpose Polyester Resin",
+  url: buildCanonicalUrl(Astro.url.pathname),
+  isPartOf: { "@type": "WebSite", name: site.name, url: site.url },
+  about: { "@type": "Thing", name: "General Purpose Unsaturated Polyester Resin" },
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: grades.length,
+    itemListElement: grades.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: p.name,
+      url: buildCanonicalUrl(`/products/${p.slug}/`),
+    })),
+  },
+};
 
 const relatedApplicationSlugs = [
   'resin-for-general-frp-lamination',
@@ -44,22 +108,144 @@ const relatedResources = relatedResourceSlugs
   title="GP Resin Manufacturer in India"
   description="Samrat Poly Resins manufactures General Purpose (GP) polyester resin in 7 grades — clear, white, yellow, quartz and more — for FRP fabrication across India."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(collectionJsonLd)} />
+
+  <div class="wrap crumb">
+    <a href="/">Home</a><span>/</span><a href="/products/">Products</a><span>/</span><span class="cur">GP Resins</span>
+  </div>
+
   <section class="section fam-hero">
     <div class="wrap fam-hero-inner">
       <div>
         <p class="eyebrow">Product family</p>
         <h1>GP Resin — General Purpose Polyester Resin</h1>
         <p class="fam-hero-sub">
-          GP Resin (General Purpose polyester resin) is Samrat Poly Resins' largest product family —
-          {grades.length} grades manufactured for FRP lamination, moulding, roofing sheets, doors and
-          general fabrication. Each grade is a distinct, published product with its own technical data
-          sheet; this page is the starting point for choosing the right one.
+          GP Resin (General Purpose polyester resin) covers {grades.length} grades manufactured for
+          FRP lamination, moulding, roofing sheets, doors and general fabrication. Each grade is a
+          distinct, published product with its own technical data sheet; this page is the starting
+          point for choosing the right one.
         </p>
       </div>
       <div class="fam-hero-badge">
         <span class="fam-hero-badge-num">{grades.length}</span>
         <span class="fam-hero-badge-label">Published<br/>Grades</span>
       </div>
+    </div>
+  </section>
+
+  <section class="section fam-what">
+    <div class="wrap fam-prose">
+      <div class="section-head">
+        <p class="eyebrow">What it is</p>
+        <h2>General purpose polyester resin, in plain terms</h2>
+      </div>
+      <p>
+        GP resin is an orthophthalic unsaturated polyester resin supplied as a liquid and cured at
+        room temperature. Across the grades below it is catalysed with MEKP and, where the grade is
+        supplied non-accelerated, brought to cure with a cobalt octoate accelerator — which is what
+        lets the same drum be dosed differently from one job to the next.
+      </p>
+      <p>
+        “General purpose” describes the intended breadth of use rather than a lower specification:
+        these are the grades used for everyday FRP lamination, moulding and casting work, as opposed
+        to the speciality routes engineered for a single property. Where a job genuinely calls for
+        chemical or corrosion service, or for a fire-performance requirement, the{' '}
+        <a href="/products/vinyl-ester-resin/">vinyl ester</a>,{' '}
+        <a href="/products/bisphenol-resin/">bisphenol</a>{' '}and{' '}
+        <a href="/products/fire-retardant-resin/">fire retardant</a>{' '}ranges exist for that purpose
+        and should be reviewed instead.
+      </p>
+      <p class="fam-prose-more">
+        For the full explanation, see{' '}
+        <a href="/resources/what-is-gp-polyester-resin/">What is GP polyester resin</a>{' '}and{' '}
+        <a href="/resources/how-to-select-polyester-resin-for-frp-manufacturing/">how to select a polyester resin for FRP manufacturing</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section fam-compare">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Compare grades</p>
+        <h2>Published properties, side by side</h2>
+      </div>
+      <p class="fam-compare-note">
+        Every value below is taken from that grade’s own technical data sheet. Where a grade does not
+        publish a parameter, the cell reads “See TDS” rather than showing an assumed figure.
+      </p>
+      <div class="fam-table-scroll">
+        <table class="fam-table">
+          <thead>
+            <tr>
+              <th scope="col">Grade</th>
+              {COMPARE_FIELDS.map((f) => <th scope="col">{f}</th>)}
+              <th scope="col">Documents</th>
+            </tr>
+          </thead>
+          <tbody>
+            {grades.map((p) => (
+              <tr>
+                <th scope="row"><a href={`/products/${p.slug}/`}>{p.name}</a></th>
+                {COMPARE_FIELDS.map((f) => <td>{spec(p, f) ?? <span class="fam-na">See TDS</span>}</td>)}
+                <td class="fam-docs-cell">
+                  {p.tdsUrl && <a href={p.tdsUrl} target="_blank" rel="noopener" download>TDS</a>}
+                  {p.tdsUrl && p.sdsUrl && <span aria-hidden="true"> · </span>}
+                  {p.sdsUrl && <a href={p.sdsUrl} target="_blank" rel="noopener" download>SDS</a>}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fam-choose">
+    <div class="wrap fam-prose">
+      <div class="section-head">
+        <p class="eyebrow">Selection</p>
+        <h2>Choosing between the grades</h2>
+      </div>
+      <p>
+        The practical differences across this family are working time, flow and finished appearance —
+        all three are visible in the table above.
+      </p>
+      <ul class="fam-choose-list">
+        <li>
+          <strong>Working time.</strong>{' '}
+          {gelFastest && gelSlowest && gelFastest.name !== gelSlowest.name ? (
+            <>
+              Published gel times span roughly <span class="fam-nowrap">{gelFastest.raw}</span> on{' '}
+              {gelFastest.name} through to <span class="fam-nowrap">{gelSlowest.raw}</span> on{' '}
+              {gelSlowest.name} — see the table above for each grade.{' '}
+            </>
+          ) : null}
+          A shorter gel time turns the job around faster; a longer one gives more time to wet out a
+          large or complex lay-up before the resin starts to set.
+        </li>
+        <li>
+          <strong>Flow and thickness.</strong> Viscosity in this family spans thin, free-flowing
+          grades through to markedly thicker ones — thinner resin wets reinforcement out more
+          readily, while a heavier body resists drainage on vertical and overhead surfaces.
+        </li>
+        <li>
+          <strong>Appearance.</strong> The grades differ by supplied colour and clarity — clear,
+          water-white, transparent yellow and high-clarity casting grades — which matters wherever
+          the resin is visible in the finished part. See{' '}
+          <a href="/resources/gp-clear-resin-vs-gp-yellow-resin/">GP Clear vs GP Yellow</a>.
+        </li>
+        <li>
+          <strong>Intended use.</strong> Several grades are published for a specific job — lamination,
+          engineered stone and quartz casting, or buttons and small mouldings. Start from the finished
+          product you are making rather than from the resin name.
+        </li>
+      </ul>
+      <p class="fam-caveat">
+        These are the published supply parameters, not a process specification. Confirm dosing, cure
+        schedule and handling against the grade’s current TDS and SDS before production, and tell us
+        the finished component and process when you enquire so the right grade can be confirmed.
+      </p>
     </div>
   </section>
 
@@ -150,6 +336,45 @@ const relatedResources = relatedResourceSlugs
       color: var(--ink-faint); margin-top: 0.6rem; line-height: 1.5;
     }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.4rem; }
+
+    /* --- explanation / selection prose --- */
+    .fam-what, .fam-choose { padding-bottom: 0; }
+    .fam-prose { max-width: 72ch; }
+    .fam-prose p { color: var(--ink-dim); line-height: 1.75; margin-bottom: 1rem; }
+    .fam-prose a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 2px; }
+    .fam-prose a:hover { color: var(--accent-gold); }
+    .fam-prose-more { font-size: 0.92rem; }
+    .fam-choose-list { display: flex; flex-direction: column; gap: 1rem; margin: 0.4rem 0 1.4rem; }
+    .fam-choose-list li { color: var(--ink-dim); line-height: 1.7; padding-left: 1rem; border-left: 2px solid var(--line-2); }
+    .fam-choose-list strong { color: var(--ink); }
+    .fam-nowrap { white-space: nowrap; }
+    .fam-caveat {
+      border-left: 2px solid rgba(var(--gold-rgb), .5); padding: 0.9rem 1.1rem;
+      background: rgba(var(--gold-rgb), .05); font-size: 0.9rem; line-height: 1.65;
+    }
+
+    /* --- grade comparison table --- */
+    .fam-compare { padding-bottom: 0; }
+    .fam-compare-note { color: var(--ink-faint); font-size: 0.88rem; max-width: 70ch; margin: -2rem 0 1.6rem; line-height: 1.6; }
+    .fam-table-scroll { overflow-x: auto; border: 1px solid var(--line); background: var(--bg-2); }
+    .fam-table { width: 100%; border-collapse: collapse; min-width: 720px; font-size: 0.88rem; }
+    .fam-table th, .fam-table td { padding: 0.85rem 1rem; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .fam-table thead th {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--accent-gold-light); background: var(--bg-3); white-space: nowrap;
+    }
+    .fam-table tbody th { font-weight: 600; color: var(--ink); }
+    .fam-table tbody th a { color: var(--ink); text-decoration: none; }
+    .fam-table tbody th a:hover { color: var(--accent-gold-light); text-decoration: underline; }
+    .fam-table td { color: var(--ink-dim); }
+    .fam-table tbody tr:last-child th, .fam-table tbody tr:last-child td { border-bottom: 0; }
+    .fam-na { color: var(--ink-faint); font-style: italic; }
+    .fam-docs-cell { white-space: nowrap; }
+    .fam-docs-cell a {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;
+      color: var(--accent-gold-light); text-decoration: none; border-bottom: 1px solid rgba(var(--gold-rgb), .4);
+    }
+    .fam-docs-cell a:hover { color: var(--accent-gold); border-bottom-color: var(--accent-gold); }
 
     .fam-card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.9rem; }
     .fam-link-card {
