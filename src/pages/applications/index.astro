@@ -60,6 +60,11 @@ const catId = (name) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/
       <p class="eyebrow">Application guides</p>
       <h1>Where our resins are put to work</h1>
       <p class="apps-hero-sub">{published.length} documented use cases — from water tanks and roofing sheets to marine hulls and jewellery casting — matched to the Samrat Poly Resins grade each one actually uses.</p>
+      <ul class="apps-jump">
+        {grouped.map((group) => (
+          <li><a href={`#${catId(group.name)}`}>{group.name.replace(' Applications', '')} <span aria-hidden="true">{group.items.length}</span></a></li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -163,7 +168,38 @@ const catId = (name) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/
     .apps-group-title span:first-child { color: var(--ink); letter-spacing: 0.05em; }
     .apps-group-count { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-gold); margin-left: auto; }
 
+    /* 2-up on phones. These photographs are genuine application imagery and
+       communicate at a glance, so unlike the product posters they keep their
+       image - but a single 260px-minimum column turned 37 guides into a
+       20,967px scroll on a 390px viewport. */
     .apps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.4rem; }
+    @media (max-width: 620px) {
+      .apps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
+      .apps-card-body { padding: 0.8rem 0.85rem 0.9rem; }
+      .apps-card-body h3 { font-size: 0.88rem; }
+      /* At ~170px a card, the full guide summary ran to eight lines and
+         undid most of the height the 2-up grid saved. Three lines is enough
+         to say what the guide covers; the guide itself is one tap away. */
+      .apps-card-body p {
+        font-size: 0.78rem; margin-top: 0.35rem; flex: none;
+        display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3;
+        -webkit-box-orient: vertical; overflow: hidden;
+      }
+      .apps-card-arrow { margin-top: 0.55rem; }
+    }
+
+    /* ---------- group jump navigation ---------- */
+    .apps-jump { list-style: none; margin: 1.4rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .apps-jump a {
+      display: inline-flex; align-items: baseline; gap: 0.45rem;
+      padding: 0.42rem 0.78rem;
+      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.03em;
+      color: var(--ink-dim); background: var(--bg-3); border: 1px solid var(--line);
+      transition: border-color .3s var(--ease-premium), color .3s var(--ease-premium);
+    }
+    .apps-jump a:hover, .apps-jump a:focus-visible { border-color: var(--line-2); color: var(--ink); }
+    .apps-jump a span { color: var(--accent-gold-light); }
+    .apps-group { scroll-margin-top: 5.5rem; }
     .apps-card {
       display: flex; flex-direction: column;
       background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
