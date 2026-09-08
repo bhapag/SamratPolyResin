@@ -137,7 +137,7 @@ export const products = [
       "ISO 9001:2015 certified quality management system",
       "Manufacturing polyester resins since 2017",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
-      "Consistent 99% purity and factory-controlled pigmentation",
+      "Factory-controlled pigmentation for consistent colour",
       "Supplied in bulk 225 kg drums",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
     ],
@@ -172,7 +172,7 @@ export const products = [
       },
       {
         q: "What is the viscosity and styrene content of Sheet Grade Yellow Resin?",
-        a: "Viscosity is approximately 280 cPs and styrene content is 35%, with 99% purity.",
+        a: "Viscosity is approximately 280 cPs and styrene content is 35%. Purity is not published on the current TDS for this grade — ask us if your specification requires it.",
       },
       {
         q: "What is the shelf life and storage temperature for Sheet Grade Yellow Resin?",
@@ -299,7 +299,7 @@ export const products = [
       },
       {
         q: "What is the styrene content, purity and density of this resin?",
-        a: "Styrene content is 33–40%, purity is 99%, and specific gravity is 1.20 g/cm³.",
+        a: "Styrene content is 33–40% and purity is 99%. Specific gravity / density is not part of the published specification set for this grade — the current TDS states it is intentionally excluded.",
       },
       {
         q: "What packaging and minimum order quantity is available?",
@@ -431,7 +431,7 @@ export const products = [
       },
       {
         q: "What is the viscosity, styrene content and density of Lamination Resin?",
-        a: "Viscosity is approximately 400 cPs, styrene content is 35%, and specific gravity ranges from 1.20 to 1.60 g/cm³. Purity is 100%.",
+        a: "Viscosity is approximately 400 cPs, styrene content is 35% and purity is 100%. Specific gravity / density is recorded as \"Not Provided\" on the current TDS, so no figure is quoted here.",
       },
       {
         q: "What packaging and minimum order quantity does Lamination Resin come in?",
@@ -514,7 +514,7 @@ export const products = [
     },
     tagline: "Clear, general-purpose orthophthalic polyester resin.",
     description:
-      "GP Clear Resin is a clear, orthophthalic unsaturated polyester resin developed by Samrat Poly Resins for everyday FRP and composite manufacturing. Supplied as a non-accelerated liquid with a viscosity of 350–450 cPs and a gel time under 8 minutes, it wets out reinforcement quickly and cures at room temperature once catalysed with MEKP and a cobalt octoate accelerator. With a balanced 33–40% styrene content, 1.20 g/cm³ density and 99% purity, it delivers consistent, cost-effective performance across hand layup, spray-up, moulding and lamination — a dependable general-purpose polyester resin for a wide range of composite products.",
+      "GP Clear Resin is a clear, orthophthalic unsaturated polyester resin developed by Samrat Poly Resins for everyday FRP and composite manufacturing. Supplied as a non-accelerated liquid with a viscosity of 350–450 cPs and a gel time under 8 minutes, it wets out reinforcement quickly and cures at room temperature once catalysed with MEKP and a cobalt octoate accelerator. With a balanced 33–40% styrene content and 99% purity, it delivers consistent, cost-effective performance across hand layup, spray-up, moulding and lamination — a dependable general-purpose polyester resin for a wide range of composite products.",
     usageNote:
       'In practice, GP Clear Resin is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and a cobalt accelerator, then reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> for hand layup and spray-up. Pair it with a <a href="/products/gp-gelcoat-resin/">gelcoat resin</a> for a durable moulded surface, step up to <a href="/products/vinyl-ester-resin/">vinyl ester resin</a> where higher chemical and corrosion resistance is required, or see <a href="/products/lamination-resin/">lamination resin</a> for door-lamination and FRP bonding work.',
     features: [
@@ -522,7 +522,7 @@ export const products = [
       "Low viscosity (350–450 cPs) for excellent wet-out and easy impregnation",
       "Fast gel time under 8 minutes for quicker layup cycles",
       "Non-accelerated system — dose MEKP and cobalt accelerator to suit workshop conditions",
-      "Balanced 33–40% styrene content and 1.20 g/cm³ density",
+      "Balanced 33–40% styrene content and 99% purity",
       "Consistent 99% purity with batch-to-batch reliability",
       "Supplied in 225 kg drums; minimum order 1,000 kg",
     ],
@@ -563,7 +563,7 @@ export const products = [
       },
       {
         q: "What is the viscosity, styrene content and density of GP Clear Resin?",
-        a: "Viscosity is 350–450 cPs, styrene content is 33–40%, and specific gravity is 1.20 g/cm³. Purity is 99%.",
+        a: "Viscosity is 350–450 cPs, styrene content is 33–40% and purity is 99%. Specific gravity / density is not part of the published specification set for this grade — the current TDS states it is intentionally excluded.",
       },
       {
         q: "How is GP Clear Resin packed, and what is the minimum order quantity?",
@@ -970,7 +970,7 @@ export const products = [
       },
       {
         q: "What is the gel time and cure time of GP Gelcoat Resin?",
-        a: "Gel time is 8.5 minutes. Full cure at room temperature, once catalysed with MEKP (around 1.5%) and a cobalt octoate accelerator (around 0.4%), typically takes 1.5 to 2 hours.",
+        a: "Gel time is 8.5 minutes. Full cure at room temperature, once catalysed with MEKP (around 1.5%), typically takes 1.5 to 2 hours. The current TDS does not publish a cobalt octoate dosage for this gelcoat — confirm the accelerator dosage with us before production.",
       },
       {
         q: "What is the viscosity and styrene content of GP Gelcoat Resin?",

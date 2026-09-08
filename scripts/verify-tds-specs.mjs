@@ -77,6 +77,53 @@ const ALLOWED = [
 const allowed = (slug, key) => ALLOWED.find((a) => a.slug === slug && a.key === key);
 
 // ---------------------------------------------------------------------------
+//  PROSE FIGURES
+//  techSpecs is not the only place a specification reaches a buyer. Product
+//  descriptions, feature bullets and FAQ answers state figures too - and FAQ
+//  answers are additionally emitted as FAQPage structured data, so an
+//  unsupported number there becomes fabricated schema. Those are scanned with
+//  the same rule.
+// ---------------------------------------------------------------------------
+const PROSE_STRING_FIELDS = ['description', 'productDetails', 'usageNote'];
+const PROSE_ARRAY_FIELDS = ['features', 'whyChoose', 'applications', 'industries'];
+
+// A number immediately followed by a unit these data sheets actually use.
+// Prices, years, item counts and ordinals are not specifications. The
+// trailing (?![a-z]) rather than \b matters: \b after "%" or "g/cm³" never
+// matches, which silently hid most findings in an earlier version of this.
+const FIGURE = /(\d[\d,]*(?:\.\d+)?)\s*(?:[-–—]\s*(\d[\d,]*(?:\.\d+)?)\s*)?(cps|%|g\/cm[³²3]?|kg|mm|°\s?c|shore\s*d|minutes|mins|hours|hrs|months)(?![a-z])/gi;
+
+const PROSE_ALLOWED = [
+  {
+    slug: 'gp-yellow-resin', match: '350',
+    why: 'The sentence compares this grade with GP Clear Resin ("450-600 cPs against GP Clear Resin\'s '
+       + '350-450 cPs"). 350-450 is GP Clear\'s published figure and is correctly absent from GP Yellow\'s '
+       + 'own TDS, which publishes 450-600 cPs.',
+  },
+  {
+    slug: 'marble-resin', match: '300',
+    why: 'The FAQ states the TDS figure (450 cPs) and the differing catalogue figure (300 cPs) side by side '
+       + 'and warns they must not be combined. Quoting the unverified figure is the point of the answer.',
+  },
+  {
+    slug: 'gp-quartz-resin', match: '800',
+    why: 'Doubled text layer in its TDS - see the Viscosity entry above.',
+  },
+  {
+    slug: 'gp-quartz-resin', match: '1000',
+    why: 'Its TDS minimum-order row is doubled ("11,,000000 kkgg"), i.e. 1,000 kg written twice, so the '
+       + 'figure is supported but not extractable as contiguous text.',
+  },
+  {
+    slug: 'iso-fire-retardant-resin', match: '500',
+    why: 'Its TDS minimum-order row carries two overlaid values (500 kg and 1,000 kg). 500 kg belongs to the '
+       + 'coherent ISO-grade layer, matching that layer\'s 35 kg / 225 kg packaging. OWNER ACTION: reissue this PDF.',
+  },
+];
+
+const proseAllowed = (slug, num) => PROSE_ALLOWED.find((a) => a.slug === slug && a.match === num);
+
+// ---------------------------------------------------------------------------
 
 const norm = (s) => String(s)
   .replace(/ /g, ' ')
@@ -162,6 +209,32 @@ for (const product of products) {
     const note = allowed(product.slug, key);
     if (note) excused.push({ ...note, value });
     else failures.push({ slug: product.slug, key, value, reason: `not found in ${product.tdsUrl}` });
+  }
+
+  // --- prose ---
+  const chunks = [];
+  for (const f of PROSE_STRING_FIELDS) if (typeof product[f] === 'string') chunks.push([f, product[f]]);
+  for (const f of PROSE_ARRAY_FIELDS) {
+    if (Array.isArray(product[f])) product[f].forEach((v, i) => {
+      if (typeof v === 'string') chunks.push([`${f}[${i}]`, v]);
+    });
+  }
+  if (Array.isArray(product.faqs)) product.faqs.forEach((q, i) => {
+    if (typeof q?.a === 'string') chunks.push([`faqs[${i}].a (also FAQPage JSON-LD)`, q.a]);
+  });
+
+  const grouped = (n) => n.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  for (const [field, value] of chunks) {
+    for (const m of String(value).matchAll(FIGURE)) {
+      const nums = [m[1], m[2]].filter(Boolean).map((n) => n.replace(/,/g, ''));
+      for (const n of nums) {
+        checked++;
+        if (text.includes(n) || text.includes(grouped(n)) || text.includes(n.replace(/\.0+$/, ''))) continue;
+        const ok = proseAllowed(product.slug, n);
+        if (ok) excused.push({ slug: product.slug, key: field, value: m[0].trim(), why: ok.why });
+        else failures.push({ slug: product.slug, key: field, value: m[0].trim(), reason: `figure ${n} not in ${product.tdsUrl}` });
+      }
+    }
   }
 }
 
