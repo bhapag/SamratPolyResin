@@ -76,10 +76,15 @@ const ambientPosterMobile = await getImage({ src: heroVideoPosterMobile, width: 
 
     const isMobile = () => window.matchMedia('(max-width: 760px)').matches;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Save-Data: this layer is pure atmosphere on every page of the site, so
+    // it is the first thing to drop when a visitor has asked for less data.
+    // The <picture> poster above already carries the whole visual.
+    const conn = (navigator as any).connection;
+    const saveData = Boolean(conn && conn.saveData === true);
     const activeVideo = () => (isMobile() ? mobileVideo : desktopVideo);
 
     const ensureActivated = () => {
-      if (reducedMotion) return;
+      if (reducedMotion || saveData) return;
       const video = activeVideo();
       if (video.dataset.activated === 'true') return;
       video.dataset.activated = 'true';
@@ -108,7 +113,7 @@ const ambientPosterMobile = await getImage({ src: heroVideoPosterMobile, width: 
       if (video.dataset.activated === 'true') video.pause();
     };
     const resumeAmbient = () => {
-      if (reducedMotion) return;
+      if (reducedMotion || saveData) return;
       ensureActivated();
       const video = activeVideo();
       if (video.dataset.activated === 'true') {

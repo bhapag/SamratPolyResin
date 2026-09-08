@@ -91,8 +91,12 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
     const photo = document.getElementById('brandFilmPhoto') as HTMLImageElement | null;
     if (!video || !photo) return;
 
-    // Reduced motion: static supplied photo only. No video load, no cycle.
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Reduced motion, or Save-Data: static supplied photo only. No video
+    // load, no cycle. The <Image> layer is already the visible state, so this
+    // costs the visitor nothing but the 25.9MB-master-derived clip.
+    const conn = (navigator as any).connection;
+    const saveData = Boolean(conn && conn.saveData === true);
+    if (saveData || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       video.style.display = 'none';
       photo.classList.add('is-active');
       return;

@@ -154,6 +154,16 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
           // Reduced motion: assign nothing at all. The eager poster frame is
           // already the full experience, and no video is fetched.
           if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+          // Save-Data: the visitor has asked their browser to use less data.
+          // A 1.7-4 MB decorative hero is exactly what that setting is for,
+          // so no video is requested and the poster frame stands in. Safari
+          // does not implement navigator.connection, so this is a no-op
+          // there rather than a false negative - iOS keeps the full
+          // experience, which is the safe direction to fail in.
+          var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+          if (conn && conn.saveData === true) return;
+
           var isMobile = window.matchMedia('(max-width: 760px)').matches;
           var video = document.querySelector(isMobile ? '.hero-video-mobile' : '.hero-video-desktop');
           if (!video) return;
@@ -1295,6 +1305,10 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     // it's visible, not loading on arrival).
     document.addEventListener('astro:page-load', () => {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      // Save-Data: these below-fold clips are decorative, so they are not
+      // fetched when the visitor has asked their browser to conserve data.
+      const conn = (navigator as any).connection;
+      if (conn && conn.saveData === true) return;
 
       document.querySelectorAll<HTMLVideoElement>('.lazy-video').forEach((video) => {
         if (video.dataset.wired === 'true') return;
