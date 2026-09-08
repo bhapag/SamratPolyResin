@@ -12,13 +12,13 @@ Everything below was read from the repository, not carried over from an earlier 
 |---|---|
 | Worktree | `C:\Users\harmy\samrat poly resins website\.claude\worktrees\cool-mendeleev-788c77` |
 | Branch | `seo/batch-0-1-perf-and-gp-hub` |
-| HEAD | `fe14ddd` |
+| HEAD | `3897c88` |
 | Remote | `https://github.com/bhapag/SamratPolyResin.git` |
 | **`origin/main`** | **`19cddab`** ("feat: add Samrat Poly Resins brand film") |
 | This branch vs `origin/main` | **8 ahead, 0 behind** |
-| **Deployed state** | **`19cddab`.** None of the six commits below is in production |
+| **Deployed state** | **`19cddab`.** None of the eight commits below is in production |
 
-### The six commits on this branch
+### The eight commits on this branch
 
 | Commit | Subject | Deployed? |
 |---|---|---|
@@ -29,6 +29,7 @@ Everything below was read from the repository, not carried over from an earlier 
 | `22aaede` | design: spec-led product cards, catalogue-first homepage, video re-encodes | No |
 | `28c1c4b` | design: make the Knowledge Centre navigable — compact rows and hub jump-nav | No |
 | `fe14ddd` | design+tests: applications discovery, and cover for the buyer journey | No |
+| `3897c88` | docs: bring the state and completion record up to HEAD | No |
 
 *(`f46988e` and `9cf8923` existed before this session; the rest were created in it.)*
 
