@@ -12,6 +12,8 @@
 
 ---
 
+> ⚠️ **Later corrections:** §9-bis (Slow-4G mechanism), §9-ter (ranking-loss premise) and **§9-quater (2026-09-09 — six overstatements withdrawn, two of them in §9-ter)** amend statements made earlier in this document. **See §9-quater before relying on any conclusion below.**
+
 ## 1. Facts vs hypotheses — and the `.com` causation claim
 
 ### 1.1 Retraction: I overstated the `.com` conclusion
@@ -332,11 +334,111 @@ Two further corrections to §8 of this document:
 
 ## 9-ter. CORRECTION — the "ranking loss" premise
 
-Search Console access (obtained 2026-09-08) shows **no data for `samratpolyresins.in` before ~24 July / 1 August 2026**, confirmed by the "Last 16 months" range returning identical totals to "3 months". **There is no 3–6 month decline to diagnose; the property is ~6 weeks old.** Full evidence in `SEO_PERFORMANCE_DIAGNOSIS.md`.
+> ⚠️ **Two statements in this section were themselves overstated and are superseded by §9-quater (C1 and C2).** Read them together.
 
-This also corrects §1.2 of this document, which listed the `.com` entity risk as a live hypothesis for `.in` ranking loss: **there is no measured `.in` ranking loss for it to explain.** The entity-overlap risk remains real but is now unattached to any observed decline, and `samratpolyresins.com` is **not present in the Google account**, so it cannot be measured at all from here.
+Search Console access (obtained 2026-09-08) shows **no data for `samratpolyresins.in` before ~24 July / 1 August 2026**, confirmed by the "Last 16 months" range returning identical totals to "3 months". ~~**There is no 3–6 month decline to diagnose; the property is ~6 weeks old.**~~ — **superseded by §9-quater C1:** the decline cannot be *observed* in this property, which is not the same as showing it did not happen. Full evidence in `SEO_PERFORMANCE_DIAGNOSIS.md`.
 
-Finally, `COMPETITOR_GAP_ANALYSIS.md` §6 claimed head commercial terms were *"not realistic"* to win. Search Console shows Samrat already at **position 1.0–2.5** for *polyester resin manufacturers in india*, *polyester resin supplier*, *resin manufacturer in india*, *resin manufacturers in india* and *plastic resin manufacturers*. **That claim is withdrawn** — the constraint is query demand volume, not ranking ability.
+This also corrects §1.2 of this document, which listed the `.com` entity risk as a live hypothesis for `.in` ranking loss: **there is no measured `.in` ranking loss for it to explain** — though equally, none is measurable either way (§9-quater C1). The entity-overlap risk remains real but is unattached to any *observed* decline. `samratpolyresins.com` is **not present in the Google account**, so its Search Console metrics are unavailable here; ~~it cannot be measured at all from here~~ — **superseded by §9-quater C5:** partial evidence is obtainable by other means.
+
+Finally, `COMPETITOR_GAP_ANALYSIS.md` §6 claimed head commercial terms were *"not realistic"* to win. I countered that Search Console shows Samrat at **position 1.0–2.5** for five manufacturer queries. ⚠️ **That counter-claim is itself withdrawn — see §9-quater C2:** those nine non-branded manufacturer queries total **35 impressions and 1 click** over 36 days, which cannot support a claim about category ranking ability. Both the original "not realistic" claim and my rebuttal exceed the evidence; the honest position is that **there is insufficient data either way**.
+
+---
+
+## 9-quater. CORRECTIONS (2026-09-09) — six overstatements withdrawn, including two in §9-ter
+
+§9-ter, written one day earlier, itself contained two overstatements. They are corrected here along with four others. **No code changed as a result of this section; it is a documentation correction only.**
+
+### C1 — "There is no ranking loss to diagnose" → **cannot confirm or disprove**
+
+**Was (§9-ter):** *"There is no 3–6 month decline to diagnose; the property is ~6 weeks old."*
+
+**Corrected:** Search Console holds no data for `samratpolyresins.in` before ~24 July / 1 August 2026. That means the reported decline **cannot be observed in this property** — which is **not** the same as establishing that no decline occurred. **Absence of data is not evidence of absence.** The correct statement is: *the claim can be neither confirmed nor disproved from Search Console.*
+
+The business dates from 2017 and `samratpolyresins.com` long predates this site, so a decline in the *business's* overall search visibility is entirely possible and would not appear in this property at all.
+
+**Cause of the limited history — established from repository evidence, not inferred:**
+
+| Date | Event | Source |
+|---|---|---|
+| 2026-07-16 | First commit: *"Initial commit: Samrat Poly Resins catalog site"* | `516e1a5` |
+| 2026-07-19 | Canonical/site URL switched to `samratpolyresins.in` (previously `.com`) | `cb46669` |
+| 2026-07-25 | Search Console verification meta tag added | `81447f5` |
+| ~2026-07-24 / 2026-08-01 | First GSC data (URL-prefix / domain property) | GSC |
+
+**Conclusion: a recent site launch combined with recent property verification.** It is **not** a migration of an established `.in` property and **not** a tracking misconfiguration — both of which would have produced different signatures (a migration would show a prior history then a discontinuity; a misconfiguration would show gaps, or a verified property with a flat zero curve while traffic demonstrably arrived).
+
+### C2 — "Position 1.0–2.5 for head commercial terms" → **withdrawn**
+
+**Was (§9-ter):** *"Search Console shows Samrat already at position 1.0–2.5 for [five manufacturer queries] … the constraint is query demand volume, not ranking ability."*
+
+**Corrected:** those positions are real but statistically meaningless at their volume. Full scope, which was missing: property `sc-domain:samratpolyresins.in`, **2026-08-01 → 2026-09-06 (36 days)**, search type **Web**, country **India**, **all devices**, CSV export (landing page is not attributable per-query in this export).
+
+| Query | Branded? | Clicks | Impr. | CTR | Position |
+|---|---|---|---|---|---|
+| polyester resin manufacturers in india | Non-brand | 0 | 2 | 0% | 1.0 |
+| polyester resin supplier | Non-brand | 0 | 1 | 0% | 1.0 |
+| resin manufacturer in india | Non-brand | 0 | 1 | 0% | 1.0 |
+| frp resin suppliers near me | Non-brand | 0 | 2 | 0% | 1.0 |
+| resin manufacturers in india | Non-brand | 1 | 8 | 12.5% | 1.75 |
+| plastic resin manufacturers | Non-brand | 0 | 6 | 0% | 1.83 |
+| polyester resin manufacturers | Non-brand | 0 | 11 | 0% | 2.27 |
+| polyester resin manufacturer | Non-brand | 0 | 2 | 0% | 2.5 |
+| resin manufacturers | Non-brand | 0 | 2 | 0% | 2.5 |
+| **Total** | | **1** | **35** | | |
+
+An "average position 1.0" derived from **one impression** means Samrat appeared once, in one search, in first place. **The claim of category-level ranking ability is withdrawn.**
+
+**Coverage caveat that applies to every query figure in this engagement:** GSC anonymises low-volume queries. The India query export lists **264 queries totalling 25 clicks / 783 impressions** against India totals of **105 clicks / 3,495 impressions** — so **the visible slice is ~24% of clicks and ~22% of impressions**. Any query-level conclusion describes a minority of traffic.
+
+**What replaces it as the better-evidenced finding** — page-1 India positions with real impressions and **zero** clicks: *gp clear resin* (pos 8.32 / 19 impr), *gp resin* (7.43 / 14), *gp resin full form* (7.14 / 14), *mekp hardener* (10.71 / 14), *polyester resin* (6.83 / 12). `COMPETITOR_GAP_ANALYSIS.md` §6's original "not realistic" framing remains too strong, but the correction to it must be equally narrow: **there is insufficient evidence either way**, and the observable constraint is CTR on terms already reaching page 1.
+
+### C3 — "20–25 leads" → **20–25 tracked lead-intent or engagement actions**
+
+**Was:** *"~20–25 leads per 28 days."*
+
+**Corrected:** GA4 records **events**, not leads. A click is not a conversation, and one person generates several events. Measured, 28 days:
+
+| Event | Count | Users |
+|---|---|---|
+| `enquiry_form_submit` | 1 | 1 |
+| `quote_request_click` | 2 | 2 |
+| `whatsapp_click` | 26 | 21 |
+| `phone_click` | 2 | 2 |
+| `catalogue_download` | 12 | 7 |
+| `file_download` | 68 | 16 |
+
+These user sets **overlap** and cannot be summed. `whatsapp_click` averages 1.24 events per user. The defensible phrasing is **"roughly 20–25 tracked lead-intent or engagement actions per 28 days"** — an upper bound on contact attempts, not a count of enquiries received. **How many became conversations is unknown**, because no offline or WhatsApp-side outcome is joined back to GA4.
+
+### C4 — AI-assistant visibility → **narrowed**
+
+**Was:** *"the measured AI-assistant traffic proves it is not costing visibility."*
+
+**Corrected:** 22 GA4-attributed "AI Assistant" sessions in 28 days prove only that **some** AI-assistant referral traffic exists and is currently small. They do **not** prove comprehensive visibility across assistants, do not identify which assistants, do not measure citations without a click (the dominant, and GA4-invisible, outcome), and do **not** establish that the crawler blocks have no effect — no counterfactual was tested. Full reasoning in `DOMAIN_AND_PRICE_DECISIONS.md` Q4.
+
+### C5 — `.com` is **not** "permanently unmeasurable"
+
+**Was:** *"`samratpolyresins.com` … cannot be measured at all from here"* (§9-ter), and "permanently unavailable".
+
+**Corrected:** only **Search Console** metrics require authorised property access. Partial evidence is obtainable now, without IndiaMART: public SERP checks for brand and category queries, `site:` indexed-footprint counts, third-party backlink/visibility tools, `.com` → `.in` referral traffic already present in GA4, IndiaMART's own lead reporting, and repeated brand-SERP capture over time. **None of this has been collected yet.** The `.com` question is *unquantified*, not *unmeasurable*. Source table in `DOMAIN_AND_PRICE_DECISIONS.md` Q3.
+
+### C6 — Unreferenced file in `public/` → **deployment size, not per-visitor download**
+
+**Was (stated in session narrative):** that the duplicated `public/videos/samrat-poly-resins-brand-film-still.png` is *"1.78 MB shipped on every deploy, fetched by nobody"* — phrasing which slid into implying a per-visitor cost.
+
+**Corrected:** a file sitting in `public/` is **copied into the build output and uploaded to the CDN**. It therefore increases **repository size, build output size and deployment/storage footprint**. It is **not** downloaded by visitors merely by being deployed — a static asset is fetched only when some HTML, CSS or script references it, and this one is referenced by nothing (the brand film uses the Astro-pipeline WebP derivative instead). The justification for removing it is **build/deploy hygiene and avoiding a stale duplicate of a maintained asset**, *not* a visitor-facing performance saving. Removal remains conditional on proving zero references — a Batch 2 gate.
+
+### Scope of these corrections
+
+| # | Document(s) amended | Code affected |
+|---|---|---|
+| C1 | `SEO_PERFORMANCE_DIAGNOSIS.md` §1, this §9-quater | none |
+| C2 | `SEO_PERFORMANCE_DIAGNOSIS.md` §2.5, `DOMAIN_AND_PRICE_DECISIONS.md` Q3 | none |
+| C3 | `SEO_PERFORMANCE_DIAGNOSIS.md` §3 | none |
+| C4 | `SEO_PERFORMANCE_DIAGNOSIS.md` §3.5, `DOMAIN_AND_PRICE_DECISIONS.md` Q4 | none |
+| C5 | `SEO_PERFORMANCE_DIAGNOSIS.md` §6/§8, `DOMAIN_AND_PRICE_DECISIONS.md` Q3 | none |
+| C6 | this §9-quater; governs the Batch 2 removal rationale | none yet |
+
+**No conclusion in these corrections changes any Batch 2 implementation decision.** The performance work rests on measured request-lifecycle data (§9-bis), which is unaffected.
 
 ---
 

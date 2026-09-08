@@ -7,7 +7,7 @@
 
 ## Item 1 — `/technical-documents/` (crawlable TDS/SDS library)
 
-**Why, with evidence:** GA4 records **65 `file_download` events from 14 users in 28 days** — real, measured demand for documents that currently have **no crawlable HTML entry point** at all. Zero new factual claims required: every document already exists and is already published.
+**Why, with evidence:** GA4 records **68 `file_download` events from 16 users in 28 days** — real, measured demand for documents that currently have **no crawlable HTML entry point** at all. Zero new factual claims required: every document already exists and is already published.
 
 **Page spec**
 
@@ -101,7 +101,7 @@ Masters preserved byte-identically in both cases. **4a must not ship without iOS
 
 | # | Action | Why |
 |---|---|---|
-| 6a | **Mark real GA4 key events** (`whatsapp_click`, `enquiry_form_submit`, `quote_request_click`, `phone_click`, `catalogue_download`) | GA4 currently reports **zero conversions** while ~20–25 lead actions occur per 28 days. Highest-value fix available anywhere in this engagement |
+| 6a | **Mark real GA4 key events** (`whatsapp_click`, `enquiry_form_submit`, `quote_request_click`, `phone_click`, `catalogue_download`) | GA4 currently reports **zero key events** while roughly **20–25 tracked lead-intent or engagement actions** occur per 28 days (see `SEO_AUDIT_VALIDATION_ADDENDUM.md` §9-quater C3 — these are events, not confirmed leads, and their user sets overlap). Highest-value fix available anywhere in this engagement |
 | 6b | Request `.com` Search Console access from IndiaMART | Only way to resolve the entity question |
 | 6c | Re-baseline in 4 weeks | Current data is ~6 weeks old and too thin for confident change measurement |
 

@@ -102,6 +102,42 @@ Four moves, in order:
 
 ---
 
+## 6-bis. MANDATORY POST-DEPLOYMENT INDEXING PHASE — permanent standing requirement
+
+**Status: mandatory, and not authorised before deployment.** Recorded here permanently so it cannot be lost between sessions. It runs **after** the code changes reach production and production has been verified — never before, and never as part of a local batch.
+
+**Standing constraint:** nothing in this phase may run while work is local-only. It is gated on (a) the changes being deployed, and (b) production being verified live.
+
+### The required sequence
+
+| # | Step | Rule |
+|---|---|---|
+| 1 | **Crawl the live production site** | Real production URLs, not localhost, not a preview deployment |
+| 2 | **Validate every URL** | HTTP status, canonical tag, `robots` meta and `X-Robots-Tag`, and the **rendered** HTML (not just the source) |
+| 3 | **Validate the sitemap** | It must contain **only canonical, indexable** URLs — no redirects, no duplicates, no `noindex`, no 404s |
+| 4 | **Refresh the sitemap in Search Console** | Resubmit so Google re-reads it after the deployment |
+| 5 | **Inspect priority changed URLs** | URL Inspection on the pages the batch actually changed |
+| 6 | **Request indexing — selectively** | **Only** for eligible priority pages: canonical, indexable, genuinely changed or genuinely new. Never bulk-submit |
+| 7 | **Diagnose the non-indexed sets** | The "Discovered – currently not indexed" and "Crawled – currently not indexed" URLs, to URL level, from the per-reason export |
+| 8 | **Monitor coverage** | Over several weeks, not days — indexation is not immediate |
+
+### Hard prohibitions in this phase
+
+- **Never** submit redirect URLs, duplicates, or non-canonical variants
+- **Never** request indexing as a substitute for fixing a page that Google chose not to index
+- **Never** bulk-request; the quota is finite and the request is a **hint, not a guarantee**
+- **Never** interpret "URL is not on Google" immediately after a request as a failure — it is expected
+
+### Honest expectation
+
+**Indexing cannot be forced.** Requesting indexing asks Google to re-crawl sooner; it does not oblige Google to index, and it does not affect ranking. Pages that are thin, duplicative or poorly linked will still not be indexed after a request — the fix for those is the page, not the request.
+
+### Cross-references
+
+Working inventory, the 290-vs-306 reconciliation, PDF indexability findings and the unresolved 40 non-indexed URLs are in **`INDEXING_INVENTORY.md`**.
+
+---
+
 ## 7. First implementation batch — proposed for approval
 
 **Batch 0 + Batch 1 only.** Deliberately low-risk, no URL changes, no new claims, fully revertible.

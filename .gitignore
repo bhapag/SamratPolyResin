@@ -6,3 +6,12 @@ images/
 .claude/
 test-results/
 playwright-report/
+
+# --- private analytics / research exports (never commit) ---
+# Raw Search Console and GA4 exports can contain commercially sensitive
+# query, revenue and account data. Aggregate findings go in the committed
+# reports; the raw files stay local.
+.seo-private/
+
+# --- local tool artefacts ---
+.playwright-cli/
