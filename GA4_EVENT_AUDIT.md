@@ -91,24 +91,59 @@ No linked Google Ads account was observed, and no Ads conversion import exists. 
 
 ---
 
-## 4. Recommended key events — and why each
+## 4. The key-event plan — deliberately narrow
 
-**Recommendation, not a change. Nothing was marked.**
+**Revised 2026-09-09 to a stricter rule: a key event marks a *success*, not an *attempt*.**
 
-| Event | Mark as key event? | Reasoning |
+An earlier draft of this document proposed marking `whatsapp_click`,
+`quote_request_click` and `phone_click` as key events too. That is withdrawn. A
+click is an *attempt to make contact*; it is not evidence that contact happened,
+and nothing on this site currently verifies that it did. Marking four attempt
+events as conversions produces a conversion count roughly 20x the real enquiry
+count, and every downstream decision — channel comparison, landing-page value,
+any future Ads bidding — inherits that inflation.
+
+### Mark now
+
+| Event | Classification | Why |
 |---|---|---|
-| `enquiry_form_submit` | ✅ **Yes — highest value** | The closest thing to a real lead: a completed form with product context attached. Unambiguous intent |
-| `quote_request_click` | ✅ **Yes** | Explicit commercial intent. Fix the detection rule (§3.5) first, or it will under-report |
-| `whatsapp_click` | ✅ **Yes** | The dominant contact route on this site (21 of the users). Not a confirmed conversation, so treat it as *contact attempt*, not *lead* |
-| `phone_click` | ✅ **Yes** | Same reasoning as WhatsApp; low volume but unambiguous intent |
-| `catalogue_download` | ⚠️ **Optional — secondary** | Real interest, but far from a purchase decision. If marked, keep it visibly separate from the four above so it cannot inflate a "leads" number |
-| `file_download` | ❌ **No** | Engagement, not intent — and it double-counts the catalogue (§3.1). Useful as a metric, misleading as a conversion |
-| `product_view` | ❌ **No** | A page view by another name. 275 events would swamp every real signal |
-| `scroll`, `click`, `form_start`, `user_engagement`, `page_view`, `session_start`, `first_visit` | ❌ **No** | Automatic engagement instrumentation |
-| `view_3d_*` | ❌ **No** | Provenance unresolved — see §5 |
+| `enquiry_form_submit` | ✅ **Key event — primary** | Fires on `samrat:lead-submitted`, dispatched only after Web3Forms returns `success: true`. It is a completed form with the buyer's name, phone, message and the product they were reading. This is a delivered enquiry, not an intention to send one. |
+
+**That is the entire "mark now" list — one event.**
+
+### Keep as lead-intent signals, NOT key events
+
+| Event | Classification | What would justify promoting it |
+|---|---|---|
+| `quote_request_click` | Lead intent | Its detection rule under-reports (§3.5). Fix the rule first, then reconcile a month of clicks against enquiries actually received. |
+| `whatsapp_click` | Lead intent | Reconcile against the WhatsApp Business account: how many of these clicks became a real conversation? Until that number exists, this is an attempt. |
+| `phone_click` | Lead intent | Reconcile against the call log. A tap is not a connected call. |
+| `catalogue_download` | Engagement | Interest, several steps before a purchase decision. |
+
+These remain fully reportable — GA4 charts, compares and segments ordinary
+events perfectly well. Not marking them costs nothing analytically; it only
+keeps them out of the "conversions" number.
+
+### Never mark
+
+| Event | Why |
+|---|---|
+| `file_download` | Engagement, and it double-counts the catalogue (§3.1). |
+| `product_view` | A page view by another name — 275 events would swamp every real signal. |
+| `scroll`, `click`, `form_start`, `user_engagement`, `page_view`, `session_start`, `first_visit` | Automatic engagement instrumentation. |
+| `view_3d_opened`, `view_3d_interaction_started`, `view_3d_closed` | Provenance unresolved — see §5. Do not build measurement on an event whose source is unknown. |
+
+### Expected measurement result of marking `enquiry_form_submit`
+
+GA4 will report **roughly 1–3 conversions per 28 days** at current volume,
+against the ~20–25 tracked lead-intent actions in the same window. That
+low number is the correct one, and it is the point: it is a real, defensible
+baseline that can be grown and compared against. It is **not** retroactive —
+it applies from the moment it is set, so the sooner it is set the sooner a
+baseline exists.
 
 ### Also recommended, in the same session
-1. **Unmark the three never-firing defaults** (`close_convert_lead`, `purchase`, `qualify_lead`). They contribute nothing but a misleading row of zeros. This is reversible.
+1. **Unmark the three never-firing defaults** (`close_convert_lead`, `purchase`, `qualify_lead`). They have never fired and never will — nothing on this site sends them — so they contribute only a misleading row of zeros. Fully reversible.
 2. **Register the custom parameters as custom dimensions** — `cta_location`, `cta_label`, `first_touch_channel`, `initial_landing_page`, product slug. Without this the parameters are collected but unreportable, which is most of their value lost.
 3. **Define internal traffic** (§3.6) before using any of these numbers as a baseline.
 
