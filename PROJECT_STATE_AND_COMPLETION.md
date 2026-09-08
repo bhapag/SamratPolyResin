@@ -12,10 +12,10 @@ Everything below was read from the repository, not carried over from an earlier 
 |---|---|
 | Worktree | `C:\Users\harmy\samrat poly resins website\.claude\worktrees\cool-mendeleev-788c77` |
 | Branch | `seo/batch-0-1-perf-and-gp-hub` |
-| HEAD | `22aaede` |
+| HEAD | `fe14ddd` |
 | Remote | `https://github.com/bhapag/SamratPolyResin.git` |
 | **`origin/main`** | **`19cddab`** ("feat: add Samrat Poly Resins brand film") |
-| This branch vs `origin/main` | **6 ahead, 0 behind** |
+| This branch vs `origin/main` | **8 ahead, 0 behind** |
 | **Deployed state** | **`19cddab`.** None of the six commits below is in production |
 
 ### The six commits on this branch
@@ -27,6 +27,8 @@ Everything below was read from the repository, not carried over from an earlier 
 | `d2dcedc` | docs: withdraw six overstated conclusions and reconcile indexing totals | No |
 | `0eff4c1` | perf+seo: Batch 2 — hero A+B, logo, document library, hub links, breadcrumbs | No |
 | `22aaede` | design: spec-led product cards, catalogue-first homepage, video re-encodes | No |
+| `28c1c4b` | design: make the Knowledge Centre navigable — compact rows and hub jump-nav | No |
+| `fe14ddd` | design+tests: applications discovery, and cover for the buyer journey | No |
 
 *(`f46988e` and `9cf8923` existed before this session; the rest were created in it.)*
 
@@ -159,16 +161,37 @@ Recorded permanently at `SEO_AUDIT_AND_PLAN.md` §6-bis and `INDEXING_INVENTORY.
 npm run build && npx astro preview --port 4399
 ```
 
-**Verification at HEAD `22aaede`**
+**Verification at HEAD `fe14ddd`**
 
 | Check | Result |
 |---|---|
 | `npm run build` | 292 pages |
-| `npx playwright test` | **43/43 passed** (16 pre-existing + 27 added in `0eff4c1`) |
+| `npx playwright test` | **63/63 passed** (16 pre-existing + 47 added this session) |
 | `node scripts/check-links.mjs` | 34,388 internal links, **0 broken** |
 | Horizontal overflow, 15 pages × {390, 1440} | **0 px everywhere** |
 | Sitemap / canonicals | 291 URLs, 291 canonicals, 0 `noindex`, 404 excluded |
-| Slow-4G, 5 cold runs, medians | LCP 7,412 ms; pre-LCP 124,786 bytes |
+| Slow-4G, 5 cold runs, medians | LCP 7,424 ms; pre-LCP 129,395 bytes; 1 video request |
+| Reduced motion | 0 video requests; 0 elements left at opacity 0 |
+| View Transitions | `phone_click` fires exactly once after 4 hops; `product_view` once per product |
+
+### Page height, before → after (fullPage, same conditions)
+
+| Page | Desktop 1440 | Mobile 390 |
+|---|---|---|
+| Homepage | 11,202 → **10,615** | 18,050 → **16,875** |
+| Products index | 8,997 → **6,789** (−25%) | 20,409 → **12,647** (−38%) |
+| Applications index | 9,922 → 9,977 | 20,967 → **10,454** (−50%) |
+| Knowledge Centre | 44,140 → **23,581** (−47%) | 95,224 → **38,237** (−60%) |
+| GP hub | 7,619 → 7,353 | 12,349 → **10,703** |
+| Epoxy hub | 4,477 → 4,353 | 7,236 → **6,295** |
+
+### Transfer, cold cache, scrolled to the bottom
+
+| | Before | After |
+|---|---|---|
+| Homepage mobile | 33.99 MB | **9.39 MB** (−72%) |
+| Homepage desktop | 38.12 MB | **12.83 MB** (−66%) |
+| Deployed video total | 53.00 MB | **9.22 MB** (−82.6%) |
 
 **Rollback.** Every commit is independently revertible; none rewrites history and none is deployed.
 
@@ -188,6 +211,6 @@ To abandon the whole branch, deploy `origin/main` (`19cddab`) — which is what 
 - **No Search Console change.** No indexing request, no sitemap submission, no settings, users or permissions touched.
 - **No change to `samratpolyresins.com` or any other Samrat domain**, and nothing copied from them.
 - **No real-device iOS testing.** Chromium and emulated WebKit profiles only. The hero's autoplay behaviour is historically fragile on iOS and this batch removed `poster` attributes that earlier iOS work deliberately added. **Emulation is not an iPhone test and is not presented as one — this needs a real device before deployment.**
-- Application template, resource-article template, product detail page and the resources index (**95,224 px on mobile**) are **not yet redesigned**.
+- **Product detail page (19,338 px mobile), resource-article template (26,797 px mobile) and the application detail template are not yet redesigned.** The Knowledge Centre index, applications index, products index and homepage are.
 
 **Status: local implementation complete for the items marked ✅ above, and verified only by the checks listed in §6.** Everything else is unshipped, unverified, or waiting on a business fact.
