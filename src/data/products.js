@@ -3824,3 +3824,67 @@ export const products = [
     ],
   },
 ];
+
+// ---------------------------------------------------------------------------
+//  CARD SPECS — the two published values shown on a product card
+// ---------------------------------------------------------------------------
+//  Why this exists: 31 product cards were previously distinguished only by a
+//  marketing poster image and a one-line tagline. At card size the posters are
+//  visually near-identical (light artwork, dense micro-text), so a buyer
+//  scanning the catalogue could not tell one grade from another. The values
+//  that actually separate grades — how thick it is and how long you have to
+//  work with it — were already in `techSpecs` but appeared nowhere until the
+//  product page.
+//
+//  SOURCING RULE: this only ever reads `techSpecs`, which is transcribed from
+//  each grade's published TDS. It never computes, averages, rounds or infers a
+//  value, and it never substitutes a value from a related grade. A product
+//  with no published spec renders no spec row - not a placeholder, not a dash.
+//
+//  Key names in `techSpecs` are inconsistently cased across grades ("Gel Time"
+//  vs "Gel time", "Specific Gravity / Density" vs "Specific gravity /
+//  density") because each was transcribed to match its own TDS. Matching is
+//  therefore case- and punctuation-insensitive rather than exact.
+
+const CARD_SPEC_PRIORITY = [
+  ['Viscosity', ['viscosity']],
+  ['Gel Time', ['geltime', 'gelpotlifedata', 'potlife']],
+  ['Cure Time', ['curetime', 'curingtime', 'initialcuretime']],
+  ['Resin Type', ['resintype', 'resinchemistry', 'resinfamily', 'baseresin']],
+  ['Purity', ['purity', 'activeoxygencontent', 'solidcontent']],
+  ['Form', ['form', 'componenttype', 'grade', 'gradestandard']],
+];
+
+const normaliseSpecKey = (key) => key.toLowerCase().replace(/[^a-z]/g, '');
+
+// Long TDS prose ("Bisphenol A & epichlorohydrin based (thermosetting) -
+// current TDS wording") is useful on the product page and useless in a 140px
+// card cell. Values longer than this are skipped rather than truncated, so a
+// card never shows a half-sentence that changes the meaning of the spec.
+const CARD_SPEC_MAX_LENGTH = 34;
+
+export function getCardSpecs(product, limit = 2) {
+  const specs = product.techSpecs;
+  if (!specs) return [];
+
+  const entries = Object.entries(specs);
+  const byNormalised = entries.map(([key, value]) => [normaliseSpecKey(key), key, value]);
+  const picked = [];
+  const usedKeys = new Set();
+
+  for (const [label, aliases] of CARD_SPEC_PRIORITY) {
+    if (picked.length >= limit) break;
+    const hit = byNormalised.find(([norm, key, value]) =>
+      !usedKeys.has(key) &&
+      typeof value === 'string' &&
+      value.trim() &&
+      value.trim().length <= CARD_SPEC_MAX_LENGTH &&
+      aliases.some((alias) => norm.startsWith(alias)));
+    if (hit) {
+      usedKeys.add(hit[1]);
+      picked.push({ label, value: hit[2].trim() });
+    }
+  }
+
+  return picked;
+}

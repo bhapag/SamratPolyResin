@@ -3,7 +3,7 @@ import { Image, getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import ProductCard from '../components/ProductCard.astro';
 import BrandFilm from '../components/home/BrandFilm.astro';
-import { products, CATEGORIES } from '../data/products.js';
+import { products, CATEGORIES, CATEGORY_HUBS } from '../data/products.js';
 import { site, buildWhatsAppLink } from '../data/site.js';
 import qcLaboratory from '../assets/quality/qc-laboratory.jpg';
 import productionInfrastructure from '../assets/facility/production-infrastructure.jpg';
@@ -14,15 +14,6 @@ import coolingTowers from '../assets/applications/cooling-towers.jpg';
 import marineBoatComponents from '../assets/applications/marine-boat-components.jpg';
 import frpStatue from '../assets/applications/frp-statue.jpg';
 import frpPortableCabin from '../assets/applications/frp-portable-cabin.jpg';
-import logoSource from '../assets/logo.jpg';
-
-// Poster for the below-fold category-teaser video. It was `/logo.jpg` -
-// the raw 1254x1254 / 197 KB master - applied as a plain `poster`, so it
-// downloaded on every homepage load even though the video sits well below
-// the fold. It is now a 512px WebP, applied by the lazy-video observer at
-// the moment the video is about to scroll into view (see the script at the
-// bottom of this file). Same image, same slot, fetched when it is needed.
-const logoSquare = await getImage({ src: logoSource, width: 512, format: 'webp' });
 
 const applications = [
   { image: frpWaterTanks, tag: 'Storage Solutions', name: 'FRP Water Tanks', alt: 'Sectional FRP water storage tank built from glass-fibre-reinforced polyester panels' },
@@ -35,6 +26,27 @@ const applications = [
 
 const waLink = buildWhatsAppLink('generic');
 const featured = products.slice(0, 6);
+
+// Homepage catalogue entry points. The homepage previously showed 8 bare
+// category labels plus 6 of the 31 grades, which reads as a small brochure
+// rather than the range actually manufactured. Each tile now names example
+// grades from that family, so the breadth is visible without leaving the page.
+//
+// Destination uses CATEGORY_HUBS - the same single source of truth the
+// mega-menu and breadcrumbs read - so a family with a real hub page links to
+// it, and one without links to its section on /products/. Nothing here can
+// point at a hub that does not exist.
+const categoryEntries = CATEGORIES.map((cat) => {
+  const items = products.filter((p) => p.category === cat);
+  const anchor = `/products/#${cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`;
+  return {
+    name: cat,
+    count: items.length,
+    href: CATEGORY_HUBS[cat] ? `/products/${CATEGORY_HUBS[cat]}/` : anchor,
+    hasHub: Boolean(CATEGORY_HUBS[cat]),
+    examples: items.slice(0, 3).map((p) => p.name),
+  };
+});
 
 // Hero background video: a still frame from the approved hero footage itself
 // is the poster/fallback everywhere in the hero (shown instantly, and
@@ -207,26 +219,42 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     </div>
   </section>
 
-  <!-- ================= CATEGORY TEASER ================= -->
+  <!-- ================= CATEGORY TEASER =================
+       The homepage's primary route into the catalogue. It used to be an
+       8-label grid squeezed into 1.6fr beside a 9:16 portrait video, which
+       (a) left roughly 500px of empty background on desktop because a short
+       grid sat next to a very tall video, and (b) gave a buyer no sense of
+       what any family actually contains. It is now full width, with example
+       grades and a grade count per family; the video is gone - see the note
+       in the stylesheet below. -->
   <section class="section cats">
-    <div class="wrap cats-grid">
-      <div class="cats-main">
-        <div class="section-head">
+    <div class="wrap">
+      <div class="section-head cats-head">
+        <div>
           <p class="eyebrow">Product range</p>
           <h2>What we manufacture</h2>
         </div>
-        <div class="cat-grid">
-          {CATEGORIES.map(cat => (
-            <a href={`/products/#${cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`} class="cat-tile">
-              <span class="cat-tile-name">{cat}</span>
-              <span class="cat-tile-count">{products.filter(p => p.category === cat).length} grades</span>
-            </a>
-          ))}
-        </div>
+        <p class="cats-summary">
+          <strong>{products.length} grades</strong> across {CATEGORIES.length} families &mdash;
+          polyester, epoxy, gelcoat, fire-retardant, hardeners and FRP allied materials.
+        </p>
       </div>
-      <div class="cats-video">
-        <video class="lazy-video" data-src="/home-video.mp4" data-poster={logoSquare.src} muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback></video>
+      <div class="cat-grid">
+        {categoryEntries.map(cat => (
+          <a href={cat.href} class="cat-tile">
+            <span class="cat-tile-top">
+              <span class="cat-tile-name">{cat.name}</span>
+              <span class="cat-tile-count">{cat.count}</span>
+            </span>
+            <span class="cat-tile-examples">{cat.examples.join(' · ')}{cat.count > 3 ? ' …' : ''}</span>
+            <span class="cat-tile-cta">{cat.hasHub ? 'View family' : 'See grades'}<span aria-hidden="true"> &rarr;</span></span>
+          </a>
+        ))}
       </div>
+      <p class="cats-foot">
+        <a href="/products/" class="btn">Browse the full catalogue</a>
+        <a href="/technical-documents/" class="btn">TDS &amp; SDS library</a>
+      </p>
     </div>
   </section>
 
@@ -744,15 +772,25 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
 
     .hero-cta { display: flex; gap: 0.9rem; margin-top: 2.2rem; flex-wrap: wrap; }
 
-    /* ---------- category teaser ---------- */
-    .cats-grid { display: grid; grid-template-columns: 1.6fr 0.9fr; gap: clamp(1.5rem, 5vw, 3rem); align-items: start; }
-    .cats-video { border: 1px solid var(--line); background: var(--bg-3); overflow: hidden; align-self: start; }
-    .cats-video video { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; background: #000; }
-    @media (max-width: 860px) { .cats-grid { grid-template-columns: 1fr; } .cats-video video { aspect-ratio: 16 / 10; } }
+    /* ---------- category teaser ----------
+       The 9:16 portrait `home-video.mp4` that used to sit beside this grid was
+       removed. Three measured reasons, not taste: it forced the row to the
+       video's height and left ~500px of empty background next to a short
+       grid; it added 3.07MB to a homepage that already loads three other
+       videos (hero, brand film, applications); and it carried no information
+       - the grid beside it is what a buyer came for. The file is still in
+       public/ and this is a layout change only, so restoring it is a markup
+       edit, not an asset recovery. */
+    .cats-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .cats-summary { color: var(--ink-dim); font-size: 0.95rem; max-width: 46ch; line-height: 1.7; }
+    .cats-summary strong { color: var(--ink); }
 
-    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .cat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+    @media (max-width: 1080px) { .cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 760px)  { .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 420px)  { .cat-grid { grid-template-columns: 1fr; } }
     .cat-tile {
-      display: flex; flex-direction: column; gap: 0.4rem; padding: 1.3rem 1.4rem;
+      display: flex; flex-direction: column; gap: 0.55rem; padding: 1.2rem 1.3rem 1.1rem;
       background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
       transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
@@ -760,9 +798,26 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       border-color: var(--line-2); transform: translateY(-3px) scale(1.012);
       box-shadow: var(--surface-shadow-hover);
     }
+    .cat-tile:hover .cat-tile-cta { color: var(--accent-gold-light); }
     .cat-tile:active { transform: translateY(-1px) scale(0.99); transition-duration: .12s; }
-    .cat-tile-name { font-family: var(--font-display); text-transform: uppercase; font-size: 1rem; letter-spacing: 0.03em; }
-    .cat-tile-count { font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-gold-light); }
+    .cat-tile-top { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; }
+    .cat-tile-name {
+      font-family: var(--font-display); text-transform: uppercase; font-size: 0.95rem;
+      letter-spacing: 0.03em; line-height: 1.25;
+    }
+    /* The grade count is the point of this tile - it is the fastest honest
+       signal that the range is wider than the six grades shown further down. */
+    .cat-tile-count {
+      font-family: var(--font-mono); font-size: 1.15rem; color: var(--accent-gold-light);
+      line-height: 1; flex: 0 0 auto;
+    }
+    .cat-tile-examples { color: var(--ink-dim); font-size: 0.8rem; line-height: 1.55; flex: 1; }
+    .cat-tile-cta {
+      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-faint);
+      transition: color .3s var(--ease-premium);
+    }
+    .cats-foot { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.6rem; }
 
     /* ---------- featured ---------- */
     .featured {

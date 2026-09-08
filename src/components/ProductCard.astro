@@ -1,29 +1,63 @@
 ---
 import { Image } from 'astro:assets';
 import { site } from '../data/site.js';
+import { getCardSpecs } from '../data/products.js';
 
 const productImageModules = import.meta.glob('/src/assets/products/*', { eager: true });
 const resolveProductImage = (filename) => productImageModules[`/src/assets/products/${filename}`]?.default;
 
 const { product } = Astro.props;
-const { slug, name, image, tagline, category } = product;
+const { slug, name, image, tagline, category, tdsUrl, sdsUrl } = product;
 const img = resolveProductImage(image);
 const imageFallback = name.split(' ').map(w=>w[0]).join('').slice(0,3);
+
+// Two published values from this grade's own TDS (see getCardSpecs in
+// products.js for the sourcing rule). This is what makes one card
+// distinguishable from the next while scanning a 31-product catalogue —
+// the poster artwork does not, because every poster looks alike at this size.
+const specs = getCardSpecs(product);
+const hasDocs = Boolean(tdsUrl || sdsUrl);
 ---
 <a href={`/products/${slug}/`} class="card" data-product-card data-category={category} data-search={`${name} ${tagline}`.toLowerCase()}>
-  <div class:list={['card-img', { noimg: !img }]}>
-    {img && (
-      <Image src={img} alt={name} loading="lazy" widths={[320, 480, 640]} sizes="(max-width: 640px) 100vw, 320px"
-             transition:name={`product-photo-${slug}`} />
-    )}
-    <span class="img-fallback" aria-hidden="true">{imageFallback}</span>
-  </div>
   <div class="card-body">
-    <span class="card-cat">{category}</span>
-    <h3 class="card-name" transition:name={`product-name-${slug}`}>{name}</h3>
+    <div class="card-head">
+      <div class:list={['card-img', { noimg: !img }]}>
+        {img && (
+          <Image src={img} alt="" loading="lazy" widths={[96, 176, 264]} sizes="88px"
+                 transition:name={`product-photo-${slug}`} />
+        )}
+        <span class="img-fallback" aria-hidden="true">{imageFallback}</span>
+      </div>
+      <div class="card-headings">
+        <span class="card-cat">{category}</span>
+        <h3 class="card-name" transition:name={`product-name-${slug}`}>{name}</h3>
+      </div>
+    </div>
     <p class="card-tag">{tagline}</p>
+
+    {specs.length > 0 && (
+      <dl class="card-specs">
+        {specs.map((spec) => (
+          <div class="card-spec">
+            <dt>{spec.label}</dt>
+            <dd>{spec.value}</dd>
+          </div>
+        ))}
+      </dl>
+    )}
+
     <div class="card-foot">
       <span class="card-price">{site.priceLabel}</span>
+      {hasDocs && (
+        <span class="card-docs" aria-label={
+          tdsUrl && sdsUrl ? 'Technical and safety data sheets available'
+            : tdsUrl ? 'Technical data sheet available'
+            : 'Safety data sheet available'
+        }>
+          {tdsUrl && <span class="card-doc">TDS</span>}
+          {sdsUrl && <span class="card-doc">SDS</span>}
+        </span>
+      )}
       <span class="card-arrow" aria-hidden="true">→</span>
     </div>
   </div>
@@ -49,36 +83,44 @@ const imageFallback = name.split(' ').map(w=>w[0]).join('').slice(0,3);
      response instead of nothing happening until the page navigates. */
   .card:active { transform: translateY(-1px) scale(0.99); transition-duration: .12s; }
 
-  /* Product photos are supplied as complete marketing posters (light/cream
-     background, brand lockup, spec callouts baked into the artwork), not
-     cropped product-only photography — see the object-fit note below. Every
-     one of them was sitting on this card's old near-black gradient, so
-     every product card sitewide showed a hard-edged light rectangle
-     dropped into a dark box: the single most visible surface clash on the
-     site, repeated on every product grid. A warm neutral frame matching the
-     posters' own tone reads as one deliberately-styled "photo plate"
-     instead — same fix applied to .prod-img/.prod-thumb on the product page. */
+  /* Product images are supplied as complete marketing posters (light artwork,
+     brand lockup, spec callouts baked in) - not cropped product-only
+     photography. Every one of the 31 was rendered side by side at card size
+     to check this: at ~300px they are unreadable micro-text and all read as
+     the same light rectangle, so as a full-width card image they cost half
+     the card's height and told a buyer nothing about which grade they were
+     looking at.
+
+     They are now what they actually are: a small square document thumbnail,
+     shown whole (`contain` - the artwork has text baked in and must never be
+     cropped) next to the grade name. The poster is still present and still
+     the product's own approved artwork; it is shown at readable size on the
+     product page itself, which is where it belongs. `alt` is empty because
+     the grade name sits immediately beside it - announcing the poster twice
+     would be noise for a screen reader.
+
+     The height this freed went to the published TDS values below.
+
+     The `widths` on the <Image> above are sized for this 88px slot
+     (96 / 176 / 264 covers 1x through 3x exactly). The previous
+     320/480/640 set belonged to the old full-width card image and would
+     now ship a 480px derivative into an 88px box, 31 times over. */
+  .card-head { display: flex; align-items: flex-start; gap: 0.85rem; }
   .card-img {
-    position: relative; aspect-ratio: 1 / 1; overflow: hidden;
+    position: relative; flex: 0 0 auto; width: 88px; aspect-ratio: 1 / 1; overflow: hidden;
     background: linear-gradient(135deg, #f2eee3, #e6e0cf);
-    border-bottom: 1px solid var(--image-frame-border);
+    border: 1px solid var(--image-frame-border);
     display: grid; place-items: center;
   }
-  /* contain, not cover — these are complete marketing posters (text, logo,
-     spec tables baked into the artwork), not cropped-to-fill photography;
-     the whole poster must stay visible, so no zoom-on-hover here either.
-     position:absolute + inset:0 (not width/height:100%) because percentage
-     heights don't reliably resolve against an aspect-ratio-derived height
-     inside a `place-items:center` grid in every browser — absolute
-     positioning against the relative parent sizes unambiguously instead. */
   .card-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
   .img-fallback {
     display: none;
     position: absolute; font-family: var(--font-display); font-weight: 700;
-    font-size: 2.4rem; color: var(--line-2); letter-spacing: 0.05em;
+    font-size: 1.3rem; color: var(--line-2); letter-spacing: 0.05em;
   }
-  .card-img.noimg { border-bottom: 1px solid var(--line); }
+  .card-img.noimg { border: 1px solid var(--line); background: var(--bg-2); }
   .card-img.noimg .img-fallback { display: block; }
+  .card-headings { min-width: 0; padding-top: 0.15rem; }
 
   .card-body { padding: 1.15rem 1.25rem 1.25rem; display: flex; flex-direction: column; flex: 1; }
   .card-cat {
@@ -86,14 +128,51 @@ const imageFallback = name.split(' ').map(w=>w[0]).join('').slice(0,3);
     text-transform: uppercase; color: var(--ink-faint);
   }
   .card-name {
-    font-size: 1.15rem; margin-top: 0.5rem; color: var(--ink);
-    text-transform: none; letter-spacing: 0; font-weight: 600;
+    font-size: 1.1rem; margin-top: 0.3rem; color: var(--ink);
+    text-transform: none; letter-spacing: 0; font-weight: 600; line-height: 1.25;
   }
-  .card-tag { color: var(--ink-dim); font-size: 0.86rem; margin-top: 0.4rem; flex: 1; }
+  .card-tag { color: var(--ink-dim); font-size: 0.86rem; margin-top: 0.75rem; flex: 1; }
+
+  /* Published TDS values. Deliberately quiet typographically — this is
+     reference data a buyer scans, not a marketing claim. Cards whose grade
+     publishes no clean figure simply omit this block; nothing is filled in. */
+  .card-specs {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem 0.9rem; margin: 0.9rem 0 0;
+    padding-top: 0.85rem; border-top: 1px solid var(--line);
+  }
+  .card-specs > .card-spec { min-width: 0; }
+  .card-spec dt {
+    font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .card-spec dd {
+    margin: 0.2rem 0 0; font-size: 0.85rem; color: var(--ink);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
   .card-foot {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid var(--line);
+    display: flex; align-items: center; gap: 0.7rem;
+    margin-top: 0.95rem; padding-top: 0.85rem; border-top: 1px solid var(--line);
   }
-  .card-price { font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent-gold-light); font-weight: 500; }
+  /* nowrap: at a 3-up desktop grid the card is ~265px and "Price on Request"
+     was wrapping onto two lines, pushing the footer taller than the row it
+     shares with the document chips. */
+  .card-price {
+    font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.02em;
+    color: var(--accent-gold-light); font-weight: 500; white-space: nowrap;
+  }
+  /* Document availability at a glance. GA4 shows downloads are the single
+     largest engagement signal on this site (68 file_download events / 16
+     users in 28 days), so whether a grade publishes a TDS and an SDS is
+     genuinely useful while scanning — it is a fact about the grade, not a
+     badge, so it is rendered as quiet mono type rather than a pill. */
+  .card-docs { display: flex; gap: 0.35rem; margin-left: auto; }
+  .card-doc {
+    font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em;
+    color: var(--ink-faint); border: 1px solid var(--line);
+    padding: 0.16rem 0.34rem; line-height: 1;
+  }
   .card-arrow { font-size: 1.1rem; color: var(--ink-dim); transition: transform .3s var(--ease-premium), color .3s var(--ease-premium); }
+  .card-docs + .card-arrow { margin-left: 0; }
 </style>
