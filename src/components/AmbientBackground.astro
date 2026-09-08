@@ -28,17 +28,32 @@ const ambientPosterDesktop = await getImage({ src: heroVideoPosterMobile, width:
 const ambientPosterMobile = await getImage({ src: heroVideoPosterMobile, width: 1280, format: 'webp' });
 ---
 <div class="ambient-bg" id="ambientBg" aria-hidden="true" transition:persist>
-  <img src={ambientPosterDesktop.src} alt="" class="ambient-layer ambient-poster ambient-desktop" />
-  <img src={ambientPosterMobile.src} alt="" class="ambient-layer ambient-poster ambient-mobile" />
-  <!-- `poster` set on both, even though the <img> layers beneath already
-       show the same frame: a sourceless <video> with no poster paints as
-       an opaque black rectangle by default (confirmed — this hid the
-       poster layer entirely during testing), so the video needs its own
-       poster too for the moments before/unless it actually activates. -->
-  <video class="ambient-layer ambient-video ambient-desktop" id="ambientVideoDesktop" muted playsinline preload="none" poster={ambientPosterDesktop.src}>
+  <!-- One <picture>, not two <img>. Previously both derivatives were
+       mounted and CSS `display:none` hid the wrong one — but `display:none`
+       does not stop an <img> from being downloaded. Measured on a 390px
+       mobile viewport: the 1920px desktop derivative (85,804 bytes) was
+       fetched on every page, and on the homepage it was a byte-for-byte
+       duplicate of the hero's own LCP image. <picture>/<source media> makes
+       the browser resolve exactly one candidate before it fetches anything.
+       Identical rendered result; one image instead of two. -->
+  <picture>
+    <source media="(max-width: 760px)" srcset={ambientPosterMobile.src} />
+    <img src={ambientPosterDesktop.src} alt="" class="ambient-layer ambient-poster" />
+  </picture>
+  <!-- No `poster` on either video. The <picture> above already shows this
+       exact frame, so a poster was always a second copy of an image
+       already on screen — and a `poster` is never lazy, so it downloaded
+       during initial load on every page even though these videos are
+       `preload="none"` and only activate on scroll.
+       The reason a poster was there originally still holds: a sourceless
+       <video> paints an opaque black rectangle and would hide the poster
+       layer beneath it. That is now handled without a download — the video
+       stays at opacity 0 until it is genuinely playing (`data-playing`,
+       set on the `playing` event below). -->
+  <video class="ambient-layer ambient-video ambient-desktop" id="ambientVideoDesktop" muted playsinline preload="none">
     <source data-src="/videos/hero-background.mp4" type="video/mp4" />
   </video>
-  <video class="ambient-layer ambient-video ambient-mobile" id="ambientVideoMobile" muted playsinline preload="none" poster={ambientPosterMobile.src}>
+  <video class="ambient-layer ambient-video ambient-mobile" id="ambientVideoMobile" muted playsinline preload="none">
     <source data-src="/videos/hero-background-mobile.mp4" type="video/mp4" />
   </video>
   <div class="ambient-scrim"></div>
@@ -78,6 +93,7 @@ const ambientPosterMobile = await getImage({ src: heroVideoPosterMobile, width: 
         const p = video.play();
         if (p && typeof p.then === 'function') p.catch(() => {});
       };
+      video.addEventListener('playing', () => { video.dataset.playing = 'true'; }, { once: true });
       video.addEventListener('loadeddata', tryPlay);
       video.addEventListener('canplay', tryPlay);
       video.addEventListener('ended', () => {
@@ -164,15 +180,25 @@ const ambientPosterMobile = await getImage({ src: heroVideoPosterMobile, width: 
      just quietly takes over from the still frame already sitting there. */
   .ambient-poster,
   .ambient-video {
-    opacity: 0.38;
     filter: grayscale(0) brightness(0.54) contrast(1.06) saturate(0.9);
   }
+  .ambient-poster { opacity: 0.38; }
+  /* Posterless videos paint black until they have frames, so they only
+     become visible once playback has actually begun. Same target opacity
+     as the still beneath, so the handover is invisible. */
+  .ambient-video { opacity: 0; transition: opacity .6s ease; }
+  .ambient-video[data-playing="true"] { opacity: 0.38; }
+  /* <picture> wraps the poster <img>; it must not become a layout box of
+     its own or the absolutely-positioned layer loses its containing block. */
+  .ambient-bg picture { display: contents; }
   .ambient-mobile { display: none; }
   @media (max-width: 760px) {
     .ambient-desktop { display: none; }
     .ambient-mobile { display: block; }
     .ambient-poster,
-    .ambient-video { opacity: 0.34; filter: grayscale(0) brightness(0.5) contrast(1.05) saturate(0.9); }
+    .ambient-video { filter: grayscale(0) brightness(0.5) contrast(1.05) saturate(0.9); }
+    .ambient-poster { opacity: 0.34; }
+    .ambient-video[data-playing="true"] { opacity: 0.34; }
   }
   .ambient-scrim {
     position: absolute;
@@ -182,6 +208,6 @@ const ambientPosterMobile = await getImage({ src: heroVideoPosterMobile, width: 
       linear-gradient(90deg, rgba(9, 11, 18, 0.18) 0%, transparent 22%, transparent 78%, rgba(9, 11, 18, 0.18) 100%);
   }
   @media (prefers-reduced-motion: reduce) {
-    .ambient-video { display: none !important; }
+    .ambient-video { display: none !important; transition: none; }
   }
 </style>

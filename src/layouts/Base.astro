@@ -1,9 +1,28 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import { getImage } from 'astro:assets';
 import '../styles/global.css';
 import { site, buildCanonicalUrl, buildWhatsAppLink } from '../data/site.js';
 import { products, CATEGORIES, CATEGORY_HUBS } from '../data/products.js';
 import AmbientBackground from '../components/AmbientBackground.astro';
+import logoSource from '../assets/logo.jpg';
+
+// The logo master is a 1254x1254 / 197 KB JPEG. It used to live in
+// `public/logo.jpg`, which meant that exact file was served verbatim into a
+// 40x40 slot in the header of every page on the site (measured: 197,263
+// bytes, 83,326 of them transferred before LCP on a Slow-4G mobile load).
+// The master is now a pipeline source in `src/assets/` — byte-identical, it
+// was moved with `git mv`, nothing was re-saved — and two derivatives are
+// generated from it:
+//   logoMark   — 128px WebP for the three <img> marks (rendered at 40 and
+//                64 CSS px, so 128 still covers a 2x display).
+//   logoSquare — 512px WebP for the Organization schema's logo/image, which
+//                needs a real, reasonably sized URL (Google's guidance is a
+//                minimum of 112px), and for the below-fold category video's
+//                poster, which is applied by JS on activation.
+// Nothing else about the markup, dimensions or alt text changes.
+const logoMark = await getImage({ src: logoSource, width: 128, format: 'webp' });
+const logoSquare = await getImage({ src: logoSource, width: 512, format: 'webp' });
 
 // Mega-menu / mobile-nav product groupings — same CATEGORIES/products data
 // the Products index and homepage already use, so the header can't drift
@@ -56,8 +75,8 @@ const organizationJsonLd = {
   "@id": `${site.url}/#organization`,
   name: site.name,
   url: site.url,
-  logo: buildCanonicalUrl('/logo.jpg'),
-  image: buildCanonicalUrl('/logo.jpg'),
+  logo: buildCanonicalUrl(logoSquare.src),
+  image: buildCanonicalUrl(logoSquare.src),
   telephone: site.phones.map((phone) => phone.dial),
   email: site.email,
   foundingDate: site.established,
@@ -120,7 +139,7 @@ const organizationJsonLd = {
   <header class="site-header" transition:persist>
     <div class="wrap header-inner">
       <a href="/" class="brand">
-        <img src="/logo.jpg" alt={`${site.name} logo`} class="brand-mark" width="40" height="40" />
+        <img src={logoMark.src} alt={`${site.name} logo`} class="brand-mark" width="40" height="40" />
         <span class="brand-name">{site.name}</span>
       </a>
       <nav class="nav" aria-label="Primary">
@@ -254,7 +273,7 @@ const organizationJsonLd = {
     </div>
     <div class="wrap footer-grid">
       <div>
-        <img src="/logo.jpg" alt={`${site.name} logo`} class="brand-mark big" width="64" height="64" />
+        <img src={logoMark.src} alt={`${site.name} logo`} class="brand-mark big" width="64" height="64" />
         <p class="foot-name">{site.name}</p>
         <p class="foot-dim">Manufacturer of coating &amp; composite resins.<br/>Established {site.established}.</p>
       </div>
@@ -266,6 +285,7 @@ const organizationJsonLd = {
           <a href="/custom-resin-request/">Custom Resin Request</a>
           <a href="/about/">About</a>
           <a href="/resources/">Resources</a>
+          <a href="/technical-documents/">Technical Documents</a>
           <a href="/contact/">Contact</a>
           <a href={site.catalogue.url} target="_blank" rel="noopener" download aria-label={`Download ${site.catalogue.title} (PDF)`}>Product Catalogue</a>
         </nav>

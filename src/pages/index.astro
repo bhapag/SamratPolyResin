@@ -14,6 +14,15 @@ import coolingTowers from '../assets/applications/cooling-towers.jpg';
 import marineBoatComponents from '../assets/applications/marine-boat-components.jpg';
 import frpStatue from '../assets/applications/frp-statue.jpg';
 import frpPortableCabin from '../assets/applications/frp-portable-cabin.jpg';
+import logoSource from '../assets/logo.jpg';
+
+// Poster for the below-fold category-teaser video. It was `/logo.jpg` -
+// the raw 1254x1254 / 197 KB master - applied as a plain `poster`, so it
+// downloaded on every homepage load even though the video sits well below
+// the fold. It is now a 512px WebP, applied by the lazy-video observer at
+// the moment the video is about to scroll into view (see the script at the
+// bottom of this file). Same image, same slot, fetched when it is needed.
+const logoSquare = await getImage({ src: logoSource, width: 512, format: 'webp' });
 
 const applications = [
   { image: frpWaterTanks, tag: 'Storage Solutions', name: 'FRP Water Tanks', alt: 'Sectional FRP water storage tank built from glass-fibre-reinforced polyester panels' },
@@ -42,8 +51,21 @@ const featured = products.slice(0, 6);
 // match the mobile video's own poster — a real flash between two different
 // images, not just an expected loading fallback. Fixed by using the same
 // video-frame poster on every hero layer instead.
-const heroPoster = await getImage({ src: heroVideoPosterMobile, width: 1920, format: 'webp' });
-const heroVideoMobilePoster = await getImage({ src: heroVideoPosterMobile, width: 1280, format: 'webp' });
+// Neither hero <video> carries a `poster` attribute any more. It was a
+// measured duplicate download: a `poster` is NEVER lazy, so both encodes'
+// posters were fetched on every load — the same frame the eager <Image>
+// below already renders, at the same derivative sizes. Removing them (with
+// the same treatment on the sitewide ambient layer and the below-fold
+// videos) moved Slow-4G LCP from 13,200 ms to 8,308 ms and pre-LCP bytes
+// from 404,563 to 179,117. Measured, 5 cold runs, CDP request-lifecycle
+// tracing — see HERO_LOADING_OPTIONS.md.
+//
+// A `<video>` with no poster and no frames yet paints as an opaque black
+// rectangle, which would hide the <Image> underneath it. So the videos
+// start at opacity 0 and fade in only once they are genuinely playing
+// (`data-playing`, set by the inline script below on the `playing` event).
+// If playback never starts — reduced motion, a failed fetch, Save-Data —
+// the poster frame simply remains, which is a valid final state.
 
 // site.statesServed mixes domestic states and "Export <country>" entries in
 // one list (used as-is, unfiltered, by the separate "Industries We Serve"
@@ -60,7 +82,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
   <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="hero-media" aria-hidden="true">
-      <Image src={heroVideoPosterMobile} alt="" loading="eager" widths={[800, 1280, 1920, 2400]} sizes="100vw" />
+      <Image src={heroVideoPosterMobile} alt="" loading="eager" fetchpriority="high" widths={[800, 1280, 1920, 2400]} sizes="100vw" />
       <!-- Desktop hero video. Element, attributes and native `loop` are
            unchanged from the approved markup. The only change: the source
            carries `data-src` instead of `src`, and the inline script below
@@ -81,7 +103,6 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
         loop
         playsinline
         preload="metadata"
-        poster={heroPoster.src}
       >
         <source data-src="/videos/hero-background.mp4" type="video/mp4" />
       </video>
@@ -105,7 +126,6 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
         playsinline
         webkit-playsinline="true"
         preload="metadata"
-        poster={heroVideoMobilePoster.src}
       >
         <source data-src="/videos/hero-background-mobile.mp4" type="video/mp4" />
       </video>
@@ -128,6 +148,13 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
           var source = video.querySelector('source[data-src]');
           if (!source) return;
           source.src = source.dataset.src;
+          // The video has no `poster` (see the note in the frontmatter), so it
+          // would paint an opaque black rectangle over the eager <Image>
+          // underneath until it had frames. Reveal it only once playback has
+          // genuinely started; until then the poster frame shows through.
+          video.addEventListener('playing', function () {
+            video.dataset.playing = 'true';
+          }, { once: true });
           // Explicit load() after a script-assigned src: some mobile browsers
           // (notably Android Chrome) don't re-run resource selection without it.
           video.load();
@@ -198,7 +225,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
         </div>
       </div>
       <div class="cats-video">
-        <video class="lazy-video" data-src="/home-video.mp4" muted loop playsinline preload="none" poster="/logo.jpg" disablepictureinpicture disableremoteplayback></video>
+        <video class="lazy-video" data-src="/home-video.mp4" data-poster={logoSquare.src} muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback></video>
       </div>
     </div>
   </section>
@@ -433,7 +460,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
           <p class="applications-closing">From everyday industrial manufacturing to landmark composite projects, <span class="applications-closing-brand">Samrat Poly Resins</span> delivers dependable performance where precision matters most.</p>
         </div>
         <div class="applications-video">
-          <video class="lazy-video" data-src="/applications-video.mp4" muted loop playsinline preload="none" poster="/applications-video-poster.jpg" disablepictureinpicture disableremoteplayback aria-label="Real industrial applications of Samrat Poly Resins products, including cooling towers, FRP roofing and marine components"></video>
+          <video class="lazy-video" data-src="/applications-video.mp4" muted loop playsinline preload="none" data-poster="/applications-video-poster.jpg" disablepictureinpicture disableremoteplayback aria-label="Real industrial applications of Samrat Poly Resins products, including cooling towers, FRP roofing and marine components"></video>
         </div>
       </div>
 
@@ -583,6 +610,15 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
          carries all of the text-legibility work. */
       filter: grayscale(0) contrast(1.08) brightness(1.28);
       pointer-events: none;
+      /* No `poster` attribute (that download was the measured LCP cost).
+         A frameless <video> paints opaque black, so stay invisible until
+         the inline script confirms playback has started. */
+      opacity: 0;
+      transition: opacity .45s ease;
+    }
+    .hero-video[data-playing="true"] { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-video { transition: none; }
     }
     /* Respect reduced-motion by never even starting playback: the poster
        frame (identical still photo) remains the entire experience. */
@@ -1229,6 +1265,17 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
           for (const entry of entries) {
             if (!entry.isIntersecting) continue;
             video.muted = true;
+            // The poster travels as `data-poster` rather than `poster`.
+            // A `poster` attribute is never lazy — the browser fetches it
+            // during the initial page load regardless of where the video
+            // sits on the page, which put two below-the-fold posters
+            // (measured: 132 KB + 47 KB) on the critical path. Applying it
+            // here means it is requested at the same moment as the video
+            // it belongs to: still before the element is on screen, thanks
+            // to the 200px rootMargin, but no longer competing with the
+            // hero for bandwidth.
+            const poster = video.dataset.poster;
+            if (poster && !video.poster) video.poster = poster;
             video.src = src;
             // Explicit load() after assigning src: some mobile browsers
             // (notably Android Chrome) don't reliably re-run resource

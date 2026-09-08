@@ -45,16 +45,33 @@ const waLink = applicationWaName
   : buildWhatsAppLink('quoteFallback');
 const canonicalUrl = buildCanonicalUrl(Astro.url.pathname);
 
+// Breadcrumb: Home > Applications > {this application}.
+//
+// It previously read Home > {parent product} > {application}, which asserted
+// a hierarchy that does not exist: /applications/resin-for-water-tank-
+// manufacturing/ is not a child of /products/gp-clear-resin/, the URL path
+// says so, and the same application can be listed by more than one product.
+// The parent product is not lost — it is still linked from the hero tag, the
+// "Related products" grid and the closing CTA on every one of these pages,
+// which is the correct place for a contextual relationship.
+//
+// Visible breadcrumb and BreadcrumbList are generated from the same three
+// steps below so they can never disagree.
+const breadcrumbTrail = [
+  { name: 'Home', href: '/' },
+  { name: 'Applications', href: '/applications/' },
+  { name: title, href: Astro.url.pathname },
+];
+
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: buildCanonicalUrl('/') },
-    ...(parentProduct
-      ? [{ "@type": "ListItem", position: 2, name: parentProduct.name, item: buildCanonicalUrl(`/products/${parentProduct.slug}/`) }]
-      : []),
-    { "@type": "ListItem", position: parentProduct ? 3 : 2, name: title, item: canonicalUrl },
-  ],
+  itemListElement: breadcrumbTrail.map((step, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: step.name,
+    item: buildCanonicalUrl(step.href),
+  })),
 };
 
 const articleJsonLd = {
@@ -92,9 +109,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
   {faqJsonLd && <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />}
 
   <div class="wrap crumb">
-    <a href="/">Home</a><span>/</span>
-    {parentProduct && (<><a href={`/products/${parentProduct.slug}/`}>{parentProduct.name}</a><span>/</span></>)}
-    <span class="cur">{title}</span>
+    {breadcrumbTrail.map((step, i) => (
+      i === breadcrumbTrail.length - 1
+        ? <span class="cur">{step.name}</span>
+        : <><a href={step.href}>{step.name}</a><span>/</span></>
+    ))}
   </div>
 
   <!-- Full-bleed cinematic hero (real application photo, not a boxed thumbnail)

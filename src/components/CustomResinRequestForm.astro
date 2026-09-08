@@ -1,6 +1,13 @@
 ---
+import { getImage } from 'astro:assets';
 import { site } from '../data/site.js';
 import { products, CATEGORIES } from '../data/products.js';
+import logoSource from '../assets/logo.jpg';
+
+// Same 128px WebP derivative the header and footer marks use (see the
+// note in Base.astro) - identical getImage() arguments, so the build
+// emits and serves exactly one file, not a second copy.
+const logoMark = await getImage({ src: logoSource, width: 128, format: 'webp' });
 
 const productGroups = CATEGORIES
   .map((category) => ({
@@ -194,7 +201,7 @@ const disclaimer = 'This document records customer-requested target specificatio
 
   <section id="printSummary" class="print-summary" aria-label="Printable custom resin specification request">
     <header class="print-header">
-      <img src="/logo.jpg" alt={`${site.name} logo`} width="64" height="64" />
+      <img src={logoMark.src} alt={`${site.name} logo`} width="64" height="64" />
       <div>
         <p class="print-brand">{site.name}</p>
         <p class="print-title">Custom Resin Specification Request</p>

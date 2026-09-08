@@ -20,6 +20,14 @@ const waLink = buildWhatsAppLink('generic');
 // eb349919...c38cf26).
 // `poster` takes a single URL, so it gets one derivative sized for a 340px
 // slot at ~3x DPR; the <img> below is served responsively.
+//
+// The poster is now applied by JS on activation (`data-poster`), not as a
+// `poster` attribute. A `poster` is never lazy: this section sits roughly
+// 6,000 px below the fold, yet its 132 KB poster was being fetched during
+// the initial page load, competing with the hero for bandwidth on a slow
+// connection. It is also redundant at that moment — the <Image> layer below
+// renders the identical still, responsively and lazily, and now starts as
+// the visible layer until the video is genuinely playing.
 const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, format: 'webp' });
 ---
 
@@ -46,12 +54,12 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
     <div class="brandfilm-media">
       <div class="brandfilm-frame" id="brandFilmFrame">
         <video
-          class="brandfilm-layer brandfilm-video is-active"
+          class="brandfilm-layer brandfilm-video"
           id="brandFilmVideo"
           muted
           playsinline
           preload="none"
-          poster={brandFilmPoster.src}
+          data-poster={brandFilmPoster.src}
           aria-label={`${site.name} manufacturing brand film`}
           disablepictureinpicture
           disableremoteplayback
@@ -59,7 +67,7 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
           <source data-src="/videos/samrat-poly-resins-brand-film.mp4" type="video/mp4" />
         </video>
         <Image
-          class="brandfilm-layer brandfilm-photo"
+          class="brandfilm-layer brandfilm-photo is-active"
           id="brandFilmPhoto"
           src={brandFilmStill}
           alt={`${site.name} manufacturing — brand film still`}
@@ -91,6 +99,12 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
     }
 
     let activated = false;
+    // Which half of the cycle we are in. Previously inferred from the
+    // video's `is-active` class, which no longer works as a proxy: the
+    // photo is now the initially visible layer (the video has no poster
+    // and would otherwise paint black), so the video is not `is-active`
+    // during its own first buffering.
+    let phase: 'video' | 'photo' = 'video';
     // The single managed timer for the whole cycle — always cleared before
     // being reassigned, so pausing/resuming off-screen or a fast re-entry
     // can never stack a second one.
@@ -114,6 +128,10 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
     const ensureActivated = () => {
       if (activated) return;
       activated = true;
+      // Apply the poster now, alongside the video source, rather than
+      // letting it download during initial page load.
+      const posterSrc = video.dataset.poster;
+      if (posterSrc && !video.poster) video.poster = posterSrc;
       const source = video.querySelector('source');
       const src = source?.dataset.src;
       if (source && src) source.src = src;
@@ -124,11 +142,17 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
     // The one place the cycle advances: video ends -> show the photo for
     // exactly 5s -> hide it, rewind the video, play it again. Native
     // `ended` (not `loop`) is what makes the 5s still interval possible.
+    // Hand over from the still to the video only once frames are actually
+    // being presented — never while it is still black.
+    video.addEventListener('playing', () => { if (phase === 'video') showVideo(); });
+
     video.addEventListener('ended', () => {
+      phase = 'photo';
       showPhoto();
       if (photoTimer) window.clearTimeout(photoTimer);
       photoTimer = window.setTimeout(() => {
         photoTimer = undefined;
+        phase = 'video';
         showVideo();
         video.currentTime = 0;
         attemptPlay();
@@ -153,7 +177,7 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
       const nearOrInViewport = rect.top < window.innerHeight + 200 && rect.bottom > -200;
       if (nearOrInViewport) {
         ensureActivated();
-        if (video.classList.contains('is-active') && video.paused && video.src) attemptPlay();
+        if (phase === 'video' && video.paused && video.src) attemptPlay();
       } else if (!video.paused) {
         video.pause();
       }

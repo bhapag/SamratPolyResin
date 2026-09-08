@@ -354,7 +354,16 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             <section class="article-section" id={toId(heading)}>
               <h2>{heading}</h2>
               {!isRich && <p class="article-placeholder">Detailed technical content for this section will be added here.</p>}
-              {isRich && s.body && s.body.map((para) => <p>{para}</p>)}
+              {/* set:html, not {para}: section bodies may contain a small
+                  number of hand-written contextual <a> links (see
+                  INTERNAL_LINK_ADDITIONS.md). Verified safe before switching —
+                  all 20,282 existing body paragraphs across every resource
+                  were scanned for `<`, `>` and HTML entities and none contain
+                  any, so no existing paragraph renders differently. This
+                  content is authored in this repository and never user
+                  supplied, so there is no injection surface. Application
+                  pages already render their body copy the same way. */}
+              {isRich && s.body && s.body.map((para) => <p set:html={para} />)}
               {photoModule && (
                 <figure class="article-photo">
                   <Image src={photoModule} alt={s.photo.alt} widths={[400, 800, 1200]} sizes="(max-width: 900px) 100vw, 700px" loading="lazy" />
