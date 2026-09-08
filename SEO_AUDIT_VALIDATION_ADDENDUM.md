@@ -302,6 +302,44 @@ The original document implied blocking training crawlers makes the site "invisib
 
 ---
 
+## 9-bis. CORRECTION (2026-09-08, later same day) — the Slow-4G conclusion in §4.6 was wrong
+
+§4.6 above states that Slow-4G LCP is driven by *"the hero video — even the smaller 6.4 MB encode — saturat[ing] the connection and starv[ing] the poster that is the LCP element."*
+
+**That conclusion is retracted.** It was based on the same defective instrumentation that produced the original FCP error: **Resource Timing only records completed requests**, so a 6.4 MB video still in flight at the measurement cutoff appeared as `videoBytes: 0` / `videoReqs: []`. I then reported "0 → 0 video requests" and "0.23 MB total" while simultaneously claiming the video saturated the link — a contradiction that should not have survived review.
+
+Re-measured with CDP request-lifecycle tracing (`Network.requestWillBeSent` / `dataReceived` / `loadingFinished` / `loadingFailed`), 5 cold runs, medians:
+
+| Measurement | Value |
+|---|---|
+| Video requests initiated | **1** |
+| Video bytes transferred **before LCP** | **0** |
+| Video bytes at 20 s cutoff | ~63,750 (~1% of file) |
+| Request state at cutoff | **in flight** (not cancelled, not failed) |
+| Total bytes before LCP | 404,563 |
+
+**The video contributes nothing to the pre-LCP critical path.** The real pre-LCP competitors are poster images — including a **duplicate of the LCP image itself** (the 1920 px variant, 85,804 bytes, requested by three `display:none` desktop-only elements on a 390 px viewport), a **197 KB `logo.jpg` rendered at 40×40**, two below-the-fold video `poster` attributes (132 KB + 47 KB, and posters are never lazy), and ~102 KB of cross-origin Google Fonts.
+
+**Proof by intervention:** removing those duplicate/below-fold poster loads and prioritising the real LCP image (Option A in `HERO_LOADING_OPTIONS.md`) moved Slow-4G LCP from **13,200 ms → 8,308 ms (−37%)** and pre-LCP bytes from **404,563 → 179,117 (−56%)** — while re-encoding the video (Option B, −16.9 MB desktop / −5.4 MB mobile) changed LCP by **+24 ms, i.e. not at all**.
+
+**Corrected statement:** the hero video is a **data-cost and post-LCP** problem, not a render-blocking one. The render problem is poster hygiene. Both are worth fixing, for different reasons.
+
+Two further corrections to §8 of this document:
+- *"Slow-4G LCP ≈ 14.5 s driven by hero poster starved by video"* → **wrong mechanism**. The poster is starved by *other posters and the logo*, not by the video.
+- The Option-A finding also supersedes the implication in `TECHNICAL_SEO_BACKLOG.md` T3 that T1+T2 alone would fix FCP/LCP. They did not, and could not.
+
+---
+
+## 9-ter. CORRECTION — the "ranking loss" premise
+
+Search Console access (obtained 2026-09-08) shows **no data for `samratpolyresins.in` before ~24 July / 1 August 2026**, confirmed by the "Last 16 months" range returning identical totals to "3 months". **There is no 3–6 month decline to diagnose; the property is ~6 weeks old.** Full evidence in `SEO_PERFORMANCE_DIAGNOSIS.md`.
+
+This also corrects §1.2 of this document, which listed the `.com` entity risk as a live hypothesis for `.in` ranking loss: **there is no measured `.in` ranking loss for it to explain.** The entity-overlap risk remains real but is now unattached to any observed decline, and `samratpolyresins.com` is **not present in the Google account**, so it cannot be measured at all from here.
+
+Finally, `COMPETITOR_GAP_ANALYSIS.md` §6 claimed head commercial terms were *"not realistic"* to win. Search Console shows Samrat already at **position 1.0–2.5** for *polyester resin manufacturers in india*, *polyester resin supplier*, *resin manufacturer in india*, *resin manufacturers in india* and *plastic resin manufacturers*. **That claim is withdrawn** — the constraint is query demand volume, not ranking ability.
+
+---
+
 ## 9. Remaining unknowns requiring access
 
 Unchanged from `SEO_BASELINE.md` §8 and still blocking: Search Console (`.in` **and** `.com`), GA4, backlink data, CrUX field data, Google Business Profile, and confirmation of `samratepoxyresins.com`. **Ranking-loss causation cannot be diagnosed without these, and I will not estimate it.**
