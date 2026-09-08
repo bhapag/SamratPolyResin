@@ -1,9 +1,22 @@
 ---
 import ResourceIcon from './ResourceIcon.astro';
-const { resource } = Astro.props;
+
+// `compact` renders the same link as a single scannable row instead of a
+// panel. It exists for the Knowledge Centre index, which lists all 213 live
+// articles: at the full panel height that page measured 95,224px on a 390px
+// viewport — 113 phone screens — which no reader scrolls and which buries
+// every hub below the first one.
+//
+// Deliberately NOT a disclosure or a paginated list: every article link stays
+// in the rendered HTML exactly as before, so nothing changes for a crawler
+// and no link becomes dependent on JavaScript. Only the row height changes.
+//
+// Product pages keep the full card (a handful of articles, where the extra
+// description and reading time earn their space).
+const { resource, compact = false } = Astro.props;
 const { slug, title, description, readingTime, icon } = resource;
 ---
-<a href={`/resources/${slug}/`} class="res-card">
+<a href={`/resources/${slug}/`} class:list={['res-card', { compact }]}>
   <span class="res-card-icon" aria-hidden="true"><ResourceIcon name={icon} /></span>
   <h3 class="res-card-title">{title}</h3>
   <p class="res-card-desc">{description}</p>
@@ -42,4 +55,51 @@ const { slug, title, description, readingTime, icon } = resource;
   }
   .res-card-time { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); letter-spacing: 0.04em; }
   .res-card-link { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-gold-light); font-weight: 500; transition: transform .3s var(--ease-premium), color .3s var(--ease-premium); }
+
+  /* ---------- compact row ----------
+     Same element, same content, ~72px instead of ~230px. The title is the
+     scannable unit; the description is kept for wider viewports where there
+     is room for one clamped line, and the "Read Article" affordance is
+     dropped because the whole row is already the link. */
+  .res-card.compact {
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr) auto;
+    grid-template-areas: 'icon title time' 'icon desc time';
+    align-items: center;
+    column-gap: 0.85rem; row-gap: 0.15rem;
+    padding: 0.85rem 1rem;
+    height: auto;
+  }
+  .res-card.compact:hover { transform: translateY(-2px); }
+  .res-card.compact .res-card-icon {
+    grid-area: icon; width: 30px; height: 30px; align-self: center;
+  }
+  .res-card.compact .res-card-icon :global(svg) { width: 19px; height: 19px; }
+  .res-card.compact .res-card-title {
+    grid-area: title; font-size: 0.92rem; font-weight: 600; line-height: 1.35;
+  }
+  .res-card.compact .res-card-desc {
+    grid-area: desc; font-size: 0.78rem; line-height: 1.45; flex: none;
+    display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1;
+    -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .res-card.compact .res-card-foot {
+    grid-area: time; margin: 0; padding: 0; border-top: none;
+  }
+  .res-card.compact .res-card-link { display: none; }
+  .res-card.compact .res-card-time { white-space: nowrap; font-size: 0.68rem; }
+
+  /* On a phone the row is already only as wide as the title needs; the
+     one-line description and the reading time both stop earning their space,
+     so the row collapses to icon + title. */
+  @media (max-width: 560px) {
+    .res-card.compact {
+      grid-template-columns: 26px minmax(0, 1fr);
+      grid-template-areas: 'icon title';
+      padding: 0.8rem 0.9rem;
+    }
+    .res-card.compact .res-card-icon { width: 26px; height: 26px; }
+    .res-card.compact .res-card-desc,
+    .res-card.compact .res-card-foot { display: none; }
+  }
 </style>

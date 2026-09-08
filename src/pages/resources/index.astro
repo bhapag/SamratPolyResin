@@ -466,6 +466,44 @@ const bisphenolVerificationResources = published.filter((resource) => [
 ].includes(resource.slug));
 const gpAuthorityResourcesWithoutUpr = gpAuthorityResources.filter((resource) => !uprAuthoritySlugs.has(resource.slug));
 const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !marbleResinAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug) && !glassFiberAuthoritySlugs.has(resource.slug) && !pigmentAuthoritySlugs.has(resource.slug) && !mekpAuthoritySlugs.has(resource.slug) && !epoxyHardenerAuthoritySlugs.has(resource.slug) && !fiberglassEpoxyAuthoritySlugs.has(resource.slug) && !epoxyCastingAuthoritySlugs.has(resource.slug) && !epoxyArtAuthoritySlugs.has(resource.slug) && !uvResinAuthoritySlugs.has(resource.slug) && !sheetGradeAuthoritySlugs.has(resource.slug) && !roofLightAuthoritySlugs.has(resource.slug) && !dmcSmcAuthoritySlugs.has(resource.slug) && !petResinAuthoritySlugs.has(resource.slug) && !fireRetardantAuthoritySlugs.has(resource.slug) && !isoFireRetardantAuthoritySlugs.has(resource.slug) && !vinylEsterAuthoritySlugs.has(resource.slug) && !bisphenolAuthoritySlugs.has(resource.slug));
+// Jump navigation for the 25 knowledge hubs below. The Knowledge Centre lists
+// every live article on one page; even with the compact rows introduced
+// alongside this, that page is 37,539px on a 390px viewport, so a reader
+// arriving for one resin family had to scroll past every other family to
+// reach it.
+//
+// Each entry points at the <h2 id> its hub section is already labelled by, so
+// this is navigation over existing anchors - no new ids, no markup moved, no
+// link removed. `tests/knowledge-centre.spec.ts` asserts every id here
+// resolves to a real heading and that no hub section is missing from the
+// list, so the two cannot drift apart silently.
+const KNOWLEDGE_HUBS = [
+  { id: 'upr-resin-hub-heading', label: 'Unsaturated Polyester Resin' },
+  { id: 'gp-resin-hub-heading', label: 'GP Resin' },
+  { id: 'gp-white-resin-hub-heading', label: 'GP White Resin' },
+  { id: 'gp-yellow-resin-hub-heading', label: 'GP Yellow Resin' },
+  { id: 'gp-quartz-resin-hub-heading', label: 'GP Quartz Resin' },
+  { id: 'lamination-resin-guides-heading', label: 'Lamination Resin' },
+  { id: 'marble-resin-hub-heading', label: 'Marble Resin' },
+  { id: 'sheet-grade-resin-hub-heading', label: 'Sheet Grade Yellow Resin' },
+  { id: 'roof-light-resin-hub-heading', label: 'Roof Light Sheet Grade Resin' },
+  { id: 'gelcoat-resin-guides-heading', label: 'Gelcoat Resin' },
+  { id: 'fire-retardant-resin-hub-heading', label: 'Fire Retardant Resin' },
+  { id: 'iso-fire-retardant-resin-hub-heading', label: 'ISO Fire Retardant Resin' },
+  { id: 'button-resin-hub-heading', label: 'Button Grade Resin' },
+  { id: 'dmc-smc-resin-hub-heading', label: 'DMC / SMC Resin' },
+  { id: 'pet-resin-hub-heading', label: 'PET Resin / Polyester Putty' },
+  { id: 'vinyl-ester-resin-hub-heading', label: 'Vinyl Ester Resin' },
+  { id: 'bisphenol-resin-hub-heading', label: 'Bisphenol Resin' },
+  { id: 'fiberglass-epoxy-resin-hub-heading', label: 'Fiberglass Epoxy Resin' },
+  { id: 'epoxy-casting-resin-hub-heading', label: 'Epoxy Clear Casting Resin' },
+  { id: 'epoxy-art-resin-hub-heading', label: 'Epoxy Art Resin' },
+  { id: 'uv-resin-hub-heading', label: 'UV Resin' },
+  { id: 'epoxy-hardener-hub-heading', label: 'Epoxy Hardener' },
+  { id: 'mekp-hardener-hub-heading', label: 'MEKP Hardener' },
+  { id: 'glass-fiber-guides-heading', label: 'Glass Fiber / CSM' },
+  { id: 'frp-pigment-guides-heading', label: 'FRP Polyester Pigment' },
+];
 ---
 <Base
   title="Knowledge Centre"
@@ -480,6 +518,18 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
       <p class="eyebrow">Technical Resources</p>
       <h1>Knowledge Centre</h1>
       <p class="kc-hero-sub">Technical articles, application guides and educational resources on polyester resin manufacturing, industrial applications and best practices.</p>
+    </div>
+  </section>
+
+  <section class="section kc-jump" aria-labelledby="kc-jump-heading">
+    <div class="wrap">
+      <h2 id="kc-jump-heading" class="kc-jump-title">Jump to a resin family</h2>
+      <p class="kc-jump-note">{KNOWLEDGE_HUBS.length} knowledge hubs. Every article on this page stays below — this only saves the scroll.</p>
+      <ul class="kc-jump-list">
+        {KNOWLEDGE_HUBS.map((hub) => (
+          <li><a href={`#${hub.id}`}>{hub.label}</a></li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -530,7 +580,7 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             </div>
           </div>
           <div class="kc-grid">
-            {uprAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
+            {uprAuthorityResources.map((resource) => <ResourceCard resource={resource} compact />)}
           </div>
         </section>
       )}
@@ -551,7 +601,7 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             </div>
           </div>
           <div class="kc-grid">
-            {gpWhiteAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
+            {gpWhiteAuthorityResources.map((resource) => <ResourceCard resource={resource} compact />)}
           </div>
         </section>
       )}
@@ -576,19 +626,19 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="gp-quartz-foundation-heading">
               <h3 id="gp-quartz-foundation-heading">Start with the product role and published uses</h3>
               <div class="kc-grid">
-                {gpQuartzFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {gpQuartzFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="gp-quartz-comparisons-heading">
               <h3 id="gp-quartz-comparisons-heading">Compare the relevant resin roles</h3>
               <div class="kc-grid">
-                {gpQuartzComparisonResources.map((resource) => <ResourceCard resource={resource} />)}
+                {gpQuartzComparisonResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="gp-quartz-data-heading">
               <h3 id="gp-quartz-data-heading">Review technical data and prepare a quote</h3>
               <div class="kc-grid">
-                {gpQuartzTechnicalResources.map((resource) => <ResourceCard resource={resource} />)}
+                {gpQuartzTechnicalResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -615,19 +665,19 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="marble-resin-foundation-heading">
               <h3 id="marble-resin-foundation-heading">1. Confirm the resin role, material form and published applications</h3>
               <div class="kc-grid">
-                {marbleResinFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {marbleResinFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="marble-resin-comparisons-heading">
               <h3 id="marble-resin-comparisons-heading">2. Compare the right product route without assuming a performance ranking</h3>
               <div class="kc-grid">
-                {marbleResinComparisonResources.map((resource) => <ResourceCard resource={resource} />)}
+                {marbleResinComparisonResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="marble-resin-verification-heading">
               <h3 id="marble-resin-verification-heading">3. Verify the document record and prepare a focused RFQ</h3>
               <div class="kc-grid">
-                {marbleResinVerificationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {marbleResinVerificationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -653,19 +703,19 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="glass-fiber-foundation-heading">
               <h3 id="glass-fiber-foundation-heading">1. Understand the material and compare mat weight</h3>
               <div class="kc-grid">
-                {glassFiberFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {glassFiberFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="glass-fiber-system-heading">
               <h3 id="glass-fiber-system-heading">2. Define the FRP component and material-system role</h3>
               <div class="kc-grid">
-                {glassFiberSystemResources.map((resource) => <ResourceCard resource={resource} />)}
+                {glassFiberSystemResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="glass-fiber-procurement-heading">
               <h3 id="glass-fiber-procurement-heading">3. Review storage and prepare the procurement discussion</h3>
               <div class="kc-grid">
-                {glassFiberProcurementResources.map((resource) => <ResourceCard resource={resource} />)}
+                {glassFiberProcurementResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -692,19 +742,19 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="frp-pigment-foundation-heading">
               <h3 id="frp-pigment-foundation-heading">1. Define the pigment-paste role and application context</h3>
               <div class="kc-grid">
-                {pigmentFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {pigmentFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="frp-pigment-system-heading">
               <h3 id="frp-pigment-system-heading">2. Compare product roles and check the actual system</h3>
               <div class="kc-grid">
-                {pigmentSystemResources.map((resource) => <ResourceCard resource={resource} />)}
+                {pigmentSystemResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="frp-pigment-buyer-heading">
               <h3 id="frp-pigment-buyer-heading">3. Document colour questions and prepare procurement details</h3>
               <div class="kc-grid">
-                {pigmentBuyerResources.map((resource) => <ResourceCard resource={resource} />)}
+                {pigmentBuyerResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -731,13 +781,13 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="mekp-role-guides-heading">
               <h3 id="mekp-role-guides-heading">1. Identify the catalyst role and documented system context</h3>
               <div class="kc-grid">
-                {mekpRoleResources.map((resource) => <ResourceCard resource={resource} />)}
+                {mekpRoleResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="mekp-documentation-guides-heading">
               <h3 id="mekp-documentation-guides-heading">2. Review documentation and prepare a quotation</h3>
               <div class="kc-grid">
-                {mekpDocumentationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {mekpDocumentationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -763,19 +813,19 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="epoxy-hardener-foundation-heading">
               <h3 id="epoxy-hardener-foundation-heading">1. Identify the separate component roles</h3>
               <div class="kc-grid">
-                {epoxyHardenerFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {epoxyHardenerFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="epoxy-hardener-selection-heading">
               <h3 id="epoxy-hardener-selection-heading">2. Confirm the product route and compatibility</h3>
               <div class="kc-grid">
-                {epoxyHardenerSelectionResources.map((resource) => <ResourceCard resource={resource} />)}
+                {epoxyHardenerSelectionResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="epoxy-hardener-procurement-heading">
               <h3 id="epoxy-hardener-procurement-heading">3. Review documentation and prepare an RFQ</h3>
               <div class="kc-grid">
-                {epoxyHardenerProcurementResources.map((resource) => <ResourceCard resource={resource} />)}
+                {epoxyHardenerProcurementResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -801,19 +851,19 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="fiberglass-epoxy-foundation-heading">
               <h3 id="fiberglass-epoxy-foundation-heading">1. Define the published system, reinforcement and application boundary</h3>
               <div class="kc-grid">
-                {fiberglassEpoxyFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {fiberglassEpoxyFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="fiberglass-epoxy-comparison-heading">
               <h3 id="fiberglass-epoxy-comparison-heading">2. Compare product routes without an unsupported performance ranking</h3>
               <div class="kc-grid">
-                {fiberglassEpoxyComparisonResources.map((resource) => <ResourceCard resource={resource} />)}
+                {fiberglassEpoxyComparisonResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="fiberglass-epoxy-verification-heading">
               <h3 id="fiberglass-epoxy-verification-heading">3. Check the records, separate finished performance and prepare an RFQ</h3>
               <div class="kc-grid">
-                {fiberglassEpoxyVerificationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {fiberglassEpoxyVerificationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -840,13 +890,13 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="epoxy-casting-role-guides-heading">
               <h3 id="epoxy-casting-role-guides-heading">1. Define the casting role and separate it from a coating</h3>
               <div class="kc-grid">
-                {epoxyCastingRoleResources.map((resource) => <ResourceCard resource={resource} />)}
+                {epoxyCastingRoleResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="epoxy-casting-buyer-guides-heading">
               <h3 id="epoxy-casting-buyer-guides-heading">2. Compare the resin system and prepare a documented enquiry</h3>
               <div class="kc-grid">
-                {epoxyCastingComparisonResources.map((resource) => <ResourceCard resource={resource} />)}
+                {epoxyCastingComparisonResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -874,13 +924,13 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="epoxy-art-role-guides-heading">
               <h3 id="epoxy-art-role-guides-heading">1. Define the Art Resin role and separate it from casting</h3>
               <div class="kc-grid">
-                {epoxyArtRoleResources.map((resource) => <ResourceCard resource={resource} />)}
+                {epoxyArtRoleResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="epoxy-art-buyer-guides-heading">
               <h3 id="epoxy-art-buyer-guides-heading">2. Review finish questions and prepare a documented enquiry</h3>
               <div class="kc-grid">
-                {epoxyArtBuyerResources.map((resource) => <ResourceCard resource={resource} />)}
+                {epoxyArtBuyerResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -907,19 +957,19 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="uv-resin-foundation-heading">
               <h3 id="uv-resin-foundation-heading">1. Define the UV Resin role and published applications</h3>
               <div class="kc-grid">
-                {uvResinFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {uvResinFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="uv-resin-comparison-heading">
               <h3 id="uv-resin-comparison-heading">2. Compare the separate product routes</h3>
               <div class="kc-grid">
-                {uvResinComparisonResources.map((resource) => <ResourceCard resource={resource} />)}
+                {uvResinComparisonResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="uv-resin-buyer-heading">
               <h3 id="uv-resin-buyer-heading">3. Review documentation and prepare the enquiry</h3>
               <div class="kc-grid">
-                {uvResinBuyerResources.map((resource) => <ResourceCard resource={resource} />)}
+                {uvResinBuyerResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -944,19 +994,19 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="sheet-grade-foundation-heading">
               <h3 id="sheet-grade-foundation-heading">1. Define the published sheet and panel role</h3>
               <div class="kc-grid">
-                {sheetGradeFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {sheetGradeFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="sheet-grade-decision-heading">
               <h3 id="sheet-grade-decision-heading">2. Separate related resin routes</h3>
               <div class="kc-grid">
-                {sheetGradeDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
+                {sheetGradeDecisionResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="sheet-grade-procurement-heading">
               <h3 id="sheet-grade-procurement-heading">3. Review documents and prepare a quotation</h3>
               <div class="kc-grid">
-                {sheetGradeProcurementResources.map((resource) => <ResourceCard resource={resource} />)}
+                {sheetGradeProcurementResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -983,19 +1033,19 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="dmc-smc-foundation-heading">
               <h3 id="dmc-smc-foundation-heading">1. Define the DMC and SMC terms in the published product route</h3>
               <div class="kc-grid">
-                {dmcSmcFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {dmcSmcFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="dmc-smc-decision-heading">
               <h3 id="dmc-smc-decision-heading">2. Separate moulding-compound selection from sheet-grade, GP and application questions</h3>
               <div class="kc-grid">
-                {dmcSmcDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
+                {dmcSmcDecisionResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="dmc-smc-verification-heading">
               <h3 id="dmc-smc-verification-heading">3. Review the current TDS and prepare a focused RFQ</h3>
               <div class="kc-grid">
-                {dmcSmcVerificationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {dmcSmcVerificationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -1023,13 +1073,13 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="pet-resin-foundation-heading">
               <h3 id="pet-resin-foundation-heading">1. Confirm the published resin identity and material form</h3>
               <div class="kc-grid">
-                {petResinFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {petResinFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="pet-resin-decision-heading">
               <h3 id="pet-resin-decision-heading">2. Review published applications and separate relevant resin routes</h3>
               <div class="kc-grid">
-                {petResinDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
+                {petResinDecisionResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -1057,19 +1107,19 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="roof-light-foundation-heading">
               <h3 id="roof-light-foundation-heading">1. Define the published roof-light and finished-sheet role</h3>
               <div class="kc-grid">
-                {roofLightFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {roofLightFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="roof-light-decision-heading">
               <h3 id="roof-light-decision-heading">2. Separate the relevant resin routes and material-system questions</h3>
               <div class="kc-grid">
-                {roofLightDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
+                {roofLightDecisionResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="roof-light-procurement-heading">
               <h3 id="roof-light-procurement-heading">3. Review the TDS and prepare a Roof Light Resin quotation</h3>
               <div class="kc-grid">
-                {roofLightProcurementResources.map((resource) => <ResourceCard resource={resource} />)}
+                {roofLightProcurementResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -1094,19 +1144,19 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="fire-retardant-foundation-heading">
               <h3 id="fire-retardant-foundation-heading">1. Understand the published product role and application categories</h3>
               <div class="kc-grid">
-                {fireRetardantFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {fireRetardantFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="fire-retardant-decision-heading">
               <h3 id="fire-retardant-decision-heading">2. Compare product roles and define the actual requirement</h3>
               <div class="kc-grid">
-                {fireRetardantDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
+                {fireRetardantDecisionResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="fire-retardant-system-heading">
               <h3 id="fire-retardant-system-heading">3. Review material roles and prepare a focused enquiry</h3>
               <div class="kc-grid">
-                {fireRetardantSystemResources.map((resource) => <ResourceCard resource={resource} />)}
+                {fireRetardantSystemResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -1131,19 +1181,19 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="iso-fire-retardant-foundation-heading">
               <h3 id="iso-fire-retardant-foundation-heading">1. Understand the ISO / isophthalic product route and listed applications</h3>
               <div class="kc-grid">
-                {isoFireRetardantFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {isoFireRetardantFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="iso-fire-retardant-decision-heading">
               <h3 id="iso-fire-retardant-decision-heading">2. Compare published resin routes without assuming a performance hierarchy</h3>
               <div class="kc-grid">
-                {isoFireRetardantDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
+                {isoFireRetardantDecisionResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="iso-fire-retardant-requirements-heading">
               <h3 id="iso-fire-retardant-requirements-heading">3. Define the finished-system requirement and prepare an enquiry</h3>
               <div class="kc-grid">
-                {isoFireRetardantRequirementsResources.map((resource) => <ResourceCard resource={resource} />)}
+                {isoFireRetardantRequirementsResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -1168,20 +1218,20 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="vinyl-ester-foundation-heading">
               <h3 id="vinyl-ester-foundation-heading">1. Understand the published product route and define the service requirement</h3>
               <div class="kc-grid">
-                {vinylEsterFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {vinylEsterFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="vinyl-ester-decision-heading">
               <h3 id="vinyl-ester-decision-heading">2. Compare distinct resin families without assuming a performance hierarchy</h3>
               <div class="kc-grid">
-                {vinylEsterDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
-                {vinylEsterLinkedComparisonResources.map((resource) => <ResourceCard resource={resource} />)}
+                {vinylEsterDecisionResources.map((resource) => <ResourceCard resource={resource} compact />)}
+                {vinylEsterLinkedComparisonResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="vinyl-ester-verification-heading">
               <h3 id="vinyl-ester-verification-heading">3. Verify the published data and prepare an industrial enquiry</h3>
               <div class="kc-grid">
-                {vinylEsterVerificationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {vinylEsterVerificationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -1207,19 +1257,19 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <section class="kc-subgroup" aria-labelledby="bisphenol-foundation-heading">
               <h3 id="bisphenol-foundation-heading">1. Identify the published product route and application boundary</h3>
               <div class="kc-grid">
-                {bisphenolFoundationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {bisphenolFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="bisphenol-decision-heading">
               <h3 id="bisphenol-decision-heading">2. Compare separate resin routes</h3>
               <div class="kc-grid">
-                {bisphenolDecisionResources.map((resource) => <ResourceCard resource={resource} />)}
+                {bisphenolDecisionResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
             <section class="kc-subgroup" aria-labelledby="bisphenol-verification-heading">
               <h3 id="bisphenol-verification-heading">3. Separate finished-system questions and prepare an RFQ</h3>
               <div class="kc-grid">
-                {bisphenolVerificationResources.map((resource) => <ResourceCard resource={resource} />)}
+                {bisphenolVerificationResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
@@ -1240,7 +1290,7 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             </div>
           </div>
           <div class="kc-grid">
-            {gpYellowAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
+            {gpYellowAuthorityResources.map((resource) => <ResourceCard resource={resource} compact />)}
           </div>
         </section>
       )}
@@ -1260,7 +1310,7 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             </div>
           </div>
           <div class="kc-grid">
-            {buttonAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
+            {buttonAuthorityResources.map((resource) => <ResourceCard resource={resource} compact />)}
           </div>
         </section>
       )}
@@ -1280,7 +1330,7 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             </div>
           </div>
           <div class="kc-grid">
-            {gpAuthorityResourcesWithoutUpr.map((resource) => <ResourceCard resource={resource} />)}
+            {gpAuthorityResourcesWithoutUpr.map((resource) => <ResourceCard resource={resource} compact />)}
           </div>
         </section>
       )}
@@ -1299,7 +1349,7 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             </div>
           </div>
           <div class="kc-grid">
-            {laminationAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
+            {laminationAuthorityResources.map((resource) => <ResourceCard resource={resource} compact />)}
           </div>
         </section>
       )}
@@ -1318,7 +1368,7 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             </div>
           </div>
           <div class="kc-grid">
-            {gelcoatAuthorityResources.map((resource) => <ResourceCard resource={resource} />)}
+            {gelcoatAuthorityResources.map((resource) => <ResourceCard resource={resource} compact />)}
           </div>
         </section>
       )}
@@ -1330,7 +1380,7 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
             <h2 id="all-resources-heading">All other guides</h2>
           </div>
           <div class="kc-grid">
-            {otherResources.map((resource) => <ResourceCard resource={resource} />)}
+            {otherResources.map((resource) => <ResourceCard resource={resource} compact />)}
           </div>
         </section>
       )}
@@ -1372,13 +1422,39 @@ const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(reso
        minmax(280px, 1fr) track forces itself 1px wider than the available
        row, overflowing the page by that 1px; capping the minimum at the
        container's own width removes the forced overshoot. */
-    .kc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 1.4rem; }
+    /* Tuned for the compact rows this index now uses (see ResourceCard).
+       The old 280px/1.4rem track was sized for tall panels; at ~72px a row
+       the same gap left the list looking like scattered chips rather than a
+       directory. */
+
+    /* ---------- hub jump navigation ---------- */
+    .kc-jump { padding-block: clamp(1.5rem, 4vw, 2.4rem) 0; }
+    .kc-jump-title { font-size: clamp(1.1rem, 2.4vw, 1.4rem); }
+    .kc-jump-note { color: var(--ink-dim); font-size: 0.86rem; margin-top: 0.5rem; }
+    .kc-jump-list {
+      list-style: none; margin: 1.1rem 0 0; padding: 0;
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .kc-jump-list a {
+      display: inline-block; padding: 0.44rem 0.8rem;
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.03em;
+      color: var(--ink-dim); background: var(--bg-3);
+      border: 1px solid var(--line);
+      transition: border-color .3s var(--ease-premium), color .3s var(--ease-premium);
+    }
+    .kc-jump-list a:hover, .kc-jump-list a:focus-visible {
+      border-color: var(--line-2); color: var(--ink);
+    }
+    /* The header is sticky, so an anchor jump would otherwise land the
+       heading underneath it. */
+    .kc-focus { scroll-margin-top: 5.5rem; }
+    .kc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: 0.6rem; }
     .kc-focus { padding: clamp(1.4rem, 4vw, 2.2rem); background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest); }
-    .kc-focus-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+    .kc-focus-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.4rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
     .kc-focus h2, .kc-other h2 { font-size: clamp(1.45rem, 3vw, 2rem); margin-top: 0.55rem; }
     .kc-focus p:not(.eyebrow) { color: var(--ink-dim); margin-top: 0.75rem; max-width: 65ch; }
     .kc-focus-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-    .kc-subgroups { display: grid; gap: 2rem; }
+    .kc-subgroups { display: grid; gap: 1.4rem; }
     .kc-subgroup h3 { font-size: 1rem; text-transform: none; letter-spacing: 0; margin-bottom: 1rem; color: var(--ink); }
     .kc-epoxy-application-links { padding-top: 0.4rem; }
     .kc-epoxy-application-links a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 0.16em; }
