@@ -1128,6 +1128,22 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <p class="prod-desc">{description}</p>
       {usageNote && <p class="prod-desc prod-usage" set:html={usageNote} />}
 
+      <!-- In-page section navigation. A product page runs to roughly 13,000px
+           on desktop and 19,000px on mobile, with 14-18 H2 sections, so a
+           buyer looking for the specification table or the documents had to
+           scroll and hunt.
+
+           Built by the script at the foot of this file from the H2s actually
+           rendered, because which sections exist varies per product. It is
+           progressive enhancement only: the <nav> ships empty and hidden, and
+           if the script does not run the page is exactly as it was - every
+           section is still present, in order, in the HTML. No content depends
+           on it. -->
+      <nav class="prod-toc" id="prodToc" aria-label="Sections on this page" hidden>
+        <p class="prod-toc-title">On this page</p>
+        <ul class="prod-toc-list"></ul>
+      </nav>
+
       {isVinylEsterResin && (
         <section class="gp-overview" aria-labelledby="vinyl-ester-overview-heading">
           <h2 id="vinyl-ester-overview-heading" class="spec-h">What is Samrat Vinyl Ester Resin?</h2>
@@ -4122,6 +4138,60 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     });
   </script>
 
+  <script>
+    // Build the product page's section navigation from the headings that are
+    // actually on the page. Headings written into this template mostly carry
+    // their own id (used by aria-labelledby); the rest get a slug derived
+    // from their text, de-duplicated, so every entry has a real target.
+    document.addEventListener('astro:page-load', () => {
+      const nav = document.getElementById('prodToc');
+      const list = nav?.querySelector('.prod-toc-list');
+      const info = document.querySelector('.prod-info');
+      if (!nav || !list || !info) return;
+
+      list.textContent = '';
+
+      const slug = (text) => text.toLowerCase().trim()
+        .replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'section';
+      const used = new Set(
+        Array.from(document.querySelectorAll('[id]')).map((el) => el.id),
+      );
+
+      // Every section heading on the page, in document order. Deliberately
+      // not scoped to .prod-info and not filtered to headings after the nav:
+      // the specification table and product details sit ABOVE this block, and
+      // the process, comparison, trust, related-product, resource and FAQ
+      // sections sit outside .prod-info entirely. A buyer wants all of them.
+      // Only the sitewide chrome is excluded.
+      const headings = Array.from(document.querySelectorAll('h2')).filter(
+        (h) => !h.closest('.site-header, .site-footer, .prod-toc'),
+      );
+
+      for (const h of headings) {
+        const label = (h.textContent || '').replace(/\s+/g, ' ').trim();
+        if (!label) continue;
+        if (!h.id) {
+          let candidate = slug(label);
+          let n = 2;
+          while (used.has(candidate)) candidate = `${slug(label)}-${n++}`;
+          h.id = candidate;
+        }
+        used.add(h.id);
+        h.classList.add('prod-section-anchor');
+
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `#${h.id}`;
+        a.textContent = label;
+        li.appendChild(a);
+        list.appendChild(li);
+      }
+
+      // Two or fewer sections is not worth a navigation block.
+      nav.hidden = list.children.length < 3;
+    });
+  </script>
+
   <style>
     .crumb {
       display: flex; gap: 0.6rem; align-items: center; padding-top: 1.5rem;
@@ -4607,5 +4677,46 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .gelcoat-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
     .gp-yellow-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
     .button-enquiry-note, .mekp-enquiry-note, .epoxy-casting-enquiry-note { color: var(--ink-dim); font-size: 0.92rem; margin-top: 0.65rem; max-width: 58ch; }
+
+    /* ---------- in-page section navigation ---------- */
+    .prod-toc {
+      margin: 2rem 0 0; padding: 1.1rem 1.25rem;
+      background: var(--bg-3); border: 1px solid var(--line);
+      box-shadow: var(--surface-shadow-rest);
+    }
+    .prod-toc-title {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.75rem;
+    }
+    .prod-toc-list {
+      list-style: none; margin: 0; padding: 0;
+      display: flex; flex-wrap: wrap; gap: 0.4rem 0.5rem;
+    }
+    /* Same chip treatment as the Knowledge Centre and Applications jump
+       navigation, so in-page navigation looks like one idea across the site.
+       Background is --bg-2 against the panel's --bg-3: --line alone is too
+       close to the panel colour and the chips read as one block of text.
+
+       :global() is required, not optional. Astro scopes page styles by
+       stamping a data-astro-cid attribute on elements in the TEMPLATE, and
+       these <li>/<a> elements are created by the script above at runtime, so
+       they never carry it. Without :global() the rules silently do not apply
+       and the chips render as plain body text - which is exactly what
+       happened on the first attempt. */
+    .prod-toc-list :global(li) { display: inline-flex; }
+    .prod-toc-list :global(a) {
+      display: inline-block; padding: 0.42rem 0.78rem;
+      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.03em;
+      line-height: 1.35; color: var(--ink-dim);
+      background: var(--bg-2); border: 1px solid var(--line-2);
+      transition: border-color .25s var(--ease-premium), color .25s var(--ease-premium);
+    }
+    .prod-toc-list :global(a:hover),
+    .prod-toc-list :global(a:focus-visible) {
+      border-color: var(--accent-gold); color: var(--ink);
+    }
+    /* The site header is sticky, so a jump would otherwise land the heading
+       underneath it. */
+    .prod-section-anchor { scroll-margin-top: 5.5rem; }
   </style>
 </Base>
