@@ -1,18 +1,98 @@
 ---
 import Base from '../layouts/Base.astro';
+import { products, CATEGORIES, CATEGORY_HUBS } from '../data/products.js';
+
+// A 404 is usually a mistyped URL, a stale link or a page that moved. The
+// page previously offered a single "Back to home" button, which makes the
+// visitor start their search again from scratch. It now offers the real
+// entry points instead — the catalogue, the families that have a hub, the
+// document library and a way to ask — so a lost buyer can recover in one
+// click rather than leaving.
+//
+// Still `noindex`: this is a helpful dead end, not a page that should
+// compete in search.
+const hubs = CATEGORIES
+  .filter((cat) => CATEGORY_HUBS[cat])
+  .map((cat) => ({
+    name: cat,
+    href: `/products/${CATEGORY_HUBS[cat]}/`,
+    count: products.filter((p) => p.category === cat).length,
+  }));
+
+const routes = [
+  { href: '/products/', label: 'All products', note: `${products.length} grades across ${CATEGORIES.length} families` },
+  { href: '/technical-documents/', label: 'Technical documents', note: 'Every published TDS and SDS' },
+  { href: '/applications/', label: 'Applications', note: 'Which resin suits which job' },
+  { href: '/resources/', label: 'Knowledge Centre', note: 'Technical articles and guides' },
+  { href: '/contact/', label: 'Contact us', note: 'Ask for a grade recommendation' },
+];
 ---
 <Base title="Page not found" noindex>
   <section class="nf">
     <div class="wrap">
       <p class="eyebrow">Error 404</p>
       <h1>This page cured elsewhere.</h1>
-      <p class="nf-sub">The page you’re after doesn’t exist. Head back to the catalog.</p>
-      <a href="/" class="btn btn-solid">Back to home</a>
+      <p class="nf-sub">
+        That address doesn’t exist on this site — it may have been mistyped, or the page may have moved.
+        Here is where most people are heading.
+      </p>
+
+      <div class="nf-routes">
+        {routes.map((r) => (
+          <a href={r.href} class="nf-route">
+            <span class="nf-route-label">{r.label}<span aria-hidden="true"> →</span></span>
+            <span class="nf-route-note">{r.note}</span>
+          </a>
+        ))}
+      </div>
+
+      {hubs.length > 0 && (
+        <div class="nf-hubs">
+          <p class="nf-hubs-title">Product families</p>
+          <ul class="nf-hub-list">
+            {hubs.map((h) => (
+              <li><a href={h.href}>{h.name} <span aria-hidden="true">{h.count}</span></a></li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   </section>
+
   <style>
-    .nf { padding-block: clamp(4rem, 12vw, 8rem); }
+    .nf { padding-block: clamp(3rem, 9vw, 6rem); }
     .nf h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0.8rem 0 1rem; }
-    .nf-sub { color: var(--ink-dim); margin-bottom: 2rem; }
+    .nf-sub { color: var(--ink-dim); margin-bottom: 2.2rem; max-width: 62ch; line-height: 1.7; }
+
+    .nf-routes {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+      gap: 0.9rem;
+    }
+    .nf-route {
+      display: flex; flex-direction: column; gap: 0.35rem;
+      padding: 1.1rem 1.2rem;
+      background: var(--bg-3); border: 1px solid var(--line);
+      box-shadow: var(--surface-shadow-rest);
+      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium);
+    }
+    .nf-route:hover, .nf-route:focus-visible { border-color: var(--line-2); transform: translateY(-3px); }
+    .nf-route-label { color: var(--ink); font-weight: 600; font-size: 0.98rem; }
+    .nf-route-note { color: var(--ink-dim); font-size: 0.84rem; line-height: 1.5; }
+
+    .nf-hubs { margin-top: 2.2rem; }
+    .nf-hubs-title {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.8rem;
+    }
+    .nf-hub-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .nf-hub-list a {
+      display: inline-flex; align-items: baseline; gap: 0.45rem;
+      padding: 0.42rem 0.8rem;
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.03em;
+      color: var(--ink-dim); background: var(--bg-3); border: 1px solid var(--line);
+      transition: border-color .3s var(--ease-premium), color .3s var(--ease-premium);
+    }
+    .nf-hub-list a:hover, .nf-hub-list a:focus-visible { border-color: var(--line-2); color: var(--ink); }
+    .nf-hub-list a span { color: var(--accent-gold-light); }
   </style>
 </Base>
