@@ -411,8 +411,14 @@ export const resources = [
   },
   {
     slug: "applications-of-gp-polyester-resin",
+    seo: {
+      title: "GP Polyester Resin Applications: Tanks, Sheets & Panels",
+      keywords: ["gp resin uses", "gp polyester resin applications", "where is gp resin used", "frp resin applications"],
+      ogTitle: "Applications of GP Polyester Resin",
+      ogDescription: "Where GP polyester resin is used across FRP manufacturing, and what decides the grade for each application.",
+    },
     title: "Applications of GP Polyester Resin",
-    description: "Explore where GP Polyester Resin is commonly used across FRP, construction, marine and industrial manufacturing.",
+    description: "Where GP polyester resin is actually used — FRP water tanks, roofing sheets, door skins, panels, bathware and marine components — and what decides the grade for each.",
     category: "Application Guide",
     icon: "grid",
     publishDate: "2026-07-18",
@@ -2095,7 +2101,7 @@ export const resources = [
     icon: "checklist",
     publishDate: "2026-08-06",
     seo: {
-      title: "GP Resin vs Vinyl Ester Resin | FRP Selection Guide",
+      title: "GP Resin vs Vinyl Ester: When GP Is Not Enough",
       keywords: ["GP Resin vs Vinyl Ester Resin", "general purpose polyester resin", "vinyl ester resin", "chemical resistant FRP resin", "FRP resin selection"],
       ogTitle: "GP Resin vs Vinyl Ester Resin",
       ogDescription: "Understand when a general-purpose GP grade or a vinyl ester system should be reviewed for an FRP application.",
@@ -2200,7 +2206,7 @@ export const resources = [
     icon: "info",
     publishDate: "2026-08-06",
     seo: {
-      title: "Why GP Resin Is Yellow or Turns Yellow | Buyer Checks",
+      title: "Why Is GP Resin Yellow? Grade Colour vs a Real Fault",
       keywords: ["why GP resin is yellow", "why GP resin turns yellow", "GP Yellow Resin", "yellow polyester resin", "GP resin colour", "polyester resin storage"],
       ogTitle: "Why GP Resin Is Yellow or Turns Yellow",
       ogDescription: "Understand the published transparent-yellow GP grade, storage-related colour change and the information to share when discussing a batch.",
@@ -2240,7 +2246,7 @@ export const resources = [
     icon: "info",
     publishDate: "2026-08-06",
     seo: {
-      title: "Why Polyester Resin Remains Sticky or Tacky",
+      title: "Polyester Resin Still Sticky? What to Check First",
       keywords: ["polyester resin sticky", "polyester resin tacky", "GP resin not curing", "FRP resin troubleshooting", "polyester resin gel time"],
       ogTitle: "Why Polyester Resin Remains Sticky or Tacky",
       ogDescription: "A practical, safety-conscious guide to checking a sticky or tacky polyester resin surface before changing the process.",

@@ -2377,7 +2377,7 @@ export const products = [
     tdsUrl: "/tds/pet-resin-tds.pdf",
     sdsUrl: "/sds/pet-resin-sds.pdf",
     seo: {
-      title: "PET Resin / Polyester Putty Resin Manufacturer in India",
+      title: "Polyester Putty Resin (PET Resin) for Sheet & Laminate",
       description:
         "Samrat Poly Resins manufactures PET Resin / Polyester Putty Resin: a PET-modified polyester resin for sheet and laminate manufacturing in India. Request a quote.",
       keywords: [
@@ -2503,7 +2503,7 @@ export const products = [
     seo: {
       title: "Marble Resin Manufacturer in India | Cultured Marble Resin",
       description:
-        "Water-white unsaturated polyester Marble Resin for the TDS-listed cultured-marble and artificial-stone contexts. Review published data, 200 kg pack details and enquire.",
+        "Marble Resin for cultured-marble slabs, vanity tops, wash basins and cast architectural stone. Water-white unsaturated polyester, published viscosity and gel time, downloadable TDS. Made in Punjab.",
       keywords: [
         "Marble Resin",
         "Cultured Marble Resin",

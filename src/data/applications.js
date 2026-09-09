@@ -99,7 +99,7 @@ export const applications = [
     cardDescription: "Cooling tower components face constant moisture and temperature cycling, demanding a laminate with lasting mechanical strength and chemical resistance.",
     cardBenefit: "Built to withstand continuous wet/dry cycling.",
     seo: {
-      title: "Resin for Cooling Tower Manufacturing",
+      title: "Resin for FRP Cooling Towers — Grades & Selection",
       description: "Why FRP cooling tower manufacturers choose GP Clear Resin — required laminate properties, panel fabrication, and when a chemical-resistant upgrade makes sense.",
       keywords: ["Resin for Cooling Towers", "FRP Cooling Tower Resin", "Cooling Tower Manufacturing Resin", "Industrial Cooling Tower Resin"],
     },
