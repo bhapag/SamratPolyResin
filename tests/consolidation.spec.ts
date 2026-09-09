@@ -3,7 +3,11 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { resources } from '../src/data/resources.js';
-import { RETIRE } from '../scripts/consolidated-guides.mjs';
+import { RETIRE as RETIRE_1 } from '../scripts/consolidated-guides.mjs';
+import { RETIRE as RETIRE_2 } from '../scripts/consolidation-2-plan.mjs';
+
+// Both consolidation passes are held to the same rules by these tests.
+const RETIRE = { ...RETIRE_1, ...RETIRE_2 };
 
 // ---------------------------------------------------------------------------
 // The September 2026 consolidation retired 59 thin articles behind 301s.
@@ -123,6 +127,13 @@ test.describe('content consolidation', () => {
       'what-is-frp-polyester-pigment',
       'what-is-lamination-resin',
       'what-is-gel-coat-resin',
+      // pass 2
+      'what-is-iso-fire-retardant-resin',
+      'what-is-fire-retardant-resin',
+      'what-is-gp-white-resin',
+      'what-is-roof-light-sheet-grade-resin',
+      'what-is-button-grade-resin',
+      'what-is-epoxy-art-resin',
     ];
 
     const thin: string[] = [];

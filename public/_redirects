@@ -138,3 +138,55 @@
 /resources/epoxy-hardener-vs-uv-resin-curing                    /resources/epoxy-hardener-vs-mekp-hardener/  301
 /resources/marble-resin-vs-epoxy-clear-casting-resin/           /resources/marble-resin-vs-pet-resin/  301
 /resources/marble-resin-vs-epoxy-clear-casting-resin            /resources/marble-resin-vs-pet-resin/  301
+
+# Content consolidation pass 2 (2026-09-09)
+# Thin single-topic accessory and comparison articles merged into the
+# substantial cluster guides below. Every source URL 301s to the guide that
+# now carries its content — never to an unrelated page.
+# See CONTENT_CONSOLIDATION_MAP_2.md for the full record.
+/resources/iso-fire-retardant-resin-vs-fire-retardant-resin/  /resources/what-is-iso-fire-retardant-resin/  301
+/resources/iso-fire-retardant-resin-vs-fire-retardant-resin   /resources/what-is-iso-fire-retardant-resin/  301
+/resources/iso-fire-retardant-resin-vs-vinyl-ester-resin/     /resources/what-is-iso-fire-retardant-resin/  301
+/resources/iso-fire-retardant-resin-vs-vinyl-ester-resin      /resources/what-is-iso-fire-retardant-resin/  301
+/resources/iso-fire-retardant-resin-applications/             /resources/what-is-iso-fire-retardant-resin/  301
+/resources/iso-fire-retardant-resin-applications              /resources/what-is-iso-fire-retardant-resin/  301
+/resources/iso-fire-retardant-resin-fire-requirements/        /resources/what-is-iso-fire-retardant-resin/  301
+/resources/iso-fire-retardant-resin-fire-requirements         /resources/what-is-iso-fire-retardant-resin/  301
+/resources/iso-fire-retardant-resin-procurement-checklist/    /resources/what-is-iso-fire-retardant-resin/  301
+/resources/iso-fire-retardant-resin-procurement-checklist     /resources/what-is-iso-fire-retardant-resin/  301
+/resources/fire-retardant-resin-vs-gp-resin/                  /resources/what-is-fire-retardant-resin/  301
+/resources/fire-retardant-resin-vs-gp-resin                   /resources/what-is-fire-retardant-resin/  301
+/resources/fire-retardant-resin-fireproof-vs-fire-retardant/  /resources/what-is-fire-retardant-resin/  301
+/resources/fire-retardant-resin-fireproof-vs-fire-retardant   /resources/what-is-fire-retardant-resin/  301
+/resources/frp-fire-performance-requirements-buyer-guide/     /resources/what-is-fire-retardant-resin/  301
+/resources/frp-fire-performance-requirements-buyer-guide      /resources/what-is-fire-retardant-resin/  301
+/resources/gp-white-resin-vs-gelcoat-resin/                   /resources/what-is-gp-white-resin/  301
+/resources/gp-white-resin-vs-gelcoat-resin                    /resources/what-is-gp-white-resin/  301
+/resources/applications-of-gp-white-resin/                    /resources/what-is-gp-white-resin/  301
+/resources/applications-of-gp-white-resin                     /resources/what-is-gp-white-resin/  301
+/resources/roof-light-resin-procurement-guide/                /resources/what-is-roof-light-sheet-grade-resin/  301
+/resources/roof-light-resin-procurement-guide                 /resources/what-is-roof-light-sheet-grade-resin/  301
+/resources/roof-light-resin-vs-gp-clear-resin/                /resources/what-is-roof-light-sheet-grade-resin/  301
+/resources/roof-light-resin-vs-gp-clear-resin                 /resources/what-is-roof-light-sheet-grade-resin/  301
+/resources/roof-light-resin-applications-frp-roofing-sheets/  /resources/what-is-roof-light-sheet-grade-resin/  301
+/resources/roof-light-resin-applications-frp-roofing-sheets   /resources/what-is-roof-light-sheet-grade-resin/  301
+/resources/sheet-grade-yellow-resin-vs-roof-light-resin/      /resources/what-is-roof-light-sheet-grade-resin/  301
+/resources/sheet-grade-yellow-resin-vs-roof-light-resin       /resources/what-is-roof-light-sheet-grade-resin/  301
+/resources/button-resin-storage-and-quote-guide/              /resources/what-is-button-grade-resin/  301
+/resources/button-resin-storage-and-quote-guide               /resources/what-is-button-grade-resin/  301
+/resources/button-resin-processing-checklist/                 /resources/what-is-button-grade-resin/  301
+/resources/button-resin-processing-checklist                  /resources/what-is-button-grade-resin/  301
+/resources/button-resin-gel-time-and-viscosity-guide/         /resources/what-is-button-grade-resin/  301
+/resources/button-resin-gel-time-and-viscosity-guide          /resources/what-is-button-grade-resin/  301
+/resources/how-to-choose-resin-for-button-manufacturing/      /resources/what-is-button-grade-resin/  301
+/resources/how-to-choose-resin-for-button-manufacturing       /resources/what-is-button-grade-resin/  301
+/resources/button-grade-resin-vs-clear-casting-resin/         /resources/what-is-button-grade-resin/  301
+/resources/button-grade-resin-vs-clear-casting-resin          /resources/what-is-button-grade-resin/  301
+/resources/epoxy-art-resin-storage-and-procurement-guide/     /resources/what-is-epoxy-art-resin/  301
+/resources/epoxy-art-resin-storage-and-procurement-guide      /resources/what-is-epoxy-art-resin/  301
+/resources/epoxy-art-resin-finish-questions/                  /resources/what-is-epoxy-art-resin/  301
+/resources/epoxy-art-resin-finish-questions                   /resources/what-is-epoxy-art-resin/  301
+/resources/applications-of-epoxy-art-resin/                   /resources/what-is-epoxy-art-resin/  301
+/resources/applications-of-epoxy-art-resin                    /resources/what-is-epoxy-art-resin/  301
+/resources/epoxy-art-resin-buyer-guide/                       /resources/what-is-epoxy-art-resin/  301
+/resources/epoxy-art-resin-buyer-guide                        /resources/what-is-epoxy-art-resin/  301

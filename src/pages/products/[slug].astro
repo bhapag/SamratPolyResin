@@ -466,9 +466,7 @@ const gpResources = isGpClearResin
 
 const gpWhiteResourceSlugs = [
   'what-is-gp-white-resin',
-  'applications-of-gp-white-resin',
   'gp-white-resin-vs-gp-clear-resin',
-  'gp-white-resin-vs-gelcoat-resin',
   'gp-white-resin-buyer-guide',
   'how-to-select-polyester-resin-for-frp-manufacturing',
   'understanding-gel-time-in-polyester-resin',
@@ -545,7 +543,7 @@ const sheetGradeYellowResourceSlugs = [
   'what-is-sheet-grade-yellow-resin',
   'applications-of-sheet-grade-yellow-resin',
   'sheet-grade-yellow-resin-vs-gp-yellow-resin',
-  'sheet-grade-yellow-resin-vs-roof-light-resin',
+  'what-is-roof-light-sheet-grade-resin',
   'how-to-choose-resin-for-frp-sheet-and-panel-manufacturing',
   'frp-sheet-resin-procurement-guide',
 ];
@@ -555,11 +553,7 @@ const sheetGradeYellowResources = isSheetGradeYellowResin
 
 const roofLightResourceSlugs = [
   'what-is-roof-light-sheet-grade-resin',
-  'roof-light-resin-applications-frp-roofing-sheets',
-  'sheet-grade-yellow-resin-vs-roof-light-resin',
-  'roof-light-resin-vs-gp-clear-resin',
   'frp-roofing-sheet-resin-selection-guide',
-  'roof-light-resin-procurement-guide',
 ];
 const roofLightResources = isRoofLightResin
   ? roofLightResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
@@ -568,9 +562,6 @@ const roofLightResources = isRoofLightResin
 const fireRetardantResourceSlugs = [
   'what-is-fire-retardant-resin',
   'fire-retardant-polyester-resin-applications-and-benefits',
-  'fire-retardant-resin-vs-gp-resin',
-  'fire-retardant-resin-fireproof-vs-fire-retardant',
-  'frp-fire-performance-requirements-buyer-guide',
   'what-is-glass-fiber-chopped-strand-mat',
   'fire-retardant-resin-procurement-checklist',
 ];
@@ -580,12 +571,7 @@ const fireRetardantResources = isFireRetardantResin
 
 const isoFireRetardantResourceSlugs = [
   'what-is-iso-fire-retardant-resin',
-  'iso-fire-retardant-resin-vs-fire-retardant-resin',
-  'iso-fire-retardant-resin-applications',
   'iso-fire-retardant-resin-vs-upr',
-  'iso-fire-retardant-resin-vs-vinyl-ester-resin',
-  'iso-fire-retardant-resin-fire-requirements',
-  'iso-fire-retardant-resin-procurement-checklist',
 ];
 const isoFireRetardantResources = isIsoFireRetardantResin
   ? isoFireRetardantResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
@@ -670,12 +656,7 @@ const marbleResinResources = isMarbleResin
 const buttonResourceSlugs = [
   'what-is-button-grade-resin',
   'button-resin-for-polyester-button-manufacturing',
-  'how-to-choose-resin-for-button-manufacturing',
   'button-grade-resin-vs-gp-resin',
-  'button-grade-resin-vs-clear-casting-resin',
-  'button-resin-gel-time-and-viscosity-guide',
-  'button-resin-storage-and-quote-guide',
-  'button-resin-processing-checklist',
 ];
 const buttonResources = isButtonGradeResin
   ? buttonResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
@@ -728,12 +709,8 @@ const epoxyCastingResources = isEpoxyClearCastingResin
   : [];
 const epoxyArtResourceSlugs = [
   'what-is-epoxy-art-resin',
-  'applications-of-epoxy-art-resin',
   'casting-resin-vs-coating-resin',
   'epoxy-art-resin-vs-polyester-resin',
-  'epoxy-art-resin-finish-questions',
-  'epoxy-art-resin-storage-and-procurement-guide',
-  'epoxy-art-resin-buyer-guide',
 ];
 const epoxyArtResources = isEpoxyArtResin
   ? epoxyArtResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)

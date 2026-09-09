@@ -61,9 +61,7 @@ const isGpAuthorityResource = gpAuthoritySlugs.has(resource.slug);
 const isGpYellowUsesResource = resource.slug === 'gp-yellow-resin-uses-in-frp-manufacturing';
 const gpWhiteAuthoritySlugs = new Set([
   'what-is-gp-white-resin',
-  'applications-of-gp-white-resin',
   'gp-white-resin-vs-gp-clear-resin',
-  'gp-white-resin-vs-gelcoat-resin',
   'gp-white-resin-buyer-guide',
 ]);
 const isGpWhiteAuthorityResource = gpWhiteAuthoritySlugs.has(resource.slug);
@@ -98,12 +96,7 @@ const isGelcoatAuthorityResource = gelcoatAuthoritySlugs.has(resource.slug);
 const buttonAuthoritySlugs = new Set([
   'what-is-button-grade-resin',
   'button-resin-for-polyester-button-manufacturing',
-  'how-to-choose-resin-for-button-manufacturing',
   'button-grade-resin-vs-gp-resin',
-  'button-grade-resin-vs-clear-casting-resin',
-  'button-resin-gel-time-and-viscosity-guide',
-  'button-resin-storage-and-quote-guide',
-  'button-resin-processing-checklist',
 ]);
 const isButtonAuthorityResource = buttonAuthoritySlugs.has(resource.slug);
 const uprAuthoritySlugs = new Set([
@@ -129,12 +122,8 @@ const pigmentAuthoritySlugs = new Set([
 const isPigmentAuthorityResource = pigmentAuthoritySlugs.has(resource.slug);
 const epoxyArtAuthoritySlugs = new Set([
   'what-is-epoxy-art-resin',
-  'applications-of-epoxy-art-resin',
   'casting-resin-vs-coating-resin',
   'epoxy-art-resin-vs-polyester-resin',
-  'epoxy-art-resin-finish-questions',
-  'epoxy-art-resin-storage-and-procurement-guide',
-  'epoxy-art-resin-buyer-guide',
 ]);
 const isEpoxyArtAuthorityResource = epoxyArtAuthoritySlugs.has(resource.slug);
 const epoxyHardenerAuthoritySlugs = new Set([
@@ -171,27 +160,19 @@ const sheetGradeAuthoritySlugs = new Set([
   'what-is-sheet-grade-yellow-resin',
   'applications-of-sheet-grade-yellow-resin',
   'sheet-grade-yellow-resin-vs-gp-yellow-resin',
-  'sheet-grade-yellow-resin-vs-roof-light-resin',
+  'what-is-roof-light-sheet-grade-resin',
   'how-to-choose-resin-for-frp-sheet-and-panel-manufacturing',
   'frp-sheet-resin-procurement-guide',
 ]);
 const isSheetGradeAuthorityResource = sheetGradeAuthoritySlugs.has(resource.slug);
 const roofLightAuthoritySlugs = new Set([
   'what-is-roof-light-sheet-grade-resin',
-  'roof-light-resin-applications-frp-roofing-sheets',
-  'roof-light-resin-vs-gp-clear-resin',
   'frp-roofing-sheet-resin-selection-guide',
-  'roof-light-resin-procurement-guide',
 ]);
 const isRoofLightAuthorityResource = roofLightAuthoritySlugs.has(resource.slug);
 const isoFireRetardantAuthoritySlugs = new Set([
   'what-is-iso-fire-retardant-resin',
-  'iso-fire-retardant-resin-vs-fire-retardant-resin',
-  'iso-fire-retardant-resin-applications',
   'iso-fire-retardant-resin-vs-upr',
-  'iso-fire-retardant-resin-vs-vinyl-ester-resin',
-  'iso-fire-retardant-resin-fire-requirements',
-  'iso-fire-retardant-resin-procurement-checklist',
 ]);
 const isIsoFireRetardantAuthorityResource = isoFireRetardantAuthoritySlugs.has(resource.slug);
 const petResinAuthoritySlugs = new Set([
