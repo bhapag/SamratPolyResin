@@ -687,64 +687,30 @@ export const resources = [
   {
     slug: "what-is-gel-coat-resin",
     title: "What is Gel Coat Resin?",
-    description: "Understand Gelcoat Resin as the visible, mould-facing surface layer in an FRP build-up and how it differs from laminating resin.",
+    description: "Understand Gelcoat Resin as the visible, mould-facing surface layer in an FRP build-up, how it differs from laminating resin and from epoxy systems, where it is used, and what to confirm before procurement.",
     category: "Product Guide",
     icon: "layers",
-    readingTime: "5 min read",
+    readingTime: "8 min read",
     publishDate: "2026-07-18",
-
+    seo: {
+      title: "What is Gel Coat Resin? FRP Surface Finish Explained",
+      keywords: [
+        "what is gel coat resin",
+        "gelcoat resin",
+        "gel coat resin",
+        "gelcoat vs epoxy resin",
+        "gelcoat applications frp",
+        "FRP surface finish resin",
+      ],
+      ogTitle: "What is Gel Coat Resin?",
+      ogDescription: "Gel coat resin is the visible, mould-facing surface layer of an FRP part — distinct from the laminating resin behind it.",
+    },
     quickFacts: {
       "Resin Type": "Surface-coating unsaturated polyester resin, thickened and pigmentable",
-      "Applied": "First, into the open mould — before lamination begins",
-      "Not": "A laminating or structural resin — it isn't reinforced with glass fibre",
+      Applied: "First, into the open mould — before lamination begins",
+      Not: "A laminating or structural resin — it isn't reinforced with glass fibre",
       "Typical Thickness": "Applied as a thin, even coat — check the product's TDS for the recommended range",
     },
-
-    relatedSlugs: [
-      "gp-resin-vs-gelcoat-resin",
-      "lamination-resin-vs-gelcoat-resin",
-      "applications-of-gelcoat-resin-in-frp-manufacturing",
-      "how-to-choose-gelcoat-resin-for-frp-products",
-      "gelcoat-resin-problems-peeling-cracking-tackiness",
-    ],
-
-    recommendedLinks: [
-      { href: "/products/gp-gelcoat-resin/", label: "View GP Gelcoat Resin", description: "Review the published white, high-gloss mould-surface grade and TDS." },
-      { href: "/resources/gp-resin-vs-gelcoat-resin/", label: "Gelcoat Resin vs GP Resin", description: "Separate the mould-facing surface role from the structural laminate role." },
-      { href: "/resources/gelcoat-resin-problems-peeling-cracking-tackiness/", label: "Document a surface concern", description: "Prepare peeling, cracking, pinhole, fisheye or tackiness observations for discussion." },
-    ],
-
-    faqs: [
-      {
-        q: "Is gel coat resin the same as GP polyester resin?",
-        a: "No. Both are unsaturated polyester resins, but gel coat is formulated specifically for surface finish and protection — thickened so it doesn't run on a mould surface, and typically pigmented — while GP resin is a laminating resin designed to be reinforced with glass fibre to build structural thickness.",
-      },
-      {
-        q: "Can gel coat be used as a laminating resin?",
-        a: "No. Gel coat is not designed to be reinforced with glass fibre or to build structural thickness. Using it as a laminating resin generally produces a brittle, poorly performing part — it should only be used as the outer surface layer, with a proper laminating resin behind it.",
-      },
-      {
-        q: "Why is gel coat applied first, before lamination?",
-        a: "Gel coat is sprayed or brushed directly onto the mould surface before any reinforcement is placed. Because the mould surface becomes the outer face of the finished part, gel coat ends up as the visible, weather-facing layer once the part is demoulded, with the structural laminate built up behind it.",
-      },
-      {
-        q: "Does gel coat need to be reinforced with glass fibre?",
-        a: "No, and it shouldn't be. Gel coat is a surface-finish resin, not a structural one. Structural strength comes entirely from the laminating resin and reinforcement applied over it, not from the gel coat layer itself.",
-      },
-      {
-        q: "What causes gel coat to crack or craze over time?",
-        a: "Common causes include applying it too thin or too thick, poor cure due to incorrect catalyst dosage, mechanical flexing of an under-reinforced part behind it, or prolonged weathering beyond what the specific formulation is rated for. Always check the product's TDS for recommended thickness and cure conditions.",
-      },
-      {
-        q: "Can gel coat be pigmented in any colour?",
-        a: "Yes, gel coat is commonly supplied pre-pigmented or as a clear base that can be tinted, which is one of its main advantages over laminating resin for parts where colour and surface appearance matter.",
-      },
-      {
-        q: "How long does gel coat protect a composite part?",
-        a: "Service life depends heavily on the specific formulation, application thickness and environmental exposure, so there's no single figure that applies across products — check the manufacturer's technical data sheet for the expected performance of the specific grade being used.",
-      },
-    ],
-
     sections: [
       {
         heading: "What Is Gel Coat Resin?",
@@ -763,6 +729,13 @@ export const resources = [
         ],
       },
       {
+        heading: "Gelcoat compared with an epoxy system",
+        body: [
+          "The useful first question is whether the buyer needs a mould-facing surface finish, a structural laminate, a casting system, an adhesive function or another specific role. GP Gelcoat Resin is published for the surface-coating role in FRP moulding; epoxy systems are a separate category with their own grade-specific uses. Treating broad material names as direct substitutes can obscure the actual requirement.",
+          "An epoxy-system discussion may be relevant when an application specifically calls for an epoxy grade or a different resin-system approach. The correct grade, cure method, reinforcement, surface preparation and service environment need to be verified for that individual application; no general comparison can confirm suitability.",
+        ],
+      },
+      {
         heading: "Surface Finish and Protective Properties",
         body: [
           "For a visible FRP face, Gelcoat Resin is selected for surface finish and appearance. GP Gelcoat Resin is published as white and high gloss as supplied; any colour, gloss or service requirement should be discussed against the exact product data and build-up.",
@@ -772,12 +745,28 @@ export const resources = [
       },
       {
         heading: "Application Methods and Best Practices",
+        body: [],
         subsections: [
-          { heading: "Mould Preparation", body: "A clean, correctly waxed or release-agent-treated mould surface is essential before gel coat application — any contamination or inconsistent release treatment can telegraph through to the finished part's surface." },
-          { heading: "Spray or Brush Application", body: "Gel coat is most commonly applied by spray gun for consistent thickness across larger areas, though brush application is used for smaller parts or repairs. Either method requires an even, controlled coat rather than heavy, uneven pooling." },
-          { heading: "Correct Thickness", body: "Applying within the manufacturer's recommended thickness range is one of the most important factors in gel coat performance — always check the product's technical data sheet rather than estimating by appearance." },
-          { heading: "Timing Before Lamination", body: "Gel coat needs to reach the correct tacky, gelled state — not fully cured, and not still wet — before lamination begins, so that the laminate bonds properly as both layers finish curing together." },
-          { heading: "Catalyst Dosage and Ambient Conditions", body: "As with any polyester resin, catalyst dosage and workshop temperature affect gel coat's cure time. Follow the specific product's TDS for correct catalyst percentage rather than carrying over a dosage used for a different resin." },
+          {
+            heading: "Mould Preparation",
+            body: "A clean, correctly waxed or release-agent-treated mould surface is essential before gel coat application — any contamination or inconsistent release treatment can telegraph through to the finished part's surface.",
+          },
+          {
+            heading: "Spray or Brush Application",
+            body: "Gel coat is most commonly applied by spray gun for consistent thickness across larger areas, though brush application is used for smaller parts or repairs. Either method requires an even, controlled coat rather than heavy, uneven pooling.",
+          },
+          {
+            heading: "Correct Thickness",
+            body: "Applying within the manufacturer's recommended thickness range is one of the most important factors in gel coat performance — always check the product's technical data sheet rather than estimating by appearance.",
+          },
+          {
+            heading: "Timing Before Lamination",
+            body: "Gel coat needs to reach the correct tacky, gelled state — not fully cured, and not still wet — before lamination begins, so that the laminate bonds properly as both layers finish curing together.",
+          },
+          {
+            heading: "Catalyst Dosage and Ambient Conditions",
+            body: "As with any polyester resin, catalyst dosage and workshop temperature affect gel coat's cure time. Follow the specific product's TDS for correct catalyst percentage rather than carrying over a dosage used for a different resin.",
+          },
         ],
         callouts: [
           {
@@ -793,12 +782,101 @@ export const resources = [
         ],
       },
       {
+        heading: "Published Gelcoat application areas",
+        body: [
+          "Gelcoat Resin is used at the mould-facing stage of an FRP build-up. It is applied to the mould first, then the reinforcement and structural laminate are built behind it. This arrangement gives the finished component its visible surface while allowing the laminate system to be selected for its separate role.",
+        ],
+        subsections: [
+          {
+            heading: "Boat and marine hull finishing",
+            body: "For moulded boat and marine components where the surface-finish requirement should be assessed alongside the laminate and intended service.",
+          },
+          {
+            heading: "Bathware, sanitaryware and moulded components",
+            body: "For FRP bathware, sanitaryware, furniture, panels and other moulded products where the visible surface is part of the finished-component requirement.",
+          },
+          {
+            heading: "Water-tank exteriors and automotive body panels",
+            body: "For exterior or visible FRP surfaces where the exact service conditions, colour and finish requirement should be confirmed before selection.",
+          },
+        ],
+      },
+      {
         heading: "Common Uses in Composite Manufacturing",
         body: [
           "Gel coat is used wherever an FRP part needs a finished, presentable surface rather than a raw laminate face — which in practice covers most commercially produced composite products. Decorative and architectural panels rely on gel coat for consistent colour and gloss; product housings and enclosures use it to hide the reinforcement pattern and give a professional finish; and marine components use UV-stabilised gel coat as a first line of defence against sun and water exposure.",
           "In tank and roofing sheet manufacturing, gel coat or gel-coat-like surface layers are sometimes used on the exposed face of a component to improve weatherability and appearance, although many industrial tanks are left with a laminate finish where cosmetic appearance is a lower priority than cost and function.",
           "Across all of these uses, the same principle holds: gel coat is chosen when the visible surface of the part needs to look good and hold up to the environment over time, while the actual strength of the part continues to come from the laminating resin and reinforcement applied behind it.",
         ],
+      },
+      {
+        heading: "What to confirm before procurement",
+        body: [
+          "Specify the FRP component, moulding method, colour or finish requirement, surface exposure, compatible laminate plan, quantity and delivery location. This gives the supplier enough context to distinguish a surface-finish requirement from the structural laminate requirement.",
+          "The published GP Gelcoat Resin TDS should be reviewed for the specific grade. Do not infer unlisted outdoor, chemical, water-immersion or certification performance from a general application category.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is gel coat resin the same as GP polyester resin?",
+        a: "No. Both are unsaturated polyester resins, but gel coat is formulated specifically for surface finish and protection — thickened so it doesn't run on a mould surface, and typically pigmented — while GP resin is a laminating resin designed to be reinforced with glass fibre to build structural thickness.",
+      },
+      {
+        q: "Can gel coat be used as a laminating resin?",
+        a: "No. Gel coat is not designed to be reinforced with glass fibre or to build structural thickness. Using it as a laminating resin generally produces a brittle, poorly performing part — it should only be used as the outer surface layer, with a proper laminating resin behind it.",
+      },
+      {
+        q: "Is Gelcoat Resin the same as epoxy resin?",
+        a: "No. GP Gelcoat Resin is published as a polyester surface-coating gelcoat. Epoxy is a separate resin-system category; the correct choice depends on the full application and product data.",
+      },
+      {
+        q: "Why is gel coat applied first, before lamination?",
+        a: "Gel coat is sprayed or brushed directly onto the mould surface before any reinforcement is placed. Because the mould surface becomes the outer face of the finished part, gel coat ends up as the visible, weather-facing layer once the part is demoulded, with the structural laminate built up behind it.",
+      },
+      {
+        q: "Does gel coat need to be reinforced with glass fibre?",
+        a: "No, and it shouldn't be. Gel coat is a surface-finish resin, not a structural one. Structural strength comes entirely from the laminating resin and reinforcement applied over it, not from the gel coat layer itself.",
+      },
+      {
+        q: "Which FRP products can use gelcoat?",
+        a: "The site documents boat and marine hull finishing, bathware and sanitaryware, water-tank exteriors, general FRP mould finishing and automotive body panels. Suitability still depends on the specific component and service requirement.",
+      },
+      {
+        q: "What causes gel coat to crack or craze over time?",
+        a: "Common causes include applying it too thin or too thick, poor cure due to incorrect catalyst dosage, mechanical flexing of an under-reinforced part behind it, or prolonged weathering beyond what the specific formulation is rated for. Always check the product's TDS for recommended thickness and cure conditions.",
+      },
+      {
+        q: "Can gel coat be pigmented in any colour?",
+        a: "Yes, gel coat is commonly supplied pre-pigmented or as a clear base that can be tinted, which is one of its main advantages over laminating resin for parts where colour and surface appearance matter.",
+      },
+      {
+        q: "How long does gel coat protect a composite part?",
+        a: "Service life depends heavily on the specific formulation, application thickness and environmental exposure, so there's no single figure that applies across products — check the manufacturer's technical data sheet for the expected performance of the specific grade being used.",
+      },
+    ],
+    relatedSlugs: [
+      "gp-resin-vs-gelcoat-resin",
+      "lamination-resin-vs-gelcoat-resin",
+      "how-to-choose-gelcoat-resin-for-frp-products",
+      "gelcoat-resin-problems-peeling-cracking-tackiness",
+      "what-is-frp-mould-release-wax",
+    ],
+    recommendedLinks: [
+      {
+        href: "/products/gp-gelcoat-resin/",
+        label: "View GP Gelcoat Resin",
+        description: "Review the published white, high-gloss mould-surface grade and TDS.",
+      },
+      {
+        href: "/resources/gp-resin-vs-gelcoat-resin/",
+        label: "Gelcoat Resin vs GP Resin",
+        description: "Separate the mould-facing surface role from the structural laminate role.",
+      },
+      {
+        href: "/tools/resin-selector/",
+        label: "Find the right grade",
+        description: "Answer four questions and see the grades that match.",
       },
     ],
   },
@@ -1578,42 +1656,6 @@ export const resources = [
     ],
   },
   {
-    slug: "fire-retardant-resin-and-glass-fiber",
-    title: "Fire Retardant Resin and Glass Fiber in FRP Systems",
-    description: "Understand the separate material roles of Fire Retardant Resin and Glass Fiber when an FRP buyer is reviewing a finished system requirement.",
-    category: "Technical Guide",
-    icon: "grid",
-    readingTime: "3 min read",
-    publishDate: "2026-08-09",
-    seo: {
-      title: "Fire Retardant Resin and Glass Fiber | FRP Buyer Guide",
-      keywords: ["Fire Retardant Resin and Glass Fiber", "FRP Fire Retardant Resin", "Fire Retardant FRP reinforcement", "FR Resin Glass Fiber"],
-      ogTitle: "Fire Retardant Resin and Glass Fiber in FRP Systems",
-      ogDescription: "A high-level material-role guide for buyers reviewing resin and reinforcement in an FRP system.",
-    },
-    quickFacts: {
-      "Fire Retardant Resin": "Matrix/product-system component",
-      "Glass Fiber": "Reinforcement material component",
-      "Selection boundary": "No universal mat grade or laminate design is implied",
-      "Buyer action": "Share the finished part and required documentation",
-    },
-    relatedSlugs: ["what-is-glass-fiber-chopped-strand-mat", "glass-fiber-and-polyester-resin-compatibility", "frp-fire-performance-requirements-buyer-guide"],
-    recommendedLinks: [
-      { href: "/products/fire-retardant-resin/", label: "View Fire Retardant Resin", description: "Review the listed resin product data." },
-      { href: "/products/fibre-glass-mat/", label: "View Glass Fiber", description: "Review Samrat's separate reinforcement product." },
-      { href: "/contact/", label: "Discuss the FRP system", description: "Share the finished component and requirement." },
-    ],
-    faqs: [
-      { q: "Does Fire Retardant Resin replace Glass Fiber?", a: "No. They have separate material roles in an FRP system: the listed resin is the matrix component and Glass Fiber is the reinforcement component." },
-      { q: "Which Glass Fiber grade should be used with FR Resin?", a: "This resource does not prescribe a universal mat grade. The reinforcement choice must follow the actual component, construction and project requirement." },
-    ],
-    sections: [
-      { heading: "Two separate material roles", body: ["A Fire Retardant Resin enquiry concerns the resin or matrix component. A Glass Fiber enquiry concerns reinforcement. Both may be relevant to an FRP system, but neither product page alone defines a finished laminate or project result."] },
-      { heading: "Do not turn a product pair into a universal system claim", body: ["The repository lists Glass Fiber as a separate product and provides an FR Resin TDS for the listed Fire Retardant grade. It does not publish a universal reinforcement selection, layer count, resin-to-glass ratio or finished-system fire classification.", "Review the appropriate product documentation and share the actual application when discussing the system."] },
-      { heading: "A focused buyer checklist", body: ["Identify the finished part, fire-performance requirement if any, required documentation, reinforcement context, quantity and delivery location. This gives the supplier a usable starting point without asking the buyer to design a laminate from a generic guide."] },
-    ],
-  },
-  {
     slug: "fire-retardant-resin-procurement-checklist",
     title: "Fire Retardant Resin Procurement Checklist for FRP Buyers",
     description: "Prepare a clear Fire Retardant Resin enquiry with the application, required documentation, quantity and delivery details needed for an industrial quote.",
@@ -1741,7 +1783,7 @@ export const resources = [
       "System check": "Finished construction and requirement may need separate verification",
       "Buyer action": "Share the component and original specification",
     },
-    relatedSlugs: ["what-is-iso-fire-retardant-resin", "iso-fire-retardant-resin-fire-requirements", "fire-retardant-resin-and-glass-fiber"],
+    relatedSlugs: ["what-is-iso-fire-retardant-resin", "iso-fire-retardant-resin-fire-requirements", "what-is-glass-fiber-chopped-strand-mat"],
     recommendedLinks: [
       { href: "/products/iso-fire-retardant-resin/", label: "View ISO Fire Retardant Resin", description: "Review the published grade role and current TDS." },
       { href: "/products/fibre-glass-mat/", label: "Review Glass Fiber", description: "Understand the separately supplied reinforcement route." },
@@ -2149,7 +2191,7 @@ export const resources = [
         ["Selection question", "What does the laminate need to do?", "What surface finish and mould-facing behaviour are required?"],
       ],
     },
-    relatedSlugs: ["what-is-gp-polyester-resin", "what-is-gel-coat-resin", "applications-of-gelcoat-resin-in-frp-manufacturing", "gelcoat-resin-vs-vinyl-ester-resin"],
+    relatedSlugs: ["what-is-gp-polyester-resin", "what-is-gel-coat-resin", "what-is-gel-coat-resin", "gelcoat-resin-vs-vinyl-ester-resin"],
     recommendedLinks: [
       { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "For the general-purpose FRP laminate requirement." },
       { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "For the separately published water-white general-purpose laminate role." },
@@ -2331,14 +2373,23 @@ export const resources = [
   {
     slug: "what-is-lamination-resin",
     title: "What is Lamination Resin (LR Resin)?",
-    description: "A buyer guide to Lamination Resin, also called LR Resin, for door, plywood and FRP bonding work.",
+    description: "A buyer guide to Lamination Resin, also called LR Resin, for door, plywood and FRP bonding work — including the published application contexts and what to verify before purchase.",
     category: "Technical Explainer",
     icon: "layers",
-    readingTime: "4 min read",
+    readingTime: "5 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "What is Lamination Resin (LR Resin)? | Buyer Guide",
-      keywords: ["what is Lamination Resin", "LR Resin", "polyester lamination resin", "Lamination Resin manufacturer", "resin for FRP lamination"],
+      keywords: [
+        "what is Lamination Resin",
+        "LR Resin",
+        "LR resin price",
+        "polyester lamination resin",
+        "Lamination Resin manufacturer",
+        "resin for FRP lamination",
+        "door lamination resin",
+        "plywood lamination resin",
+      ],
       ogTitle: "What is Lamination Resin (LR Resin)?",
       ogDescription: "Understand the published role, applications and buyer checks for Samrat Poly Resins Lamination Resin.",
     },
@@ -2348,64 +2399,103 @@ export const resources = [
       "Published gel time": "5 minutes",
       "Buyer check": "Confirm the substrate, process, finish requirement and TDS before selection",
     },
-    relatedSlugs: ["gp-resin-vs-lamination-resin", "applications-of-lamination-resin", "lamination-resin-for-hand-lay-up", "understanding-gel-time-in-polyester-resin"],
-    recommendedLinks: [
-      { href: "/products/lamination-resin/", label: "View Lamination Resin", description: "Review the published TDS, packaging and procurement details." },
-      { href: "/applications/door-lamination/", label: "Door lamination guide", description: "Explore one of the published application contexts." },
-      { href: "/contact/", label: "Discuss an LR Resin application", description: "Share the substrate, process and quantity for a focused discussion." },
+    sections: [
+      {
+        heading: "The simple definition",
+        body: [
+          "Lamination Resin, also known as LR Resin, is the product name used by Samrat Poly Resins for its transparent orthophthalic unsaturated polyester grade positioned for door lamination, plywood lamination and FRP bonding. It is a liquid, room-temperature-cure resin grade with published technical data for procurement and production review.",
+          "The product name is a useful starting point, not a substitute for process review. A buyer should match the grade to the substrate, reinforcement, finished-surface requirement and working conditions before finalising a requirement.",
+        ],
+      },
+      {
+        heading: "Where this LR Resin is positioned",
+        body: [
+          "The published applications include door skin and decorative door panels, plywood and laminate bonding for furniture surfaces, FRP bonding and composite-panel lamination, plus clear-finish hand lay-up work. These application descriptions help production and procurement teams start with the intended component rather than a generic resin label.",
+        ],
+      },
+      {
+        heading: "Published application contexts",
+        body: [
+          "For lamination buyers, the useful first question is what is being made: a door panel, plywood or furniture surface, a bonded FRP component, or a clear-finish hand lay-up part. The published Lamination Resin applications give a practical starting point for this conversation.",
+        ],
+        subsections: [
+          {
+            heading: "Door skins and decorative door panels",
+            body: "Lamination Resin is published for door skin lamination and decorative door panels. Review the door substrate, finish requirement and working method alongside the product data before selection.",
+          },
+          {
+            heading: "Plywood and furniture surfaces",
+            body: "The product is also positioned for plywood and laminate bonding for furniture surfaces. Use the existing decorative plywood and furniture-lamination guides to frame the application discussion.",
+          },
+          {
+            heading: "FRP bonding and composite panels",
+            body: "For FRP bonding and composite-panel lamination, confirm the reinforcement, part geometry, process and intended service conditions rather than relying on the word FRP alone.",
+          },
+          {
+            heading: "Clear-finish hand lay-up work",
+            body: "Clear-finish hand lay-up is a published product application. Compare the TDS and the actual working window with the production setup before committing to a grade.",
+          },
+        ],
+      },
+      {
+        heading: "How LR Resin differs from a broad GP selection",
+        body: [
+          "A process described as lamination can mean a general FRP lay-up or a specific door, plywood or bonding requirement. The published Lamination Resin positioning is for the latter set of lamination-focused contexts, while GP Clear Resin is the broader general-purpose grade to review for common FRP manufacture. The component, substrate and working window should lead the comparison rather than the word \"lamination\" alone.",
+          "A broad general FRP requirement may call for GP Clear Resin; a chemical- or corrosion-resistance requirement should be reviewed against Vinyl Ester Resin; and a mould-facing decorative surface has a different role from Gelcoat Resin. The right choice depends on the finished part and specified requirement, not on a broad product category alone.",
+        ],
+      },
+      {
+        heading: "What to verify before purchase",
+        body: [
+          "Review the product TDS and the published product details alongside the actual line conditions. For a quotation or technical discussion, provide the component, substrate or reinforcement, process, expected quantity, packaging preference and delivery location.",
+          "Do not assume that a resin described as suitable for lamination is appropriate for every FRP, surface-coating or chemical-exposure requirement.",
+        ],
+      },
     ],
     faqs: [
-      { q: "What does LR Resin mean?", a: "LR Resin is the short name used here for Lamination Resin. Samrat Poly Resins publishes this grade for door lamination, plywood lamination and FRP bonding work." },
-      { q: "Is Lamination Resin the same as every general-purpose polyester resin?", a: "Not automatically. Both are polyester-resin products, but selection should begin with the published product purpose and the actual manufacturing process. Compare the TDS before choosing a grade." },
-      { q: "What should a buyer share before requesting an LR Resin quote?", a: "Share the finished component, substrate or reinforcement, process, expected quantity, packaging preference and delivery location." },
+      {
+        q: "What does LR Resin mean?",
+        a: "LR Resin is the short name used here for Lamination Resin. Samrat Poly Resins publishes this grade for door lamination, plywood lamination and FRP bonding work.",
+      },
+      {
+        q: "Is Lamination Resin the same as every general-purpose polyester resin?",
+        a: "Not automatically. Both are polyester-resin products, but selection should begin with the published product purpose and the actual manufacturing process. Compare the TDS before choosing a grade.",
+      },
+      {
+        q: "Can Lamination Resin be considered for door skins?",
+        a: "Door skin lamination and decorative door panels are published applications for this product. Check the relevant application, finish and process details before final selection.",
+      },
+      {
+        q: "Is Lamination Resin used only for wood-based lamination?",
+        a: "No. The published applications also include FRP bonding and composite-panel lamination, as well as clear-finish hand lay-up work.",
+      },
+      {
+        q: "What should a buyer share before requesting an LR Resin quote?",
+        a: "Share the finished component, substrate or reinforcement, process, expected quantity, packaging preference and delivery location.",
+      },
     ],
-    sections: [
-      { heading: "The simple definition", body: ["Lamination Resin, also known as LR Resin, is the product name used by Samrat Poly Resins for its transparent orthophthalic unsaturated polyester grade positioned for door lamination, plywood lamination and FRP bonding. It is a liquid, room-temperature-cure resin grade with published technical data for procurement and production review.", "The product name is a useful starting point, not a substitute for process review. A buyer should match the grade to the substrate, reinforcement, finished-surface requirement and working conditions before finalising a requirement."] },
-      { heading: "Where this LR Resin is positioned", body: ["The published applications include door skin and decorative door panels, plywood and laminate bonding for furniture surfaces, FRP bonding and composite-panel lamination, plus clear-finish hand lay-up work. These application descriptions help production and procurement teams start with the intended component rather than a generic resin label."] },
-      { heading: "How LR Resin differs from a broad GP selection", body: ["A process described as lamination can mean a general FRP lay-up or a specific door, plywood or bonding requirement. The published Lamination Resin positioning is for the latter set of lamination-focused contexts, while GP Clear Resin is the broader general-purpose grade to review for common FRP manufacture. The component, substrate and working window should lead the comparison rather than the word “lamination” alone."] },
-      { heading: "What to verify before purchase", body: ["Review the product TDS and the published product details alongside the actual line conditions. For a quotation or technical discussion, provide the component, substrate or reinforcement, process, expected quantity, packaging preference and delivery location. Do not assume that a resin described as suitable for lamination is appropriate for every FRP, surface-coating or chemical-exposure requirement."] },
+    relatedSlugs: [
+      "gp-resin-vs-lamination-resin",
+      "lamination-resin-for-hand-lay-up",
+      "understanding-gel-time-in-polyester-resin",
+      "how-to-select-polyester-resin-for-frp-manufacturing",
     ],
-  },
-  {
-    slug: "applications-of-lamination-resin",
-    title: "Applications of Lamination Resin in FRP Manufacturing",
-    description: "Explore the published Lamination Resin applications for door panels, plywood, FRP bonding and clear-finish hand lay-up work.",
-    category: "Application Guide",
-    icon: "grid",
-    readingTime: "4 min read",
-    publishDate: "2026-08-06",
-    seo: {
-      title: "Applications of Lamination Resin in FRP Manufacturing",
-      keywords: ["Lamination Resin applications", "LR Resin applications", "resin for FRP lamination", "door lamination resin", "plywood lamination resin"],
-      ogTitle: "Applications of Lamination Resin in FRP Manufacturing",
-      ogDescription: "Use the published application contexts to assess Lamination Resin for a door, plywood or FRP bonding requirement.",
-    },
-    quickFacts: {
-      "Door work": "Door skins and decorative door panels",
-      "Plywood work": "Plywood and laminate bonding for furniture surfaces",
-      "FRP work": "FRP bonding and composite-panel lamination",
-      "Selection note": "Confirm the component and process against the product TDS",
-    },
-    relatedSlugs: ["what-is-lamination-resin", "lamination-resin-for-hand-lay-up", "gp-resin-vs-lamination-resin", "how-to-select-polyester-resin-for-frp-manufacturing"],
     recommendedLinks: [
-      { href: "/products/lamination-resin/", label: "View Lamination Resin", description: "Review the product data and TDS for the published grade." },
-      { href: "/applications/decorative-plywood-lamination/", label: "Decorative plywood lamination", description: "Explore an existing application guide." },
-      { href: "/applications/resin-for-general-frp-lamination/", label: "General FRP lamination", description: "Review process context before selecting a grade." },
-    ],
-    faqs: [
-      { q: "Can Lamination Resin be considered for door skins?", a: "Door skin lamination and decorative door panels are published applications for this product. Check the relevant application, finish and process details before final selection." },
-      { q: "Is Lamination Resin used only for wood-based lamination?", a: "No. The published applications also include FRP bonding and composite-panel lamination, as well as clear-finish hand lay-up work." },
-      { q: "Should a buyer choose a grade only because the finished part uses FRP?", a: "No. The substrate, reinforcement, process, required finish and service requirement should be discussed against the specific product TDS." },
-    ],
-    sections: [
-      { heading: "Start with the component", body: ["For lamination buyers, the useful first question is what is being made: a door panel, plywood or furniture surface, a bonded FRP component, or a clear-finish hand lay-up part. The published Lamination Resin applications give a practical starting point for this conversation."] },
-      { heading: "Published application contexts", subsections: [
-        { heading: "Door skins and decorative door panels", body: "Lamination Resin is published for door skin lamination and decorative door panels. Review the door substrate, finish requirement and working method alongside the product data before selection." },
-        { heading: "Plywood and furniture surfaces", body: "The product is also positioned for plywood and laminate bonding for furniture surfaces. Use the existing decorative plywood and furniture-lamination guides to frame the application discussion." },
-        { heading: "FRP bonding and composite panels", body: "For FRP bonding and composite-panel lamination, confirm the reinforcement, part geometry, process and intended service conditions rather than relying on the word FRP alone." },
-        { heading: "Clear-finish hand lay-up work", body: "Clear-finish hand lay-up is a published product application. Compare the TDS and the actual working window with the production setup before committing to a grade." },
-      ] },
-      { heading: "When to discuss another product", body: ["A broad general FRP requirement may call for GP Clear Resin; a chemical- or corrosion-resistance requirement should be reviewed against Vinyl Ester Resin; and a mould-facing decorative surface has a different role from Gelcoat Resin. The right choice depends on the finished part and specified requirement, not on a broad product category alone."] },
+      {
+        href: "/products/lamination-resin/",
+        label: "View Lamination Resin",
+        description: "Review the published TDS, packaging and procurement details.",
+      },
+      {
+        href: "/applications/door-lamination/",
+        label: "Door lamination guide",
+        description: "Explore one of the published application contexts.",
+      },
+      {
+        href: "/tools/resin-selector/",
+        label: "Find the right grade",
+        description: "Answer four questions and see the grades that match.",
+      },
     ],
   },
   {
@@ -2428,7 +2518,7 @@ export const resources = [
       "Published gel time": "5 minutes",
       "First check": "Compare the working window and finished-surface requirement with the TDS",
     },
-    relatedSlugs: ["what-is-lamination-resin", "applications-of-lamination-resin", "common-lamination-defects-in-frp", "understanding-gel-time-in-polyester-resin"],
+    relatedSlugs: ["what-is-lamination-resin", "what-is-lamination-resin", "common-lamination-defects-in-frp", "understanding-gel-time-in-polyester-resin"],
     recommendedLinks: [
       { href: "/products/lamination-resin/", label: "View Lamination Resin", description: "Check the published 5-minute gel time, TDS and product details." },
       { href: "/applications/resin-for-hand-lay-up-process/", label: "Hand lay-up process guide", description: "Review existing process context alongside the grade data." },
@@ -2476,7 +2566,7 @@ export const resources = [
         ["What to define", "Substrate, finished surface, process and working conditions", "Chemical exposure, process and application-specific requirements"],
       ],
     },
-    relatedSlugs: ["what-is-lamination-resin", "applications-of-lamination-resin", "gp-resin-vs-vinyl-ester-resin"],
+    relatedSlugs: ["what-is-lamination-resin", "what-is-lamination-resin", "gp-resin-vs-vinyl-ester-resin"],
     recommendedLinks: [
       { href: "/products/lamination-resin/", label: "View Lamination Resin", description: "For published door, plywood and FRP bonding applications." },
       { href: "/products/vinyl-ester-resin/", label: "View Vinyl Ester Resin", description: "Review the product data for a chemical-resistance requirement." },
@@ -2524,7 +2614,7 @@ export const resources = [
         ["Selection approach", "Review component, process and working conditions", "Review mould, finish and product-specific data"],
       ],
     },
-    relatedSlugs: ["what-is-lamination-resin", "applications-of-lamination-resin", "gp-resin-vs-gelcoat-resin", "applications-of-gelcoat-resin-in-frp-manufacturing"],
+    relatedSlugs: ["what-is-lamination-resin", "what-is-lamination-resin", "gp-resin-vs-gelcoat-resin", "what-is-gel-coat-resin"],
     recommendedLinks: [
       { href: "/products/lamination-resin/", label: "View Lamination Resin", description: "Review the published grade for lamination and FRP bonding work." },
       { href: "/products/gp-gelcoat-resin/", label: "View GP Gelcoat Resin", description: "Review the separate mould-surface product role and TDS." },
@@ -2581,86 +2671,6 @@ export const resources = [
     ],
   },
   {
-    slug: "gelcoat-resin-vs-epoxy-resin",
-    title: "Gelcoat Resin vs Epoxy Resin for FRP Products",
-    description: "A general decision guide to the different mould-surface and structural roles of Gelcoat Resin and epoxy systems in FRP products.",
-    category: "Comparison Guide",
-    icon: "layers",
-    readingTime: "4 min read",
-    publishDate: "2026-08-06",
-    seo: {
-      title: "Gelcoat Resin vs Epoxy Resin for FRP Products",
-      keywords: ["Gelcoat Resin vs Epoxy Resin", "Gelcoat vs Epoxy", "FRP surface finish resin", "Gelcoat Resin for moulded FRP products"],
-      ogTitle: "Gelcoat Resin vs Epoxy Resin",
-      ogDescription: "A general guide to separating an FRP surface-finish requirement from an epoxy-system requirement.",
-    },
-    quickFacts: {
-      "Gelcoat role": "Mould-facing polyester surface coating",
-      "Epoxy role": "A separate resin-system category whose grade and application need separate evaluation",
-      "Do not assume": "One material can be substituted for the other without checking the full build-up",
-      "First check": "The component, process, surface requirement and service conditions",
-    },
-    relatedSlugs: ["what-is-gel-coat-resin", "gp-resin-vs-gelcoat-resin", "how-to-select-polyester-resin-for-frp-manufacturing"],
-    recommendedLinks: [
-      { href: "/products/gp-gelcoat-resin/", label: "View GP Gelcoat Resin", description: "Review the published surface-coating product and TDS." },
-      { href: "/products/epoxy-clear-casting-resin/", label: "View Epoxy Clear Casting Resin", description: "Review the site's separate epoxy product information where applicable." },
-      { href: "/resources/how-to-select-polyester-resin-for-frp-manufacturing/", label: "Resin selection guide", description: "Start with the process and component requirement." },
-    ],
-    faqs: [
-      { q: "Is Gelcoat Resin the same as epoxy resin?", a: "No. GP Gelcoat Resin is published as a polyester surface-coating gelcoat. Epoxy is a separate resin-system category; the correct choice depends on the full application and product data." },
-      { q: "Can I choose only by the words gelcoat or epoxy?", a: "No. Confirm the component, moulding process, visible surface requirement and the specific service conditions before selecting a product." },
-      { q: "Does this comparison approve a particular substitution?", a: "No. This is general decision support, not a compatibility or performance approval. Confirm a proposed build-up with the relevant technical data and application discussion." },
-    ],
-    sections: [
-      { heading: "Start with the role, not the material name", body: ["The useful first question is whether the buyer needs a mould-facing surface finish, a structural laminate, a casting system, an adhesive function or another specific role. GP Gelcoat Resin is published for the surface-coating role in FRP moulding; epoxy systems are a separate category with their own grade-specific uses.", "Treating broad material names as direct substitutes can obscure the actual requirement. The component and production method should lead the selection discussion."] },
-      { heading: "Where Gelcoat Resin fits", body: ["Gelcoat is applied to the mould face before the reinforcement and laminate are built up behind it. The published GP Gelcoat Resin is a white, high-gloss polyester surface coating for this mould-facing role. It is not presented as a reinforced structural laminate resin."] },
-      { heading: "Where an epoxy discussion may be relevant", body: ["An epoxy-system discussion may be relevant when an application specifically calls for an epoxy grade or a different resin-system approach. The correct grade, cure method, reinforcement, surface preparation and service environment need to be verified for that individual application; no general comparison can confirm suitability."] },
-      { heading: "How to make the comparison useful", body: ["Bring the drawing or component description, moulding method, required finish, reinforcement or substrate, exposure conditions and expected quantity to the discussion. Review the relevant TDS rather than transferring a process assumption from one resin system to another."] },
-    ],
-  },
-  {
-    slug: "applications-of-gelcoat-resin-in-frp-manufacturing",
-    title: "Applications of Gelcoat Resin in FRP Manufacturing",
-    description: "See where Gelcoat Resin is used for the mould-facing surface and finish of FRP products, and what buyers should confirm before selection.",
-    category: "Application Guide",
-    icon: "grid",
-    readingTime: "5 min read",
-    publishDate: "2026-08-06",
-    seo: {
-      title: "Applications of Gelcoat Resin in FRP Manufacturing",
-      keywords: ["Gelcoat Resin applications", "Gelcoat for FRP", "Gelcoat for moulded FRP products", "FRP surface finish resin", "GP Gelcoat Resin"],
-      ogTitle: "Applications of Gelcoat Resin in FRP Manufacturing",
-      ogDescription: "A B2B guide to common Gelcoat Resin applications in FRP moulded products and the information needed before selection.",
-    },
-    quickFacts: {
-      "Used for": "The visible, mould-facing surface of an FRP product",
-      "Applied before": "The glass-fibre laminate is built up behind it",
-      "Published GP finish": "White and high gloss, as supplied",
-      "Confirm before use": "Component, colour, moulding method and service requirement",
-    },
-    relatedSlugs: ["what-is-gel-coat-resin", "how-to-choose-gelcoat-resin-for-frp-products", "gelcoat-resin-problems-peeling-cracking-tackiness"],
-    recommendedLinks: [
-      { href: "/products/gp-gelcoat-resin/", label: "View GP Gelcoat Resin", description: "Review published product details, TDS, MOQ and pack sizes." },
-      { href: "/applications/gelcoat-for-general-frp-mould-finishing/", label: "General FRP mould finishing", description: "Explore an existing gelcoat application page." },
-      { href: "/applications/gelcoat-for-frp-bathware-sanitaryware/", label: "Bathware and sanitaryware", description: "Explore an existing moulded-FRP application page." },
-    ],
-    faqs: [
-      { q: "Is Gelcoat Resin used as the structural part of an FRP product?", a: "No. Gelcoat is the mould-facing surface coating. The structural laminate is built behind it using the appropriate reinforcement and laminate resin system." },
-      { q: "Which FRP products can use gelcoat?", a: "The site documents boat and marine hull finishing, bathware and sanitaryware, water-tank exteriors, general FRP mould finishing and automotive body panels. Suitability still depends on the specific component and service requirement." },
-      { q: "Can the same Gelcoat Resin be assumed suitable for every application?", a: "No. Confirm the product's TDS and the actual moulding, finish, colour and service conditions before specifying a grade." },
-    ],
-    sections: [
-      { heading: "The surface-finish role in FRP manufacturing", body: ["Gelcoat Resin is used at the mould-facing stage of an FRP build-up. It is applied to the mould first, then the reinforcement and structural laminate are built behind it. This arrangement gives the finished component its visible surface while allowing the laminate system to be selected for its separate role."] },
-      { heading: "Published Gelcoat application areas", subsections: [
-        { heading: "Boat and marine hull finishing", body: "For moulded boat and marine components where the surface-finish requirement should be assessed alongside the laminate and intended service." },
-        { heading: "Bathware, sanitaryware and moulded components", body: "For FRP bathware, sanitaryware, furniture, panels and other moulded products where the visible surface is part of the finished-component requirement." },
-        { heading: "Water-tank exteriors and automotive body panels", body: "For exterior or visible FRP surfaces where the exact service conditions, colour and finish requirement should be confirmed before selection." },
-      ] },
-      { heading: "What to confirm before procurement", body: ["Specify the FRP component, moulding method, colour or finish requirement, surface exposure, compatible laminate plan, quantity and delivery location. This gives the supplier enough context to distinguish a surface-finish requirement from the structural laminate requirement."] },
-      { heading: "Use the product TDS as the final check", body: ["The published GP Gelcoat Resin TDS should be reviewed for the specific grade. Do not infer unlisted outdoor, chemical, water-immersion or certification performance from a general application category."] },
-    ],
-  },
-  {
     slug: "how-to-choose-gelcoat-resin-for-frp-products",
     title: "How to Choose Gelcoat Resin for FRP Products",
     description: "A procurement guide for separating the FRP surface-finish requirement from the laminate requirement before selecting Gelcoat Resin.",
@@ -2680,7 +2690,7 @@ export const resources = [
       "Quote inputs": "Component, process, finish, quantity and delivery location",
       "Avoid": "Assuming one gelcoat fits every exposure or production method",
     },
-    relatedSlugs: ["what-is-gel-coat-resin", "applications-of-gelcoat-resin-in-frp-manufacturing", "gelcoat-resin-problems-peeling-cracking-tackiness", "gelcoat-resin-vs-vinyl-ester-resin"],
+    relatedSlugs: ["what-is-gel-coat-resin", "what-is-gel-coat-resin", "gelcoat-resin-problems-peeling-cracking-tackiness", "gelcoat-resin-vs-vinyl-ester-resin"],
     recommendedLinks: [
       { href: "/products/gp-gelcoat-resin/", label: "View GP Gelcoat Resin", description: "Review the product's published TDS, packaging and MOQ." },
       { href: "/resources/gp-resin-vs-gelcoat-resin/", label: "GP Resin vs Gelcoat Resin", description: "Separate the laminate role from the surface-coating role." },
@@ -3949,39 +3959,150 @@ export const resources = [
   },
   {
     slug: "what-is-glass-fiber-chopped-strand-mat",
-    title: "What Is Glass Fiber? E-Glass Chopped Strand Mat Explained",
-    description: "A buyer-focused introduction to Glass Fiber, E-Glass and Chopped Strand Mat (CSM) as reinforcement materials for FRP manufacturing.",
+    title: "Glass Fiber (E-Glass CSM): Reinforcement, Compatibility and Procurement Guide",
+    description: "What E-Glass Chopped Strand Mat is, how reinforcement differs from resin, the published CSM 300 and CSM 450 range, resin-system compatibility, and the published packaging, MOQ and storage facts.",
     category: "Reinforcement Guide",
     icon: "info",
-    readingTime: "4 min read",
+    readingTime: "7 min read",
     publishDate: "2026-08-06",
     seo: {
-      title: "What Is Glass Fiber? E-Glass Chopped Strand Mat Guide",
-      keywords: ["Glass Fiber", "Fiberglass", "E-Glass Fiber", "Glass Fiber Mat", "Fiberglass Mat", "Chopped Strand Mat", "CSM", "FRP Glass Fiber"],
-      ogTitle: "What Is Glass Fiber? E-Glass Chopped Strand Mat Explained",
-      ogDescription: "Understand E-Glass Chopped Strand Mat as FRP reinforcement, including the published Samrat Poly Resins CSM 300 and CSM 450 range.",
+      title: "Glass Fiber E-Glass Chopped Strand Mat: Complete Buyer Guide",
+      keywords: [
+        "Glass Fiber",
+        "Fiberglass Mat",
+        "E-Glass Fiber",
+        "Chopped Strand Mat",
+        "CSM 300",
+        "CSM 450",
+        "FRP Glass Fiber",
+        "glass fiber resin compatibility",
+      ],
+      ogTitle: "Glass Fiber (E-Glass CSM): Complete Guide",
+      ogDescription: "Understand E-Glass Chopped Strand Mat as FRP reinforcement, including the published Samrat Poly Resins CSM 300 and CSM 450 range, compatibility and procurement facts.",
     },
     quickFacts: {
       "Published product form": "Chopped Strand Mat (CSM)",
       "Published glass type": "E-Glass",
       "Published area weights": "300 g/m² and 450 g/m²",
-      "Product role": "FRP reinforcement, not resin",
+      "Published roll width": "1040 mm, approximately 30 kg/roll",
+      "Published MOQ": "500 kg",
+      "Published shelf life": "24 months",
     },
-    relatedSlugs: ["csm-300-vs-csm-450-glass-fiber", "glass-fiber-and-polyester-resin-compatibility", "glass-fiber-for-frp-manufacturing"],
-    recommendedLinks: [
-      { href: "/products/fibre-glass-mat/", label: "View Glass Fiber Mat", description: "Review the published CSM 300 and CSM 450 product data and download the TDS." },
-      { href: "/products/unsaturated-polyester-resin/", label: "View the UPR product hub", description: "Use the parent product page to understand the separate resin-side decision." },
-      { href: "/resources/", label: "Browse the Resource Hub", description: "Explore related product-role, application and procurement guidance." },
+    sections: [
+      {
+        heading: "Glass Fiber is the reinforcement part of an FRP laminate",
+        body: [
+          "Glass Fiber, also written fiberglass, is a reinforcement material used in fibre-reinforced plastic (FRP) manufacture. It is distinct from the resin: the mat contributes reinforcement, while the resin is selected separately to bind the reinforcement into a finished composite.",
+          "This distinction matters during procurement. A request for \"fiberglass resin\" can combine two separate decisions: the reinforcement form and weight, and the resin product role. The published Samrat Poly Resins Glass Fiber listing covers the reinforcement side of that discussion.",
+        ],
+      },
+      {
+        heading: "What E-Glass and Chopped Strand Mat mean",
+        body: [
+          "The current Glass Fiber TDS identifies the material as E-Glass Chopped Strand Mat (CSM). Chopped Strand Mat is a non-woven mat made from chopped glass strands held together with a binder; the current product data lists a 50 mm fibre length and polyester-compatible sizing.",
+          "E-Glass describes the published glass type. It should not be confused with a resin chemistry, a gelcoat, a finished FRP component or an assurance of finished-laminate performance. The finished part depends on the full approved material system and the component design.",
+        ],
+      },
+      {
+        heading: "The published CSM range",
+        body: [
+          "Samrat Poly Resins currently publishes two Glass Fiber mat weights: CSM 300 at 300 g/m² and CSM 450 at 450 g/m². Both are supplied as E-Glass Chopped Strand Mat; the TDS lists 1040 mm roll width, approximately 30 kg roll weight and a 500 kg minimum order quantity.",
+          "No other reinforcement form should be assumed from this listing. In particular, woven roving, continuous roving, carbon fibre and other glass-mat types are not presented as Samrat Poly Resins products.",
+        ],
+      },
+      {
+        heading: "Reinforcement, resin and gelcoat have different jobs",
+        body: [
+          "Glass Fiber Mat is the reinforcement material. Polyester or vinyl ester resin is selected separately to bind the reinforcement into a laminate. Gelcoat, where required, is a different mould-facing surface product. Treating these materials as interchangeable can lead to an unclear quotation or the wrong product-role discussion.",
+          "The current Glass Fiber data identifies a polyester-compatible sizing, and the TDS lists compatibility with Unsaturated Polyester Resin, Vinyl Ester and epoxy systems. This identifies the compatibility discussion; it does not approve a specific formulation, mix, application setting or finished-component performance.",
+        ],
+      },
+      {
+        heading: "Choosing the resin side of the system",
+        body: [
+          "For a general FRP resin context, review GP Clear Resin or the parent Unsaturated Polyester Resin page. GP White Resin has its own published water-white general-purpose role. Lamination Resin has separate published bonding and lamination contexts. Vinyl Ester Resin is the page to review where the project has a stated chemical- or corrosion-resistance requirement.",
+          "GP Gelcoat Resin should be reviewed when the requirement is a mould-facing surface layer. It is not the structural reinforcement or a substitute for the resin selected for the laminate behind that surface.",
+        ],
+      },
+      {
+        heading: "Component context: sheets, tanks, panels and doors",
+        body: [
+          "Glass Fiber selection is clearer when the intended FRP component is known. The existing Samrat Poly Resins application guides provide component context for roofing sheets, water tanks, panels, doors, general moulded products and hand lay-up. These guides support discovery; they are not a universal reinforcement specification.",
+          "Each component has its own geometry, reinforcement build-up and finished-product requirement, so a material enquiry should name the specific component rather than rely on a broad \"FRP glass fibre\" request. The site does not publish a universal CSM 300 or CSM 450 assignment, a layer count, a resin-to-glass ratio or a finished-system classification.",
+        ],
+      },
+      {
+        heading: "Fire retardant systems: still two separate roles",
+        body: [
+          "A Fire Retardant Resin enquiry concerns the resin or matrix component. A Glass Fiber enquiry concerns reinforcement. Both may be relevant to an FRP system, but neither product page alone defines a finished laminate or project result.",
+          "The site lists Glass Fiber as a separate product and provides an FR Resin TDS for the listed Fire Retardant grade. It does not publish a universal reinforcement selection, layer count, resin-to-glass ratio or finished-system fire classification. Identify the finished part, the fire-performance requirement if any, and the required documentation when discussing such a system.",
+        ],
+      },
+      {
+        heading: "Storage and published commercial details",
+        body: [
+          "The current listing publishes roll packaging, approximately 30 kg per roll and a 500 kg MOQ. Include the total required quantity and delivery location in the enquiry. This supports a commercial discussion without implying an unlisted lead time, stock position, sample policy or delivery promise.",
+          "The current TDS publishes a 24-month shelf life and advises storage in a cool, dry area away from moisture and direct sunlight. Keep the product, batch or roll identification, receipt date, container condition and storage history with the procurement record. Do not transfer specifications, package dimensions, binder information or suitability statements from another supplier's mat to this product.",
+        ],
+      },
+      {
+        heading: "Glass Fiber quote checklist",
+        body: [
+          "State the CSM 300 or CSM 450 requirement, intended FRP component, resin system under review if known, expected quantity, delivery location and any drawing or purchase specification. This helps distinguish the reinforcement request from the separate resin, surface-finish and component-design decisions.",
+        ],
+      },
     ],
     faqs: [
-      { q: "Is Glass Fiber the same as resin?", a: "No. Glass Fiber is the reinforcement material. Resin is the separate liquid system that binds the reinforcement into the finished FRP laminate." },
-      { q: "What is Samrat Poly Resins' published Glass Fiber product?", a: "The published product is industrial-grade E-Glass Chopped Strand Mat (CSM) with polyester-compatible sizing, available in 300 g/m² and 450 g/m² area weights." },
+      {
+        q: "Is Glass Fiber the same as resin?",
+        a: "No. Glass Fiber is the reinforcement material. Resin is the separate liquid system that binds the reinforcement into the finished FRP laminate.",
+      },
+      {
+        q: "What is Samrat Poly Resins' published Glass Fiber product?",
+        a: "The published product is industrial-grade E-Glass Chopped Strand Mat (CSM) with polyester-compatible sizing, available in 300 g/m² and 450 g/m² area weights.",
+      },
+      {
+        q: "Which resin systems are named in the Glass Fiber TDS?",
+        a: "The current Glass Fiber TDS lists UPR, Vinyl Ester and epoxy systems under binder compatibility. Confirm the final material system against the current product data and the specific component requirement.",
+      },
+      {
+        q: "Can one CSM weight be assigned to every FRP application?",
+        a: "No. The site documents component and process contexts but does not publish a universal CSM 300 or CSM 450 assignment. Confirm the applicable drawing and reinforcement build-up.",
+      },
+      {
+        q: "What packaging and MOQ are published for Glass Fiber Mat?",
+        a: "The product is published as 1040 mm rolls at approximately 30 kg per roll, with a 500 kg minimum order quantity. Confirm the current commercial requirement when requesting a quotation.",
+      },
+      {
+        q: "What storage information is published?",
+        a: "The current TDS states a 24-month shelf life and advises cool, dry storage away from moisture and direct sunlight.",
+      },
+      {
+        q: "Is Gelcoat a replacement for Glass Fiber Mat?",
+        a: "No. Gelcoat is a separate mould-side surface-coating product. It does not replace the reinforcement role of Glass Fiber Mat in an FRP laminate.",
+      },
     ],
-    sections: [
-      { heading: "Glass Fiber is the reinforcement part of an FRP laminate", body: ["Glass Fiber, also written fiberglass, is a reinforcement material used in fibre-reinforced plastic (FRP) manufacture. It is distinct from the resin: the mat contributes reinforcement, while the resin is selected separately to bind the reinforcement into a finished composite.", "This distinction matters during procurement. A request for 'fiberglass resin' can combine two separate decisions: the reinforcement form and weight, and the resin product role. The published Samrat Poly Resins Glass Fiber listing covers the reinforcement side of that discussion."] },
-      { heading: "What E-Glass and Chopped Strand Mat mean", body: ["The current Glass Fiber TDS identifies the material as E-Glass Chopped Strand Mat (CSM). Chopped Strand Mat is a non-woven mat made from chopped glass strands held together with a binder; the current product data lists a 50 mm fibre length and polyester-compatible sizing.", "E-Glass describes the published glass type. It should not be confused with a resin chemistry, a gelcoat, a finished FRP component or an assurance of finished-laminate performance. The finished part depends on the full approved material system and the component design."] },
-      { heading: "The published CSM range", body: ["Samrat Poly Resins currently publishes two Glass Fiber mat weights: CSM 300 at 300 g/m² and CSM 450 at 450 g/m². Both are supplied as E-Glass Chopped Strand Mat; the TDS lists 1040 mm roll width, approximately 30 kg roll weight and a 500 kg minimum order quantity.", "No other reinforcement form should be assumed from this listing. In particular, woven roving, continuous roving, carbon fibre and other glass-mat types are not presented as Samrat Poly Resins products on this page."] },
-      { heading: "Start the enquiry with the component", body: ["A useful Glass Fiber enquiry states the intended FRP component, whether CSM 300 or CSM 450 is being considered, the resin system under review, expected quantity, delivery location and any drawing or purchase specification. This gives the technical discussion a factual starting point without treating a generic mat name as a complete laminate design."] },
+    relatedSlugs: [
+      "csm-300-vs-csm-450-glass-fiber",
+      "what-is-styrene-monomer",
+      "selecting-brushes-for-resin-and-gelcoat-application",
+    ],
+    recommendedLinks: [
+      {
+        href: "/products/fibre-glass-mat/",
+        label: "View Glass Fiber Mat",
+        description: "Review the published CSM 300 and CSM 450 product data and download the TDS.",
+      },
+      {
+        href: "/tds/fibre-glass-mat-tds.pdf",
+        label: "Download Glass Fiber TDS",
+        description: "Use the current published technical data as the controlling product reference.",
+      },
+      {
+        href: "/products/unsaturated-polyester-resin/",
+        label: "View the UPR product hub",
+        description: "Use the parent product page to understand the separate resin-side decision.",
+      },
     ],
   },
   {
@@ -4014,7 +4135,7 @@ export const resources = [
         ["Selection basis", "Component and specified reinforcement build-up", "Component and specified reinforcement build-up"],
       ],
     },
-    relatedSlugs: ["what-is-glass-fiber-chopped-strand-mat", "glass-fiber-for-frp-manufacturing", "glass-fiber-storage-and-procurement-guide"],
+    relatedSlugs: ["what-is-glass-fiber-chopped-strand-mat", "what-is-glass-fiber-chopped-strand-mat", "what-is-glass-fiber-chopped-strand-mat"],
     recommendedLinks: [
       { href: "/products/fibre-glass-mat/", label: "View CSM 300 and CSM 450", description: "Review current product details, packaging, MOQ and the Glass Fiber TDS." },
       { href: "/applications/resin-for-frp-panel-manufacturing/", label: "Explore FRP panel context", description: "Use the existing application guide to define the component before discussing mat selection." },
@@ -4032,193 +4153,138 @@ export const resources = [
     ],
   },
   {
-    slug: "glass-fiber-and-polyester-resin-compatibility",
-    title: "Glass Fiber and Polyester Resin: Understanding the FRP Material System",
-    description: "A safe buyer guide to the separate roles of E-Glass reinforcement, polyester resin, vinyl ester resin and gelcoat in an FRP product.",
-    category: "Compatibility Guide",
-    icon: "layers",
-    readingTime: "4 min read",
-    publishDate: "2026-08-06",
-    seo: {
-      title: "Glass Fiber and Polyester Resin Compatibility | FRP Buyer Guide",
-      keywords: ["Polyester Resin Glass Fiber", "Glass Fiber Resin Compatibility", "FRP Glass Fiber", "E-Glass Polyester Resin", "Glass Fiber Vinyl Ester Resin"],
-      ogTitle: "Glass Fiber and Polyester Resin: FRP Material System Guide",
-      ogDescription: "Understand the separate reinforcement, resin and surface-finish roles in an FRP material system before discussing a Glass Fiber requirement.",
-    },
-    quickFacts: {
-      "Reinforcement role": "E-Glass Chopped Strand Mat",
-      "Published sizing": "Polyester-compatible",
-      "TDS compatibility": "UPR, Vinyl Ester and epoxy systems",
-      "Selection rule": "Confirm the complete system against current product data",
-    },
-    relatedSlugs: ["what-is-glass-fiber-chopped-strand-mat", "csm-300-vs-csm-450-glass-fiber", "glass-fiber-for-frp-manufacturing"],
-    recommendedLinks: [
-      { href: "/products/fibre-glass-mat/", label: "View Glass Fiber Mat", description: "Review the published E-Glass CSM product details and TDS." },
-      { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Review the published general-FRP resin role separately from the reinforcement decision." },
-      { href: "/products/unsaturated-polyester-resin/", label: "View Unsaturated Polyester Resin", description: "Use the parent page to compare the resin family and individual product roles." },
-      { href: "/products/vinyl-ester-resin/", label: "View Vinyl Ester Resin", description: "Review this separate resin-side option where a project has a stated chemical- or corrosion-resistance requirement." },
-    ],
-    faqs: [
-      { q: "Which resin systems are named in the Glass Fiber TDS?", a: "The current Glass Fiber TDS lists UPR, Vinyl Ester and epoxy systems under binder compatibility. Confirm the final material system against the current product data and the specific component requirement." },
-      { q: "Is Gelcoat a replacement for Glass Fiber Mat?", a: "No. Gelcoat is a separate mould-side surface-coating product. It does not replace the reinforcement role of Glass Fiber Mat in an FRP laminate." },
-    ],
-    sections: [
-      { heading: "Reinforcement and resin have different jobs", body: ["Glass Fiber Mat is the reinforcement material. Polyester or vinyl ester resin is selected separately to bind the reinforcement into a laminate. Gelcoat, where required, is a different mould-facing surface product. Treating these materials as interchangeable can lead to an unclear quotation or the wrong product-role discussion."] },
-      { heading: "What the published Glass Fiber data supports", body: ["The current Glass Fiber data identifies a polyester-compatible sizing. The TDS lists compatibility with Unsaturated Polyester Resin, Vinyl Ester and epoxy systems. This identifies the compatibility discussion; it does not approve a specific formulation, mix, application setting or finished-component performance."] },
-      { heading: "Use the published resin roles to narrow the conversation", body: ["For a general FRP resin context, review GP Clear Resin or the parent Unsaturated Polyester Resin page. GP White Resin has its own published water-white general-purpose role. Lamination Resin has separate published bonding and lamination contexts. Vinyl Ester Resin is the page to review where the project has a stated chemical- or corrosion-resistance requirement.", "GP Gelcoat Resin should be reviewed when the requirement is a mould-facing surface layer. It is not the structural reinforcement or a substitute for the resin selected for the laminate behind that surface."] },
-      { heading: "Keep the request factual", body: ["Before a quote or technical discussion, share the intended FRP component, CSM 300 or CSM 450 requirement, selected or proposed resin system, expected quantity, delivery location and any drawing or stated specification. Final suitability should be confirmed against the applicable product data rather than assumed from a general compatibility label."] },
-    ],
-  },
-  {
-    slug: "glass-fiber-for-frp-manufacturing",
-    title: "Glass Fiber for FRP Manufacturing: Reinforcement Application Guide",
-    description: "Use existing FRP application guides to define the component and reinforcement context before selecting E-Glass Chopped Strand Mat.",
-    category: "Application Guide",
-    icon: "layers",
-    readingTime: "4 min read",
-    publishDate: "2026-08-06",
-    seo: {
-      title: "Glass Fiber for FRP Manufacturing | CSM Application Guide",
-      keywords: ["Glass Fiber for FRP", "FRP Glass Fiber", "Glass Fiber Roofing Sheets", "Glass Fiber Tanks", "Glass Fiber Doors", "Fiberglass Reinforcement"],
-      ogTitle: "Glass Fiber for FRP Manufacturing",
-      ogDescription: "Explore the existing FRP roofing-sheet, tank, panel, door and hand lay-up guides as component context for Glass Fiber Mat selection.",
-    },
-    quickFacts: {
-      "Published product role": "FRP reinforcement",
-      "Existing component guides": "Roofing sheets, tanks, panels and doors",
-      "Existing process guide": "Hand lay-up",
-      "Selection caution": "No fixed CSM weight is assigned by this guide",
-    },
-    relatedSlugs: ["what-is-glass-fiber-chopped-strand-mat", "glass-fiber-and-polyester-resin-compatibility", "glass-fiber-storage-and-procurement-guide"],
-    recommendedLinks: [
-      { href: "/applications/resin-for-roofing-sheet-manufacturing/", label: "FRP roofing-sheet guide", description: "Review the documented roofing-sheet component context." },
-      { href: "/applications/resin-for-water-tank-manufacturing/", label: "FRP water-tank guide", description: "Review the documented tank component context." },
-      { href: "/applications/resin-for-frp-panel-manufacturing/", label: "FRP panel guide", description: "Review the documented panel component context." },
-      { href: "/applications/resin-for-frp-door-manufacturing/", label: "FRP door guide", description: "Review the documented door component context." },
-      { href: "/applications/resin-for-hand-lay-up-process/", label: "Hand lay-up guide", description: "Review the existing process context alongside the relevant product TDS." },
-    ],
-    faqs: [
-      { q: "Can one CSM weight be assigned to every FRP application?", a: "No. The site documents component and process contexts but does not publish a universal CSM 300 or CSM 450 assignment. Confirm the applicable drawing and reinforcement build-up." },
-      { q: "Does this guide create a manufacturing instruction?", a: "No. It helps buyers find existing application context. The relevant TDS, component design, applicable safety requirements and technical review remain controlling." },
-    ],
-    sections: [
-      { heading: "Use the component to organise the reinforcement discussion", body: ["Glass Fiber selection is clearer when the intended FRP component is known. The existing Samrat Poly Resins application guides provide component context for roofing sheets, water tanks, panels, doors, general moulded products and hand lay-up. These guides support discovery; they are not a universal reinforcement specification."] },
-      { heading: "FRP roofing sheets, tanks, panels and doors", body: ["The published application pages describe E-Glass Chopped Strand Mat within roofing-sheet, water-tank, panel and door-related FRP contexts. Each component has its own geometry, reinforcement build-up and finished-product requirement, so a material enquiry should name the specific component rather than rely on a broad 'FRP glass fibre' request."] },
-      { heading: "Hand lay-up is a process context, not a fixed recipe", body: ["The existing hand lay-up guide discusses the role of reinforcement and resin in an FRP laminate. It should be read with the current Glass Fiber TDS and the selected resin's own product data. This resource does not prescribe catalyst quantities, layer counts, thicknesses or processing settings."] },
-      { heading: "Link the application back to product data", body: ["After defining the component, review whether CSM 300 or CSM 450 is specified or should be discussed, then review the resin-side role and the published Glass Fiber product details. Add the component, expected quantity, delivery location and any drawing to the enquiry so a quote conversation can start with documented facts."] },
-    ],
-  },
-  {
-    slug: "glass-fiber-storage-and-procurement-guide",
-    title: "Glass Fiber Storage and Procurement Guide for CSM 300 and CSM 450",
-    description: "A practical buyer checklist for handling the published Glass Fiber Mat TDS, packaging, storage context and quotation details.",
-    category: "Procurement Guide",
-    icon: "checklist",
-    readingTime: "4 min read",
-    publishDate: "2026-08-06",
-    seo: {
-      title: "Glass Fiber Storage and Procurement Guide | CSM 300 & 450",
-      keywords: ["Glass Fiber Storage", "Glass Fiber Procurement", "CSM 300 Supplier", "CSM 450 Supplier", "Glass Fiber Mat Quote", "Fiberglass Mat Packaging"],
-      ogTitle: "Glass Fiber Storage and Procurement Guide",
-      ogDescription: "Prepare a factual CSM 300 or CSM 450 enquiry using the published TDS, roll packaging, MOQ and storage context for Glass Fiber Mat.",
-    },
-    quickFacts: {
-      "Published packaging": "Roll, approximately 30 kg/roll",
-      "Published roll width": "1040 mm",
-      "Published MOQ": "500 kg",
-      "Published shelf life": "24 months",
-    },
-    relatedSlugs: ["what-is-glass-fiber-chopped-strand-mat", "csm-300-vs-csm-450-glass-fiber", "glass-fiber-and-polyester-resin-compatibility"],
-    recommendedLinks: [
-      { href: "/products/fibre-glass-mat/", label: "View Glass Fiber Mat", description: "Review the current product details and download the Technical Data Sheet." },
-      { href: "/tds/fibre-glass-mat-tds.pdf", label: "Download Glass Fiber TDS", description: "Use the current published technical data as the controlling product reference." },
-      { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Download Product Catalogue", description: "Review the broader product range and separate resin roles." },
-      { href: "/contact/", label: "Request a Glass Fiber quote", description: "Send a documented CSM 300 or CSM 450 requirement through the enquiry form." },
-    ],
-    faqs: [
-      { q: "What packaging and MOQ are published for Glass Fiber Mat?", a: "The product is published as 1040 mm rolls at approximately 30 kg per roll, with a 500 kg minimum order quantity. Confirm the current commercial requirement when requesting a quotation." },
-      { q: "What storage information is published?", a: "The current TDS states a 24-month shelf life and advises cool, dry storage away from moisture and direct sunlight. Follow the current TDS and site handling requirements for the actual material." },
-    ],
-    sections: [
-      { heading: "Use the current Glass Fiber TDS first", body: ["The Glass Fiber TDS is the product-specific reference for the published E-Glass Chopped Strand Mat. It lists CSM 300 and CSM 450, 1040 mm roll width, approximately 30 kg roll weight, polyester-compatible sizing and the other technical properties for the current product.", "Do not transfer specifications, package dimensions, binder information or suitability statements from another supplier's mat to this product. Use the current Samrat Poly Resins TDS for the material being considered."] },
-      { heading: "Record the published commercial details", body: ["The current listing publishes roll packaging, approximately 30 kg per roll and a 500 kg MOQ. Include the total required quantity and delivery location in the enquiry. This supports a commercial discussion without implying an unlisted lead time, stock position, sample policy or delivery promise."] },
-      { heading: "Keep storage context with the material record", body: ["The current TDS publishes a 24-month shelf life and advises storage in a cool, dry area away from moisture and direct sunlight. Keep the product, batch or roll identification, receipt date, container condition and storage history with the procurement record. Where material condition is in doubt, review the current TDS and contact the supplier rather than assuming suitability."] },
-      { heading: "Glass Fiber quote checklist", body: ["State the CSM 300 or CSM 450 requirement, intended FRP component, resin system under review if known, expected quantity, delivery location and any drawing or purchase specification. This helps distinguish the reinforcement request from the separate resin, surface-finish and component-design decisions."] },
-    ],
-  },
-  {
     slug: "what-is-frp-polyester-pigment",
-    title: "What Is FRP Polyester Pigment? A Guide to Polyester Pigment Paste",
-    description: "Understand the published role of FRP Polyester Pigment / polyester pigment paste in a coloured FRP material system before selecting a resin or surface-finish product.",
+    title: "FRP Polyester Pigment: Colour Paste Role, Compatibility and Procurement",
+    description: "What FRP polyester pigment paste is, its published UPR, vinyl ester and gelcoat system context, where it is used, how it differs from a pre-pigmented resin grade, and the published packaging, MOQ and storage facts.",
     category: "Product Guide",
     icon: "info",
-    readingTime: "5 min read",
+    readingTime: "7 min read",
     publishDate: "2026-08-06",
     seo: {
-      title: "What Is FRP Polyester Pigment? | Polyester Pigment Paste",
-      keywords: ["FRP Polyester Pigment", "Polyester Pigment Paste", "FRP Colour Paste", "Pigment for Polyester Resin", "Resin Pigment"],
-      ogTitle: "What Is FRP Polyester Pigment?",
-      ogDescription: "A buyer guide to the published role of polyester pigment paste in FRP, resin and gelcoat material systems.",
+      title: "FRP Polyester Pigment: Colour Paste Buyer Guide",
+      keywords: [
+        "FRP Polyester Pigment",
+        "Polyester Pigment Paste",
+        "FRP Colour Paste",
+        "Pigment for Polyester Resin",
+        "Resin Pigment",
+        "pigment for gelcoat",
+      ],
+      ogTitle: "FRP Polyester Pigment: Complete Guide",
+      ogDescription: "A buyer guide to the published role of polyester pigment paste in FRP, resin and gelcoat material systems, with compatibility and procurement facts.",
     },
     quickFacts: {
       "Published product form": "Polyester pigment paste for FRP",
       "Published system context": "UPR, vinyl ester and gelcoat systems",
-      "Material-system role": "Colour component, not a structural resin or reinforcement",
-      "Product reference": "Use the current FRP Polyester Pigment TDS",
+      "Published packaging": "10 kg bottles",
+      "Published MOQ": "100 kg",
+      "Published storage": "Cool, dry conditions at 15–30°C; protect from direct sunlight",
+      "Published unopened shelf life": "12 months",
     },
-    relatedSlugs: ["applications-of-frp-polyester-pigment", "polyester-pigment-paste-vs-gelcoat", "frp-pigment-compatibility-with-resin-systems"],
-    recommendedLinks: [
-      { href: "/products/frp-polyester-pigment/", label: "View FRP Polyester Pigment", description: "Review the published product information, colour range context and Technical Data Sheet." },
-      { href: "/products/unsaturated-polyester-resin/", label: "Explore Unsaturated Polyester Resin", description: "Understand the parent resin family before defining a colour requirement." },
-      { href: "/products/gp-gelcoat-resin/", label: "View GP Gelcoat Resin", description: "Review the separate surface-finish product role." },
-      { href: "/tds/frp-polyester-pigment-tds.pdf", label: "Download FRP Polyester Pigment TDS", description: "Use the current published data as the controlling product reference." },
+    sections: [
+      {
+        heading: "A colour component for an FRP material system",
+        body: [
+          "FRP Polyester Pigment is the published Samrat Poly Resins product for adding colour within an FRP material-system discussion. It is supplied as a polyester pigment paste for FRP; it is not the structural resin, Glass Fiber reinforcement or finished gelcoat layer itself.",
+          "This distinction helps a buyer begin with the right question. First define the component and the required appearance, then identify the resin or gelcoat system being considered, and finally review whether the published pigment product is appropriate for that system.",
+        ],
+      },
+      {
+        heading: "The several names buyers use for the same role",
+        body: [
+          "Industrial buyers may use several terms for the same product role: FRP polyester pigment, polyester pigment paste, FRP colour paste or resin pigment. The useful procurement detail is not the label alone; it is the actual base system, intended component, shade reference if known and the expected finished appearance.",
+          "The current product data publishes use with unsaturated polyester resin, vinyl ester and gelcoat systems. It does not make a universal compatibility statement, so the base system should be identified rather than assumed from a generic pigment-paste request.",
+        ],
+      },
+      {
+        heading: "Keep the colouring decision separate from the resin decision",
+        body: [
+          "A GP, Lamination, Gelcoat or Vinyl Ester product has its own published role. Pigment selection does not replace selection of the underlying resin or surface-finish material. For an FRP buyer, the practical route is to review the component requirement, choose the relevant base material, then discuss the colour requirement against that documented system.",
+          "Where a visible mould-side surface is required, review the Gelcoat product role as well as the pigment discussion. Where the requirement is a pre-coloured resin grade rather than a pigment-paste system, review the relevant product data instead of assuming the two choices are interchangeable.",
+        ],
+      },
+      {
+        heading: "Published application contexts",
+        body: [
+          "Samrat Poly Resins publishes FRP Polyester Pigment application context for FRP tanks and pipes, gelcoats for boat and automotive applications, decorative and architectural panels, and electrical enclosures. These are useful starting points because the component and required appearance affect the material-system discussion.",
+          "The list does not mean that one pigment selection or one appearance outcome applies across every product. A tank, panel, enclosure and moulded surface each need their own requirement review. For these contexts, a buyer should state the required appearance, whether a visible surface is involved, the base system under review and the component type.",
+        ],
+      },
+      {
+        heading: "Compatibility: a starting point, not a blanket approval",
+        body: [
+          "The FRP Polyester Pigment product information publishes compatibility context for unsaturated polyester resin, vinyl ester and gelcoat systems. This helps frame the right technical question, but it is not a blanket statement that every pigment is suitable for every product within those families.",
+          "GP Clear, GP White, GP Yellow and Lamination Resin are separate published product roles. A buyer can use those pages to understand the underlying resin requirement, but should not treat a product-family name as a substitute for checking the actual material system. Avoid relying on a supplier, product family or prior project alone as proof that a pigment system is appropriate for a different component or base material.",
+        ],
+      },
+      {
+        heading: "Pigment paste vs a pre-pigmented resin grade",
+        body: [
+          "One buyer may need to discuss a polyester pigment paste within a defined FRP material system. Another may be evaluating an existing pre-pigmented polyester-resin grade. These are not interchangeable product descriptions, even when the finished component is intended to have colour.",
+          "Samrat Poly Resins publishes FRP Polyester Pigment as a pigment-paste product and Sheet Grade Yellow Resin as a separate product. Start by identifying which product role matches the actual requirement. Where the buyer is considering a published pre-pigmented resin grade, review that product page and its TDS on their own terms — do not infer its technical properties, use cases or availability from the pigment-paste page.",
+        ],
+      },
+      {
+        heading: "Storage and published commercial details",
+        body: [
+          "The current listing publishes 10 kg bottle packaging and a 100 kg MOQ. Include the expected quantity and delivery location in the enquiry. This supports a commercial discussion without implying an unlisted stock position, lead time, sample policy or delivery promise.",
+          "The current TDS publishes storage at 15–30°C in cool, dry conditions with protection from direct sunlight, plus a 12-month unopened shelf life. Keep receipt, container and storage records with the material. Do not transfer dosage, colour, compatibility or performance information from a different supplier's pigment paste to this material.",
+        ],
+      },
+      {
+        heading: "FRP pigment quote checklist",
+        body: [
+          "State the intended FRP component, the resin or gelcoat system under review if known, required colour reference or appearance requirement, expected quantity and delivery location. Include any purchase specification or approved visual reference where available. This makes the colour-paste discussion more precise without replacing product-specific technical review.",
+        ],
+      },
     ],
     faqs: [
-      { q: "Is FRP Polyester Pigment the same as polyester resin?", a: "No. The published product is a polyester pigment paste for FRP. It is a colour component within a material system, whereas a resin grade has a separate product role." },
-      { q: "Can pigment paste be assumed compatible with every resin?", a: "No. The product page publishes UPR, vinyl ester and gelcoat system context, but the actual base system and application should be confirmed before a requirement is finalised." },
+      {
+        q: "Is FRP Polyester Pigment the same as polyester resin?",
+        a: "No. The published product is a polyester pigment paste for FRP. It is a colour component within a material system, whereas a resin grade has a separate product role.",
+      },
+      {
+        q: "Can pigment paste be assumed compatible with every resin?",
+        a: "No. The product page publishes UPR, vinyl ester and gelcoat system context, but the actual base system and application should be confirmed before a requirement is finalised.",
+      },
+      {
+        q: "Is a pre-pigmented resin the same product as pigment paste?",
+        a: "No. They are separate product roles. The appropriate route depends on the component, base resin requirement and finished-appearance requirement.",
+      },
+      {
+        q: "What commercial details are published for FRP Polyester Pigment?",
+        a: "The current product data publishes 10 kg bottle packaging and a 100 kg MOQ. Confirm the actual commercial requirement when requesting a quotation.",
+      },
+      {
+        q: "What storage information is published?",
+        a: "The current TDS publishes cool, dry storage at 15–30°C, protection from direct sunlight and a 12-month unopened shelf life.",
+      },
+      {
+        q: "Can a buyer request pigment for a gelcoat application?",
+        a: "The published pigment product includes gelcoat-system context. Share the gelcoat product, component and appearance requirement so the actual system can be reviewed.",
+      },
     ],
-    sections: [
-      { heading: "A colour component for an FRP material system", body: ["FRP Polyester Pigment is the published Samrat Poly Resins product for adding colour within an FRP material-system discussion. It is supplied as a polyester pigment paste for FRP; it is not the structural resin, Glass Fiber reinforcement or finished gelcoat layer itself.", "This distinction helps a buyer begin with the right question. First define the component and the required appearance, then identify the resin or gelcoat system being considered, and finally review whether the published pigment product is appropriate for that system."] },
-      { heading: "Polyester pigment paste, FRP colour paste and resin pigment", body: ["Industrial buyers may use several terms for the same product role: FRP polyester pigment, polyester pigment paste, FRP colour paste or resin pigment. The useful procurement detail is not the label alone; it is the actual base system, intended component, shade reference if known and the expected finished appearance.", "The current product data publishes use with unsaturated polyester resin, vinyl ester and gelcoat systems. It does not make a universal compatibility statement, so the base system should be identified rather than assumed from a generic pigment-paste request."] },
-      { heading: "Keep the colouring decision separate from the resin decision", body: ["A GP, Lamination, Gelcoat or Vinyl Ester product has its own published role. Pigment selection does not replace selection of the underlying resin or surface-finish material. For an FRP buyer, the practical route is to review the component requirement, choose the relevant base material, then discuss the colour requirement against that documented system.", "Where a visible mould-side surface is required, review the Gelcoat product role as well as the pigment discussion. Where the requirement is a pre-coloured resin grade rather than a pigment-paste system, review the relevant product data instead of assuming the two choices are interchangeable."] },
-      { heading: "What to include in a pigment enquiry", body: ["Share the FRP component, intended resin or gelcoat system if known, required colour reference or appearance requirement, expected quantity and delivery location. If a drawing, approved visual reference or purchase specification exists, include it in the commercial discussion. This helps separate a colour requirement from the separate decisions on resin grade, reinforcement and production process."] },
+    relatedSlugs: [
+      "polyester-pigment-paste-vs-gelcoat",
+      "frp-colour-variation-buyer-checklist",
+      "what-is-gel-coat-resin",
     ],
-  },
-  {
-    slug: "applications-of-frp-polyester-pigment",
-    title: "Applications of FRP Polyester Pigment in Coloured FRP Products",
-    description: "Review the published FRP Polyester Pigment application contexts and the questions to clarify before using a pigment-paste requirement in a coloured FRP product.",
-    category: "Application Guide",
-    icon: "grid",
-    readingTime: "5 min read",
-    publishDate: "2026-08-06",
-    seo: {
-      title: "Applications of FRP Polyester Pigment | FRP Colour Paste Uses",
-      keywords: ["FRP Pigment Uses", "Polyester Pigment Paste Applications", "FRP Colour Paste", "Pigment for Gelcoat", "Polyester Resin Colouring"],
-      ogTitle: "Applications of FRP Polyester Pigment",
-      ogDescription: "Published application contexts for FRP polyester pigment, including tanks, pipes, gelcoat, decorative panels and electrical enclosures.",
-    },
-    quickFacts: {
-      "Published application contexts": "FRP tanks and pipes, coloured gelcoat, panels and enclosures",
-      "Decision inputs": "Component, base system, appearance requirement and quantity",
-      "Not a processing recipe": "Review current product data before use",
-    },
-    relatedSlugs: ["what-is-frp-polyester-pigment", "frp-pigment-compatibility-with-resin-systems", "frp-colour-variation-buyer-checklist"],
     recommendedLinks: [
-      { href: "/applications/resin-for-water-tank-manufacturing/", label: "FRP water-tank guide", description: "Review the existing tank manufacturing context before defining colour requirements." },
-      { href: "/applications/resin-for-frp-panel-manufacturing/", label: "FRP panel guide", description: "Review the existing panel context alongside the relevant resin and pigment data." },
-      { href: "/applications/gelcoat-for-general-frp-mould-finishing/", label: "FRP mould-finish guide", description: "Review the documented gelcoat surface-finish context." },
-      { href: "/products/frp-polyester-pigment/", label: "View FRP Polyester Pigment", description: "Review the published product details and Technical Data Sheet." },
-    ],
-    faqs: [
-      { q: "Does this guide prescribe one pigment system for every FRP component?", a: "No. The applications listed are published product contexts, not a universal formulation or compatibility instruction. Confirm the actual material system and finished-product requirement." },
-      { q: "Can a buyer request pigment for a gelcoat application?", a: "The published pigment product includes gelcoat-system context. Share the gelcoat product, component and appearance requirement so the actual system can be reviewed." },
-    ],
-    sections: [
-      { heading: "Published applications start with the component", body: ["Samrat Poly Resins publishes FRP Polyester Pigment application context for FRP tanks and pipes, gelcoats for boat and automotive applications, decorative and architectural panels, and electrical enclosures. These are useful starting points because the component and required appearance affect the material-system discussion.", "The list does not mean that one pigment selection or one appearance outcome applies across every product. A tank, panel, enclosure and moulded surface each need their own requirement review."] },
-      { heading: "FRP tanks, pipes and industrial components", body: ["For tanks, pipes and industrial FRP components, begin with the component role and the selected resin system. If colour is a requirement, identify whether it relates to the bulk FRP material, a visible surface or a purchasing specification. The existing tank and general FRP application guides can support that conversation without replacing product-specific technical review."] },
-      { heading: "Panels, decorative FRP and enclosures", body: ["The published product information also names decorative and architectural panels and electrical enclosures. For these contexts, a buyer should state the required appearance, whether a visible surface is involved, the base system under review and the component type. This is more useful than a broad request for 'FRP colour paste' with no product context."] },
-      { heading: "Gelcoat colouring is a separate surface-finish question", body: ["The product information publishes gelcoat-system compatibility. Where colour is being considered for a boat, automotive or moulded FRP surface, first distinguish pigment-paste selection from the Gelcoat product's separate surface-finish role. Review the relevant published product data before confirming the combination."] },
+      {
+        href: "/products/frp-polyester-pigment/",
+        label: "View FRP Polyester Pigment",
+        description: "Review the published product information, colour range context and Technical Data Sheet.",
+      },
+      {
+        href: "/tds/frp-polyester-pigment-tds.pdf",
+        label: "Download FRP Polyester Pigment TDS",
+        description: "Use the current published data as the controlling product reference.",
+      },
+      {
+        href: "/products/gp-gelcoat-resin/",
+        label: "View GP Gelcoat Resin",
+        description: "Review the separate surface-finish product role.",
+      },
     ],
   },
   {
@@ -4240,7 +4306,7 @@ export const resources = [
       "Gelcoat role": "Separate FRP surface-finish product role",
       "Buyer decision": "Identify whether colour, visible surface finish or both are required",
     },
-    relatedSlugs: ["what-is-frp-polyester-pigment", "frp-pigment-compatibility-with-resin-systems", "pigment-paste-vs-pre-pigmented-polyester-resin"],
+    relatedSlugs: ["what-is-frp-polyester-pigment", "what-is-frp-polyester-pigment", "what-is-frp-polyester-pigment"],
     recommendedLinks: [
       { href: "/products/frp-polyester-pigment/", label: "View FRP Polyester Pigment", description: "Review the published pigment-paste product details." },
       { href: "/products/gp-gelcoat-resin/", label: "View GP Gelcoat Resin", description: "Review the separate published Gelcoat Resin product role and TDS." },
@@ -4256,80 +4322,6 @@ export const resources = [
       { heading: "When the requirement is a colour discussion", body: ["Use the FRP Polyester Pigment product route when the buyer needs to discuss colour against a UPR, vinyl ester or gelcoat system. Share the component, intended base system, required colour reference or appearance requirement, quantity and delivery location. The current TDS remains the product-specific reference."] },
       { heading: "When the requirement is a surface-finish discussion", body: ["Use the Gelcoat Resin route when the buyer is defining the visible surface-finish role for a moulded FRP product. The product page and Gelcoat resources explain that separate role. If colour is also relevant, it should be assessed within the actual gelcoat system rather than assumed from a generic pigment request."] },
       { heading: "Avoid a one-word material request", body: ["A request such as 'gelcoat colour' can mean different things: a pigment-paste requirement, a gelcoat selection question, a finished-appearance requirement or a combination of these. Naming the component and base system allows the technical and commercial discussion to start with the correct product role."] },
-    ],
-  },
-  {
-    slug: "pigment-paste-vs-pre-pigmented-polyester-resin",
-    title: "FRP Pigment Paste vs Pre-Pigmented Polyester Resin: How to Choose",
-    description: "Compare a pigment-paste discussion with an existing pre-pigmented polyester-resin product role before specifying a coloured FRP material system.",
-    category: "Comparison Guide",
-    icon: "layers",
-    readingTime: "5 min read",
-    publishDate: "2026-08-06",
-    seo: {
-      title: "FRP Pigment Paste vs Pre-Pigmented Polyester Resin",
-      keywords: ["Pigment Paste vs Coloured Resin", "Pre Pigmented Polyester Resin", "FRP Colour Paste", "Polyester Resin Colouring", "Resin Pigment"],
-      ogTitle: "FRP Pigment Paste vs Pre-Pigmented Polyester Resin",
-      ogDescription: "A buyer guide to separate a pigment-paste requirement from a pre-pigmented polyester-resin product role.",
-    },
-    quickFacts: {
-      "Pigment-paste route": "Colour discussion against the intended system",
-      "Pre-pigmented route": "Review the separate published resin grade",
-      "Decision inputs": "Component, base system, required appearance and product data",
-    },
-    relatedSlugs: ["what-is-frp-polyester-pigment", "polyester-pigment-paste-vs-gelcoat", "frp-pigment-compatibility-with-resin-systems"],
-    recommendedLinks: [
-      { href: "/products/frp-polyester-pigment/", label: "View FRP Polyester Pigment", description: "Review the published pigment-paste product information." },
-      { href: "/products/sheet-grade-yellow-resin/", label: "View Sheet Grade Yellow Resin", description: "Review the separate published pre-pigmented resin product role." },
-      { href: "/products/unsaturated-polyester-resin/", label: "Explore Unsaturated Polyester Resin", description: "Review product-family selection before choosing a colouring route." },
-      { href: "/tds/frp-polyester-pigment-tds.pdf", label: "Download FRP Polyester Pigment TDS", description: "Use the current published pigment data for the actual product." },
-    ],
-    faqs: [
-      { q: "Is a pre-pigmented resin the same product as pigment paste?", a: "No. They are separate product roles. The appropriate route depends on the component, base resin requirement and finished-appearance requirement." },
-      { q: "Does this guide recommend one route for all coloured FRP products?", a: "No. It is a decision-support guide only. Review the relevant product TDS and actual material-system requirement before specifying a product." },
-    ],
-    sections: [
-      { heading: "Two different ways a colour requirement can begin", body: ["One buyer may need to discuss a polyester pigment paste within a defined FRP material system. Another may be evaluating an existing pre-pigmented polyester-resin grade. These are not interchangeable product descriptions, even when the finished component is intended to have colour.", "Samrat Poly Resins publishes FRP Polyester Pigment as a pigment-paste product and Sheet Grade Yellow Resin as a separate product. Start by identifying which product role matches the actual requirement."] },
-      { heading: "Use the pigment-paste route when the system needs to be identified", body: ["A pigment-paste enquiry should state the intended resin or gelcoat system, component, shade or appearance requirement, quantity and delivery location. The published pigment product names UPR, vinyl ester and gelcoat system context. Compatibility still needs to be checked against the actual base material and application."] },
-      { heading: "Use the pre-pigmented-resin route when evaluating that published grade", body: ["Where the buyer is considering a published pre-pigmented resin grade, review that product page and its TDS on their own terms. Do not infer its technical properties, use cases or availability from the pigment-paste page. The resin grade and the colour-component discussion remain separate decisions."] },
-      { heading: "Ask a product-role question before a price question", body: ["Before requesting a quote, state whether the need is for pigment paste or a pre-pigmented resin grade, then include the intended FRP component, base system or published product under review, required colour reference if known, expected quantity and delivery location. This reduces the risk of comparing unlike materials."] },
-    ],
-  },
-  {
-    slug: "frp-pigment-compatibility-with-resin-systems",
-    title: "FRP Pigment Compatibility with Polyester Resin, Vinyl Ester and Gelcoat",
-    description: "Use the published FRP Polyester Pigment system context to frame a compatibility check without assuming every pigment works with every resin or gelcoat product.",
-    category: "Selection Guide",
-    icon: "checklist",
-    readingTime: "5 min read",
-    publishDate: "2026-08-06",
-    seo: {
-      title: "FRP Pigment Compatibility with Polyester Resin and Gelcoat",
-      keywords: ["Pigment Compatibility with Polyester Resin", "Pigment for Gelcoat", "FRP Pigment Compatibility", "Polyester Pigment Paste", "Vinyl Ester Pigment"],
-      ogTitle: "FRP Pigment Compatibility with Resin Systems",
-      ogDescription: "A cautious buyer guide to the published UPR, vinyl ester and gelcoat system context for FRP polyester pigment.",
-    },
-    quickFacts: {
-      "Published compatibility context": "UPR, vinyl ester and gelcoat systems",
-      "Important limitation": "Not a universal-compatibility claim",
-      "Check before quote": "Actual base product, component and appearance requirement",
-    },
-    relatedSlugs: ["what-is-frp-polyester-pigment", "polyester-pigment-paste-vs-gelcoat", "frp-pigment-storage-and-procurement-guide"],
-    recommendedLinks: [
-      { href: "/products/unsaturated-polyester-resin/", label: "Unsaturated Polyester Resin product hub", description: "Review the parent resin family and individual product roles." },
-      { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Review the separate published GP Clear Resin product role." },
-      { href: "/products/gp-gelcoat-resin/", label: "View GP Gelcoat Resin", description: "Review the separate gelcoat product role and current TDS." },
-      { href: "/products/frp-polyester-pigment/", label: "View FRP Polyester Pigment", description: "Review the published compatibility context and Technical Data Sheet." },
-    ],
-    faqs: [
-      { q: "Which system types are published for FRP Polyester Pigment?", a: "The current product information publishes UPR, vinyl ester and gelcoat system compatibility context. Verify the actual product and application before treating a combination as approved." },
-      { q: "Does this confirm compatibility with every GP, Lamination or Gelcoat grade?", a: "No. Product-family names do not replace a check of the actual base product, current TDS and application. Do not assume universal compatibility." },
-    ],
-    sections: [
-      { heading: "Use the published system context as a starting point", body: ["The FRP Polyester Pigment product information publishes compatibility context for unsaturated polyester resin, vinyl ester and gelcoat systems. This helps frame the right technical question, but it is not a blanket statement that every pigment is suitable for every product within those families.", "Before a requirement is finalised, identify the specific base product, component and finished-appearance requirement. Then review the current published product data and discuss any unresolved compatibility point with the supplier."] },
-      { heading: "GP, Lamination and other polyester-resin discussions", body: ["GP Clear, GP White, GP Yellow and Lamination Resin are separate published product roles within the site. A buyer can use those pages to understand the underlying resin requirement, but should not treat a product-family name as a substitute for checking the actual material system. The pigment conversation should include the base product under review."] },
-      { heading: "Gelcoat and Vinyl Ester discussions", body: ["The pigment product publishes gelcoat and vinyl ester system context. For a visible mould-side surface, use the Gelcoat page and its TDS to establish the surface-finish role first. For a Vinyl Ester requirement, review its own product information. Then state the component and appearance requirement in the pigment enquiry so the discussion remains product-specific."] },
-      { heading: "A practical compatibility-check list", body: ["Record the specific resin or gelcoat product, FRP component, colour reference or appearance requirement, expected quantity, delivery location and any relevant purchase specification. Avoid relying on a supplier, product family or prior project alone as proof that a pigment system is appropriate for a different component or base material."] },
     ],
   },
   {
@@ -4351,7 +4343,7 @@ export const resources = [
       "Not included": "No dosage or mixing instructions",
       "Useful records": "Component, base system, colour reference, batch and conditions",
     },
-    relatedSlugs: ["what-is-frp-polyester-pigment", "frp-pigment-compatibility-with-resin-systems", "frp-pigment-storage-and-procurement-guide"],
+    relatedSlugs: ["what-is-frp-polyester-pigment", "what-is-frp-polyester-pigment", "what-is-frp-polyester-pigment"],
     recommendedLinks: [
       { href: "/products/frp-polyester-pigment/", label: "View FRP Polyester Pigment", description: "Review the published pigment product and current TDS." },
       { href: "/products/gp-gelcoat-resin/", label: "View GP Gelcoat Resin", description: "Review the separate surface-finish product role where relevant." },
@@ -4370,90 +4362,127 @@ export const resources = [
     ],
   },
   {
-    slug: "frp-pigment-storage-and-procurement-guide",
-    title: "FRP Polyester Pigment Storage and Procurement Guide",
-    description: "Use the published FRP Polyester Pigment storage, packaging and commercial details to prepare a factual colour-paste enquiry without assuming unlisted availability or performance.",
-    category: "Procurement Guide",
-    icon: "checklist",
-    readingTime: "4 min read",
+    slug: "what-is-mekp-hardener",
+    title: "MEKP Hardener: Catalyst Role, Systems and Procurement Guide",
+    description: "What MEKP Hardener is, its published catalyst / initiator role in polyester, vinyl ester and gelcoat systems, and the published packaging, MOQ and shelf-life facts to check before requesting a quote.",
+    category: "Product Guide",
+    icon: "info",
+    readingTime: "5 min read",
     publishDate: "2026-08-06",
     seo: {
-      title: "FRP Polyester Pigment Storage and Procurement Guide",
-      keywords: ["FRP Pigment Storage", "FRP Pigment Supplier", "Polyester Pigment Paste Quote", "FRP Colour Paste Supplier", "Industrial Colour Paste"],
-      ogTitle: "FRP Polyester Pigment Storage and Procurement Guide",
-      ogDescription: "Prepare a factual FRP polyester pigment enquiry using the published storage, packaging, MOQ and colour-reference context.",
+      title: "MEKP Hardener: Catalyst, Systems and Buyer Checklist",
+      keywords: [
+        "MEKP Hardener",
+        "MEKP Catalyst",
+        "MEKP Initiator",
+        "Polyester Resin Hardener",
+        "FRP Hardener",
+        "MEKP for gelcoat",
+        "MEKP supplier",
+      ],
+      ogTitle: "MEKP Hardener: Complete Buyer Guide",
+      ogDescription: "A buyer guide to MEKP's published catalyst / initiator role in selected polyester-family resin systems, with the published commercial facts to check first.",
     },
     quickFacts: {
-      "Published packaging": "10 kg bottles",
-      "Published MOQ": "100 kg",
-      "Published storage": "Cool, dry conditions at 15–30°C; protect from direct sunlight",
-      "Published unopened shelf life": "12 months",
+      "Product role": "Catalyst / initiator, not a structural resin or reinforcement",
+      "Published system context": "UPR, vinyl ester and gelcoat systems",
+      "Published packaging": "25 kg carboy",
+      "Published MOQ": "25 kg",
+      "Published unopened shelf life": "6 months",
+      "Product document": "MEKP Hardener TDS (Rev. 01, July 2026)",
     },
-    relatedSlugs: ["what-is-frp-polyester-pigment", "frp-pigment-compatibility-with-resin-systems", "frp-colour-variation-buyer-checklist"],
-    recommendedLinks: [
-      { href: "/products/frp-polyester-pigment/", label: "View FRP Polyester Pigment", description: "Review the current product details and published Technical Data Sheet." },
-      { href: "/tds/frp-polyester-pigment-tds.pdf", label: "Download FRP Polyester Pigment TDS", description: "Use the current published product data as the controlling reference." },
-      { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Download Product Catalogue", description: "Review the wider product range and separate resin, gelcoat and reinforcement roles." },
-      { href: "/contact/", label: "Request a pigment quote", description: "Send the colour, component, system, quantity and delivery details through the enquiry form." },
+    sections: [
+      {
+        heading: "One product role, several buyer terms",
+        body: [
+          "Industrial buyers may search for MEKP Hardener, MEKP Catalyst, MEKP Initiator, polyester resin hardener or FRP hardener. On this site, these terms describe MEKP's published catalyst / initiator role in selected unsaturated polyester, vinyl ester and gelcoat systems.",
+          "MEKP is not a structural resin, Glass Fiber reinforcement, a mould-side gelcoat or a colour paste. Start by identifying the complete material-system requirement rather than treating a generic \"hardener\" request as enough product information.",
+        ],
+      },
+      {
+        heading: "Why the base resin still comes first",
+        body: [
+          "The current MEKP data sheet publishes system context for unsaturated polyester resins, vinyl ester resins and gelcoats. The individual product page and TDS for the chosen resin remain the relevant references for that product role.",
+          "Unsaturated Polyester Resin is a category, while GP Clear, GP White, GP Yellow and Lamination Resin are separate published product routes. The first buyer question is which resin role matches the component, not simply whether an MEKP hardener is required. Review the actual component, base resin grade and intended manufacturing context before requesting an MEKP quotation. This guide does not provide dosage, mixing, cure adjustment or handling instructions.",
+        ],
+      },
+      {
+        heading: "Keeping the FRP material roles separate",
+        body: [
+          "The resin supplies the matrix role. Glass Fiber is the separate reinforcement material. Gelcoat is the separately selected mould-side surface product, and FRP Polyester Pigment is a separate colour component. A complete requirement identifies each role rather than treating them as one generic FRP material.",
+          "Use the relevant product page and current TDS to define the base material, then discuss MEKP as the separate catalyst / initiator component in that documented system. Do not transfer process settings from one resin grade to another.",
+        ],
+      },
+      {
+        heading: "MEKP in gelcoat systems",
+        body: [
+          "GP Gelcoat Resin is published as a mould-side polyester surface-coating product. MEKP Hardener is the separate catalyst / initiator component named in the current compatible-system context. They should not be compared as substitute products.",
+          "Begin with the required component and visible surface role, then review the specific gelcoat product data before including MEKP in a system enquiry. The site's application guides cover FRP mould finishing, water-tank exteriors, boat and marine hull finishing, and bathware or sanitaryware — they provide component context but do not replace review of the current gelcoat and MEKP documentation.",
+        ],
+      },
+      {
+        heading: "Published commercial facts",
+        body: [
+          "The current MEKP Hardener TDS is the product-specific reference for the published industrial-grade product. It identifies compatible system context, properties, packaging and commercial details. The listed values are typical, not performance guarantees. The TDS also contains safety information; this guide does not restate handling procedures.",
+          "The current TDS publishes 25 kg carboy packaging, a 25 kg MOQ and a six-month unopened shelf life. These facts support a quote discussion but do not imply stock availability, lead time, sample policy or delivery commitment.",
+        ],
+      },
+      {
+        heading: "MEKP quote checklist",
+        body: [
+          "State the base resin grade or gelcoat system, intended FRP component or application, expected quantity, production context if known, delivery location and any purchase specification. Attach or reference the relevant current product data where appropriate.",
+          "Review the current MEKP TDS and the technical data for the base resin system before purchase. Do not assume another product's documentation applies.",
+        ],
+      },
     ],
     faqs: [
-      { q: "What commercial details are published for FRP Polyester Pigment?", a: "The current product data publishes 10 kg bottle packaging and a 100 kg MOQ. Confirm the actual commercial requirement when requesting a quotation." },
-      { q: "What storage information is published?", a: "The current TDS publishes cool, dry storage at 15–30°C, protection from direct sunlight and a 12-month unopened shelf life. Follow the current TDS for the material being considered." },
+      {
+        q: "Is MEKP Hardener a resin?",
+        a: "No. MEKP Hardener is the separately selected catalyst / initiator component. The base resin, Glass Fiber, gelcoat and pigment have distinct roles.",
+      },
+      {
+        q: "Why is MEKP called a hardener, catalyst or initiator?",
+        a: "These terms describe its curing role in the selected resin system. They do not make MEKP interchangeable with the base resin or reinforcement.",
+      },
+      {
+        q: "Is MEKP Hardener the gelcoat itself?",
+        a: "No. MEKP is the separately selected catalyst / initiator. GP Gelcoat Resin is the published mould-side surface-finish product.",
+      },
+      {
+        q: "What commercial details are published for MEKP Hardener?",
+        a: "The current TDS publishes 25 kg carboy packaging, a 25 kg minimum order quantity and a six-month unopened shelf life. Confirm the actual commercial requirement when requesting a quotation.",
+      },
+      {
+        q: "Does this guide confirm MEKP for every polyester resin grade?",
+        a: "No. The product pages describe separate grades and roles. Confirm the actual resin product, current data and application before treating a system as appropriate.",
+      },
+      {
+        q: "What documentation should be reviewed before purchase?",
+        a: "Review the current MEKP TDS and the data for the actual base resin or gelcoat system. Do not assume another product's documentation applies.",
+      },
     ],
-    sections: [
-      { heading: "Use the current pigment TDS first", body: ["The FRP Polyester Pigment TDS is the product-specific reference for the published polyester pigment paste. It contains the current technical and storage information for that product. Do not transfer dosage, colour, compatibility or performance information from a different supplier's pigment paste to this material."] },
-      { heading: "Record the published commercial details", body: ["The current listing publishes 10 kg bottle packaging and a 100 kg MOQ. Include the expected quantity and delivery location in the enquiry. This supports a commercial discussion without implying an unlisted stock position, lead time, sample policy or delivery promise."] },
-      { heading: "Keep storage context with the procurement record", body: ["The current TDS publishes storage at 15–30°C in cool, dry conditions with protection from direct sunlight, plus a 12-month unopened shelf life. Keep receipt, container and storage records with the material. When condition is uncertain, review the current TDS and contact the supplier rather than assuming suitability."] },
-      { heading: "FRP pigment quote checklist", body: ["State the intended FRP component, the resin or gelcoat system under review if known, required colour reference or appearance requirement, expected quantity and delivery location. Include any purchase specification or approved visual reference where available. This makes the colour-paste discussion more precise without replacing product-specific technical review."] },
+    relatedSlugs: [
+      "what-is-cobalt-octoate",
+      "epoxy-hardener-vs-mekp-hardener",
+      "understanding-gel-time-in-polyester-resin",
     ],
-  },
-  {
-    slug: "what-is-mekp-hardener",
-    title: "What Is MEKP Hardener? MEKP Catalyst and Initiator Explained",
-    description: "Understand the published role of MEKP Hardener as a catalyst / initiator for selected polyester, vinyl ester and gelcoat systems before buying an industrial resin-system component.",
-    category: "Product Guide", icon: "info", readingTime: "4 min read", publishDate: "2026-08-06",
-    seo: { title: "What Is MEKP Hardener? | MEKP Catalyst and Initiator", keywords: ["MEKP Hardener", "MEKP Catalyst", "MEKP Initiator", "Polyester Resin Hardener", "FRP Hardener"], ogTitle: "What Is MEKP Hardener?", ogDescription: "A buyer guide to MEKP's published catalyst / initiator role in selected polyester-family resin systems." },
-    quickFacts: { "Product role": "Catalyst / initiator, not a structural resin or reinforcement", "Published system context": "UPR, vinyl ester and gelcoat systems", "Published product reference": "Current MEKP Hardener TDS", "Buyer starting point": "Identify the actual base resin and component" },
-    relatedSlugs: ["mekp-for-polyester-resin-systems", "mekp-for-gelcoat-systems", "mekp-hardener-procurement-guide"],
-    recommendedLinks: [{ href: "/products/mekp-hardener/", label: "View MEKP Hardener", description: "Review published product details and the current TDS." }, { href: "/products/unsaturated-polyester-resin/", label: "Explore Unsaturated Polyester Resin", description: "Start with the base resin-family role." }, { href: "/tds/mekp-hardener-tds.pdf", label: "Download MEKP Hardener TDS", description: "Use the current product document as the controlling reference." }],
-    faqs: [{ q: "Is MEKP Hardener a resin?", a: "No. MEKP Hardener is the separately selected catalyst / initiator component. The base resin, Glass Fiber, gelcoat and pigment have distinct roles." }, { q: "Why is MEKP called a hardener, catalyst or initiator?", a: "These terms describe its curing role in the selected resin system. They do not make MEKP interchangeable with the base resin or reinforcement." }],
-    sections: [{ heading: "One product role, several buyer terms", body: ["Industrial buyers may search for MEKP Hardener, MEKP Catalyst, MEKP Initiator, polyester resin hardener or FRP hardener. On this site, these terms describe MEKP's published catalyst / initiator role in selected unsaturated polyester, vinyl ester and gelcoat systems.", "MEKP is not a structural resin, Glass Fiber reinforcement, a mould-side gelcoat or a colour paste. Start by identifying the complete material-system requirement rather than treating a generic 'hardener' request as enough product information."] }, { heading: "Why the base resin still comes first", body: ["The current MEKP data sheet publishes system context for unsaturated polyester resins, vinyl ester resins and gelcoats. The individual product page and TDS for the chosen resin remain the relevant references for that product role.", "Review the actual component, base resin grade and intended manufacturing context before requesting an MEKP quotation. This guide does not provide dosage, mixing, cure adjustment or handling instructions."] }, { heading: "Documentation and quote discussion", body: ["Review the current MEKP TDS and the technical data for the base resin system. For a quotation, share the resin grade or system, component or application, expected quantity, production process if known and delivery location."] }],
-  },
-  {
-    slug: "mekp-for-polyester-resin-systems",
-    title: "MEKP for Polyester Resin Systems: A Buyer Selection Guide",
-    description: "Use the published MEKP Hardener compatibility context to frame a polyester-resin-system enquiry without assuming that all resin grades or processes are interchangeable.",
-    category: "Selection Guide", icon: "layers", readingTime: "4 min read", publishDate: "2026-08-06",
-    seo: { title: "MEKP for Polyester Resin | Catalyst for Polyester Resin", keywords: ["MEKP for Polyester Resin", "Catalyst for Polyester Resin", "Polyester Resin Hardener", "MEKP Supplier", "Industrial MEKP"], ogTitle: "MEKP for Polyester Resin Systems", ogDescription: "A buyer guide to discuss MEKP alongside the specific published polyester resin product being evaluated." },
-    quickFacts: { "Published context": "Unsaturated polyester resin systems", "Selection principle": "Confirm the specific resin grade first", "Related roles": "Resin matrix, reinforcement and surface finish remain separate", "Not included": "No operating or mixing instructions" },
-    relatedSlugs: ["what-is-mekp-hardener", "mekp-for-gelcoat-systems", "mekp-hardener-procurement-guide"],
-    recommendedLinks: [{ href: "/products/unsaturated-polyester-resin/", label: "Unsaturated Polyester Resin product hub", description: "Review the parent resin family and product roles." }, { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Review the separate published general-purpose resin data." }, { href: "/products/lamination-resin/", label: "View Lamination Resin", description: "Review the separate published lamination product role." }, { href: "/products/mekp-hardener/", label: "View MEKP Hardener", description: "Review the catalyst / initiator product data and current TDS." }],
-    faqs: [{ q: "Does this page confirm MEKP for every polyester resin grade?", a: "No. The product pages describe separate grades and roles. Confirm the actual resin product, current data and application before treating a system as appropriate." }, { q: "What should be included in a polyester-system enquiry?", a: "State the resin grade or product under review, component, expected quantity, process if known and delivery location." }],
-    sections: [{ heading: "Select the resin system before the catalyst discussion", body: ["Unsaturated Polyester Resin is a category, while GP Clear, GP White, GP Yellow and Lamination Resin are separate published product routes. The first buyer question is which resin role matches the component, not simply whether an MEKP hardener is required.", "Use the relevant product page and current TDS to define the base material, then discuss MEKP as the separate catalyst / initiator component in that documented system."] }, { heading: "Keep related FRP roles separate", body: ["The resin supplies the matrix role. Glass Fiber is the separate reinforcement material. Gelcoat is the separately selected mould-side surface product, and FRP Polyester Pigment is a separate colour component. A complete requirement identifies each role rather than treating them as one generic FRP material."] }, { heading: "Prepare a system-specific quotation", body: ["Share the named resin product or family, the intended FRP component, expected quantity, production context if known and delivery location. Review the current MEKP TDS and the base-resin TDS before purchase. Do not transfer process settings from one resin grade to another."] }],
-  },
-  {
-    slug: "mekp-for-gelcoat-systems",
-    title: "MEKP for Gelcoat Systems: Product-Role Guidance for FRP Buyers",
-    description: "Understand the published MEKP and Gelcoat Resin system context while keeping catalyst selection separate from the mould-side surface-finish decision.",
-    category: "Selection Guide", icon: "layers", readingTime: "4 min read", publishDate: "2026-08-06",
-    seo: { title: "MEKP for Gelcoat Systems | Gelcoat Catalyst Buyer Guide", keywords: ["MEKP for Gelcoat", "Gelcoat Catalyst", "MEKP Hardener", "Polyester Gelcoat Hardener", "FRP Hardener"], ogTitle: "MEKP for Gelcoat Systems", ogDescription: "Separate the MEKP catalyst role from the published Gelcoat Resin surface-finish product role." },
-    quickFacts: { "Published system context": "Gelcoat systems", "Gelcoat role": "Mould-side FRP surface finish", "MEKP role": "Separate catalyst / initiator component", "Buyer check": "Review actual gelcoat product data and component requirement" },
-    relatedSlugs: ["what-is-mekp-hardener", "mekp-for-polyester-resin-systems", "mekp-hardener-procurement-guide"],
-    recommendedLinks: [{ href: "/products/gp-gelcoat-resin/", label: "View GP Gelcoat Resin", description: "Review the published mould-side surface-finish product role." }, { href: "/resources/what-is-gel-coat-resin/", label: "What is Gelcoat Resin?", description: "Read the existing gelcoat role guide." }, { href: "/applications/gelcoat-for-general-frp-mould-finishing/", label: "FRP mould-finish guide", description: "Review the existing application context." }, { href: "/products/mekp-hardener/", label: "View MEKP Hardener", description: "Review the published catalyst / initiator product data." }],
-    faqs: [{ q: "Is MEKP Hardener the gelcoat itself?", a: "No. MEKP is the separately selected catalyst / initiator. GP Gelcoat Resin is the published mould-side surface-finish product." }, { q: "Does this guide provide gelcoat application instructions?", a: "No. It provides product-role and procurement guidance only. Review the current product data and discuss the actual system where needed." }],
-    sections: [{ heading: "Two separate product roles in an FRP surface system", body: ["GP Gelcoat Resin is published as a mould-side polyester surface-coating product. MEKP Hardener is the separate catalyst / initiator component named in the current compatible-system context. They should not be compared as substitute products.", "Begin with the required component and visible surface role, then review the specific gelcoat product data before including MEKP in a system enquiry."] }, { heading: "Use application pages as component context", body: ["The existing site application guides cover FRP mould finishing, water-tank exteriors, boat and marine hull finishing, and bathware or sanitaryware. They provide component context but do not replace review of the current gelcoat and MEKP documentation."] }, { heading: "A focused gelcoat-system enquiry", body: ["Share the moulded component, surface-finish requirement, relevant gelcoat product, expected quantity, application context if known and delivery location. This helps distinguish a gelcoat requirement from the separate structural resin, reinforcement and catalyst requirements."] }],
-  },
-  {
-    slug: "mekp-hardener-procurement-guide",
-    title: "MEKP Hardener Procurement Guide: TDS, Packaging and Quote Checklist",
-    description: "Prepare a factual industrial MEKP enquiry using the current published packaging, MOQ, product-document and base-system information without assuming stock, lead time or operating conditions.",
-    category: "Procurement Guide", icon: "checklist", readingTime: "4 min read", publishDate: "2026-08-06",
-    seo: { title: "MEKP Hardener Procurement Guide | MEKP Supplier Checklist", keywords: ["MEKP Hardener Supplier", "Industrial MEKP", "MEKP Packaging", "MEKP Quote", "Polyester Resin Hardener"], ogTitle: "MEKP Hardener Procurement Guide", ogDescription: "Review the current MEKP TDS, 25 kg carboy packaging and 25 kg MOQ before preparing an industrial quotation request." },
-    quickFacts: { "Published packaging": "25 kg carboy", "Published MOQ": "25 kg", "Published unopened shelf life": "6 months", "Product document": "MEKP Hardener TDS (Rev. 01, July 2026)" },
-    relatedSlugs: ["what-is-mekp-hardener", "mekp-for-polyester-resin-systems", "mekp-for-gelcoat-systems"],
-    recommendedLinks: [{ href: "/products/mekp-hardener/", label: "View MEKP Hardener", description: "Review the published product details before enquiry." }, { href: "/tds/mekp-hardener-tds.pdf", label: "Download MEKP Hardener TDS", description: "Use the current product document as the controlling reference." }, { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Download Product Catalogue", description: "Review related resin, reinforcement, gelcoat and pigment product roles." }, { href: "/contact/", label: "Request an MEKP quote", description: "Share product-system and commercial details through the enquiry form." }],
-    faqs: [{ q: "What commercial details are published for MEKP Hardener?", a: "The current TDS publishes 25 kg carboy packaging and a 25 kg minimum order quantity. Confirm the actual commercial requirement when requesting a quotation." }, { q: "What documentation should be reviewed before purchase?", a: "Review the current MEKP TDS and the data for the actual base resin or gelcoat system. Do not assume another product's documentation applies." }],
-    sections: [{ heading: "Use the current product document first", body: ["The current MEKP Hardener TDS is the product-specific reference for the published industrial-grade product. It identifies compatible system context, properties, packaging and commercial details. The listed values are typical, not performance guarantees.", "The TDS also contains safety information. This procurement guide does not restate handling procedures; follow the current official documentation for the material being considered."] }, { heading: "Record published commercial facts", body: ["The current TDS publishes 25 kg carboy packaging, a 25 kg MOQ and a six-month unopened shelf life. These facts support a quote discussion but do not imply stock availability, lead time, sample policy or delivery commitment."] }, { heading: "MEKP quote checklist", body: ["State the base resin grade or gelcoat system, intended FRP component or application, expected quantity, production context if known, delivery location and any purchase specification. Attach or reference the relevant current product data where appropriate."] }],
+    recommendedLinks: [
+      {
+        href: "/products/mekp-hardener/",
+        label: "View MEKP Hardener",
+        description: "Review published product details and the current TDS.",
+      },
+      {
+        href: "/tds/mekp-hardener-tds.pdf",
+        label: "Download MEKP Hardener TDS",
+        description: "Use the current product document as the controlling reference.",
+      },
+      {
+        href: "/products/unsaturated-polyester-resin/",
+        label: "Explore Unsaturated Polyester Resin",
+        description: "Start with the base resin-family role.",
+      },
+    ],
   },
   {
     slug: "what-is-epoxy-art-resin",
@@ -4608,7 +4637,7 @@ export const resources = [
     seo: { title: "Sheet Grade Yellow Resin Uses | FRP Sheet and Panel Applications", keywords: ["Sheet Grade Yellow Resin Uses", "FRP Sheet Resin", "FRP Panel Resin", "Yellow Resin for FRP Sheets", "Polyester Resin for Panels"], ogTitle: "Sheet Grade Yellow Resin Applications", ogDescription: "Review the published sheet, panel and moulded-component contexts before selecting a pre-pigmented yellow polyester resin." },
     quickFacts: { "Published applications": "FRP sheets and roofing panels; decorative panels; electrical enclosures", "Additional contexts": "Partitions, construction formwork, laminates and moulded components", "Selection principle": "Match the finished component and supplied appearance", "Document to review": "Current product-specific TDS" },
     relatedSlugs: ["what-is-sheet-grade-yellow-resin", "how-to-choose-resin-for-frp-sheet-and-panel-manufacturing", "frp-sheet-resin-procurement-guide"],
-    recommendedLinks: [{ href: "/products/sheet-grade-yellow-resin/", label: "View Sheet Grade Yellow Resin", description: "Review the product-specific TDS, packaging and enquiry path." }, { href: "/applications/resin-for-frp-panel-manufacturing/", label: "Explore FRP panel context", description: "Use the existing panel guide to define the broader component requirement." }, { href: "/resources/glass-fiber-and-polyester-resin-compatibility/", label: "Review the FRP material system", description: "Keep reinforcement, resin and surface-finish roles distinct." }, { href: "/contact/", label: "Discuss a sheet or panel application", description: "Share the component, supplied appearance, quantity and delivery location." }],
+    recommendedLinks: [{ href: "/products/sheet-grade-yellow-resin/", label: "View Sheet Grade Yellow Resin", description: "Review the product-specific TDS, packaging and enquiry path." }, { href: "/applications/resin-for-frp-panel-manufacturing/", label: "Explore FRP panel context", description: "Use the existing panel guide to define the broader component requirement." }, { href: "/resources/what-is-glass-fiber-chopped-strand-mat/", label: "Review the FRP material system", description: "Keep reinforcement, resin and surface-finish roles distinct." }, { href: "/contact/", label: "Discuss a sheet or panel application", description: "Share the component, supplied appearance, quantity and delivery location." }],
     faqs: [{ q: "Is Sheet Grade Yellow Resin published for FRP panels?", a: "Yes. The current TDS lists FRP sheets and roofing panels, decorative panels and electrical enclosures among the published applications. Confirm the actual component and current TDS before selection." }, { q: "Does this guide confirm every coloured FRP product as an application?", a: "No. It summarises the published product contexts. A colour requirement alone does not establish the right resin, reinforcement or surface-finish system." }],
     sections: [{ heading: "FRP sheets and roofing panels", body: ["The current TDS lists FRP sheets and roofing panels as a published application context. For this route, a buyer should define the finished sheet or panel, whether the supplied yellow appearance is required and the relevant reinforcement requirement before comparing product data.", "This guide does not establish a continuous-lamination setup, weathering performance, load rating or finished-sheet performance. Those requirements need the applicable product, component and project documentation."] }, { heading: "Panels, enclosures and partitions", body: ["The published contexts also include decorative panels, electrical enclosures, washroom partitions and construction formwork. These describe component categories, not a blanket suitability claim: visible-surface expectations, reinforcement, component design and the actual production context still need to be documented.", "Where the inquiry is for a mould-facing finish, review the separate Gelcoat Resin role. Where the request is for a translucent roof-light sheet, review the Roof Light Sheet Grade Resin route instead of assuming a supplied-yellow grade meets that appearance requirement."] }, { heading: "Laminates and moulded components", body: ["Sheet moulding and laminate applications are published for this grade, alongside laminates and moulded components. A buyer should use that as a reason to review the TDS, not as a reason to transfer product data to every laminate or moulded part.", "For a focused quotation, include the component category, required supplied appearance, any reinforcement specification available, production context, quantity and delivery location. This keeps the conversation at product-selection level rather than turning the guide into manufacturing instructions."] }],
   },
@@ -4646,7 +4675,7 @@ export const resources = [
     seo: { title: "How to Choose Resin for FRP Sheets and Panels | Buyer Guide", keywords: ["Resin for FRP Sheet Manufacturing", "FRP Panel Resin", "Polyester Resin for FRP Sheets", "Sheet Grade Resin Selection"], ogTitle: "How to Choose Resin for FRP Sheets and Panels", ogDescription: "A concise buyer route for choosing a published resin role for FRP sheet and panel requirements without relying on generic resin names." },
     quickFacts: { "Start with": "Finished sheet or panel", "Appearance check": "Supplied yellow versus water-white/translucent route", "System check": "Resin, reinforcement and surface-finish roles", "Controlling document": "Current product-specific TDS" },
     relatedSlugs: ["what-is-sheet-grade-yellow-resin", "applications-of-sheet-grade-yellow-resin", "sheet-grade-yellow-resin-vs-gp-yellow-resin", "sheet-grade-yellow-resin-vs-roof-light-resin", "frp-sheet-resin-procurement-guide"],
-    recommendedLinks: [{ href: "/products/sheet-grade-yellow-resin/", label: "Review Sheet Grade Yellow Resin", description: "Use the published pre-pigmented yellow sheet/panel route where it matches the requirement." }, { href: "/products/roof-light-resin/", label: "Review Roof Light Sheet Grade Resin", description: "Use the separate water-white roof-light route where that appearance is specified." }, { href: "/products/fibre-glass-mat/", label: "Review Glass Fiber Mat", description: "Identify reinforcement as a separate material role." }, { href: "/resources/glass-fiber-and-polyester-resin-compatibility/", label: "Understand the FRP material system", description: "Keep resin, reinforcement and gelcoat discussions separate." }, { href: "/contact/", label: "Discuss a documented sheet requirement", description: "Share the material role and commercial context for review." }],
+    recommendedLinks: [{ href: "/products/sheet-grade-yellow-resin/", label: "Review Sheet Grade Yellow Resin", description: "Use the published pre-pigmented yellow sheet/panel route where it matches the requirement." }, { href: "/products/roof-light-resin/", label: "Review Roof Light Sheet Grade Resin", description: "Use the separate water-white roof-light route where that appearance is specified." }, { href: "/products/fibre-glass-mat/", label: "Review Glass Fiber Mat", description: "Identify reinforcement as a separate material role." }, { href: "/resources/what-is-glass-fiber-chopped-strand-mat/", label: "Understand the FRP material system", description: "Keep resin, reinforcement and gelcoat discussions separate." }, { href: "/contact/", label: "Discuss a documented sheet requirement", description: "Share the material role and commercial context for review." }],
     faqs: [{ q: "Should a buyer choose a sheet resin by colour alone?", a: "No. Supplied appearance is one decision input. The sheet or panel type, product role, reinforcement, surface-finish requirement and current product-specific TDS also need review." }, { q: "Does this guide recommend a resin for every FRP sheet?", a: "No. It provides a way to prepare the selection discussion. Suitability depends on the actual component and current product documentation." }],
     sections: [{ heading: "Define the sheet or panel before naming a resin", body: ["Record what is being made: the sheet or panel category, whether it is a roof-light requirement, supplied appearance requirement, visible-surface requirement and available reinforcement specification. A broad request for 'FRP sheet resin' is not enough to select a published grade safely.", "This first step also separates a structural laminate question from a mould-facing surface question. Where a visible surface layer is part of the build-up, the separate Gelcoat Resin role should be reviewed rather than assumed to be included in the laminate resin selection."] }, { heading: "Use the published product role to narrow the route", body: ["For the published pre-pigmented yellow sheet and panel route, review Sheet Grade Yellow Resin. For a water-white roof-light or skylight route, review Roof Light Sheet Grade Resin. For a broader transparent-yellow general-purpose laminate requirement, review GP Yellow Resin; for a broader parent category, start at Unsaturated Polyester Resin.", "These are decision paths, not claims that one grade is universally better. If a stated chemical or corrosion-resistance requirement is central, use the separate Vinyl Ester Resin product information rather than assuming a general orthophthalic grade applies."] }, { heading: "Keep reinforcement and documentation visible", body: ["Glass Fiber is a separate reinforcement product in an FRP material system. Its weight and form should be confirmed independently where specified; the resin name alone does not describe the complete component system.", "Use the current TDS for the exact candidate product. Do not transfer viscosity, gel time, curing information, storage or performance expectations from a GP, roof-light, gelcoat or other resin page. A focused enquiry should include the component, supplied appearance, reinforcement requirement if known, expected quantity and delivery location."] }],
   },
@@ -4682,7 +4711,7 @@ export const resources = [
     seo: { title: "Roof Light Resin Applications | FRP Roofing and Skylight Sheets", keywords: ["Roof Light Resin Applications", "FRP Roofing Sheet Resin", "FRP Skylight Resin", "Translucent FRP Sheet Resin", "Roofing Polyester Resin"], ogTitle: "Roof Light Resin Applications in FRP Roofing Sheets", ogDescription: "Review the published roof-light, skylight and roofing-sheet contexts before selecting the water-white Roof Light Sheet Grade Resin route." },
     quickFacts: { "Published applications": "Skylights, roof-light panels and greenhouses", "Further published contexts": "Industrial/commercial roofing and roofing-sheet production", "Resin appearance": "Water white", "Controlling document": "Current product-specific TDS" },
     relatedSlugs: ["what-is-roof-light-sheet-grade-resin", "frp-roofing-sheet-resin-selection-guide", "roof-light-resin-procurement-guide"],
-    recommendedLinks: [{ href: "/products/roof-light-resin/", label: "View Roof Light Sheet Grade Resin", description: "Review the product-specific TDS, packaging and enquiry path." }, { href: "/applications/roof-light-sheet-resin-for-frp-roofing-and-skylight-sheets/", label: "Explore finished-sheet context", description: "Match the material discussion to the roof-light or skylight component." }, { href: "/resources/glass-fiber-and-polyester-resin-compatibility/", label: "Review resin and Glass Fiber roles", description: "Keep resin, reinforcement and surface-finish decisions separate." }, { href: "/contact/", label: "Discuss a roof-light application", description: "Share the sheet type, supplied appearance, quantity and delivery location." }],
+    recommendedLinks: [{ href: "/products/roof-light-resin/", label: "View Roof Light Sheet Grade Resin", description: "Review the product-specific TDS, packaging and enquiry path." }, { href: "/applications/roof-light-sheet-resin-for-frp-roofing-and-skylight-sheets/", label: "Explore finished-sheet context", description: "Match the material discussion to the roof-light or skylight component." }, { href: "/resources/what-is-glass-fiber-chopped-strand-mat/", label: "Review resin and Glass Fiber roles", description: "Keep resin, reinforcement and surface-finish decisions separate." }, { href: "/contact/", label: "Discuss a roof-light application", description: "Share the sheet type, supplied appearance, quantity and delivery location." }],
     faqs: [{ q: "Is Roof Light Resin published for greenhouses?", a: "Yes. Greenhouses are listed in the current Roof Light Resin TDS. Confirm the actual sheet and project requirement against the current product data before selection." }, { q: "Does this guide confirm every translucent FRP panel as an application?", a: "No. It summarises the product's published contexts. A requirement still needs review against the current TDS and finished-component specification." }],
     sections: [{ heading: "Roof-light panels and skylight sheets", body: ["The TDS lists skylights and roof-light panels as published applications. These are the core contexts for a buyer who needs a water-white resin route for a finished sheet intended to admit natural light.", "The listing does not publish light-transmission percentage, haze, load rating or finished-sheet weathering life. Those requirements should be assessed through the relevant component and project documentation."] }, { heading: "Greenhouses and roofing-sheet applications", body: ["Greenhouses, industrial and commercial roofing, and roofing-sheet production are also published product contexts. For each, document the actual sheet profile, required supplied appearance, reinforcement context and finished-sheet requirement before product selection.", "Where the finished sheet instead needs a pre-pigmented yellow appearance, review Sheet Grade Yellow Resin. Where the requirement is a broad clear general-purpose FRP laminate rather than the roof-light role, review GP Clear Resin and its own TDS."] }, { heading: "Keep the material roles visible", body: ["Roof Light Resin is the matrix-resin route under review; Glass Fiber is a separate reinforcement material where specified. A visible mould-facing surface, if required, calls for a separate Gelcoat decision. These roles should be named separately in the purchase discussion.", "Share the finished application, supplied appearance requirement, any reinforcement specification, expected quantity and delivery location when requesting a quote. This guide does not provide a manufacturing recipe or guarantee finished-sheet performance."] }],
   },
@@ -4707,7 +4736,7 @@ export const resources = [
     seo: { title: "FRP Roofing Sheet Resin Selection Guide", keywords: ["FRP Roofing Sheet Resin", "Polyester Resin for FRP Roofing Sheets", "Resin for FRP Roof Sheets", "Roofing Sheet Resin Selection"], ogTitle: "FRP Roofing Sheet Resin Selection Guide", ogDescription: "A concise buyer route for separating roof-light, coloured-sheet, reinforcement and technical-documentation decisions before selecting an FRP roofing-sheet resin." },
     quickFacts: { "Start with": "Finished roofing or roof-light sheet", "Appearance check": "Water-white roof-light versus pre-pigmented yellow sheet route", "System check": "Resin, Glass Fiber and surface-finish roles", "Controlling document": "Current product-specific TDS" },
     relatedSlugs: ["what-is-roof-light-sheet-grade-resin", "roof-light-resin-applications-frp-roofing-sheets", "roof-light-resin-vs-gp-clear-resin", "roof-light-resin-procurement-guide"],
-    recommendedLinks: [{ href: "/products/roof-light-resin/", label: "Review Roof Light Resin", description: "Use the published water-white roof-light product route where it matches the finished-sheet requirement." }, { href: "/products/sheet-grade-yellow-resin/", label: "Review Sheet Grade Yellow Resin", description: "Use the separate pre-pigmented yellow sheet/panel route where that supplied appearance is required." }, { href: "/products/fibre-glass-mat/", label: "Review Glass Fiber Mat", description: "Keep reinforcement selection separate from resin selection." }, { href: "/resources/glass-fiber-and-polyester-resin-compatibility/", label: "Understand the FRP material system", description: "Review the separate resin, reinforcement and surface-finish roles." }, { href: "/contact/", label: "Discuss an FRP roofing-sheet requirement", description: "Share a documented material and commercial brief." }],
+    recommendedLinks: [{ href: "/products/roof-light-resin/", label: "Review Roof Light Resin", description: "Use the published water-white roof-light product route where it matches the finished-sheet requirement." }, { href: "/products/sheet-grade-yellow-resin/", label: "Review Sheet Grade Yellow Resin", description: "Use the separate pre-pigmented yellow sheet/panel route where that supplied appearance is required." }, { href: "/products/fibre-glass-mat/", label: "Review Glass Fiber Mat", description: "Keep reinforcement selection separate from resin selection." }, { href: "/resources/what-is-glass-fiber-chopped-strand-mat/", label: "Understand the FRP material system", description: "Review the separate resin, reinforcement and surface-finish roles." }, { href: "/contact/", label: "Discuss an FRP roofing-sheet requirement", description: "Share a documented material and commercial brief." }],
     faqs: [{ q: "Should a roof-sheet buyer select resin by colour alone?", a: "No. Supplied appearance is one input. The finished sheet, published product role, reinforcement context, surface-finish requirement and current product-specific TDS also need review." }, { q: "Does this guide provide a roofing-sheet production method?", a: "No. It is a material-selection guide. It does not provide catalyst ratios, laminate design, production instructions or finished-sheet performance claims." }],
     sections: [{ heading: "Define the finished-sheet requirement", body: ["State whether the product is a roof-light or skylight sheet, a coloured sheet/panel, or a broad general roofing component. Also record the required supplied appearance, any specified reinforcement and whether a separate visible surface layer is needed.", "This avoids treating 'FRP roofing resin' as one interchangeable product category. The roof-light, pre-pigmented sheet, general-purpose resin, reinforcement and gelcoat roles are published separately on this site."] }, { heading: "Match the requirement to the published route", body: ["For the published water-white roof-light and skylight role, review Roof Light Sheet Grade Resin. For a pre-pigmented yellow sheet/panel requirement, review Sheet Grade Yellow Resin. For a broad general-purpose clear FRP role, review GP Clear Resin and its product-specific data.", "Where a stated chemical or corrosion requirement is central, review the separate Vinyl Ester Resin documentation instead of assuming a general orthophthalic sheet grade applies. Where a mould-facing finish is specified, review Gelcoat as a separate role."] }, { heading: "Use documents and a focused RFQ", body: ["Glass Fiber is a separate reinforcement component. Confirm its specified form and weight independently where a component document provides them; a resin product name does not establish the reinforcement design.", "For a quote, provide the finished roof or roof-light sheet, required supplied appearance, reinforcement context if known, expected quantity, delivery location and available drawing or buyer specification. Use the current TDS for the exact resin under consideration."] }],
   },
@@ -4779,22 +4808,10 @@ export const resources = [
     seo: { title: "Epoxy Hardener vs MEKP Hardener | Epoxy and Polyester Guide", keywords: ["Epoxy Hardener vs MEKP Hardener", "MEKP vs Epoxy Hardener", "Epoxy Curing Agent", "Polyester Resin Catalyst"], ogTitle: "Epoxy Hardener vs MEKP Hardener", ogDescription: "Choose the correct product route by identifying whether the base system is a compatible epoxy or a polyester-family resin." },
     quickFacts: { "Epoxy Hardener": "Polyamide curing agent for compatible epoxy systems", "MEKP Hardener": "Separate catalyst / initiator route for published polyester-family systems", "Shared rule": "Identify the base resin first", "Not substitutes": "Do not interchange the two product routes" },
     comparisonTable: { title: "Published product roles", headers: ["Buyer question", "Epoxy Hardener", "MEKP Hardener"], rows: [["Base system", "Compatible epoxy resin system", "Published unsaturated polyester, vinyl ester or gelcoat system"], ["Published role", "Polyamide curing agent", "Catalyst / initiator product route"], ["Selection starting point", "Exact epoxy resin product and current TDS", "Exact polyester-family resin or gelcoat product and current TDS"]], note: "This is a product-role comparison, not operating guidance. Do not transfer product instructions or assumptions between the two routes." },
-    relatedSlugs: ["what-is-epoxy-hardener", "epoxy-hardener-compatibility-guide", "mekp-for-polyester-resin-systems", "mekp-hardener-procurement-guide"],
+    relatedSlugs: ["what-is-epoxy-hardener", "epoxy-hardener-compatibility-guide", "what-is-mekp-hardener", "what-is-mekp-hardener"],
     recommendedLinks: [{ href: "/products/epoxy-hardener/", label: "View Epoxy Hardener", description: "Review the epoxy-system hardener route and current TDS." }, { href: "/products/mekp-hardener/", label: "View MEKP Hardener", description: "Review the separate polyester-family catalyst route." }, { href: "/resources/what-is-mekp-hardener/", label: "What is MEKP Hardener?", description: "Understand the separate published MEKP role." }, { href: "/contact/", label: "Identify the correct hardener route", description: "Share the base resin product and intended application." }],
     faqs: [{ q: "Is Epoxy Hardener the same as MEKP Hardener?", a: "No. Epoxy Hardener is the published curing-agent component for compatible epoxy systems. MEKP Hardener is the separate catalyst / initiator product route for published unsaturated polyester, vinyl ester and gelcoat systems." }, { q: "Can MEKP replace Epoxy Hardener?", a: "No substitution is claimed. Identify the base resin family and follow the current product-specific documentation for the appropriate route." }],
     sections: [{ heading: "Identify the base resin before ordering", body: ["The key decision is the resin system under consideration. Samrat publishes Epoxy Hardener as a polyamide curing agent for compatible epoxy systems. It publishes MEKP Hardener separately for selected unsaturated polyester, vinyl ester and gelcoat systems.", "The word hardener should not override those distinct product roles. A buyer should identify the actual base resin product before asking for a hardener or catalyst."] }, { heading: "Different routes, not a performance ranking", body: ["Neither product is presented here as a universal upgrade or substitute for the other. The appropriate selection follows the documented resin family, exact product route and intended application.", "Review the specific product page and TDS rather than carrying technical values, operating instructions or expectations from the epoxy route into a polyester-family route, or vice versa."] }, { heading: "A better enquiry", body: ["For an epoxy requirement, name the exact epoxy resin product, intended application and required documentation. For a polyester-family requirement, name the actual resin or gelcoat grade under review. In either case, include quantity, packaging needs and delivery location.", "This guide intentionally omits ratios, catalyst dosing and curing directions. Those are not universal and should not be inferred from a comparison page."] }],
-  },
-  {
-    slug: "epoxy-hardener-vs-uv-resin-curing",
-    title: "Epoxy Hardener vs UV Resin Curing: Choosing the Correct Product Route",
-    description: "Separate the published compatible epoxy hardener route from Samrat's separate UV/LED-curable UV Resin product route.",
-    category: "Comparison Guide", icon: "grid", readingTime: "3 min read", publishDate: "2026-08-09",
-    seo: { title: "Epoxy Hardener vs UV Resin Curing | Buyer Guide", keywords: ["Epoxy Hardener vs UV Resin", "UV Resin Hardener", "Epoxy Curing Agent", "UV LED Resin"], ogTitle: "Epoxy Hardener vs UV Resin Curing", ogDescription: "Understand why Samrat's UV Resin is a separate UV/LED-curable route rather than a product that uses the published Epoxy Hardener." },
-    quickFacts: { "Epoxy Hardener route": "Separate component in a compatible two-component epoxy system", "UV Resin route": "Separate UV/LED-curable epoxy-acrylate product", "Does UV Resin use this hardener?": "Not according to the published UV Resin route", "Selection rule": "Begin with the required curing-system category" },
-    relatedSlugs: ["what-is-epoxy-hardener", "epoxy-hardener-compatibility-guide", "what-is-uv-resin", "uv-resin-buyer-guide"],
-    recommendedLinks: [{ href: "/products/epoxy-hardener/", label: "View Epoxy Hardener", description: "Review the separate compatible epoxy-system component." }, { href: "/products/uv-resin/", label: "View UV Resin", description: "Review the published UV/LED-curable product route." }, { href: "/resources/what-is-uv-resin/", label: "What is UV Resin?", description: "Read the separate product-role guide." }, { href: "/contact/", label: "Discuss the correct system route", description: "Share the intended application and product requirement." }],
-    faqs: [{ q: "Does UV Resin need Epoxy Hardener?", a: "No. The published UV Resin route is described as UV/LED-curable and does not use this separate Epoxy Hardener component." }, { q: "Is UV Resin the same as a two-component epoxy system?", a: "No. The site presents UV Resin as a separate product route. Review the actual required curing-system category before selecting a product." }],
-    sections: [{ heading: "Two different published system routes", body: ["Epoxy Hardener is the separate polyamide curing-agent component for a compatible two-component epoxy system. UV Resin is published separately as an epoxy-acrylate product that cures through a UV/LED route.", "This difference is a product-system distinction, not simply another hardener choice. The published UV Resin route does not identify the separate Epoxy Hardener as part of its system."] }, { heading: "Choose by the stated product requirement", body: ["Start with the finished application and the required system route. If the requirement names a compatible two-component epoxy system, identify the exact epoxy resin and review the Epoxy Hardener documentation. If it specifies a UV/LED-curable route, begin with the UV Resin product data instead.", "Do not transfer claims, technical values or operating assumptions between these separate routes. Each product has its own published role and current TDS."] }, { heading: "Keep the quote discussion specific", body: ["Include the intended application, required resin-system category, exact product if known, quantity, packaging need, delivery location and required documentation. This helps confirm the product route before procurement.", "This guide does not provide exposure conditions, cure schedules or handling instructions. Review the appropriate current document for the chosen system."] }],
   },
   {
     slug: "epoxy-hardener-for-clear-casting-and-art-resin",
@@ -6119,44 +6136,6 @@ export const resources = [
     ],
   },
   {
-    slug: "marble-resin-vs-epoxy-clear-casting-resin",
-    title: "Marble Resin vs Epoxy Clear Casting Resin",
-    description: "Separate the published Marble Resin polyester route for cultured marble and artificial stone from Samrat's separate two-part Epoxy Clear Casting Resin system.",
-    category: "Comparison Guide",
-    icon: "layers",
-    readingTime: "4 min read",
-    publishDate: "2026-08-10",
-    seo: {
-      title: "Marble Resin vs Epoxy Clear Casting Resin | Buyer Guide",
-      keywords: ["Marble Resin vs Epoxy Resin", "Marble Resin vs Epoxy Casting Resin", "Polyester Marble Resin", "Epoxy Clear Casting Resin", "Resin for Marble"],
-      ogTitle: "Marble Resin vs Epoxy Clear Casting Resin",
-      ogDescription: "A documented material-family and product-role comparison for Marble Resin buyers evaluating a separate epoxy casting system.",
-    },
-    quickFacts: {
-      "Marble Resin": "Liquid unsaturated polyester route for documented cultured-marble and artificial-stone contexts",
-      "Clear Casting Resin": "Separate published two-part epoxy system",
-      "Selection basis": "The specified material system and finished application",
-      "Not published": "A universal material-performance ranking",
-    },
-    relatedSlugs: ["what-is-marble-resin", "marble-resin-raw-resin-vs-finished-marble-composite", "marble-resin-vs-gp-resin", "marble-resin-technical-specifications-and-rfq"],
-    recommendedLinks: [
-      { href: "/products/marble-resin/", label: "View Marble Resin", description: "Review the documented marble and artificial-stone product role." },
-      { href: "/products/epoxy-clear-casting-resin/", label: "View Epoxy Clear Casting Resin", description: "Review the separately published two-part epoxy casting route." },
-      { href: "/resources/what-is-epoxy-clear-casting-resin/", label: "Read the epoxy casting guide", description: "Understand the separate epoxy-system product context." },
-    ],
-    faqs: [
-      { q: "Is Marble Resin the same as Epoxy Clear Casting Resin?", a: "No. Marble Resin is a documented liquid unsaturated polyester route for cultured marble and artificial stone. Epoxy Clear Casting Resin is a separately published two-part epoxy system. The material-family and product-role documents should be reviewed separately." },
-      { q: "Which one is stronger, clearer or lower shrinkage?", a: "The repository does not publish a product-specific, like-for-like comparison that establishes a universal strength, clarity, shrinkage, cure-speed, cost or durability ranking. Those claims are not made here." },
-      { q: "Can the Marble Resin TDS be used to select an epoxy system?", a: "No. Technical data and product instructions are system-specific. Use the current product document for the actual resin system named in the requirement." },
-    ],
-    sections: [
-      { heading: "Different material systems and published roles", body: ["Marble Resin is the documented water-white liquid unsaturated polyester route for cultured marble and artificial stone. Epoxy Clear Casting Resin is a separate two-part epoxy route with its own product data and published decorative-casting contexts.", "A comparison is useful when a buyer is choosing between product families, but the documents do not establish that one material is universally better. The specified system and finished application should lead the discussion."] },
-      { heading: "Keep a marble-composite requirement specific", body: ["For the TDS-listed cultured-marble or artificial-stone requirement, review Marble Resin first. The supplied liquid resin is one component of the finished marble or mineral composite; the final product remains system-dependent.", "Do not change the product route based on generic assumptions about clarity, hardness, price, UV performance, shrinkage, cure speed or durability. The current Marble documents do not publish a like-for-like comparison with the separate epoxy system."] },
-      { heading: "Keep an epoxy requirement specific", body: ["Where the requirement explicitly names a two-part epoxy casting system, review Epoxy Clear Casting Resin and its product-specific documentation. It is not a shortcut label for the Marble Resin TDS or for a cultured-marble formulation.", "No formulation, mix ratio, casting method, curing sequence or process recommendation is supplied in this comparison. Use the exact published document for the system being evaluated."] },
-      { heading: "Ask for the correct document route", body: ["State whether the finished requirement is cultured marble, artificial stone, a specified epoxy cast, another mineral composite or another product entirely. Include the current product document, technical requirement, quantity, packaging need, delivery location and documentation required in the enquiry."] },
-    ],
-  },
-  {
     slug: "what-is-fiberglass-epoxy-resin",
     title: "What Is Fiberglass Epoxy Resin?",
     description: "A document-led guide to Samrat Poly Resins' Fiberglass Epoxy Resin route for published fabric-reinforcement, hand lay-up and lamination contexts.",
@@ -6606,24 +6585,32 @@ export const resources = [
   // ==========================================================================
   {
     slug: "what-is-cobalt-octoate",
-    title: "What is Cobalt Octoate?",
-    description: "What cobalt octoate is, the chemical role it plays as a metal-soap accelerator, and why it's used alongside a peroxide catalyst in polyester resin curing.",
+    title: "Cobalt Octoate: Accelerator Role, Chemistry and Handling Guide",
+    description: "What cobalt octoate is, how accelerator, catalyst and initiator differ, the redox chemistry behind room-temperature polyester cure, how dosage relates to gel time, and why it is never stored with peroxide.",
     category: "Product Guide",
     icon: "info",
-    readingTime: "2 min read",
+    readingTime: "9 min read",
     publishDate: "2026-09-01",
     seo: {
-      title: "What is Cobalt Octoate? Accelerator / Promoter Explained",
-      keywords: ["what is cobalt octoate", "cobalt octoate accelerator", "cobalt octoate promoter", "metal soap accelerator", "polyester resin accelerator"],
-      ogTitle: "What is Cobalt Octoate?",
+      title: "Cobalt Octoate: Polyester Resin Accelerator Explained",
+      keywords: [
+        "what is cobalt octoate",
+        "cobalt octoate accelerator",
+        "accelerator vs catalyst",
+        "cobalt octoate vs mekp",
+        "polyester resin accelerator",
+        "cobalt free accelerator",
+        "cobalt octoate storage",
+      ],
+      ogTitle: "Cobalt Octoate: Complete Accelerator Guide",
       ogDescription: "Cobalt octoate is a metal-soap accelerator/promoter used with a peroxide catalyst to cure unsaturated polyester resin at room temperature.",
     },
     quickFacts: {
       "Chemical Class": "Cobalt metal soap (cobalt carboxylate)",
-      "Role": "Accelerator / promoter, not a catalyst on its own",
+      Role: "Accelerator / promoter, not a catalyst on its own",
       "Used Alongside": "A peroxide catalyst such as MEKP",
       "Typical Form": "Liquid, added in small proportion to the resin",
-      "Not To Be Confused With": "The base resin, the peroxide catalyst, or a finished laminate",
+      "Golden Rule": "Never stored or mixed directly with peroxide catalyst",
     },
     sections: [
       {
@@ -6634,267 +6621,129 @@ export const resources = [
         ],
       },
       {
-        heading: "How it fits into a curing system",
+        heading: "Accelerator vs catalyst vs initiator",
         body: [
-          "Unsaturated polyester resin cures by free-radical polymerisation: the peroxide catalyst decomposes to generate free radicals that trigger the resin's reactive sites (typically styrene cross-linking with the polyester backbone) to link up into a solid network. Left alone at room temperature, most peroxide catalysts decompose far too slowly for practical shop-floor cure times. Cobalt octoate reacts with the peroxide in a redox (reduction-oxidation) reaction that speeds up radical generation dramatically, which is what makes ambient-temperature curing of polyester laminates practical at all.",
-          "Because the accelerator and the peroxide catalyst work together in this way, they are always kept as two separate components until the point of use, and never pre-mixed together as concentrates — see the storage and handling guide below for why.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Is cobalt octoate the same as MEKP?", a: "No. MEKP (methyl ethyl ketone peroxide) is the peroxide catalyst that actually initiates cure; cobalt octoate is the accelerator that activates the peroxide at room temperature. They are two separate materials with two separate roles." },
-      { q: "Can a polyester resin cure with cobalt octoate alone?", a: "No. Cobalt octoate has no independent curing action — it accelerates a peroxide catalyst's decomposition. Without a peroxide present, adding cobalt octoate to resin will not initiate cure." },
-      { q: "Is cobalt octoate itself a resin?", a: "No. It is a small-proportion additive, typically supplied and dosed separately from the base polyester resin, the peroxide catalyst and any reinforcement." },
-    ],
-    relatedSlugs: ["accelerator-vs-catalyst-vs-initiator", "how-cobalt-accelerators-work-in-polyester-curing", "cobalt-octoate-vs-mekp-different-roles"],
-    recommendedLinks: [
-      { href: "/products/cobalt-octoate/", label: "View Cobalt Octoate", description: "Review the product page and request an industrial quote." },
-      { href: "/products/mekp-hardener/", label: "View MEKP Hardener", description: "The peroxide catalyst typically used alongside cobalt octoate." },
-    ],
-  },
-
-  {
-    slug: "accelerator-vs-catalyst-vs-initiator",
-    title: "Accelerator vs Catalyst vs Initiator: What's the Difference?",
-    description: "The three terms buyers hear around resin curing — accelerator, catalyst and initiator — explained clearly, with where cobalt octoate and MEKP each fit.",
-    category: "Technical Explainer",
-    icon: "layers",
-    readingTime: "2 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Accelerator vs Catalyst vs Initiator — Resin Curing Terms Explained",
-      keywords: ["accelerator vs catalyst", "catalyst vs initiator", "resin curing terminology", "polyester resin catalyst", "cobalt accelerator"],
-      ogTitle: "Accelerator vs Catalyst vs Initiator",
-      ogDescription: "A clear explanation of accelerator, catalyst and initiator in polyester resin curing, and which term applies to cobalt octoate and MEKP.",
-    },
-    quickFacts: {
-      "Initiator / Catalyst": "The peroxide (e.g. MEKP) that starts the curing reaction",
-      "Accelerator / Promoter": "Activates the peroxide at room temperature (e.g. cobalt octoate)",
-      "Everyday Shop-Floor Term": "Both are often loosely called \"hardener\"",
-      "Why It Matters": "Ordering the wrong one stalls a curing system entirely",
-    },
-    sections: [
-      {
-        heading: "Three words, three different jobs",
-        body: [
-          "In FRP workshops, \"hardener\" is often used loosely to mean whatever gets added to resin to make it cure — but chemically, three distinct roles hide behind that one word. An initiator (also called a catalyst in this context, even though it's technically consumed in the reaction) is the substance that actually starts the polymerisation — for unsaturated polyester resin, this is almost always an organic peroxide such as MEKP. An accelerator, or promoter, doesn't start the reaction itself; it activates the initiator so the reaction proceeds fast enough at room temperature to be usable. Cobalt octoate is the standard accelerator for peroxide-cured polyester systems.",
-          "The third term, catalyst, is used two ways in casual conversation — sometimes for the peroxide itself, sometimes loosely for \"whatever you add to make it cure.\" Strictly, a true catalyst isn't consumed by the reaction it speeds up, which doesn't quite describe how MEKP behaves — but the label has stuck in FRP trade usage, so expect to hear \"catalyst\" and \"hardener\" both used for the peroxide component in everyday conversation.",
+          "In FRP workshops, \"hardener\" is often used loosely to mean whatever gets added to resin to make it cure — but chemically, three distinct roles hide behind that one word. An initiator (also called a catalyst in this context, even though it's technically consumed in the reaction) is the substance that actually starts the polymerisation — for unsaturated polyester resin, this is almost always an organic peroxide such as MEKP. An accelerator, or promoter, doesn't start the reaction itself; it activates the initiator so the reaction proceeds fast enough at room temperature to be usable.",
+          "Strictly, a true catalyst isn't consumed by the reaction it speeds up, which doesn't quite describe how MEKP behaves — but the label has stuck in FRP trade usage, so expect to hear \"catalyst\" and \"hardener\" both used for the peroxide component in everyday conversation.",
+          "Because shop-floor language blurs these terms, a buyer asking a supplier for \"hardener\" without specifying which component can end up with the wrong material for their process — or with only half of what a working cure system actually needs. Naming the specific product avoids that confusion.",
         ],
       },
       {
-        heading: "Why the distinction matters when ordering",
-        body: [
-          "Because shop-floor language blurs these terms, a buyer asking a supplier for \"hardener\" without specifying which component can end up with the wrong material for their process — or with only half of what a working cure system actually needs. A complete room-temperature cure of unsaturated polyester resin normally requires the resin, a peroxide initiator/catalyst, and an accelerator, unless the resin is supplied pre-accelerated. Confirming which of the three you're asking about avoids that confusion.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Is MEKP a catalyst or an initiator?", a: "Both terms are used for MEKP in FRP trade usage. Technically it functions as a free-radical initiator; \"catalyst\" is the more common shop-floor term for the same material." },
-      { q: "Why isn't cobalt octoate called a catalyst?", a: "Because it doesn't initiate the curing reaction on its own — it activates the peroxide that does. That's why the correct terms for cobalt octoate are accelerator or promoter, not catalyst." },
-      { q: "What should I say when requesting a quote to avoid confusion?", a: "Name the specific product — MEKP Hardener or Cobalt Octoate — rather than the generic term \"hardener,\" and state the resin system it will be used with." },
-    ],
-    relatedSlugs: ["what-is-cobalt-octoate", "cobalt-octoate-vs-mekp-different-roles", "how-cobalt-accelerators-work-in-polyester-curing"],
-    recommendedLinks: [
-      { href: "/products/cobalt-octoate/", label: "View Cobalt Octoate", description: "The accelerator / promoter component." },
-      { href: "/products/mekp-hardener/", label: "View MEKP Hardener", description: "The peroxide catalyst / initiator component." },
-    ],
-  },
-
-  {
-    slug: "how-cobalt-accelerators-work-in-polyester-curing",
-    title: "How Cobalt Accelerators Work in Polyester Resin Curing",
-    description: "The redox chemistry behind cobalt-accelerated polyester cure — how a cobalt salt activates a peroxide catalyst to start room-temperature curing.",
-    category: "Technical Explainer",
-    icon: "info",
-    readingTime: "2 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "How Cobalt Accelerators Work in Polyester Resin Curing",
-      keywords: ["how cobalt accelerator works", "cobalt octoate mechanism", "redox curing polyester resin", "free radical curing resin", "polyester resin cure chemistry"],
-      ogTitle: "How Cobalt Accelerators Work in Polyester Curing",
-      ogDescription: "The redox mechanism by which a cobalt accelerator activates a peroxide catalyst to cure unsaturated polyester resin at room temperature.",
-    },
-    quickFacts: {
-      "Reaction Type": "Redox (reduction-oxidation) decomposition of peroxide",
-      "Effect": "Generates free radicals that start resin cross-linking",
-      "Why It's Needed": "Peroxide alone decomposes too slowly at room temperature for practical cure times",
-      "Result": "A workable ambient-temperature cure without external heat",
-    },
-    sections: [
-      {
-        heading: "From peroxide to free radicals",
+        heading: "How cobalt accelerators work: the redox mechanism",
         body: [
           "Unsaturated polyester resin cures through free-radical polymerisation — reactive sites in the resin (typically involving the styrene monomer dissolved in it) link together into a rigid, cross-linked network. That reaction needs to be triggered by free radicals, which come from the decomposition of an organic peroxide catalyst such as MEKP.",
-          "Left at room temperature with no accelerator, most organic peroxides decompose slowly — workable for some processes, but far too slow for typical FRP shop-floor cycle times. Cobalt octoate changes that: the cobalt ion cycles between oxidation states in a redox reaction with the peroxide, dramatically speeding up the rate at which free radicals are generated, without needing to heat the resin.",
+          "Left at room temperature with no accelerator, most organic peroxides decompose slowly — workable for some processes, but far too slow for typical FRP shop-floor cycle times. Cobalt octoate changes that: the cobalt ion cycles between oxidation states in a redox (reduction-oxidation) reaction with the peroxide, dramatically speeding up the rate at which free radicals are generated, without needing to heat the resin. That is what makes ambient-temperature curing of polyester laminates practical at all.",
         ],
       },
       {
-        heading: "Why the balance matters",
+        heading: "Cobalt octoate and MEKP: different roles, same system",
         body: [
-          "The rate of free-radical generation directly governs how quickly a batch of catalysed resin gels and cures — which is why accelerator and catalyst dosage, ambient workshop temperature and batch size are all discussed together whenever a fabricator is troubleshooting cure speed (see the temperature and troubleshooting guides below). Because this is a chemical reaction rather than a fixed switch, the exact dosage needed for a given resin, temperature and desired working time should always come from the resin manufacturer's technical data sheet rather than a generic rule of thumb.",
+          "Cobalt octoate and MEKP are almost always discussed together because a standard room-temperature cure of unsaturated polyester resin needs both — but they are chemically distinct products doing different jobs, not two versions of the same thing. MEKP is the peroxide catalyst that decomposes to generate the free radicals that actually start resin cross-linking. Cobalt octoate is the accelerator that makes that decomposition happen fast enough, at room temperature, to be practical for shop-floor cure times.",
+          "Because neither one does the other's job, they can't substitute for each other. Ordering only MEKP without an accelerator (on a resin that isn't already pre-accelerated) means cure will be far slower than expected; ordering only cobalt octoate with no peroxide means the resin won't cure at all. Some resins are supplied already pre-accelerated, in which case only the peroxide catalyst is added at the point of use — check the specific resin's technical data.",
         ],
       },
-    ],
-    faqs: [
-      { q: "Does cobalt octoate react directly with the resin?", a: "Its primary chemical role is reacting with the peroxide catalyst in a redox reaction, which in turn generates the free radicals that react with the resin. It doesn't cure the resin by reacting with it directly." },
-      { q: "Why does the resin cure faster with more accelerator?", a: "More accelerator increases the rate of free-radical generation from the peroxide, up to a point — which is why dosage is a balance rather than \"more is always better.\" See the gel-time and troubleshooting guides for the practical implications." },
-      { q: "Is heat still needed if a cobalt accelerator is used?", a: "No — that's the point of using an accelerator. It's what allows unsaturated polyester resin to cure at ambient workshop temperature without an external heat source, which is standard for most FRP hand lay-up and spray-up work." },
-    ],
-    relatedSlugs: ["what-is-cobalt-octoate", "how-temperature-affects-polyester-cure", "gel-time-and-cobalt-dosage-relationship", "understanding-gel-time-in-polyester-resin"],
-    recommendedLinks: [
-      { href: "/products/cobalt-octoate/", label: "View Cobalt Octoate", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "cobalt-octoate-vs-mekp-different-roles",
-    title: "Cobalt Octoate and MEKP: Different Roles in the Same Cure System",
-    description: "Why cobalt octoate and MEKP are ordered as two separate products, what each one actually does, and why one can't substitute for the other.",
-    category: "Comparison Guide",
-    icon: "layers",
-    readingTime: "2 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Cobalt Octoate vs MEKP — Accelerator and Catalyst Compared",
-      keywords: ["cobalt octoate vs mekp", "cobalt octoate mekp difference", "accelerator vs peroxide catalyst", "polyester resin curing components"],
-      ogTitle: "Cobalt Octoate vs MEKP: Different Roles",
-      ogDescription: "Cobalt octoate (accelerator) and MEKP (peroxide catalyst) are two separate, non-interchangeable components of a polyester resin cure system.",
-    },
-    quickFacts: {
-      "Cobalt Octoate": "Accelerator / promoter — activates the peroxide",
-      "MEKP": "Peroxide catalyst / initiator — starts the curing reaction",
-      "Interchangeable?": "No — each performs a distinct chemical function",
-      "Typical Use": "Both used together in a room-temperature polyester cure",
-    },
-    comparisonTable: {
-      headers: ["", "Cobalt Octoate", "MEKP Hardener"],
-      rows: [
-        ["Role", "Accelerator / promoter", "Peroxide catalyst / initiator"],
-        ["Function", "Activates the peroxide at room temperature", "Decomposes to generate free radicals that start cure"],
-        ["Used Alone?", "No independent curing action", "Decomposes slowly without an accelerator present"],
-        ["Storage", "Kept separate from peroxide at all times", "Kept separate from accelerator at all times"],
-      ],
-    },
-    sections: [
       {
-        heading: "Two components, one job between them",
+        heading: "How dosage relates to gel time",
         body: [
-          "Cobalt octoate and MEKP are almost always discussed together because a standard room-temperature cure of unsaturated polyester resin needs both — but they are chemically distinct products doing different jobs, not two versions of the same thing. MEKP (methyl ethyl ketone peroxide) is the peroxide catalyst that decomposes to generate the free radicals that actually start resin cross-linking. Cobalt octoate is the accelerator that makes that decomposition happen fast enough, at room temperature, to be practical for shop-floor cure times.",
-          "Because neither one does the other's job, they can't substitute for each other. Ordering only MEKP without an accelerator (on a resin that isn't already pre-accelerated) means cure will be far slower than expected; ordering only cobalt octoate with no peroxide means the resin won't cure at all.",
+          "Within the range a resin manufacturer recommends, increasing accelerator dosage generally speeds up gel time, and reducing it generally slows gel down — because dosage governs how quickly the redox reaction with the peroxide catalyst proceeds. This guide deliberately does not publish a specific dosage percentage or resulting gel-time figure, because that relationship is resin-specific: it depends on the exact resin formulation, the peroxide catalyst used, and ambient temperature at the time of curing.",
+          "Pushing accelerator dosage higher to force a faster gel doesn't scale indefinitely — beyond a resin's recommended range, excess accelerator can contribute to problems like poor cure quality, discolouration or exotherm issues rather than a cleanly faster cure. Dosage is a balance to be tuned within a recommended range, alongside catalyst dosage and ambient temperature, rather than a single lever to push in one direction. Treat the resin's own technical data sheet as the authoritative reference.",
         ],
       },
       {
-        heading: "Why they're never mixed directly together",
-        body: [
-          "Peroxides and accelerators react vigorously together in concentrated form, which is why they are always added to the resin separately, never pre-mixed with each other as standalone concentrates — see the storage and handling guide for the practical safety implications of this.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Can I use extra MEKP instead of adding cobalt octoate?", a: "No. Using more peroxide doesn't substitute for the accelerator's role — without an accelerator (or a resin that's already pre-accelerated), cure at room temperature will still be impractically slow regardless of peroxide dosage." },
-      { q: "Do I always need both components?", a: "For a non-accelerated resin cured at room temperature, yes — both a peroxide catalyst and an accelerator are needed. Some resins are supplied already pre-accelerated, in which case only the peroxide catalyst is added at the point of use; check the specific resin's technical data." },
-      { q: "Is it safe to store cobalt octoate and MEKP together?", a: "No — accelerator and peroxide catalyst should always be stored, handled and mixed separately. See the storage and handling guide for details." },
-    ],
-    relatedSlugs: ["what-is-cobalt-octoate", "accelerator-vs-catalyst-vs-initiator", "cobalt-octoate-storage-and-handling"],
-    recommendedLinks: [
-      { href: "/products/cobalt-octoate/", label: "View Cobalt Octoate", description: "The accelerator / promoter component." },
-      { href: "/products/mekp-hardener/", label: "View MEKP Hardener", description: "The peroxide catalyst / initiator component." },
-    ],
-  },
-
-  {
-    slug: "cobalt-accelerator-in-hand-lay-up",
-    title: "Cobalt Accelerator in Hand Lay-Up FRP Work",
-    description: "How the accelerator/catalyst balance affects hand lay-up — working time for wet-out and lamination versus how soon the mould can be turned around.",
-    category: "Application Guide",
-    icon: "grid",
-    readingTime: "2 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Cobalt Accelerator in Hand Lay-Up FRP Work",
-      keywords: ["cobalt accelerator hand lay-up", "gel time hand lay-up frp", "polyester resin hand lay-up curing", "frp lamination working time"],
-      ogTitle: "Cobalt Accelerator in Hand Lay-Up",
-      ogDescription: "Why gel time — governed by the accelerator/catalyst system — is a central variable in planning hand lay-up FRP work.",
-    },
-    quickFacts: {
-      "Process": "Hand lay-up — reinforcement wetted out with resin by roller or brush",
-      "Key Variable": "Working (gel) time before resin begins to set",
-      "Trade-off": "Enough time to complete lay-up vs. mould turnaround speed",
-      "Adjustable Via": "Accelerator/catalyst dosage and workshop temperature",
-    },
-    sections: [
-      {
-        heading: "Why gel time matters most in hand lay-up",
+        heading: "In hand lay-up work",
         body: [
           "In hand lay-up, reinforcement — typically chopped strand mat, sometimes with woven roving — is placed against a mould and resin is worked into it by roller or brush, often in multiple passes for a thicker laminate. Because this is a manual process, the fabricator needs a working window long enough to wet out the full reinforcement layer evenly before the resin begins to gel. Too short a window risks the resin starting to set before lay-up is finished, leaving dry patches or an uneven laminate; too long a window slows down mould turnaround and production throughput.",
-          "That working window is governed by the accelerator/catalyst system — cobalt octoate and the chosen peroxide catalyst — together with ambient workshop temperature. This is why fabricators doing hand lay-up pay close attention to the cure-system balance rather than treating catalysation as a fixed step.",
+          "A larger or more complex mould generally needs a longer working window than a small, simple part, since there's more surface area to wet out before the resin sets. Ambient temperature also shifts the picture — warmer conditions accelerate cure, so dosage or technique may need adjusting seasonally. Adjustments should be planned and tested against the resin's TDS rather than made ad hoc mid-batch.",
         ],
       },
       {
-        heading: "Adjusting for the job at hand",
+        heading: "In gelcoat systems",
         body: [
-          "A larger or more complex mould generally needs a longer working window than a small, simple part, since there's more surface area to wet out before the resin sets. Ambient temperature also shifts the picture — warmer conditions accelerate cure, so dosage or technique may need adjusting seasonally. The resin manufacturer's technical data sheet is the reference for how a given resin's dosage affects gel time; adjustments should be planned and tested rather than made ad hoc mid-batch.",
+          "Gelcoat is applied first, against the mould face, and becomes the visible outer surface of the finished FRP part once demoulded — so how it cures affects appearance directly, not just production speed. An accelerator/catalyst balance that's off can show up as tackiness, poor gloss, print-through of the reinforcement pattern beneath it, or a surface that isn't fully cured by the time lamination resin is applied over it.",
+          "Gelcoat is normally allowed to reach a tack-free state before the structural laminate is built up behind it — applying reinforcement and resin too early, before the gelcoat has cured enough, or too late, after it has fully hardened and lost surface tack, can both affect how well the two layers bond. The specific product and dosage should follow the gelcoat manufacturer's technical data.",
+        ],
+      },
+      {
+        heading: "Cobalt-free accelerator chemistries",
+        body: [
+          "Cobalt octoate has long been the standard accelerator for peroxide-cured unsaturated polyester resin, but it isn't the only chemistry used across the industry — some resin formulations and regions specify cobalt-free accelerator systems instead, generally for reasons tied to specific regulatory, formulation or supply-chain considerations that sit with the resin manufacturer rather than the accelerator buyer.",
+          "For a buyer, the practical question isn't \"which is generally better\" — it's which accelerator chemistry the specific resin system in use is formulated and specified to work with. Substituting accelerator chemistry outside a resin's stated compatibility isn't something to do without confirming with the resin manufacturer first.",
+        ],
+      },
+      {
+        heading: "Storage and handling: why separation is the central rule",
+        body: [
+          "The single most important handling principle for a cobalt accelerator is that it must never be mixed directly, in concentrated form, with a peroxide catalyst such as MEKP. Accelerator and peroxide reacting together outside the controlled, diluted context of curing resin can be hazardous — this is why the two are always stored, dispensed and handled as separate components, added to the resin one at a time, never pre-combined as standalone concentrates.",
+          "In practice, this means keeping accelerator and peroxide in physically separate storage areas, using separate, clearly labelled dispensing equipment for each, and never topping up one container with residue from the other.",
+          "Like most reactive industrial chemicals, cobalt accelerators are generally best kept in a cool, dry, well-ventilated area, away from direct sunlight and heat sources, in tightly sealed original containers. This guide covers general principles only — always read and follow the product's current Safety Data Sheet (SDS) for complete handling, storage, PPE and emergency guidance before use.",
+        ],
+      },
+      {
+        heading: "What to confirm before ordering",
+        body: [
+          "Because cobalt octoate only makes sense in the context of a complete cure system, the most useful starting point for a buyer is the resin it will be used with — the resin manufacturer's technical data sheet is where compatible accelerator and catalyst guidance, and dosage ranges, should come from. It's also worth confirming which peroxide catalyst the accelerator will be paired with.",
+          "When requesting a quote, share the base resin system or grade, the peroxide catalyst you intend to pair it with, your typical batch size or process (hand lay-up, gelcoat), expected quantity and delivery location. Request the current Safety Data Sheet (SDS) for correct storage, handling and PPE guidance before the product arrives on site.",
         ],
       },
     ],
     faqs: [
-      { q: "What happens if the resin gels too fast during hand lay-up?", a: "Reinforcement can be left dry or unevenly wetted where the fabricator hasn't reached it yet, weakening the finished laminate. See the troubleshooting guide for how this is typically addressed." },
-      { q: "Does a bigger mould always need a slower-gelling resin system?", a: "Generally yes, since more surface area needs wetting out within the working window — but the specific adjustment depends on the resin, reinforcement and workshop conditions, so it should be planned against the resin's TDS rather than assumed." },
-      { q: "Can the same accelerator dosage be used year-round?", a: "Not necessarily — ambient temperature changes cure speed, so many fabricators adjust dosage seasonally. See the temperature guide for the underlying reason." },
+      {
+        q: "Is cobalt octoate the same as MEKP?",
+        a: "No. MEKP (methyl ethyl ketone peroxide) is the peroxide catalyst that actually initiates cure; cobalt octoate is the accelerator that activates the peroxide at room temperature. They are two separate materials with two separate roles.",
+      },
+      {
+        q: "Can a polyester resin cure with cobalt octoate alone?",
+        a: "No. Cobalt octoate has no independent curing action — it accelerates a peroxide catalyst's decomposition. Without a peroxide present, adding cobalt octoate to resin will not initiate cure.",
+      },
+      {
+        q: "Can I use extra MEKP instead of adding cobalt octoate?",
+        a: "No. Using more peroxide doesn't substitute for the accelerator's role — without an accelerator (or a resin that's already pre-accelerated), cure at room temperature will still be impractically slow regardless of peroxide dosage.",
+      },
+      {
+        q: "Is it safe to store cobalt octoate and MEKP together?",
+        a: "No — accelerator and peroxide catalyst should always be stored, handled and mixed separately. Many workshops keep them in entirely separate storage areas as an added precaution, on top of never mixing them directly.",
+      },
+      {
+        q: "Where do I find the correct accelerator dosage for my resin?",
+        a: "In that specific resin's technical data sheet (TDS), published by its manufacturer. Dosage is resin-specific and shouldn't be assumed from a different product or a general rule of thumb.",
+      },
+      {
+        q: "Is heat still needed if a cobalt accelerator is used?",
+        a: "No — that's the point of using an accelerator. It's what allows unsaturated polyester resin to cure at ambient workshop temperature without an external heat source, which is standard for most FRP hand lay-up and spray-up work.",
+      },
+      {
+        q: "Can I use a cobalt-free accelerator with any polyester resin?",
+        a: "Not automatically — accelerator compatibility depends on how the specific resin is formulated. Confirm with the resin manufacturer before substituting one accelerator chemistry for another.",
+      },
+      {
+        q: "What should I tell a supplier when requesting a cobalt accelerator quote?",
+        a: "Share the base resin system or grade, the peroxide catalyst you intend to pair it with, your typical batch size or process (e.g. hand lay-up, gelcoat), expected quantity and delivery location.",
+      },
     ],
-    relatedSlugs: ["how-temperature-affects-polyester-cure", "troubleshooting-polyester-cure-speed", "gel-time-and-cobalt-dosage-relationship", "understanding-gel-time-in-polyester-resin"],
+    relatedSlugs: [
+      "what-is-mekp-hardener",
+      "understanding-gel-time-in-polyester-resin",
+      "how-temperature-affects-polyester-cure",
+      "troubleshooting-polyester-cure-speed",
+    ],
     recommendedLinks: [
-      { href: "/products/cobalt-octoate/", label: "View Cobalt Octoate", description: "Request an industrial quote." },
-      { href: "/applications/resin-for-hand-lay-up-process/", label: "Resin for Hand Lay-Up", description: "The broader hand lay-up process guide." },
+      {
+        href: "/products/cobalt-octoate/",
+        label: "View Cobalt Octoate",
+        description: "Review the product page and request an industrial quote.",
+      },
+      {
+        href: "/products/mekp-hardener/",
+        label: "View MEKP Hardener",
+        description: "The peroxide catalyst typically used alongside cobalt octoate.",
+      },
     ],
   },
 
-  {
-    slug: "cobalt-accelerator-in-gelcoat-systems",
-    title: "Cobalt Accelerator in Gelcoat Systems",
-    description: "Why cure-system balance matters even more for gelcoats than for laminating resin, since the gelcoat becomes the visible, mould-facing surface.",
-    category: "Application Guide",
-    icon: "grid",
-    readingTime: "2 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Cobalt Accelerator in Gelcoat Systems",
-      keywords: ["cobalt accelerator gelcoat", "gelcoat curing system", "gelcoat cure time", "polyester gelcoat catalyst accelerator"],
-      ogTitle: "Cobalt Accelerator in Gelcoat Systems",
-      ogDescription: "How the accelerator/catalyst balance affects gelcoat cure — surface quality, tack-free time and lamination timing.",
-    },
-    quickFacts: {
-      "Role in Gelcoat": "Same accelerator function as in laminating resin",
-      "Why It's Sensitive": "Gelcoat becomes the visible, mould-facing finished surface",
-      "Common Concern": "Under- or over-cure affecting surface quality or print-through",
-    },
-    sections: [
-      {
-        heading: "Gelcoat cure is a surface-quality issue, not just a timing one",
-        body: [
-          "Gelcoat is applied first, against the mould face, and becomes the visible outer surface of the finished FRP part once demoulded — so how it cures affects appearance directly, not just production speed. An accelerator/catalyst balance that's off can show up as tackiness, poor gloss, print-through of the reinforcement pattern beneath it, or a surface that isn't fully cured by the time lamination resin is applied over it.",
-          "Because gelcoat is typically sprayed or brushed in a thin, even layer rather than built up in reinforced passes like laminating resin, its cure behaviour is judged mainly by reaching a tack-free, ready-to-laminate state within the expected window — not by a working time for wetting out reinforcement.",
-        ],
-      },
-      {
-        heading: "Sequencing with the laminate behind it",
-        body: [
-          "Gelcoat is normally allowed to reach a tack-free state before the structural laminate is built up behind it — applying reinforcement and resin too early, before the gelcoat has cured enough, or too late, after it has fully hardened and lost surface tack, can both affect how well the two layers bond. This sequencing depends on the gelcoat's own cure system and the workshop's ambient conditions.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Does gelcoat use the same cobalt octoate as laminating resin?", a: "The same class of accelerator is typically used, though the specific product and dosage should follow the gelcoat manufacturer's technical data — always confirm the actual gelcoat's requirements before assuming laminating-resin practice applies unchanged." },
-      { q: "What causes gelcoat print-through?", a: "Several factors can contribute, including applying the laminate before the gelcoat has adequately cured. Cure-system balance is one variable among several — see the general gelcoat resin guide for a fuller picture." },
-      { q: "How do I know when gelcoat is ready for lamination?", a: "Gelcoat is typically checked for a tack-free surface state rather than judged on a fixed clock time, since cure speed varies with temperature and dosage." },
-    ],
-    relatedSlugs: ["cobalt-accelerator-in-hand-lay-up", "how-temperature-affects-polyester-cure", "common-frp-curing-problems"],
-    recommendedLinks: [
-      { href: "/products/cobalt-octoate/", label: "View Cobalt Octoate", description: "Request an industrial quote." },
-      { href: "/products/gp-gelcoat-resin/", label: "View GP Gelcoat Resin", description: "Samrat's published gelcoat resin." },
-      { href: "/resources/what-is-gel-coat-resin/", label: "What is Gel Coat Resin?", description: "The broader gelcoat resin guide." },
-    ],
-  },
+
+
+
+
 
   {
     slug: "how-temperature-affects-polyester-cure",
@@ -6937,58 +6786,13 @@ export const resources = [
       { q: "Should I change accelerator dosage between seasons?", a: "Many fabricators do, to keep gel time within a workable range as ambient temperature shifts. Any change should be planned against the resin's technical data sheet rather than adjusted informally." },
       { q: "Does mould temperature matter as much as room temperature?", a: "It can — resin in direct contact with a cold mould surface may cure more slowly locally, even if the surrounding room is warm." },
     ],
-    relatedSlugs: ["how-cobalt-accelerators-work-in-polyester-curing", "troubleshooting-polyester-cure-speed", "gel-time-and-cobalt-dosage-relationship"],
+    relatedSlugs: ["what-is-cobalt-octoate", "troubleshooting-polyester-cure-speed", "what-is-cobalt-octoate"],
     recommendedLinks: [
       { href: "/products/cobalt-octoate/", label: "View Cobalt Octoate", description: "Request an industrial quote." },
       { href: "/resources/understanding-gel-time-in-polyester-resin/", label: "Understanding Gel Time", description: "The broader gel-time reference guide." },
     ],
   },
 
-  {
-    slug: "gel-time-and-cobalt-dosage-relationship",
-    title: "How Cobalt Accelerator Dosage Influences Gel Time",
-    description: "The general, qualitative relationship between accelerator dosage and gel time — and why exact dosage figures should always come from the resin's TDS.",
-    category: "Technical Data",
-    icon: "clock",
-    readingTime: "2 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "How Cobalt Accelerator Dosage Influences Gel Time",
-      keywords: ["cobalt octoate dosage gel time", "accelerator dosage polyester resin", "how much cobalt accelerator to use"],
-      ogTitle: "Cobalt Accelerator Dosage and Gel Time",
-      ogDescription: "The general relationship between accelerator dosage and gel time in polyester resin curing, and why exact figures belong in the resin's TDS.",
-    },
-    quickFacts: {
-      "General Direction": "More accelerator, within the recommended range, generally speeds gel",
-      "Not Linear or Unlimited": "Dosage isn't a simple dial — excess accelerator brings its own problems",
-      "Correct Source for Numbers": "The specific resin manufacturer's technical data sheet",
-      "This Page Deliberately Omits": "Any specific dosage percentage or gel-time figure",
-    },
-    sections: [
-      {
-        heading: "A qualitative relationship, not a fixed formula",
-        body: [
-          "Within the range a resin manufacturer recommends, increasing accelerator dosage generally speeds up gel time, and reducing it generally slows gel down — because dosage governs how quickly the redox reaction with the peroxide catalyst proceeds. This guide deliberately does not publish a specific dosage percentage or resulting gel-time figure, because that relationship is resin-specific: it depends on the exact resin formulation, the peroxide catalyst used, and ambient temperature at the time of curing.",
-          "Buyers and fabricators should treat dosage recommendations in a resin's technical data sheet as the authoritative reference, and treat any general dosage figure quoted informally — including anywhere on this site — with appropriate caution unless it's tied to the specific product being used.",
-        ],
-      },
-      {
-        heading: "Why more isn't simply better",
-        body: [
-          "Pushing accelerator dosage higher to force a faster gel doesn't scale indefinitely — beyond a resin's recommended range, excess accelerator can contribute to problems like poor cure quality, discolouration or exotherm issues rather than a cleanly faster cure. This is why dosage is treated as a balance to be tuned within a recommended range, alongside catalyst dosage and ambient temperature, rather than a single lever to push in one direction.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Where do I find the correct accelerator dosage for my resin?", a: "In that specific resin's technical data sheet (TDS), published by its manufacturer. Dosage is resin-specific and shouldn't be assumed from a different product or a general rule of thumb." },
-      { q: "Is there a maximum safe accelerator dosage?", a: "Resin manufacturers publish a recommended dosage range in their TDS for a reason — exceeding it is generally associated with cure-quality problems rather than simply faster, safer curing. Stay within the manufacturer's stated range." },
-      { q: "Why won't this guide publish a specific dosage figure?", a: "Because the correct dosage depends on the specific resin, catalyst and conditions in use, and this site doesn't have verified data linking a specific dosage to a specific outcome for every resin it might be paired with. The resin's own TDS is the right source." },
-    ],
-    relatedSlugs: ["how-cobalt-accelerators-work-in-polyester-curing", "how-temperature-affects-polyester-cure", "troubleshooting-polyester-cure-speed"],
-    recommendedLinks: [
-      { href: "/products/cobalt-octoate/", label: "View Cobalt Octoate", description: "Request an industrial quote." },
-    ],
-  },
 
   {
     slug: "troubleshooting-polyester-cure-speed",
@@ -7035,7 +6839,7 @@ export const resources = [
       { q: "My resin still hasn't gelled after hours — what should I check?", a: "Check whether catalyst and accelerator were both actually added (a missed component is a common cause), whether ambient/mould temperature is unusually cold, and whether the catalyst is within its shelf life." },
       { q: "Can I add more catalyst to a batch that's already curing too slowly?", a: "This isn't generally recommended once a batch is already mixed and in progress — it's safer to let the batch complete or fail, identify the cause, and correct dosage for the next batch. Follow the resin manufacturer's specific guidance." },
     ],
-    relatedSlugs: ["how-temperature-affects-polyester-cure", "gel-time-and-cobalt-dosage-relationship", "common-frp-curing-problems"],
+    relatedSlugs: ["how-temperature-affects-polyester-cure", "what-is-cobalt-octoate", "common-frp-curing-problems"],
     recommendedLinks: [
       { href: "/products/cobalt-octoate/", label: "View Cobalt Octoate", description: "Request an industrial quote." },
       { href: "/products/mekp-hardener/", label: "View MEKP Hardener", description: "The peroxide catalyst component." },
@@ -7081,144 +6885,15 @@ export const resources = [
       { q: "Why do identical-looking batches sometimes cure differently?", a: "Small differences in dosage measurement, mixing consistency, ambient temperature or batch size can all produce visibly different results even when the recipe looks the same on paper." },
       { q: "Is inconsistent cure a resin quality issue or a process issue?", a: "It can be either, which is why identifying the actual variable that changed — rather than assuming the resin is at fault — is the recommended first step. See the cure-speed troubleshooting guide for a structured approach." },
     ],
-    relatedSlugs: ["troubleshooting-polyester-cure-speed", "how-temperature-affects-polyester-cure", "cobalt-accelerator-in-gelcoat-systems"],
+    relatedSlugs: ["troubleshooting-polyester-cure-speed", "how-temperature-affects-polyester-cure", "what-is-cobalt-octoate"],
     recommendedLinks: [
       { href: "/products/cobalt-octoate/", label: "View Cobalt Octoate", description: "Request an industrial quote." },
       { href: "/products/mekp-hardener/", label: "View MEKP Hardener", description: "The peroxide catalyst component." },
     ],
   },
 
-  {
-    slug: "selecting-a-cobalt-accelerator",
-    title: "Selecting a Cobalt Accelerator: A Buyer's Checklist",
-    description: "What to confirm before ordering a cobalt accelerator — the resin system it will pair with, dosage source, packaging and documentation.",
-    category: "Buyer Guide",
-    icon: "checklist",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Selecting a Cobalt Accelerator — Buyer's Checklist",
-      keywords: ["how to select cobalt accelerator", "cobalt octoate buying guide", "polyester resin accelerator checklist"],
-      ogTitle: "Selecting a Cobalt Accelerator: Buyer's Checklist",
-      ogDescription: "A practical checklist for buyers evaluating a cobalt accelerator for polyester resin curing.",
-    },
-    quickFacts: {
-      "Confirm First": "The base resin system it will be used with",
-      "Also Confirm": "The peroxide catalyst it will be paired with",
-      "Documentation to Request": "Current SDS for safe handling and storage",
-      "Avoid": "Ordering by generic \"hardener\" terminology without specifying the component",
-    },
-    sections: [
-      {
-        heading: "Start with the resin system, not the accelerator alone",
-        body: [
-          "Because cobalt octoate only makes sense in the context of a complete cure system, the most useful starting point for a buyer is the resin it will be used with — the resin manufacturer's technical data sheet is where compatible accelerator and catalyst guidance, and dosage ranges, should come from. Ordering an accelerator without reference to the specific resin system risks a mismatch in cure behaviour.",
-          "It's also worth confirming which peroxide catalyst the accelerator will be paired with, since the accelerator and catalyst are always used together — see the dedicated Cobalt Octoate vs MEKP comparison for how the two components relate.",
-        ],
-      },
-      {
-        heading: "What to request alongside the product",
-        body: [
-          "Request the current Safety Data Sheet (SDS) for correct storage, handling and PPE guidance before the product arrives on site — see the storage and handling guide for why accelerator and peroxide catalyst are always kept apart. If a technical data sheet with dosage guidance is available for the specific accelerator product, request that too, rather than relying on general dosage assumptions.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "What should I tell a supplier when requesting a cobalt accelerator quote?", a: "Share the base resin system or grade, the peroxide catalyst you intend to pair it with, your typical batch size or process (e.g. hand lay-up, gelcoat), expected quantity and delivery location." },
-      { q: "Do I need to order the accelerator and catalyst from the same supplier?", a: "Not necessarily, but confirming compatibility between the specific products — ideally against the resin manufacturer's guidance — is worth doing regardless of source." },
-      { q: "What documentation should come with a cobalt accelerator order?", a: "At minimum, a current Safety Data Sheet (SDS). A technical data sheet with dosage guidance is also useful where available." },
-    ],
-    relatedSlugs: ["cobalt-octoate-vs-mekp-different-roles", "cobalt-octoate-storage-and-handling", "cobalt-accelerators-vs-cobalt-free-accelerators"],
-    recommendedLinks: [
-      { href: "/products/cobalt-octoate/", label: "View Cobalt Octoate", description: "Request an industrial quote." },
-      { href: "/contact/", label: "Contact Samrat Poly Resins", description: "Discuss your resin system and requirement." },
-    ],
-  },
 
-  {
-    slug: "cobalt-octoate-storage-and-handling",
-    title: "Cobalt Octoate: Storage and Handling Principles",
-    description: "General storage and handling principles for cobalt accelerators — why they're always kept separate from peroxide catalysts, and where to find full safety guidance.",
-    category: "Best Practices",
-    icon: "shield",
-    readingTime: "2 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Cobalt Octoate Storage and Handling Principles",
-      keywords: ["cobalt octoate storage", "cobalt octoate handling", "accelerator peroxide separation", "resin accelerator safety"],
-      ogTitle: "Cobalt Octoate Storage and Handling",
-      ogDescription: "General principles for storing and handling cobalt accelerators safely, including why they're never mixed directly with peroxide catalysts.",
-    },
-    quickFacts: {
-      "Golden Rule": "Never store or mix accelerator and peroxide catalyst directly together",
-      "Storage Environment": "Cool, dry, away from direct sunlight and heat sources",
-      "Full Guidance": "Always in the product's current Safety Data Sheet (SDS)",
-    },
-    sections: [
-      {
-        heading: "Why separation from peroxide is the central rule",
-        body: [
-          "The single most important handling principle for a cobalt accelerator is that it must never be mixed directly, in concentrated form, with a peroxide catalyst such as MEKP. Accelerator and peroxide reacting together outside the controlled, diluted context of curing resin can be hazardous — this is why the two are always stored, dispensed and handled as separate components, added to the resin one at a time, never pre-combined as standalone concentrates.",
-          "In practice, this means keeping accelerator and peroxide in physically separate storage areas, using separate, clearly labelled dispensing equipment for each, and never topping up one container with residue from the other.",
-        ],
-      },
-      {
-        heading: "General storage conditions",
-        body: [
-          "Like most reactive industrial chemicals, cobalt accelerators are generally best kept in a cool, dry, well-ventilated area, away from direct sunlight and heat sources, in tightly sealed original containers. Product-specific storage temperature ranges and shelf life should come from the specific product's technical documentation rather than general assumption.",
-          "This page covers general principles only — always read and follow the product's current Safety Data Sheet (SDS) for complete handling, storage, PPE and emergency guidance before use.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Can cobalt accelerator and MEKP be stored on the same shelf?", a: "They should be kept as clearly separated, distinct components — many workshops keep them in entirely separate storage areas as an added precaution, on top of never mixing them directly." },
-      { q: "What happens if accelerator and peroxide come into direct concentrated contact?", a: "This can be hazardous. Always refer to the product SDS for the specific risks and first-response guidance, and follow safe handling procedures to prevent it happening." },
-      { q: "Where do I find complete safety guidance for cobalt octoate?", a: "In the product's current Safety Data Sheet (SDS) — this page covers general storage/handling principles only, not a substitute for the SDS." },
-    ],
-    relatedSlugs: ["cobalt-octoate-vs-mekp-different-roles", "selecting-a-cobalt-accelerator", "what-is-cobalt-octoate"],
-    recommendedLinks: [
-      { href: "/products/cobalt-octoate/", label: "View Cobalt Octoate", description: "Request an industrial quote and current SDS." },
-    ],
-  },
 
-  {
-    slug: "cobalt-accelerators-vs-cobalt-free-accelerators",
-    title: "Cobalt Accelerators vs Cobalt-Free Accelerators",
-    description: "Why some resin systems use cobalt-free accelerator chemistry instead of cobalt octoate, and what that choice generally depends on.",
-    category: "Comparison Guide",
-    icon: "layers",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Cobalt Accelerators vs Cobalt-Free Accelerators",
-      keywords: ["cobalt free accelerator", "cobalt octoate alternative", "cobalt free polyester resin curing"],
-      ogTitle: "Cobalt Accelerators vs Cobalt-Free Accelerators",
-      ogDescription: "Why some polyester resin systems specify cobalt-free accelerator chemistry instead of cobalt octoate, and how that choice is typically made.",
-    },
-    quickFacts: {
-      "Cobalt Accelerators": "The long-established, widely used accelerator chemistry for peroxide-cured polyester resin",
-      "Cobalt-Free Accelerators": "Alternative accelerator chemistries used in some formulations and regions",
-      "Choice Driven By": "The resin system's own formulation and specification, not a universal preference",
-    },
-    sections: [
-      {
-        heading: "Why the question comes up",
-        body: [
-          "Cobalt octoate has long been the standard accelerator for peroxide-cured unsaturated polyester resin, but it isn't the only chemistry used across the industry — some resin formulations and regions specify cobalt-free accelerator systems instead, generally for reasons tied to specific regulatory, formulation or supply-chain considerations that sit with the resin manufacturer rather than the accelerator buyer.",
-          "For a buyer, the practical question isn't \"which is generally better\" — it's which accelerator chemistry the specific resin system in use is formulated and specified to work with. Substituting accelerator chemistry outside a resin's stated compatibility isn't something to do without confirming with the resin manufacturer first.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Can I use a cobalt-free accelerator with any polyester resin?", a: "Not automatically — accelerator compatibility depends on how the specific resin is formulated. Confirm with the resin manufacturer before substituting one accelerator chemistry for another." },
-      { q: "Why would a resin specify a cobalt-free accelerator?", a: "This is a decision made by the resin manufacturer as part of their formulation, for reasons specific to that product and its intended market — it isn't something to infer generically." },
-      { q: "Is cobalt octoate still the most common accelerator?", a: "It remains widely used and long-established across the polyester resin industry for peroxide-initiated, room-temperature cure systems." },
-    ],
-    relatedSlugs: ["what-is-cobalt-octoate", "selecting-a-cobalt-accelerator", "how-cobalt-accelerators-work-in-polyester-curing"],
-    recommendedLinks: [
-      { href: "/products/cobalt-octoate/", label: "View Cobalt Octoate", description: "Request an industrial quote." },
-    ],
-  },
 
   // ==========================================================================
   //  STYRENE MONOMER CLUSTER — added 2026-09-01. General reactive-diluent
@@ -7228,22 +6903,29 @@ export const resources = [
   // ==========================================================================
   {
     slug: "what-is-styrene-monomer",
-    title: "What is Styrene Monomer?",
-    description: "What styrene monomer is, why it's used in unsaturated polyester resin systems, and its dual role as both a viscosity-reducing diluent and a reactive comonomer.",
+    title: "Styrene Monomer: Complete Guide for Polyester Resin Users",
+    description: "What styrene monomer is, why it is called a reactive diluent, how it affects viscosity, wet-out and gelcoat, how low-VOC systems differ, and what to confirm before ordering.",
     category: "Product Guide",
     icon: "info",
-    readingTime: "2 min read",
+    readingTime: "7 min read",
     publishDate: "2026-09-01",
     seo: {
-      title: "What is Styrene Monomer? Reactive Diluent Explained",
-      keywords: ["what is styrene monomer", "styrene monomer resin", "reactive diluent polyester resin", "styrene in frp"],
-      ogTitle: "What is Styrene Monomer?",
+      title: "Styrene Monomer: Reactive Diluent Guide for Polyester Resin",
+      keywords: [
+        "what is styrene monomer",
+        "styrene monomer resin",
+        "reactive diluent polyester resin",
+        "styrene in frp",
+        "styrene resin viscosity",
+        "low voc polyester resin",
+      ],
+      ogTitle: "Styrene Monomer: Complete Guide",
       ogDescription: "Styrene monomer is a reactive diluent used in unsaturated polyester resin systems to reduce viscosity and take part in the curing reaction itself.",
     },
     quickFacts: {
       "Chemical Class": "Aromatic vinyl monomer",
-      "Role": "Reactive diluent / comonomer for unsaturated polyester resin",
-      "Function": "Reduces resin viscosity and copolymerises during cure",
+      Role: "Reactive diluent / comonomer for unsaturated polyester resin",
+      Function: "Reduces resin viscosity and copolymerises during cure",
       "Handling Note": "Flammable and volatile — requires ventilation and PPE",
     },
     sections: [
@@ -7251,202 +6933,111 @@ export const resources = [
         heading: "A diluent that reacts, not just a solvent",
         body: [
           "Styrene monomer holds an unusual position in unsaturated polyester resin: it thins the resin (reducing viscosity so it processes and wets out reinforcement more easily), but unlike a conventional solvent, it doesn't evaporate away and leave the resin behind — a meaningful proportion of it copolymerises directly into the cured resin network during the curing reaction. That's why it's called a reactive diluent rather than simply a solvent.",
-          "Most unsaturated polyester resin is supplied already dissolved in styrene by the resin manufacturer, at a proportion set during formulation. Styrene monomer sold separately is typically used to further adjust viscosity for a specific process, or to formulate/blend resin systems, rather than to replace what's already in a standard resin.",
+          "Most unsaturated polyester resin is supplied already dissolved in styrene by the resin manufacturer, at a proportion set during formulation. Styrene monomer sold separately is typically used to further adjust viscosity for a specific process, or to formulate and blend resin systems, rather than to replace what's already in a standard resin.",
         ],
       },
-      {
-        heading: "Why this dual role matters",
-        body: [
-          "Because styrene participates in the cure reaction itself, its proportion in a resin system affects more than just how easily it flows — it also influences cure characteristics and the properties of the finished laminate. This is why styrene content is treated as a formulation variable, not simply a thinning agent to be added freely at any level.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Is styrene monomer the same as polyester resin?", a: "No. It's a separate reactive component, typically already present in supplied polyester resin at a proportion set by the manufacturer, and sometimes added separately to further adjust a resin system." },
-      { q: "Does styrene monomer evaporate out of cured resin?", a: "A meaningful portion reacts into the cured network rather than evaporating, which is why it's called a reactive diluent rather than a simple solvent — though some emission during processing (before cure) is a recognised handling consideration, covered in the safety guide." },
-      { q: "Why is styrene used instead of a non-reactive solvent?", a: "Because it both reduces viscosity for processing and takes part in the curing reaction, contributing to the final cross-linked network rather than needing to fully evaporate away." },
-    ],
-    relatedSlugs: ["styrene-as-reactive-diluent", "why-styrene-reduces-resin-viscosity", "styrene-monomer-storage-handling-safety"],
-    recommendedLinks: [
-      { href: "/products/styrene-monomer/", label: "View Styrene Monomer", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "styrene-as-reactive-diluent",
-    title: "Styrene as a Reactive Diluent in Polyester Resin",
-    description: "How styrene functions as a reactive diluent — reducing viscosity while chemically bonding into the cured resin network, unlike a conventional solvent.",
-    category: "Technical Explainer",
-    icon: "info",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Styrene as a Reactive Diluent in Polyester Resin",
-      keywords: ["reactive diluent styrene", "styrene copolymerisation polyester", "styrene resin viscosity reduction"],
-      ogTitle: "Styrene as a Reactive Diluent",
-      ogDescription: "How styrene reduces polyester resin viscosity while also copolymerising into the cured network during cure.",
-    },
-    quickFacts: {
-      "Reactive Diluent": "A thinning agent that also takes part in the cure reaction",
-      "Contrast With": "Non-reactive solvents, which evaporate and don't join the cured network",
-      "Copolymerises With": "The unsaturated sites on the polyester resin backbone",
-    },
-    sections: [
       {
         heading: "What makes a diluent \"reactive\"",
         body: [
           "A conventional solvent added to reduce a coating or resin's viscosity is expected to evaporate away, leaving the intended solid material behind. A reactive diluent works differently: it's chosen because its own molecular structure lets it take part in the curing reaction, so instead of evaporating out, a meaningful share of it becomes chemically bonded into the finished material.",
-          "Styrene monomer fills this role for unsaturated polyester resin. During cure, styrene molecules cross-link with the unsaturated (reactive) sites along the polyester resin's backbone, forming the rigid three-dimensional network that gives cured FRP laminate its structural properties.",
+          "During cure, styrene molecules cross-link with the unsaturated (reactive) sites along the polyester resin's backbone, forming the rigid three-dimensional network that gives cured FRP laminate its structural properties. Because styrene participates in the cure reaction itself, its proportion in a resin system affects more than just how easily it flows — it also influences cure characteristics and the properties of the finished laminate.",
         ],
       },
       {
-        heading: "Why this matters for processing",
+        heading: "Why styrene reduces resin viscosity",
         body: [
-          "Because styrene both lowers viscosity for processing and contributes to the final cured structure, resin formulators treat its proportion as a genuine formulation variable — one that affects wet-out and flow on one hand, and cure behaviour and finished-laminate properties on the other, rather than a purely cosmetic thinning adjustment.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Does all the styrene in a resin end up in the cured laminate?", a: "A meaningful proportion copolymerises into the cured network; some volatile emission during open processing (before cure) is a separate, recognised handling consideration — see the safety and storage guide." },
-      { q: "Can a non-reactive solvent be used instead of styrene?", a: "Non-reactive solvents don't take part in the curing reaction the way styrene does, so substituting one changes how the resin cures and performs — this is a resin-formulation decision, not a simple like-for-like swap." },
-    ],
-    relatedSlugs: ["what-is-styrene-monomer", "why-styrene-reduces-resin-viscosity", "styrene-and-polyester-cure-chemistry"],
-    recommendedLinks: [
-      { href: "/products/styrene-monomer/", label: "View Styrene Monomer", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "why-styrene-reduces-resin-viscosity",
-    title: "Why Styrene Reduces Resin Viscosity",
-    description: "The practical reason styrene content affects how easily a polyester resin flows, wets out reinforcement and processes in FRP fabrication.",
-    category: "Technical Explainer",
-    icon: "info",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Why Styrene Reduces Polyester Resin Viscosity",
-      keywords: ["styrene resin viscosity", "reduce resin viscosity", "polyester resin flow styrene content"],
-      ogTitle: "Why Styrene Reduces Resin Viscosity",
-      ogDescription: "How styrene content affects polyester resin viscosity, flow and reinforcement wet-out in FRP processing.",
-    },
-    quickFacts: {
-      "Effect": "Higher styrene proportion generally lowers resin viscosity",
-      "Why It Matters": "Lower viscosity supports easier wet-out and flow during lay-up or spray-up",
-      "Trade-off": "Viscosity is one of several properties affected by styrene content",
-    },
-    sections: [
-      {
-        heading: "Viscosity, wet-out and processability",
-        body: [
-          "The base polyester resin, before dilution, is a relatively viscous liquid. Styrene, being a much lower-viscosity liquid, thins the resin when blended in — which is central to why unsaturated polyester resin is supplied pre-dissolved in styrene rather than as a neat, undiluted resin. Lower viscosity makes it easier for resin to wet out (fully saturate) glass fibre reinforcement during hand lay-up or spray-up, without leaving dry spots or air pockets in the laminate.",
-          "This is a genuine processing benefit, not just a convenience — poor wet-out is one of the more common causes of weak spots in a finished FRP laminate, so a resin system's flow characteristics matter directly to part quality.",
+          "The base polyester resin, before dilution, is a relatively viscous liquid. Styrene, being a much lower-viscosity liquid, thins the resin when blended in — which is central to why unsaturated polyester resin is supplied pre-dissolved in styrene rather than as a neat, undiluted resin.",
+          "Because styrene content also affects cure chemistry and finished-laminate properties, viscosity reduction via styrene isn't something to push arbitrarily far — resin manufacturers balance styrene proportion against processing needs and performance targets when formulating a resin, and further adjustment by the fabricator should be done cautiously and, where significant, discussed with the resin supplier.",
         ],
       },
       {
-        heading: "A formulation balance, not a free adjustment",
-        body: [
-          "Because styrene content also affects cure chemistry and finished-laminate properties (see the reactive-diluent guide), viscosity reduction via styrene isn't something to push arbitrarily far — resin manufacturers balance styrene proportion against processing needs and performance targets when formulating a resin, and further adjustment by the fabricator should be done cautiously and, where significant, discussed with the resin supplier.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Does adding more styrene always make a resin easier to work with?", a: "It generally reduces viscosity, but styrene content also affects cure behaviour and finished properties, so it's a balance rather than something to maximise freely." },
-      { q: "What problems does poor wet-out cause in FRP work?", a: "It can leave dry patches or air pockets in the laminate, both of which weaken the finished part — good resin flow and wet-out are part of why viscosity matters in FRP processing." },
-    ],
-    relatedSlugs: ["styrene-as-reactive-diluent", "styrene-and-fibreglass-wet-out", "styrene-in-gelcoat-systems"],
-    recommendedLinks: [
-      { href: "/products/styrene-monomer/", label: "View Styrene Monomer", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "styrene-and-fibreglass-wet-out",
-    title: "Styrene and Fibreglass Wet-Out in FRP Lamination",
-    description: "How resin viscosity, governed partly by styrene content, affects how thoroughly glass fibre reinforcement gets wetted out during lamination.",
-    category: "Application Guide",
-    icon: "grid",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Styrene and Fibreglass Wet-Out in FRP Lamination",
-      keywords: ["styrene fibreglass wet out", "resin wet out glass fibre", "frp lamination resin flow"],
-      ogTitle: "Styrene and Fibreglass Wet-Out",
-      ogDescription: "Why resin viscosity, influenced by styrene content, matters for thoroughly wetting out glass fibre reinforcement in FRP lamination.",
-    },
-    quickFacts: {
-      "Wet-Out": "Resin fully saturating and surrounding reinforcement fibres",
-      "Why It Matters": "Incomplete wet-out leaves weak points in the finished laminate",
-      "Related Factor": "Resin viscosity, influenced by styrene content",
-    },
-    sections: [
-      {
-        heading: "What wet-out means in practice",
+        heading: "Viscosity, wet-out and laminate quality",
         body: [
           "Wet-out is the process of resin fully penetrating and surrounding reinforcement fibres — whether chopped strand mat or woven roving — so that every fibre is bonded into the resin matrix with no dry, resin-starved patches. Thorough wet-out is one of the most fundamental quality requirements in hand lay-up and spray-up FRP work, since dry or under-wetted reinforcement doesn't transfer load properly and becomes a weak point in the finished part.",
-          "Resin viscosity is one of the practical variables affecting how easily and quickly wet-out is achieved — a resin that flows more readily works into tight reinforcement weave and multiple layers faster than a highly viscous one, all else being equal.",
+          "Resin viscosity is one of the practical variables affecting how easily and quickly wet-out is achieved — a resin that flows more readily works into tight reinforcement weave and multiple layers faster than a highly viscous one, all else being equal. But it is one variable among several: reinforcement type and weave, application technique, ambient temperature, and the base resin formulation itself all matter. Fabricators experiencing wet-out problems should consider the whole process rather than assuming styrene content is the sole cause.",
         ],
       },
       {
-        heading: "Where this connects to styrene content",
-        body: [
-          "Because styrene proportion is one of the factors that determines resin viscosity, it indirectly affects wet-out behaviour — but it's one variable among several (reinforcement type and weave, application technique, ambient temperature, and the base resin formulation itself). Fabricators experiencing wet-out problems should consider the whole process rather than assuming resin viscosity, or styrene content specifically, is the sole cause.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "What does poor wet-out look like in a finished laminate?", a: "Visible dry patches, a whitish or matte appearance where fibres aren't fully saturated with resin, or air pockets — all indicating the reinforcement wasn't fully bonded into the resin matrix." },
-      { q: "Is low viscosity always better for wet-out?", a: "Lower viscosity generally helps wet-out, but resin viscosity is chosen as part of an overall formulation balance — see the viscosity-reduction guide for why it isn't simply maximised." },
-    ],
-    relatedSlugs: ["why-styrene-reduces-resin-viscosity", "styrene-in-gelcoat-systems", "common-styrene-related-processing-issues"],
-    recommendedLinks: [
-      { href: "/products/styrene-monomer/", label: "View Styrene Monomer", description: "Request an industrial quote." },
-      { href: "/products/fibre-glass-mat/", label: "View Glass Fiber", description: "E-glass chopped strand mat reinforcement." },
-    ],
-  },
-
-  {
-    slug: "styrene-in-gelcoat-systems",
-    title: "Styrene in Gelcoat Systems",
-    description: "How styrene content affects gelcoat viscosity, sprayability and surface finish, distinct from its role in laminating resin.",
-    category: "Application Guide",
-    icon: "grid",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Styrene in Gelcoat Systems",
-      keywords: ["styrene gelcoat", "gelcoat viscosity styrene", "gelcoat sprayability"],
-      ogTitle: "Styrene in Gelcoat Systems",
-      ogDescription: "How styrene content in a gelcoat formulation affects its viscosity, sprayability and finished surface quality.",
-    },
-    quickFacts: {
-      "Gelcoat Formulation": "Also polyester-based, also uses styrene as part of its system",
-      "Key Concern": "Sprayable or brushable consistency and finished surface quality",
-    },
-    sections: [
-      {
-        heading: "A related but distinct application context",
+        heading: "Styrene in gelcoat systems",
         body: [
           "Gelcoat is itself a polyester-based system, formulated to be applied as a thin, even surface layer against a mould rather than built up in reinforced structural passes like laminating resin. Styrene plays a similar dual role here — contributing to workable viscosity for spray or brush application, and taking part in the cure reaction — but the target consistency and finish requirements differ from laminating resin, since gelcoat becomes the visible, cosmetic surface of the finished part.",
-        ],
-      },
-      {
-        heading: "Why formulation is left to the gelcoat manufacturer",
-        body: [
           "Gelcoat viscosity and styrene content are set by the gelcoat manufacturer to suit spray or brush application and the intended finish. Buyers looking to adjust a gelcoat's working consistency should refer to that gelcoat's own technical data rather than assuming laminating-resin practice transfers directly.",
         ],
       },
+      {
+        heading: "Styrene-based vs low-VOC resin systems",
+        body: [
+          "Styrene monomer is volatile — some evaporates into workshop air during open processing (spraying, hand lay-up) before the resin cures, which is why it's classed as a volatile organic compound (VOC) and is subject to occupational exposure guidance. In response, some resin manufacturers formulate \"low-styrene\" or \"low-VOC\" resin systems, using formulation approaches intended to reduce styrene emission during processing.",
+          "This is a resin-formulation choice made by the manufacturer, not something a fabricator achieves simply by using less styrene monomer additive — a standard resin's base styrene content is set during its own manufacture. The decision to specify a low-VOC resin system is typically driven by workplace air-quality requirements, applicable regulation, or a customer's process specification, rather than a universal performance preference.",
+        ],
+      },
+      {
+        heading: "Common processing issues that trace back to styrene",
+        body: [
+          "Resin that has visibly thickened compared to when it arrived can, among other causes, relate to some styrene content evaporating over an extended storage period, particularly if containers weren't kept tightly sealed. Checking storage conditions and container seal integrity is a reasonable first step before assuming a resin batch is faulty.",
+          "Since styrene content is one of the factors influencing resin viscosity, unexpectedly poor wet-out can sometimes relate back to a resin's styrene content shifting from what it should be — though application technique, reinforcement type and ambient temperature are equally common causes and should be checked alongside it.",
+        ],
+      },
+      {
+        heading: "What to confirm before ordering",
+        body: [
+          "Styrene monomer is used for different purposes depending on context — adjusting a resin's working viscosity for a specific process, or as part of resin formulation and blending work. Being specific about which of these applies helps a supplier understand the requirement, and helps confirm the product is appropriate for the intended use rather than assumed to be a general-purpose thinner.",
+          "Request the current Safety Data Sheet (SDS) for storage, handling and PPE guidance given styrene's flammability and VOC classification. If the intended use involves adjusting a specific resin's viscosity, that resin's own technical data — rather than a general assumption — is the right source for how much styrene monomer, if any, is appropriate to add.",
+        ],
+      },
     ],
     faqs: [
-      { q: "Is gelcoat's styrene content the same as laminating resin's?", a: "Gelcoat is a separate formulation from laminating resin, set by its manufacturer for spray/brush application and surface finish — don't assume the two are interchangeable or identically formulated." },
-      { q: "Can styrene monomer be added to gelcoat to adjust viscosity?", a: "Any adjustment to a gelcoat's formulation should follow the gelcoat manufacturer's own guidance, since gelcoat viscosity is tied closely to spray performance and finished surface quality." },
+      {
+        q: "Is styrene monomer the same as polyester resin?",
+        a: "No. It's a separate reactive component, typically already present in supplied polyester resin at a proportion set by the manufacturer, and sometimes added separately to further adjust a resin system.",
+      },
+      {
+        q: "Does styrene monomer evaporate out of cured resin?",
+        a: "A meaningful portion reacts into the cured network rather than evaporating, which is why it's called a reactive diluent rather than a simple solvent — though some emission during processing, before cure, is a recognised handling consideration.",
+      },
+      {
+        q: "Why is styrene used instead of a non-reactive solvent?",
+        a: "Because it both reduces viscosity for processing and takes part in the curing reaction, contributing to the final cross-linked network rather than needing to fully evaporate away.",
+      },
+      {
+        q: "Does adding more styrene always make a resin easier to work with?",
+        a: "It generally reduces viscosity, but styrene content also affects cure behaviour and finished properties, so it's a balance rather than something to maximise freely.",
+      },
+      {
+        q: "Can I add styrene monomer to any polyester resin to thin it?",
+        a: "This should be checked against the specific resin's technical data or the resin manufacturer's guidance rather than assumed — styrene content is a formulation variable, not a free adjustment.",
+      },
+      {
+        q: "Does using less styrene monomer make my process \"low-VOC\"?",
+        a: "Not on its own — low-VOC resin systems are specifically formulated by the resin manufacturer, generally beyond simply reducing an additive. Confirm with your resin supplier if a low-emission formulation is required.",
+      },
+      {
+        q: "Why has my resin thickened since it arrived?",
+        a: "This can relate to storage conditions, including container seal integrity and storage duration. Compare against the resin's stated shelf life and storage guidance.",
+      },
     ],
-    relatedSlugs: ["why-styrene-reduces-resin-viscosity", "styrene-and-fibreglass-wet-out", "what-is-gel-coat-resin"],
+    relatedSlugs: [
+      "styrene-monomer-storage-handling-safety",
+      "styrene-and-polyester-cure-chemistry",
+      "what-is-glass-fiber-chopped-strand-mat",
+    ],
     recommendedLinks: [
-      { href: "/products/styrene-monomer/", label: "View Styrene Monomer", description: "Request an industrial quote." },
-      { href: "/products/gp-gelcoat-resin/", label: "View GP Gelcoat Resin", description: "Samrat's published gelcoat resin." },
+      {
+        href: "/products/styrene-monomer/",
+        label: "View Styrene Monomer",
+        description: "Request an industrial quote and current SDS.",
+      },
+      {
+        href: "/products/unsaturated-polyester-resin/",
+        label: "View Unsaturated Polyester Resin",
+        description: "The resin system styrene is formulated into.",
+      },
     ],
   },
+
+
+
+
 
   {
     slug: "styrene-and-polyester-cure-chemistry",
@@ -7480,56 +7071,13 @@ export const resources = [
       { q: "What triggers styrene to start reacting during cure?", a: "The free radicals generated by the peroxide catalyst (accelerated by a cobalt accelerator in a typical room-temperature system) initiate the cross-linking reaction between styrene and the polyester resin's unsaturated sites." },
       { q: "Does styrene content affect the finished laminate's properties?", a: "Yes — because styrene becomes structurally part of the cured network, its proportion is a genuine formulation variable affecting the finished material, not purely a processing convenience." },
     ],
-    relatedSlugs: ["styrene-as-reactive-diluent", "how-cobalt-accelerators-work-in-polyester-curing", "what-is-styrene-monomer"],
+    relatedSlugs: ["what-is-styrene-monomer", "what-is-cobalt-octoate", "what-is-styrene-monomer"],
     recommendedLinks: [
       { href: "/products/styrene-monomer/", label: "View Styrene Monomer", description: "Request an industrial quote." },
       { href: "/products/cobalt-octoate/", label: "View Cobalt Octoate", description: "The accelerator used in room-temperature cure systems." },
     ],
   },
 
-  {
-    slug: "styrene-vs-low-voc-resin-systems",
-    title: "Styrene-Based vs Low-VOC Resin Systems",
-    description: "Why some polyester resin systems are formulated to reduce styrene emission, and what that trade-off generally involves.",
-    category: "Comparison Guide",
-    icon: "layers",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Styrene-Based vs Low-VOC Resin Systems Compared",
-      keywords: ["low voc polyester resin", "low styrene emission resin", "styrene emission frp"],
-      ogTitle: "Styrene-Based vs Low-VOC Resin Systems",
-      ogDescription: "The general distinction between conventional styrene-based polyester resin and formulations designed to reduce styrene emission.",
-    },
-    quickFacts: {
-      "Conventional System": "Standard styrene proportion, established process performance",
-      "Low-VOC / Low-Styrene System": "Formulated to reduce styrene emission during processing",
-      "Selection Basis": "Workplace air-quality requirements, regulation, or process specification",
-    },
-    sections: [
-      {
-        heading: "Why the distinction exists",
-        body: [
-          "Styrene monomer is volatile — some evaporates into workshop air during open processing (spraying, hand lay-up) before the resin cures, which is why it's classed as a volatile organic compound (VOC) and is subject to occupational exposure guidance (see the safety guide). In response, some resin manufacturers formulate \"low-styrene\" or \"low-VOC\" resin systems, using formulation approaches intended to reduce styrene emission during processing.",
-          "This is a resin-formulation choice made by the manufacturer, not something a fabricator achieves simply by using less styrene monomer additive — a standard resin's base styrene content is set during its own manufacture.",
-        ],
-      },
-      {
-        heading: "What drives the choice between them",
-        body: [
-          "The decision to specify a low-VOC resin system is typically driven by workplace air-quality requirements, applicable regulation, or a customer's process specification, rather than a universal performance preference — conventional styrene-based systems remain widely used and well-established across FRP manufacturing. Fabricators with specific air-quality or regulatory requirements should discuss resin options directly with their resin supplier.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Does using less styrene monomer make my process \"low-VOC\"?", a: "Not on its own — low-VOC resin systems are specifically formulated by the resin manufacturer, generally beyond simply reducing an additive. Confirm with your resin supplier if a low-emission formulation is required." },
-      { q: "Are low-VOC resin systems as strong as conventional ones?", a: "This depends on the specific formulation — compare technical data for the specific products in question rather than assuming a general answer." },
-    ],
-    relatedSlugs: ["styrene-monomer-storage-handling-safety", "what-is-styrene-monomer", "common-styrene-related-processing-issues"],
-    recommendedLinks: [
-      { href: "/products/styrene-monomer/", label: "View Styrene Monomer", description: "Request an industrial quote." },
-    ],
-  },
 
   {
     slug: "styrene-monomer-storage-handling-safety",
@@ -7571,98 +7119,13 @@ export const resources = [
       { q: "Do I need respiratory protection when working with styrene?", a: "This depends on ventilation and exposure duration — the product SDS provides specific PPE guidance for your workplace and process." },
       { q: "Where should styrene monomer be stored?", a: "In a cool, dry, well-ventilated area away from heat and ignition sources, in tightly sealed containers — full guidance is in the current SDS." },
     ],
-    relatedSlugs: ["what-is-styrene-monomer", "styrene-vs-low-voc-resin-systems", "styrene-monomer-buyer-guide"],
+    relatedSlugs: ["what-is-styrene-monomer", "what-is-styrene-monomer", "what-is-styrene-monomer"],
     recommendedLinks: [
       { href: "/products/styrene-monomer/", label: "View Styrene Monomer", description: "Request an industrial quote and current SDS." },
     ],
   },
 
-  {
-    slug: "common-styrene-related-processing-issues",
-    title: "Common Styrene-Related Processing Issues",
-    description: "Practical issues that trace back to styrene content or loss — viscosity drift, poor wet-out and surface tack — and what to check first.",
-    category: "Troubleshooting Guide",
-    icon: "checklist",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Common Styrene-Related Processing Issues in FRP Work",
-      keywords: ["styrene resin problems", "resin viscosity drift", "styrene loss resin", "frp processing issues styrene"],
-      ogTitle: "Common Styrene-Related Processing Issues",
-      ogDescription: "Practical FRP processing issues that trace back to styrene content or loss, and what to check first.",
-    },
-    quickFacts: {
-      "Viscosity Drift": "Resin thickening in storage can relate to styrene loss over time",
-      "Poor Wet-Out": "Can relate to resin viscosity, which styrene content influences",
-      "Surface Tack": "Air-inhibited cure at the surface is a separate, related consideration",
-    },
-    sections: [
-      {
-        heading: "Resin thickening over storage time",
-        body: [
-          "Resin that has visibly thickened compared to when it arrived can, among other causes, relate to some styrene content evaporating over an extended storage period, particularly if containers weren't kept tightly sealed. Checking storage conditions and container seal integrity is a reasonable first step before assuming a resin batch is faulty.",
-        ],
-      },
-      {
-        heading: "Wet-out and surface-finish issues",
-        body: [
-          "Since styrene content is one of the factors influencing resin viscosity, unexpectedly poor wet-out can sometimes relate back to a resin's styrene content shifting from what it should be — though application technique, reinforcement type and ambient temperature are equally common causes and should be checked alongside it. See the fibreglass wet-out guide for a fuller picture of what affects wet-out quality.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Why has my resin thickened since it arrived?", a: "This can relate to storage conditions, including container seal integrity and storage duration. Compare against the resin's stated shelf life and storage guidance." },
-      { q: "Is wet-out trouble always a styrene-content issue?", a: "No — styrene content is one contributing factor to viscosity, but application technique, reinforcement type and ambient temperature also affect wet-out. See the dedicated wet-out guide for a fuller checklist." },
-    ],
-    relatedSlugs: ["styrene-and-fibreglass-wet-out", "why-styrene-reduces-resin-viscosity", "styrene-monomer-storage-handling-safety"],
-    recommendedLinks: [
-      { href: "/products/styrene-monomer/", label: "View Styrene Monomer", description: "Request an industrial quote." },
-    ],
-  },
 
-  {
-    slug: "styrene-monomer-buyer-guide",
-    title: "Styrene Monomer Buyer Guide: What to Verify Before Purchase",
-    description: "A practical checklist for buyers evaluating styrene monomer for resin formulation, blending or process viscosity adjustment.",
-    category: "Buyer Guide",
-    icon: "checklist",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Styrene Monomer Buyer Guide",
-      keywords: ["styrene monomer buying guide", "how to buy styrene monomer", "styrene monomer supplier checklist"],
-      ogTitle: "Styrene Monomer Buyer Guide",
-      ogDescription: "What to confirm before ordering styrene monomer — intended use, resin system compatibility and safety documentation.",
-    },
-    quickFacts: {
-      "Confirm First": "The intended use — process viscosity adjustment vs resin formulation",
-      "Request": "Current Safety Data Sheet (SDS) for storage and handling guidance",
-      "Avoid": "Assuming a generic dosage or blend ratio without resin-specific guidance",
-    },
-    sections: [
-      {
-        heading: "Start with the intended use",
-        body: [
-          "Styrene monomer is used for different purposes depending on context — adjusting a resin's working viscosity for a specific process, or as part of resin formulation/blending work. Being specific about which of these applies helps a supplier understand the requirement, and helps confirm the product is appropriate for the intended use rather than assumed to be a general-purpose thinner.",
-        ],
-      },
-      {
-        heading: "What to request alongside the product",
-        body: [
-          "Request the current Safety Data Sheet (SDS) for storage, handling and PPE guidance given styrene's flammability and VOC classification (see the dedicated safety guide). If the intended use involves adjusting a specific resin's viscosity, that resin's own technical data — rather than a general assumption — is the right source for how much styrene monomer, if any, is appropriate to add.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "What should I tell a supplier when requesting a styrene monomer quote?", a: "Share your intended use (process adjustment or formulation/blending), the resin system involved if applicable, expected quantity and delivery location." },
-      { q: "Can I add styrene monomer to any polyester resin to thin it?", a: "This should be checked against the specific resin's technical data or the resin manufacturer's guidance rather than assumed — styrene content is a formulation variable, not a free adjustment." },
-    ],
-    relatedSlugs: ["what-is-styrene-monomer", "styrene-monomer-storage-handling-safety", "styrene-as-reactive-diluent"],
-    recommendedLinks: [
-      { href: "/products/styrene-monomer/", label: "View Styrene Monomer", description: "Request an industrial quote." },
-      { href: "/contact/", label: "Contact Samrat Poly Resins", description: "Discuss your intended use and resin system." },
-    ],
-  },
 
   // ==========================================================================
   //  NC THINNER CLUSTER — added 2026-09-01. General nitrocellulose-lacquer
@@ -7672,178 +7135,147 @@ export const resources = [
   // ==========================================================================
   {
     slug: "what-is-nc-thinner",
-    title: "What is NC Thinner?",
-    description: "What NC (nitrocellulose) thinner is, why it's blended specifically for nitrocellulose lacquer systems, and how it differs from a general-purpose thinner.",
+    title: "NC Thinner: Complete Guide to Nitrocellulose Lacquer Thinner",
+    description: "What NC (nitrocellulose) thinner is, how it adjusts lacquer viscosity for spray and brush work, why blushing happens, and what to confirm before ordering.",
     category: "Product Guide",
     icon: "info",
-    readingTime: "1 min read",
+    readingTime: "6 min read",
     publishDate: "2026-09-01",
     seo: {
-      title: "What is NC Thinner? Nitrocellulose Lacquer Thinner Explained",
-      keywords: ["what is nc thinner", "nitrocellulose thinner", "nc lacquer thinner explained"],
-      ogTitle: "What is NC Thinner?",
-      ogDescription: "NC thinner is a solvent blend formulated specifically for nitrocellulose lacquer and coating systems.",
+      title: "NC Thinner: What It Is, How to Use It, and What to Check",
+      keywords: [
+        "what is nc thinner",
+        "nc thinner full form",
+        "nitrocellulose thinner",
+        "nc lacquer thinner",
+        "nc thinner for spray application",
+        "nc thinner storage",
+      ],
+      ogTitle: "NC Thinner: Complete Guide",
+      ogDescription: "NC thinner is a solvent blend formulated specifically for nitrocellulose lacquer systems. How it works, how it is used, and what to confirm before buying.",
     },
     quickFacts: {
-      "Full Name": "Nitrocellulose (NC) thinner",
-      "Function": "Solvent blend for viscosity adjustment and application support",
+      "Full Form": "NC = nitrocellulose",
+      Function: "Solvent blend for viscosity adjustment and application support",
       "Used With": "Nitrocellulose-based lacquers and coatings",
-      "Not": "A resin, hardener, catalyst or general-purpose thinner",
+      Not: "A resin, hardener, catalyst or general-purpose thinner",
+      "Key Hazard": "Flammable liquid and vapour — full guidance in the current SDS",
     },
     sections: [
       {
-        heading: "A solvent blend built for one job",
+        heading: "What NC thinner is: a solvent blend built for one job",
         body: [
-          "NC thinner is a blend of solvents formulated specifically to work with nitrocellulose-based lacquers and coatings — the kind of finish traditionally used on wood furniture, automotive refinishing and general industrial finishing. Nitrocellulose lacquer needs a specific balance of solvents to dissolve properly, flow out smoothly when sprayed or brushed, and dry to a clean, even finish, which is why NC thinner is formulated differently from a general-purpose thinner intended for oil-based paints.",
+          "NC stands for nitrocellulose. NC thinner is a blend of solvents formulated specifically to work with nitrocellulose-based lacquers and coatings — the kind of finish traditionally used on wood furniture, automotive refinishing and general industrial finishing. Nitrocellulose lacquer needs a specific balance of solvents to dissolve properly, flow out smoothly when sprayed or brushed, and dry to a clean, even finish, which is why NC thinner is formulated differently from a general-purpose thinner intended for oil-based paints.",
           "In practical use, NC thinner adjusts a lacquer's working viscosity for spray or brush application, and helps the finish flow out and level before it dries — rather than being a chemically active ingredient that reacts or cures the coating.",
         ],
       },
       {
-        heading: "What it isn't",
+        heading: "What it is not",
         body: [
           "NC thinner is a solvent, not a resin, hardener or catalyst — it doesn't cure, react with, or chemically transform the lacquer. Its role is purely to thin, adjust flow, and support application, with the coating itself drying by solvent evaporation rather than a chemical curing reaction.",
+          "It is also not interchangeable with a general-purpose thinner. \"Thinner\" is a broad category term, and different coating chemistries need solvent blends formulated to match how they dissolve, flow and dry. Using the wrong one for a given coating can affect how well it dissolves, sprays, flows and dries — the coating manufacturer's own guidance is the right reference for which thinner to use.",
         ],
       },
-    ],
-    faqs: [
-      { q: "Can NC thinner be used with any type of paint?", a: "It's formulated specifically for nitrocellulose-based lacquer and coating systems — using it with a different coating chemistry (e.g. polyurethane or water-based) isn't the intended use. See the general-purpose thinner comparison for more." },
-      { q: "Does NC thinner cure or react with the lacquer?", a: "No. It's a solvent that thins and supports application — the lacquer itself dries by solvent evaporation, not a chemical reaction with the thinner." },
-    ],
-    relatedSlugs: ["nc-thinner-in-spray-application", "nc-thinner-vs-general-purpose-thinner", "nc-thinner-for-wood-finishing"],
-    recommendedLinks: [
-      { href: "/products/nc-thinner/", label: "View NC Thinner", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "nc-thinner-in-spray-application",
-    title: "NC Thinner in Spray Application",
-    description: "How NC thinner adjusts lacquer viscosity for spray guns, and why getting that balance right affects atomisation, flow and finish quality.",
-    category: "Application Guide",
-    icon: "grid",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "NC Thinner in Spray Application",
-      keywords: ["nc thinner spray gun", "nc lacquer spray application", "thinning lacquer for spray"],
-      ogTitle: "NC Thinner in Spray Application",
-      ogDescription: "How NC thinner is used to adjust nitrocellulose lacquer viscosity for spray-gun application.",
-    },
-    quickFacts: {
-      "Purpose": "Adjusts lacquer viscosity to a sprayable consistency",
-      "Too Thick": "Poor atomisation, orange-peel texture, uneven coverage",
-      "Too Thin": "Runs, sags, and reduced film build per coat",
-    },
-    sections: [
       {
-        heading: "Why viscosity matters for spraying",
+        heading: "Adjusting viscosity for spray application",
         body: [
           "Spray guns are designed to atomise a coating into a fine mist within a specific viscosity range. Lacquer straight from the can is often too thick for good atomisation, which is where NC thinner comes in — reducing viscosity to a workable spray consistency. Too thick, and the spray pattern can be uneven or produce an orange-peel texture; too thin, and the coating can run or sag on vertical surfaces, or build too little film per coat.",
-        ],
-      },
-      {
-        heading: "Getting the balance right",
-        body: [
           "The right thinning ratio depends on the specific lacquer, the spray equipment being used, and ambient conditions — there isn't one universal ratio that suits every combination. Testing on a scrap surface before committing to a full spray job, and adjusting incrementally, is standard practice for dialling in the right consistency for a given lacquer and gun setup.",
         ],
       },
-    ],
-    faqs: [
-      { q: "How do I know if my lacquer needs more thinner for spraying?", a: "Signs of too-thick lacquer include poor atomisation, a rough or orange-peel texture, or the spray gun struggling to produce a fine, even mist. Test on scrap material and adjust incrementally." },
-      { q: "What happens if I add too much NC thinner?", a: "Over-thinned lacquer can run or sag, especially on vertical surfaces, and builds less film per coat, which may require more coats to reach the desired finish." },
-    ],
-    relatedSlugs: ["nc-thinner-viscosity-flow-and-blushing", "nc-thinner-for-wood-finishing", "solvent-evaporation-and-coating-defects"],
-    recommendedLinks: [
-      { href: "/products/nc-thinner/", label: "View NC Thinner", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "nc-thinner-for-wood-finishing",
-    title: "NC Thinner for Wood Finishing",
-    description: "Why nitrocellulose lacquer remains a traditional favourite for wood furniture finishing, and NC thinner's role in achieving a clean, refined finish.",
-    category: "Application Guide",
-    icon: "grid",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "NC Thinner for Wood Finishing",
-      keywords: ["nc thinner wood finishing", "nitrocellulose lacquer furniture", "wood lacquer thinner"],
-      ogTitle: "NC Thinner for Wood Finishing",
-      ogDescription: "The role of NC thinner in achieving a smooth, professional nitrocellulose lacquer finish on wood furniture.",
-    },
-    quickFacts: {
-      "Traditional Use": "Wood furniture finishing — a long-established NC lacquer application",
-      "Why NC Lacquer Is Used": "Fast-drying, buildable, and can be rubbed out to a high-gloss finish",
-      "NC Thinner's Role": "Viscosity adjustment and flow support for a clean, even coat",
-    },
-    sections: [
       {
-        heading: "Why NC lacquer suits wood furniture work",
+        heading: "Flow, levelling and finish quality",
+        body: [
+          "A properly thinned lacquer doesn't just spray more easily — it also flows and levels better once on the surface, meaning brush or spray marks smooth themselves out before the coating dries, leaving an even film. Lacquer that's too thick can dry before it has a chance to level, locking in texture or marks, and is more prone to runs or sags.",
+        ],
+      },
+      {
+        heading: "Blushing: the humidity defect to watch for",
+        body: [
+          "Blushing is a well-known nitrocellulose lacquer defect: a cloudy, milky-white haze that appears in the drying film, most often in humid or cool, damp conditions. It happens when solvents evaporate quickly enough to cool the surface below the surrounding air's dew point, causing moisture to condense into the still-wet film.",
+          "Because it's tied to evaporation rate and humidity rather than the base lacquer itself, blushing is generally addressed through application conditions — avoiding spraying in high humidity, allowing better airflow and drying conditions, or using a slower-evaporating thinner blend suited to the conditions — rather than treated as a lacquer defect. Persistent blushing issues are worth discussing with your coating supplier.",
+        ],
+      },
+      {
+        heading: "NC lacquer in wood furniture finishing",
         body: [
           "Nitrocellulose lacquer has a long history in wood furniture finishing because it dries relatively quickly, can be built up in multiple thin coats, and — once fully cured — can be rubbed out (buffed with fine abrasives) to a smooth, high-gloss finish. NC thinner supports this process by keeping the lacquer at a workable viscosity for spray or brush application across each coat.",
+          "Achieving a smooth, professional-looking wood finish with NC lacquer generally depends on thin, even coats rather than one heavy application, proper surface preparation beforehand, and working in suitable ambient humidity. NC thinner's role is to support each of these coats flowing out evenly rather than to fix an underlying preparation or technique issue.",
         ],
       },
       {
-        heading: "Practical considerations for a clean finish",
+        heading: "Industrial and repeat-batch finishing work",
         body: [
-          "Achieving a smooth, professional-looking wood finish with NC lacquer generally depends on thin, even coats rather than one heavy application, proper surface preparation beforehand, and working in suitable ambient humidity — since fast solvent evaporation in humid conditions can cause a common defect called blushing (see the flow and blushing guide). NC thinner's role is to support each of these coats flowing out evenly rather than to fix an underlying preparation or technique issue.",
+          "While wood furniture finishing is the most familiar context, nitrocellulose-based coatings and their compatible thinners are also used across broader professional and industrial finishing work — anywhere an NC-based coating system has been specified for its particular drying and finish characteristics. In each case, NC thinner's role stays the same: adjusting the coating to a workable, consistent viscosity for the application method in use.",
+          "For production or repeat-batch work, consistency in thinning ratio and technique between batches supports a more uniform finish across a run — an inconsistent approach batch-to-batch is a common, avoidable source of visible finish variation.",
+        ],
+      },
+      {
+        heading: "Storage and handling",
+        body: [
+          "Like other solvent-based products, NC thinner is a flammable liquid — store it in a cool, dry, well-ventilated area away from heat sources, sparks and open flame, in tightly sealed original containers.",
+          "This guide covers general principles only; always read and follow the current Safety Data Sheet (SDS) for complete handling, storage, PPE and emergency guidance.",
+        ],
+      },
+      {
+        heading: "What to confirm before ordering",
+        body: [
+          "Since NC thinner is formulated for nitrocellulose-based coatings specifically, confirming the coating system it will be paired with is the useful starting point for a purchase — this helps ensure compatibility and lets a supplier understand your application (spray, brush, production run) before quoting.",
+          "When requesting a quote, share the coating system you are using it with, your application method, expected quantity and delivery location, and ask for the current SDS alongside the quotation.",
         ],
       },
     ],
     faqs: [
-      { q: "Why is NC lacquer popular for furniture finishing?", a: "It dries relatively fast, builds up well in multiple thin coats, and can be rubbed out to a high-gloss finish — a combination that has kept it in use for wood furniture work despite newer coating technologies." },
-      { q: "Does NC thinner affect how glossy the final finish looks?", a: "Indirectly — a properly thinned lacquer flows out more evenly, which supports a smoother final finish once rubbed out, but gloss level also depends on application technique, number of coats, and rubbing-out process." },
+      {
+        q: "What is the full form of NC thinner?",
+        a: "NC stands for nitrocellulose. NC thinner is a solvent blend formulated for nitrocellulose-based lacquer and coating systems.",
+      },
+      {
+        q: "Can NC thinner be used with any type of paint?",
+        a: "It's formulated specifically for nitrocellulose-based lacquer and coating systems — using it with a different coating chemistry (e.g. polyurethane or water-based) isn't the intended use.",
+      },
+      {
+        q: "Does NC thinner cure or react with the lacquer?",
+        a: "No. It's a solvent that thins and supports application — the lacquer itself dries by solvent evaporation, not a chemical reaction with the thinner.",
+      },
+      {
+        q: "How do I know if my lacquer needs more thinner for spraying?",
+        a: "Signs of too-thick lacquer include poor atomisation, a rough or orange-peel texture, or the spray gun struggling to produce a fine, even mist. Test on scrap material and adjust incrementally.",
+      },
+      {
+        q: "What happens if I add too much NC thinner?",
+        a: "Over-thinned lacquer can run or sag, especially on vertical surfaces, and builds less film per coat, which may require more coats to reach the desired finish.",
+      },
+      {
+        q: "What does blushing look like, and how is it prevented?",
+        a: "A cloudy, milky-white haze appearing in the lacquer film as it dries, typically in humid or damp conditions. It is commonly prevented by avoiding spraying in high humidity, improving airflow and drying conditions, or using a thinner blend and technique suited to the ambient conditions.",
+      },
+      {
+        q: "Is NC thinner flammable?",
+        a: "Yes — like most lacquer thinners, it's a flammable liquid and should be stored and handled with appropriate fire-safety precautions. Full guidance is in the current SDS.",
+      },
     ],
-    relatedSlugs: ["nc-thinner-in-spray-application", "nc-thinner-viscosity-flow-and-blushing", "what-is-nc-thinner"],
+    relatedSlugs: [
+      "nc-thinner-vs-general-purpose-thinner",
+      "solvent-evaporation-and-coating-defects",
+      "resin-glossary",
+    ],
     recommendedLinks: [
-      { href: "/products/nc-thinner/", label: "View NC Thinner", description: "Request an industrial quote." },
+      {
+        href: "/products/nc-thinner/",
+        label: "View NC Thinner",
+        description: "Request an industrial quote and current SDS.",
+      },
+      {
+        href: "/products/frp-allied-products/",
+        label: "FRP Allied Products",
+        description: "Thinners, solvents, fillers and workshop consumables.",
+      },
     ],
   },
 
-  {
-    slug: "nc-thinner-viscosity-flow-and-blushing",
-    title: "NC Thinner: Viscosity, Flow and Blushing Explained",
-    description: "Three connected concepts in NC lacquer spray finishing — viscosity control, flow/levelling, and the common humidity-related defect called blushing.",
-    category: "Troubleshooting Guide",
-    icon: "checklist",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "NC Thinner: Viscosity, Flow and Blushing Explained",
-      keywords: ["nc lacquer blushing", "lacquer flow and leveling", "nc thinner viscosity troubleshooting"],
-      ogTitle: "Viscosity, Flow and Blushing in NC Lacquer",
-      ogDescription: "How viscosity, flow and the humidity-related defect blushing are all connected in nitrocellulose lacquer spray finishing.",
-    },
-    quickFacts: {
-      "Flow / Levelling": "How well a sprayed coat smooths itself out before drying",
-      "Blushing": "A cloudy, milky-white haze caused by moisture condensing in the drying film",
-      "Common Trigger": "Fast solvent evaporation in humid or cool, damp conditions",
-    },
-    sections: [
-      {
-        heading: "Viscosity and flow are connected",
-        body: [
-          "A properly thinned lacquer doesn't just spray more easily — it also flows and levels better once on the surface, meaning brush or spray marks smooth themselves out before the coating dries, leaving an even film. Lacquer that's too thick can dry before it has a chance to level, locking in texture or marks.",
-        ],
-      },
-      {
-        heading: "What causes blushing",
-        body: [
-          "Blushing is a well-known nitrocellulose lacquer defect: a cloudy, milky-white haze that appears in the drying film, most often in humid or cool, damp conditions. It happens when solvents evaporate quickly enough to cool the surface below the surrounding air's dew point, causing moisture to condense into the still-wet film. Because it's tied to evaporation rate and humidity rather than the base lacquer itself, blushing is generally addressed through application conditions (avoiding spraying in high humidity, or using a slower-evaporating thinner blend suited to the conditions) rather than treated as a lacquer defect.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "What does blushing look like?", a: "A cloudy, milky-white haze appearing in the lacquer film as it dries, typically in humid or damp conditions." },
-      { q: "How is blushing usually prevented?", a: "Commonly by avoiding spraying in high-humidity conditions, allowing better airflow/drying conditions, or using a thinner blend and technique suited to the ambient conditions. Persistent blushing issues are worth discussing with your coating supplier." },
-      { q: "Does thick lacquer application cause finish problems beyond blushing?", a: "Yes — lacquer applied too thick can dry before it levels out, locking in spray or brush marks, and is more prone to runs or sags. See the spray-application guide for the practical viscosity balance." },
-    ],
-    relatedSlugs: ["nc-thinner-in-spray-application", "solvent-evaporation-and-coating-defects", "nc-thinner-for-wood-finishing"],
-    recommendedLinks: [
-      { href: "/products/nc-thinner/", label: "View NC Thinner", description: "Request an industrial quote." },
-    ],
-  },
+
+
 
   {
     slug: "solvent-evaporation-and-coating-defects",
@@ -7882,7 +7314,7 @@ export const resources = [
       { q: "Why does my finish look different on humid days?", a: "Humidity affects how solvent evaporates from the drying film, which can contribute to defects like blushing. Adjusting technique or thinner choice for the day's conditions is common practice." },
       { q: "Can slow-drying lacquer sag on vertical surfaces?", a: "Yes — if solvents evaporate too slowly for the applied film thickness, gravity can pull the still-wet coating into runs or sags before it sets." },
     ],
-    relatedSlugs: ["nc-thinner-viscosity-flow-and-blushing", "nc-thinner-in-spray-application"],
+    relatedSlugs: ["what-is-nc-thinner", "what-is-nc-thinner"],
     recommendedLinks: [
       { href: "/products/nc-thinner/", label: "View NC Thinner", description: "Request an industrial quote." },
     ],
@@ -7927,91 +7359,13 @@ export const resources = [
       { q: "Can I use general-purpose thinner with NC lacquer if that's what I have on hand?", a: "This isn't recommended without checking the lacquer manufacturer's guidance — the two are formulated for different coating chemistries and may not perform the same way together." },
       { q: "How do I know which thinner my coating needs?", a: "Check the coating product's own label or technical data sheet — it will specify the recommended thinner type for that specific product." },
     ],
-    relatedSlugs: ["what-is-nc-thinner", "nc-thinner-in-industrial-coatings", "nc-thinner-selection-and-storage-guide"],
+    relatedSlugs: ["what-is-nc-thinner", "what-is-nc-thinner", "what-is-nc-thinner"],
     recommendedLinks: [
       { href: "/products/nc-thinner/", label: "View NC Thinner", description: "Request an industrial quote." },
     ],
   },
 
-  {
-    slug: "nc-thinner-in-industrial-coatings",
-    title: "NC Thinner in Industrial Coating Work",
-    description: "Beyond furniture, how NC thinner supports nitrocellulose-based coating systems in broader industrial and professional finishing contexts.",
-    category: "Application Guide",
-    icon: "grid",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "NC Thinner in Industrial Coating Work",
-      keywords: ["nc thinner industrial coatings", "nitrocellulose coatings industrial use"],
-      ogTitle: "NC Thinner in Industrial Coating Work",
-      ogDescription: "How NC thinner is used to support nitrocellulose-based coating systems in industrial and professional finishing contexts.",
-    },
-    quickFacts: {
-      "Beyond Furniture": "NC lacquer systems are also used in broader industrial/professional finishing",
-      "NC Thinner's Role": "Consistent viscosity adjustment across production runs",
-    },
-    sections: [
-      {
-        heading: "A finishing-workflow support material",
-        body: [
-          "While wood furniture finishing is the most familiar context, nitrocellulose-based coatings and their compatible thinners are also used across broader professional and industrial finishing work — anywhere an NC-based coating system has been specified for its particular drying and finish characteristics. In each case, NC thinner's role stays the same: adjusting the coating to a workable, consistent viscosity for the application method in use.",
-          "For production or repeat-batch work, consistency in thinning ratio and technique between batches supports a more uniform finish across a run — an inconsistent approach batch-to-batch is a common, avoidable source of visible finish variation.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Is NC thinner only used for wood furniture?", a: "No — nitrocellulose-based coating systems are used more broadly wherever that chemistry has been specified, and NC thinner supports the same viscosity-adjustment role across those contexts." },
-      { q: "Why does consistency in thinning matter for production runs?", a: "Inconsistent thinning ratio or technique between batches is a common cause of visible finish variation across a production run — keeping technique consistent helps avoid this." },
-    ],
-    relatedSlugs: ["what-is-nc-thinner", "nc-thinner-vs-general-purpose-thinner", "nc-thinner-selection-and-storage-guide"],
-    recommendedLinks: [
-      { href: "/products/nc-thinner/", label: "View NC Thinner", description: "Request an industrial quote." },
-    ],
-  },
 
-  {
-    slug: "nc-thinner-selection-and-storage-guide",
-    title: "NC Thinner Selection and Storage Guide",
-    description: "What to confirm before ordering NC thinner, and general storage principles — flammability, sealed containers, and where to find full safety guidance.",
-    category: "Buyer Guide",
-    icon: "checklist",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "NC Thinner Selection and Storage Guide",
-      keywords: ["nc thinner buying guide", "nc thinner storage", "how to select nc thinner"],
-      ogTitle: "NC Thinner Selection and Storage Guide",
-      ogDescription: "What to confirm before ordering NC thinner, and general storage and handling principles.",
-    },
-    quickFacts: {
-      "Confirm First": "The coating system NC thinner will be paired with",
-      "Key Hazard": "Flammable liquid and vapour",
-      "Full Safety Guidance": "Always in the product's current SDS",
-    },
-    sections: [
-      {
-        heading: "What to confirm before ordering",
-        body: [
-          "Since NC thinner is formulated for nitrocellulose-based coatings specifically, confirming the coating system it will be paired with is the useful starting point for a purchase — this helps ensure compatibility and lets a supplier understand your application (spray, brush, production run) before quoting.",
-        ],
-      },
-      {
-        heading: "General storage principles",
-        body: [
-          "Like other solvent-based products, NC thinner is a flammable liquid — store it in a cool, dry, well-ventilated area away from heat sources, sparks and open flame, in tightly sealed original containers. This page covers general principles only; always read and follow the current Safety Data Sheet (SDS) for complete handling, storage, PPE and emergency guidance.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "What should I share when requesting an NC thinner quote?", a: "The coating system you're using it with, your application method (spray, brush, dip), expected quantity and delivery location." },
-      { q: "Is NC thinner flammable?", a: "Yes — like most lacquer thinners, it's a flammable liquid and should be stored and handled with appropriate fire-safety precautions. Full guidance is in the current SDS." },
-    ],
-    relatedSlugs: ["what-is-nc-thinner", "nc-thinner-vs-general-purpose-thinner", "nc-thinner-in-industrial-coatings"],
-    recommendedLinks: [
-      { href: "/products/nc-thinner/", label: "View NC Thinner", description: "Request an industrial quote and current SDS." },
-    ],
-  },
 
   // ==========================================================================
   //  PAINT BRUSHES CLUSTER — added 2026-09-01. Application-technique content
@@ -8021,266 +7375,121 @@ export const resources = [
   // ==========================================================================
   {
     slug: "selecting-brushes-for-resin-and-gelcoat-application",
-    title: "Selecting Brushes for Resin and Gelcoat Application",
-    description: "What to think about when choosing an application brush for resin, gelcoat and general FRP work — size, task fit and workshop practicality.",
+    title: "FRP Application Tools: Brushes, Rollers and Squeegees",
+    description: "How to choose and use application brushes for resin and gelcoat, how brushes compare with rollers and squeegees, technique for corners and repairs, and what an open-moulding workshop should keep on hand.",
     category: "Selection Guide",
     icon: "checklist",
-    readingTime: "1 min read",
+    readingTime: "7 min read",
     publishDate: "2026-09-01",
     seo: {
-      title: "Selecting Brushes for Resin and Gelcoat Application",
-      keywords: ["resin application brush", "gelcoat brush selection", "frp brush guide"],
-      ogTitle: "Selecting Brushes for Resin and Gelcoat Application",
-      ogDescription: "How to choose the right application brush for resin, gelcoat, hand lay-up and FRP repair work.",
+      title: "FRP Application Tools: Brushes, Rollers and Squeegees Explained",
+      keywords: [
+        "resin application brush",
+        "gelcoat brush selection",
+        "brush vs roller frp",
+        "frp workshop tools",
+        "hand lay up tools",
+        "frp repair brush",
+      ],
+      ogTitle: "FRP Application Tools: Brushes, Rollers and Squeegees",
+      ogDescription: "How to choose the right application tool for resin, gelcoat, hand lay-up and FRP repair work — and why most workshops use a combination.",
     },
     quickFacts: {
       "Key Factors": "Task (resin vs gelcoat), area size, and mould detail complexity",
       "Multiple Sizes": "Most workshops keep a range of brush sizes for different tasks",
-      "Not a Chemical Product": "A manual application tool, distinct from the resin/gelcoat itself",
+      "Brush / Roller / Squeegee": "Different stages of the job, not competing choices",
+      Consumable: "Brushes used with catalysed resin are generally not reused indefinitely",
     },
     sections: [
       {
         heading: "Matching the brush to the task",
         body: [
           "Resin and gelcoat application brushes are chosen primarily around the task at hand rather than a single universal choice: a wide brush covers large open areas of a mould efficiently, while a smaller detail brush gives better control around corners, edges and tight mould features where precision matters more than speed. Most FRP workshops keep a range of brush sizes on hand rather than relying on one brush for every job.",
-          "Gelcoat application, in particular, often benefits from a brush suited to laying down a thin, even, bubble-free coat, since gelcoat becomes the visible finished surface — see the technique guide for more on this.",
+          "Gelcoat application, in particular, often benefits from a brush suited to laying down a thin, even, bubble-free coat, since gelcoat becomes the visible finished surface.",
         ],
       },
       {
-        heading: "Workshop practicality",
-        body: [
-          "Beyond size, practical workshop factors matter: having enough brushes on hand to avoid a mid-batch scramble when resin starts to gel, keeping dedicated brushes for different resin/gelcoat systems where cross-contamination is a concern, and planning for the fact that brushes used with catalysed resin generally aren't cleaned and reused indefinitely (see the care and replacement guide).",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Do I need different brushes for resin and gelcoat?", a: "Many workshops do use different brushes for each, partly to avoid cross-contamination and partly because gelcoat application often benefits from a brush suited to a thin, even coat rather than bulk resin wet-out." },
-      { q: "How many brush sizes should a workshop keep on hand?", a: "This depends on the range of work done — most FRP workshops keep at least a couple of sizes, from a wider brush for open areas to a smaller one for detail and corner work." },
-    ],
-    relatedSlugs: ["brush-vs-roller-vs-squeegee-in-frp-work", "brush-technique-for-hand-lay-up-and-mould-corners", "workshop-tool-checklist-for-open-moulding"],
-    recommendedLinks: [
-      { href: "/products/paint-brushes/", label: "View Paint Brushes", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "brush-vs-roller-vs-squeegee-in-frp-work",
-    title: "Brush vs Roller vs Squeegee in FRP Work",
-    description: "How brushes, rollers and squeegees each play a role in FRP lay-up — and why most workshops use a combination rather than just one.",
-    category: "Comparison Guide",
-    icon: "layers",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Brush vs Roller vs Squeegee in FRP Work",
-      keywords: ["brush vs roller frp", "laminating roller vs brush", "frp application tools compared"],
-      ogTitle: "Brush vs Roller vs Squeegee in FRP Work",
-      ogDescription: "How brushes, rollers and squeegees each serve a different role in hand lay-up FRP work.",
-    },
-    comparisonTable: {
-      headers: ["", "Brush", "Roller", "Squeegee"],
-      rows: [
-        ["Best For", "Corners, edges, detail, initial wet-out", "Open, flat areas; consolidating laminate", "Removing excess resin, working out air"],
-        ["Control", "High precision in tight areas", "Efficient over large surfaces", "Fine control of resin thickness"],
-        ["Typical Role", "Getting resin into and around reinforcement", "Rolling out and consolidating a wetted layer", "Final pass to remove trapped air/excess resin"],
-      ],
-    },
-    sections: [
-      {
-        heading: "Different tools for different parts of the job",
+        heading: "Brush vs roller vs squeegee",
         body: [
           "Brushes, rollers and squeegees each suit a different part of the hand lay-up process rather than being competing choices for the same task. A brush is typically used to get initial wet-out into corners, edges and detailed mould features where a roller can't reach effectively. A roller works well for consolidating resin across larger, flatter areas of reinforcement once it's roughly wetted out. A squeegee (or a ribbed laminating roller) is often used afterward to work out trapped air and remove excess resin, helping control laminate thickness and finish quality.",
-        ],
-      },
-      {
-        heading: "Why most workshops use a combination",
-        body: [
           "Rather than choosing one tool for an entire job, many fabricators move between brush, roller and squeegee as the geometry of the part demands — brush for the tight spots a roller can't reach, roller for the open expanses, and a final consolidation pass to remove air and excess resin. Which combination makes sense depends on the specific mould geometry and the fabricator's own technique.",
         ],
       },
-    ],
-    faqs: [
-      { q: "Can a roller replace a brush entirely?", a: "Not usually — rollers are efficient over open, flat areas but struggle to reach mould corners, edges and detailed features the way a brush can. Most workshops use both." },
-      { q: "What's the squeegee's role compared to the brush?", a: "A squeegee (or ribbed roller) is typically used after initial wet-out with a brush or roller, to work out trapped air and control resin thickness — a different stage of the process, not a substitute for the brush." },
-    ],
-    relatedSlugs: ["selecting-brushes-for-resin-and-gelcoat-application", "brush-technique-for-hand-lay-up-and-mould-corners", "workshop-tool-checklist-for-open-moulding"],
-    recommendedLinks: [
-      { href: "/products/paint-brushes/", label: "View Paint Brushes", description: "Request an industrial quote." },
-      { href: "/applications/resin-for-hand-lay-up-process/", label: "Resin for Hand Lay-Up", description: "The broader hand lay-up process guide." },
-    ],
-  },
-
-  {
-    slug: "brush-technique-for-hand-lay-up-and-mould-corners",
-    title: "Brush Technique for Hand Lay-Up and Mould Corners",
-    description: "Practical brush technique for wetting out reinforcement and working resin into tight mould corners without trapping air or leaving dry spots.",
-    category: "Process Guide",
-    icon: "grid",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Brush Technique for Hand Lay-Up and Mould Corners",
-      keywords: ["brush technique hand lay up", "wetting out fiberglass with brush", "mould corner resin application"],
-      ogTitle: "Brush Technique for Hand Lay-Up",
-      ogDescription: "Practical brush technique for wetting out FRP reinforcement and reaching tight mould corners without trapping air.",
-    },
-    quickFacts: {
-      "Common Risk in Corners": "Trapped air pockets and dry, unwetted reinforcement",
-      "General Technique": "Work resin in with a stippling or working motion rather than a single pass",
-      "Goal": "Full saturation of reinforcement without disturbing fibre orientation excessively",
-    },
-    sections: [
       {
-        heading: "Why corners and detail areas are the tricky part",
+        heading: "Brush technique for hand lay-up and mould corners",
         body: [
           "Open, flat mould areas are relatively forgiving — a roller or brush working in broad strokes wets out reinforcement efficiently. Corners, radii and detailed mould features are where problems most often show up: air pockets can get trapped where reinforcement bridges a tight radius instead of conforming to it, and resin can pool in some spots while leaving others dry.",
           "A brush's precision is what makes it useful here — working resin into a corner with a stippling or dabbing motion, rather than a single sweeping pass, tends to press reinforcement into the mould detail and displace trapped air more effectively than a broad stroke.",
-        ],
-      },
-      {
-        heading: "Working the reinforcement, not just the resin",
-        body: [
           "Good brush technique in tight areas is as much about working the reinforcement into the mould shape as it is about applying resin — reinforcement that bridges a corner rather than conforming to it leaves a void behind it regardless of how much resin is applied. Checking visually (and by feel, once trained) for full conformance in corners before moving on is standard practice.",
         ],
       },
-    ],
-    faqs: [
-      { q: "Why do air pockets form in mould corners?", a: "Reinforcement can bridge a tight corner or radius instead of fully conforming to it, trapping air behind it. Working the reinforcement into the shape with a brush, not just applying resin, helps address this." },
-      { q: "Should I use a single brush stroke or a working motion in corners?", a: "A working or stippling motion generally helps press reinforcement into detail and work out trapped air more effectively than a single sweeping stroke." },
-    ],
-    relatedSlugs: ["selecting-brushes-for-resin-and-gelcoat-application", "brush-vs-roller-vs-squeegee-in-frp-work", "using-brushes-for-frp-repair"],
-    recommendedLinks: [
-      { href: "/products/paint-brushes/", label: "View Paint Brushes", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "using-brushes-for-frp-repair",
-    title: "Using Brushes for FRP Repair",
-    description: "How brush application supports patch and repair work on FRP components, where precision and small-area control matter more than coverage speed.",
-    category: "Application Guide",
-    icon: "grid",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Using Brushes for FRP Repair",
-      keywords: ["frp repair brush", "fiberglass repair application", "patch repair frp resin"],
-      ogTitle: "Using Brushes for FRP Repair",
-      ogDescription: "Why brush application suits FRP patch and repair work, where precision matters more than speed.",
-    },
-    quickFacts: {
-      "Repair Work Scale": "Typically smaller, more controlled areas than full production lay-up",
-      "Why a Brush Suits It": "Precision and control on a small patch or damaged area",
-    },
-    sections: [
       {
-        heading: "Repair work favours control over speed",
+        heading: "Brushes in FRP repair work",
         body: [
           "FRP repair — patching a damaged panel, tank wall or hull section — is typically smaller in scale and more localised than full production lay-up, which shifts the priority toward precision and control rather than covering a large area quickly. A brush suits this well, letting a fabricator work resin carefully into a prepared repair area, feather the edges of the patch, and work around irregular damage shapes that a roller isn't well suited to.",
+          "In a typical repair sequence — preparing the damaged area, applying reinforcement patches, and wetting them out with resin — the brush is generally used at the wet-out stage, the same fundamental technique as production hand lay-up, just applied to a smaller, often irregularly shaped area.",
         ],
       },
       {
-        heading: "Where brush technique fits in a repair",
-        body: [
-          "In a typical repair sequence — preparing the damaged area, applying reinforcement patches, and wetting them out with resin — the brush is generally used at the wet-out stage, the same fundamental technique as production hand lay-up (see the corner and detail technique guide), just applied to a smaller, often irregularly shaped area.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Is FRP repair technique different from production lay-up?", a: "The fundamental wet-out technique is similar, but repair work is typically smaller-scale and more localised, which favours brush precision over roller speed." },
-      { q: "Can a roller be used for small repairs instead of a brush?", a: "For a small or irregularly shaped repair area, a brush generally offers better control than a roller, which is built for efficiently covering larger, flatter areas." },
-    ],
-    relatedSlugs: ["brush-technique-for-hand-lay-up-and-mould-corners", "selecting-brushes-for-resin-and-gelcoat-application"],
-    recommendedLinks: [
-      { href: "/products/paint-brushes/", label: "View Paint Brushes", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "workshop-tool-checklist-for-open-moulding",
-    title: "Workshop Tool Checklist for Open Moulding",
-    description: "A practical checklist of the basic application tools an open-moulding FRP workshop typically keeps on hand alongside resin and reinforcement.",
-    category: "Buyer Guide",
-    icon: "checklist",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Workshop Tool Checklist for Open Moulding",
-      keywords: ["frp workshop tools", "open moulding tool checklist", "hand lay up tools needed"],
-      ogTitle: "Workshop Tool Checklist for Open Moulding",
-      ogDescription: "A practical checklist of basic application tools an open-moulding FRP workshop typically needs.",
-    },
-    quickFacts: {
-      "Core Tool Categories": "Application (brushes, rollers), consolidation (squeegees, ribbed rollers), mould prep (release wax)",
-      "Beyond Resin & Reinforcement": "Application tools are a separate, easily overlooked line item",
-    },
-    sections: [
-      {
-        heading: "Tools alongside the raw materials",
+        heading: "What an open-moulding workshop keeps on hand",
         body: [
           "Resin and reinforcement get most of the procurement attention in FRP work, but the application tools that get material onto the mould matter just as much for a good result — and are easy to under-order or overlook when planning a job or stocking a workshop. A basic open-moulding toolkit typically includes application brushes in a range of sizes, rollers for consolidating larger areas, a squeegee or ribbed laminating roller for working out air and excess resin, and a mould release agent such as a parting wax to prepare the mould surface before lay-up begins.",
+          "Beyond size, practical workshop factors matter: having enough brushes on hand to avoid a mid-batch scramble when resin starts to gel, and keeping dedicated brushes for different resin and gelcoat systems where cross-contamination is a concern.",
         ],
       },
       {
-        heading: "Planning for consumption, not just the job",
+        heading: "Brush life, cleaning and replacement",
         body: [
-          "Brushes used with catalysed resin generally aren't cleaned and reused indefinitely once resin has begun curing on them (see the care and replacement guide) — so workshops running regular production typically keep a working stock on hand, not just enough for one job, to avoid a mid-batch shortage when resin is already catalysed and gelling.",
+          "Once resin has been catalysed and begins curing in a brush's bristles, it's difficult to fully remove — unlike water-based paint, which typically washes out cleanly. For this reason, many FRP workshops treat brushes used with catalysed resin as effectively a consumable item rather than something cleaned and reused indefinitely, budgeting for a working supply rather than expecting long brush life per unit.",
+          "A brush with cured resin residue in its bristles doesn't apply a clean, even coat the way a fresh one does, and attempting to force reuse can compromise finish quality on visible surfaces like gelcoat. Where a brush is only used briefly with resin that hasn't yet begun to gel, some fabricators do clean brushes promptly with an appropriate solvent before cure sets in, extending usable life for lower-stakes tasks — but for critical surface work, many still prefer a fresh brush regardless.",
         ],
       },
     ],
     faqs: [
-      { q: "What tools does a basic open-moulding setup need beyond resin and reinforcement?", a: "At minimum: application brushes, a roller for larger areas, a squeegee or ribbed roller for consolidation, and a mould release agent for mould preparation." },
-      { q: "Why keep extra brushes on hand rather than ordering as needed?", a: "Because brushes used with catalysed resin typically aren't reusable indefinitely, and running out mid-batch — with resin already catalysed and gelling — isn't a good position to be in." },
+      {
+        q: "Do I need different brushes for resin and gelcoat?",
+        a: "Many workshops do use different brushes for each, partly to avoid cross-contamination and partly because gelcoat application often benefits from a brush suited to a thin, even coat rather than bulk resin wet-out.",
+      },
+      {
+        q: "Can a roller replace a brush entirely?",
+        a: "Not usually — rollers are efficient over open, flat areas but struggle to reach mould corners, edges and detailed features the way a brush can. Most workshops use both.",
+      },
+      {
+        q: "What's the squeegee's role compared to the brush?",
+        a: "A squeegee (or ribbed roller) is typically used after initial wet-out with a brush or roller, to work out trapped air and control resin thickness — a different stage of the process, not a substitute for the brush.",
+      },
+      {
+        q: "Why do air pockets form in mould corners?",
+        a: "Reinforcement can bridge a tight corner or radius instead of fully conforming to it, trapping air behind it. Working the reinforcement into the shape with a brush, not just applying resin, helps address this.",
+      },
+      {
+        q: "What tools does a basic open-moulding setup need beyond resin and reinforcement?",
+        a: "At minimum: application brushes, a roller for larger areas, a squeegee or ribbed roller for consolidation, and a mould release agent for mould preparation.",
+      },
+      {
+        q: "Can resin brushes be cleaned and reused?",
+        a: "If cleaned promptly with an appropriate solvent before the resin cures, some reuse is possible for lower-stakes work — but many workshops treat catalysed-resin brushes as effectively consumable, especially for visible surface work like gelcoat.",
+      },
     ],
-    relatedSlugs: ["selecting-brushes-for-resin-and-gelcoat-application", "caring-for-and-replacing-application-brushes", "brush-vs-roller-vs-squeegee-in-frp-work"],
+    relatedSlugs: ["what-is-frp-mould-release-wax", "what-is-glass-fiber-chopped-strand-mat", "resin-glossary"],
     recommendedLinks: [
-      { href: "/products/paint-brushes/", label: "View Paint Brushes", description: "Request an industrial quote." },
-      { href: "/products/wax-polish/", label: "View Wax Polish", description: "FRP mould release / parting wax." },
+      {
+        href: "/products/paint-brushes/",
+        label: "View Paint Brushes",
+        description: "Request an industrial quote.",
+      },
+      {
+        href: "/products/frp-allied-products/",
+        label: "FRP Allied Products",
+        description: "Brushes, release wax, fillers and workshop consumables.",
+      },
     ],
   },
 
-  {
-    slug: "caring-for-and-replacing-application-brushes",
-    title: "Caring for and Replacing Application Brushes",
-    description: "Practical guidance on brush lifespan in resin work, and why most fabricators treat catalysed-resin brushes as consumable rather than reusable.",
-    category: "Best Practices",
-    icon: "checklist",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Caring for and Replacing Application Brushes",
-      keywords: ["frp brush cleaning", "resin brush disposal", "reusing resin brushes"],
-      ogTitle: "Caring for and Replacing Application Brushes",
-      ogDescription: "Practical guidance on brush lifespan and replacement in resin and gelcoat application work.",
-    },
-    quickFacts: {
-      "Common Practice": "Treating brushes used with catalysed resin as effectively consumable",
-      "Why": "Cured resin in the bristles is difficult to fully remove and can affect future application quality",
-    },
-    sections: [
-      {
-        heading: "Why resin brushes are often treated as consumable",
-        body: [
-          "Once resin has been catalysed and begins curing in a brush's bristles, it's difficult to fully remove — unlike water-based paint, which typically washes out cleanly. For this reason, many FRP workshops treat brushes used with catalysed resin as effectively a consumable item rather than something cleaned and reused indefinitely, budgeting for a working supply rather than expecting long brush life per unit.",
-          "This is a practical, cost-and-quality trade-off familiar to most fabricators: a brush with cured resin residue in its bristles doesn't apply a clean, even coat the way a fresh one does, and attempting to force reuse can compromise finish quality on visible surfaces like gelcoat.",
-        ],
-      },
-      {
-        heading: "Extending usable life where practical",
-        body: [
-          "Where a brush is only used briefly with resin that hasn't yet begun to gel, some fabricators do clean brushes promptly with an appropriate solvent before cure sets in, extending usable life for lower-stakes tasks. Whether this is worthwhile depends on the specific job, the brush, and workshop practice — for critical surface work like gelcoat, many still prefer a fresh brush regardless.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Can resin brushes be cleaned and reused?", a: "If cleaned promptly with an appropriate solvent before the resin cures, some reuse is possible for lower-stakes work — but many workshops treat catalysed-resin brushes as effectively consumable, especially for visible surface work like gelcoat." },
-      { q: "Why not just clean brushes after every use?", a: "Cured resin is difficult to fully remove from bristles, and even partial residue can affect the quality of a subsequent coat — which is why many fabricators find it more practical to budget for replacement brushes rather than relying on cleaning." },
-    ],
-    relatedSlugs: ["workshop-tool-checklist-for-open-moulding", "selecting-brushes-for-resin-and-gelcoat-application"],
-    recommendedLinks: [
-      { href: "/products/paint-brushes/", label: "View Paint Brushes", description: "Request an industrial quote." },
-    ],
-  },
+
+
+
+
 
   // ==========================================================================
   //  SOAP STONE POWDER CLUSTER — added 2026-09-01. General mineral-filler
@@ -8290,23 +7499,31 @@ export const resources = [
   // ==========================================================================
   {
     slug: "what-is-soapstone-talc-powder",
-    title: "What is Soapstone (Talc) Powder?",
-    description: "What soapstone / talc-type mineral powder is, its general mineral character, and why it's used as an industrial filler across several material systems.",
+    title: "Soapstone (Talc) Powder: Complete Mineral Filler Guide",
+    description: "What soapstone / talc powder is, how mineral fillers behave in resin, putty and coating formulations, how it differs from reinforcement and from calcium carbonate, and what to confirm before ordering.",
     category: "Product Guide",
     icon: "info",
-    readingTime: "1 min read",
+    readingTime: "7 min read",
     publishDate: "2026-09-01",
     seo: {
-      title: "What is Soapstone (Talc) Powder? Industrial Filler Explained",
-      keywords: ["what is soapstone powder", "talc powder industrial filler", "steatite powder"],
-      ogTitle: "What is Soapstone (Talc) Powder?",
-      ogDescription: "Soapstone (talc/steatite) powder is a finely processed industrial mineral used as a functional filler or extender across resin, putty, coating and plastic formulations.",
+      title: "Soapstone (Talc) Powder: Industrial Mineral Filler Guide",
+      keywords: [
+        "what is soapstone powder",
+        "talc powder industrial filler",
+        "steatite powder",
+        "mineral filler polyester resin",
+        "soapstone vs calcium carbonate",
+        "filler vs reinforcement",
+      ],
+      ogTitle: "Soapstone (Talc) Powder: Mineral Filler Guide",
+      ogDescription: "Soapstone (talc/steatite) powder is a finely processed industrial mineral used as a functional filler across resin, putty, coating and plastic formulations.",
     },
     quickFacts: {
       "Mineral Class": "Talc-type mineral (soapstone / steatite)",
       "General Character": "Soft mineral, finely ground into powder form",
-      "Function": "Mineral filler / extender",
-      "Used In": "Resin compounds, putties, coatings, plastics and other industrial formulations",
+      Function: "Mineral filler / extender — inert, not reactive",
+      "Used In": "Resin compounds, putties, coatings, plastics and other formulations",
+      Not: "A reinforcement, a pigment, or a binder",
     },
     sections: [
       {
@@ -8322,315 +7539,57 @@ export const resources = [
           "Unlike a resin, catalyst or accelerator, soapstone powder doesn't take part in a curing or chemical reaction — it's a physically blended, inert filler. This is an important distinction for buyers: it changes the bulk, working consistency and sometimes finish characteristics of a formulation, but it's not a substitute for, or equivalent to, a reactive resin-system component.",
         ],
       },
-    ],
-    faqs: [
-      { q: "Is soapstone powder the same as talc?", a: "Soapstone (steatite) is a talc-type mineral, closely related to what's commonly called talc in industrial use — both refer to the same general mineral character used as a filler." },
-      { q: "Does soapstone powder react chemically in a formulation?", a: "No — it's an inert mineral filler, physically blended into a base material rather than reacting with it." },
-      { q: "Is soapstone powder a resin or reinforcement fibre?", a: "No — it's a filler powder, a distinct material role from a resin (the base binder) or a reinforcement fibre. See the filler-vs-reinforcement guide for the distinction." },
-    ],
-    relatedSlugs: ["mineral-fillers-in-polyester-resin", "filler-vs-reinforcement", "soapstone-powder-in-putty-and-filler-compounds"],
-    recommendedLinks: [
-      { href: "/products/soap-stone-powder/", label: "View Soap Stone Powder", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "mineral-fillers-in-polyester-resin",
-    title: "Mineral Fillers in Polyester Resin: Role and Effect",
-    description: "Why mineral fillers like soapstone powder get added to resin compounds, and how that differs from adding reinforcement fibre.",
-    category: "Technical Explainer",
-    icon: "info",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Mineral Fillers in Polyester Resin: Role and Effect",
-      keywords: ["mineral filler polyester resin", "filled resin compound", "resin filler role"],
-      ogTitle: "Mineral Fillers in Polyester Resin",
-      ogDescription: "The general role mineral fillers play when blended into polyester resin compounds, and how it differs from reinforcement.",
-    },
-    quickFacts: {
-      "Common Reasons": "Cost reduction, workability, dimensional stability, surface characteristics",
-      "Physical Role": "Blended into the resin, not chemically reactive with it",
-      "Formulation-Specific": "Effect depends heavily on filler loading level and the specific formulation",
-    },
-    sections: [
       {
-        heading: "Why formulators add mineral filler",
-        body: [
-          "A mineral filler like soapstone powder is blended into a resin compound for several possible reasons depending on the formulation's goals: to reduce the proportion of (typically more expensive) resin needed for a given volume, to adjust the compound's working consistency, or to influence characteristics like shrinkage behaviour or surface finish in the cured material. Which of these matters most, and how much filler is appropriate, is a formulation decision specific to the product being made — not a fixed rule that applies the same way everywhere.",
-        ],
-      },
-      {
-        heading: "An additive role, not a structural one",
-        body: [
-          "Mineral filler adds bulk and can influence certain physical characteristics, but it doesn't provide the tensile/structural reinforcement that glass fibre does in an FRP laminate — the two serve genuinely different purposes in a formulation, and one isn't a substitute for the other (see the filler vs reinforcement guide).",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Does adding mineral filler weaken cured resin?", a: "The effect on mechanical properties depends heavily on the specific formulation, filler loading and application — this is a formulation-specific question best addressed with reference to the actual product being made, not a general rule." },
-      { q: "How much filler is typically used in a resin compound?", a: "This varies significantly by application and desired outcome — filler loading is a formulation decision made by whoever is designing the specific compound, not a fixed industry figure." },
-    ],
-    relatedSlugs: ["what-is-soapstone-talc-powder", "filler-vs-reinforcement", "filler-dispersion-and-mixing-considerations"],
-    recommendedLinks: [
-      { href: "/products/soap-stone-powder/", label: "View Soap Stone Powder", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "filler-vs-reinforcement",
-    title: "Filler vs Reinforcement: Why the Distinction Matters",
-    description: "The functional difference between a mineral filler (like soapstone powder) and a reinforcement material (like glass fibre) in a composite formulation.",
-    category: "Technical Explainer",
-    icon: "layers",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Filler vs Reinforcement in Composite Materials",
-      keywords: ["filler vs reinforcement", "mineral filler vs fiberglass", "composite material roles"],
-      ogTitle: "Filler vs Reinforcement",
-      ogDescription: "Why a mineral filler and a reinforcement fibre play fundamentally different roles in a composite or resin compound, and aren't interchangeable.",
-    },
-    quickFacts: {
-      "Filler": "Adds bulk, adjusts working properties — generally not load-bearing",
-      "Reinforcement": "Provides structural/tensile strength (e.g. glass fibre in FRP)",
-      "Key Point": "One does not substitute for the other",
-    },
-    sections: [
-      {
-        heading: "Two different jobs in a formulation",
+        heading: "Filler vs reinforcement: why the distinction matters",
         body: [
           "In composite and resin-compound terminology, \"filler\" and \"reinforcement\" describe two functionally distinct roles. A filler — a mineral powder like soapstone, for example — is blended in to add bulk, influence working properties, or adjust cost, without itself carrying significant structural load. A reinforcement — most commonly glass fibre in FRP work — is specifically chosen and oriented to carry mechanical (typically tensile) load, giving the finished composite its structural strength.",
-          "This distinction is why a mineral filler can't simply be swapped in for reinforcement fibre, or vice versa, even though both are \"added\" to a resin system — they're solving different problems in the formulation.",
+          "This distinction is why a mineral filler can't simply be swapped in for reinforcement fibre, or vice versa, even though both are \"added\" to a resin system — they're solving different problems in the formulation. Many composite formulations use both: reinforcement for structural strength, and filler for bulk, cost or working-property adjustment.",
         ],
       },
-    ],
-    faqs: [
-      { q: "Can mineral filler replace glass fibre reinforcement?", a: "No — filler and reinforcement serve different structural roles. Filler generally doesn't provide the load-bearing strength that oriented reinforcement fibre does." },
-      { q: "Can a formulation use both filler and reinforcement together?", a: "Yes — many composite formulations use both: reinforcement for structural strength, and filler for bulk, cost or working-property adjustment, each serving its own purpose." },
-    ],
-    relatedSlugs: ["mineral-fillers-in-polyester-resin", "what-is-soapstone-talc-powder"],
-    recommendedLinks: [
-      { href: "/products/soap-stone-powder/", label: "View Soap Stone Powder", description: "Request an industrial quote." },
-      { href: "/products/fibre-glass-mat/", label: "View Glass Fiber", description: "E-glass reinforcement material." },
-    ],
-  },
-
-  {
-    slug: "soapstone-powder-in-putty-and-filler-compounds",
-    title: "Soapstone Powder in Putty and Filler Compounds",
-    description: "How mineral powder is used as bulk filler in putty and body-filler compounds, and what that role generally involves.",
-    category: "Application Guide",
-    icon: "grid",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Soapstone Powder in Putty and Filler Compounds",
-      keywords: ["soapstone powder putty", "mineral filler body filler", "resin putty filler powder"],
-      ogTitle: "Soapstone Powder in Putty and Filler Compounds",
-      ogDescription: "The general role mineral filler powder plays in putty and filler-compound formulations.",
-    },
-    quickFacts: {
-      "Common Use": "Bulking agent in putty / filler-compound formulations",
-      "Why": "Adds workable bulk to a resin-based paste without excessive cost or weight",
-    },
-    sections: [
       {
-        heading: "Bulking out a workable paste",
+        heading: "Mineral fillers in polyester resin compounds",
+        body: [
+          "A mineral filler like soapstone powder is blended into a resin compound for several possible reasons depending on the formulation's goals: to reduce the proportion of (typically more expensive) resin needed for a given volume, to adjust the compound's working consistency, or to influence characteristics like shrinkage behaviour or surface finish in the cured material.",
+          "Which of these matters most, and how much filler is appropriate, is a formulation decision specific to the product being made — not a fixed rule that applies the same way everywhere. Filler adds bulk and can influence certain physical characteristics, but it doesn't provide the tensile or structural reinforcement that glass fibre does in an FRP laminate.",
+        ],
+      },
+      {
+        heading: "In putty and body-filler compounds",
         body: [
           "Putty and body-filler compounds — used for surface repair, filling and smoothing on various substrates — are generally formulated as a paste combining a resin binder with a mineral filler. The filler bulks out the compound to a workable consistency and volume without relying solely on (typically costlier) resin to do so, while the resin binder holds everything together and provides adhesion and cure.",
           "The exact formulation — filler type, loading level, and other additives — is set by whoever is compounding the putty product, and varies by intended use (automotive-type body filler, general industrial filler, and so on).",
         ],
       },
-    ],
-    faqs: [
-      { q: "Why is filler added to putty instead of using pure resin?", a: "Filler bulks out the compound to a workable paste consistency and volume more economically than resin alone, while the resin binder still provides adhesion and cure." },
-      { q: "Does soapstone powder affect how putty sands or finishes?", a: "Filler type and loading can influence sanding and finish characteristics, but this is formulation-specific — the putty manufacturer's own product data is the relevant reference for a specific product." },
-    ],
-    relatedSlugs: ["mineral-fillers-in-polyester-resin", "filler-dispersion-and-mixing-considerations", "soapstone-powder-in-paints-and-coatings"],
-    recommendedLinks: [
-      { href: "/products/soap-stone-powder/", label: "View Soap Stone Powder", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "soapstone-powder-in-paints-and-coatings",
-    title: "Soapstone Powder in Paints and Coatings",
-    description: "The general role mineral extender powders play in paint and coating formulations, distinct from pigment or binder.",
-    category: "Application Guide",
-    icon: "grid",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Soapstone Powder in Paints and Coatings",
-      keywords: ["mineral extender paint", "talc filler coatings", "soapstone powder coatings"],
-      ogTitle: "Soapstone Powder in Paints and Coatings",
-      ogDescription: "How mineral extender powders like soapstone are used in paint and coating formulations, distinct from pigment or binder.",
-    },
-    quickFacts: {
-      "Role in Coatings": "Extender — distinct from pigment (colour) or binder (film-forming resin)",
-      "General Purpose": "Bulk, cost efficiency, and formulation-specific property adjustment",
-    },
-    sections: [
       {
-        heading: "An extender, not a pigment or a binder",
+        heading: "In paints and coatings: an extender, not a pigment",
         body: [
           "In coating formulation terminology, a mineral powder like soapstone used in paints or coatings is generally classed as an extender — distinct from the pigment (which provides colour and opacity) and the binder (the film-forming resin that holds the coating together and gives it adhesion). Extenders bulk out a formulation and can influence properties like sheen or texture, but they aren't the primary colour or film-forming component.",
           "As with resin and putty compounds, the specific role and loading of a mineral extender in a given paint or coating is a formulation decision made by the coating manufacturer, tailored to that product's intended performance.",
         ],
       },
-    ],
-    faqs: [
-      { q: "Does soapstone powder provide colour in a coating?", a: "No — that's the pigment's role. A mineral extender like soapstone bulks out the formulation and can influence texture or sheen, but doesn't provide the coating's colour." },
-      { q: "Can soapstone powder be added to any paint to extend it?", a: "This should follow the specific coating formulation's requirements — extenders are chosen and dosed as part of a coating's design, not freely added to any finished product." },
-    ],
-    relatedSlugs: ["mineral-fillers-in-polyester-resin", "soapstone-powder-in-putty-and-filler-compounds", "mineral-filler-selection-guide"],
-    recommendedLinks: [
-      { href: "/products/soap-stone-powder/", label: "View Soap Stone Powder", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "soapstone-vs-calcium-carbonate-as-a-filler",
-    title: "Soapstone vs Calcium Carbonate as a Mineral Filler",
-    description: "How two common industrial mineral fillers — soapstone (talc-type) and calcium carbonate — generally differ, and why the choice is formulation-specific.",
-    category: "Comparison Guide",
-    icon: "layers",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Soapstone vs Calcium Carbonate as a Mineral Filler",
-      keywords: ["soapstone vs calcium carbonate filler", "talc vs calcium carbonate", "mineral filler comparison"],
-      ogTitle: "Soapstone vs Calcium Carbonate as a Filler",
-      ogDescription: "A general comparison of soapstone (talc-type) and calcium carbonate as industrial mineral fillers.",
-    },
-    quickFacts: {
-      "Soapstone (Talc-Type)": "Platy mineral structure; magnesium silicate family",
-      "Calcium Carbonate": "A different, widely used mineral filler chemistry",
-      "Choice Basis": "Formulation goals, cost, and compatibility with the base material",
-    },
-    sections: [
       {
-        heading: "Two different mineral chemistries, both used as fillers",
+        heading: "Soapstone vs calcium carbonate",
         body: [
-          "Soapstone (talc-type, magnesium silicate) and calcium carbonate are two of the most commonly used mineral fillers across resin, coating, plastics and putty formulations — but they're chemically and structurally different minerals, and each brings its own general handling and performance characteristics to a formulation. Neither is universally \"better\" — the right choice depends on what the formulator is trying to achieve, the base material it's going into, and cost considerations specific to the product being made.",
-          "Because filler selection interacts closely with the rest of a formulation (resin type, other additives, intended application), a direct swap between the two isn't something to do without reformulation and testing — this comparison is offered as general orientation, not a substitution recommendation.",
+          "Soapstone (talc-type, magnesium silicate) and calcium carbonate are two of the most commonly used mineral fillers across resin, coating, plastics and putty formulations — but they're chemically and structurally different minerals, and each brings its own general handling and performance characteristics to a formulation.",
+          "Neither is universally \"better\" — the right choice depends on what the formulator is trying to achieve, the base material it's going into, and cost considerations specific to the product being made. Because filler selection interacts closely with the rest of a formulation, a direct swap between the two isn't something to do without reformulation and testing.",
         ],
       },
-    ],
-    faqs: [
-      { q: "Can calcium carbonate be substituted for soapstone powder directly?", a: "Not without reformulation and testing — the two are chemically different minerals and can behave differently in a given formulation. This should be evaluated by whoever is designing the specific compound." },
-      { q: "Which filler is more commonly used in FRP-related formulations?", a: "Both are widely used across different formulations and industries — the appropriate choice depends on the specific product being formulated, not a universal preference." },
-    ],
-    relatedSlugs: ["mineral-filler-selection-guide", "mineral-fillers-in-polyester-resin", "what-is-soapstone-talc-powder"],
-    recommendedLinks: [
-      { href: "/products/soap-stone-powder/", label: "View Soap Stone Powder", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "filler-dispersion-and-mixing-considerations",
-    title: "Filler Dispersion and Mixing Considerations",
-    description: "Why how thoroughly a mineral filler is dispersed in a compound matters, and general considerations for consistent mixing.",
-    category: "Best Practices",
-    icon: "checklist",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Filler Dispersion and Mixing Considerations",
-      keywords: ["filler dispersion mixing", "mineral powder mixing resin", "uniform filler distribution"],
-      ogTitle: "Filler Dispersion and Mixing Considerations",
-      ogDescription: "Why thorough, consistent mixing of mineral filler powder into a base material matters for a uniform finished compound.",
-    },
-    quickFacts: {
-      "Poor Dispersion Risk": "Uneven properties, weak spots, or inconsistent finish across a batch",
-      "General Practice": "Consistent mixing time and technique between batches",
-    },
-    sections: [
       {
-        heading: "Why even dispersion matters",
+        heading: "Dispersion and mixing",
         body: [
           "A mineral filler only delivers consistent results if it's evenly distributed throughout the base material — pockets of concentrated filler or unmixed resin can create weak spots, uneven surface finish, or inconsistent working properties across a batch. This is true whether the filler is being blended into resin, putty, paint or another base material.",
-          "How much mixing is enough depends on the equipment, batch size and the specific compound — there isn't one universal mixing time that applies across every formulation and process.",
+          "How much mixing is enough depends on the equipment, batch size and the specific compound — there isn't one universal mixing time that applies across every formulation and process. Batch-to-batch consistency in mixing technique and time is one of the more reliable ways to reduce variation in the finished compound.",
         ],
       },
       {
-        heading: "Consistency between batches",
+        heading: "Storage and handling",
         body: [
-          "As with many formulation-adjacent processes covered on this site, batch-to-batch consistency in mixing technique and time is one of the more reliable ways to reduce variation in the finished compound, independent of the specific filler or formulation involved.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "What happens if mineral filler isn't mixed thoroughly?", a: "Uneven distribution can lead to inconsistent properties, weak spots, or an uneven finish across a batch — thorough, consistent mixing helps avoid this." },
-      { q: "Is there a standard mixing time for filler dispersion?", a: "No single figure applies universally — it depends on the equipment, batch size and specific formulation. Establishing a consistent, repeatable process is more useful than chasing a generic number." },
-    ],
-    relatedSlugs: ["mineral-fillers-in-polyester-resin", "soapstone-powder-in-putty-and-filler-compounds"],
-    recommendedLinks: [
-      { href: "/products/soap-stone-powder/", label: "View Soap Stone Powder", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "soapstone-powder-storage-and-handling",
-    title: "Soapstone Powder: Storage and Handling",
-    description: "General storage and handling principles for soapstone powder — moisture protection, dust considerations, and where to find full safety guidance.",
-    category: "Best Practices",
-    icon: "shield",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Soapstone Powder Storage and Handling Guide",
-      keywords: ["soapstone powder storage", "talc powder handling", "mineral filler dust safety"],
-      ogTitle: "Soapstone Powder Storage and Handling",
-      ogDescription: "General storage and handling principles for soapstone / talc-type mineral filler powder.",
-    },
-    quickFacts: {
-      "Storage Priority": "Keep dry and sealed — moisture ingress can affect a fine powder's handling",
-      "Handling Consideration": "Dust generation during handling — appropriate PPE recommended",
-      "Full Guidance": "Always in the product's current Safety Data Sheet (SDS)",
-    },
-    sections: [
-      {
-        heading: "General storage principles",
-        body: [
-          "As a fine mineral powder, soapstone is generally best kept sealed and protected from moisture ingress — a damp powder can clump and become harder to disperse evenly when it's eventually used, affecting mixing quality (see the dispersion guide). Storing bags or containers off the ground, in a dry area, and keeping them properly sealed when not in use are standard practices for powder products of this kind.",
+          "As a fine mineral powder, soapstone is generally best kept sealed and protected from moisture ingress — a damp powder can clump and become harder to disperse evenly when it's eventually used, affecting mixing quality. Storing bags or containers off the ground, in a dry area, and keeping them properly sealed when not in use are standard practices for powder products of this kind.",
           "Handling a fine powder also generates dust, so basic dust-management practice — appropriate PPE such as a dust mask and eye protection, and reasonable ventilation — is worth following during handling and mixing, alongside whatever the product's SDS specifically recommends.",
         ],
       },
-    ],
-    faqs: [
-      { q: "Does soapstone powder need to be kept dry?", a: "Yes — moisture can cause a fine powder to clump, making it harder to disperse evenly when used. Keep containers sealed and stored in a dry area." },
-      { q: "What PPE is recommended when handling soapstone powder?", a: "General dust-handling precautions — such as a dust mask and eye protection — are advisable given it's a fine powder. Follow the product's current SDS for complete guidance." },
-    ],
-    relatedSlugs: ["what-is-soapstone-talc-powder", "filler-dispersion-and-mixing-considerations"],
-    recommendedLinks: [
-      { href: "/products/soap-stone-powder/", label: "View Soap Stone Powder", description: "Request an industrial quote and current SDS." },
-    ],
-  },
-
-  {
-    slug: "mineral-filler-selection-guide",
-    title: "Mineral Filler Selection Guide",
-    description: "A practical checklist for buyers evaluating a mineral filler like soapstone powder for a resin, putty or coating formulation.",
-    category: "Buyer Guide",
-    icon: "checklist",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Mineral Filler Selection Guide",
-      keywords: ["how to select mineral filler", "soapstone powder buying guide", "filler powder supplier checklist"],
-      ogTitle: "Mineral Filler Selection Guide",
-      ogDescription: "What to confirm before ordering a mineral filler powder like soapstone for a specific formulation.",
-    },
-    quickFacts: {
-      "Confirm First": "The intended formulation and base material",
-      "Also Confirm": "Required physical form (fine powder) and any handling constraints",
-      "Avoid": "Assuming a generic mesh/purity spec without discussing the actual formulation",
-    },
-    sections: [
       {
-        heading: "Start with the formulation, not the filler alone",
+        heading: "What to confirm before ordering",
         body: [
           "Because mineral filler performance is formulation-dependent, the most useful starting point for a buyer is describing the intended use — resin compound, putty, paint/coating, plastic, or another application — rather than requesting a filler in isolation. This helps a supplier understand whether the product fits the intended use.",
           "Where a specific mesh size, purity or other technical specification is required for a formulation, that requirement should come from the formulator's own specification or testing — rather than being assumed from general industry figures, since this varies by application and isn't standardised across every use case.",
@@ -8638,15 +7597,57 @@ export const resources = [
       },
     ],
     faqs: [
-      { q: "What should I share when requesting a mineral filler quote?", a: "Your intended formulation or use (resin, putty, coating, plastics, etc.), any specific technical requirement you've identified, expected quantity and delivery location." },
-      { q: "Does one filler grade suit every formulation?", a: "No — filler requirements vary by formulation and intended application. Discuss your specific use case rather than assuming a general-purpose grade fits every need." },
+      {
+        q: "Is soapstone powder the same as talc?",
+        a: "Soapstone (steatite) is a talc-type mineral, closely related to what's commonly called talc in industrial use — both refer to the same general mineral character used as a filler.",
+      },
+      {
+        q: "Does soapstone powder react chemically in a formulation?",
+        a: "No — it's an inert mineral filler, physically blended into a base material rather than reacting with it.",
+      },
+      {
+        q: "Can mineral filler replace glass fibre reinforcement?",
+        a: "No — filler and reinforcement serve different structural roles. Filler generally doesn't provide the load-bearing strength that oriented reinforcement fibre does.",
+      },
+      {
+        q: "Does adding mineral filler weaken cured resin?",
+        a: "The effect on mechanical properties depends heavily on the specific formulation, filler loading and application — this is a formulation-specific question best addressed with reference to the actual product being made, not a general rule.",
+      },
+      {
+        q: "Can calcium carbonate be substituted for soapstone powder directly?",
+        a: "Not without reformulation and testing — the two are chemically different minerals and can behave differently in a given formulation.",
+      },
+      {
+        q: "Does soapstone powder provide colour in a coating?",
+        a: "No — that's the pigment's role. A mineral extender like soapstone bulks out the formulation and can influence texture or sheen, but doesn't provide the coating's colour.",
+      },
+      {
+        q: "What should I share when requesting a mineral filler quote?",
+        a: "Your intended formulation or use (resin, putty, coating, plastics, etc.), any specific technical requirement you've identified, expected quantity and delivery location.",
+      },
     ],
-    relatedSlugs: ["what-is-soapstone-talc-powder", "soapstone-vs-calcium-carbonate-as-a-filler", "soapstone-powder-storage-and-handling"],
+    relatedSlugs: ["what-is-glass-fiber-chopped-strand-mat", "what-is-frp-polyester-pigment", "resin-glossary"],
     recommendedLinks: [
-      { href: "/products/soap-stone-powder/", label: "View Soap Stone Powder", description: "Request an industrial quote." },
-      { href: "/contact/", label: "Contact Samrat Poly Resins", description: "Discuss your intended formulation." },
+      {
+        href: "/products/soap-stone-powder/",
+        label: "View Soap Stone Powder",
+        description: "Request an industrial quote and current SDS.",
+      },
+      {
+        href: "/products/frp-allied-products/",
+        label: "FRP Allied Products",
+        description: "Fillers, pigments, solvents and workshop consumables.",
+      },
     ],
   },
+
+
+
+
+
+
+
+
 
   // ==========================================================================
   //  WAX POLISH (FRP MOULD RELEASE WAX) CLUSTER — added 2026-09-01. General
@@ -8656,23 +7657,31 @@ export const resources = [
   // ==========================================================================
   {
     slug: "what-is-frp-mould-release-wax",
-    title: "What is FRP Mould Release Wax?",
-    description: "What mould release / parting wax is, why FRP moulding needs it, and how it differs from a general-purpose surface polish.",
+    title: "FRP Mould Release Wax: Complete Preparation and Release Guide",
+    description: "What mould release / parting wax is, how to prepare and wax a mould, wax versus PVA, why parts stick, and how to plan mould care across a production run.",
     category: "Product Guide",
     icon: "info",
-    readingTime: "1 min read",
+    readingTime: "8 min read",
     publishDate: "2026-09-01",
     seo: {
-      title: "What is FRP Mould Release Wax? Parting Wax Explained",
-      keywords: ["what is mould release wax", "frp parting wax", "composite mould release explained"],
-      ogTitle: "What is FRP Mould Release Wax?",
-      ogDescription: "Mould release / parting wax creates a barrier layer on an FRP mould surface so cured composite parts release cleanly.",
+      title: "FRP Mould Release Wax: Preparation, Application and Troubleshooting",
+      keywords: [
+        "what is mould release wax",
+        "frp parting wax",
+        "frp mould release agent",
+        "wax vs pva release agent",
+        "frp part stuck to mould",
+        "mould surface preparation frp",
+      ],
+      ogTitle: "FRP Mould Release Wax: Complete Guide",
+      ogDescription: "Mould release / parting wax creates a barrier layer on an FRP mould surface so cured composite parts release cleanly. Preparation, application, comparison and troubleshooting.",
     },
     quickFacts: {
-      "Function": "Creates a release barrier between mould and moulded part",
+      Function: "Creates a release barrier between mould and moulded part",
       "Physical Form": "Paste / wax, applied and buffed by hand",
-      "Context Here": "Positioned specifically for FRP/composite mould preparation, not household use",
-      "Not": "A furniture, shoe or automotive detailing polish",
+      "Applied To": "The mould surface, before gelcoat — never the finished part",
+      "Context Here": "Positioned specifically for FRP/composite mould preparation",
+      Not: "A furniture, shoe or automotive detailing polish",
     },
     sections: [
       {
@@ -8683,390 +7692,124 @@ export const resources = [
         ],
       },
       {
-        heading: "Where it fits in the moulding sequence",
+        heading: "Where it fits in the open-moulding sequence",
         body: [
-          "Mould release wax is applied and buffed to the mould surface before gelcoat goes on — it's a mould-preparation step, not something applied to the finished part. See the application/buffing guide and the gelcoat-sequence guide for how this fits into a typical moulding workflow.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Is this the same as furniture or shoe polish?", a: "No. In this catalogue, it's positioned specifically as an FRP mould release / parting wax for composite moulding tooling — not a furniture, shoe or automotive detailing product." },
-      { q: "Does mould release wax go on the finished part or the mould?", a: "It's applied to the mould surface, before gelcoat and lay-up begin — its job is to let the finished part release cleanly from the mould once cured." },
-      { q: "Why can't FRP parts release cleanly without a release agent?", a: "Gelcoat and resin can bond to an unprepared mould surface as they cure, making the finished part difficult or impossible to remove without damage. A release barrier prevents that bond from forming." },
-    ],
-    relatedSlugs: ["how-to-apply-and-buff-mould-release-wax", "wax-vs-pva-release-agent", "gelcoat-application-and-mould-release-sequence"],
-    recommendedLinks: [
-      { href: "/products/wax-polish/", label: "View Wax Polish", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "how-to-apply-and-buff-mould-release-wax",
-    title: "How to Apply and Buff Mould Release Wax",
-    description: "The general apply-and-buff process for mould release wax, and why an even, thin coat matters more than a thick one.",
-    category: "Process Guide",
-    icon: "grid",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "How to Apply and Buff Mould Release Wax",
-      keywords: ["how to apply mould release wax", "buffing parting wax", "frp mould wax application"],
-      ogTitle: "How to Apply and Buff Mould Release Wax",
-      ogDescription: "The general process for applying and buffing mould release wax on an FRP mould surface.",
-    },
-    quickFacts: {
-      "General Sequence": "Apply a thin, even coat → allow to haze → buff to a smooth finish",
-      "Key Principle": "Thin, even coats generally work better than one thick application",
-      "Multiple Coats": "New or unseasoned moulds often need more than one application cycle",
-    },
-    sections: [
-      {
-        heading: "The general apply-and-buff cycle",
-        body: [
-          "Mould release wax is typically applied as a thin, even coat across the clean, dry mould surface, left to haze (the wax's carrier evaporating, leaving a thin film), and then buffed to a smooth finish before gelcoat is applied. A thin, even coat generally produces a more reliable release barrier than one heavy application — excess wax build-up can transfer unevenly onto the moulded surface rather than staying uniformly on the mould.",
+          "In a standard open-moulding workflow, mould release wax is one of the earliest steps: the mould surface is prepared and cleaned, release wax is applied and buffed (with PVA sometimes added as an extra layer), and only once the release layer is properly established is gelcoat sprayed or brushed onto the mould face. Reinforcement and laminating resin follow once the gelcoat has reached a tack-free state, building up the structural laminate. After curing, the finished part is released from the mould using the release layer prepared at the start.",
+          "Skipping or rushing the release-preparation step doesn't just risk a stuck part at the end — it can also affect gelcoat surface quality if the mould isn't properly prepared beforehand. Treating release preparation as a genuine first step in the process, not an afterthought before demoulding, is standard practice across FRP moulding.",
         ],
       },
       {
-        heading: "Why buffing technique matters",
-        body: [
-          "Buffing isn't just cosmetic — it works the wax into a thin, even, well-bonded film on the mould surface rather than leaving it as a loose residue that could transfer onto the part. A clean buffing cloth, worked in a consistent pattern across the surface, helps achieve this evenness.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Is one thick coat of wax better than several thin coats?", a: "Generally not — a thin, even coat, properly buffed, tends to produce a more reliable release than one heavy application, which can leave uneven residue." },
-      { q: "How do I know when the wax is ready to buff?", a: "It's typically left to haze — the carrier evaporating to leave a thin film — before buffing. Timing can vary by product and ambient conditions, so following the specific product's guidance is worthwhile." },
-    ],
-    relatedSlugs: ["what-is-frp-mould-release-wax", "preparing-a-new-frp-mould", "gelcoat-application-and-mould-release-sequence"],
-    recommendedLinks: [
-      { href: "/products/wax-polish/", label: "View Wax Polish", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "preparing-a-new-frp-mould",
-    title: "Preparing a New FRP Mould",
-    description: "Why a brand-new mould generally needs more thorough release preparation than one already in regular production use.",
-    category: "Process Guide",
-    icon: "grid",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Preparing a New FRP Mould for First Use",
-      keywords: ["new frp mould preparation", "mould conditioning frp", "first release from new mould"],
-      ogTitle: "Preparing a New FRP Mould",
-      ogDescription: "Why a new FRP mould typically needs more thorough wax-release preparation than a well-seasoned mould in regular use.",
-    },
-    quickFacts: {
-      "New Mould": "Often needs multiple wax application cycles before first use",
-      "Seasoned Mould": "Generally needs lighter, more routine touch-up between runs",
-      "Concept": "Sometimes referred to informally as \"conditioning\" or \"seasoning\" a mould",
-    },
-    sections: [
-      {
-        heading: "Why new moulds need extra attention",
-        body: [
-          "A brand-new mould surface hasn't yet built up the release-film history that a mould already in regular production has — so first-time preparation typically involves multiple wax application-and-buff cycles to establish a reliable release barrier before the first part is ever moulded. This upfront investment is generally treated as worthwhile, since a failed first release can damage both the expensive new mould and the part.",
-          "Some fabricators refer to this initial multi-coat process informally as \"conditioning\" or \"seasoning\" the mould — building up a dependable release surface before production begins.",
-        ],
-      },
-      {
-        heading: "Ongoing care after the first release",
-        body: [
-          "Once a mould has an established release history, care typically shifts to lighter, more routine maintenance between production runs rather than the more intensive initial preparation — see the mould-care guide for what that ongoing routine generally looks like.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Why does a new mould need more wax coats than an established one?", a: "A new surface hasn't built up a release-film history yet, so more thorough initial preparation reduces the risk of the first part sticking or damaging the mould." },
-      { q: "What happens if a new mould isn't prepared carefully?", a: "A poor first release can damage the mould surface or the part, or both — which is why upfront preparation on a new mould is generally treated as worth the extra time." },
-    ],
-    relatedSlugs: ["how-to-apply-and-buff-mould-release-wax", "mould-care-between-production-runs", "mould-surface-preparation-basics"],
-    recommendedLinks: [
-      { href: "/products/wax-polish/", label: "View Wax Polish", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "mould-surface-preparation-basics",
-    title: "Mould Surface Preparation Basics",
-    description: "What generally needs to happen to a mould surface before wax release even goes on — cleanliness, surface condition and polish quality.",
-    category: "Process Guide",
-    icon: "grid",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Mould Surface Preparation Basics for FRP Moulding",
-      keywords: ["frp mould surface preparation", "mould cleaning before wax", "mould polish quality"],
-      ogTitle: "Mould Surface Preparation Basics",
-      ogDescription: "The general surface-preparation steps that precede applying mould release wax in FRP moulding.",
-    },
-    quickFacts: {
-      "Before Waxing": "Mould surface should be clean, dry and free of contamination",
-      "Surface Quality": "The mould's own finish quality carries through to the moulded part's surface",
-    },
-    sections: [
-      {
-        heading: "Preparation before the release agent goes on",
+        heading: "Mould surface preparation before waxing",
         body: [
           "A mould surface generally needs to be clean, dry and free of dust, old release residue or other contamination before fresh release wax is applied — contamination trapped under a wax layer can compromise how evenly the release film forms and how the finished part's surface turns out.",
           "Because a mould's surface finish transfers directly to the moulded part (the part is effectively a mirror image of the mould face), the mould's own polish quality is part of surface preparation too — a mould with fine scratches or defects will generally reproduce them on every part moulded from it.",
         ],
       },
-    ],
-    faqs: [
-      { q: "Why does the mould surface need to be spotless before waxing?", a: "Any dust, residue or contamination trapped under the wax layer can affect how evenly the release film forms, and can potentially transfer onto the moulded part's surface." },
-      { q: "Does a scratched mould affect the finished part?", a: "Yes — since the mould surface is essentially reproduced on the moulded part, defects in the mould's polish generally show up on every part made from it." },
-    ],
-    relatedSlugs: ["preparing-a-new-frp-mould", "how-to-apply-and-buff-mould-release-wax"],
-    recommendedLinks: [
-      { href: "/products/wax-polish/", label: "View Wax Polish", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "wax-vs-pva-release-agent",
-    title: "Wax vs PVA Release Agent in FRP Moulding",
-    description: "How wax release and PVA (polyvinyl alcohol) release film generally differ, and why some workflows use both together.",
-    category: "Comparison Guide",
-    icon: "layers",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Wax vs PVA Release Agent Compared",
-      keywords: ["wax vs pva release agent", "pva release film frp", "mould release comparison"],
-      ogTitle: "Wax vs PVA Release Agent",
-      ogDescription: "A general comparison of paste-wax mould release and liquid PVA release film in FRP moulding, and where each is typically used.",
-    },
-    quickFacts: {
-      "Wax Release": "Paste, applied and buffed, forms a durable release film across multiple uses",
-      "PVA Release": "Liquid film, sprayed or brushed on, generally a single-use sacrificial layer",
-      "Common Practice": "Some workflows use PVA over wax, especially for a first release or complex geometry",
-    },
-    sections: [
       {
-        heading: "Two different release mechanisms",
+        heading: "How to apply and buff release wax",
         body: [
-          "Wax release forms a semi-permanent, buffable film that can support multiple part releases across a production run before needing reapplication. PVA (polyvinyl alcohol) release agent is a different approach entirely — a liquid film sprayed or brushed onto the mould (often over a wax base) that acts as a sacrificial layer, generally intended for a single release before it's washed off and reapplied.",
-          "Because PVA is water-soluble, it's typically removed with a water rinse after the part is released, whereas wax film is more durable and buffed rather than washed away between uses.",
+          "Mould release wax is typically applied as a thin, even coat across the clean, dry mould surface, left to haze (the wax's carrier evaporating, leaving a thin film), and then buffed to a smooth finish before gelcoat is applied. A thin, even coat generally produces a more reliable release barrier than one heavy application — excess wax build-up can transfer unevenly onto the moulded surface rather than staying uniformly on the mould.",
+          "Buffing isn't just cosmetic — it works the wax into a thin, even, well-bonded film on the mould surface rather than leaving it as a loose residue that could transfer onto the part. A clean buffing cloth, worked in a consistent pattern across the surface, helps achieve this evenness. Timing between application and buffing can vary by product and ambient conditions, so following the specific product's guidance is worthwhile.",
         ],
       },
       {
-        heading: "Why some workflows use both",
+        heading: "Preparing a new mould for its first release",
         body: [
+          "A brand-new mould surface hasn't yet built up the release-film history that a mould already in regular production has — so first-time preparation typically involves multiple wax application-and-buff cycles to establish a reliable release barrier before the first part is ever moulded. This upfront investment is generally treated as worthwhile, since a failed first release can damage both the expensive new mould and the part.",
+          "Some fabricators refer to this initial multi-coat process informally as \"conditioning\" or \"seasoning\" the mould — building up a dependable release surface before production begins. Once a mould has an established release history, care typically shifts to lighter, more routine maintenance between production runs.",
+        ],
+      },
+      {
+        heading: "Wax vs PVA release agent",
+        body: [
+          "Wax release forms a semi-permanent, buffable film that can support multiple part releases across a production run before needing reapplication. PVA (polyvinyl alcohol) release agent is a different approach entirely — a liquid film sprayed or brushed onto the mould (often over a wax base) that acts as a sacrificial layer, generally intended for a single release before it's washed off and reapplied. Because PVA is water-soluble, it's typically removed with a water rinse after the part is released, whereas wax film is more durable and buffed rather than washed away between uses.",
           "PVA is sometimes used as an extra release layer over a wax base — particularly for a brand-new mould's first release, or for complex geometry where the fabricator wants additional insurance against sticking. This isn't universal practice, and whether it's warranted depends on the mould, the part's complexity, and the fabricator's own experience with that specific mould.",
         ],
       },
-    ],
-    faqs: [
-      { q: "Do I need PVA if I'm already using wax release?", a: "Not always — many production runs use wax release alone once a mould is established. PVA is more commonly added as extra insurance for a first release or complex geometry." },
-      { q: "How is PVA removed after use?", a: "PVA is generally water-soluble and rinsed off with water after the part releases, unlike wax film, which is buffed rather than washed away." },
-    ],
-    relatedSlugs: ["what-is-frp-mould-release-wax", "preparing-a-new-frp-mould", "choosing-a-release-agent-for-frp-moulding"],
-    recommendedLinks: [
-      { href: "/products/wax-polish/", label: "View Wax Polish", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "choosing-a-release-agent-for-frp-moulding",
-    title: "Choosing a Release Agent for FRP Moulding",
-    description: "A practical checklist for deciding what mould release approach — wax, PVA or a combination — suits a given FRP moulding job.",
-    category: "Buyer Guide",
-    icon: "checklist",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Choosing a Release Agent for FRP Moulding",
-      keywords: ["how to choose mould release agent", "frp release agent selection", "mould release buying guide"],
-      ogTitle: "Choosing a Release Agent for FRP Moulding",
-      ogDescription: "What to consider when choosing between wax release, PVA, or a combination approach for FRP mould preparation.",
-    },
-    quickFacts: {
-      "Key Factors": "Mould age/history, part geometry complexity, production run length",
-      "New/Complex Mould": "Often warrants more thorough preparation (wax + PVA)",
-      "Established Mould, Simple Geometry": "Often manageable with routine wax maintenance alone",
-    },
-    sections: [
       {
-        heading: "Questions worth asking before choosing",
+        heading: "Choosing a release approach for a given job",
         body: [
-          "Is the mould new or already established in production? A new mould generally benefits from more thorough initial preparation (see the new-mould guide). Is the part geometry simple and straightforward, or complex with undercuts, tight radii or fine detail where release risk is higher? More complex geometry is where some fabricators add a PVA layer over wax as extra insurance. And how long is the production run — a longer run may call for planning wax maintenance between cycles (see the mould-care guide) rather than a one-time application.",
+          "Is the mould new or already established in production? A new mould generally benefits from more thorough initial preparation. Is the part geometry simple and straightforward, or complex with undercuts, tight radii or fine detail where release risk is higher? More complex geometry is where some fabricators add a PVA layer over wax as extra insurance.",
+          "And how long is the production run — a longer run may call for planning wax maintenance between cycles rather than a one-time application. There isn't one release approach that suits every job; the right one depends on the mould, part complexity and run length.",
         ],
       },
-    ],
-    faqs: [
-      { q: "What should I share when requesting a release-agent quote?", a: "The mould's age/history if known, part geometry complexity, expected production run length, and whether you're also considering PVA alongside wax." },
-      { q: "Is there one release approach that suits every job?", a: "Not necessarily — the right approach depends on the mould, part complexity and run length. See the wax-vs-PVA comparison for the practical trade-offs." },
-    ],
-    relatedSlugs: ["wax-vs-pva-release-agent", "preparing-a-new-frp-mould", "mould-care-between-production-runs"],
-    recommendedLinks: [
-      { href: "/products/wax-polish/", label: "View Wax Polish", description: "Request an industrial quote." },
-      { href: "/contact/", label: "Contact Samrat Poly Resins", description: "Discuss your mould and production requirement." },
-    ],
-  },
-
-  {
-    slug: "common-mould-release-failures",
-    title: "Common Mould Release Failures and Their Causes",
-    description: "What typically causes a part to stick, and other release-related problems, plus general prevention practices.",
-    category: "Troubleshooting Guide",
-    icon: "checklist",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Common Mould Release Failures in FRP Moulding",
-      keywords: ["frp part stuck to mould", "mould release failure", "gelcoat sticking to mould"],
-      ogTitle: "Common Mould Release Failures",
-      ogDescription: "What commonly causes FRP parts to stick to the mould, and general practices to help prevent it.",
-    },
-    quickFacts: {
-      "Common Causes": "Insufficient wax coverage, uneven application, worn-out release film, mould surface defects",
-      "Prevention": "Consistent, thorough preparation and mould care between runs",
-    },
-    sections: [
       {
-        heading: "Why parts stick",
+        heading: "Why parts stick, and how to prevent it",
         body: [
           "A part sticking to the mould is usually traced back to inadequate release coverage somewhere on the mould surface — a thin spot in the wax film, an area missed during application, wax that's worn thin after repeated releases without reapplication, or a mould surface defect the release film couldn't adequately cover. Reviewing the specific area where sticking occurred, rather than assuming the whole mould is at fault, is a reasonable first diagnostic step.",
+          "Consistent, thorough wax application technique, a planned reapplication schedule as part of mould care between runs, and periodic inspection of the mould surface for wear or damage are the general practices that reduce release-failure risk over a production run.",
         ],
       },
       {
-        heading: "Reducing the risk of a repeat failure",
-        body: [
-          "Consistent, thorough wax application technique (see the apply-and-buff guide), a planned reapplication schedule as part of mould care between runs, and periodic inspection of the mould surface for wear or damage are the general practices that reduce release-failure risk over a production run.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "What's the most common cause of a part sticking to the mould?", a: "Insufficient or uneven wax coverage on the mould surface — a thin spot, missed area, or worn release film after repeated uses without reapplication are the usual culprits." },
-      { q: "How often should release wax be reapplied?", a: "This depends on the mould, part complexity and how many releases the film has already supported — see the mould-care guide for general planning considerations." },
-    ],
-    relatedSlugs: ["mould-care-between-production-runs", "how-to-apply-and-buff-mould-release-wax", "preparing-a-new-frp-mould"],
-    recommendedLinks: [
-      { href: "/products/wax-polish/", label: "View Wax Polish", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "mould-care-between-production-runs",
-    title: "Mould Care Between Production Runs",
-    description: "General practices for maintaining an FRP mould's release performance and surface condition across repeated production cycles.",
-    category: "Best Practices",
-    icon: "shield",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Mould Care Between Production Runs",
-      keywords: ["frp mould maintenance", "mould care between runs", "tooling maintenance frp"],
-      ogTitle: "Mould Care Between Production Runs",
-      ogDescription: "General practices for maintaining an FRP mould's release performance and surface condition between production cycles.",
-    },
-    quickFacts: {
-      "Routine Tasks": "Cleaning, inspecting, and periodically reapplying release wax",
-      "Goal": "Consistent release performance and mould surface longevity across many cycles",
-    },
-    sections: [
-      {
-        heading: "Why ongoing care matters",
+        heading: "Mould care between production runs",
         body: [
           "A mould is a capital asset expected to produce many parts over its working life, and its release performance and surface finish quality both degrade gradually with use if not maintained. Between production runs, routine care generally includes cleaning any residue off the mould surface, inspecting for wear, scratches or damage, and reapplying release wax on a planned schedule rather than only when a release failure has already occurred.",
-        ],
-      },
-      {
-        heading: "Planning maintenance into the production schedule",
-        body: [
           "Fabricators running regular production typically build wax reapplication into their routine schedule — a set number of releases per wax cycle, or a fixed inspection interval — rather than reacting only after a sticking incident. This proactive approach generally costs less in downtime than dealing with a failed release mid-run.",
         ],
       },
-    ],
-    faqs: [
-      { q: "How is mould condition typically checked between runs?", a: "Visual and tactile inspection for wear, scratches, residue or damage to the release film and mould surface, alongside routine cleaning." },
-      { q: "Should wax be reapplied on a schedule or only after a problem occurs?", a: "Many fabricators plan wax reapplication proactively — on a set schedule or after a certain number of releases — rather than waiting for a sticking failure to prompt it." },
-    ],
-    relatedSlugs: ["common-mould-release-failures", "preparing-a-new-frp-mould", "how-to-apply-and-buff-mould-release-wax"],
-    recommendedLinks: [
-      { href: "/products/wax-polish/", label: "View Wax Polish", description: "Request an industrial quote." },
-    ],
-  },
-
-  {
-    slug: "gelcoat-application-and-mould-release-sequence",
-    title: "Gelcoat Application and Mould Release Sequence",
-    description: "Where mould release wax fits in the overall open-moulding sequence, from mould preparation through to gelcoat and lamination.",
-    category: "Process Guide",
-    icon: "grid",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Gelcoat Application and Mould Release Sequence",
-      keywords: ["frp moulding sequence", "gelcoat mould release order", "open moulding process steps"],
-      ogTitle: "Gelcoat Application and Mould Release Sequence",
-      ogDescription: "How mould release wax, gelcoat and lamination fit together in the typical open-moulding process sequence.",
-    },
-    quickFacts: {
-      "General Sequence": "Mould prep → release wax (and PVA if used) → gelcoat → lamination/lay-up → cure → release",
-      "Key Point": "Each step depends on the previous one being properly completed",
-    },
-    sections: [
       {
-        heading: "The typical open-moulding sequence",
-        body: [
-          "In a standard open-moulding workflow, mould release wax is one of the earliest steps: the mould surface is prepared and cleaned, release wax is applied and buffed (with PVA sometimes added as an extra layer — see the wax vs PVA guide), and only once the release layer is properly established is gelcoat sprayed or brushed onto the mould face. Reinforcement and laminating resin follow once the gelcoat has reached a tack-free state, building up the structural laminate. After curing, the finished part is released from the mould using the release layer prepared at the start.",
-        ],
-      },
-      {
-        heading: "Why sequencing matters",
-        body: [
-          "Skipping or rushing the release-preparation step doesn't just risk a stuck part at the end — it can also affect gelcoat surface quality if the mould isn't properly prepared beforehand. Treating release preparation as a genuine first step in the process, not an afterthought before demoulding, is standard practice across FRP moulding.",
-        ],
-      },
-    ],
-    faqs: [
-      { q: "Does mould release wax go on before or after gelcoat?", a: "Before — release preparation is one of the first steps in the moulding sequence, completed before gelcoat is applied to the mould." },
-      { q: "What happens if release wax preparation is rushed?", a: "It can lead to release failures at demoulding, and potentially affect gelcoat surface quality if the mould wasn't adequately prepared beforehand." },
-    ],
-    relatedSlugs: ["what-is-frp-mould-release-wax", "how-to-apply-and-buff-mould-release-wax", "wax-vs-pva-release-agent"],
-    recommendedLinks: [
-      { href: "/products/wax-polish/", label: "View Wax Polish", description: "Request an industrial quote." },
-      { href: "/products/gp-gelcoat-resin/", label: "View GP Gelcoat Resin", description: "Samrat's published gelcoat resin." },
-    ],
-  },
-
-  {
-    slug: "wax-release-for-marine-and-panel-moulding",
-    title: "Wax Release for Marine and Panel Moulding",
-    description: "How release-wax practice generally applies across large-scale FRP contexts like marine hulls and panel production.",
-    category: "Application Guide",
-    icon: "grid",
-    readingTime: "1 min read",
-    publishDate: "2026-09-01",
-    seo: {
-      title: "Wax Release for Marine and Panel Moulding",
-      keywords: ["marine mould release wax", "frp panel mould release", "boat hull mould wax"],
-      ogTitle: "Wax Release for Marine and Panel Moulding",
-      ogDescription: "How mould release wax practice applies to large-scale FRP contexts like marine hull and panel production.",
-    },
-    quickFacts: {
-      "Larger Moulds": "Same release principles, more surface area to prepare consistently",
-      "Repeat Production": "Mould care and reapplication scheduling become more significant at scale",
-    },
-    sections: [
-      {
-        heading: "The same principles, at a larger scale",
+        heading: "Large moulds: marine hulls and panel production",
         body: [
           "Marine hull moulds and large FRP panel moulds don't require a fundamentally different release approach from smaller parts — the same apply-and-buff wax principles apply — but the larger surface area makes consistent, even coverage more demanding, and inconsistency across a big surface is more likely to show up as a localised release problem in one area rather than across the whole part.",
-          "For production runs turning out many panels or hulls from the same mould, mould care and a planned reapplication schedule (see the mould-care guide) become more operationally significant, since a release failure partway through a large or valuable part is costlier than on a small one.",
+          "For production runs turning out many panels or hulls from the same mould, mould care and a planned reapplication schedule become more operationally significant, since a release failure partway through a large or valuable part is costlier than on a small one.",
         ],
       },
     ],
     faqs: [
-      { q: "Is release wax application different for large moulds like boat hulls?", a: "The core process is the same, but achieving even, consistent coverage across a larger surface takes more care, and mould-maintenance scheduling matters more given the value and scale of each part." },
-      { q: "Does panel size affect how often wax needs reapplying?", a: "Larger or more complex parts can be more sensitive to release-film wear, which is why proactive mould-care scheduling is emphasised more in high-volume or large-part production." },
+      {
+        q: "Is this the same as furniture or shoe polish?",
+        a: "No. In this catalogue, it's positioned specifically as an FRP mould release / parting wax for composite moulding tooling — not a furniture, shoe or automotive detailing product.",
+      },
+      {
+        q: "Does mould release wax go on the finished part or the mould?",
+        a: "It's applied to the mould surface, before gelcoat and lay-up begin — its job is to let the finished part release cleanly from the mould once cured.",
+      },
+      {
+        q: "Is one thick coat of wax better than several thin coats?",
+        a: "Generally not — a thin, even coat, properly buffed, tends to produce a more reliable release than one heavy application, which can leave uneven residue.",
+      },
+      {
+        q: "Why does a new mould need more wax coats than an established one?",
+        a: "A new surface hasn't built up a release-film history yet, so more thorough initial preparation reduces the risk of the first part sticking or damaging the mould.",
+      },
+      {
+        q: "Do I need PVA if I'm already using wax release?",
+        a: "Not always — many production runs use wax release alone once a mould is established. PVA is more commonly added as extra insurance for a first release or complex geometry.",
+      },
+      {
+        q: "What's the most common cause of a part sticking to the mould?",
+        a: "Insufficient or uneven wax coverage on the mould surface — a thin spot, missed area, or worn release film after repeated uses without reapplication are the usual culprits.",
+      },
+      {
+        q: "Should wax be reapplied on a schedule or only after a problem occurs?",
+        a: "Many fabricators plan wax reapplication proactively — on a set schedule or after a certain number of releases — rather than waiting for a sticking failure to prompt it.",
+      },
+      {
+        q: "Does a scratched mould affect the finished part?",
+        a: "Yes — since the mould surface is essentially reproduced on the moulded part, defects in the mould's polish generally show up on every part made from it.",
+      },
     ],
-    relatedSlugs: ["mould-care-between-production-runs", "how-to-apply-and-buff-mould-release-wax", "common-mould-release-failures"],
+    relatedSlugs: ["selecting-brushes-for-resin-and-gelcoat-application", "what-is-gel-coat-resin", "resin-glossary"],
     recommendedLinks: [
-      { href: "/products/wax-polish/", label: "View Wax Polish", description: "Request an industrial quote." },
+      {
+        href: "/products/wax-polish/",
+        label: "View Wax Polish",
+        description: "FRP mould release / parting wax. Request an industrial quote.",
+      },
+      {
+        href: "/products/gp-gelcoat-resin/",
+        label: "View GP Gelcoat Resin",
+        description: "The gelcoat applied after the release layer.",
+      },
     ],
   },
+
+
+
+
+
+
+
+
+
 ];
