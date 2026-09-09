@@ -2,7 +2,11 @@
 // Checks the things that could only break in production: the Cloudflare 301s
 // (which astro preview cannot apply), the live sitemap, canonicals, robots and
 // the new pages. Run: node verify-live.mjs
-import { RETIRE } from './consolidated-guides.mjs';
+import { RETIRE as R1 } from './consolidated-guides.mjs';
+import { RETIRE as R2 } from './consolidation-2-plan.mjs';
+
+// Both consolidation passes are verified against production together.
+const RETIRE = { ...R1, ...R2 };
 
 const BASE = 'https://samratpolyresins.in';
 const get = (p, opts = {}) => fetch(BASE + p, { redirect: 'manual', ...opts });
