@@ -4,7 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import EnquiryForm from '../../components/EnquiryForm.astro';
 import { products } from '../../data/products.js';
 import { resources } from '../../data/resources.js';
-import { site, buildCanonicalUrl } from '../../data/site.js';
+import { site, buildCanonicalUrl, ORGANIZATION_ID, WEBSITE_ID } from '../../data/site.js';
 
 // "FRP Allied Products" is an existing category in products.js with 7 products
 // and, after the September 2026 consolidation, six substantial supporting
@@ -51,7 +51,8 @@ const collectionJsonLd = {
   name: 'FRP Allied Products',
   url: buildCanonicalUrl('/products/frp-allied-products/'),
   description: `The ${grades.length} reinforcement, colour, solvent, filler, release and application products Samrat Poly Resins supplies alongside its resin grades.`,
-  isPartOf: { '@id': `${site.url}/#organization` },
+  isPartOf: { '@id': WEBSITE_ID },
+  publisher: { '@id': ORGANIZATION_ID },
   hasPart: grades.map((p) => ({
     '@type': 'Product',
     name: p.name,
@@ -78,8 +79,8 @@ const collectionJsonLd = {
           <p class="eyebrow">Product family</p>
           <h1>FRP Allied Products</h1>
           <p class="fam-hero-sub">
-            Resin is only part of what an FRP job consumes. These {grades.length} products cover the rest of the
-            bill of materials — E-glass chopped strand mat for reinforcement, polyester pigment for colour,
+            Resin is only part of what an FRP job consumes. {site.name} supplies these {grades.length} products alongside its resin grades, covering the rest of the
+            bill of materials: E-glass chopped strand mat for reinforcement, polyester pigment for colour,
             styrene monomer as a reactive diluent, NC thinner for lacquer systems, soapstone powder as a
             mineral filler, mould release wax for tooling, and application brushes. Each is a distinct
             published product with its own specifications, and most carry a downloadable TDS.

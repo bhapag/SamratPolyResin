@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { QUESTIONS, selectorCatalogue } from '../../data/resin-selector.js';
-import { site, buildCanonicalUrl } from '../../data/site.js';
+import { site, buildCanonicalUrl, ORGANIZATION_ID } from '../../data/site.js';
 import { products } from '../../data/products.js';
 
 const catalogue = selectorCatalogue();
@@ -36,7 +36,7 @@ const webAppJsonLd = {
   operatingSystem: 'Any',
   browserRequirements: 'Requires JavaScript',
   isAccessibleForFree: true,
-  publisher: { '@id': `${site.url}/#organization` },
+  publisher: { '@id': ORGANIZATION_ID },
   description:
     'Narrow the Samrat Poly Resins catalogue to the grades whose published applications match your component, process, finish and stated requirement.',
 };

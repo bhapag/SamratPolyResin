@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import { site } from '../data/site.js';
+import { site, buildCanonicalUrl, ORGANIZATION_ID } from '../data/site.js';
 import { products, CATEGORIES } from '../data/products.js';
 import factoryGate from '../assets/about/factory-gate.jpg';
 import productionInfrastructure from '../assets/facility/production-infrastructure.jpg';
@@ -14,21 +14,62 @@ const facilityPhotos = [
 ];
 
 const years = new Date().getFullYear() - Number(site.established);
+
+// This page is the canonical brand/company page for the business — deliberately
+// NOT a second "brand" page alongside it, which would split the entity.
+//
+// It was previously titled "About us" with an H1 of "Engineered for quality.
+// Built for consistency." — a slogan that never states who the company is.
+// Search Console (1 Aug – 6 Sept 2026) shows this page at average position
+// 23.8 for branded queries, which is where a company's own About page should
+// never be. The H1 now carries the brand name; the slogan moves below it,
+// where it still reads as intended.
+const brandPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: `About ${site.name}`,
+  url: buildCanonicalUrl('/about/'),
+  description: `${site.name} — resin manufacturer at ${site.address.line2}, ${site.address.state}, established ${site.established}.`,
+  mainEntity: { '@id': ORGANIZATION_ID },
+  primaryImageOfPage: { '@type': 'ImageObject', url: buildCanonicalUrl(site.ogImage) },
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: buildCanonicalUrl('/') },
+    { '@type': 'ListItem', position: 2, name: `About ${site.name}`, item: buildCanonicalUrl('/about/') },
+  ],
+};
 ---
-<Base title="About us" description={`About ${site.name} — manufacturer of GP Polyester, Gel Coat, Fire Retardant, Epoxy and Specialty Resin systems in ${site.address.line2}, ${site.address.state}. Established ${site.established}.`}>
+<Base
+  title="Samrat Poly Resins — Resin Manufacturer, Ludhiana"
+  description={`${site.name} is a resin manufacturer at ${site.address.line2}, ${site.address.state}, established ${site.established}. GP polyester, gelcoat, fire-retardant, epoxy and specialty resin systems. Proprietor ${site.proprietor}. GSTIN ${site.gst}. ISO 9001:2015 certified.`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(brandPageJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
   <section class="section about-hero">
     <div class="wrap">
-      <p class="eyebrow">About {site.name}</p>
-      <h1>
-        Engineered for<br/>
-        <span class="hl" data-text="quality">quality</span>.<br/>
-        Built for<br/>
-        <span class="hl" data-text="consistency">consistency</span>.
-      </h1>
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span>
+        <span aria-current="page">About {site.name}</span>
+      </nav>
+      <p class="eyebrow">The company</p>
+      <h1>{site.name}</h1>
+      <p class="about-tagline">
+        Engineered for <span class="hl" data-text="quality">quality</span>.
+        Built for <span class="hl" data-text="consistency">consistency</span>.
+      </p>
       <p class="about-lead">
-        Established in {site.established}, {site.name} is a Punjab-based
-        manufacturer of GP Polyester, Gel Coat, Fire Retardant, Epoxy and
-        Specialty Resin systems serving composite manufacturers across India.
+        {site.name} is a resin manufacturer based at {site.address.line2},{' '}
+        {site.address.state}, established in {site.established} and run by
+        proprietor {site.proprietor}. We make GP polyester, gelcoat,
+        fire-retardant, epoxy and specialty resin systems — {products.length} published
+        grades in total — and supply FRP and composite manufacturers across
+        {' '}{site.statesServed.filter((s) => !s.startsWith('Export')).length} Indian states.
+        Quality management is certified to ISO 9001:2015.
       </p>
     </div>
   </section>
@@ -104,8 +145,17 @@ const years = new Date().getFullYear() - Number(site.established);
 
   <style>
     .about-hero { padding-bottom: 0; }
-    .about-hero h1 { font-size: clamp(1.9rem, 5vw, 3.1rem); margin-top: 0.6rem; }
-    .about-lead { color: var(--ink-dim); margin-top: 1.3rem; max-width: 52ch; font-size: 1.05rem; }
+    .about-hero h1 { font-size: clamp(2.1rem, 5.5vw, 3.4rem); margin-top: 0.6rem; }
+    /* The slogan that used to be the H1. It still reads as the headline
+       statement, but the H1 above it now names the company — which is what a
+       canonical brand page has to do. */
+    .about-tagline {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2.6vw, 1.6rem);
+      line-height: 1.35; margin-top: 0.7rem; color: var(--ink);
+      max-width: 26ch;
+    }
+    .about-lead { color: var(--ink-dim); margin-top: 1.3rem; max-width: 62ch; font-size: 1.02rem; line-height: 1.72; }
 
     .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(1.5rem, 5vw, 4rem); }
     .about-copy p { color: var(--ink-dim); margin-bottom: 1.1rem; }

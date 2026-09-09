@@ -1,59 +1,33 @@
 ---
 import Base from '../layouts/Base.astro';
 import EnquiryForm from '../components/EnquiryForm.astro';
-import { site, buildWhatsAppLink, buildCanonicalUrl } from '../data/site.js';
+import { site, buildWhatsAppLink, buildCanonicalUrl, buildOrganizationSchema, ORGANIZATION_ID } from '../data/site.js';
 
 const waLink = buildWhatsAppLink('generic');
 
 const fullAddress = `${site.address.line1}, ${site.address.line2}, ${site.address.state} ${site.address.pin}`;
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${site.mapsQuery}`;
 
-// LocalBusiness structured data for the one real facility.
+// LocalBusiness for the one real facility, derived from the SAME shared
+// Organization node used sitewide (see src/data/site.js) so the name, address,
+// phone and certification here can never drift from the rest of the site. Only
+// the @type and the map link differ.
 //
-// Search Console shows genuine local demand that this page was not marked up
-// for: `resin shop in ludhiana` (position 14.5), `doraha ludhiana fabricator
-// with phone number` (11.0), `factory near doraha, ludhiana with phone number`
-// (38.5), `resin shop near me` (7.0) and `frp resin suppliers near me` (1.0),
+// Search Console shows genuine local demand this page is marked up for:
+// `resin shop in ludhiana` (position 14.5), `doraha ludhiana fabricator with
+// phone number` (11.0), `factory near doraha, ludhiana with phone number`
+// (38.5), `resin shop near me` (7.0), `frp resin suppliers near me` (1.0),
 // with Ludhiana the top city in GA4 for the last 7 days.
 //
-// It reuses the sitewide Organization's @id so Google treats this as the same
-// entity rather than a second business. EVERY field below comes from the
-// verified values in site.js. Deliberately ABSENT, because the repository does
-// not contain them and inventing them would be a false business claim:
-//   - openingHours / openingHoursSpecification
-//   - geo coordinates
-//   - priceRange
-//   - aggregateRating or review
+// Still deliberately ABSENT, because the repository does not contain them and
+// inventing them would be a false business claim:
+//   openingHours / openingHoursSpecification, geo coordinates, priceRange,
+//   aggregateRating, review.
 // Supply real opening hours and verified coordinates and they can be added.
 const localBusinessJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": `${site.url}/#organization`,
-  name: site.name,
-  url: site.url,
-  telephone: site.phones.map((phone) => phone.dial),
-  email: site.email,
-  foundingDate: site.established,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: site.address.line1,
-    addressLocality: "Doraha, Ludhiana",
-    addressRegion: "Punjab",
-    postalCode: site.address.pin,
-    addressCountry: "IN",
-  },
+  ...buildOrganizationSchema(),
+  '@type': 'LocalBusiness',
   hasMap: mapsUrl,
-  areaServed: site.statesServed
-    .filter((s) => !s.startsWith('Export'))
-    .map((s) => ({ "@type": "AdministrativeArea", name: s })),
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "sales",
-    telephone: site.phones[0].dial,
-    email: site.email,
-    areaServed: "IN",
-    availableLanguage: ["en", "hi", "pa"],
-  },
 };
 
 const contactPageJsonLd = {
@@ -61,12 +35,12 @@ const contactPageJsonLd = {
   "@type": "ContactPage",
   name: `Contact ${site.name}`,
   url: buildCanonicalUrl('/contact/'),
-  mainEntity: { "@id": `${site.url}/#organization` },
+  mainEntity: { '@id': ORGANIZATION_ID },
 };
 ---
 <Base
-  title="Contact — Resin Quote, Doraha Ludhiana"
-  description={`Request a resin quote from ${site.name}. Phone, WhatsApp, email and enquiry form, plus directions to the plant at ${site.address.line2} — ${site.address.pin}, Punjab.`}
+  title="Contact Samrat Poly Resins — Doraha, Ludhiana"
+  description={`Contact ${site.name} — phone, WhatsApp, email and enquiry form, plus directions to the plant at ${site.address.line1}, ${site.address.line2} — ${site.address.pin}, ${site.address.state}. Proprietor ${site.proprietor}. GSTIN ${site.gst}.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(localBusinessJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(contactPageJsonLd)} />

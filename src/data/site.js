@@ -58,6 +58,50 @@ export const site = {
   proprietor: "Jaspal Singh",
   gst: "03ALBPS3446G1ZB",
 
+  // The official brand name is "Samrat Poly Resins" — used verbatim in the
+  // Google Business Profile (verified 9 Sept 2026), the GST registration and
+  // every page of this site. `alternateNames` lists spellings people actually
+  // use, for WebSite schema only. It deliberately does NOT include the bare
+  // word "Samrat": that is a common Indian given name and title with almost
+  // entirely unrelated search intent, and claiming it as an alternate name for
+  // this business would be both untrue and useless.
+  alternateNames: ["Samrat Poly Resin", "Samrat Polyresins"],
+
+  // The one certification the repository actually holds evidence for:
+  // public/certificates/iso-9001-2015-certificate-current.jpg, linked from the
+  // About page. The issuing body and certificate number are not readable from
+  // the repository, so neither is claimed anywhere.
+  certification: {
+    name: "ISO 9001:2015",
+    about: "Quality Management System",
+    url: "/certificates/iso-9001-2015-certificate-current.jpg",
+  },
+
+  // --- sameAs: DELIBERATELY EMPTY -------------------------------------------
+  //
+  // `sameAs` tells Google which other web presences are the SAME entity. A
+  // wrong or dead entry actively confuses the entity it is meant to clarify,
+  // so nothing goes in here that has not been verified as (a) owned by this
+  // business and (b) currently active.
+  //
+  // Audited 9 Sept 2026 — nothing qualified yet:
+  //   - No social or directory profile is referenced anywhere in this
+  //     repository, so there was nothing to verify against.
+  //   - A verified Google Business Profile EXISTS ("Samrat Poly Resins",
+  //     Oswal Road, Grand Trunk Road, Doraha, Punjab 141421). Its public Maps
+  //     URL could not be read reliably from the Business Profile Manager, and
+  //     guessing a place URL is exactly the kind of invention this comment
+  //     exists to prevent. Paste the real "Share → Copy link" URL here.
+  //   - www.samratpolyresins.com is unquestionably the same business (same GST
+  //     03ALBPS3446G1ZB, same proprietor, same address). It is NOT listed here
+  //     on purpose: the relationship between the two domains is an open
+  //     business question, and asserting an entity link between them is the
+  //     owner's decision to make, not a technical one.
+  //
+  // To populate: add full https URLs, one per profile, e.g. the Google Maps
+  // share link, a company LinkedIn page, an official Facebook page.
+  sameAs: [],
+
   // Google Maps embed query (place name or address). URL-encode spaces as +.
   mapsQuery: "Samrat+Poly+Resins+Doraha+Ludhiana",
 
@@ -90,6 +134,99 @@ export const site = {
 // and by any page that needs the same absolute URL for structured data.
 export function buildCanonicalUrl(pathname) {
   return new URL(pathname, site.url).toString();
+}
+
+// ============================================================================
+//  BRAND / ENTITY IDENTITY
+// ============================================================================
+//
+//  One entity node, one @id, referenced from everywhere. Before this existed,
+//  Base.astro and contact.astro each hand-built their own Organization and
+//  LocalBusiness objects, which is exactly how the name, address or phone on
+//  one page drifts away from another.
+//
+//  Search Console, 1 Aug – 6 Sept 2026, tells us what this is for. Only two
+//  branded queries exist at all: `samrat poly resins` (136 impressions,
+//  12 clicks, average position 2.4) and `samrat plastic` (1 impression).
+//  Position 2.4 on the company's OWN name means something outranks the
+//  official site for it. Entity clarity is the lever we actually control.
+// ============================================================================
+
+/** The single canonical identifier for the business across every page. */
+export const ORGANIZATION_ID = `${site.url}/#organization`;
+export const WEBSITE_ID = `${site.url}/#website`;
+
+/**
+ * Every field below is verifiable from this repository or from the published
+ * About page. Deliberately absent, because nothing here verifies them:
+ *   - numberOfEmployees, annual revenue, production capacity
+ *   - opening hours and geo coordinates (see contact.astro)
+ *   - awards, customer logos, testimonials
+ *   - the ISO certificate's issuing body and certificate number, which are
+ *     not readable from the repository — only the certification itself is
+ *     claimed, with a link to the published certificate image.
+ */
+export function buildOrganizationSchema({ logoUrl, knowsAbout = [] } = {}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': ORGANIZATION_ID,
+    name: site.name,
+    url: site.url,
+    slogan: site.tagline,
+    description: `${site.name} is a ${site.address.state.replace(', India', '')}-based manufacturer of GP polyester, gelcoat, fire-retardant, epoxy and specialty resin systems, supplying FRP and composite manufacturers across India from ${site.address.line2}. Established ${site.established}.`,
+    ...(logoUrl ? { logo: logoUrl, image: logoUrl } : {}),
+    telephone: site.phones.map((phone) => phone.dial),
+    email: site.email,
+    foundingDate: site.established,
+    founder: { '@type': 'Person', name: site.proprietor },
+    // GST identification number — published on the About page and on the
+    // business's own invoices, so this is a disclosed business identifier.
+    taxID: site.gst,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: site.address.line1,
+      addressLocality: 'Doraha, Ludhiana',
+      addressRegion: 'Punjab',
+      postalCode: site.address.pin,
+      addressCountry: 'IN',
+    },
+    areaServed: site.statesServed
+      .filter((s) => !s.startsWith('Export'))
+      .map((s) => ({ '@type': 'AdministrativeArea', name: s })),
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      telephone: site.phones[0].dial,
+      email: site.email,
+      areaServed: 'IN',
+      availableLanguage: ['en', 'hi', 'pa'],
+    },
+    hasCertification: {
+      '@type': 'Certification',
+      name: site.certification.name,
+      about: site.certification.about,
+      url: buildCanonicalUrl(site.certification.url),
+    },
+    ...(knowsAbout.length ? { knowsAbout } : {}),
+    // `sameAs` is intentionally omitted rather than left empty or guessed.
+    // See site.sameAs below for why, and what would let it be populated.
+    ...(site.sameAs.length ? { sameAs: site.sameAs } : {}),
+  };
+}
+
+/** Names the site itself and ties it to the organisation that publishes it. */
+export function buildWebSiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': WEBSITE_ID,
+    name: site.name,
+    alternateName: site.alternateNames,
+    url: site.url,
+    inLanguage: 'en-IN',
+    publisher: { '@id': ORGANIZATION_ID },
+  };
 }
 
 // Shared WhatsApp message system — every WhatsApp CTA on the site should

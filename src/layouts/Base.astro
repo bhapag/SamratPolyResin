@@ -2,7 +2,7 @@
 import { ClientRouter } from 'astro:transitions';
 import { getImage } from 'astro:assets';
 import '../styles/global.css';
-import { site, buildCanonicalUrl, buildWhatsAppLink } from '../data/site.js';
+import { site, buildCanonicalUrl, buildWhatsAppLink, buildOrganizationSchema, buildWebSiteSchema } from '../data/site.js';
 import { products, CATEGORIES, CATEGORY_HUBS } from '../data/products.js';
 import AmbientBackground from '../components/AmbientBackground.astro';
 import logoSource from '../assets/logo.jpg';
@@ -65,30 +65,22 @@ const canonicalUrl = buildCanonicalUrl(Astro.url.pathname);
 const ogImageUrl = buildCanonicalUrl(ogImage ?? site.ogImage);
 const finalOgImageAlt = ogImageAlt ?? `${finalOgTitle} — social share image`;
 
-// Sitewide Organization/LocalBusiness structured data — built entirely from
-// the verified contact fields in site.js, nothing invented. Helps Google
-// associate the business identity (name, address, phone) across the site
-// rather than just per-article Article schema.
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": `${site.url}/#organization`,
-  name: site.name,
-  url: site.url,
-  logo: buildCanonicalUrl(logoSquare.src),
-  image: buildCanonicalUrl(logoSquare.src),
-  telephone: site.phones.map((phone) => phone.dial),
-  email: site.email,
-  foundingDate: site.established,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: site.address.line1,
-    addressLocality: site.address.line2,
-    addressRegion: "Punjab",
-    postalCode: site.address.pin,
-    addressCountry: "IN",
-  },
-};
+// Sitewide brand entity. Both objects come from the shared builders in
+// site.js so the Organization here, the LocalBusiness on /contact/ and the
+// brand/manufacturer on every product page all resolve to ONE node with one
+// @id — they cannot drift apart, because there is only one definition.
+//
+// Why this matters here specifically: Search Console (1 Aug – 6 Sept 2026)
+// shows `samrat poly resins` ranking at average position 2.4 with a 7.3% CTR
+// on the homepage. Something outranks the official site for its own name.
+// Consistent, machine-readable entity identity is the part of that we control.
+const organizationJsonLd = buildOrganizationSchema({
+  logoUrl: buildCanonicalUrl(logoSquare.src),
+  // Truthful subject-matter signals, taken from the actual catalogue
+  // categories rather than a hand-written keyword list.
+  knowsAbout: CATEGORIES,
+});
+const webSiteJsonLd = buildWebSiteSchema();
 ---
 <!doctype html>
 <html lang="en">
@@ -122,6 +114,7 @@ const organizationJsonLd = {
   <link rel="icon" href="/favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webSiteJsonLd)} />
   <ClientRouter />
   <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-20DFSNPJ80"></script>

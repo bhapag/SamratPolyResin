@@ -7,7 +7,7 @@ import ResourceCard from '../../components/ResourceCard.astro';
 import { products, CATEGORY_HUBS } from '../../data/products.js';
 import { applications as applicationGuides } from '../../data/applications.js';
 import { resources } from '../../data/resources.js';
-import { site, buildWhatsAppLink, buildCanonicalUrl } from '../../data/site.js';
+import { site, buildWhatsAppLink, buildCanonicalUrl, ORGANIZATION_ID } from '../../data/site.js';
 import factoryGate from '../../assets/about/factory-gate.jpg';
 import productionInfrastructure from '../../assets/facility/production-infrastructure.jpg';
 import qcLaboratory from '../../assets/quality/qc-laboratory.jpg';
@@ -829,8 +829,12 @@ const productJsonLd = {
   sku: product.slug,
   url: buildCanonicalUrl(Astro.url.pathname),
   image: mainImage ? buildCanonicalUrl(mainImage.main.src) : undefined,
-  brand: { "@type": "Organization", name: site.name },
-  ...(!isGlassFiber ? { manufacturer: { "@type": "Organization", name: site.name } } : {}),
+  // Both point at the ONE sitewide Organization node by @id, so every product
+  // page reinforces the same entity instead of declaring a fresh, unlinked
+  // organisation 31 times. The name is kept alongside the @id so the markup
+  // still reads correctly on its own.
+  brand: { "@type": "Organization", "@id": ORGANIZATION_ID, name: site.name },
+  ...(!isGlassFiber ? { manufacturer: { "@type": "Organization", "@id": ORGANIZATION_ID, name: site.name } } : {}),
   ...(additionalProperty.length ? { additionalProperty } : {}),
 };
 

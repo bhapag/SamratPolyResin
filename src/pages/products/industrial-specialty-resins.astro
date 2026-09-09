@@ -5,7 +5,7 @@ import EnquiryForm from '../../components/EnquiryForm.astro';
 import { products } from '../../data/products.js';
 import { applications } from '../../data/applications.js';
 import { resources } from '../../data/resources.js';
-import { site, buildCanonicalUrl } from '../../data/site.js';
+import { site, buildCanonicalUrl, ORGANIZATION_ID, WEBSITE_ID } from '../../data/site.js';
 
 // "Industrial & Specialty Resins" is an existing category in products.js with
 // 6 products and 4 dedicated vinyl ester application pages, but no hub. It is
@@ -63,7 +63,8 @@ const collectionJsonLd = {
   name: 'Industrial & Specialty Resins',
   url: buildCanonicalUrl('/products/industrial-specialty-resins/'),
   description: `The ${grades.length} Samrat Poly Resins grades reviewed when a general-purpose polyester resin is not the right answer.`,
-  isPartOf: { '@id': `${site.url}/#organization` },
+  isPartOf: { '@id': WEBSITE_ID },
+  publisher: { '@id': ORGANIZATION_ID },
   hasPart: grades.map((p) => ({
     '@type': 'Product',
     name: p.name,
@@ -90,7 +91,7 @@ const collectionJsonLd = {
           <p class="eyebrow">Product family</p>
           <h1>Industrial &amp; Specialty Resins</h1>
           <p class="fam-hero-sub">
-            These {grades.length} grades exist for the jobs a general-purpose polyester resin is not the right
+            {site.name} manufactures these {grades.length} grades for the jobs a general-purpose polyester resin is not the right
             answer to — a stated chemical- or corrosion-service requirement, a closed-mould compound,
             a cultured-marble or engineered-stone line, a sheet-lamination grade, or a documented
             epoxy route for fibreglass fabric. Each is a distinct published product with its own
