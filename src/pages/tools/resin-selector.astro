@@ -1,0 +1,359 @@
+---
+import Base from '../../layouts/Base.astro';
+import { QUESTIONS, selectorCatalogue } from '../../data/resin-selector.js';
+import { site, buildCanonicalUrl } from '../../data/site.js';
+import { products } from '../../data/products.js';
+
+const catalogue = selectorCatalogue();
+
+// The matching rules are shipped to the browser so the tool responds without a
+// round trip, but they are the same rules the build uses — one source of truth
+// in resin-selector.js. Nothing about a product is duplicated here: the client
+// only receives each product's own published lines.
+const rules = QUESTIONS.map((q) => ({
+  id: q.id,
+  label: q.label,
+  hint: q.hint,
+  options: q.options.map((o) => ({ id: o.id, label: o.label, match: o.match })),
+}));
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: buildCanonicalUrl('/') },
+    { '@type': 'ListItem', position: 2, name: 'Products', item: buildCanonicalUrl('/products/') },
+    { '@type': 'ListItem', position: 3, name: 'Resin Selector', item: buildCanonicalUrl('/tools/resin-selector/') },
+  ],
+};
+
+const webAppJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Resin Selector',
+  url: buildCanonicalUrl('/tools/resin-selector/'),
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Any',
+  browserRequirements: 'Requires JavaScript',
+  isAccessibleForFree: true,
+  publisher: { '@id': `${site.url}/#organization` },
+  description:
+    'Narrow the Samrat Poly Resins catalogue to the grades whose published applications match your component, process, finish and stated requirement.',
+};
+---
+<Base
+  title="Resin Selector — Find the Right Grade"
+  description="Answer four questions about your component, process, finish and any specified requirement. The selector narrows 31 grades to the ones whose own published applications match, and shows you the line that matched."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppJsonLd)} />
+
+  <section class="section sel-hero">
+    <div class="wrap">
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span>
+        <a href="/products/">Products</a> <span aria-hidden="true">/</span>
+        <span aria-current="page">Resin Selector</span>
+      </nav>
+      <p class="eyebrow">Buyer tool</p>
+      <h1>Which resin grade do you need?</h1>
+      <p class="sel-lead">
+        Answer as many of the four questions below as you can. The selector narrows our
+        {products.length} grades to the ones whose <strong>own published applications</strong> name your
+        situation — and shows you the exact line that matched, so you can judge the reasoning
+        rather than trust a black box.
+      </p>
+      <p class="sel-caveat">
+        This is a shortlisting tool, not a specification. It suggests no dosage, ratio or quantity,
+        ranks nothing by quality, and confirms no compliance or fitness for a service condition.
+        Read the TDS for any grade you shortlist, and talk to us before you commit.
+      </p>
+    </div>
+  </section>
+
+  <section class="sel-body">
+    <div class="wrap sel-layout">
+      <form class="sel-questions" id="selForm">
+        {QUESTIONS.map((q) => (
+          <fieldset class="sel-q" data-q={q.id}>
+            <legend>{q.label}</legend>
+            <p class="sel-q-hint">{q.hint}</p>
+            <div class="sel-opts">
+              {q.options.map((o) => (
+                <label class="sel-opt">
+                  <input type="radio" name={q.id} value={o.id} />
+                  <span>{o.label}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        ))}
+        <button type="button" class="btn btn-ghost sel-reset" id="selReset">Start over</button>
+      </form>
+
+      <div class="sel-results" id="selResults" aria-live="polite">
+        <div class="sel-empty" id="selEmpty">
+          <p class="sel-empty-title">Your shortlist appears here</p>
+          <p>Answer the first question to begin. You can change any answer at any time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section sel-fallback">
+    <div class="wrap">
+      <h2>Nothing matching, or not sure?</h2>
+      <p>
+        The selector only offers a grade when that grade's own documentation names your context, so
+        an unusual requirement may return nothing. That is a prompt to talk to us, not a dead end.
+      </p>
+      <div class="sel-fallback-links">
+        <a href="/contact/" class="btn btn-solid">Send an enquiry</a>
+        <a href="/custom-resin-request/" class="btn btn-ghost">Request a custom specification</a>
+        <a href="/how-to-order/" class="btn btn-ghost">How ordering works</a>
+        <a href="/resources/resin-glossary/" class="btn btn-ghost">Glossary of terms</a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/json" id="selData" set:html={JSON.stringify({ rules, catalogue })} />
+
+  <script>
+    // Progressive enhancement: with JavaScript off, the four questions and every
+    // fallback route are still rendered and usable, and the whole catalogue
+    // remains one click away at /products/.
+    const dataEl = document.getElementById('selData');
+    if (dataEl) {
+      const { rules, catalogue } = JSON.parse(dataEl.textContent);
+      const form = document.getElementById('selForm');
+      const out = document.getElementById('selResults');
+      const ACCESSORY = new Set(['FRP Allied Products', 'Hardeners']);
+      const WEIGHT = { making: 4, process: 3, finish: 2, special: 2 };
+
+      const fields = (p) => [
+        ...p.applications.map((t) => ({ text: t, kind: 'published application' })),
+        { text: p.tagline || '', kind: 'product summary' },
+        { text: p.category || '', kind: 'category' },
+      ].filter((f) => f.text);
+
+      // Must stay identical to phraseMatches() in src/data/resin-selector.js.
+      // A plain substring test matched "duct" inside "production"; anchoring to
+      // a word start fixes that while still matching plurals and compounds.
+      function phraseMatches(text, phrase) {
+        const escaped = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        return new RegExp('\\b' + escaped, 'i').test(text);
+      }
+
+      function score(p, answers) {
+        let total = 0;
+        const evidence = [];
+        for (const q of rules) {
+          const chosen = answers[q.id];
+          if (!chosen) continue;
+          const opt = q.options.find((o) => o.id === chosen);
+          if (!opt || !opt.match.length) continue;
+          let hit = null;
+          for (const phrase of opt.match) {
+            hit = fields(p).find((f) => phraseMatches(f.text, phrase));
+            if (hit) break;
+          }
+          if (hit) {
+            total += WEIGHT[q.id] || 1;
+            evidence.push({ answer: opt.label, quote: hit.text, kind: hit.kind });
+          }
+        }
+        return total ? { p, total, evidence } : null;
+      }
+
+      const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+      function enquiryHref(p, answers) {
+        const parts = [];
+        for (const q of rules) {
+          const chosen = answers[q.id];
+          if (!chosen) continue;
+          const opt = q.options.find((o) => o.id === chosen);
+          if (opt && opt.match.length) parts.push(q.label + ' ' + opt.label);
+        }
+        const params = new URLSearchParams({
+          product: p.name,
+          context: parts.join(' · '),
+        });
+        return '/contact/?' + params.toString() + '#enquiry';
+      }
+
+      function card(entry, answers) {
+        const { p, evidence } = entry;
+        const specs = p.specs.map((s) => `<span class="sel-spec"><b>${esc(s.k)}</b> ${esc(s.v)}</span>`).join('');
+        const why = evidence.map((e) =>
+          `<li><span class="sel-why-a">${esc(e.answer)}</span> matched this ${esc(e.kind)}: <q>${esc(e.quote)}</q></li>`).join('');
+        return `
+          <article class="sel-card">
+            <header>
+              <h3><a href="/products/${esc(p.slug)}/">${esc(p.name)}</a></h3>
+              <span class="sel-cat">${esc(p.category)}</span>
+            </header>
+            <p class="sel-tagline">${esc(p.tagline || '')}</p>
+            ${specs ? `<div class="sel-specs">${specs}</div>` : ''}
+            <details class="sel-why">
+              <summary>Why this appeared</summary>
+              <ul>${why}</ul>
+            </details>
+            <div class="sel-card-actions">
+              <a class="sel-btn sel-btn-solid" href="${enquiryHref(p, answers)}">Enquire about this grade</a>
+              <a class="sel-btn" href="/products/${esc(p.slug)}/">Full specifications</a>
+              ${p.tdsUrl ? `<a class="sel-btn" href="${esc(p.tdsUrl)}" target="_blank" rel="noopener">TDS</a>` : ''}
+            </div>
+          </article>`;
+      }
+
+      function render() {
+        const answers = {};
+        for (const q of rules) {
+          const el = form.querySelector(`input[name="${q.id}"]:checked`);
+          if (el) answers[q.id] = el.value;
+        }
+        const constraining = Object.entries(answers).filter(([id, v]) => {
+          const q = rules.find((r) => r.id === id);
+          const o = q && q.options.find((x) => x.id === v);
+          return o && o.match.length;
+        });
+
+        if (!constraining.length) {
+          out.innerHTML = `
+            <div class="sel-empty">
+              <p class="sel-empty-title">Your shortlist appears here</p>
+              <p>Answer the first question to begin. You can change any answer at any time.</p>
+            </div>`;
+          return;
+        }
+
+        const scored = catalogue.map((p) => score(p, answers)).filter(Boolean)
+          .sort((a, b) => b.total - a.total || a.p.name.localeCompare(b.p.name));
+        const grades = scored.filter((s) => !ACCESSORY.has(s.p.category));
+        const supporting = scored.filter((s) => ACCESSORY.has(s.p.category));
+
+        if (!grades.length && !supporting.length) {
+          out.innerHTML = `
+            <div class="sel-empty sel-none">
+              <p class="sel-empty-title">No grade in the catalogue publishes an application matching that combination</p>
+              <p>That is a genuine answer, not a failure — it means we should not point you at a grade
+                 on the strength of a guess. Tell us what you are making and we will look at it properly.</p>
+              <p><a class="sel-btn sel-btn-solid" href="/contact/">Send an enquiry</a>
+                 <a class="sel-btn" href="/custom-resin-request/">Request a custom specification</a></p>
+            </div>`;
+          return;
+        }
+
+        out.innerHTML = `
+          <p class="sel-count">${grades.length} grade${grades.length === 1 ? '' : 's'} match${grades.length === 1 ? 'es' : ''} what you have told us${supporting.length ? `, plus ${supporting.length} supporting item${supporting.length === 1 ? '' : 's'}` : ''}.</p>
+          <div class="sel-cards">${grades.map((g) => card(g, answers)).join('')}</div>
+          ${supporting.length ? `
+            <h2 class="sel-sub">Supporting materials and consumables</h2>
+            <div class="sel-cards">${supporting.map((g) => card(g, answers)).join('')}</div>` : ''}
+          <p class="sel-foot">
+            Shortlisted a grade? Read its TDS before committing, then
+            <a href="/contact/">send us the component, quantity and delivery location</a>.
+            A room-temperature polyester cure also needs a catalyst and, unless the resin is
+            pre-accelerated, an accelerator — see the
+            <a href="/resources/resin-glossary/">glossary</a> if those roles are unfamiliar.
+          </p>`;
+      }
+
+      form.addEventListener('change', render);
+      document.getElementById('selReset').addEventListener('click', () => { form.reset(); render(); });
+    }
+  </script>
+
+  <style>
+    .sel-hero { padding-bottom: 1.5rem; }
+    .sel-hero h1 { font-size: clamp(2.1rem, 5.5vw, 3.3rem); margin-top: 0.6rem; }
+    .sel-lead { color: var(--ink-dim); margin-top: 1rem; max-width: 66ch; line-height: 1.7; }
+    .sel-lead strong { color: var(--ink); font-weight: 500; }
+    .sel-caveat {
+      margin-top: 1rem; max-width: 66ch; font-size: 0.87rem; line-height: 1.65;
+      color: var(--ink-faint); border-left: 2px solid var(--line-2); padding-left: 0.9rem;
+    }
+
+    .sel-body { padding-bottom: clamp(3rem, 8vw, 6rem); }
+    .sel-layout { display: grid; grid-template-columns: minmax(0, 22rem) minmax(0, 1fr); gap: clamp(1.6rem, 4vw, 3rem); align-items: start; }
+
+    .sel-q { border: 0; padding: 0; margin: 0 0 1.6rem; }
+    .sel-q legend {
+      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink); padding: 0;
+    }
+    .sel-q-hint { font-size: 0.8rem; color: var(--ink-faint); margin: 0.4rem 0 0.7rem; line-height: 1.55; }
+    .sel-opts { display: flex; flex-direction: column; gap: 0.1rem; }
+    .sel-opt {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.5rem 0.1rem; font-size: 0.9rem; color: var(--ink-dim);
+      cursor: pointer; border-top: 1px solid var(--line);
+    }
+    .sel-opt:last-child { border-bottom: 1px solid var(--line); }
+    .sel-opt:hover { color: var(--ink); }
+    .sel-opt input { accent-color: var(--accent); flex-shrink: 0; }
+    .sel-opt:has(input:checked) { color: var(--ink); }
+    .sel-reset { margin-top: 0.5rem; }
+
+    .sel-empty {
+      border: 1px dashed var(--line-2); padding: clamp(1.5rem, 4vw, 2.5rem);
+      color: var(--ink-faint); font-size: 0.9rem; line-height: 1.65;
+    }
+    .sel-empty-title { color: var(--ink-dim); font-size: 1rem; margin: 0 0 0.5rem; }
+    .sel-none { border-style: solid; border-color: var(--line); }
+
+    .sel-count { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; color: var(--ink-faint); margin: 0 0 1rem; }
+    .sel-sub { font-size: 1.05rem; margin: 2.2rem 0 1rem; }
+    .sel-cards { display: grid; gap: 0.9rem; }
+
+    .sel-card { border: 1px solid var(--line); padding: 1.1rem 1.2rem; background: var(--bg-2); }
+    .sel-card header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .sel-card h3 { font-size: 1.02rem; margin: 0; }
+    .sel-card h3 a { color: var(--ink); text-decoration: none; }
+    .sel-card h3 a:hover { color: var(--accent-gold-light); }
+    .sel-cat { font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+    .sel-tagline { color: var(--ink-dim); font-size: 0.88rem; margin: 0.45rem 0 0; line-height: 1.6; }
+
+    .sel-specs { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+    .sel-spec {
+      font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink-dim);
+      background: var(--bg); border: 1px solid var(--line-2); padding: 0.25rem 0.5rem;
+    }
+    .sel-spec b { color: var(--ink-faint); font-weight: 400; margin-right: 0.35rem; }
+
+    .sel-why { margin-top: 0.8rem; font-size: 0.83rem; }
+    .sel-why summary { cursor: pointer; color: var(--ink-faint); font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .sel-why summary:hover { color: var(--ink-dim); }
+    .sel-why ul { margin: 0.6rem 0 0; padding-left: 1rem; color: var(--ink-dim); line-height: 1.65; }
+    .sel-why li { margin-bottom: 0.35rem; }
+    .sel-why-a { color: var(--ink); }
+    .sel-why q { font-style: italic; }
+
+    .sel-card-actions { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.95rem; }
+    .sel-btn {
+      display: inline-block; padding: 0.42rem 0.8rem;
+      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.04em;
+      color: var(--ink-dim); text-decoration: none;
+      border: 1px solid var(--line-2); background: var(--bg);
+      transition: color 0.18s ease, border-color 0.18s ease;
+    }
+    .sel-btn:hover { color: var(--ink); border-color: var(--accent); }
+    .sel-btn-solid { color: var(--ink); border-color: var(--accent); }
+
+    .sel-foot { margin-top: 1.6rem; font-size: 0.85rem; color: var(--ink-faint); line-height: 1.7; max-width: 62ch; }
+    .sel-foot a { color: var(--ink-dim); }
+
+    .sel-fallback { border-top: 1px solid var(--line); }
+    .sel-fallback h2 { font-size: 1.3rem; }
+    .sel-fallback p { color: var(--ink-dim); margin-top: 0.8rem; max-width: 60ch; line-height: 1.7; }
+    .sel-fallback-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.3rem; }
+
+    @media (max-width: 900px) {
+      .sel-layout { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sel-opt, .sel-btn { transition: none; }
+    }
+  </style>
+</Base>

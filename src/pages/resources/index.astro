@@ -66,7 +66,6 @@ const marbleResinAuthoritySlugs = new Set([
   'gp-quartz-resin-vs-marble-resin',
   'marble-resin-vs-pet-resin',
   'marble-resin-vs-gp-resin',
-  'marble-resin-vs-epoxy-clear-casting-resin',
   'marble-resin-technical-specifications-and-rfq',
 ]);
 const marbleResinAuthorityResources = published.filter((resource) => marbleResinAuthoritySlugs.has(resource.slug));
@@ -79,7 +78,6 @@ const marbleResinComparisonResources = published.filter((resource) => [
   'gp-quartz-resin-vs-marble-resin',
   'marble-resin-vs-pet-resin',
   'marble-resin-vs-gp-resin',
-  'marble-resin-vs-epoxy-clear-casting-resin',
 ].includes(resource.slug));
 const marbleResinVerificationResources = published.filter((resource) => [
   'marble-resin-technical-specifications-and-rfq',
@@ -87,7 +85,6 @@ const marbleResinVerificationResources = published.filter((resource) => [
 const laminationAuthoritySlugs = new Set([
   'gp-resin-vs-lamination-resin',
   'what-is-lamination-resin',
-  'applications-of-lamination-resin',
   'lamination-resin-for-hand-lay-up',
   'lamination-resin-vs-vinyl-ester-resin',
   'lamination-resin-vs-gelcoat-resin',
@@ -99,8 +96,6 @@ const gelcoatAuthoritySlugs = new Set([
   'gp-resin-vs-gelcoat-resin',
   'lamination-resin-vs-gelcoat-resin',
   'gelcoat-resin-vs-vinyl-ester-resin',
-  'gelcoat-resin-vs-epoxy-resin',
-  'applications-of-gelcoat-resin-in-frp-manufacturing',
   'how-to-choose-gelcoat-resin-for-frp-products',
   'gelcoat-resin-problems-peeling-cracking-tackiness',
   'gelcoat-resin-storage-and-handling-guide',
@@ -130,9 +125,6 @@ const uprAuthorityResources = published.filter((resource) => uprAuthoritySlugs.h
 const glassFiberAuthoritySlugs = new Set([
   'what-is-glass-fiber-chopped-strand-mat',
   'csm-300-vs-csm-450-glass-fiber',
-  'glass-fiber-and-polyester-resin-compatibility',
-  'glass-fiber-for-frp-manufacturing',
-  'glass-fiber-storage-and-procurement-guide',
 ]);
 const glassFiberAuthorityResources = published.filter((resource) => glassFiberAuthoritySlugs.has(resource.slug));
 const glassFiberFoundationResources = published.filter((resource) => [
@@ -140,56 +132,43 @@ const glassFiberFoundationResources = published.filter((resource) => [
   'csm-300-vs-csm-450-glass-fiber',
 ].includes(resource.slug));
 const glassFiberSystemResources = published.filter((resource) => [
-  'glass-fiber-and-polyester-resin-compatibility',
-  'glass-fiber-for-frp-manufacturing',
+  'what-is-glass-fiber-chopped-strand-mat',
 ].includes(resource.slug));
 const glassFiberProcurementResources = published.filter((resource) => [
-  'glass-fiber-storage-and-procurement-guide',
+  'what-is-glass-fiber-chopped-strand-mat',
 ].includes(resource.slug));
 const pigmentAuthoritySlugs = new Set([
   'what-is-frp-polyester-pigment',
-  'applications-of-frp-polyester-pigment',
   'polyester-pigment-paste-vs-gelcoat',
-  'pigment-paste-vs-pre-pigmented-polyester-resin',
-  'frp-pigment-compatibility-with-resin-systems',
   'frp-colour-variation-buyer-checklist',
-  'frp-pigment-storage-and-procurement-guide',
 ]);
 const pigmentAuthorityResources = published.filter((resource) => pigmentAuthoritySlugs.has(resource.slug));
 const pigmentFoundationResources = published.filter((resource) => [
   'what-is-frp-polyester-pigment',
-  'applications-of-frp-polyester-pigment',
 ].includes(resource.slug));
 const pigmentSystemResources = published.filter((resource) => [
   'polyester-pigment-paste-vs-gelcoat',
-  'pigment-paste-vs-pre-pigmented-polyester-resin',
-  'frp-pigment-compatibility-with-resin-systems',
+  'what-is-frp-polyester-pigment',
 ].includes(resource.slug));
 const pigmentBuyerResources = published.filter((resource) => [
   'frp-colour-variation-buyer-checklist',
-  'frp-pigment-storage-and-procurement-guide',
+  'what-is-frp-polyester-pigment',
 ].includes(resource.slug));
 const mekpAuthoritySlugs = new Set([
   'what-is-mekp-hardener',
-  'mekp-for-polyester-resin-systems',
-  'mekp-for-gelcoat-systems',
-  'mekp-hardener-procurement-guide',
 ]);
 const mekpAuthorityResources = published.filter((resource) => mekpAuthoritySlugs.has(resource.slug));
 const mekpRoleResources = published.filter((resource) => [
   'what-is-mekp-hardener',
-  'mekp-for-polyester-resin-systems',
-  'mekp-for-gelcoat-systems',
 ].includes(resource.slug));
 const mekpDocumentationResources = published.filter((resource) => [
-  'mekp-hardener-procurement-guide',
+  'what-is-mekp-hardener',
 ].includes(resource.slug));
 const epoxyHardenerAuthoritySlugs = new Set([
   'what-is-epoxy-hardener',
   'epoxy-resin-vs-epoxy-hardener',
   'epoxy-hardener-compatibility-guide',
   'epoxy-hardener-vs-mekp-hardener',
-  'epoxy-hardener-vs-uv-resin-curing',
   'epoxy-hardener-for-clear-casting-and-art-resin',
   'epoxy-hardener-procurement-guide',
 ]);
@@ -202,7 +181,6 @@ const epoxyHardenerSelectionResources = published.filter((resource) => [
   'epoxy-hardener-compatibility-guide',
   'epoxy-hardener-for-clear-casting-and-art-resin',
   'epoxy-hardener-vs-mekp-hardener',
-  'epoxy-hardener-vs-uv-resin-curing',
 ].includes(resource.slug));
 const epoxyHardenerProcurementResources = published.filter((resource) => [
   'epoxy-hardener-procurement-guide',
@@ -378,7 +356,7 @@ const fireRetardantAuthoritySlugs = new Set([
   'fire-retardant-resin-vs-gp-resin',
   'fire-retardant-resin-fireproof-vs-fire-retardant',
   'frp-fire-performance-requirements-buyer-guide',
-  'fire-retardant-resin-and-glass-fiber',
+  'what-is-glass-fiber-chopped-strand-mat',
   'fire-retardant-resin-procurement-checklist',
 ]);
 const fireRetardantAuthorityResources = published.filter((resource) => fireRetardantAuthoritySlugs.has(resource.slug));
@@ -392,7 +370,7 @@ const fireRetardantDecisionResources = published.filter((resource) => [
   'frp-fire-performance-requirements-buyer-guide',
 ].includes(resource.slug));
 const fireRetardantSystemResources = published.filter((resource) => [
-  'fire-retardant-resin-and-glass-fiber',
+  'what-is-glass-fiber-chopped-strand-mat',
   'fire-retardant-resin-procurement-checklist',
 ].includes(resource.slug));
 const isoFireRetardantAuthoritySlugs = new Set([

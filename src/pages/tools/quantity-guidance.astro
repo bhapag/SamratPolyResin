@@ -1,0 +1,307 @@
+---
+import Base from '../../layouts/Base.astro';
+import { products } from '../../data/products.js';
+import { site, buildCanonicalUrl } from '../../data/site.js';
+
+// ---------------------------------------------------------------------------
+// WHY THIS IS NOT A RESIN CALCULATOR
+//
+// A resin-quantity calculator needs a resin-to-glass ratio. This repository
+// does not publish one, and says so explicitly in nine separate places —
+// including the Glass Fiber guide ("the site does not publish a universal
+// CSM 300 or CSM 450 assignment, a layer count, a resin-to-glass ratio or a
+// finished-system classification") and four product pages. No TDS carries a
+// consumption or coverage figure either; both were checked.
+//
+// Publishing a calculator would therefore mean inventing the one number the
+// whole calculation turns on, and contradicting the site's own stated
+// position on nine other pages. So this page does only the arithmetic that
+// rests on a PUBLISHED specification:
+//
+//   1. Glass fibre mat weight, from the buyer's area and layer count times the
+//      published CSM area weight (300 or 450 g/m² — both on the Glass Fiber
+//      TDS). This is multiplication on a published figure, not an assumption.
+//   2. Container count, from a resin quantity the BUYER supplies and the
+//      published pack size for the grade. Again, arithmetic on published data.
+//
+// It does NOT estimate how much resin a laminate needs. That question is
+// routed to a human with the project details attached.
+// ---------------------------------------------------------------------------
+
+const glassFiber = products.find((p) => p.slug === 'fibre-glass-mat');
+
+// Pack sizes come straight from each product's published productDetails so
+// this list cannot drift away from the catalogue.
+const packed = products
+  .filter((p) => p.productDetails?.Packaging || p.productDetails?.['Packaging Size'] || p.productDetails?.['Pack Size'])
+  .map((p) => ({
+    slug: p.slug,
+    name: p.name,
+    packaging: p.productDetails.Packaging || p.productDetails['Packaging Size'] || p.productDetails['Pack Size'],
+    moq: p.productDetails['Minimum Order Quantity'] || p.productDetails['Minimum order quantity'] || null,
+  }));
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: buildCanonicalUrl('/') },
+    { '@type': 'ListItem', position: 2, name: 'Products', item: buildCanonicalUrl('/products/') },
+    { '@type': 'ListItem', position: 3, name: 'Quantity Guidance', item: buildCanonicalUrl('/tools/quantity-guidance/') },
+  ],
+};
+---
+<Base
+  title="Quantity Guidance — Glass Fibre Estimate & Ordering Help"
+  description="Work out glass fibre mat weight from your laminate area and layer count using the published CSM 300 and CSM 450 area weights, see published pack sizes, and send your project details for resin quantity guidance."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <section class="section qg-hero">
+    <div class="wrap">
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span>
+        <a href="/products/">Products</a> <span aria-hidden="true">/</span>
+        <span aria-current="page">Quantity Guidance</span>
+      </nav>
+      <p class="eyebrow">Buyer tool</p>
+      <h1>How much will you need?</h1>
+      <p class="qg-lead">
+        Two of the three quantities in an FRP job can be worked out from published figures. The third
+        cannot, and this page will not pretend otherwise.
+      </p>
+
+      <div class="qg-honesty">
+        <p class="qg-honesty-title">Why there is no resin calculator here</p>
+        <p>
+          Estimating resin quantity requires a resin-to-glass ratio. We do not publish one — not on any
+          product page and not on any technical data sheet — because the right ratio depends on your
+          laminate design, process, reinforcement and part geometry, and a number invented for a
+          calculator would be worse than no number at all. Nine pages across this site say the same
+          thing, and this page is not going to contradict them.
+        </p>
+        <p>
+          So the estimator below does only the arithmetic that rests on a published specification, and
+          the resin question goes to a person with your project details in front of them.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="qg-body">
+    <div class="wrap qg-layout">
+      <div class="qg-tool">
+        <h2>Glass fibre mat estimate</h2>
+        <p class="qg-tool-note">
+          Based on the published area weights on the Glass Fiber TDS: CSM 300 is 300&nbsp;g/m² and
+          CSM 450 is 450&nbsp;g/m². The calculation is your area × layers × that area weight — nothing
+          is assumed about your laminate beyond the numbers you enter.
+        </p>
+
+        <form class="qg-form" id="qgForm">
+          <div class="qg-field">
+            <label for="qgArea">Laminate area</label>
+            <div class="qg-input-row">
+              <input type="number" id="qgArea" min="0" step="0.1" placeholder="e.g. 24" inputmode="decimal" />
+              <span class="qg-unit">m²</span>
+            </div>
+          </div>
+          <div class="qg-field">
+            <label for="qgLayers">Number of mat layers</label>
+            <input type="number" id="qgLayers" min="1" step="1" value="1" inputmode="numeric" />
+            <p class="qg-hint">Your laminate design decides this. We do not publish a layer count.</p>
+          </div>
+          <div class="qg-field">
+            <label for="qgGrade">Mat grade</label>
+            <select id="qgGrade">
+              <option value="300">CSM 300 — 300 g/m²</option>
+              <option value="450">CSM 450 — 450 g/m²</option>
+            </select>
+          </div>
+          <div class="qg-field">
+            <label for="qgWaste">Allow for offcuts and overlap</label>
+            <select id="qgWaste">
+              <option value="0">No allowance — exact area only</option>
+              <option value="10">Add 10%</option>
+              <option value="15">Add 15%</option>
+              <option value="20">Add 20%</option>
+            </select>
+            <p class="qg-hint">Your own figure from experience. We publish no wastage guidance.</p>
+          </div>
+        </form>
+
+        <output class="qg-out" id="qgOut" aria-live="polite">
+          <p class="qg-out-empty">Enter an area to see the mat weight.</p>
+        </output>
+      </div>
+
+      <aside class="qg-side">
+        <h2>Published pack sizes</h2>
+        <p class="qg-tool-note">
+          Straight from each product's published details. Confirm the current position when you request
+          a quotation — these are catalogue figures, not a stock statement.
+        </p>
+        <div class="qg-table-scroll">
+          <table class="qg-table">
+            <thead>
+              <tr><th scope="col">Product</th><th scope="col">Packaging</th><th scope="col">MOQ</th></tr>
+            </thead>
+            <tbody>
+              {packed.map((p) => (
+                <tr>
+                  <th scope="row"><a href={`/products/${p.slug}/`}>{p.name}</a></th>
+                  <td>{p.packaging}</td>
+                  <td>{p.moq ?? '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="qg-hint">
+          A dash means no minimum order quantity is published for that product. It does not mean there
+          isn't one — ask.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section qg-ask">
+    <div class="wrap">
+      <h2>Ask for resin quantity guidance</h2>
+      <p>
+        Send us the project and we will work the resin quantity out with you, against your actual
+        laminate and process rather than a generic figure. The more of this you can give us, the more
+        useful the answer:
+      </p>
+      <ul class="qg-checklist">
+        <li><strong>What you are making</strong>, and roughly how big</li>
+        <li><strong>Laminate area and layers</strong> — the estimator above gives you the mat weight to quote</li>
+        <li><strong>Process</strong> — hand lay-up, spray-up, casting, moulding</li>
+        <li><strong>Grade</strong>, if you already know it, or what the part has to do if you don't</li>
+        <li><strong>Delivery location</strong> and how often you expect to reorder</li>
+      </ul>
+      <div class="qg-ask-links">
+        <a href="/contact/" class="btn btn-solid" id="qgSend">Send these details</a>
+        <a href="/tools/resin-selector/" class="btn btn-ghost">Find the right grade first</a>
+        <a href="/how-to-order/" class="btn btn-ghost">How ordering works</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('qgForm');
+    if (form) {
+      const out = document.getElementById('qgOut');
+      const send = document.getElementById('qgSend');
+
+      function render() {
+        const area = parseFloat(document.getElementById('qgArea').value);
+        const layers = parseInt(document.getElementById('qgLayers').value, 10);
+        const gsm = parseInt(document.getElementById('qgGrade').value, 10);
+        const waste = parseInt(document.getElementById('qgWaste').value, 10);
+
+        if (!area || area <= 0 || !layers || layers <= 0) {
+          out.innerHTML = '<p class="qg-out-empty">Enter an area to see the mat weight.</p>';
+          if (send) send.href = '/contact/';
+          return;
+        }
+
+        const coveredArea = area * layers;
+        const base = (coveredArea * gsm) / 1000;            // grams -> kg
+        const total = base * (1 + waste / 100);
+        const rolls = total / 30;                            // published ~30 kg/roll
+
+        out.innerHTML = `
+          <p class="qg-out-head">Glass fibre mat required</p>
+          <p class="qg-out-big">${total.toFixed(1)} kg</p>
+          <ul class="qg-out-work">
+            <li>${area} m² × ${layers} layer${layers === 1 ? '' : 's'} = <b>${coveredArea.toFixed(1)} m²</b> of mat</li>
+            <li>${coveredArea.toFixed(1)} m² × ${gsm} g/m² = <b>${base.toFixed(1)} kg</b></li>
+            ${waste ? `<li>plus ${waste}% for offcuts and overlap = <b>${total.toFixed(1)} kg</b></li>` : ''}
+            <li>at the published ~30 kg per roll, that is about <b>${rolls < 1 ? 'under one roll' : rolls.toFixed(1) + ' rolls'}</b></li>
+          </ul>
+          <p class="qg-out-caveat">
+            Mat only. This says nothing about how much resin the laminate needs — that depends on a
+            resin-to-glass ratio we do not publish. The published minimum order quantity for Glass
+            Fiber Mat is 500 kg.
+          </p>`;
+
+        if (send) {
+          const params = new URLSearchParams({
+            context: `Laminate ${area} m² × ${layers} layer(s), CSM ${gsm} — estimated ${total.toFixed(1)} kg mat. Resin quantity guidance requested.`,
+          });
+          send.href = '/contact/?' + params.toString() + '#enquiry';
+        }
+      }
+
+      form.addEventListener('input', render);
+      form.addEventListener('change', render);
+    }
+  </script>
+
+  <style>
+    .qg-hero { padding-bottom: 1.2rem; }
+    .qg-hero h1 { font-size: clamp(2.1rem, 5.5vw, 3.3rem); margin-top: 0.6rem; }
+    .qg-lead { color: var(--ink-dim); margin-top: 1rem; max-width: 60ch; line-height: 1.7; font-size: 1.02rem; }
+
+    .qg-honesty {
+      margin-top: 1.6rem; max-width: 68ch;
+      border: 1px solid var(--line-2); background: var(--bg-2);
+      padding: 1.1rem 1.3rem;
+    }
+    .qg-honesty-title {
+      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink); margin: 0 0 0.6rem;
+    }
+    .qg-honesty p { color: var(--ink-dim); font-size: 0.9rem; line-height: 1.7; margin: 0 0 0.7rem; }
+    .qg-honesty p:last-child { margin-bottom: 0; }
+
+    .qg-body { padding-bottom: clamp(2.5rem, 7vw, 5rem); }
+    .qg-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.6rem, 4vw, 3rem); align-items: start; }
+    .qg-tool h2, .qg-side h2 { font-size: 1.2rem; margin: 0 0 0.6rem; }
+    .qg-tool-note { color: var(--ink-faint); font-size: 0.85rem; line-height: 1.65; margin: 0 0 1.2rem; }
+
+    .qg-form { display: flex; flex-direction: column; gap: 1rem; }
+    .qg-field label {
+      display: block; font-family: var(--font-mono); font-size: 0.68rem;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 0.4rem;
+    }
+    .qg-field input, .qg-field select {
+      width: 100%; padding: 0.6rem 0.7rem; font-size: 0.95rem;
+      background: var(--bg-2); color: var(--ink);
+      border: 1px solid var(--line-2); border-radius: 2px;
+    }
+    .qg-field input:focus-visible, .qg-field select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+    .qg-input-row { display: flex; align-items: center; gap: 0.5rem; }
+    .qg-unit { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-faint); }
+    .qg-hint { font-size: 0.78rem; color: var(--ink-faint); margin: 0.35rem 0 0; line-height: 1.5; }
+
+    .qg-out { display: block; margin-top: 1.4rem; border: 1px solid var(--line); padding: 1.1rem 1.2rem; background: var(--bg-2); }
+    .qg-out-empty { color: var(--ink-faint); font-size: 0.9rem; margin: 0; }
+    .qg-out-head { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin: 0; }
+    .qg-out-big { font-family: var(--font-display); font-size: 2.1rem; color: var(--accent-gold-light); margin: 0.3rem 0 0.8rem; line-height: 1; }
+    .qg-out-work { margin: 0; padding-left: 1.05rem; color: var(--ink-dim); font-size: 0.87rem; line-height: 1.75; }
+    .qg-out-work b { color: var(--ink); font-weight: 500; }
+    .qg-out-caveat { margin: 0.9rem 0 0; font-size: 0.82rem; color: var(--ink-faint); line-height: 1.65; border-top: 1px solid var(--line); padding-top: 0.7rem; }
+
+    .qg-table-scroll { overflow-x: auto; }
+    .qg-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .qg-table th, .qg-table td { text-align: left; padding: 0.55rem 0.6rem; border-bottom: 1px solid var(--line); }
+    .qg-table thead th { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+    .qg-table tbody th { font-weight: 400; color: var(--ink-dim); }
+    .qg-table tbody th a { color: var(--ink-dim); }
+    .qg-table tbody th a:hover { color: var(--accent-gold-light); }
+    .qg-table td { color: var(--ink-faint); font-family: var(--font-mono); font-size: 0.78rem; }
+
+    .qg-ask { border-top: 1px solid var(--line); }
+    .qg-ask h2 { font-size: 1.35rem; }
+    .qg-ask > .wrap > p { color: var(--ink-dim); margin-top: 0.8rem; max-width: 62ch; line-height: 1.7; }
+    .qg-checklist { list-style: none; margin: 1.1rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; color: var(--ink-dim); font-size: 0.92rem; }
+    .qg-checklist li { padding-left: 1.15rem; position: relative; line-height: 1.6; }
+    .qg-checklist li::before { content: '—'; position: absolute; left: 0; color: var(--ink-faint); font-family: var(--font-mono); }
+    .qg-checklist strong { color: var(--ink); font-weight: 500; }
+    .qg-ask-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+
+    @media (max-width: 860px) { .qg-layout { grid-template-columns: 1fr; } }
+  </style>
+</Base>

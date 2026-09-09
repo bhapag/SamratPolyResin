@@ -2403,7 +2403,7 @@ export const applications = [
     recommendedLinks: [
       { href: "/resources/roof-light-resin-applications-frp-roofing-sheets/", label: "Review Roof Light Resin applications", description: "Use the published roof-light, skylight and roofing-sheet contexts before selection." },
       { href: "/resources/sheet-grade-yellow-resin-vs-roof-light-resin/", label: "Compare Roof Light and Sheet Grade Yellow", description: "Separate water-white roof-light intent from the pre-pigmented yellow sheet/panel route." },
-      { href: "/resources/glass-fiber-and-polyester-resin-compatibility/", label: "Understand the Glass Fiber relationship", description: "Keep resin, reinforcement and surface-finish roles separate in an FRP system." },
+      { href: "/resources/what-is-glass-fiber-chopped-strand-mat/", label: "Understand the Glass Fiber relationship", description: "Keep resin, reinforcement and surface-finish roles separate in an FRP system." },
     ],
     ctaHeading: "Discuss a Roof Light Sheet Grade Resin requirement",
     ctaText: "Share the finished roof-light or roofing sheet, required supplied appearance, reinforcement context if known, expected quantity and delivery location so the product role and current TDS can be reviewed.",

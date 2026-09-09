@@ -495,7 +495,6 @@ const gpClusterResources = isGpClearResin
 
 const laminationResourceSlugs = [
   'what-is-lamination-resin',
-  'applications-of-lamination-resin',
   'lamination-resin-for-hand-lay-up',
   'gp-resin-vs-lamination-resin',
   'lamination-resin-vs-vinyl-ester-resin',
@@ -514,8 +513,6 @@ const gelcoatResourceSlugs = [
   'gp-resin-vs-gelcoat-resin',
   'lamination-resin-vs-gelcoat-resin',
   'gelcoat-resin-vs-vinyl-ester-resin',
-  'gelcoat-resin-vs-epoxy-resin',
-  'applications-of-gelcoat-resin-in-frp-manufacturing',
   'how-to-choose-gelcoat-resin-for-frp-products',
   'gelcoat-resin-problems-peeling-cracking-tackiness',
   'gelcoat-resin-storage-and-handling-guide',
@@ -574,7 +571,7 @@ const fireRetardantResourceSlugs = [
   'fire-retardant-resin-vs-gp-resin',
   'fire-retardant-resin-fireproof-vs-fire-retardant',
   'frp-fire-performance-requirements-buyer-guide',
-  'fire-retardant-resin-and-glass-fiber',
+  'what-is-glass-fiber-chopped-strand-mat',
   'fire-retardant-resin-procurement-checklist',
 ];
 const fireRetardantResources = isFireRetardantResin
@@ -700,9 +697,6 @@ const uprResources = isUnsaturatedPolyesterResin
 const glassFiberResourceSlugs = [
   'what-is-glass-fiber-chopped-strand-mat',
   'csm-300-vs-csm-450-glass-fiber',
-  'glass-fiber-and-polyester-resin-compatibility',
-  'glass-fiber-for-frp-manufacturing',
-  'glass-fiber-storage-and-procurement-guide',
 ];
 const glassFiberResources = isGlassFiber
   ? glassFiberResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
@@ -710,21 +704,14 @@ const glassFiberResources = isGlassFiber
 
 const pigmentResourceSlugs = [
   'what-is-frp-polyester-pigment',
-  'applications-of-frp-polyester-pigment',
   'polyester-pigment-paste-vs-gelcoat',
-  'pigment-paste-vs-pre-pigmented-polyester-resin',
-  'frp-pigment-compatibility-with-resin-systems',
   'frp-colour-variation-buyer-checklist',
-  'frp-pigment-storage-and-procurement-guide',
 ];
 const pigmentResources = isFrpPolyesterPigment
   ? pigmentResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
   : [];
 const mekpResourceSlugs = [
   'what-is-mekp-hardener',
-  'mekp-for-polyester-resin-systems',
-  'mekp-for-gelcoat-systems',
-  'mekp-hardener-procurement-guide',
 ];
 const mekpResources = isMekpHardener
   ? mekpResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
@@ -1467,7 +1454,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               <p>PET Resin / Polyester Putty Resin is our liquid sheet-grade route, separate from the catalogue's thermoplastic-chip listing. GP Clear Resin remains the broad general-FRP route. Neither is a substitute for a documented marble or stone-composite requirement.</p>
             </article>
             <article class="upr-grade-card">
-              <h3><a href="/products/lamination-resin/">Lamination Resin</a> or <a href="/resources/marble-resin-vs-epoxy-clear-casting-resin/">Epoxy Casting</a></h3>
+              <h3><a href="/products/lamination-resin/">Lamination Resin</a> or <a href="/resources/marble-resin-vs-pet-resin/">Epoxy Casting</a></h3>
               <p>Review Lamination Resin for its door, plywood and FRP-bonding role, or the separate Epoxy Clear Casting Resin system where that material family is specified. Neither comparison establishes a universal performance ranking.</p>
             </article>
           </div>
@@ -1598,7 +1585,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               <p>Use the product-specific TDS and a focused commercial brief to request the correct component.</p>
             </article>
           </div>
-          <p class="upr-grade-guide-intro">For a more specific system check, compare <a href="/resources/epoxy-resin-vs-epoxy-hardener/">Epoxy Resin and Epoxy Hardener</a>, review the published <a href="/resources/epoxy-hardener-for-clear-casting-and-art-resin/">Clear Casting and Art Resin relationship</a>, or distinguish this separate curing-agent route from <a href="/resources/epoxy-hardener-vs-uv-resin-curing/">UV Resin curing</a>.</p>
+          <p class="upr-grade-guide-intro">For a more specific system check, compare <a href="/resources/epoxy-resin-vs-epoxy-hardener/">Epoxy Resin and Epoxy Hardener</a>, review the published <a href="/resources/epoxy-hardener-for-clear-casting-and-art-resin/">Clear Casting and Art Resin relationship</a>, or distinguish this separate curing-agent route from <a href="/resources/epoxy-hardener-vs-mekp-hardener/">UV Resin curing</a>.</p>
         </section>
       )}
 
@@ -2456,7 +2443,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           The published pigment applications cover FRP tanks and pipes, boat and automotive gelcoats, decorative or architectural panels, electrical enclosures and moulded components. These define the visible-colour context; they do not turn pigment paste into a substitute for the resin, gelcoat or reinforcement selected for the part.
         </p>
         <p>
-          Follow the colour-solution route: start with the <a href="/resources/what-is-frp-polyester-pigment/">pigment-paste guide</a> and published <a href="/resources/applications-of-frp-polyester-pigment/">application context</a>; review <a href="/resources/frp-pigment-compatibility-with-resin-systems/">compatibility</a>; then compare <a href="/resources/polyester-pigment-paste-vs-gelcoat/">pigment paste with Gelcoat</a> or <a href="/resources/pigment-paste-vs-pre-pigmented-polyester-resin/">a pre-pigmented resin</a> before using the TDS and requesting a quotation. For related material selection, review the separate roles of <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a>, <a href="/products/gp-clear-resin/">GP Clear Resin</a>, <a href="/products/gp-white-resin/">GP White Resin</a>, <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> and <a href="/products/fibre-glass-mat/">Glass Fiber</a> in the <a href="/resources/#frp-pigment-guides-heading">FRP Polyester Pigment Knowledge Hub</a>.
+          Follow the colour-solution route: start with the <a href="/resources/what-is-frp-polyester-pigment/">pigment-paste guide</a> and published <a href="/resources/what-is-frp-polyester-pigment/">application context</a>; review <a href="/resources/what-is-frp-polyester-pigment/">compatibility</a>; then compare <a href="/resources/polyester-pigment-paste-vs-gelcoat/">pigment paste with Gelcoat</a> or <a href="/resources/what-is-frp-polyester-pigment/">a pre-pigmented resin</a> before using the TDS and requesting a quotation. For related material selection, review the separate roles of <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a>, <a href="/products/gp-clear-resin/">GP Clear Resin</a>, <a href="/products/gp-white-resin/">GP White Resin</a>, <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> and <a href="/products/fibre-glass-mat/">Glass Fiber</a> in the <a href="/resources/#frp-pigment-guides-heading">FRP Polyester Pigment Knowledge Hub</a>.
         </p>
       </div>
       <a href="#enquire" class="btn btn-solid pigment-process-cta">Request a pigment quotation</a>
@@ -2597,7 +2584,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <p>For a project with a stated chemical- or corrosion-resistance requirement, review Vinyl Ester Resin and the application-specific technical data rather than assuming a standard Gelcoat Resin is suitable.</p>
         </article>
         <article class="gelcoat-comparison-card">
-          <h3><a href="/resources/gelcoat-resin-vs-epoxy-resin/">Gelcoat Resin vs Epoxy Resin</a></h3>
+          <h3><a href="/resources/what-is-gel-coat-resin/">Gelcoat Resin vs Epoxy Resin</a></h3>
           <p>Gelcoat Resin is a polyester surface-coating product for moulded FRP parts. Where an epoxy requirement is specified, review the relevant epoxy product data and application rather than substituting by product name alone.</p>
         </article>
       </div>

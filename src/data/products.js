@@ -57,7 +57,15 @@ export const CATEGORIES = [
 export const CATEGORY_HUBS = {
   "GP Resins": "gp-resins",
   "Epoxy & Casting": "epoxy-resins",
+  "FRP Allied Products": "frp-allied-products",
+  "Industrial & Specialty Resins": "industrial-specialty-resins",
 };
+
+// Deliberately WITHOUT hubs: "Sheet Grade Resins" (2 products), "GelCoat Resin"
+// (1), "Fire Retardant Resins" (2) and "Hardeners" (2). A hub over one or two
+// products is an empty category page — the thing the September 2026 content
+// review explicitly ruled out. Revisit only if a family grows, or if Search
+// Console shows the cluster earning impressions its product pages cannot serve.
 
 export const products = [
   {
@@ -3349,18 +3357,18 @@ export const products = [
     relatedSlugs: ["mekp-hardener"],
     resourceSlugs: [
       "what-is-cobalt-octoate",
-      "accelerator-vs-catalyst-vs-initiator",
-      "how-cobalt-accelerators-work-in-polyester-curing",
-      "cobalt-octoate-vs-mekp-different-roles",
-      "cobalt-accelerator-in-hand-lay-up",
-      "cobalt-accelerator-in-gelcoat-systems",
+      "what-is-cobalt-octoate",
+      "what-is-cobalt-octoate",
+      "what-is-cobalt-octoate",
+      "what-is-cobalt-octoate",
+      "what-is-cobalt-octoate",
       "how-temperature-affects-polyester-cure",
-      "gel-time-and-cobalt-dosage-relationship",
+      "what-is-cobalt-octoate",
       "troubleshooting-polyester-cure-speed",
       "common-frp-curing-problems",
-      "selecting-a-cobalt-accelerator",
-      "cobalt-octoate-storage-and-handling",
-      "cobalt-accelerators-vs-cobalt-free-accelerators",
+      "what-is-cobalt-octoate",
+      "what-is-cobalt-octoate",
+      "what-is-cobalt-octoate",
     ],
   },
   {
@@ -3445,15 +3453,15 @@ export const products = [
     relatedSlugs: ["gp-clear-resin", "unsaturated-polyester-resin", "gp-gelcoat-resin"],
     resourceSlugs: [
       "what-is-styrene-monomer",
-      "styrene-as-reactive-diluent",
-      "why-styrene-reduces-resin-viscosity",
-      "styrene-and-fibreglass-wet-out",
-      "styrene-in-gelcoat-systems",
+      "what-is-styrene-monomer",
+      "what-is-styrene-monomer",
+      "what-is-styrene-monomer",
+      "what-is-styrene-monomer",
       "styrene-and-polyester-cure-chemistry",
-      "styrene-vs-low-voc-resin-systems",
+      "what-is-styrene-monomer",
       "styrene-monomer-storage-handling-safety",
-      "common-styrene-related-processing-issues",
-      "styrene-monomer-buyer-guide",
+      "what-is-styrene-monomer",
+      "what-is-styrene-monomer",
     ],
   },
   {
@@ -3537,13 +3545,13 @@ export const products = [
     ],
     resourceSlugs: [
       "what-is-nc-thinner",
-      "nc-thinner-in-spray-application",
-      "nc-thinner-for-wood-finishing",
-      "nc-thinner-viscosity-flow-and-blushing",
+      "what-is-nc-thinner",
+      "what-is-nc-thinner",
+      "what-is-nc-thinner",
       "solvent-evaporation-and-coating-defects",
       "nc-thinner-vs-general-purpose-thinner",
-      "nc-thinner-in-industrial-coatings",
-      "nc-thinner-selection-and-storage-guide",
+      "what-is-nc-thinner",
+      "what-is-nc-thinner",
     ],
   },
   {
@@ -3628,11 +3636,11 @@ export const products = [
     relatedSlugs: ["gp-gelcoat-resin", "mekp-hardener", "cobalt-octoate"],
     resourceSlugs: [
       "selecting-brushes-for-resin-and-gelcoat-application",
-      "brush-vs-roller-vs-squeegee-in-frp-work",
-      "brush-technique-for-hand-lay-up-and-mould-corners",
-      "using-brushes-for-frp-repair",
-      "workshop-tool-checklist-for-open-moulding",
-      "caring-for-and-replacing-application-brushes",
+      "selecting-brushes-for-resin-and-gelcoat-application",
+      "selecting-brushes-for-resin-and-gelcoat-application",
+      "selecting-brushes-for-resin-and-gelcoat-application",
+      "selecting-brushes-for-resin-and-gelcoat-application",
+      "selecting-brushes-for-resin-and-gelcoat-application",
     ],
   },
   {
@@ -3717,14 +3725,14 @@ export const products = [
     relatedSlugs: ["marble-resin", "gp-clear-resin"],
     resourceSlugs: [
       "what-is-soapstone-talc-powder",
-      "mineral-fillers-in-polyester-resin",
-      "filler-vs-reinforcement",
-      "soapstone-powder-in-putty-and-filler-compounds",
-      "soapstone-powder-in-paints-and-coatings",
-      "soapstone-vs-calcium-carbonate-as-a-filler",
-      "filler-dispersion-and-mixing-considerations",
-      "soapstone-powder-storage-and-handling",
-      "mineral-filler-selection-guide",
+      "what-is-soapstone-talc-powder",
+      "what-is-soapstone-talc-powder",
+      "what-is-soapstone-talc-powder",
+      "what-is-soapstone-talc-powder",
+      "what-is-soapstone-talc-powder",
+      "what-is-soapstone-talc-powder",
+      "what-is-soapstone-talc-powder",
+      "what-is-soapstone-talc-powder",
     ],
   },
   {
@@ -3809,15 +3817,15 @@ export const products = [
     relatedSlugs: ["gp-gelcoat-resin", "paint-brushes"],
     resourceSlugs: [
       "what-is-frp-mould-release-wax",
-      "how-to-apply-and-buff-mould-release-wax",
-      "preparing-a-new-frp-mould",
-      "mould-surface-preparation-basics",
-      "wax-vs-pva-release-agent",
-      "gelcoat-application-and-mould-release-sequence",
-      "common-mould-release-failures",
-      "mould-care-between-production-runs",
-      "wax-release-for-marine-and-panel-moulding",
-      "choosing-a-release-agent-for-frp-moulding",
+      "what-is-frp-mould-release-wax",
+      "what-is-frp-mould-release-wax",
+      "what-is-frp-mould-release-wax",
+      "what-is-frp-mould-release-wax",
+      "what-is-frp-mould-release-wax",
+      "what-is-frp-mould-release-wax",
+      "what-is-frp-mould-release-wax",
+      "what-is-frp-mould-release-wax",
+      "what-is-frp-mould-release-wax",
     ],
   },
 ];

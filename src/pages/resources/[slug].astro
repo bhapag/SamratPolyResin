@@ -79,7 +79,6 @@ const isGpQuartzAuthorityResource = gpQuartzAuthoritySlugs.has(resource.slug);
 const laminationAuthoritySlugs = new Set([
   'gp-resin-vs-lamination-resin',
   'what-is-lamination-resin',
-  'applications-of-lamination-resin',
   'lamination-resin-for-hand-lay-up',
   'lamination-resin-vs-vinyl-ester-resin',
   'lamination-resin-vs-gelcoat-resin',
@@ -91,8 +90,6 @@ const gelcoatAuthoritySlugs = new Set([
   'gp-resin-vs-gelcoat-resin',
   'lamination-resin-vs-gelcoat-resin',
   'gelcoat-resin-vs-vinyl-ester-resin',
-  'gelcoat-resin-vs-epoxy-resin',
-  'applications-of-gelcoat-resin-in-frp-manufacturing',
   'how-to-choose-gelcoat-resin-for-frp-products',
   'gelcoat-resin-problems-peeling-cracking-tackiness',
   'gelcoat-resin-storage-and-handling-guide',
@@ -122,19 +119,12 @@ const isUprAuthorityResource = uprAuthoritySlugs.has(resource.slug);
 const glassFiberAuthoritySlugs = new Set([
   'what-is-glass-fiber-chopped-strand-mat',
   'csm-300-vs-csm-450-glass-fiber',
-  'glass-fiber-and-polyester-resin-compatibility',
-  'glass-fiber-for-frp-manufacturing',
-  'glass-fiber-storage-and-procurement-guide',
 ]);
 const isGlassFiberAuthorityResource = glassFiberAuthoritySlugs.has(resource.slug);
 const pigmentAuthoritySlugs = new Set([
   'what-is-frp-polyester-pigment',
-  'applications-of-frp-polyester-pigment',
   'polyester-pigment-paste-vs-gelcoat',
-  'pigment-paste-vs-pre-pigmented-polyester-resin',
-  'frp-pigment-compatibility-with-resin-systems',
   'frp-colour-variation-buyer-checklist',
-  'frp-pigment-storage-and-procurement-guide',
 ]);
 const isPigmentAuthorityResource = pigmentAuthoritySlugs.has(resource.slug);
 const epoxyArtAuthoritySlugs = new Set([
@@ -152,7 +142,6 @@ const epoxyHardenerAuthoritySlugs = new Set([
   'epoxy-resin-vs-epoxy-hardener',
   'epoxy-hardener-compatibility-guide',
   'epoxy-hardener-vs-mekp-hardener',
-  'epoxy-hardener-vs-uv-resin-curing',
   'epoxy-hardener-for-clear-casting-and-art-resin',
   'epoxy-hardener-procurement-guide',
 ]);
@@ -220,7 +209,6 @@ const marbleResinAuthoritySlugs = new Set([
   'gp-quartz-resin-vs-marble-resin',
   'marble-resin-vs-pet-resin',
   'marble-resin-vs-gp-resin',
-  'marble-resin-vs-epoxy-clear-casting-resin',
   'marble-resin-technical-specifications-and-rfq',
 ]);
 const isMarbleResinAuthorityResource = marbleResinAuthoritySlugs.has(resource.slug);
@@ -412,6 +400,26 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
                   <p>{sub.body}</p>
                 </div>
               ))}
+              {/*
+                `definitions` renders a term/definition list. Added for the
+                resin glossary, where a real <dl> is both more semantic and far
+                more scannable than fifty <h3> subsections would be. `also`
+                carries the other names buyers use for the same thing, which is
+                most of the value of a glossary in this trade.
+              */}
+              {isRich && s.definitions && (
+                <dl class="article-defs">
+                  {s.definitions.map((d) => (
+                    <div class="article-def" id={d.id}>
+                      <dt>
+                        {d.term}
+                        {d.also && <span class="article-def-also">also: {d.also}</span>}
+                      </dt>
+                      <dd>{d.body}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
               {isRich && s.visualsAfter && s.visualsAfter.map((visual) => (
                 visual.type === 'steps' ? (
                   <div class="process-block">
@@ -689,6 +697,26 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .article-subsection { margin-top: 1.6rem; }
     .article-subsection h3 { font-size: 1.05rem; margin-bottom: 0.5rem; text-transform: none; letter-spacing: 0; color: var(--ink); }
     .article-subsection p { color: var(--ink-dim); margin-bottom: 0; max-width: 70ch; }
+
+    .article-defs { margin: 1.4rem 0 0; display: flex; flex-direction: column; gap: 0; }
+    .article-def {
+      padding: 1rem 0;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 6rem;
+    }
+    .article-def:last-child { border-bottom: 1px solid var(--line); }
+    .article-def dt {
+      font-weight: 500; color: var(--ink); font-size: 1rem;
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.6rem;
+    }
+    .article-def-also {
+      font-family: var(--font-mono); font-size: 0.68rem;
+      letter-spacing: 0.04em; color: var(--ink-faint); text-transform: none;
+    }
+    .article-def dd {
+      margin: 0.4rem 0 0; color: var(--ink-dim);
+      max-width: 74ch; line-height: 1.7; font-size: 0.95rem;
+    }
 
     .process-block, .diagram-block {
       background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest); border-radius: 14px;

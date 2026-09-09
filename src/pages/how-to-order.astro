@@ -1,0 +1,329 @@
+---
+import Base from '../layouts/Base.astro';
+import EnquiryForm from '../components/EnquiryForm.astro';
+import { products } from '../data/products.js';
+import { site, buildWhatsAppLink, buildCanonicalUrl } from '../data/site.js';
+
+// ---------------------------------------------------------------------------
+// WHY THIS PAGE EXISTS
+//
+// Search Console (90 days to 6 Sept 2026) shows the site ranking in the top
+// four for buyer-intent queries — `polyester resin supplier` (position 1.0),
+// `frp resin suppliers near me` (1.0), `polyester resin manufacturers in
+// india` (1.0), `resin supplier` (4.0) — with no page anywhere answering
+// "how do I actually buy from you?". /custom-resin-request/ recorded zero
+// views in the last 7 days of GA4. This was the clearest conversion gap on
+// the site.
+//
+// WHAT IT MAY AND MAY NOT SAY
+//
+// Packaging and minimum order quantities ARE published per product, so they
+// are rendered here straight from products.js and cannot drift.
+//
+// Deliberately NOT stated anywhere on this page, because the repository does
+// not verify them and inventing them would be a false commercial claim:
+//   - lead times or dispatch times
+//   - stock availability
+//   - freight cost, incoterms or who arranges transport
+//   - payment terms, credit or advance percentages
+//   - sample policy
+//   - any delivery promise
+// Each is described as "confirmed on your quotation" instead. Supply the real
+// terms and they can be published.
+//
+// `statesServed` is a site-level claim that already appears on the homepage,
+// so it is repeated here as a supply footprint, not a delivery guarantee.
+// ---------------------------------------------------------------------------
+
+const packed = products
+  .filter((p) => p.productDetails?.['Minimum Order Quantity'] || p.productDetails?.['Minimum order quantity'])
+  .map((p) => ({
+    slug: p.slug,
+    name: p.name,
+    category: p.category,
+    packaging: p.productDetails.Packaging || p.productDetails['Packaging Size'] || p.productDetails['Pack Size'] || '—',
+    moq: p.productDetails['Minimum Order Quantity'] || p.productDetails['Minimum order quantity'],
+  }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+const domestic = site.statesServed.filter((s) => !s.startsWith('Export'));
+const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export')).map((s) => s.replace('Export ', ''));
+
+const waLink = buildWhatsAppLink('generic');
+
+const steps = [
+  {
+    n: 'Choose the grade',
+    body: 'If you know which grade you need, go straight to its product page for the published specifications and TDS. If you do not, the resin selector narrows the catalogue by what you are making, your process and any stated requirement — and shows you the published line that matched, so you can check the reasoning.',
+    links: [
+      { href: '/tools/resin-selector/', label: 'Resin selector' },
+      { href: '/products/', label: 'Browse all products' },
+      { href: '/technical-documents/', label: 'All TDS & SDS' },
+    ],
+  },
+  {
+    n: 'Send the details',
+    body: 'Five things make a quote possible: the grade or the component, the quantity, the delivery location, the process, and any specification or drawing you have been given. Send them by form, WhatsApp, email or phone — whichever suits you.',
+    links: [
+      { href: '/contact/', label: 'Enquiry form' },
+      { href: '/tools/quantity-guidance/', label: 'Not sure of quantity?' },
+    ],
+  },
+  {
+    n: 'Technical confirmation',
+    body: 'For anything beyond a repeat order we will confirm the grade against what you have described before quoting — because the wrong grade is a more expensive mistake than a slow quote. If your requirement does not match a published grade, that conversation moves to a custom specification request.',
+    links: [{ href: '/custom-resin-request/', label: 'Custom specification request' }],
+  },
+  {
+    n: 'Quotation',
+    body: 'You receive a quotation covering price, pack size, quantity and the commercial terms for your order. Lead time, freight and payment terms are confirmed on that quotation against your actual requirement and location — they are not published here, because they vary by order and we would rather not publish a figure we cannot hold to.',
+    links: [],
+  },
+  {
+    n: 'Confirmation and dispatch',
+    body: 'Once the quotation is accepted, the order is confirmed and scheduled. Keep the batch or roll identification, receipt date and storage conditions with your goods-inward record — several grades have a published shelf life that runs from receipt, and it is the first thing worth checking if material behaves unexpectedly later.',
+    links: [{ href: '/technical-documents/', label: 'Download the TDS for your grade' }],
+  },
+];
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: buildCanonicalUrl('/') },
+    { '@type': 'ListItem', position: 2, name: 'How to Order', item: buildCanonicalUrl('/how-to-order/') },
+  ],
+};
+
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: `How to order resin from ${site.name}`,
+  description:
+    'The five steps from choosing a resin grade to dispatch: selection, sending your requirement, technical confirmation, quotation, and confirmation.',
+  url: buildCanonicalUrl('/how-to-order/'),
+  step: steps.map((s, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: s.n,
+    text: s.body,
+  })),
+};
+---
+<Base
+  title="How to Order — Resin Enquiry to Dispatch"
+  description={`How to buy resin from ${site.name}: choose a grade, send five details, technical confirmation, quotation and dispatch. Published pack sizes and minimum order quantities for every grade.`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(howToJsonLd)} />
+
+  <section class="section hto-hero">
+    <div class="wrap">
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span>
+        <span aria-current="page">How to Order</span>
+      </nav>
+      <p class="eyebrow">Buying from us</p>
+      <h1>How ordering works</h1>
+      <p class="hto-lead">
+        We are a manufacturer, not a shopfront — there is no cart and no checkout. Ordering runs
+        through a quotation, because pack size, quantity and destination all change the answer. This
+        page sets out the five steps, what we publish, and what we deliberately do not.
+      </p>
+      <div class="hto-hero-cta">
+        <a href="/contact/" class="btn btn-solid">Send an enquiry</a>
+        <a href={waLink} class="btn btn-ghost" target="_blank" rel="noopener">WhatsApp</a>
+        <a href={`tel:${site.phones[0].dial}`} class="btn btn-ghost">{site.phones[0].display}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hto-steps">
+    <div class="wrap">
+      <ol class="hto-list">
+        {steps.map((s, i) => (
+          <li class="hto-step">
+            <span class="hto-num">{String(i + 1).padStart(2, '0')}</span>
+            <div class="hto-step-body">
+              <h2>{s.n}</h2>
+              <p>{s.body}</p>
+              {s.links.length > 0 && (
+                <div class="hto-step-links">
+                  {s.links.map((l) => <a href={l.href}>{l.label}</a>)}
+                </div>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section hto-facts">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Published</p>
+        <h2>Pack sizes and minimum order quantities</h2>
+        <p class="hto-facts-note">
+          These come straight from each product's published details, so this table cannot drift away
+          from the catalogue. They are catalogue figures for planning — not a stock statement. Confirm
+          the current position on your quotation.
+        </p>
+      </div>
+      <div class="hto-table-scroll">
+        <table class="hto-table">
+          <thead>
+            <tr>
+              <th scope="col">Grade</th>
+              <th scope="col">Category</th>
+              <th scope="col">Packaging</th>
+              <th scope="col">Minimum order</th>
+            </tr>
+          </thead>
+          <tbody>
+            {packed.map((p) => (
+              <tr>
+                <th scope="row"><a href={`/products/${p.slug}/`}>{p.name}</a></th>
+                <td>{p.category}</td>
+                <td>{p.packaging}</td>
+                <td>{p.moq}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="hto-facts-foot">
+        Products not listed here do not publish a minimum order quantity. That does not mean there
+        isn't one — ask when you enquire. Across the catalogue, standard drum packaging is
+        {' '}{site.packagingRange}, with smaller PET and pack formats on some grades.
+      </p>
+    </div>
+  </section>
+
+  <section class="section hto-honesty">
+    <div class="wrap hto-honesty-grid">
+      <div>
+        <h2>What we publish</h2>
+        <ul class="hto-yes">
+          <li>Full technical specifications for every grade, with TDS and SDS to download</li>
+          <li>Pack sizes and, where they exist, minimum order quantities</li>
+          <li>Published shelf life and storage conditions per grade</li>
+          <li>Our GST number ({site.gst}) and the plant address</li>
+        </ul>
+      </div>
+      <div>
+        <h2>What we don't publish — and why</h2>
+        <ul class="hto-no">
+          <li><strong>Lead time and dispatch</strong> — depends on grade, quantity and destination. Confirmed on your quotation.</li>
+          <li><strong>Stock position</strong> — changes daily. Ask and we will tell you where it stands.</li>
+          <li><strong>Freight and payment terms</strong> — set per order. Confirmed on your quotation.</li>
+          <li><strong>Prices</strong> — quoted against grade, quantity and destination rather than listed.</li>
+        </ul>
+        <p class="hto-honesty-foot">
+          We would rather give you a figure we can hold to than publish one we cannot.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hto-where">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Supply</p>
+        <h2>Where we supply</h2>
+      </div>
+      <p class="hto-where-note">
+        We currently supply {domestic.length} states across India, and export to {exportMarkets.join(' and ')}.
+        This is our supply footprint, not a delivery guarantee — confirm your specific location when you enquire.
+      </p>
+      <ul class="hto-chips">
+        {domestic.map((s) => <li>{s}</li>)}
+        {exportMarkets.map((s) => <li class="hto-chip-export">{s} (export)</li>)}
+      </ul>
+      <p class="hto-where-foot">
+        The plant and office are at {site.address.line1}, {site.address.line2} — {site.address.pin},
+        {' '}{site.address.state}. <a href="/contact/">Directions and contact details →</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section hto-enquire">
+    <div class="wrap hto-enquire-inner">
+      <div class="section-head">
+        <p class="eyebrow">Start here</p>
+        <h2>Send your requirement</h2>
+        <p class="hto-enquiry-note">
+          Grade or component, quantity, delivery location, process, and any specification you have been
+          given. That is enough for us to come back with something useful.
+        </p>
+      </div>
+      <div class="hto-enquire-box">
+        <EnquiryForm pageContext="how-to-order" messagePlaceholder="Grade or component, quantity, delivery location, process, any specification" />
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .hto-hero { padding-bottom: 1rem; }
+    .hto-hero h1 { font-size: clamp(2.1rem, 5.5vw, 3.3rem); margin-top: 0.6rem; }
+    .hto-lead { color: var(--ink-dim); margin-top: 1rem; max-width: 64ch; line-height: 1.7; font-size: 1.02rem; }
+    .hto-hero-cta { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+
+    .hto-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; counter-reset: none; }
+    .hto-step { display: flex; gap: clamp(1rem, 3vw, 2rem); padding: 1.5rem 0; border-top: 1px solid var(--line); }
+    .hto-step:last-child { border-bottom: 1px solid var(--line); }
+    .hto-num {
+      flex-shrink: 0; font-family: var(--font-mono); font-size: 0.8rem;
+      color: var(--accent-gold-light); padding-top: 0.25rem; min-width: 2.2rem;
+    }
+    .hto-step-body h2 { font-size: 1.12rem; margin: 0 0 0.5rem; }
+    .hto-step-body p { color: var(--ink-dim); margin: 0; max-width: 66ch; line-height: 1.75; font-size: 0.95rem; }
+    .hto-step-links { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.9rem; }
+    .hto-step-links a {
+      display: inline-block; padding: 0.35rem 0.7rem;
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.04em;
+      color: var(--ink-dim); text-decoration: none;
+      border: 1px solid var(--line-2); background: var(--bg-2);
+      transition: color .2s ease, border-color .2s ease;
+    }
+    .hto-step-links a:hover { color: var(--ink); border-color: var(--accent); }
+
+    .hto-facts-note, .hto-where-note { color: var(--ink-dim); margin-top: 0.8rem; max-width: 66ch; line-height: 1.7; }
+    .hto-table-scroll { overflow-x: auto; margin-top: 1.6rem; }
+    .hto-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 34rem; }
+    .hto-table th, .hto-table td { text-align: left; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--line); }
+    .hto-table thead th { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+    .hto-table tbody th { font-weight: 400; color: var(--ink); }
+    .hto-table tbody th a { color: var(--ink); }
+    .hto-table tbody th a:hover { color: var(--accent-gold-light); }
+    .hto-table td { color: var(--ink-dim); }
+    .hto-table td:nth-child(3), .hto-table td:nth-child(4) { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-faint); }
+    .hto-facts-foot { margin-top: 1rem; font-size: 0.85rem; color: var(--ink-faint); max-width: 66ch; line-height: 1.7; }
+
+    .hto-honesty { border-top: 1px solid var(--line); }
+    .hto-honesty-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(1.6rem, 4vw, 3rem); }
+    .hto-honesty h2 { font-size: 1.15rem; margin: 0 0 0.9rem; }
+    .hto-yes, .hto-no { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; color: var(--ink-dim); font-size: 0.92rem; }
+    .hto-yes li, .hto-no li { padding-left: 1.3rem; position: relative; line-height: 1.65; }
+    .hto-yes li::before { content: '✓'; position: absolute; left: 0; color: var(--accent-gold-light); font-size: 0.85rem; }
+    .hto-no li::before { content: '—'; position: absolute; left: 0; color: var(--ink-faint); font-family: var(--font-mono); }
+    .hto-no strong { color: var(--ink); font-weight: 500; }
+    .hto-honesty-foot { margin-top: 1rem; font-size: 0.85rem; color: var(--ink-faint); font-style: italic; }
+
+    .hto-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1.2rem 0 0; padding: 0; }
+    .hto-chips li {
+      font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-dim);
+      background: var(--bg-2); border: 1px solid var(--line-2); padding: 0.3rem 0.6rem;
+    }
+    .hto-chip-export { color: var(--ink-faint); }
+    .hto-where-foot { margin-top: 1.2rem; font-size: 0.88rem; color: var(--ink-faint); line-height: 1.7; }
+    .hto-where-foot a { color: var(--ink-dim); }
+
+    .hto-enquire-inner { max-width: 720px; }
+    .hto-enquiry-note { color: var(--ink-dim); margin-top: 0.7rem; line-height: 1.7; }
+    .hto-enquire-box { background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest); padding: clamp(1.4rem, 4vw, 2.2rem); margin-top: 1.2rem; }
+
+    @media (max-width: 620px) { .hto-step { flex-direction: column; gap: 0.5rem; } }
+    @media (prefers-reduced-motion: reduce) { .hto-step-links a { transition: none; } }
+  </style>
+</Base>

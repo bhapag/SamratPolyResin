@@ -136,6 +136,33 @@ const demo = !site.formEndpoint;
     if (!form || !statusEl || form.dataset.wired === 'true') return;
     form.dataset.wired = 'true';
 
+    // Pre-fill from the query string so the resin selector and the quantity
+    // tool can hand a buyer straight into a started enquiry instead of an empty
+    // one. Only ever fills fields the visitor has not already typed into, and
+    // only these two keys — nothing here can populate name, phone or email, so
+    // a crafted link cannot put words in a visitor's mouth.
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const productParam = params.get('product');
+      const contextParam = params.get('context');
+
+      const productField = form.querySelector('input[name="product"]') as HTMLInputElement | null;
+      if (productParam && productField && !productField.value) {
+        productField.value = productParam.slice(0, 120);
+      }
+
+      const messageField = form.querySelector('textarea[name="message"]') as HTMLTextAreaElement | null;
+      if (contextParam && messageField && !messageField.value) {
+        messageField.value = contextParam.slice(0, 400);
+      }
+
+      if ((productParam || contextParam) && window.location.hash === '#enquiry') {
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } catch {
+      // A malformed query string must never stop the form from working.
+    }
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const isDemo = form.dataset.demo === 'true';
