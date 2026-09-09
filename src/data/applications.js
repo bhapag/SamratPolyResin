@@ -526,12 +526,28 @@ export const applications = [
     cardImageAlt: "FRP marine and boat components built from glass-reinforced polyester composite",
     cardDescription: "Marine and boat components need proven wet-out over glass fibre reinforcement and reliable strength once the laminate cures.",
     cardBenefit: "Reliable wet-out for hulls and marine parts.",
+    // 85 impressions at average position 35.5 with a 1.2% CTR in the 90 days to
+    // 6 Sept 2026, while `marine-grade composite resins for boat manufacturers`
+    // was the site's third-highest query by impressions (25) at position 31.2.
+    // Real demand, page buried. The title and description now name the resin
+    // grades and the composite vocabulary that query actually uses, and the
+    // intro states which grade does which job in the first two sentences
+    // instead of opening with general history.
     seo: {
-      title: "Resin for Boat & Marine Components",
-      description: "How GP Clear Resin performs in FRP boat and marine component fabrication, and when a chemical-resistant grade is worth the upgrade.",
-      keywords: ["Resin for Boat Manufacturing", "FRP Marine Resin", "Boat Building Resin", "Polyester Resin for Marine Components"],
+      title: "Marine & Boat Composite Resins | GP, Gelcoat and Vinyl Ester",
+      description: "Which resin grades FRP boat builders use for hulls, decks and marine components — GP Clear and Lamination Resin for the laminate, gelcoat for the visible hull surface, vinyl ester where a chemical- or water-resistance requirement is stated.",
+      keywords: [
+        "marine grade composite resins",
+        "resin for boat manufacturing",
+        "boat building resin",
+        "FRP marine resin",
+        "composite resins for boat manufacturers",
+        "gelcoat for boat hull",
+        "polyester resin for marine components",
+      ],
     },
-    intro: "Fibreglass has been the dominant boat-building material for small and mid-size craft for decades, prized for its strength-to-weight ratio, resistance to rot and corrosion, and the design freedom that moulding gives builders over plank-built timber or welded metal hulls. Every FRP hull, deck and marine component starts the same way regardless of the boat's final size or use: layers of glass reinforcement wet out with resin and cured into a single structural laminate.",
+    intro: "FRP boat and marine work uses three resin roles rather than one: a laminating grade such as GP Clear Resin or Lamination Resin to wet out the glass reinforcement and build the structural hull, a gelcoat applied first against the mould to form the visible outer surface, and — where a project states a chemical- or water-resistance requirement that a general-purpose grade does not cover — a vinyl ester grade reviewed on its own published data. Suitability for any specific vessel, service condition or class requirement must be confirmed against the relevant product TDS and the builder's own specification; nothing on this page constitutes a marine approval or certification.",
+    introSecondary: "Fibreglass has been the dominant boat-building material for small and mid-size craft for decades, prized for its strength-to-weight ratio, resistance to rot and corrosion, and the design freedom that moulding gives builders over plank-built timber or welded metal hulls. Every FRP hull, deck and marine component starts the same way regardless of the boat's final size or use: layers of glass reinforcement wet out with resin and cured into a single structural laminate.",
     whatTheyManufacture: "Marine fabricators build hulls, decks, cabin structures and a wide range of smaller FRP components — hatches, consoles, seating, fuel tank housings and fittings — for boats ranging from small fishing craft to mid-size recreational vessels, as well as marine components used outside boats entirely, such as FRP tanks and enclosures for waterfront and coastal installations.",
     whySuitable: 'Marine lamination puts a premium on wet-out quality, since a hull or deck depends on complete resin penetration through every layer of reinforcement to reach its rated strength — any dry glass fibre becomes a weak point under load or impact. <a href="/products/gp-clear-resin/">GP Clear Resin</a>\'s 350–450 cPs viscosity wets out chopped strand mat and woven roving thoroughly during hand lay-up, and its cured mechanical strength supports the structural demands of hull and deck laminates. For components with prolonged direct seawater immersion or where maximum corrosion resistance is a priority, some builders step up to a <a href="/products/vinyl-ester-resin/">vinyl ester resin</a> — GP Clear Resin remains a dependable, cost-effective choice for general marine and boat component fabrication.',
     requiredCharacteristics: [

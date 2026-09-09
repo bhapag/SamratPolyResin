@@ -15,7 +15,7 @@ const resolveAppImage = (filename) => appImageModules[`/src/assets/applications/
 
 const { application } = Astro.props;
 const {
-  title, cardImage, cardImageAlt, cardDescription, seo, intro, whatTheyManufacture, whySuitable,
+  title, cardImage, cardImageAlt, cardDescription, seo, intro, introSecondary, whatTheyManufacture, whySuitable,
   requiredCharacteristics, manufacturingProcess, advantages, commonProducts,
   faqs, relatedProductSlugs, ctaHeading, ctaText,
   relatedLinksHeading, recommendedLinks,
@@ -132,6 +132,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <p class="app-eyebrow">Application guide</p>
       <h1>{title}</h1>
       <p class="app-lead">{intro}</p>
+      {introSecondary && <p class="app-lead app-lead-secondary">{introSecondary}</p>}
       {parentProduct && <a href={`/products/${parentProduct.slug}/`} class="app-hero-tag">{parentProduct.name}<span aria-hidden="true"> →</span></a>}
     </div>
   </header>
@@ -261,6 +262,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     }
     .app-hero-inner h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin-top: 0.9rem; text-transform: none; letter-spacing: 0; max-width: 18ch; }
     .app-lead { color: var(--ink-dim); margin-top: 1.1rem; font-size: 1.02rem; max-width: 58ch; line-height: 1.7; }
+    /* Optional second lead paragraph — used where the first paragraph answers
+       the search intent directly and the background context follows it. */
+    .app-lead-secondary { margin-top: 0.85rem; font-size: 0.97rem; opacity: 0.88; }
     .app-hero-tag {
       display: inline-flex; align-items: center; margin-top: 1.3rem;
       font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.04em; color: var(--ink);

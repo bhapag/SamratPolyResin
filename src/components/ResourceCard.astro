@@ -1,5 +1,6 @@
 ---
 import ResourceIcon from './ResourceIcon.astro';
+import { getReadingTime } from '../data/resources.js';
 
 // `compact` renders the same link as a single scannable row instead of a
 // panel. It exists for the Knowledge Centre index, which lists all 213 live
@@ -14,7 +15,15 @@ import ResourceIcon from './ResourceIcon.astro';
 // Product pages keep the full card (a handful of articles, where the extra
 // description and reading time earn their space).
 const { resource, compact = false } = Astro.props;
-const { slug, title, description, readingTime, icon } = resource;
+const { slug, title, description, icon } = resource;
+
+// Reading time is CALCULATED from the article's own content, never read from
+// the `readingTime` field on the resource. That field is a hand-written
+// fallback and had drifted badly: on 2026-09-09, 153 of 213 cards advertised
+// a figure the article did not match — `fire-retardant-resin-vs-gp-resin`
+// promised "4 min read" for a one-minute article. The article page has always
+// computed it; the card now uses the same function so the two cannot disagree.
+const readingTime = getReadingTime(resource);
 ---
 <a href={`/resources/${slug}/`} class:list={['res-card', { compact }]}>
   <span class="res-card-icon" aria-hidden="true"><ResourceIcon name={icon} /></span>

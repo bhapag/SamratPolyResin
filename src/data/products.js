@@ -203,9 +203,9 @@ export const products = [
     imageAlt:
       "Unsaturated Polyester Resin (UPR) — clear orthophthalic general-purpose polyester resin by Samrat Poly Resins",
     seo: {
-      title: "Unsaturated Polyester Resin (UPR) – Orthophthalic Polyester Resin",
+      title: "Unsaturated Polyester Resin (UPR) Manufacturer in India | TDS",
       description:
-        "Unsaturated Polyester Resin (UPR) — a general-purpose orthophthalic polyester resin for FRP and composite manufacturing. Gel time under 8 minutes. 225 kg drums.",
+        "UPR stands for Unsaturated Polyester Resin — the orthophthalic general-purpose grade used across FRP and composite manufacturing. Published specifications, downloadable TDS and SDS, made in Punjab.",
       // "General Purpose Polyester Resin" intentionally omitted here — that
       // exact phrase is in GP Clear Resin's own title tag, so keeping it here
       // too would have this page competing with GP Clear Resin for it. Every
@@ -474,9 +474,9 @@ export const products = [
     tdsUrl: "/tds/gp-clear-resin-tds.pdf",
     sdsUrl: "/sds/gp-clear-resin-sds.pdf",
     seo: {
-      title: "GP Clear Resin – General Purpose Polyester Resin",
+      title: "GP Clear Resin Manufacturer | General Purpose Polyester Resin",
       description:
-        "GP Clear Resin — a clear, orthophthalic general-purpose polyester resin for FRP hand layup, spray-up and moulding. Gel time under 8 minutes. 225 kg drums.",
+        "GP Clear Resin — the clear orthophthalic general-purpose polyester resin for FRP hand lay-up, spray-up and moulding. Published viscosity and gel time, downloadable TDS and SDS, made in Punjab.",
       // "Unsaturated Polyester Resin" and "Orthophthalic Polyester Resin" were
       // removed from here — the dedicated /unsaturated-polyester-resin/ page
       // now owns that search intent; keeping both here would have the two
@@ -3003,7 +3003,7 @@ export const products = [
     seo: {
       title: "MEKP Hardener Supplier in India | Polyester Resin Catalyst",
       description:
-        "MEKP Hardener (Methyl Ethyl Ketone Peroxide) catalyst / initiator for published polyester, vinyl ester and gelcoat systems. Review the TDS and request an industrial quote.",
+        "MEKP Hardener (Methyl Ethyl Ketone Peroxide) — the catalyst / initiator for polyester, vinyl ester and gelcoat systems. Published 25 kg carboy packaging and TDS. Not the same as an accelerator.",
       keywords: [
         "MEKP Hardener",
         "MEKP Catalyst",

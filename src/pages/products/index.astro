@@ -12,13 +12,42 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
 // same set of hubs and can't drift out of sync with this page.
 const familyPageSlugs = CATEGORY_HUBS;
 ---
-<Base title="Polyester, Epoxy & FRP Resin Products" description="Explore Samrat Poly Resins’ range of polyester, epoxy, GP, fire-retardant and specialty resins, hardeners and FRP raw materials.">
+<Base
+  title={`Polyester & Epoxy Resin Products — ${products.length} Grades with TDS`}
+  description={`Samrat Poly Resins manufactures ${products.length} polyester, epoxy, gelcoat, fire-retardant and specialty resin grades plus FRP raw materials. Every grade lists its published specifications, with TDS and SDS to download.`}
+>
   <section class="section prod-hero">
     <div class="wrap">
       <p class="eyebrow">Product range</p>
-      <h1>What we manufacture</h1>
-      <p class="prod-hero-sub">{products.length} resin grades and FRP raw materials, organised by category.</p>
-      <a href="/custom-resin-request/" class="btn btn-solid prod-custom-cta">Request Custom Resin Specification</a>
+      <h1>Polyester, epoxy &amp; FRP resins</h1>
+      {/*
+        This page ranked at average position 34.8 on 171 impressions with zero
+        clicks in the 90 days to 6 Sept 2026 — the worst-performing significant
+        page on the site. The old H1 ("What we manufacture") and sub-line said
+        nothing a searcher could match, and the first screen carried no answer
+        to "what does this company actually sell?". The paragraph below answers
+        that in the first sentence, and the category strip gives a buyer a route
+        into the right family without scrolling the full catalogue.
+      */}
+      <p class="prod-hero-sub">
+        Samrat Poly Resins manufactures {products.length} resin grades and FRP raw materials at Doraha,
+        Ludhiana — general-purpose and lamination polyester resins, gelcoats, fire-retardant and
+        isophthalic grades, epoxy and casting systems, hardeners, glass fibre, pigments and workshop
+        consumables. Every grade below shows its published specifications, and most carry a
+        downloadable technical data sheet.
+      </p>
+      <div class="prod-hero-jump">
+        {byCat.map(({ cat, items }) => (
+          <a href={familyPageSlugs[cat] ? `/products/${familyPageSlugs[cat]}/` : `#${catId(cat)}`}>
+            {cat} <span>{items.length}</span>
+          </a>
+        ))}
+      </div>
+      <div class="prod-hero-cta">
+        <a href="/tools/resin-selector/" class="btn btn-solid">Find the right grade</a>
+        <a href="/technical-documents/" class="btn btn-ghost">All TDS &amp; SDS</a>
+        <a href="/custom-resin-request/" class="btn btn-ghost">Custom specification</a>
+      </div>
     </div>
   </section>
 
@@ -133,8 +162,31 @@ const familyPageSlugs = CATEGORY_HUBS;
   <style>
     .prod-hero { padding-bottom: 0; }
     .prod-hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); margin-top: 0.6rem; }
-    .prod-hero-sub { color: var(--ink-dim); margin-top: 0.9rem; max-width: 48ch; }
-    .prod-custom-cta { margin-top: 1.35rem; }
+    .prod-hero-sub { color: var(--ink-dim); margin-top: 0.9rem; max-width: 68ch; line-height: 1.65; }
+
+    .prod-hero-jump {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-top: 1.4rem;
+    }
+    .prod-hero-jump a {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.4rem 0.75rem;
+      font-family: var(--font-mono); font-size: 0.72rem;
+      letter-spacing: 0.02em;
+      color: var(--ink-dim); text-decoration: none;
+      background: var(--bg-2);
+      border: 1px solid var(--line-2);
+      border-radius: 2px;
+      transition: color 0.18s ease, border-color 0.18s ease;
+    }
+    .prod-hero-jump a:hover,
+    .prod-hero-jump a:focus-visible { color: var(--ink); border-color: var(--accent); }
+    .prod-hero-jump a span {
+      font-size: 0.66rem; opacity: 0.6;
+      padding-left: 0.4rem; border-left: 1px solid var(--line-2);
+    }
+
+    .prod-hero-cta { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
 
     /* Compact catalogue section: replaces the old sticky filter bar +
        large .section spacing with one shallow block, so the category

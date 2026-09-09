@@ -15,10 +15,9 @@
 //    icon          one of: info, grid, checklist, layers, shield, tank,
 //                  roof, door, clock, drum (see ResourceIcon.astro)
 //    category      short label shown on cards and in the article hero
-//    readingTime   fallback only — the article template calculates actual
-//                  reading time from content via getReadingTime() below.
-//                  Kept for the resource-card grid, which shows it without
-//                  loading full section content.
+//                  (There is deliberately no readingTime field: both the
+//                  article page and ResourceCard call getReadingTime() so a
+//                  hand-written figure can never contradict the content.)
 //    publishDate   ISO date string, shown on the article page and used in
 //                  the Schema.org Article JSON-LD
 //    sections      ordered list of section headings for the article body.
@@ -58,15 +57,17 @@ export const resources = [
   {
     slug: "what-is-gp-polyester-resin",
     title: "What is GP Polyester Resin?",
-    description: "A complete guide to General Purpose (GP) polyester resin — what it is, how it's made, key properties, applications and how to select the right grade.",
+    description: "GP stands for General Purpose. A complete guide to GP polyester resin — what the name means, how it's made, its key properties, where it's used and how to select a grade.",
     category: "Product Guide",
     icon: "info",
-    readingTime: "10 min read",
     publishDate: "2026-07-18",
 
     seo: {
-      title: "GP Polyester Resin — Properties, Uses & Buying Guide",
+      title: "What Is GP Polyester Resin? GP Full Form, Properties & Uses",
       keywords: [
+        "gp resin full form",
+        "what is gp resin",
+        "gp resin uses",
         "GP polyester resin",
         "general purpose polyester resin",
         "unsaturated polyester resin",
@@ -77,10 +78,11 @@ export const resources = [
         "GP resin properties",
       ],
       ogTitle: "What is GP Polyester Resin? A Complete Guide",
-      ogDescription: "What General Purpose polyester resin is, how it's manufactured, its properties and advantages, where it's used, and how to select and store it correctly.",
+      ogDescription: "GP stands for General Purpose. What GP polyester resin is, how it's manufactured, its properties, where it's used, and how to select and store it correctly.",
     },
 
     quickFacts: {
+      "GP Full Form": "General Purpose",
       "Resin Type": "Unsaturated Polyester Resin (UPR)",
       "Material Class": "Thermosetting resin",
       "Curing System": "Room-temperature cure via peroxide catalyst (typically MEKP)",
@@ -182,7 +184,8 @@ export const resources = [
       {
         heading: "Introduction",
         body: [
-          "General Purpose (GP) polyester resin is one of the most widely used thermosetting resin systems in the fibre-reinforced plastics (FRP) and composites industry. It is manufactured by reacting unsaturated dibasic acids or anhydrides with glycols, then dissolving the resulting polyester in styrene monomer. Once combined with a suitable catalyst, it cures through free-radical crosslinking into a rigid, insoluble thermoset structure.",
+          "GP stands for General Purpose. GP polyester resin is one of the most widely used thermosetting resin systems in the fibre-reinforced plastics (FRP) and composites industry — the default, everyday grade that most FRP work starts from, as distinct from a specialist isophthalic, fire-retardant or vinyl ester grade chosen for a particular requirement.",
+          "It is manufactured by reacting unsaturated dibasic acids or anhydrides with glycols, then dissolving the resulting polyester in styrene monomer. Once combined with a suitable catalyst, it cures through free-radical crosslinking into a rigid, insoluble thermoset structure.",
           "Its popularity is not accidental. GP resin offers a practical balance of mechanical performance, ease of processing and cost, which is why it remains the default choice for a broad range of FRP applications — from water storage tanks and roofing sheets to industrial mouldings and construction products. Unlike speciality resin systems developed for specific performance requirements, such as enhanced chemical resistance, fire retardancy, or superior toughness, GP resin is formulated as a versatile, all-round material suited to general-purpose composite manufacturing.",
           "This article explains what GP polyester resin is, how it is manufactured, its key properties and advantages, where it is used, and how manufacturers should approach selecting and handling it correctly.",
         ],
@@ -411,7 +414,6 @@ export const resources = [
     description: "Explore where GP Polyester Resin is commonly used across FRP, construction, marine and industrial manufacturing.",
     category: "Application Guide",
     icon: "grid",
-    readingTime: "6 min read",
     publishDate: "2026-07-18",
 
     quickFacts: {
@@ -520,7 +522,6 @@ export const resources = [
     description: "Understand the key factors when selecting polyester resin for different FRP manufacturing processes.",
     category: "Buying Guide",
     icon: "checklist",
-    readingTime: "7 min read",
     publishDate: "2026-07-18",
 
     seo: {
@@ -690,7 +691,6 @@ export const resources = [
     description: "Understand Gelcoat Resin as the visible, mould-facing surface layer in an FRP build-up, how it differs from laminating resin and from epoxy systems, where it is used, and what to confirm before procurement.",
     category: "Product Guide",
     icon: "layers",
-    readingTime: "8 min read",
     publishDate: "2026-07-18",
     seo: {
       title: "What is Gel Coat Resin? FRP Surface Finish Explained",
@@ -886,7 +886,6 @@ export const resources = [
     description: "A product-data-led guide to the Fire Retardant Resin application categories published by Samrat Poly Resins and the project details buyers should verify.",
     category: "Application Guide",
     icon: "shield",
-    readingTime: "5 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "Fire Retardant Resin Applications | FRP Buyer Guide",
@@ -949,7 +948,6 @@ export const resources = [
     description: "Discover why polyester resin is widely used in manufacturing durable FRP water storage tanks.",
     category: "Application Guide",
     icon: "tank",
-    readingTime: "6 min read",
     publishDate: "2026-07-18",
 
     quickFacts: {
@@ -1075,7 +1073,6 @@ export const resources = [
     description: "Learn how polyester resin improves strength, weather resistance and performance in FRP roofing sheets.",
     category: "Application Guide",
     icon: "roof",
-    readingTime: "5 min read",
     publishDate: "2026-07-18",
 
     quickFacts: {
@@ -1180,7 +1177,6 @@ export const resources = [
     description: "Understand the role of polyester resin in producing strong and lightweight FRP door skins.",
     category: "Application Guide",
     icon: "door",
-    readingTime: "5 min read",
     publishDate: "2026-07-18",
 
     quickFacts: {
@@ -1273,16 +1269,15 @@ export const resources = [
   {
     slug: "understanding-gel-time-in-polyester-resin",
     title: "Understanding Gel Time in Polyester Resin",
-    description: "Learn what gel time means, why it matters and how it affects manufacturing efficiency.",
+    description: "Gel time is the working window between catalysing a polyester resin and it starting to set. What it means, what changes it, and what to check when it drifts.",
     category: "Technical Data",
     icon: "clock",
-    readingTime: "4 min read",
     publishDate: "2026-07-18",
     seo: {
-      title: "GP Resin Gel Time Troubleshooting | Polyester Resin Guide",
-      keywords: ["GP resin gel time", "GP resin gel time troubleshooting", "polyester resin gel time", "resin curing time", "FRP resin troubleshooting"],
+      title: "What Is Gel Time in Polyester Resin? Working Time Explained",
+      keywords: ["what is gel time", "gel time of resin", "polyester resin gel time", "GP resin gel time", "resin working time", "resin curing time", "FRP resin troubleshooting"],
       ogTitle: "GP Resin Gel Time Troubleshooting",
-      ogDescription: "Understand gel time, common GP resin troubleshooting checks and when to review the product TDS before changing a process.",
+      ogDescription: "Gel time is the working window between catalysing a polyester resin and the point it begins to set. What changes it, and what to check when it drifts.",
     },
 
     quickFacts: {
@@ -1390,7 +1385,6 @@ export const resources = [
     description: "Best practices for storage, handling and maintaining resin quality before use.",
     category: "Best Practices",
     icon: "drum",
-    readingTime: "4 min read",
     publishDate: "2026-07-18",
 
     quickFacts: {
@@ -1513,7 +1507,6 @@ export const resources = [
     description: "Understand the published Fire Retardant Resin product role, its relationship to unsaturated polyester resin, and the requirements to verify before selection.",
     category: "Technical Guide",
     icon: "shield",
-    readingTime: "4 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "What Is Fire Retardant Resin? | FR Polyester Resin",
@@ -1549,7 +1542,6 @@ export const resources = [
     description: "A buyer comparison of Fire Retardant Resin and general-purpose polyester resin based on published product roles and project requirements.",
     category: "Comparison Guide",
     icon: "compare",
-    readingTime: "4 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "Fire Retardant Resin vs GP Resin | FR Polyester Comparison",
@@ -1589,7 +1581,6 @@ export const resources = [
     description: "Understand why a Fire Retardant Resin product description is not the same as a fireproof claim or a finished FRP classification.",
     category: "Buyer Guide",
     icon: "shield",
-    readingTime: "3 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "Does Fire Retardant Resin Mean Fireproof? | FRP Buyer Guide",
@@ -1625,7 +1616,6 @@ export const resources = [
     description: "A practical guide to defining an FRP fire-performance requirement before selecting Fire Retardant Resin or requesting a quotation.",
     category: "Technical Guide",
     icon: "shield",
-    readingTime: "4 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "FRP Fire-Performance Requirements | Buyer Guide",
@@ -1661,7 +1651,6 @@ export const resources = [
     description: "Prepare a clear Fire Retardant Resin enquiry with the application, required documentation, quantity and delivery details needed for an industrial quote.",
     category: "Buyer Guide",
     icon: "checklist",
-    readingTime: "3 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "Fire Retardant Resin Procurement Checklist | FR Resin Quote",
@@ -1697,7 +1686,6 @@ export const resources = [
     description: "Understand Samrat Poly Resins' published ISO Fire Retardant Resin: an isophthalic-based, halogen-free FR polyester grade. Here, ISO describes chemistry, not certification.",
     category: "Technical Guide",
     icon: "shield",
-    readingTime: "4 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "What Is ISO Fire Retardant Resin? | Isophthalic FR Resin",
@@ -1733,7 +1721,6 @@ export const resources = [
     description: "Compare the published ISO / isophthalic FR grade with Samrat Poly Resins' separately listed standard Fire Retardant Resin without assuming an unverified performance hierarchy.",
     category: "Comparison Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "ISO Fire Retardant Resin vs Fire Retardant Resin | FR Guide",
@@ -1769,7 +1756,6 @@ export const resources = [
     description: "Review the application categories published for Samrat ISO Fire Retardant Resin and the requirement checks that should accompany industrial FRP selection.",
     category: "Application Guide",
     icon: "grid",
-    readingTime: "4 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "ISO Fire Retardant Resin Applications in FRP | ISO FR Resin",
@@ -1805,7 +1791,6 @@ export const resources = [
     description: "Clarify the relationship between broad unsaturated polyester resin terminology and Samrat's specialised ISO / isophthalic Fire Retardant Resin grade.",
     category: "Comparison Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "ISO Fire Retardant Resin vs UPR | Isophthalic FR Grade Guide",
@@ -1841,7 +1826,6 @@ export const resources = [
     description: "Compare the separately published ISO / isophthalic FR and Vinyl Ester resin routes by product role and required documentation, without unsupported performance claims.",
     category: "Comparison Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "ISO Fire Retardant Resin vs Vinyl Ester Resin | Buyer Guide",
@@ -1877,7 +1861,6 @@ export const resources = [
     description: "A buyer-level guide to separating ISO FR resin product data from the fire-performance requirement of a finished FRP system.",
     category: "Technical Guide",
     icon: "shield",
-    readingTime: "4 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "ISO Fire Retardant Resin Fire Requirements | FRP Buyer Guide",
@@ -1913,7 +1896,6 @@ export const resources = [
     description: "Prepare an ISO / isophthalic FR Resin enquiry with the application, original requirement, documentation, quantity and delivery details needed for a useful industrial quote.",
     category: "Buyer Guide",
     icon: "checklist",
-    readingTime: "3 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "ISO Fire Retardant Resin Procurement Checklist | ISO FR Quote",
@@ -1949,7 +1931,6 @@ export const resources = [
     description: "Compare GP Clear and GP Yellow Resin by supplied colour, published viscosity and gel time before selecting a general-purpose FRP grade.",
     category: "Comparison Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "GP Clear Resin vs GP Yellow Resin | Which GP Resin to Choose",
@@ -2005,7 +1986,6 @@ export const resources = [
     description: "Published GP Yellow Resin applications for Indian FRP fabricators where an intentionally transparent-yellow general-purpose grade is suitable for the process or build-up.",
     category: "Application Guide",
     icon: "grid",
-    readingTime: "5 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "GP Yellow Resin Uses in FRP Manufacturing | Buyer Guide",
@@ -2063,7 +2043,6 @@ export const resources = [
     description: "Understand the difference between general-purpose GP resin and Lamination Resin for FRP work, door lamination and bonding requirements.",
     category: "Comparison Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "GP Resin vs Lamination Resin (LR Resin) | FRP Buyer Guide",
@@ -2113,7 +2092,6 @@ export const resources = [
     description: "Compare general-purpose GP polyester resin and vinyl ester resin when an FRP project has different process or chemical-resistance requirements.",
     category: "Comparison Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "GP Resin vs Vinyl Ester Resin | FRP Selection Guide",
@@ -2166,7 +2144,6 @@ export const resources = [
     description: "Learn the different roles of GP resin and gelcoat resin in an FRP laminate, from structural build-up to the mould-facing surface.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "GP Resin vs Gelcoat Resin | Roles in FRP Manufacturing",
@@ -2220,7 +2197,6 @@ export const resources = [
     description: "A practical guide to understanding intentional yellow GP resin and unexpected colour change, what to check first and when to discuss a batch or process with the supplier.",
     category: "Troubleshooting Guide",
     icon: "info",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Why GP Resin Is Yellow or Turns Yellow | Buyer Checks",
@@ -2261,7 +2237,6 @@ export const resources = [
     description: "Understand common reasons a polyester resin surface may remain sticky or tacky, the checks to make and the details to share with a supplier.",
     category: "Troubleshooting Guide",
     icon: "info",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Why Polyester Resin Remains Sticky or Tacky",
@@ -2300,7 +2275,6 @@ export const resources = [
     description: "A practical guide to understanding shrinkage in GP resin applications and the process questions to resolve before production.",
     category: "Best Practices",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "How to Reduce Shrinkage in GP Resin Applications | FRP Guide",
@@ -2338,7 +2312,6 @@ export const resources = [
     description: "Understand the published 350-450 cPs GP Clear Resin viscosity and the process checks needed for hand lay-up, spray-up and general FRP processing.",
     category: "Technical Data",
     icon: "info",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "GP Resin Viscosity Explained | FRP Buyer and Process Guide",
@@ -2376,7 +2349,6 @@ export const resources = [
     description: "A buyer guide to Lamination Resin, also called LR Resin, for door, plywood and FRP bonding work — including the published application contexts and what to verify before purchase.",
     category: "Technical Explainer",
     icon: "layers",
-    readingTime: "5 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "What is Lamination Resin (LR Resin)? | Buyer Guide",
@@ -2504,7 +2476,6 @@ export const resources = [
     description: "A practical guide to reviewing Lamination Resin for published clear-finish hand lay-up work before production.",
     category: "Process Guide",
     icon: "layers",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Lamination Resin for Hand Lay-Up | LR Resin Process Guide",
@@ -2542,7 +2513,6 @@ export const resources = [
     description: "A decision guide for FRP buyers comparing a lamination-focused polyester grade with Vinyl Ester Resin for a specified requirement.",
     category: "Comparison Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Lamination Resin vs Vinyl Ester Resin | FRP Buyer Guide",
@@ -2590,7 +2560,6 @@ export const resources = [
     description: "Understand the different roles of Lamination Resin and Gelcoat Resin in an FRP build-up before selecting a product.",
     category: "Comparison Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Lamination Resin vs Gelcoat Resin | FRP Buyer Guide",
@@ -2638,7 +2607,6 @@ export const resources = [
     description: "Compare the distinct surface-finish and chemical-service roles of Gelcoat Resin and Vinyl Ester Resin before planning an FRP build-up.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Gelcoat Resin vs Vinyl Ester Resin | FRP Buyer Guide",
@@ -2676,7 +2644,6 @@ export const resources = [
     description: "A procurement guide for separating the FRP surface-finish requirement from the laminate requirement before selecting Gelcoat Resin.",
     category: "Buyer Guide",
     icon: "checklist",
-    readingTime: "5 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "How to Choose Gelcoat Resin for FRP Products",
@@ -2715,7 +2682,6 @@ export const resources = [
     description: "A practical, safety-conscious framework for documenting Gelcoat Resin peeling, cracking, pinholes, fisheyes or tackiness before a technical discussion.",
     category: "Troubleshooting Guide",
     icon: "info",
-    readingTime: "5 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Gelcoat Problems: Peeling, Cracking and Tackiness",
@@ -2760,7 +2726,6 @@ export const resources = [
     description: "A general guide to documenting Gelcoat Resin storage and handling conditions while following the exact product data and safety instructions.",
     category: "Best Practices",
     icon: "drum",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Gelcoat Resin Storage and Handling Guide",
@@ -2798,7 +2763,6 @@ export const resources = [
     description: "A safety-conscious guide to documenting common FRP lamination concerns and preparing a useful technical discussion.",
     category: "Troubleshooting Guide",
     icon: "info",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Common Lamination Defects in FRP | Buyer and Process Checks",
@@ -2842,7 +2806,6 @@ export const resources = [
     description: "A buyer guide to Button Grade Resin, a transparent unsaturated polyester casting grade for buttons and small decorative mouldings.",
     category: "Product Guide",
     icon: "info",
-    readingTime: "3 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "What is Button Grade Resin? | Polyester Button Resin Guide",
@@ -2880,7 +2843,6 @@ export const resources = [
     description: "How to frame the resin requirement for polyester button manufacture, from visible casting needs to technical-data and quote checks.",
     category: "Application Guide",
     icon: "grid",
-    readingTime: "3 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Button Resin for Polyester Button Manufacturing | Buyer Guide",
@@ -2918,7 +2880,6 @@ export const resources = [
     description: "A decision guide for button manufacturers comparing the resin role, visible-finish requirement, process information and product data before procurement.",
     category: "Buyer Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "How to Choose Resin for Button Manufacturing",
@@ -2956,7 +2917,6 @@ export const resources = [
     description: "A practical comparison of Button Grade Resin and GP Resin for buyers deciding between visible polyester casting and reinforced FRP manufacture.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "3 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Button Grade Resin vs GP Resin | Which Resin Role Fits?",
@@ -3006,7 +2966,6 @@ export const resources = [
     description: "Compare Samrat's polyester Button Grade Resin with its separate two-part epoxy Clear Casting Resin before selecting a casting system.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "3 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Button Grade Resin vs Clear Casting Resin | Polyester vs Epoxy",
@@ -3055,7 +3014,6 @@ export const resources = [
     description: "How to read the published viscosity and gel-time data for Button Grade Resin when preparing a button-casting discussion.",
     category: "Technical Guide",
     icon: "clock",
-    readingTime: "3 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Button Resin Gel Time and Viscosity | Button Casting Guide",
@@ -3093,7 +3051,6 @@ export const resources = [
     description: "A procurement guide to the published Button Grade Resin shelf life, storage range, packaging and information needed for a focused quote request.",
     category: "Procurement Guide",
     icon: "drum",
-    readingTime: "3 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Button Resin Storage and Quote Guide | Button Grade Resin",
@@ -3131,7 +3088,6 @@ export const resources = [
     description: "A record-first checklist for button manufacturers preparing a factual Button Grade Resin processing or troubleshooting discussion.",
     category: "Troubleshooting Guide",
     icon: "checklist",
-    readingTime: "3 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Button Resin Processing Checklist | Button Grade Resin Support",
@@ -3169,7 +3125,6 @@ export const resources = [
     description: "A buyer-focused explanation of Unsaturated Polyester Resin (UPR), how it relates to FRP manufacturing and why the required product role matters before selecting a grade.",
     category: "Technical Explainer",
     icon: "info",
-    readingTime: "5 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "What Is Unsaturated Polyester Resin (UPR)?",
@@ -3212,7 +3167,6 @@ export const resources = [
     description: "A product-role guide for buyers comparing standard UPR, GP, lamination, gelcoat, button, fire-retardant and vinyl ester options without treating them as interchangeable.",
     category: "Buyer Guide",
     icon: "grid",
-    readingTime: "6 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Types of Unsaturated Polyester Resin | UPR Grade-Selection Guide",
@@ -3265,7 +3219,6 @@ export const resources = [
     description: "A product-family comparison for buyers separating a standard UPR requirement from a project with stated chemical- or corrosion-resistance needs.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "5 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Unsaturated Polyester Resin vs Vinyl Ester Resin",
@@ -3315,7 +3268,6 @@ export const resources = [
     description: "A buyer guide for distinguishing a standard UPR or reinforced-FRP requirement from the separately published Epoxy Clear Casting Resin system on this site.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "5 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Epoxy Clear Casting Resin vs Polyester Resin | Buyer Guide",
@@ -3367,7 +3319,6 @@ export const resources = [
     description: "A buyer guide to Samrat Poly Resins' published two-part Epoxy Clear Casting Resin role for clear, contained decorative casting requirements.",
     category: "Product Guide",
     icon: "info",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "What Is Epoxy Clear Casting Resin? | Clear Casting Resin Guide",
@@ -3405,7 +3356,6 @@ export const resources = [
     description: "A buyer comparison between the site's Epoxy Clear Casting Resin route for contained casts and its separate Epoxy Art Resin route for self-levelling surface coatings.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Casting Resin vs Coating Resin | Clear Epoxy Buyer Guide",
@@ -3453,7 +3403,6 @@ export const resources = [
     description: "A practical buyer checklist for documenting a clear epoxy casting requirement before requesting a quotation from Samrat Poly Resins.",
     category: "Procurement Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Epoxy Clear Casting Resin Buyer Guide",
@@ -3491,7 +3440,6 @@ export const resources = [
     description: "A practical B2B checklist for FRP buyers preparing a precise polyester-resin or UPR enquiry without guessing the correct grade.",
     category: "Procurement Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Polyester Resin Procurement Checklist | UPR Buyer Guide",
@@ -3529,7 +3477,6 @@ export const resources = [
     description: "A buyer guide to GP White Resin as a water-white general-purpose polyester grade for published FRP moulding, panel and fabrication contexts.",
     category: "Technical Explainer",
     icon: "info",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "What Is GP White Resin? | Water-White Polyester Resin Guide",
@@ -3570,7 +3517,6 @@ export const resources = [
     description: "Published GP White Resin application contexts for FRP panels, general moulding, hand layup, spray-up, cooling towers, water tanks and industrial fabrication.",
     category: "Application Guide",
     icon: "grid",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "GP White Resin Uses | FRP Panels and Moulding Applications",
@@ -3609,7 +3555,6 @@ export const resources = [
     description: "Compare the published water-white GP White Resin and clear GP Clear Resin data before selecting a general-purpose polyester grade for FRP work.",
     category: "Comparison Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "GP White Resin vs GP Clear Resin",
@@ -3658,7 +3603,6 @@ export const resources = [
     description: "Understand the different FRP roles of water-white GP White Resin and white GP Gelcoat Resin before selecting a laminate or mould-surface product.",
     category: "Comparison Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "GP White Resin vs Gelcoat Resin | White FRP Resin Buyer Guide",
@@ -3696,7 +3640,6 @@ export const resources = [
     description: "A practical guide for FRP buyers assessing GP White Resin by component, supplied appearance, process, product role, TDS and quote information.",
     category: "Procurement Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "GP White Resin Buyer Guide",
@@ -3734,7 +3677,6 @@ export const resources = [
     description: "A product-role guide for buyers evaluating GP Quartz Resin for artificial quartz stone, engineered stone slabs and composite mineral surfaces.",
     category: "Technical Explainer",
     icon: "info",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "What Is GP Quartz Resin? | Quartz Stone Resin Guide",
@@ -3772,7 +3714,6 @@ export const resources = [
     description: "A buyer-focused overview of the published GP Quartz Resin application contexts, from artificial quartz stone to composite mineral surfaces.",
     category: "Application Guide",
     icon: "grid",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "GP Quartz Resin Uses | Engineered Stone Resin Applications",
@@ -3810,7 +3751,6 @@ export const resources = [
     description: "Compare the published quartz-stone and composite-mineral role of GP Quartz Resin with the broader general-FRP role of GP Clear Resin.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "GP Quartz Resin vs GP Clear Resin | Which Product Role Fits?",
@@ -3848,7 +3788,6 @@ export const resources = [
     description: "A document-led comparison for buyers reviewing published quartz, engineered-stone, cultured-marble and artificial-stone contexts without inventing a performance ranking.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "GP Quartz Resin vs Marble Resin | Artificial Stone Resin Guide",
@@ -3886,7 +3825,6 @@ export const resources = [
     description: "How to read the published GP Quartz Resin viscosity, gel-time, shelf-life and storage data without treating it as a universal process recipe.",
     category: "Technical Guide",
     icon: "clock",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "GP Quartz Resin Viscosity, Gel Time and Storage Guide",
@@ -3924,7 +3862,6 @@ export const resources = [
     description: "A procurement guide for preparing a factual GP Quartz Resin enquiry around the engineered-stone product, mineral context, TDS and delivery requirement.",
     category: "Procurement Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "GP Quartz Resin Buyer Guide | Quartz Resin Supplier Checklist",
@@ -3963,7 +3900,6 @@ export const resources = [
     description: "What E-Glass Chopped Strand Mat is, how reinforcement differs from resin, the published CSM 300 and CSM 450 range, resin-system compatibility, and the published packaging, MOQ and storage facts.",
     category: "Reinforcement Guide",
     icon: "info",
-    readingTime: "7 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Glass Fiber E-Glass Chopped Strand Mat: Complete Buyer Guide",
@@ -4111,7 +4047,6 @@ export const resources = [
     description: "Understand the published 300 g/m² and 450 g/m² E-Glass Chopped Strand Mat options without assuming a universal layer count or component design.",
     category: "Selection Guide",
     icon: "grid",
-    readingTime: "4 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "CSM 300 vs CSM 450 Glass Fiber | Chopped Strand Mat Guide",
@@ -4158,7 +4093,6 @@ export const resources = [
     description: "What FRP polyester pigment paste is, its published UPR, vinyl ester and gelcoat system context, where it is used, how it differs from a pre-pigmented resin grade, and the published packaging, MOQ and storage facts.",
     category: "Product Guide",
     icon: "info",
-    readingTime: "7 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "FRP Polyester Pigment: Colour Paste Buyer Guide",
@@ -4293,7 +4227,6 @@ export const resources = [
     description: "A practical decision guide separating a polyester pigment paste colour requirement from the separate surface-finish role of Gelcoat Resin.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "5 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "Polyester Pigment Paste vs Gelcoat | FRP Colour Guide",
@@ -4330,7 +4263,6 @@ export const resources = [
     description: "A non-prescriptive checklist for buyers who need to document an FRP colour-variation or appearance-consistency question before discussing pigment, resin or gelcoat products.",
     category: "Troubleshooting Guide",
     icon: "checklist",
-    readingTime: "5 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "FRP Colour Variation Guide | Uneven Colour Buyer Checklist",
@@ -4367,7 +4299,6 @@ export const resources = [
     description: "What MEKP Hardener is, its published catalyst / initiator role in polyester, vinyl ester and gelcoat systems, and the published packaging, MOQ and shelf-life facts to check before requesting a quote.",
     category: "Product Guide",
     icon: "info",
-    readingTime: "5 min read",
     publishDate: "2026-08-06",
     seo: {
       title: "MEKP Hardener: Catalyst, Systems and Buyer Checklist",
@@ -4488,7 +4419,7 @@ export const resources = [
     slug: "what-is-epoxy-art-resin",
     title: "What Is Epoxy Art Resin? Clear Art Resin Product Guide",
     description: "A buyer guide to Samrat Poly Resins' published Epoxy Art Resin role for water-clear, self-levelling artistic and decorative surface work.",
-    category: "Product Guide", icon: "info", readingTime: "4 min read", publishDate: "2026-08-06",
+    category: "Product Guide", icon: "info", publishDate: "2026-08-06",
     seo: { title: "What Is Epoxy Art Resin? | Clear Art Resin Guide", keywords: ["What is Epoxy Art Resin", "Art Resin", "Clear Art Resin", "Resin Art Epoxy", "Epoxy Resin for Artwork"], ogTitle: "What Is Epoxy Art Resin?", ogDescription: "Understand the published self-levelling Art Resin role for decorative surface work and separate it from clear casting and polyester FRP resin systems." },
     quickFacts: { "Published product role": "Water-clear, self-levelling two-component epoxy for artistic and decorative work", "Published application context": "Floor art, table tops, wood art and decorative coatings", "Separate product roles": "Clear contained casting, polyester FRP resin and mould-side gelcoat", "Technical reference": "Current Epoxy Art Resin TDS" },
     relatedSlugs: ["applications-of-epoxy-art-resin", "casting-resin-vs-coating-resin", "epoxy-art-resin-vs-polyester-resin", "epoxy-art-resin-buyer-guide"],
@@ -4500,7 +4431,7 @@ export const resources = [
     slug: "applications-of-epoxy-art-resin",
     title: "Applications of Epoxy Art Resin: Decorative Surface Buyer Guide",
     description: "Review the published artistic and decorative application contexts for Epoxy Art Resin before selecting a self-levelling surface-coating route.",
-    category: "Application Guide", icon: "grid", readingTime: "4 min read", publishDate: "2026-08-06",
+    category: "Application Guide", icon: "grid", publishDate: "2026-08-06",
     seo: { title: "Epoxy Art Resin Applications | Art and Decorative Coating Guide", keywords: ["Epoxy Art Resin Applications", "Epoxy Resin for Artwork", "Epoxy Resin for Wood Art", "Tabletop Art Resin", "Decorative Coating Resin"], ogTitle: "Applications of Epoxy Art Resin", ogDescription: "Match an artistic or decorative surface requirement with the published Epoxy Art Resin role before requesting a quotation." },
     quickFacts: { "Published surface contexts": "Floor art, table tops, wood art and decorative coatings", "TDS-listed contexts": "River tables, jewellery and decorative casting, coasters, geodes, trays and canvas art", "Buyer starting point": "Finished article, surface versus contained-cast role and finish requirement", "Technical control": "Current Epoxy Art Resin TDS" },
     relatedSlugs: ["what-is-epoxy-art-resin", "casting-resin-vs-coating-resin", "epoxy-art-resin-finish-questions", "epoxy-art-resin-buyer-guide"],
@@ -4512,7 +4443,7 @@ export const resources = [
     slug: "epoxy-art-resin-vs-polyester-resin",
     title: "Epoxy Art Resin vs Polyester Resin: Product-Role Buyer Guide",
     description: "Separate the published Epoxy Art Resin route for decorative surface work from polyester-resin routes for reinforced FRP manufacturing.",
-    category: "Comparison Guide", icon: "layers", readingTime: "4 min read", publishDate: "2026-08-06",
+    category: "Comparison Guide", icon: "layers", publishDate: "2026-08-06",
     seo: { title: "Epoxy Art Resin vs Polyester Resin | Buyer Comparison", keywords: ["Epoxy Art Resin vs Polyester Resin", "Art Resin vs Polyester Resin", "Epoxy Resin for Artwork", "Polyester Resin for FRP", "Resin System Selection"], ogTitle: "Epoxy Art Resin vs Polyester Resin", ogDescription: "Use the published product roles to distinguish decorative Art Resin surface work from polyester FRP resin requirements." },
     quickFacts: { "Epoxy Art Resin on this site": "Two-component, water-clear self-levelling art and decorative surface product", "Polyester family on this site": "Separate resin routes for published reinforced FRP applications", "Selection trigger": "Finished product role and whether reinforcement is involved", "Do not transfer": "Technical, cure, handling or compatibility assumptions between systems" },
     comparisonTable: { title: "Published system comparison", note: "This guide compares only the product roles published on this site. Review the current TDS and actual requirement before selection.", headers: ["Decision point", "Epoxy Art Resin", "Unsaturated Polyester Resin family"], rows: [["Published role", "Self-levelling artistic and decorative surface work", "Separate product family for published reinforced FRP requirements"], ["Buyer starting question", "Is the requirement an open visible art or decorative surface?", "Is the requirement a reinforced FRP component?"], ["Related product route", "Epoxy Art Resin", "Unsaturated Polyester Resin and the relevant grade"], ["Technical reference", "Current Epoxy Art Resin TDS", "Current product-specific polyester-resin TDS"]] },
@@ -4525,7 +4456,7 @@ export const resources = [
     slug: "epoxy-art-resin-finish-questions",
     title: "Epoxy Art Resin Finish Questions: Clarity, Gloss, Bubbles and Tackiness",
     description: "A non-operational guide for commercial buyers documenting Epoxy Art Resin appearance questions before requesting product-data review.",
-    category: "Selection Guide", icon: "checklist", readingTime: "4 min read", publishDate: "2026-08-06",
+    category: "Selection Guide", icon: "checklist", publishDate: "2026-08-06",
     seo: { title: "Epoxy Art Resin Bubbles, Clarity and Gloss | Buyer Guide", keywords: ["Epoxy Art Resin Bubbles", "Epoxy Art Resin Tacky", "Epoxy Art Resin Yellowing", "Epoxy Art Resin Clarity", "Gloss Epoxy Resin"], ogTitle: "Epoxy Art Resin Finish Questions", ogDescription: "Document appearance, clarity, gloss, bubble or tackiness questions for a focused Epoxy Art Resin product-data discussion." },
     quickFacts: { "Published appearance": "Water clear, high gloss", "Published product behaviour": "Self-levelling with excellent bubble release", "Buyer action": "Document the finished article, visible concern and current product record", "Not included": "No diagnosis, process instructions or performance guarantee" },
     relatedSlugs: ["what-is-epoxy-art-resin", "applications-of-epoxy-art-resin", "epoxy-art-resin-storage-and-procurement-guide", "epoxy-art-resin-buyer-guide"],
@@ -4537,7 +4468,7 @@ export const resources = [
     slug: "epoxy-art-resin-storage-and-procurement-guide",
     title: "Epoxy Art Resin Storage and Procurement Guide",
     description: "Use the current published Art Resin TDS, pack size, MOQ and storage facts to prepare a focused commercial enquiry without assuming stock or lead time.",
-    category: "Procurement Guide", icon: "drum", readingTime: "4 min read", publishDate: "2026-08-06",
+    category: "Procurement Guide", icon: "drum", publishDate: "2026-08-06",
     seo: { title: "Epoxy Art Resin Storage Guide | Art Resin Supplier Checklist", keywords: ["Epoxy Art Resin Storage", "Art Resin Supplier", "Art Resin Packaging", "Art Resin MOQ", "Clear Art Resin Quote"], ogTitle: "Epoxy Art Resin Storage and Procurement Guide", ogDescription: "Review current Epoxy Art Resin storage, packaging, MOQ and product-document facts before preparing an industrial or commercial enquiry." },
     quickFacts: { "Published packaging": "15 kg pack", "Published MOQ": "100 kg", "Published storage": "20–30°C", "Published unopened shelf life": "12 months" },
     relatedSlugs: ["what-is-epoxy-art-resin", "epoxy-art-resin-finish-questions", "epoxy-art-resin-buyer-guide", "casting-resin-vs-coating-resin"],
@@ -4549,7 +4480,7 @@ export const resources = [
     slug: "epoxy-art-resin-buyer-guide",
     title: "Epoxy Art Resin Buyer Guide: TDS and Quote Checklist",
     description: "Prepare a factual Epoxy Art Resin enquiry around product role, finished surface, appearance, quantity and delivery location before requesting a quotation.",
-    category: "Procurement Guide", icon: "checklist", readingTime: "4 min read", publishDate: "2026-08-06",
+    category: "Procurement Guide", icon: "checklist", publishDate: "2026-08-06",
     seo: { title: "Epoxy Art Resin Buyer Guide | Art Resin Quote Checklist", keywords: ["Epoxy Art Resin Buyer Guide", "Art Resin Supplier", "Art Resin Quote", "Professional Art Resin", "Clear Epoxy Coating Resin"], ogTitle: "Epoxy Art Resin Buyer Guide", ogDescription: "Prepare a clear Art Resin request using the current TDS and the finished-surface, product-role and commercial details that matter before quotation." },
     quickFacts: { "Start with": "Finished artwork or decorative surface", "Then document": "Surface versus contained-cast role, finish, quantity and delivery location", "Product document": "Current Epoxy Art Resin TDS", "Do not infer": "Stock, lead time, samples, suitability or performance from a generic Art Resin label" },
     relatedSlugs: ["what-is-epoxy-art-resin", "applications-of-epoxy-art-resin", "epoxy-art-resin-storage-and-procurement-guide", "epoxy-art-resin-vs-polyester-resin"],
@@ -4561,7 +4492,7 @@ export const resources = [
     slug: "what-is-uv-resin",
     title: "What Is UV Resin? UV Curing Resin for Commercial Buyers",
     description: "Understand the published UV Resin product route, its UV/LED-curable epoxy-acrylate chemistry and its separate role from two-part epoxy and polyester FRP systems.",
-    category: "Product Guide", icon: "info", readingTime: "4 min read", publishDate: "2026-08-06",
+    category: "Product Guide", icon: "info", publishDate: "2026-08-06",
     seo: { title: "What Is UV Resin? | UV Curing Resin Buyer Guide", keywords: ["UV Resin", "UV Curing Resin", "UV Cure Resin", "UV Clear Resin", "Ultraviolet Resin", "Industrial UV Resin"], ogTitle: "What Is UV Resin?", ogDescription: "A commercial-buyer guide to the published UV/LED-curable UV Resin product route and its separate role from epoxy casting and polyester FRP." },
     quickFacts: { "Published chemistry": "Epoxy acrylate", "Published curing route": "UV / LED cure", "Published appearance": "Clear", "Published application context": "Jewellery, encapsulation, doming and speciality coating work" },
     relatedSlugs: ["applications-of-uv-resin", "uv-resin-vs-epoxy-art-resin", "uv-resin-vs-polyester-resin", "uv-resin-buyer-guide"],
@@ -4573,7 +4504,7 @@ export const resources = [
     slug: "applications-of-uv-resin",
     title: "UV Resin Applications: Clear Coating, Doming and Encapsulation Context",
     description: "Review the published UV Resin applications for jewellery, encapsulation, doming and speciality coating work without treating a generic resin label as a product-approval statement.",
-    category: "Application Guide", icon: "layers", readingTime: "4 min read", publishDate: "2026-08-06",
+    category: "Application Guide", icon: "layers", publishDate: "2026-08-06",
     seo: { title: "UV Resin Applications | UV Clear Resin Uses", keywords: ["UV Resin Uses", "UV Resin Applications", "UV Clear Resin", "UV Resin for Jewellery", "UV Resin for Decorative Products", "Industrial UV Resin"], ogTitle: "UV Resin Applications", ogDescription: "Use the published UV Resin application context to frame a professional enquiry for clear coating, doming or encapsulation requirements." },
     quickFacts: { "Published use 1": "Jewellery making and resin art", "Published use 2": "Encapsulation and doming", "Published use 3": "Crafts, coatings and miniature models", "Also listed": "Adhesive, label, electronics, metal and wood coating work" },
     relatedSlugs: ["what-is-uv-resin", "uv-resin-vs-epoxy-art-resin", "uv-resin-vs-epoxy-clear-casting-resin", "uv-resin-buyer-guide"],
@@ -4585,7 +4516,7 @@ export const resources = [
     slug: "uv-resin-vs-epoxy-art-resin",
     title: "UV Resin vs Epoxy Art Resin: Choosing the Right Product Role",
     description: "Compare the published UV Resin and Epoxy Art Resin roles: UV/LED-curable clear finishing versus a separate two-part, self-levelling decorative surface system.",
-    category: "Comparison Guide", icon: "grid", readingTime: "4 min read", publishDate: "2026-08-06",
+    category: "Comparison Guide", icon: "grid", publishDate: "2026-08-06",
     seo: { title: "UV Resin vs Epoxy Resin | UV Resin vs Art Resin", keywords: ["UV Resin vs Epoxy Resin", "UV Resin vs Art Resin", "UV Cure Resin vs Epoxy", "UV Clear Resin", "Epoxy Art Resin"], ogTitle: "UV Resin vs Epoxy Art Resin", ogDescription: "Separate the published UV/LED-curable UV Resin route from the two-part, self-levelling Epoxy Art Resin role before product selection." },
     quickFacts: { "UV Resin route": "Published UV / LED cure", "Art Resin route": "Published two-part epoxy system", "UV Resin context": "Jewellery, encapsulation, doming and speciality coatings", "Art Resin context": "Artistic and decorative surface work" },
     relatedSlugs: ["what-is-uv-resin", "applications-of-uv-resin", "uv-resin-vs-epoxy-clear-casting-resin", "uv-resin-buyer-guide"],
@@ -4597,7 +4528,7 @@ export const resources = [
     slug: "uv-resin-vs-epoxy-clear-casting-resin",
     title: "UV Resin vs Clear Casting Resin: UV-Cured Finish or Two-Part Casting Role?",
     description: "Separate the published UV Resin route for UV/LED-curable clear finishing, doming and encapsulation from the separate two-part Epoxy Clear Casting Resin route.",
-    category: "Comparison Guide", icon: "grid", readingTime: "4 min read", publishDate: "2026-08-06",
+    category: "Comparison Guide", icon: "grid", publishDate: "2026-08-06",
     seo: { title: "UV Resin vs Casting Resin | UV Cure Resin Comparison", keywords: ["UV Resin vs Casting Resin", "UV Cure Resin vs Epoxy Casting Resin", "UV Clear Resin", "Clear Casting Resin", "UV Resin Supplier"], ogTitle: "UV Resin vs Clear Casting Resin", ogDescription: "Choose between the site's published UV/LED clear-finish route and its separate two-part clear contained-casting product role." },
     quickFacts: { "UV Resin role": "Published UV/LED-curable finish, doming and encapsulation route", "Casting Resin role": "Published two-part clear contained-casting route", "Shared buyer check": "Finished part and required appearance", "Document to review": "Current product-specific TDS" },
     relatedSlugs: ["what-is-uv-resin", "applications-of-uv-resin", "uv-resin-vs-epoxy-art-resin", "uv-resin-buyer-guide"],
@@ -4609,7 +4540,7 @@ export const resources = [
     slug: "uv-resin-vs-polyester-resin",
     title: "UV Resin vs Polyester Resin: Separate Material Roles for Buyers",
     description: "Understand why the published UV/LED-curable UV Resin route is separate from the site's Unsaturated Polyester Resin family for reinforced FRP manufacture.",
-    category: "Comparison Guide", icon: "grid", readingTime: "4 min read", publishDate: "2026-08-06",
+    category: "Comparison Guide", icon: "grid", publishDate: "2026-08-06",
     seo: { title: "UV Resin vs Polyester Resin", keywords: ["UV Resin vs Polyester Resin", "UV Curing Resin", "UV Epoxy Resin", "Polyester Resin", "Industrial UV Resin"], ogTitle: "UV Resin vs Polyester Resin", ogDescription: "Separate the published UV Resin route from the site's polyester-resin family before selecting a material for finishing or reinforced FRP manufacture." },
     quickFacts: { "UV Resin": "Published clear epoxy-acrylate, UV / LED cure route", "Polyester family": "Published UPR family for FRP and composite product roles", "UV applications": "Jewellery, encapsulation, doming and speciality coating work", "Buyer principle": "Select by finished-material role and current TDS" },
     relatedSlugs: ["what-is-uv-resin", "applications-of-uv-resin", "uv-resin-vs-epoxy-art-resin", "uv-resin-buyer-guide"],
@@ -4621,7 +4552,7 @@ export const resources = [
     slug: "what-is-sheet-grade-yellow-resin",
     title: "What Is Sheet Grade Yellow Resin?",
     description: "Understand the published Sheet Grade Yellow Resin role for FRP sheet and panel manufacturing, and how it differs from general-purpose and roof-light resin routes.",
-    category: "Product Guide", icon: "info", readingTime: "4 min read", publishDate: "2026-08-09",
+    category: "Product Guide", icon: "info", publishDate: "2026-08-09",
     seo: { title: "What Is Sheet Grade Yellow Resin? | FRP Sheet Resin Guide", keywords: ["Sheet Grade Yellow Resin", "Sheet Grade Resin", "Yellow Polyester Resin", "FRP Sheet Resin", "FRP Panel Resin"], ogTitle: "What Is Sheet Grade Yellow Resin?", ogDescription: "A buyer guide to the published pre-pigmented yellow polyester-resin route for FRP sheet and panel requirements." },
     quickFacts: { "Product family": "Orthophthalic unsaturated polyester resin", "Supplied appearance": "Pre-pigmented yellow", "Published role": "Sheet moulding and laminate applications", "Published packaging": "225 kg drum", "Published MOQ": "1,000 kg" },
     relatedSlugs: ["applications-of-sheet-grade-yellow-resin", "sheet-grade-yellow-resin-vs-gp-yellow-resin", "sheet-grade-yellow-resin-vs-roof-light-resin", "how-to-choose-resin-for-frp-sheet-and-panel-manufacturing"],
@@ -4633,7 +4564,7 @@ export const resources = [
     slug: "applications-of-sheet-grade-yellow-resin",
     title: "Sheet Grade Yellow Resin Applications: FRP Sheets and Panels",
     description: "Published Sheet Grade Yellow Resin application contexts for FRP sheets, panels, enclosures, partitions, laminates and moulded components.",
-    category: "Application Guide", icon: "grid", readingTime: "4 min read", publishDate: "2026-08-09",
+    category: "Application Guide", icon: "grid", publishDate: "2026-08-09",
     seo: { title: "Sheet Grade Yellow Resin Uses | FRP Sheet and Panel Applications", keywords: ["Sheet Grade Yellow Resin Uses", "FRP Sheet Resin", "FRP Panel Resin", "Yellow Resin for FRP Sheets", "Polyester Resin for Panels"], ogTitle: "Sheet Grade Yellow Resin Applications", ogDescription: "Review the published sheet, panel and moulded-component contexts before selecting a pre-pigmented yellow polyester resin." },
     quickFacts: { "Published applications": "FRP sheets and roofing panels; decorative panels; electrical enclosures", "Additional contexts": "Partitions, construction formwork, laminates and moulded components", "Selection principle": "Match the finished component and supplied appearance", "Document to review": "Current product-specific TDS" },
     relatedSlugs: ["what-is-sheet-grade-yellow-resin", "how-to-choose-resin-for-frp-sheet-and-panel-manufacturing", "frp-sheet-resin-procurement-guide"],
@@ -4645,7 +4576,7 @@ export const resources = [
     slug: "sheet-grade-yellow-resin-vs-gp-yellow-resin",
     title: "Sheet Grade Yellow Resin vs GP Yellow Resin",
     description: "Compare the site’s published pre-pigmented Sheet Grade Yellow Resin route with its separate transparent-yellow GP Yellow Resin role before selecting an FRP material.",
-    category: "Comparison Guide", icon: "grid", readingTime: "4 min read", publishDate: "2026-08-09",
+    category: "Comparison Guide", icon: "grid", publishDate: "2026-08-09",
     seo: { title: "Sheet Grade Yellow Resin vs GP Yellow Resin | FRP Buyer Guide", keywords: ["Sheet Grade Yellow vs GP Yellow", "Sheet Grade Resin vs GP Yellow Resin", "Yellow Polyester Resin", "FRP Sheet Resin"], ogTitle: "Sheet Grade Yellow Resin vs GP Yellow Resin", ogDescription: "Separate the published sheet/panel-specific yellow resin route from the site's transparent-yellow general-purpose GP Resin route." },
     quickFacts: { "Sheet Grade Yellow": "Pre-pigmented yellow; published for sheet moulding and laminate applications", "GP Yellow": "Transparent yellow; published general-purpose orthophthalic grade", "Shared check": "Actual component, supplied appearance and current TDS", "Not a performance ranking": "The two roles are not interchangeable" },
     comparisonTable: { title: "Published product roles at a glance", headers: ["Buyer question", "Sheet Grade Yellow Resin", "GP Yellow Resin"], rows: [["Starting requirement", "FRP sheet or panel with the published pre-pigmented yellow route", "General FRP laminate or moulded-product requirement where transparent-yellow appearance is acceptable"], ["Published positioning", "Sheet moulding and laminate applications", "General-purpose FRP lamination and moulded-product work"], ["Appearance decision", "Supplied pre-pigmented yellow", "Supplied transparent yellow"], ["Document to use", "Sheet Grade Yellow Resin TDS", "GP Yellow Resin TDS"]], note: "This is a product-role guide, not a substitute for product-specific technical review or a performance comparison." },
@@ -4658,7 +4589,7 @@ export const resources = [
     slug: "sheet-grade-yellow-resin-vs-roof-light-resin",
     title: "Sheet Grade Yellow Resin vs Roof Light Sheet Grade Resin",
     description: "Choose between the site’s pre-pigmented yellow sheet/panel route and its separate water-white roof-light resin route by starting with the required finished-sheet appearance.",
-    category: "Comparison Guide", icon: "grid", readingTime: "4 min read", publishDate: "2026-08-09",
+    category: "Comparison Guide", icon: "grid", publishDate: "2026-08-09",
     seo: { title: "Sheet Grade Yellow vs Roof Light Resin | FRP Sheet Buyer Guide", keywords: ["Sheet Grade Yellow vs Roof Light Resin", "Yellow FRP Sheet Resin", "Roof Light Sheet Grade Resin", "FRP Sheet Resin"], ogTitle: "Sheet Grade Yellow Resin vs Roof Light Resin", ogDescription: "Use the finished-sheet appearance and published product role to separate a yellow FRP sheet/panel requirement from a water-white roof-light route." },
     quickFacts: { "Sheet Grade Yellow": "Pre-pigmented yellow sheet and panel role", "Roof Light Sheet Grade": "Water-white roof-light and skylight role", "First decision": "Required finished-sheet appearance", "Do not assume": "Optical or weathering performance from product name alone" },
     comparisonTable: { title: "Separate the published sheet roles", headers: ["Selection question", "Sheet Grade Yellow Resin", "Roof Light Sheet Grade Resin"], rows: [["Supplied appearance", "Pre-pigmented yellow", "Water-white"], ["Published role", "Sheet moulding and laminate applications", "Roof-light and skylight sheet intent"], ["Buyer starting point", "Coloured or opaque sheet/panel requirement", "Water-white/translucent sheet requirement"], ["Document to review", "Sheet Grade Yellow Resin TDS", "Roof Light Sheet Grade Resin TDS"]], note: "This comparison does not state light-transmission, UV, weathering or mechanical-performance values. Use the current product-specific data for the actual requirement." },
@@ -4671,7 +4602,7 @@ export const resources = [
     slug: "how-to-choose-resin-for-frp-sheet-and-panel-manufacturing",
     title: "How to Choose Resin for FRP Sheet and Panel Manufacturing",
     description: "A buyer-selection guide for separating an FRP sheet or panel requirement into resin role, supplied appearance, reinforcement, surface finish and documentation checks.",
-    category: "Buying Guide", icon: "checklist", readingTime: "5 min read", publishDate: "2026-08-09",
+    category: "Buying Guide", icon: "checklist", publishDate: "2026-08-09",
     seo: { title: "How to Choose Resin for FRP Sheets and Panels | Buyer Guide", keywords: ["Resin for FRP Sheet Manufacturing", "FRP Panel Resin", "Polyester Resin for FRP Sheets", "Sheet Grade Resin Selection"], ogTitle: "How to Choose Resin for FRP Sheets and Panels", ogDescription: "A concise buyer route for choosing a published resin role for FRP sheet and panel requirements without relying on generic resin names." },
     quickFacts: { "Start with": "Finished sheet or panel", "Appearance check": "Supplied yellow versus water-white/translucent route", "System check": "Resin, reinforcement and surface-finish roles", "Controlling document": "Current product-specific TDS" },
     relatedSlugs: ["what-is-sheet-grade-yellow-resin", "applications-of-sheet-grade-yellow-resin", "sheet-grade-yellow-resin-vs-gp-yellow-resin", "sheet-grade-yellow-resin-vs-roof-light-resin", "frp-sheet-resin-procurement-guide"],
@@ -4683,7 +4614,7 @@ export const resources = [
     slug: "frp-sheet-resin-procurement-guide",
     title: "FRP Sheet Resin Procurement Guide: TDS and Quote Checklist",
     description: "Prepare a factual FRP sheet or panel resin enquiry with the finished component, supplied appearance, reinforcement context, current TDS, quantity and delivery location.",
-    category: "Procurement Guide", icon: "checklist", readingTime: "4 min read", publishDate: "2026-08-09",
+    category: "Procurement Guide", icon: "checklist", publishDate: "2026-08-09",
     seo: { title: "FRP Sheet Resin Procurement Guide", keywords: ["FRP Sheet Resin Quote", "Sheet Grade Resin Supplier", "FRP Panel Resin Procurement", "Sheet Grade Yellow Resin MOQ"], ogTitle: "FRP Sheet Resin Procurement Guide", ogDescription: "Prepare a clear Sheet Grade Yellow Resin or related FRP sheet resin enquiry using product-specific documentation and commercial context." },
     quickFacts: { "Published package": "225 kg drum", "Published MOQ": "1,000 kg", "Required document": "Current product-specific TDS", "Commercial inputs": "Component, supplied appearance, quantity and delivery location" },
     relatedSlugs: ["what-is-sheet-grade-yellow-resin", "applications-of-sheet-grade-yellow-resin", "how-to-choose-resin-for-frp-sheet-and-panel-manufacturing"],
@@ -4695,7 +4626,7 @@ export const resources = [
     slug: "what-is-roof-light-sheet-grade-resin",
     title: "What Is Roof Light Sheet Grade Resin?",
     description: "Understand the published water-white polyester-resin route for translucent FRP roof-light panels and skylight sheets before selecting a material system.",
-    category: "Product Guide", icon: "info", readingTime: "4 min read", publishDate: "2026-08-09",
+    category: "Product Guide", icon: "info", publishDate: "2026-08-09",
     seo: { title: "What Is Roof Light Sheet Grade Resin? | FRP Roofing Resin Guide", keywords: ["Roof Light Sheet Grade Resin", "Roof Light Resin", "FRP Roof Light Resin", "FRP Roofing Sheet Resin", "Roofing Polyester Resin"], ogTitle: "What Is Roof Light Sheet Grade Resin?", ogDescription: "A buyer guide to the published water-white polyester-resin route for translucent roof-light panels and skylight sheets." },
     quickFacts: { "Product family": "Orthophthalic unsaturated polyester resin", "Supplied appearance": "Water white", "Published role": "Translucent roof-light panels and skylight sheets", "Published packaging": "225 kg drum", "Published MOQ": "500 kg" },
     relatedSlugs: ["roof-light-resin-applications-frp-roofing-sheets", "sheet-grade-yellow-resin-vs-roof-light-resin", "roof-light-resin-vs-gp-clear-resin", "frp-roofing-sheet-resin-selection-guide"],
@@ -4707,7 +4638,7 @@ export const resources = [
     slug: "roof-light-resin-applications-frp-roofing-sheets",
     title: "Roof Light Resin Applications in FRP Roofing Sheets",
     description: "Published Roof Light Sheet Grade Resin contexts for translucent roof-light panels, skylight sheets, greenhouses and industrial or commercial roofing.",
-    category: "Application Guide", icon: "roof", readingTime: "4 min read", publishDate: "2026-08-09",
+    category: "Application Guide", icon: "roof", publishDate: "2026-08-09",
     seo: { title: "Roof Light Resin Applications | FRP Roofing and Skylight Sheets", keywords: ["Roof Light Resin Applications", "FRP Roofing Sheet Resin", "FRP Skylight Resin", "Translucent FRP Sheet Resin", "Roofing Polyester Resin"], ogTitle: "Roof Light Resin Applications in FRP Roofing Sheets", ogDescription: "Review the published roof-light, skylight and roofing-sheet contexts before selecting the water-white Roof Light Sheet Grade Resin route." },
     quickFacts: { "Published applications": "Skylights, roof-light panels and greenhouses", "Further published contexts": "Industrial/commercial roofing and roofing-sheet production", "Resin appearance": "Water white", "Controlling document": "Current product-specific TDS" },
     relatedSlugs: ["what-is-roof-light-sheet-grade-resin", "frp-roofing-sheet-resin-selection-guide", "roof-light-resin-procurement-guide"],
@@ -4719,7 +4650,7 @@ export const resources = [
     slug: "roof-light-resin-vs-gp-clear-resin",
     title: "Roof Light Resin vs GP Clear Resin",
     description: "Separate the published water-white Roof Light Sheet Grade Resin route for roof-light sheets from the site's general-purpose clear GP Clear Resin route.",
-    category: "Comparison Guide", icon: "grid", readingTime: "4 min read", publishDate: "2026-08-09",
+    category: "Comparison Guide", icon: "grid", publishDate: "2026-08-09",
     seo: { title: "Roof Light Resin vs GP Clear Resin | FRP Sheet Buyer Guide", keywords: ["Roof Light Resin vs GP Clear Resin", "Clear Sheet Grade Resin", "FRP Roofing Sheet Resin", "GP Clear Resin"], ogTitle: "Roof Light Resin vs GP Clear Resin", ogDescription: "Use the finished sheet, supplied appearance and published product role to distinguish Roof Light Sheet Grade Resin from GP Clear Resin." },
     quickFacts: { "Roof Light Resin": "Water-white, published for roof-light panels and skylight sheets", "GP Clear Resin": "Published general-purpose clear orthophthalic FRP route", "Shared check": "Actual component and current product-specific TDS", "Not a ranking": "The roles are not interchangeable" },
     comparisonTable: { title: "Published product roles at a glance", headers: ["Buyer question", "Roof Light Sheet Grade Resin", "GP Clear Resin"], rows: [["Starting requirement", "Roof-light, skylight or documented translucent-sheet role", "General-purpose clear FRP requirement"], ["Supplied appearance", "Water white", "Clear general-purpose grade"], ["Published positioning", "Roof-light panels, skylight sheets and roofing contexts", "General FRP lamination and moulded-product contexts"], ["Document to review", "Roof Light Resin TDS", "GP Clear Resin TDS"]], note: "This comparison is a product-role guide. It does not claim a formulation, optical, UV, weathering or mechanical-performance advantage beyond the published product data." },
@@ -4732,7 +4663,7 @@ export const resources = [
     slug: "frp-roofing-sheet-resin-selection-guide",
     title: "FRP Roofing Sheet Resin Selection Guide",
     description: "A buyer guide to separating a roof-light, coloured sheet, general-purpose resin, reinforcement and surface-finish requirement before requesting an FRP roofing-sheet resin quote.",
-    category: "Buying Guide", icon: "checklist", readingTime: "5 min read", publishDate: "2026-08-09",
+    category: "Buying Guide", icon: "checklist", publishDate: "2026-08-09",
     seo: { title: "FRP Roofing Sheet Resin Selection Guide", keywords: ["FRP Roofing Sheet Resin", "Polyester Resin for FRP Roofing Sheets", "Resin for FRP Roof Sheets", "Roofing Sheet Resin Selection"], ogTitle: "FRP Roofing Sheet Resin Selection Guide", ogDescription: "A concise buyer route for separating roof-light, coloured-sheet, reinforcement and technical-documentation decisions before selecting an FRP roofing-sheet resin." },
     quickFacts: { "Start with": "Finished roofing or roof-light sheet", "Appearance check": "Water-white roof-light versus pre-pigmented yellow sheet route", "System check": "Resin, Glass Fiber and surface-finish roles", "Controlling document": "Current product-specific TDS" },
     relatedSlugs: ["what-is-roof-light-sheet-grade-resin", "roof-light-resin-applications-frp-roofing-sheets", "roof-light-resin-vs-gp-clear-resin", "roof-light-resin-procurement-guide"],
@@ -4744,7 +4675,7 @@ export const resources = [
     slug: "roof-light-resin-procurement-guide",
     title: "Roof Light Resin Procurement Guide: TDS and Quote Checklist",
     description: "Prepare a factual Roof Light Sheet Grade Resin enquiry with the finished sheet, required supplied appearance, current TDS, reinforcement context, quantity and delivery location.",
-    category: "Procurement Guide", icon: "checklist", readingTime: "4 min read", publishDate: "2026-08-09",
+    category: "Procurement Guide", icon: "checklist", publishDate: "2026-08-09",
     seo: { title: "Roof Light Resin Procurement Guide", keywords: ["Roof Light Resin Supplier", "Roof Light Resin Quote", "FRP Roofing Sheet Resin Procurement", "Roof Light Resin MOQ"], ogTitle: "Roof Light Resin Procurement Guide", ogDescription: "Prepare a documented Roof Light Sheet Grade Resin quotation discussion using the current TDS and factual FRP roofing-sheet requirements." },
     quickFacts: { "Published packaging": "225 kg drum", "Published MOQ": "500 kg", "Product document": "Current Roof Light Resin TDS", "Commercial inputs": "Finished sheet, supplied appearance, quantity and delivery location" },
     relatedSlugs: ["what-is-roof-light-sheet-grade-resin", "roof-light-resin-applications-frp-roofing-sheets", "frp-roofing-sheet-resin-selection-guide"],
@@ -4756,7 +4687,7 @@ export const resources = [
     slug: "uv-resin-buyer-guide",
     title: "UV Resin Buyer Guide: Selection, Documentation and Quote Checklist",
     description: "Prepare a factual UV Resin enquiry using the current TDS, product role, clear-finish requirement, UV/LED equipment context, quantity and delivery details.",
-    category: "Procurement Guide", icon: "checklist", readingTime: "4 min read", publishDate: "2026-08-06",
+    category: "Procurement Guide", icon: "checklist", publishDate: "2026-08-06",
     seo: { title: "UV Resin Buyer Guide", keywords: ["UV Resin Buyer Guide", "UV Resin Procurement", "UV Resin Supplier", "UV Resin Storage", "Industrial UV Resin", "UV Clear Resin Quote"], ogTitle: "UV Resin Buyer Guide", ogDescription: "Prepare a documented UV Resin selection and quotation discussion using the current TDS and the actual product, equipment and commercial context." },
     quickFacts: { "Start with": "Finished product and material role", "Product document": "Current UV Resin TDS", "Published packaging": "200 kg pack", "Published MOQ": "1,000 kg" },
     relatedSlugs: ["what-is-uv-resin", "applications-of-uv-resin", "uv-resin-vs-epoxy-art-resin", "uv-resin-vs-epoxy-clear-casting-resin", "uv-resin-vs-polyester-resin"],
@@ -4768,7 +4699,7 @@ export const resources = [
     slug: "what-is-epoxy-hardener",
     title: "What Is Epoxy Hardener?",
     description: "Understand the published polyamide curing-agent role of Samrat Poly Resins' Epoxy Hardener before selecting a compatible epoxy resin system.",
-    category: "Epoxy System Guide", icon: "info", readingTime: "4 min read", publishDate: "2026-08-09",
+    category: "Epoxy System Guide", icon: "info", publishDate: "2026-08-09",
     seo: { title: "What Is Epoxy Hardener? | Polyamide Curing Agent Guide", keywords: ["What Is Epoxy Hardener", "Epoxy Hardener", "Epoxy Curing Agent", "Polyamide Hardener", "Hardener for Epoxy Resin"], ogTitle: "What Is Epoxy Hardener?", ogDescription: "A buyer guide to the separate hardener component in a compatible epoxy resin system." },
     quickFacts: { "Published type": "Polyamide, amine-based curing agent", "Product role": "Separate component for a compatible epoxy system", "Not the same as": "Epoxy resin or MEKP Hardener", "Technical reference": "Current Epoxy Hardener TDS" },
     relatedSlugs: ["epoxy-resin-vs-epoxy-hardener", "epoxy-hardener-compatibility-guide", "epoxy-hardener-vs-mekp-hardener", "epoxy-hardener-procurement-guide"],
@@ -4780,7 +4711,7 @@ export const resources = [
     slug: "epoxy-resin-vs-epoxy-hardener",
     title: "Epoxy Resin vs Epoxy Hardener: Component Roles Explained",
     description: "Separate the epoxy resin component from the compatible Epoxy Hardener component before ordering a two-component epoxy system.",
-    category: "Epoxy System Guide", icon: "layers", readingTime: "4 min read", publishDate: "2026-08-09",
+    category: "Epoxy System Guide", icon: "layers", publishDate: "2026-08-09",
     seo: { title: "Epoxy Resin vs Epoxy Hardener | Two-Component System Guide", keywords: ["Epoxy Resin vs Epoxy Hardener", "Epoxy Resin and Hardener", "Two Component Epoxy System", "Epoxy Hardener Compatibility"], ogTitle: "Epoxy Resin vs Epoxy Hardener", ogDescription: "Learn why epoxy resin and hardener are separate, matched components rather than interchangeable products." },
     quickFacts: { "Epoxy resin": "The resin component", "Epoxy Hardener": "The compatible polyamide curing-agent component", "Selection rule": "Confirm the exact published pair", "Do not assume": "One component replaces or matches every other product" },
     relatedSlugs: ["what-is-epoxy-hardener", "epoxy-hardener-compatibility-guide", "epoxy-hardener-for-clear-casting-and-art-resin", "epoxy-hardener-procurement-guide"],
@@ -4792,7 +4723,7 @@ export const resources = [
     slug: "epoxy-hardener-compatibility-guide",
     title: "Epoxy Hardener Compatibility Guide: What Buyers Should Confirm",
     description: "A procurement-focused guide to confirming the exact resin/hardener pairing and current product documentation before buying Epoxy Hardener.",
-    category: "Selection Guide", icon: "checklist", readingTime: "4 min read", publishDate: "2026-08-09",
+    category: "Selection Guide", icon: "checklist", publishDate: "2026-08-09",
     seo: { title: "Epoxy Hardener Compatibility Guide | Epoxy Resin and Hardener", keywords: ["Epoxy Hardener Compatibility", "Epoxy Resin and Hardener Compatibility", "Compatible Epoxy Hardener", "Hardener for Epoxy Resin"], ogTitle: "Epoxy Hardener Compatibility Guide", ogDescription: "Understand why the exact epoxy resin and hardener pairing should be verified before ordering." },
     quickFacts: { "Known site relationships": "Clear Casting Resin and Epoxy Art Resin identify compatible Epoxy Hardener", "Universal compatibility": "Not claimed", "Control document": "Current product-specific TDS", "Before purchase": "Identify the exact resin, application and documentation requirement" },
     relatedSlugs: ["what-is-epoxy-hardener", "epoxy-resin-vs-epoxy-hardener", "epoxy-hardener-for-clear-casting-and-art-resin", "epoxy-hardener-vs-mekp-hardener"],
@@ -4804,7 +4735,7 @@ export const resources = [
     slug: "epoxy-hardener-vs-mekp-hardener",
     title: "Epoxy Hardener vs MEKP Hardener: Different Product Roles",
     description: "Separate Samrat's published epoxy-system curing agent from its MEKP catalyst / initiator route for polyester-family resin systems.",
-    category: "Comparison Guide", icon: "grid", readingTime: "4 min read", publishDate: "2026-08-09",
+    category: "Comparison Guide", icon: "grid", publishDate: "2026-08-09",
     seo: { title: "Epoxy Hardener vs MEKP Hardener | Epoxy and Polyester Guide", keywords: ["Epoxy Hardener vs MEKP Hardener", "MEKP vs Epoxy Hardener", "Epoxy Curing Agent", "Polyester Resin Catalyst"], ogTitle: "Epoxy Hardener vs MEKP Hardener", ogDescription: "Choose the correct product route by identifying whether the base system is a compatible epoxy or a polyester-family resin." },
     quickFacts: { "Epoxy Hardener": "Polyamide curing agent for compatible epoxy systems", "MEKP Hardener": "Separate catalyst / initiator route for published polyester-family systems", "Shared rule": "Identify the base resin first", "Not substitutes": "Do not interchange the two product routes" },
     comparisonTable: { title: "Published product roles", headers: ["Buyer question", "Epoxy Hardener", "MEKP Hardener"], rows: [["Base system", "Compatible epoxy resin system", "Published unsaturated polyester, vinyl ester or gelcoat system"], ["Published role", "Polyamide curing agent", "Catalyst / initiator product route"], ["Selection starting point", "Exact epoxy resin product and current TDS", "Exact polyester-family resin or gelcoat product and current TDS"]], note: "This is a product-role comparison, not operating guidance. Do not transfer product instructions or assumptions between the two routes." },
@@ -4817,7 +4748,7 @@ export const resources = [
     slug: "epoxy-hardener-for-clear-casting-and-art-resin",
     title: "Epoxy Hardener for Clear Casting and Art Resin: Buyer Guide",
     description: "Understand the documented Epoxy Hardener relationship to Samrat's separate Clear Casting Resin and Epoxy Art Resin product routes.",
-    category: "System Selection", icon: "layers", readingTime: "4 min read", publishDate: "2026-08-09",
+    category: "System Selection", icon: "layers", publishDate: "2026-08-09",
     seo: { title: "Epoxy Hardener for Clear Casting and Art Resin | Buyer Guide", keywords: ["Epoxy Hardener for Clear Casting Resin", "Epoxy Hardener for Art Resin", "Clear Casting Resin Hardener", "Art Resin Hardener"], ogTitle: "Epoxy Hardener for Clear Casting and Art Resin", ogDescription: "A product-route guide for the documented Epoxy Hardener relationship to Clear Casting Resin and Epoxy Art Resin." },
     quickFacts: { "Clear Casting Resin": "Separately published clear, contained casting route", "Epoxy Art Resin": "Separately published art and decorative surface route", "Documented relationship": "Both product routes identify compatible Epoxy Hardener", "Confirmation": "Review current product data before ordering" },
     relatedSlugs: ["what-is-epoxy-hardener", "epoxy-resin-vs-epoxy-hardener", "epoxy-hardener-compatibility-guide", "casting-resin-vs-coating-resin"],
@@ -4831,7 +4762,6 @@ export const resources = [
     description: "Understand Samrat Poly Resins' published orthophthalic UPR route for Dough Moulding Compound and Sheet Moulding Compound requirements, including what the current TDS does and does not establish.",
     category: "Technical Guide",
     icon: "info",
-    readingTime: "4 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "What Is DMC / SMC Resin?",
@@ -4869,7 +4799,6 @@ export const resources = [
     description: "Separate the published Dough Moulding Compound and Sheet Moulding Compound terminology, understand the limits of the current product data, and prepare a more specific DMC or SMC resin enquiry.",
     category: "Comparison Guide",
     icon: "grid",
-    readingTime: "4 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "DMC vs SMC | Dough and Sheet Moulding Compound Resin Guide",
@@ -4907,7 +4836,6 @@ export const resources = [
     description: "Learn why Sheet Moulding Compound resin is not the same product decision as conventional FRP Sheet Grade Resin for sheet and panel manufacturing.",
     category: "Comparison Guide",
     icon: "grid",
-    readingTime: "4 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "SMC Resin vs Sheet Grade Resin | Moulding Compound Buyer Guide",
@@ -4954,7 +4882,6 @@ export const resources = [
     description: "Compare Samrat's published DMC/SMC moulding-compound route with general-purpose polyester resin selection, while keeping both within the broader UPR family.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "4 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "DMC/SMC Resin vs GP Resin | Moulding Compound vs General FRP",
@@ -5001,7 +4928,6 @@ export const resources = [
     description: "Review the DMC/SMC Resin applications listed in Samrat's current TDS and the finished-component questions that still require separate confirmation.",
     category: "Application Guide",
     icon: "grid",
-    readingTime: "4 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "DMC/SMC Resin Applications",
@@ -5039,7 +4965,6 @@ export const resources = [
     description: "Use the current DMC/SMC Resin TDS to review published liquid-resin specifications, understand catalogue differences, and keep product data separate from finished compound performance.",
     category: "Technical Guide",
     icon: "checklist",
-    readingTime: "5 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "DMC/SMC Resin Technical Specifications",
@@ -5091,7 +5016,6 @@ export const resources = [
     description: "Prepare a specific DMC or SMC resin enquiry with the compound context, finished component, current TDS, documented commercial details and required technical information.",
     category: "Procurement Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-09",
     seo: {
       title: "DMC/SMC Resin Procurement Checklist | DMC and SMC Resin RFQ",
@@ -5127,7 +5051,7 @@ export const resources = [
     slug: "epoxy-hardener-procurement-guide",
     title: "Epoxy Hardener Procurement Guide: TDS and RFQ Checklist",
     description: "Prepare a specific Epoxy Hardener enquiry with the exact resin product, application, current TDS, quantity, packaging and delivery requirements.",
-    category: "Procurement Guide", icon: "checklist", readingTime: "4 min read", publishDate: "2026-08-09",
+    category: "Procurement Guide", icon: "checklist", publishDate: "2026-08-09",
     seo: { title: "Epoxy Hardener Procurement Guide | Epoxy Hardener RFQ Checklist", keywords: ["Epoxy Hardener Procurement", "Epoxy Hardener Supplier", "Epoxy Hardener Quote", "Epoxy Resin Hardener RFQ"], ogTitle: "Epoxy Hardener Procurement Guide", ogDescription: "Prepare a factual epoxy hardener quotation discussion using the exact resin product and current Technical Data Sheet." },
     quickFacts: { "Published packaging": "20 kg", "Published MOQ": "100 kg", "Technical document": "Current Epoxy Hardener TDS", "First RFQ input": "Exact epoxy resin product and intended application" },
     relatedSlugs: ["what-is-epoxy-hardener", "epoxy-hardener-compatibility-guide", "epoxy-hardener-for-clear-casting-and-art-resin", "epoxy-hardener-vs-mekp-hardener"],
@@ -5139,7 +5063,7 @@ export const resources = [
     slug: "what-is-pet-modified-polyester-resin",
     title: "What Is PET Resin / Polyester Putty Resin? Samrat's PET-Modified Resin Explained",
     description: "PET Resin / Polyester Putty Resin is Samrat's PET-modified liquid unsaturated polyester sheet grade. Understand what it is, how the dual name works and where it's used.",
-    category: "Technical Guide", icon: "info", readingTime: "4 min read", publishDate: "2026-08-10",
+    category: "Technical Guide", icon: "info", publishDate: "2026-08-10",
     seo: {
       title: "PET Resin / Polyester Putty Resin | Sheet Grade Guide",
       keywords: ["PET Modified Polyester Resin", "Polyester Putty Resin", "PET Modified Unsaturated Polyester Resin", "PET Resin Sheet Grade", "Polyester Resin for Fibre Sheets", "FRP Sheet Lamination Resin"],
@@ -5170,7 +5094,7 @@ export const resources = [
     slug: "pet-resin-liquid-grade-vs-thermoplastic-pet",
     title: "PET Resin Material Forms: Liquid Polyester Grade vs Thermoplastic PET",
     description: "Distinguish Samrat's PET Resin / Polyester Putty Resin liquid sheet grade from conventional thermoplastic PET chips, pellets and commodity-plastic material.",
-    category: "Product Selection", icon: "layers", readingTime: "4 min read", publishDate: "2026-08-10",
+    category: "Product Selection", icon: "layers", publishDate: "2026-08-10",
     seo: {
       title: "PET Resin vs Thermoplastic PET | Liquid Sheet Grade Buyer Guide",
       keywords: ["PET Resin vs Thermoplastic PET", "Liquid PET Modified Resin", "PET Resin Sheet Grade", "PET Resin Material Form", "PET Resin vs Polyester Putty"],
@@ -5211,7 +5135,7 @@ export const resources = [
     slug: "pet-resin-applications-sheet-lamination-and-panels",
     title: "PET Resin Applications: Published Sheet Lamination and Panel Contexts",
     description: "Review the PET Resin applications listed in Samrat's current TDS and the finished-product questions that still require separate confirmation.",
-    category: "Application Guide", icon: "grid", readingTime: "4 min read", publishDate: "2026-08-10",
+    category: "Application Guide", icon: "grid", publishDate: "2026-08-10",
     seo: {
       title: "PET Resin Applications | Polyester Resin for Sheet Lamination",
       keywords: ["PET Resin Applications", "PET Modified Polyester Resin Applications", "Polyester Resin for Fibre Sheets", "FRP Sheet Lamination Resin", "Panel Manufacturing Resin"],
@@ -5242,7 +5166,7 @@ export const resources = [
     slug: "pet-resin-vs-gp-resin",
     title: "PET Resin vs GP Resin: Sheet Grade or General FRP Route?",
     description: "Compare Samrat's published PET-modified liquid sheet-grade route with the separate general-purpose GP Resin route without transferring applications or technical data between them.",
-    category: "Comparison Guide", icon: "layers", readingTime: "4 min read", publishDate: "2026-08-10",
+    category: "Comparison Guide", icon: "layers", publishDate: "2026-08-10",
     seo: {
       title: "PET Resin vs GP Resin | Sheet Grade vs General FRP Guide",
       keywords: ["PET Resin vs GP Resin", "PET Modified Resin vs General Purpose Resin", "Sheet Grade Polyester Resin", "General Purpose Polyester Resin", "FRP Sheet Resin Selection"],
@@ -5283,7 +5207,7 @@ export const resources = [
     slug: "pet-resin-vs-lamination-resin",
     title: "PET Resin vs Lamination Resin: Different Sheet and Laminate Routes",
     description: "Separate Samrat's documented PET-modified sheet-grade route from the published Lamination Resin route for door, plywood and FRP lamination contexts.",
-    category: "Comparison Guide", icon: "layers", readingTime: "4 min read", publishDate: "2026-08-10",
+    category: "Comparison Guide", icon: "layers", publishDate: "2026-08-10",
     seo: {
       title: "PET Resin vs Lamination Resin | Sheet Grade and Laminate Guide",
       keywords: ["PET Resin vs Lamination Resin", "PET Modified Polyester Resin", "Lamination Resin", "FRP Sheet Lamination Resin", "Polyester Resin Selection"],
@@ -5325,7 +5249,7 @@ export const resources = [
     draft: true,
     title: "PET Resin Technical Specifications and RFQ Guide",
     description: "Review the liquid PET Resin properties published in the current TDS, keep them separate from finished-product performance, and prepare a focused industrial enquiry.",
-    category: "Technical & Procurement Guide", icon: "checklist", readingTime: "5 min read", publishDate: "2026-08-10",
+    category: "Technical & Procurement Guide", icon: "checklist", publishDate: "2026-08-10",
     seo: {
       title: "PET Resin Technical Specifications | PET Resin TDS and RFQ Guide",
       keywords: ["PET Resin Technical Specifications", "PET Resin TDS", "PET Modified Polyester Resin Viscosity", "PET Resin Procurement", "PET Resin Supplier"],
@@ -5372,7 +5296,6 @@ export const resources = [
     description: "Understand Samrat Poly Resins' published industrial-grade Bisphenol-A epoxy vinyl ester route for documented FRP chemical- and corrosion-service discussions.",
     category: "Vinyl Ester Guide",
     icon: "info",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "What Is Vinyl Ester Resin? | Industrial FRP Buyer Guide",
@@ -5413,7 +5336,6 @@ export const resources = [
     description: "A cautious buyer comparison between Samrat's published Vinyl Ester route and an isophthalic-resin requirement where the exact product data still matters.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Vinyl Ester Resin vs Isophthalic Resin | Buyer Guide",
@@ -5461,7 +5383,6 @@ export const resources = [
     description: "Separate Samrat's published epoxy vinyl ester route from its conventional epoxy resin products before selecting a material system for an industrial requirement.",
     category: "Comparison Guide",
     icon: "grid",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Vinyl Ester Resin vs Epoxy Resin | Product-Role Guide",
@@ -5510,7 +5431,6 @@ export const resources = [
     description: "Use Samrat's published Vinyl Ester chemical- and corrosion-service position to prepare the right technical questions without assuming chemical compatibility.",
     category: "Service Requirement Guide",
     icon: "shield",
-    readingTime: "6 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Vinyl Ester Resin for Chemical-Service FRP | Buyer Guide",
@@ -5550,7 +5470,6 @@ export const resources = [
     description: "A buyer-level explanation of the current Vinyl Ester TDS values, what they identify about the supplied resin, and what they do not prove about a finished FRP component.",
     category: "Technical Data Guide",
     icon: "grid",
-    readingTime: "6 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Vinyl Ester Resin Technical Specifications | TDS Guide",
@@ -5604,7 +5523,6 @@ export const resources = [
     description: "Prepare a focused industrial Vinyl Ester Resin RFQ with the service, component, documentation and commercial details needed for an evidence-led discussion.",
     category: "Procurement Guide",
     icon: "checklist",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Vinyl Ester Resin Procurement Checklist | RFQ Guide",
@@ -5644,7 +5562,6 @@ export const resources = [
     description: "An introduction to Samrat Poly Resins' Bisphenol Resin, its current product-specific TDS identity, listed applications and key selection boundaries.",
     category: "Bisphenol Resin Guide",
     icon: "info",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "What Is Bisphenol Resin? | Industrial Buyer Guide",
@@ -5685,7 +5602,6 @@ export const resources = [
     description: "Understand the current Bisphenol Resin TDS data, the different BPR catalogue entry and why buyers should confirm the exact document route instead of combining values.",
     category: "Technical Data Guide",
     icon: "grid",
-    readingTime: "6 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Bisphenol Resin Technical Data | TDS and Catalogue Guide",
@@ -5737,7 +5653,6 @@ export const resources = [
     description: "Review the current TDS-listed Bisphenol Resin contexts for laminating, casting, coating and encapsulation without turning broad categories into unverified project approvals.",
     category: "Application Guide",
     icon: "layers",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Bisphenol Resin Applications | Industrial Buyer Guide",
@@ -5777,7 +5692,6 @@ export const resources = [
     description: "A document-led comparison that keeps the current Bisphenol Resin route distinct from Samrat's broad Unsaturated Polyester Resin and general-purpose GP Clear Resin routes.",
     category: "Comparison Guide",
     icon: "compare",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Bisphenol Resin vs UPR and GP Resin | Buyer Guide",
@@ -5828,7 +5742,6 @@ export const resources = [
     description: "Clarify why the current Bisphenol Resin TDS terminology does not make it automatically interchangeable with Samrat's separate conventional epoxy product routes.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Bisphenol Resin vs Epoxy Resin | Product-Route Guide",
@@ -5868,7 +5781,6 @@ export const resources = [
     description: "Understand the difference between published Bisphenol Resin supplied-material data and the separate performance of a finished laminate, coating, casting, bonded assembly or encapsulated component.",
     category: "Technical Selection Guide",
     icon: "checklist",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Bisphenol Resin Data vs Finished FRP Performance | Buyer Guide",
@@ -5908,7 +5820,6 @@ export const resources = [
     description: "Prepare a focused Bisphenol Resin RFQ with the application, service requirement, current product-specific TDS, documentation and commercial details needed for review.",
     category: "Procurement Guide",
     icon: "checklist",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Bisphenol Resin Procurement Checklist | RFQ Guide",
@@ -5948,7 +5859,6 @@ export const resources = [
     description: "Understand Samrat Marble Resin as a documented liquid unsaturated polyester resin route for cultured marble and artificial stone, with product-specific data and selection limits.",
     category: "Technical Explainer",
     icon: "info",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "What Is Marble Resin? | Polyester Marble Resin Guide",
@@ -5988,7 +5898,6 @@ export const resources = [
     description: "Separate the supplied Marble Resin data from the finished cultured-marble or artificial-stone composite so buyers can verify the right product and documentation.",
     category: "Product Selection",
     icon: "layers",
-    readingTime: "4 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Marble Resin vs Finished Artificial Marble | Buyer Guide",
@@ -6026,7 +5935,6 @@ export const resources = [
     description: "Review the cultured-marble and artificial-stone application contexts published for Samrat Marble Resin, plus the finished-product information buyers still need to verify.",
     category: "Application Guide",
     icon: "grid",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Marble Resin Applications | Cultured Marble and Artificial Stone",
@@ -6065,7 +5973,6 @@ export const resources = [
     description: "Separate Samrat Marble Resin's cultured-marble and artificial-stone route from the PET Resin / Polyester Putty Resin liquid sheet-grade route.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "4 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Marble Resin vs PET Resin / Polyester Putty Resin",
@@ -6103,7 +6010,6 @@ export const resources = [
     description: "Compare the documented Marble Resin cultured-marble and artificial-stone route with the separately published GP Resin route for broad general FRP selection.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "4 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Marble Resin vs GP Resin | Marble Composite vs General FRP",
@@ -6141,7 +6047,6 @@ export const resources = [
     description: "A document-led guide to Samrat Poly Resins' Fiberglass Epoxy Resin route for published fabric-reinforcement, hand lay-up and lamination contexts.",
     category: "Epoxy & Composite Guide",
     icon: "info",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "What Is Fiberglass Epoxy Resin? | Composite Buyer Guide",
@@ -6182,7 +6087,6 @@ export const resources = [
     description: "Clarify the documented Fiberglass Epoxy Resin system boundary, separate hardener role and the information buyers need to confirm before procurement.",
     category: "System Selection Guide",
     icon: "layers",
-    readingTime: "4 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Fiberglass Epoxy Resin and Hardener | System Buyer Guide",
@@ -6222,7 +6126,6 @@ export const resources = [
     description: "Compare three separate Samrat epoxy product routes by their published roles: fiberglass reinforcement and lamination, clear contained casting, and decorative surface work.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Fiberglass Epoxy Resin vs Clear Casting and Art Resin",
@@ -6271,7 +6174,6 @@ export const resources = [
     description: "A buyer-level comparison between Samrat's Fiberglass Epoxy route and its separate polyester Lamination, UPR and GP resin routes for fiberglass and composite questions.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Fiberglass Epoxy vs Polyester Lamination Resin, UPR and GP",
@@ -6320,7 +6222,6 @@ export const resources = [
     description: "Separate Samrat's documented Fiberglass Epoxy composite route from its specialist Vinyl Ester industrial FRP route without assuming a chemical-service or performance hierarchy.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "4 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Fiberglass Epoxy Resin vs Vinyl Ester Resin | Buyer Guide",
@@ -6368,7 +6269,6 @@ export const resources = [
     description: "Use the current TDS and catalogue-listed fiberglass and composite contexts to frame a product discussion without turning them into certifications or fabrication instructions.",
     category: "Application Selection Guide",
     icon: "grid",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Fiberglass Epoxy Resin Applications | Composite Buyer Guide",
@@ -6408,7 +6308,6 @@ export const resources = [
     description: "Read the current Fiberglass Epoxy Resin TDS and catalogue side by side, keep their differing labels and values visible, and avoid turning supplied-resin data into finished-composite claims.",
     category: "Technical & Documentation Guide",
     icon: "checklist",
-    readingTime: "6 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Fiberglass Epoxy Resin Technical Specifications | TDS Guide",
@@ -6461,7 +6360,6 @@ export const resources = [
     description: "Understand why published Fiberglass Epoxy Resin data is not automatically a finished-laminate, marine, automotive, electrical or structural-component result.",
     category: "Technical Selection Guide",
     icon: "shield",
-    readingTime: "4 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Fiberglass Epoxy Resin Data vs Finished Composite Performance",
@@ -6500,7 +6398,6 @@ export const resources = [
     description: "Prepare a document-led Fiberglass Epoxy Resin RFQ with the application, system, reinforcement, technical and commercial details needed for a focused discussion.",
     category: "Procurement Guide",
     icon: "checklist",
-    readingTime: "4 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Fiberglass Epoxy Resin Procurement Checklist | RFQ Guide",
@@ -6539,7 +6436,6 @@ export const resources = [
     description: "Review Marble Resin's published liquid-resin data, keep the TDS and catalogue differences visible, and prepare a focused cultured-marble or artificial-stone enquiry.",
     category: "Technical & Procurement Guide",
     icon: "checklist",
-    readingTime: "5 min read",
     publishDate: "2026-08-10",
     seo: {
       title: "Marble Resin Technical Specifications and RFQ Guide",
@@ -6589,7 +6485,6 @@ export const resources = [
     description: "What cobalt octoate is, how accelerator, catalyst and initiator differ, the redox chemistry behind room-temperature polyester cure, how dosage relates to gel time, and why it is never stored with peroxide.",
     category: "Product Guide",
     icon: "info",
-    readingTime: "9 min read",
     publishDate: "2026-09-01",
     seo: {
       title: "Cobalt Octoate: Polyester Resin Accelerator Explained",
@@ -6751,7 +6646,6 @@ export const resources = [
     description: "Why ambient workshop temperature is one of the biggest variables in gel time and cure speed, and how fabricators plan around seasonal swings.",
     category: "Technical Explainer",
     icon: "clock",
-    readingTime: "2 min read",
     publishDate: "2026-09-01",
     seo: {
       title: "How Temperature Affects Polyester Resin Cure Speed",
@@ -6800,7 +6694,6 @@ export const resources = [
     description: "What to check when a batch is gelling faster or slower than expected — working through accelerator dosage, catalyst dosage, temperature and batch size.",
     category: "Troubleshooting Guide",
     icon: "checklist",
-    readingTime: "2 min read",
     publishDate: "2026-09-01",
     seo: {
       title: "Troubleshooting Polyester Resin Cure Speed — Too Fast or Too Slow",
@@ -6852,7 +6745,6 @@ export const resources = [
     description: "A broader look at cure-related defects in FRP work — beyond gel-time timing — including tackiness, incomplete cure and inconsistent batches.",
     category: "Troubleshooting Guide",
     icon: "checklist",
-    readingTime: "2 min read",
     publishDate: "2026-09-01",
     seo: {
       title: "Common FRP Curing Problems and Their Causes",
@@ -6907,7 +6799,6 @@ export const resources = [
     description: "What styrene monomer is, why it is called a reactive diluent, how it affects viscosity, wet-out and gelcoat, how low-VOC systems differ, and what to confirm before ordering.",
     category: "Product Guide",
     icon: "info",
-    readingTime: "7 min read",
     publishDate: "2026-09-01",
     seo: {
       title: "Styrene Monomer: Reactive Diluent Guide for Polyester Resin",
@@ -7045,7 +6936,6 @@ export const resources = [
     description: "How styrene participates chemically in the free-radical curing reaction that turns liquid polyester resin into a solid, cross-linked laminate.",
     category: "Technical Explainer",
     icon: "info",
-    readingTime: "1 min read",
     publishDate: "2026-09-01",
     seo: {
       title: "Styrene's Role in Polyester Resin Cure Chemistry",
@@ -7085,7 +6975,6 @@ export const resources = [
     description: "General storage, ventilation and handling principles for styrene monomer, which is flammable and volatile — with full guidance always in the SDS.",
     category: "Best Practices",
     icon: "shield",
-    readingTime: "1 min read",
     publishDate: "2026-09-01",
     seo: {
       title: "Styrene Monomer Storage, Handling and Safety Guide",
@@ -7139,7 +7028,6 @@ export const resources = [
     description: "What NC (nitrocellulose) thinner is, how it adjusts lacquer viscosity for spray and brush work, why blushing happens, and what to confirm before ordering.",
     category: "Product Guide",
     icon: "info",
-    readingTime: "6 min read",
     publishDate: "2026-09-01",
     seo: {
       title: "NC Thinner: What It Is, How to Use It, and What to Check",
@@ -7283,7 +7171,6 @@ export const resources = [
     description: "How solvent evaporation rate — too fast or too slow for the conditions — connects to defects like blushing, orange peel and poor levelling.",
     category: "Troubleshooting Guide",
     icon: "checklist",
-    readingTime: "1 min read",
     publishDate: "2026-09-01",
     seo: {
       title: "Solvent Evaporation and Common Coating Defects",
@@ -7326,7 +7213,6 @@ export const resources = [
     description: "Why NC thinner and general-purpose thinner aren't interchangeable, and how to tell which one a coating job actually calls for.",
     category: "Comparison Guide",
     icon: "layers",
-    readingTime: "1 min read",
     publishDate: "2026-09-01",
     seo: {
       title: "NC Thinner vs General-Purpose Thinner Compared",
@@ -7379,7 +7265,6 @@ export const resources = [
     description: "How to choose and use application brushes for resin and gelcoat, how brushes compare with rollers and squeegees, technique for corners and repairs, and what an open-moulding workshop should keep on hand.",
     category: "Selection Guide",
     icon: "checklist",
-    readingTime: "7 min read",
     publishDate: "2026-09-01",
     seo: {
       title: "FRP Application Tools: Brushes, Rollers and Squeegees Explained",
@@ -7503,7 +7388,6 @@ export const resources = [
     description: "What soapstone / talc powder is, how mineral fillers behave in resin, putty and coating formulations, how it differs from reinforcement and from calcium carbonate, and what to confirm before ordering.",
     category: "Product Guide",
     icon: "info",
-    readingTime: "7 min read",
     publishDate: "2026-09-01",
     seo: {
       title: "Soapstone (Talc) Powder: Industrial Mineral Filler Guide",
@@ -7661,7 +7545,6 @@ export const resources = [
     description: "What mould release / parting wax is, how to prepare and wax a mould, wax versus PVA, why parts stick, and how to plan mould care across a production run.",
     category: "Product Guide",
     icon: "info",
-    readingTime: "8 min read",
     publishDate: "2026-09-01",
     seo: {
       title: "FRP Mould Release Wax: Preparation, Application and Troubleshooting",

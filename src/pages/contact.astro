@@ -1,11 +1,75 @@
 ---
 import Base from '../layouts/Base.astro';
 import EnquiryForm from '../components/EnquiryForm.astro';
-import { site, buildWhatsAppLink } from '../data/site.js';
+import { site, buildWhatsAppLink, buildCanonicalUrl } from '../data/site.js';
 
 const waLink = buildWhatsAppLink('generic');
+
+const fullAddress = `${site.address.line1}, ${site.address.line2}, ${site.address.state} ${site.address.pin}`;
+const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${site.mapsQuery}`;
+
+// LocalBusiness structured data for the one real facility.
+//
+// Search Console shows genuine local demand that this page was not marked up
+// for: `resin shop in ludhiana` (position 14.5), `doraha ludhiana fabricator
+// with phone number` (11.0), `factory near doraha, ludhiana with phone number`
+// (38.5), `resin shop near me` (7.0) and `frp resin suppliers near me` (1.0),
+// with Ludhiana the top city in GA4 for the last 7 days.
+//
+// It reuses the sitewide Organization's @id so Google treats this as the same
+// entity rather than a second business. EVERY field below comes from the
+// verified values in site.js. Deliberately ABSENT, because the repository does
+// not contain them and inventing them would be a false business claim:
+//   - openingHours / openingHoursSpecification
+//   - geo coordinates
+//   - priceRange
+//   - aggregateRating or review
+// Supply real opening hours and verified coordinates and they can be added.
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${site.url}/#organization`,
+  name: site.name,
+  url: site.url,
+  telephone: site.phones.map((phone) => phone.dial),
+  email: site.email,
+  foundingDate: site.established,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.address.line1,
+    addressLocality: "Doraha, Ludhiana",
+    addressRegion: "Punjab",
+    postalCode: site.address.pin,
+    addressCountry: "IN",
+  },
+  hasMap: mapsUrl,
+  areaServed: site.statesServed
+    .filter((s) => !s.startsWith('Export'))
+    .map((s) => ({ "@type": "AdministrativeArea", name: s })),
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    telephone: site.phones[0].dial,
+    email: site.email,
+    areaServed: "IN",
+    availableLanguage: ["en", "hi", "pa"],
+  },
+};
+
+const contactPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: `Contact ${site.name}`,
+  url: buildCanonicalUrl('/contact/'),
+  mainEntity: { "@id": `${site.url}/#organization` },
+};
 ---
-<Base title="Contact" description={`Get in touch with ${site.name} — request a quote by phone, WhatsApp, email or the enquiry form.`}>
+<Base
+  title="Contact — Resin Quote, Doraha Ludhiana"
+  description={`Request a resin quote from ${site.name}. Phone, WhatsApp, email and enquiry form, plus directions to the plant at ${site.address.line2} — ${site.address.pin}, Punjab.`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(contactPageJsonLd)} />
   <section class="section contact">
     <div class="wrap contact-grid">
       <div class="contact-info">
@@ -30,10 +94,10 @@ const waLink = buildWhatsAppLink('generic');
             <span class="cline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5 0-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.3 4.7L7 20.4A10 10 0 1 0 12 2z"/></svg></span>
             <span class="cline-body"><span class="cline-k">WhatsApp</span>Chat now</span>
           </a>
-          <div class="cline">
+          <a href={mapsUrl} target="_blank" rel="noopener" class="cline">
             <span class="cline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22 C12 22 19 15 19 9.5 A7 7 0 0 0 5 9.5 C5 15 12 22 12 22 Z" /><circle cx="12" cy="9.5" r="2.4" /></svg></span>
-            <span class="cline-body"><span class="cline-k">Address</span>{site.address.line1}, {site.address.line2} — {site.address.pin}</span>
-          </div>
+            <span class="cline-body"><span class="cline-k">Plant &amp; office — get directions</span>{fullAddress}</span>
+          </a>
         </div>
         <div class="map-embed">
           <iframe
@@ -55,6 +119,24 @@ const waLink = buildWhatsAppLink('generic');
       </div>
       <div class="contact-form">
         <h2 class="contact-form-heading">Send an enquiry</h2>
+        {/*
+          A quote reply is only as good as the enquiry. Listing what to include
+          costs nothing and materially raises the quality of what arrives — the
+          same five details the /how-to-order/ page asks for, so the two pages
+          cannot drift apart.
+        */}
+        <ul class="contact-checklist">
+          <li><strong>Which grade</strong> — or the component you are making, if you are not sure</li>
+          <li><strong>Quantity</strong> and how often you expect to reorder</li>
+          <li><strong>Delivery location</strong></li>
+          <li><strong>Process</strong> — hand lay-up, spray-up, casting, moulding</li>
+          <li><strong>Any specification</strong> or drawing you have been given</li>
+        </ul>
+        <p class="contact-checklist-foot">
+          Not sure which grade? <a href="/tools/resin-selector/">Use the resin selector</a>,
+          read <a href="/how-to-order/">how ordering works</a>, or
+          <a href="/technical-documents/">download a TDS</a> first.
+        </p>
         <div class="custom-request-callout">
           <div>
             <p class="custom-request-label">Need target properties reviewed?</p>
@@ -83,6 +165,23 @@ const waLink = buildWhatsAppLink('generic');
     .cline-icon { flex-shrink: 0; display: flex; color: var(--ink-faint); transition: color .25s var(--ease-premium); }
     .cline-body { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
     .cline-k { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
+    .contact-checklist {
+      list-style: none; margin: 1rem 0 0; padding: 0;
+      display: flex; flex-direction: column; gap: 0.45rem;
+      font-size: 0.9rem; color: var(--ink-dim);
+    }
+    .contact-checklist li { padding-left: 1.15rem; position: relative; line-height: 1.55; }
+    .contact-checklist li::before {
+      content: '—'; position: absolute; left: 0;
+      color: var(--ink-faint); font-family: var(--font-mono);
+    }
+    .contact-checklist strong { color: var(--ink); font-weight: 500; }
+    .contact-checklist-foot {
+      margin-top: 0.9rem; font-size: 0.85rem; color: var(--ink-faint); line-height: 1.6;
+    }
+    .contact-checklist-foot a { color: var(--ink-dim); }
+    .contact-checklist-foot a:hover { color: var(--accent-gold-light); }
+
     .map-embed { margin-top: 1.8rem; border: 1px solid var(--line); aspect-ratio: 16 / 10; }
     .map-embed iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.3) contrast(1.05); }
 

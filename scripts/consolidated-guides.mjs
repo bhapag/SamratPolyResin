@@ -283,7 +283,6 @@ GUIDES['what-is-nc-thinner'] = {
     'What NC (nitrocellulose) thinner is, how it adjusts lacquer viscosity for spray and brush work, why blushing happens, and what to confirm before ordering.',
   category: 'Product Guide',
   icon: 'info',
-  readingTime: '6 min read',
   publishDate: '2026-09-01',
   seo: {
     title: 'NC Thinner: What It Is, How to Use It, and What to Check',
@@ -418,7 +417,6 @@ GUIDES['what-is-soapstone-talc-powder'] = {
     'What soapstone / talc powder is, how mineral fillers behave in resin, putty and coating formulations, how it differs from reinforcement and from calcium carbonate, and what to confirm before ordering.',
   category: 'Product Guide',
   icon: 'info',
-  readingTime: '7 min read',
   publishDate: '2026-09-01',
   seo: {
     title: 'Soapstone (Talc) Powder: Industrial Mineral Filler Guide',
@@ -556,7 +554,6 @@ GUIDES['what-is-styrene-monomer'] = {
     'What styrene monomer is, why it is called a reactive diluent, how it affects viscosity, wet-out and gelcoat, how low-VOC systems differ, and what to confirm before ordering.',
   category: 'Product Guide',
   icon: 'info',
-  readingTime: '7 min read',
   publishDate: '2026-09-01',
   seo: {
     title: 'Styrene Monomer: Reactive Diluent Guide for Polyester Resin',
@@ -684,7 +681,6 @@ GUIDES['what-is-frp-mould-release-wax'] = {
     'What mould release / parting wax is, how to prepare and wax a mould, wax versus PVA, why parts stick, and how to plan mould care across a production run.',
   category: 'Product Guide',
   icon: 'info',
-  readingTime: '8 min read',
   publishDate: '2026-09-01',
   seo: {
     title: 'FRP Mould Release Wax: Preparation, Application and Troubleshooting',
@@ -831,7 +827,6 @@ GUIDES['selecting-brushes-for-resin-and-gelcoat-application'] = {
     'How to choose and use application brushes for resin and gelcoat, how brushes compare with rollers and squeegees, technique for corners and repairs, and what an open-moulding workshop should keep on hand.',
   category: 'Selection Guide',
   icon: 'checklist',
-  readingTime: '7 min read',
   publishDate: '2026-09-01',
   seo: {
     title: 'FRP Application Tools: Brushes, Rollers and Squeegees Explained',
@@ -942,7 +937,6 @@ GUIDES['what-is-mekp-hardener'] = {
     'What MEKP Hardener is, its published catalyst / initiator role in polyester, vinyl ester and gelcoat systems, and the published packaging, MOQ and shelf-life facts to check before requesting a quote.',
   category: 'Product Guide',
   icon: 'info',
-  readingTime: '5 min read',
   publishDate: '2026-08-06',
   seo: {
     title: 'MEKP Hardener: Catalyst, Systems and Buyer Checklist',
@@ -1052,7 +1046,6 @@ GUIDES['what-is-cobalt-octoate'] = {
     'What cobalt octoate is, how accelerator, catalyst and initiator differ, the redox chemistry behind room-temperature polyester cure, how dosage relates to gel time, and why it is never stored with peroxide.',
   category: 'Product Guide',
   icon: 'info',
-  readingTime: '9 min read',
   publishDate: '2026-09-01',
   seo: {
     title: 'Cobalt Octoate: Polyester Resin Accelerator Explained',
@@ -1203,7 +1196,6 @@ GUIDES['what-is-glass-fiber-chopped-strand-mat'] = {
     'What E-Glass Chopped Strand Mat is, how reinforcement differs from resin, the published CSM 300 and CSM 450 range, resin-system compatibility, and the published packaging, MOQ and storage facts.',
   category: 'Reinforcement Guide',
   icon: 'info',
-  readingTime: '7 min read',
   publishDate: '2026-08-06',
   seo: {
     title: 'Glass Fiber E-Glass Chopped Strand Mat: Complete Buyer Guide',
@@ -1338,7 +1330,6 @@ GUIDES['what-is-frp-polyester-pigment'] = {
     'What FRP polyester pigment paste is, its published UPR, vinyl ester and gelcoat system context, where it is used, how it differs from a pre-pigmented resin grade, and the published packaging, MOQ and storage facts.',
   category: 'Product Guide',
   icon: 'info',
-  readingTime: '7 min read',
   publishDate: '2026-08-06',
   seo: {
     title: 'FRP Polyester Pigment: Colour Paste Buyer Guide',
@@ -1464,7 +1455,6 @@ GUIDES['what-is-lamination-resin'] = {
     'A buyer guide to Lamination Resin, also called LR Resin, for door, plywood and FRP bonding work — including the published application contexts and what to verify before purchase.',
   category: 'Technical Explainer',
   icon: 'layers',
-  readingTime: '5 min read',
   publishDate: '2026-08-06',
   seo: {
     title: 'What is Lamination Resin (LR Resin)? | Buyer Guide',
@@ -1583,7 +1573,6 @@ GUIDES['what-is-gel-coat-resin'] = {
     'Understand Gelcoat Resin as the visible, mould-facing surface layer in an FRP build-up, how it differs from laminating resin and from epoxy systems, where it is used, and what to confirm before procurement.',
   category: 'Product Guide',
   icon: 'layers',
-  readingTime: '8 min read',
   publishDate: '2026-07-18',
   seo: {
     title: 'What is Gel Coat Resin? FRP Surface Finish Explained',
