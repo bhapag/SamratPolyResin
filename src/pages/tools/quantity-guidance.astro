@@ -277,12 +277,17 @@ const breadcrumbJsonLd = {
     .qg-hint { font-size: 0.78rem; color: var(--ink-faint); margin: 0.35rem 0 0; line-height: 1.5; }
 
     .qg-out { display: block; margin-top: 1.4rem; border: 1px solid var(--line); padding: 1.1rem 1.2rem; background: var(--bg-2); }
-    .qg-out-empty { color: var(--ink-faint); font-size: 0.9rem; margin: 0; }
-    .qg-out-head { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin: 0; }
-    .qg-out-big { font-family: var(--font-display); font-size: 2.1rem; color: var(--accent-gold-light); margin: 0.3rem 0 0.8rem; line-height: 1; }
-    .qg-out-work { margin: 0; padding-left: 1.05rem; color: var(--ink-dim); font-size: 0.87rem; line-height: 1.75; }
-    .qg-out-work b { color: var(--ink); font-weight: 500; }
-    .qg-out-caveat { margin: 0.9rem 0 0; font-size: 0.82rem; color: var(--ink-faint); line-height: 1.65; border-top: 1px solid var(--line); padding-top: 0.7rem; }
+    /*
+      The result contents are written with innerHTML, so Astro's scoped styles
+      would never reach them — a scoped selector only matches elements the build
+      stamped with data-astro-cid-*. These must stay :global().
+    */
+    :global(.qg-out-empty) { color: var(--ink-faint); font-size: 0.9rem; margin: 0; }
+    :global(.qg-out-head) { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin: 0; }
+    :global(.qg-out-big) { font-family: var(--font-display); font-size: 2.1rem; color: var(--accent-gold-light); margin: 0.3rem 0 0.8rem; line-height: 1; }
+    :global(.qg-out-work) { margin: 0; padding-left: 1.05rem; color: var(--ink-dim); font-size: 0.87rem; line-height: 1.75; }
+    :global(.qg-out-work b) { color: var(--ink); font-weight: 500; }
+    :global(.qg-out-caveat) { margin: 0.9rem 0 0; font-size: 0.82rem; color: var(--ink-faint); line-height: 1.65; border-top: 1px solid var(--line); padding-top: 0.7rem; }
 
     .qg-table-scroll { overflow-x: auto; }
     .qg-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }

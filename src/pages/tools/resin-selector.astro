@@ -58,8 +58,8 @@ const webAppJsonLd = {
       <p class="eyebrow">Buyer tool</p>
       <h1>Which resin grade do you need?</h1>
       <p class="sel-lead">
-        Answer as many of the four questions below as you can. The selector narrows our
-        {products.length} grades to the ones whose <strong>own published applications</strong> name your
+        Answer as many of the four questions below as you can. The selector narrows
+        our {products.length} grades to the ones whose <strong>own published applications</strong> name your
         situation — and shows you the exact line that matched, so you can judge the reasoning
         rather than trust a black box.
       </p>
@@ -296,53 +296,66 @@ const webAppJsonLd = {
     .sel-opt:has(input:checked) { color: var(--ink); }
     .sel-reset { margin-top: 0.5rem; }
 
-    .sel-empty {
+    /*
+      EVERYTHING BELOW IS :global() ON PURPOSE.
+
+      Astro scopes styles by stamping a data-astro-cid-* attribute onto elements
+      it renders. The result cards are built at runtime with innerHTML, so they
+      never receive that attribute and a scoped selector silently does not apply
+      to them — the cards render as unstyled run-together text.
+
+      This bit us once already on the product-page section nav. The tests assert
+      a computed border width on .sel-card so a scoped selector cannot creep
+      back in unnoticed.
+    */
+    :global(.sel-empty) {
       border: 1px dashed var(--line-2); padding: clamp(1.5rem, 4vw, 2.5rem);
       color: var(--ink-faint); font-size: 0.9rem; line-height: 1.65;
     }
-    .sel-empty-title { color: var(--ink-dim); font-size: 1rem; margin: 0 0 0.5rem; }
-    .sel-none { border-style: solid; border-color: var(--line); }
+    :global(.sel-empty-title) { color: var(--ink-dim); font-size: 1rem; margin: 0 0 0.5rem; }
+    :global(.sel-none) { border-style: solid; border-color: var(--line); }
+    :global(.sel-none p) { margin-bottom: 0.7rem; }
 
-    .sel-count { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; color: var(--ink-faint); margin: 0 0 1rem; }
-    .sel-sub { font-size: 1.05rem; margin: 2.2rem 0 1rem; }
-    .sel-cards { display: grid; gap: 0.9rem; }
+    :global(.sel-count) { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; color: var(--ink-faint); margin: 0 0 1rem; }
+    :global(.sel-sub) { font-size: 1.05rem; margin: 2.2rem 0 1rem; }
+    :global(.sel-cards) { display: grid; gap: 0.9rem; }
 
-    .sel-card { border: 1px solid var(--line); padding: 1.1rem 1.2rem; background: var(--bg-2); }
-    .sel-card header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-    .sel-card h3 { font-size: 1.02rem; margin: 0; }
-    .sel-card h3 a { color: var(--ink); text-decoration: none; }
-    .sel-card h3 a:hover { color: var(--accent-gold-light); }
-    .sel-cat { font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
-    .sel-tagline { color: var(--ink-dim); font-size: 0.88rem; margin: 0.45rem 0 0; line-height: 1.6; }
+    :global(.sel-card) { border: 1px solid var(--line); padding: 1.1rem 1.2rem; background: var(--bg-2); }
+    :global(.sel-card header) { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    :global(.sel-card h3) { font-size: 1.02rem; margin: 0; }
+    :global(.sel-card h3 a) { color: var(--ink); text-decoration: none; }
+    :global(.sel-card h3 a:hover) { color: var(--accent-gold-light); }
+    :global(.sel-cat) { font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+    :global(.sel-tagline) { color: var(--ink-dim); font-size: 0.88rem; margin: 0.45rem 0 0; line-height: 1.6; }
 
-    .sel-specs { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
-    .sel-spec {
+    :global(.sel-specs) { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+    :global(.sel-spec) {
       font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink-dim);
       background: var(--bg); border: 1px solid var(--line-2); padding: 0.25rem 0.5rem;
     }
-    .sel-spec b { color: var(--ink-faint); font-weight: 400; margin-right: 0.35rem; }
+    :global(.sel-spec b) { color: var(--ink-faint); font-weight: 400; margin-right: 0.35rem; }
 
-    .sel-why { margin-top: 0.8rem; font-size: 0.83rem; }
-    .sel-why summary { cursor: pointer; color: var(--ink-faint); font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
-    .sel-why summary:hover { color: var(--ink-dim); }
-    .sel-why ul { margin: 0.6rem 0 0; padding-left: 1rem; color: var(--ink-dim); line-height: 1.65; }
-    .sel-why li { margin-bottom: 0.35rem; }
-    .sel-why-a { color: var(--ink); }
-    .sel-why q { font-style: italic; }
+    :global(.sel-why) { margin-top: 0.8rem; font-size: 0.83rem; }
+    :global(.sel-why summary) { cursor: pointer; color: var(--ink-faint); font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    :global(.sel-why summary:hover) { color: var(--ink-dim); }
+    :global(.sel-why ul) { margin: 0.6rem 0 0; padding-left: 1rem; color: var(--ink-dim); line-height: 1.65; }
+    :global(.sel-why li) { margin-bottom: 0.35rem; }
+    :global(.sel-why-a) { color: var(--ink); }
+    :global(.sel-why q) { font-style: italic; }
 
-    .sel-card-actions { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.95rem; }
-    .sel-btn {
+    :global(.sel-card-actions) { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.95rem; }
+    :global(.sel-btn) {
       display: inline-block; padding: 0.42rem 0.8rem;
       font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.04em;
       color: var(--ink-dim); text-decoration: none;
       border: 1px solid var(--line-2); background: var(--bg);
       transition: color 0.18s ease, border-color 0.18s ease;
     }
-    .sel-btn:hover { color: var(--ink); border-color: var(--accent); }
-    .sel-btn-solid { color: var(--ink); border-color: var(--accent); }
+    :global(.sel-btn:hover) { color: var(--ink); border-color: var(--accent); }
+    :global(.sel-btn-solid) { color: var(--ink); border-color: var(--accent); }
 
-    .sel-foot { margin-top: 1.6rem; font-size: 0.85rem; color: var(--ink-faint); line-height: 1.7; max-width: 62ch; }
-    .sel-foot a { color: var(--ink-dim); }
+    :global(.sel-foot) { margin-top: 1.6rem; font-size: 0.85rem; color: var(--ink-faint); line-height: 1.7; max-width: 62ch; }
+    :global(.sel-foot a) { color: var(--ink-dim); }
 
     .sel-fallback { border-top: 1px solid var(--line); }
     .sel-fallback h2 { font-size: 1.3rem; }
