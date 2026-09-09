@@ -138,7 +138,9 @@ const metaChecks = [
   ['/resources/what-is-gp-polyester-resin/', 'GP Full Form'],
   ['/products/unsaturated-polyester-resin/', 'UPR) Manufacturer in India'],
   ['/applications/resin-for-boat-manufacturing/', 'Marine &amp; Boat Composite Resins'],
-  ['/contact/', 'Doraha Ludhiana'],
+  // Retitled in the brand phase to lead with the company name, which is one
+  // of the branded terms targeted (`samrat poly resins contact`).
+  ['/contact/', 'Contact Samrat Poly Resins'],
 ];
 for (const [p, needle] of metaChecks) {
   const html = await (await fetch(BASE + p)).text();
