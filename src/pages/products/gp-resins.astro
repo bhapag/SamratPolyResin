@@ -134,6 +134,18 @@ const relatedResources = relatedResourceSlugs
     </div>
   </section>
 
+  <section class="section fam-manufacturer">
+    <div class="wrap fam-prose">
+      <p class="fam-manufacturer-line">
+        Samrat Poly Resins manufactures this GP Resin range at its facility in Doraha, Punjab,
+        India. Established in 2017, the company operates an ISO 9001:2015-certified quality
+        management system. Each grade below is supplied in bulk drum quantities, with published
+        TDS, SDS and minimum order quantity, dispatched across North and East India with export
+        to Nepal and Bangladesh.
+      </p>
+    </div>
+  </section>
+
   <section class="section fam-what">
     <div class="wrap fam-prose">
       <div class="section-head">
@@ -336,6 +348,14 @@ const relatedResources = relatedResourceSlugs
       color: var(--ink-faint); margin-top: 0.6rem; line-height: 1.5;
     }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.4rem; }
+
+    /* --- manufacturer trust strip --- */
+    .fam-manufacturer { padding-top: 0; padding-bottom: 2rem; }
+    .fam-manufacturer-line {
+      color: var(--ink-dim); line-height: 1.75; max-width: 72ch;
+      border-left: 2px solid rgba(var(--gold-rgb), .5); padding: 0.9rem 1.1rem;
+      background: rgba(var(--gold-rgb), .05); font-size: 0.95rem;
+    }
 
     /* --- explanation / selection prose --- */
     .fam-what, .fam-choose { padding-bottom: 0; }
