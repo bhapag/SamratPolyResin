@@ -1,9 +1,10 @@
 ---
-import { Image, getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import ProductCard from '../components/ProductCard.astro';
 import BrandFilm from '../components/home/BrandFilm.astro';
 import { products, CATEGORIES, CATEGORY_HUBS } from '../data/products.js';
+import { applications } from '../data/applications.js';
 import { site, buildWhatsAppLink } from '../data/site.js';
 import qcLaboratory from '../assets/quality/qc-laboratory.jpg';
 import productionInfrastructure from '../assets/facility/production-infrastructure.jpg';
@@ -12,30 +13,19 @@ import frpWaterTanks from '../assets/applications/frp-water-tanks.jpg';
 import frpRoofingSheets from '../assets/applications/frp-roofing-sheets.jpg';
 import coolingTowers from '../assets/applications/cooling-towers.jpg';
 import marineBoatComponents from '../assets/applications/marine-boat-components.jpg';
-import frpStatue from '../assets/applications/frp-statue.jpg';
-import frpPortableCabin from '../assets/applications/frp-portable-cabin.jpg';
-
-const applications = [
-  { image: frpWaterTanks, tag: 'Storage Solutions', name: 'FRP Water Tanks', alt: 'Sectional FRP water storage tank built from glass-fibre-reinforced polyester panels' },
-  { image: frpRoofingSheets, tag: 'Building Materials', name: 'FRP Roofing Sheets', alt: 'Translucent corrugated FRP roofing sheets fitted over an industrial building frame' },
-  { image: coolingTowers, tag: 'Industrial Cooling', name: 'Cooling Towers', alt: 'Industrial cooling towers, a common application for chemical-resistant FRP construction' },
-  { image: marineBoatComponents, tag: 'Marine Fabrication', name: 'Marine & Boat Components', alt: 'A marine vessel hull built using FRP composite construction' },
-  { image: frpStatue, tag: 'Decorative FRP', name: 'FRP Statues & Sculptures', alt: 'Bronze-finish FRP statue cast in fine decorative detail, showing the sculptural possibilities of polyester resin' },
-  { image: frpPortableCabin, tag: 'Modular Structures', name: 'FRP Portable Cabins', alt: 'Prefabricated FRP portable cabin used as a modular site office or security cabin' },
-];
+import frpDoor from '../assets/applications/frp-door.jpg';
+import frpMouldedGrating from '../assets/applications/frp-moulded-grating.jpg';
+import vinylEsterChemicalTanks from '../assets/applications/vinyl-ester-chemical-tanks.jpg';
 
 const waLink = buildWhatsAppLink('generic');
-const featured = products.slice(0, 6);
+const years = new Date().getFullYear() - Number(site.established);
+const certificateUrl = site.certification.url;
 
-// Homepage catalogue entry points. The homepage previously showed 8 bare
-// category labels plus 6 of the 31 grades, which reads as a small brochure
-// rather than the range actually manufactured. Each tile now names example
-// grades from that family, so the breadth is visible without leaving the page.
-//
-// Destination uses CATEGORY_HUBS - the same single source of truth the
-// mega-menu and breadcrumbs read - so a family with a real hub page links to
-// it, and one without links to its section on /products/. Nothing here can
-// point at a hub that does not exist.
+// Homepage catalogue entry points: one row per family, with example grades and
+// a grade count so the breadth is visible without leaving the page. The
+// destination comes from CATEGORY_HUBS — the same single source of truth the
+// mega-menu and breadcrumbs read — so a family with a real hub page links to
+// it, and one without links to its section on /products/.
 const categoryEntries = CATEGORIES.map((cat) => {
   const items = products.filter((p) => p.category === cat);
   const anchor = `/products/#${cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`;
@@ -48,66 +38,101 @@ const categoryEntries = CATEGORIES.map((cat) => {
   };
 });
 
+// One representative grade from six different families, rather than the
+// first six entries of the catalogue (which were five GP grades and a sheet
+// grade). Resolved by slug so a renamed or removed grade fails the build
+// instead of silently dropping a card.
+const featuredSlugs = [
+  'unsaturated-polyester-resin',
+  'roof-light-resin',
+  'gp-gelcoat-resin',
+  'fire-retardant-resin',
+  'vinyl-ester-resin',
+  'epoxy-clear-casting-resin',
+];
+const featured = featuredSlugs.map((slug) => {
+  const product = products.find((p) => p.slug === slug);
+  if (!product) throw new Error(`homepage features a grade that is not in the catalogue: ${slug}`);
+  return product;
+});
+
+// Published documentation, counted rather than asserted.
+const tdsCount = products.filter((p) => p.tdsUrl).length;
+const sdsCount = products.filter((p) => p.sdsUrl).length;
+const docsLine = tdsCount === products.length && sdsCount === products.length
+  ? 'TDS & SDS published for every grade'
+  : tdsCount === sdsCount
+    ? `TDS & SDS published for ${tdsCount} of ${products.length} grades`
+    : `TDS published for ${tdsCount} of ${products.length} grades`;
+
+// Application tiles link to the real application guides. Alt text and the
+// guide title come from the guide itself, and a tile pointing at a guide that
+// no longer exists fails the build.
+const appTiles = [
+  { slug: 'resin-for-water-tank-manufacturing', image: frpWaterTanks, tag: 'Storage', name: 'FRP water tanks' },
+  { slug: 'resin-for-roofing-sheet-manufacturing', image: frpRoofingSheets, tag: 'Building materials', name: 'FRP roofing sheets' },
+  { slug: 'resin-for-cooling-tower-manufacturing', image: coolingTowers, tag: 'Industrial cooling', name: 'Cooling towers' },
+  { slug: 'resin-for-boat-manufacturing', image: marineBoatComponents, tag: 'Marine', name: 'Boat & marine components' },
+  { slug: 'resin-for-frp-door-manufacturing', image: frpDoor, tag: 'Doors & panels', name: 'FRP doors' },
+  { slug: 'resin-for-general-frp-moulded-products', image: frpMouldedGrating, tag: 'Moulded products', name: 'FRP gratings & mouldings' },
+  { slug: 'vinyl-ester-resin-for-chemical-storage-tanks', image: vinylEsterChemicalTanks, tag: 'Chemical process', name: 'Chemical storage tanks' },
+].map((tile) => {
+  const guide = applications.find((a) => a.slug === tile.slug);
+  if (!guide) throw new Error(`homepage links to a missing application guide: ${tile.slug}`);
+  return { ...tile, alt: guide.cardImageAlt ?? guide.title };
+});
+
+const industries = [
+  'FRP fabricators',
+  'Water tank manufacturers',
+  'Roofing & daylight sheet manufacturers',
+  'Door & door-skin manufacturers',
+  'Marine & boat builders',
+  'Cooling towers & process equipment',
+  'Quartz & engineered stone',
+  'Decorative FRP — statues, cabins, sculptures',
+  'Composite moulders',
+];
+
+// site.statesServed mixes domestic states and "Export <country>" entries in
+// one list; split them here rather than touching the shared array.
+const domesticStates = site.statesServed.filter((s) => !s.startsWith('Export '));
+const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).map((s) => s.replace('Export ', ''));
+
 // Hero background video: a still frame from the approved hero footage itself
 // is the poster/fallback everywhere in the hero (shown instantly, and
 // permanently for prefers-reduced-motion or if video playback fails) — the
-// video plays on top of it once it can. Both sizes come from the SAME
-// source frame (src/assets/hero/hero-video-poster-mobile.jpg), just
-// rendered at the resolution each breakpoint needs, so there is never a
+// video plays on top of it once it can. Both sizes come from the SAME source
+// frame, rendered at the resolution each breakpoint needs, so there is never a
 // visible swap between two different images while the hero loads.
 //
-// This used to be the old facility/production photo (productionInfrastructure,
-// still used elsewhere on this page, e.g. the About section below — that
-// usage is untouched). That photo predates the hero video and was reported
-// briefly visible during hero load, especially on mobile where it didn't
-// match the mobile video's own poster — a real flash between two different
-// images, not just an expected loading fallback. Fixed by using the same
-// video-frame poster on every hero layer instead.
-// Neither hero <video> carries a `poster` attribute any more. It was a
-// measured duplicate download: a `poster` is NEVER lazy, so both encodes'
-// posters were fetched on every load — the same frame the eager <Image>
-// below already renders, at the same derivative sizes. Removing them (with
-// the same treatment on the sitewide ambient layer and the below-fold
-// videos) moved Slow-4G LCP from 13,200 ms to 8,308 ms and pre-LCP bytes
-// from 404,563 to 179,117. Measured, 5 cold runs, CDP request-lifecycle
-// tracing — see HERO_LOADING_OPTIONS.md.
+// Neither hero <video> carries a `poster` attribute: a `poster` is never lazy,
+// so both encodes' posters were fetched on every load — the same frame the
+// eager <Image> already renders. Removing them moved Slow-4G LCP from
+// 13,200 ms to 8,308 ms (measured, 5 cold runs — see HERO_LOADING_OPTIONS.md).
 //
-// A `<video>` with no poster and no frames yet paints as an opaque black
-// rectangle, which would hide the <Image> underneath it. So the videos
-// start at opacity 0 and fade in only once they are genuinely playing
+// A <video> with no poster and no frames yet paints as an opaque black
+// rectangle, which would hide the <Image> underneath it. So the videos start
+// at opacity 0 and fade in only once they are genuinely playing
 // (`data-playing`, set by the inline script below on the `playing` event).
-// If playback never starts — reduced motion, a failed fetch, Save-Data —
-// the poster frame simply remains, which is a valid final state.
-
-// site.statesServed mixes domestic states and "Export <country>" entries in
-// one list (used as-is, unfiltered, by the separate "Industries We Serve"
-// section further down this page). The Pan India Supply / Export Markets
-// cards need those two groups split apart, so we derive both views here
-// rather than touching the shared site.js array or that other section.
-const domesticStates = site.statesServed.filter((s) => !s.startsWith('Export '));
-const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).map((s) => s.replace('Export ', ''));
 ---
 <Base
   title="Samrat Poly Resins | Polyester, Epoxy & FRP Resin Manufacturer"
   description="Samrat Poly Resins: ISO 9001:2015 certified manufacturer of polyester, epoxy, gelcoat and fire-retardant resins for FRP industries. Based in Ludhiana, Punjab — request a quote."
 >
   <!-- ================= HERO ================= -->
-  <section class="hero">
+  <section class="hero home-hero">
     <div class="hero-media" aria-hidden="true">
       <Image src={heroVideoPosterMobile} alt="" loading="eager" fetchpriority="high" widths={[800, 1280, 1920, 2400]} sizes="100vw" />
-      <!-- Desktop hero video. Element, attributes and native `loop` are
-           unchanged from the approved markup. The only change: the source
-           carries `data-src` instead of `src`, and the inline script below
-           assigns the real URL to whichever single encode this breakpoint
-           actually needs.
+      <!-- Desktop hero video. The source carries `data-src` instead of `src`,
+           and the inline script below assigns the real URL to whichever single
+           encode this breakpoint actually needs.
            Why: `display:none` does NOT stop a <video> with `autoplay` from
            being fetched. Measured on this build — a 390px mobile load
            downloaded BOTH encodes (20.7 MB desktop + 6.4 MB mobile).
-           A previous iteration used <source media> for this; it was removed
-           because real iOS Safari resource selection could not be verified
-           on hardware. `data-src` + an explicit assignment keeps selection
-           in JS we control, while still guaranteeing that only one file is
-           ever requested. -->
+           `data-src` + an explicit assignment keeps selection in JS we
+           control, while still guaranteeing that only one file is ever
+           requested. -->
       <video
         class="hero-video hero-video-desktop"
         autoplay
@@ -187,466 +212,419 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       })();
     </script>
     <div class="hero-scrim" aria-hidden="true"></div>
-    <div class="hero-grid-lines" aria-hidden="true"></div>
+
     <div class="wrap hero-inner">
-      <p class="eyebrow">Trusted industrial resin manufacturer</p>
-      <h1 class="hero-title">
-        Polyester, Epoxy<br/>
-        &amp; Composite Resin<br/>
-        <span class="hl" data-text="Manufacturer">Manufacturer</span>
-      </h1>
-      <p class="hero-tagline">Engineered for <strong>quality</strong>. Built for <strong>performance</strong>.</p>
-      <p class="hero-sub">
-        {site.name} manufactures premium GP Polyester, Gel Coat, Fire Retardant,
-        Epoxy and Specialty Resin systems for FRP manufacturers and industrial
-        applications across India.
-      </p>
-      <div class="hero-trust">
-        <span class="hero-trust-item">
-          <span class="hero-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L20 6 L20 12 C20 17 16.5 20.5 12 22 C7.5 20.5 4 17 4 12 L4 6 Z" /><path d="M8.5 12 L11 14.5 L15.5 9.5" /></svg></span>
-          ISO 9001:2015 Certified
-        </span>
-        <span class="hero-trust-item">
-          <span class="hero-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2" /><line x1="3" y1="10" x2="21" y2="10" /><line x1="8" y1="3" x2="8" y2="7" /><line x1="16" y1="3" x2="16" y2="7" /></svg></span>
-          Manufacturer Since {site.established}
-        </span>
-        <span class="hero-trust-item">
-          <span class="hero-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 H14 L18 6 V22 H6 Z" /><path d="M14 2 V6 H18" /><path d="M9 13 L11.5 15.5 L16 10.5" /></svg></span>
-          GST Verified
-        </span>
-        <span class="hero-trust-item">
-          <span class="hero-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22 C12 22 19 15 19 9.5 A7 7 0 0 0 5 9.5 C5 15 12 22 12 22 Z" /><circle cx="12" cy="9.5" r="2.4" /></svg></span>
-          Pan-India Supply
-        </span>
+      <div class="hero-copy">
+        <p class="eyebrow hero-eyebrow">Resin manufacturer · {site.address.line2}, Punjab · Est. {site.established}</p>
+        <h1 class="hero-title">
+          Polyester, Epoxy &amp; Composite Resin <span class="hero-accent">Manufacturer</span>
+        </h1>
+        <p class="hero-sub">
+          {site.name} manufactures premium GP Polyester, Gel Coat, Fire Retardant,
+          Epoxy and Specialty Resin systems for FRP manufacturers and industrial
+          applications across India.
+        </p>
+        <div class="hero-cta">
+          <a href="/products/" class="btn btn-solid">Explore products</a>
+          <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5 0-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2 2.8 1.2 2.8.8 3.3.8.5 0 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
+            Request quotation
+          </a>
+        </div>
       </div>
-      <div class="hero-cta">
-        <a href="/products/" class="btn btn-solid">Explore products</a>
-        <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5 0-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2 2.8 1.2 2.8.8 3.3.8.5 0 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
-          Request quotation
-        </a>
-      </div>
+
+      <aside class="hero-desk" aria-label="Sales and technical enquiries">
+        <p class="hero-desk-label">Sales &amp; technical enquiries</p>
+        <a class="hero-desk-phone" href={`tel:${site.phones[0].dial}`}>{site.phones[0].display}</a>
+        <p class="hero-desk-lines">
+          <a href={`tel:${site.phones[1].dial}`}>{site.phones[1].display}</a>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </p>
+        <ul class="hero-desk-facts">
+          <li>{docsLine}</li>
+          <li>{site.packagingRange} drums · bulk orders accepted</li>
+          <li>Supplying {domesticStates.length} Indian states · export to {exportMarkets.join(' & ')}</li>
+        </ul>
+        <a href="/technical-documents/" class="hero-desk-link">TDS &amp; SDS library<span aria-hidden="true"> →</span></a>
+      </aside>
+    </div>
+
+    <div class="wrap">
+      <dl class="hero-ledger">
+        <div class="hero-ledger-item"><dt>Quality system</dt><dd>ISO 9001:2015 certified</dd></div>
+        <div class="hero-ledger-item"><dt>Established</dt><dd>{site.established} · {years} years</dd></div>
+        <div class="hero-ledger-item"><dt>Product range</dt><dd>{products.length} grades · {CATEGORIES.length} families</dd></div>
+        <div class="hero-ledger-item"><dt>GSTIN</dt><dd class="num">{site.gst}</dd></div>
+      </dl>
     </div>
   </section>
 
-  <!-- ================= CATEGORY TEASER =================
-       The homepage's primary route into the catalogue. It used to be an
-       8-label grid squeezed into 1.6fr beside a 9:16 portrait video, which
-       (a) left roughly 500px of empty background on desktop because a short
-       grid sat next to a very tall video, and (b) gave a buyer no sense of
-       what any family actually contains. It is now full width, with example
-       grades and a grade count per family; the video is gone - see the note
-       in the stylesheet below. -->
-  <section class="section cats">
+  <!-- ================= 01 · PRODUCT FAMILIES ================= -->
+  <section class="hs hs-families">
     <div class="wrap">
-      <div class="section-head cats-head">
+      <header class="section-head hs-head">
         <div>
-          <p class="eyebrow">Product range</p>
+          <p class="eyebrow"><span class="idx">01</span>Product range</p>
           <h2>What we manufacture</h2>
         </div>
-        <p class="cats-summary">
-          <strong>{products.length} grades</strong> across {CATEGORIES.length} families &mdash;
-          polyester, epoxy, gelcoat, fire-retardant, hardeners and FRP allied materials.
-        </p>
-      </div>
-      <div class="cat-grid">
-        {categoryEntries.map(cat => (
+        <div class="hs-head-aside">
+          <p class="hs-lead">
+            <strong>{products.length} grades</strong> across {CATEGORIES.length} families — polyester,
+            epoxy, gelcoat, fire-retardant, hardeners and FRP allied materials, each with
+            its own published data.
+          </p>
+          <p class="hs-links">
+            <a href="/products/">Full catalogue<span aria-hidden="true"> →</span></a>
+            <a href="/technical-documents/">TDS &amp; SDS library<span aria-hidden="true"> →</span></a>
+          </p>
+        </div>
+      </header>
+
+      <div class="fam-list">
+        {categoryEntries.map((cat, i) => (
           <a href={cat.href} class="cat-tile">
-            <span class="cat-tile-top">
-              <span class="cat-tile-name">{cat.name}</span>
-              <span class="cat-tile-count">{cat.count}</span>
+            <span class="fam-idx">{String(i + 1).padStart(2, '0')}</span>
+            <span class="fam-main">
+              <span class="fam-name">{cat.name}</span>
+              <span class="fam-examples">{cat.examples.join(' · ')}{cat.count > 3 ? ' …' : ''}</span>
             </span>
-            <span class="cat-tile-examples">{cat.examples.join(' · ')}{cat.count > 3 ? ' …' : ''}</span>
-            <span class="cat-tile-cta">{cat.hasHub ? 'View family' : 'See grades'}<span aria-hidden="true"> &rarr;</span></span>
+            <span class="fam-count"><strong>{cat.count}</strong> {cat.count === 1 ? 'grade' : 'grades'}</span>
+            <span class="fam-cta" aria-hidden="true">→</span>
           </a>
         ))}
       </div>
-      <p class="cats-foot">
-        <a href="/products/" class="btn">Browse the full catalogue</a>
-        <a href="/technical-documents/" class="btn">TDS &amp; SDS library</a>
-      </p>
     </div>
   </section>
 
-  <!-- ================= FEATURED PRODUCTS ================= -->
-  <section class="section featured">
+  <!-- ================= 02 · SELECTED GRADES ================= -->
+  <section class="hs hs-band hs-flagship">
     <div class="wrap">
-      <div class="section-head featured-head">
+      <header class="section-head hs-head">
         <div>
-          <p class="eyebrow">A few of our grades</p>
-          <h2>Popular products</h2>
+          <p class="eyebrow"><span class="idx">02</span>Selected grades</p>
+          <h2>Six grades, six families</h2>
         </div>
-        <a href="/products/" class="btn">See all products →</a>
-      </div>
-      <div class="grid">
-        {featured.map(p => <ProductCard product={p} />)}
+        <div class="hs-head-aside">
+          <p class="hs-lead">
+            One representative grade each from the general-purpose polyester, sheet,
+            gelcoat, fire-retardant, industrial vinyl ester and epoxy casting families.
+          </p>
+          <p class="hs-links">
+            <a href="/products/">See all {products.length} products<span aria-hidden="true"> →</span></a>
+          </p>
+        </div>
+      </header>
+      <div class="flag-grid">
+        {featured.map((p) => <ProductCard product={p} />)}
       </div>
     </div>
   </section>
 
-  <!-- ================= WHY CHOOSE US ================= -->
-  <section class="section why-us">
+  <!-- ================= 03 · MANUFACTURING & QUALITY ================= -->
+  <section class="hs hs-make">
     <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Why choose us</p>
-        <h2>Why choose <span class="hl" data-text={site.name}>{site.name}</span></h2>
+      <header class="section-head hs-head">
+        <div>
+          <p class="eyebrow"><span class="idx">03</span>Manufacturing &amp; quality control</p>
+          <h2>Batch-controlled production at Doraha</h2>
+        </div>
+        <div class="hs-head-aside">
+          <p class="hs-lead">
+            Precision starts on the shop floor. Stainless-steel reactor systems and
+            batch-controlled processes hold viscosity, gel time and colour within tight
+            tolerances — so every drum performs as specified, not approximately.
+          </p>
+        </div>
+      </header>
+
+      <div class="make-grid">
+        <div class="make-text">
+          <p class="make-label">Every batch, in order</p>
+          <ol class="make-steps">
+            <li>
+              <span class="make-no">01</span>
+              <span class="make-body"><strong>Batch manufacturing</strong> on stainless-steel processing equipment, to a defined specification.</span>
+            </li>
+            <li>
+              <span class="make-no">02</span>
+              <span class="make-body"><strong>Viscosity verification</strong> — each batch checked for consistent viscosity.</span>
+            </li>
+            <li>
+              <span class="make-no">03</span>
+              <span class="make-body"><strong>Gel time testing</strong> — cure behaviour confirmed before the batch is approved.</span>
+            </li>
+            <li>
+              <span class="make-no">04</span>
+              <span class="make-body"><strong>Visual quality inspection</strong> against defined quality parameters, and against prior production runs.</span>
+            </li>
+            <li>
+              <span class="make-no">05</span>
+              <span class="make-body"><strong>Dispatch</strong> in {site.packagingRange} drums, with the grade's technical and safety data sheets.</span>
+            </li>
+          </ol>
+          <p class="hs-links make-links">
+            <a href="/about/">Inside the facility<span aria-hidden="true"> →</span></a>
+            <a href="/technical-documents/">Technical documents<span aria-hidden="true"> →</span></a>
+          </p>
+        </div>
+
+        <div class="make-media">
+          <div class="make-film">
+            <BrandFilm />
+          </div>
+          <figure class="make-photo">
+            <div class="facility-frame make-frame">
+              <Image src={productionInfrastructure} alt="Stainless-steel resin processing reactors at the Samrat Poly Resins manufacturing facility" widths={[480, 760, 1100]} sizes="(max-width: 860px) 50vw, 520px" loading="lazy" />
+            </div>
+            <figcaption class="make-caption">Stainless-steel production reactors</figcaption>
+          </figure>
+          <figure class="make-photo">
+            <div class="why-quality-frame make-frame">
+              <Image src={qcLaboratory} alt="Quality inspection laboratory at Samrat Poly Resins" widths={[480, 760, 1100]} sizes="(max-width: 860px) 50vw, 520px" loading="lazy" />
+            </div>
+            <figcaption class="make-caption">Quality inspection laboratory</figcaption>
+          </figure>
+        </div>
       </div>
-      <div class="why-grid">
-        <div class="why-card why-card-cert">
-          <div class="why-head">
-            <span class="why-check" aria-hidden="true">✓</span>
-            <h3 class="why-title">ISO 9001:2015 Certified</h3>
-          </div>
-          <p class="why-desc">Our quality management system is certified to ISO 9001:2015 standards, ensuring consistent manufacturing and reliable production processes.</p>
-          <div class="why-cert-row">
-            <a href="/certificates/iso-9001-2015-certificate-current.jpg" target="_blank" rel="noopener" class="why-cert-thumb" aria-label="View full ISO 9001:2015 certificate">
-              <img src="/certificates/iso-9001-2015-certificate-current.jpg" alt="ISO 9001:2015 Certificate of Registration — Samrat Poly Resins" width="727" height="1055" loading="lazy" />
-            </a>
-            <a href="/certificates/iso-9001-2015-certificate-current.jpg" target="_blank" rel="noopener" class="btn why-cert-btn">View certificate</a>
-          </div>
+    </div>
+  </section>
+
+  <!-- ================= 04 · APPLICATIONS ================= -->
+  <section class="hs hs-apps">
+    <div class="wrap">
+      <header class="section-head hs-head">
+        <div>
+          <p class="eyebrow"><span class="idx">04</span>Applications</p>
+          <h2>Where the resin goes to work</h2>
         </div>
-        <div class="why-card why-card-timeline">
-          <div class="why-head">
-            <span class="why-check" aria-hidden="true">✓</span>
-            <h3 class="why-title">{new Date().getFullYear() - Number(site.established)}+ Years Manufacturing Experience</h3>
-          </div>
-          <p class="why-desc">Trusted by industrial buyers since {site.established}, supplying premium polyester resin solutions across multiple industries.</p>
-          <div class="why-timeline" aria-hidden="true">
-            <span class="why-timeline-year">{site.established}</span>
-            <span class="why-timeline-bar"></span>
-            <span class="why-timeline-year">{new Date().getFullYear()}</span>
-          </div>
-          <p class="why-timeline-label">{new Date().getFullYear() - Number(site.established)}+ Years of Manufacturing Excellence</p>
+        <div class="hs-head-aside">
+          <p class="hs-lead">
+            {applications.length} documented application guides, each matched to the grade it
+            actually uses — from water tanks and roofing sheets to marine hulls and
+            chemical storage.
+          </p>
+          <p class="hs-links">
+            <a href="/applications/">All application guides<span aria-hidden="true"> →</span></a>
+          </p>
         </div>
-        <div class="why-card">
-          <div class="why-head">
-            <span class="why-check" aria-hidden="true">✓</span>
-            <h3 class="why-title">GST Registered Manufacturer</h3>
-          </div>
-          <p class="why-desc">Registered under India's Goods and Services Tax (GST), ensuring transparent and compliant business operations.</p>
-          <div class="why-gst">
-            <div class="why-gst-rule" aria-hidden="true"></div>
-            <span class="why-gst-label">GSTIN</span>
-            <p class="why-gst-number">{site.gst}</p>
-            <button type="button" id="gstCopyBtn" class="btn why-gst-copy" data-gstin={site.gst}>
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M8 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2zm2 0h4a2 2 0 0 1 2 2v4h2V5h-8v2zM6 9v8h8V9H6z"/></svg>
-              <span class="why-gst-copy-text" aria-live="polite">Copy GSTIN</span>
-            </button>
-            <p class="why-gst-caption">Verify our GST registration using this GSTIN.</p>
-            <div class="why-gst-rule" aria-hidden="true"></div>
-          </div>
-        </div>
-        <div class="why-card">
-          <div class="why-head">
-            <span class="why-check" aria-hidden="true">✓</span>
-            <h3 class="why-title">Bulk Orders Accepted</h3>
-          </div>
-          <p class="why-desc">Manufacturing capacity designed to efficiently fulfill large-volume industrial requirements.</p>
-          <div class="why-bulk">
-            <div class="why-bulk-rule" aria-hidden="true"></div>
-            <div class="why-bulk-row">
-              <span class="why-bulk-value">{site.packagingRange}</span>
-              <span class="why-bulk-label">Standard Drum Packaging</span>
-            </div>
-            <div class="why-bulk-row">
-              <span class="why-bulk-value">Flexible</span>
-              <span class="why-bulk-label">Order Quantities</span>
-            </div>
-            <div class="why-bulk-rule" aria-hidden="true"></div>
-            <svg class="why-drums-svg" viewBox="0 0 200 56" aria-hidden="true">
-              <g>
-                <rect x="8" y="4" width="48" height="48" rx="5" class="why-drum-body" />
-                <rect x="8" y="26" width="48" height="7" class="why-drum-band" />
-              </g>
-              <g>
-                <rect x="76" y="4" width="48" height="48" rx="5" class="why-drum-body" />
-                <rect x="76" y="26" width="48" height="7" class="why-drum-band" />
-              </g>
-              <g>
-                <rect x="144" y="4" width="48" height="48" rx="5" class="why-drum-body" />
-                <rect x="144" y="26" width="48" height="7" class="why-drum-band" />
-              </g>
-            </svg>
-          </div>
-        </div>
+      </header>
+
+      <div class="apps-mosaic">
+        {appTiles.map((tile, i) => (
+          <a href={`/applications/${tile.slug}/`} class:list={['apps-tile', { 'apps-tile-lead': i === 0 }]}>
+            <Image
+              src={tile.image}
+              alt={tile.alt}
+              loading="lazy"
+              widths={i === 0 ? [360, 480, 620] : [240, 360, 480]}
+              sizes={i === 0 ? '(max-width: 760px) 50vw, (max-width: 1080px) 60vw, 460px' : '(max-width: 760px) 50vw, 230px'}
+            />
+            <span class="apps-cap">
+              <span class="apps-tag">{tile.tag}</span>
+              <span class="apps-title">{tile.name}</span>
+            </span>
+          </a>
+        ))}
+        <figure class="apps-tile apps-tile-video">
+          <video class="lazy-video" data-src="/applications-video.mp4" muted loop playsinline preload="none" data-poster="/applications-video-poster.jpg" disablepictureinpicture disableremoteplayback aria-label="Real industrial applications of Samrat Poly Resins products, including cooling towers, FRP roofing and marine components"></video>
+          <figcaption class="apps-cap">
+            <span class="apps-tag">Showreel</span>
+            <span class="apps-title">Resin in application</span>
+          </figcaption>
+        </figure>
       </div>
 
-      <div class="why-grid why-logistics-grid">
-        <div class="why-card">
-          <div class="why-head">
-            <span class="why-check" aria-hidden="true">✓</span>
-            <h3 class="why-title">Pan India Supply</h3>
-          </div>
-          <p class="why-desc">Reliable logistics network serving customers across India with timely delivery and bulk shipment capability.</p>
-          <div class="why-india">
-            <svg class="why-india-map" viewBox="-26 -26 360 364" aria-hidden="true">
-              <path class="why-india-land" d="M 103.17 4 L 114.2 16.95 L 113.16 25.97 L 117.24 31.62 L 116.91 37.26 L 109.54 35.78 L 112.42 47.96 L 122.5 54.96 L 136.77 62.68 L 130.26 67.69 L 126.27 78.03 L 136.22 82.21 L 145.89 87.63 L 159.28 93.83 L 173.35 95.26 L 179.27 100.88 L 187.2 101.94 L 199.55 104.51 L 208.1 104.33 L 209.28 99.95 L 207.93 92.93 L 208.72 88.17 L 214.98 85.85 L 215.84 94.55 L 216.06 96.77 L 225.39 100.96 L 231.85 99.23 L 240.51 99.97 L 248.89 99.65 L 249.61 92.86 L 245.43 89.33 L 253.71 87.95 L 263.05 79.73 L 274.88 72.69 L 283.49 75.41 L 290.81 70.76 L 295.62 77.63 L 292.16 82.27 L 303.23 83.92 L 304 88.11 L 300.4 90.13 L 301.24 96.93 L 293.91 94.94 L 280.62 102.57 L 280.93 108.9 L 275.27 118.16 L 274.75 123.55 L 270.17 132.66 L 262.15 130.14 L 261.75 141.58 L 259.43 145.34 L 260.51 150.03 L 255.45 152.65 L 250.04 135.13 L 247.21 135.16 L 245.53 142.22 L 239.91 136.5 L 243.08 130.21 L 247.67 129.57 L 252.41 120.22 L 246.49 118.33 L 236.97 118.49 L 227.2 116.98 L 226.29 109.3 L 221.39 108.75 L 213.26 103.98 L 209.64 111.47 L 217.05 117.32 L 210.63 121.44 L 208.35 125.47 L 214.67 128.43 L 212.92 135.09 L 216.48 143.4 L 218.08 152.49 L 216.61 156.53 L 209.62 156.39 L 196.97 158.68 L 197.56 167 L 192.08 173.53 L 177.31 180.97 L 165.82 193.97 L 158.1 200.94 L 147.87 208.18 L 147.86 213.26 L 142.74 215.98 L 133.49 219.94 L 128.7 220.52 L 125.62 228.95 L 127.76 243.33 L 128.3 252.49 L 123.95 262.99 L 123.91 281.76 L 118.6 282.3 L 113.92 290.73 L 117.05 294.37 L 107.69 297.5 L 104.23 305.02 L 100.11 308.19 L 90.39 297.87 L 85.64 282.4 L 81.7 271.25 L 78.11 266.03 L 72.65 255.41 L 70.11 241.59 L 68.33 234.69 L 58.99 219.51 L 54.74 198.1 L 51.67 183.96 L 51.71 170.57 L 49.72 160.23 L 34.78 166.84 L 27.55 165.52 L 14.14 152.12 L 19.07 148.13 L 16.04 143.79 L 4 134.41 L 10.84 127.04 L 33.43 127.07 L 31.39 117.58 L 25.62 111.98 L 24.45 103.47 L 17.73 98.51 L 29.04 86.93 L 40.96 87.77 L 51.7 76.18 L 58.14 64.97 L 68.1 53.88 L 67.94 46.01 L 76.7 39.61 L 68.41 34.16 L 64.85 26.68 L 61.21 17 L 66.24 12.23 L 81.81 14.93 L 93.25 13.29 L 103.17 4 Z" />
-              <!-- Domestic supply markers (approximate positions, illustrative not geographic) -->
-              <circle class="why-india-dot" cx="93.85" cy="45.81" r="4.5" />
-              <circle class="why-india-dot" cx="82.87" cy="54.76" r="4.5" />
-              <circle class="why-india-dot" cx="94.47" cy="68.13" r="4.5" />
-              <circle class="why-india-dot" cx="96.73" cy="80.07" r="4" />
-              <circle class="why-india-dot" cx="150" cy="108" r="4" />
-              <circle class="why-india-dot" cx="156" cy="129" r="4" />
-              <circle class="why-india-dot" cx="180" cy="139" r="4" />
-              <circle class="why-india-dot" cx="169" cy="163" r="4" />
-              <circle class="why-india-dot" cx="230" cy="100" r="4" />
-              <circle class="why-india-dot" cx="132.04" cy="213.77" r="4.5" />
-            </svg>
-            <p class="why-india-caption">
-              Currently supplying customers across:<br />
-              {domesticStates.join(' • ')}
-            </p>
-          </div>
+      <div class="apps-industries">
+        <p class="apps-industries-label">Industries supplied</p>
+        <ul class="apps-industries-list">
+          {industries.map((name) => <li>{name}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 05 · CREDENTIALS & REACH ================= -->
+  <section class="hs hs-band hs-cred">
+    <div class="wrap">
+      <header class="section-head hs-head">
+        <div>
+          <p class="eyebrow"><span class="idx">05</span>Credentials &amp; reach</p>
+          <h2>A manufacturer on record</h2>
         </div>
-        <div class="why-card">
-          <div class="why-head">
-            <span class="why-check" aria-hidden="true">✓</span>
-            <h3 class="why-title">Export Markets</h3>
+        <div class="hs-head-aside">
+          <p class="hs-lead">
+            The registration, certification, location and supply coverage a purchase
+            department checks before raising an order — stated once, verifiable.
+          </p>
+        </div>
+      </header>
+
+      <div class="cred-grid">
+        <dl class="cred-list">
+          <div class="cred-row">
+            <dt>Certification</dt>
+            <dd class="cred-cert-dd">
+              <a class="cred-cert" href={certificateUrl} target="_blank" rel="noopener">
+                <img src={certificateUrl} alt="ISO 9001:2015 Certificate of Registration — Samrat Poly Resins" width="727" height="1055" loading="lazy" />
+              </a>
+              <span>
+                <strong>ISO 9001:2015</strong> — Quality Management System<br />
+                <a class="cred-link" href={certificateUrl} target="_blank" rel="noopener">View the certificate<span aria-hidden="true"> →</span></a>
+              </span>
+            </dd>
           </div>
-          <p class="why-desc">Supplying premium polyester resin products to neighbouring international markets through reliable export logistics.</p>
-          <div class="why-india">
-            <svg class="why-india-map why-export-map" viewBox="1168 -512 400 264" aria-hidden="true">
+          <div class="cred-row">
+            <dt>Established</dt>
+            <dd><strong>{site.established}</strong> — {years} years of resin manufacturing</dd>
+          </div>
+          <div class="cred-row">
+            <dt>GSTIN</dt>
+            <dd class="cred-gst">
+              <span class="num cred-gst-no">{site.gst}</span>
+              <button type="button" id="gstCopyBtn" class="cred-copy" data-gstin={site.gst}>
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2zm2 0h4a2 2 0 0 1 2 2v4h2V5h-8v2zM6 9v8h8V9H6z"/></svg>
+                <span class="why-gst-copy-text" aria-live="polite">Copy GSTIN</span>
+              </button>
+            </dd>
+          </div>
+          <div class="cred-row">
+            <dt>Proprietor</dt>
+            <dd>{site.proprietor}</dd>
+          </div>
+          <div class="cred-row">
+            <dt>Facility</dt>
+            <dd>{site.address.line1}, {site.address.line2} — {site.address.pin}, {site.address.state}</dd>
+          </div>
+          <div class="cred-row">
+            <dt>Packaging</dt>
+            <dd>{site.packagingRange} drums · bulk orders accepted</dd>
+          </div>
+          <div class="cred-row">
+            <dt>Documentation</dt>
+            <dd>{docsLine} — <a class="cred-link" href="/technical-documents/">document library<span aria-hidden="true"> →</span></a></dd>
+          </div>
+        </dl>
+
+        <div class="reach">
+          <div class="reach-block">
+            <svg class="reach-map" viewBox="-26 -26 360 364" aria-hidden="true">
+              <path class="reach-land" d="M 103.17 4 L 114.2 16.95 L 113.16 25.97 L 117.24 31.62 L 116.91 37.26 L 109.54 35.78 L 112.42 47.96 L 122.5 54.96 L 136.77 62.68 L 130.26 67.69 L 126.27 78.03 L 136.22 82.21 L 145.89 87.63 L 159.28 93.83 L 173.35 95.26 L 179.27 100.88 L 187.2 101.94 L 199.55 104.51 L 208.1 104.33 L 209.28 99.95 L 207.93 92.93 L 208.72 88.17 L 214.98 85.85 L 215.84 94.55 L 216.06 96.77 L 225.39 100.96 L 231.85 99.23 L 240.51 99.97 L 248.89 99.65 L 249.61 92.86 L 245.43 89.33 L 253.71 87.95 L 263.05 79.73 L 274.88 72.69 L 283.49 75.41 L 290.81 70.76 L 295.62 77.63 L 292.16 82.27 L 303.23 83.92 L 304 88.11 L 300.4 90.13 L 301.24 96.93 L 293.91 94.94 L 280.62 102.57 L 280.93 108.9 L 275.27 118.16 L 274.75 123.55 L 270.17 132.66 L 262.15 130.14 L 261.75 141.58 L 259.43 145.34 L 260.51 150.03 L 255.45 152.65 L 250.04 135.13 L 247.21 135.16 L 245.53 142.22 L 239.91 136.5 L 243.08 130.21 L 247.67 129.57 L 252.41 120.22 L 246.49 118.33 L 236.97 118.49 L 227.2 116.98 L 226.29 109.3 L 221.39 108.75 L 213.26 103.98 L 209.64 111.47 L 217.05 117.32 L 210.63 121.44 L 208.35 125.47 L 214.67 128.43 L 212.92 135.09 L 216.48 143.4 L 218.08 152.49 L 216.61 156.53 L 209.62 156.39 L 196.97 158.68 L 197.56 167 L 192.08 173.53 L 177.31 180.97 L 165.82 193.97 L 158.1 200.94 L 147.87 208.18 L 147.86 213.26 L 142.74 215.98 L 133.49 219.94 L 128.7 220.52 L 125.62 228.95 L 127.76 243.33 L 128.3 252.49 L 123.95 262.99 L 123.91 281.76 L 118.6 282.3 L 113.92 290.73 L 117.05 294.37 L 107.69 297.5 L 104.23 305.02 L 100.11 308.19 L 90.39 297.87 L 85.64 282.4 L 81.7 271.25 L 78.11 266.03 L 72.65 255.41 L 70.11 241.59 L 68.33 234.69 L 58.99 219.51 L 54.74 198.1 L 51.67 183.96 L 51.71 170.57 L 49.72 160.23 L 34.78 166.84 L 27.55 165.52 L 14.14 152.12 L 19.07 148.13 L 16.04 143.79 L 4 134.41 L 10.84 127.04 L 33.43 127.07 L 31.39 117.58 L 25.62 111.98 L 24.45 103.47 L 17.73 98.51 L 29.04 86.93 L 40.96 87.77 L 51.7 76.18 L 58.14 64.97 L 68.1 53.88 L 67.94 46.01 L 76.7 39.61 L 68.41 34.16 L 64.85 26.68 L 61.21 17 L 66.24 12.23 L 81.81 14.93 L 93.25 13.29 L 103.17 4 Z" />
+              <!-- Domestic supply markers (approximate positions, illustrative not geographic) -->
+              <circle class="reach-dot" cx="93.85" cy="45.81" r="4.5" />
+              <circle class="reach-dot" cx="82.87" cy="54.76" r="4.5" />
+              <circle class="reach-dot" cx="94.47" cy="68.13" r="4.5" />
+              <circle class="reach-dot" cx="96.73" cy="80.07" r="4" />
+              <circle class="reach-dot" cx="150" cy="108" r="4" />
+              <circle class="reach-dot" cx="156" cy="129" r="4" />
+              <circle class="reach-dot" cx="180" cy="139" r="4" />
+              <circle class="reach-dot" cx="169" cy="163" r="4" />
+              <circle class="reach-dot" cx="230" cy="100" r="4" />
+              <circle class="reach-dot" cx="132.04" cy="213.77" r="4.5" />
+            </svg>
+            <p class="reach-label">Supplying customers across {domesticStates.length} states</p>
+            <p class="reach-list">{domesticStates.join(' · ')}</p>
+          </div>
+          <div class="reach-block">
+            <svg class="reach-map reach-map-export" viewBox="1168 -512 400 264" aria-hidden="true">
               <!-- Real, simplified country outlines (projected from public-domain
                    Natural-Earth-derived boundary data — johan/world.geo.json —
                    not hand-drawn), cropped to eastern/northern India, Nepal and
                    Bangladesh. Equirectangular projection, single shared scale so
                    relative size and position stay geographically accurate. -->
-              <path class="why-india-land" d="M 1245.4,-567.9 L 1262.6,-549.2 L 1261,-536.1 L 1267.3,-527.9 L 1266.8,-519.7 L 1255.3,-521.9 L 1259.8,-504.3 L 1297.8,-482.9 L 1287.6,-475.7 L 1281.4,-460.7 L 1332.9,-437.8 L 1354.8,-435.8 L 1364,-427.6 L 1409,-422.6 L 1409.9,-446 L 1419.7,-449.4 L 1421.4,-433.6 L 1435.9,-427.5 L 1472.5,-429.4 L 1473.7,-439.2 L 1467.1,-444.3 L 1480,-446.4 L 1513.1,-468.4 L 1526.5,-464.5 L 1537.9,-471.2 L 1545.4,-461.3 L 1540,-454.6 L 1557.2,-452.2 L 1558.4,-446.1 L 1552.8,-443.2 L 1554.1,-433.3 L 1542.7,-436.2 L 1522,-425.2 L 1522.5,-416 L 1505.7,-381.6 L 1493.2,-385.3 L 1490.7,-356.5 L 1482.8,-352.7 L 1474.3,-378 L 1469.9,-378 L 1467.3,-367.8 L 1458.5,-376.1 L 1478,-399.6 L 1438.7,-404.3 L 1437.3,-415.4 L 1417,-423.1 L 1411.4,-412.3 L 1422.9,-403.8 L 1409.4,-392 L 1419.2,-387.7 L 1422.2,-347 L 1391.6,-343.9 L 1392.5,-331.9 L 1384,-322.4 L 1361,-311.7 L 1315.1,-272.3 L 1315.1,-264.9 L 1285.2,-254.4 L 1280.4,-242.2 L 1284.6,-208.1 L 1277.8,-192.9 L 1277.7,-165.7 L 1269.4,-164.9 L 1262.2,-152.7 L 1267,-147.5 L 1252.4,-142.9 L 1240.6,-127.4 L 1225.5,-142.4 L 1197.8,-203.9 L 1191.1,-233.9 L 1176.5,-255.9 L 1162.1,-341.7 L 1138.8,-332.1 L 1127.5,-334 L 1106.6,-353.4 L 1114.3,-359.2 L 1109.6,-365.5 L 1090.8,-379.1 L 1101.5,-389.7 L 1136.7,-389.7 L 1122.7,-423.9 L 1112.2,-431.1 L 1129.9,-447.8 L 1148.4,-446.6 L 1190.7,-495.7 L 1190.5,-507.1 L 1204.1,-516.3 L 1191.2,-524.2 L 1180,-549.1 L 1187.8,-556 L 1229.9,-554.5 L 1245.4,-567.9 Z" />
-              <path class="why-export-neighbour" d="M 1409.9,-446 L 1408.7,-439.1 L 1410.8,-429 L 1409,-422.6 L 1395.6,-422.4 L 1364,-427.6 L 1354.8,-435.8 L 1332.9,-437.8 L 1281.4,-460.7 L 1287.6,-475.7 L 1304.4,-486.8 L 1317.2,-481.8 L 1333.4,-471.4 L 1342.4,-469.1 L 1347.8,-461.4 L 1360.2,-458.3 L 1373.2,-451.3 L 1391.3,-447.6 L 1409.9,-446 Z" />
-              <path class="why-export-neighbour" d="M 1482.8,-352.7 L 1482.4,-341.2 L 1476.9,-343.6 L 1477.9,-330.7 L 1473.3,-339.1 L 1472.4,-347.2 L 1469.4,-354.9 L 1462.7,-364.2 L 1447.9,-364.9 L 1449.4,-358.3 L 1444.4,-349.4 L 1437.6,-352.6 L 1435.2,-349.7 L 1424.5,-352.9 L 1422,-366.1 L 1416.5,-378.1 L 1419.2,-387.7 L 1409.4,-392 L 1412.9,-397.9 L 1422.9,-403.8 L 1411.4,-412.3 L 1417,-423.1 L 1429.7,-416.2 L 1437.3,-415.4 L 1438.7,-404.3 L 1454,-402.1 L 1468.8,-402.4 L 1478,-399.6 L 1470.6,-386.1 L 1463.5,-385.2 L 1458.5,-376.1 L 1467.3,-367.8 L 1469.9,-378 L 1474.3,-378 L 1482.8,-352.7 Z" />
+              <path class="reach-land" d="M 1245.4,-567.9 L 1262.6,-549.2 L 1261,-536.1 L 1267.3,-527.9 L 1266.8,-519.7 L 1255.3,-521.9 L 1259.8,-504.3 L 1297.8,-482.9 L 1287.6,-475.7 L 1281.4,-460.7 L 1332.9,-437.8 L 1354.8,-435.8 L 1364,-427.6 L 1409,-422.6 L 1409.9,-446 L 1419.7,-449.4 L 1421.4,-433.6 L 1435.9,-427.5 L 1472.5,-429.4 L 1473.7,-439.2 L 1467.1,-444.3 L 1480,-446.4 L 1513.1,-468.4 L 1526.5,-464.5 L 1537.9,-471.2 L 1545.4,-461.3 L 1540,-454.6 L 1557.2,-452.2 L 1558.4,-446.1 L 1552.8,-443.2 L 1554.1,-433.3 L 1542.7,-436.2 L 1522,-425.2 L 1522.5,-416 L 1505.7,-381.6 L 1493.2,-385.3 L 1490.7,-356.5 L 1482.8,-352.7 L 1474.3,-378 L 1469.9,-378 L 1467.3,-367.8 L 1458.5,-376.1 L 1478,-399.6 L 1438.7,-404.3 L 1437.3,-415.4 L 1417,-423.1 L 1411.4,-412.3 L 1422.9,-403.8 L 1409.4,-392 L 1419.2,-387.7 L 1422.2,-347 L 1391.6,-343.9 L 1392.5,-331.9 L 1384,-322.4 L 1361,-311.7 L 1315.1,-272.3 L 1315.1,-264.9 L 1285.2,-254.4 L 1280.4,-242.2 L 1284.6,-208.1 L 1277.8,-192.9 L 1277.7,-165.7 L 1269.4,-164.9 L 1262.2,-152.7 L 1267,-147.5 L 1252.4,-142.9 L 1240.6,-127.4 L 1225.5,-142.4 L 1197.8,-203.9 L 1191.1,-233.9 L 1176.5,-255.9 L 1162.1,-341.7 L 1138.8,-332.1 L 1127.5,-334 L 1106.6,-353.4 L 1114.3,-359.2 L 1109.6,-365.5 L 1090.8,-379.1 L 1101.5,-389.7 L 1136.7,-389.7 L 1122.7,-423.9 L 1112.2,-431.1 L 1129.9,-447.8 L 1148.4,-446.6 L 1190.7,-495.7 L 1190.5,-507.1 L 1204.1,-516.3 L 1191.2,-524.2 L 1180,-549.1 L 1187.8,-556 L 1229.9,-554.5 L 1245.4,-567.9 Z" />
+              <path class="reach-neighbour" d="M 1409.9,-446 L 1408.7,-439.1 L 1410.8,-429 L 1409,-422.6 L 1395.6,-422.4 L 1364,-427.6 L 1354.8,-435.8 L 1332.9,-437.8 L 1281.4,-460.7 L 1287.6,-475.7 L 1304.4,-486.8 L 1317.2,-481.8 L 1333.4,-471.4 L 1342.4,-469.1 L 1347.8,-461.4 L 1360.2,-458.3 L 1373.2,-451.3 L 1391.3,-447.6 L 1409.9,-446 Z" />
+              <path class="reach-neighbour" d="M 1482.8,-352.7 L 1482.4,-341.2 L 1476.9,-343.6 L 1477.9,-330.7 L 1473.3,-339.1 L 1472.4,-347.2 L 1469.4,-354.9 L 1462.7,-364.2 L 1447.9,-364.9 L 1449.4,-358.3 L 1444.4,-349.4 L 1437.6,-352.6 L 1435.2,-349.7 L 1424.5,-352.9 L 1422,-366.1 L 1416.5,-378.1 L 1419.2,-387.7 L 1409.4,-392 L 1412.9,-397.9 L 1422.9,-403.8 L 1411.4,-412.3 L 1417,-423.1 L 1429.7,-416.2 L 1437.3,-415.4 L 1438.7,-404.3 L 1454,-402.1 L 1468.8,-402.4 L 1478,-399.6 L 1470.6,-386.1 L 1463.5,-385.2 L 1458.5,-376.1 L 1467.3,-367.8 L 1469.9,-378 L 1474.3,-378 L 1482.8,-352.7 Z" />
               <!-- Markers at each country's real capital city (Kathmandu, Dhaka) -->
-              <circle class="why-india-dot" cx="1365.2" cy="-443.5" r="5" />
-              <circle class="why-india-dot" cx="1446.6" cy="-381" r="5" />
+              <circle class="reach-dot" cx="1365.2" cy="-443.5" r="5" />
+              <circle class="reach-dot" cx="1446.6" cy="-381" r="5" />
             </svg>
-            <p class="why-india-caption">
-              Current export markets:<br />
-              {exportMarkets.join(' • ')}
-            </p>
+            <p class="reach-label">Export markets</p>
+            <p class="reach-list">{exportMarkets.join(' · ')}</p>
           </div>
         </div>
       </div>
-
-      <div class="why-quality">
-        <div class="why-quality-text">
-          <h3 class="why-quality-title">Quality Controlled Manufacturing</h3>
-          <p class="why-quality-desc">Every production batch is inspected against defined quality parameters before dispatch to ensure consistent viscosity, gel time and batch performance.</p>
-          <ul class="why-quality-list">
-            <li class="why-quality-feature"><span class="why-quality-check" aria-hidden="true">✓</span>Batch Consistency</li>
-            <li class="why-quality-feature"><span class="why-quality-check" aria-hidden="true">✓</span>Viscosity Verification</li>
-            <li class="why-quality-feature"><span class="why-quality-check" aria-hidden="true">✓</span>Gel Time Testing</li>
-            <li class="why-quality-feature"><span class="why-quality-check" aria-hidden="true">✓</span>Visual Quality Inspection</li>
-          </ul>
-        </div>
-        <figure class="why-quality-photo">
-          <div class="why-quality-frame">
-            <Image src={qcLaboratory} alt="Quality inspection laboratory at Samrat Poly Resins" widths={[480, 900, 1600]} sizes="(max-width: 760px) 100vw, 560px" loading="lazy" />
-          </div>
-          <figcaption class="why-quality-caption">Quality Inspection Laboratory</figcaption>
-        </figure>
-      </div>
     </div>
   </section>
 
-  <!-- ================= PRODUCTION INFRASTRUCTURE ================= -->
-  <section class="section facility">
-    <div class="wrap facility-grid">
-      <div class="facility-text">
-        <div class="section-head">
-          <p class="eyebrow">Our Facility</p>
-          <h2>Precision Manufacturing</h2>
-        </div>
-        <p class="facility-desc">Precision starts on the shop floor. Our stainless-steel reactor systems and batch-controlled processes hold viscosity, gel time and colour within tight tolerances — so every drum that leaves this facility performs exactly as specified, not approximately.</p>
-        <ul class="facility-list">
-          <li class="facility-feature"><span class="facility-check" aria-hidden="true">✓</span>Stainless Steel Processing Equipment</li>
-          <li class="facility-feature"><span class="facility-check" aria-hidden="true">✓</span>Batch Manufacturing Process</li>
-          <li class="facility-feature"><span class="facility-check" aria-hidden="true">✓</span>Industrial Production Facility</li>
-          <li class="facility-feature"><span class="facility-check" aria-hidden="true">✓</span>Quality-Controlled Operations</li>
-        </ul>
-      </div>
-      <figure class="facility-photo">
-        <div class="facility-frame">
-          <Image src={productionInfrastructure} alt="Stainless-steel resin processing reactors at the Samrat Poly Resins manufacturing facility" widths={[480, 900, 1452]} sizes="(max-width: 760px) 100vw, 560px" loading="lazy" />
-        </div>
-        <figcaption class="facility-caption">Industrial Resin Manufacturing Facility</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <BrandFilm />
-
-  <!-- ================= APPLICATION SHOWCASE ================= -->
-  <section class="section applications">
-    <div class="wrap">
-      <div class="applications-intro">
-        <div class="applications-text">
-          <div class="section-head">
-            <p class="eyebrow">Proven Applications</p>
-            <h2>Where Our Resin Builds <span class="hl" data-text="Excellence">Excellence</span></h2>
-          </div>
-          <p class="applications-lead">Trusted by manufacturers who demand consistency, durability and uncompromising quality.</p>
-          <ul class="applications-capabilities">
-            <li><span class="cap-check" aria-hidden="true">✓</span>FRP Water Tanks &amp; Process Equipment</li>
-            <li><span class="cap-check" aria-hidden="true">✓</span>Roofing &amp; Daylight Sheet Systems</li>
-            <li><span class="cap-check" aria-hidden="true">✓</span>Cooling Towers &amp; Industrial Plants</li>
-            <li><span class="cap-check" aria-hidden="true">✓</span>Marine &amp; Boat Components</li>
-            <li><span class="cap-check" aria-hidden="true">✓</span>Quartz Stone Manufacturing</li>
-            <li><span class="cap-check" aria-hidden="true">✓</span>Decorative FRP Statues &amp; Sculptures</li>
-            <li><span class="cap-check" aria-hidden="true">✓</span>Portable Cabins &amp; Modular Structures</li>
-            <li><span class="cap-check" aria-hidden="true">✓</span>High-Performance Composite Applications</li>
-          </ul>
-          <p class="applications-closing">From everyday industrial manufacturing to landmark composite projects, <span class="applications-closing-brand">Samrat Poly Resins</span> delivers dependable performance where precision matters most.</p>
-        </div>
-        <div class="applications-video">
-          <video class="lazy-video" data-src="/applications-video.mp4" muted loop playsinline preload="none" data-poster="/applications-video-poster.jpg" disablepictureinpicture disableremoteplayback aria-label="Real industrial applications of Samrat Poly Resins products, including cooling towers, FRP roofing and marine components"></video>
-        </div>
-      </div>
-
-      <div class="applications-gallery">
-        {applications.map((app) => (
-          <figure class="applications-gallery-card">
-            <Image src={app.image} alt={app.alt} loading="lazy" widths={[360, 480, 640]} sizes="(max-width: 560px) 100vw, (max-width: 860px) 50vw, 33vw" />
-            <figcaption class="applications-gallery-caption">
-              <span class="applications-gallery-tag">{app.tag}</span>
-              <span class="applications-gallery-title">{app.name}</span>
-            </figcaption>
-          </figure>
-        ))}
-      </div>
-      <a href="/applications/" class="applications-viewall">View all application guides<span aria-hidden="true"> →</span></a>
-    </div>
-  </section>
-
-  <!-- ================= INDUSTRIES WE SERVE ================= -->
-  <section class="section industries">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Applications</p>
-        <h2>Industries We Serve</h2>
-      </div>
-      <p class="industries-desc">Supplying high-performance resin solutions for a wide range of industrial manufacturing applications.</p>
-
-      <div class="industry-grid">
-        <div class="industry-card">
-          <span class="industry-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L21 8 L12 13 L3 8 Z" /><path d="M3 13 L12 18 L21 13" /><path d="M3 17.5 L12 22.5 L21 17.5" /></svg>
-          </span>
-          <h3 class="industry-name">FRP Manufacturers</h3>
-        </div>
-        <div class="industry-card">
-          <span class="industry-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="7" ry="2.5" /><path d="M5 5 L5 19 A7 2.5 0 0 0 19 19 L19 5" /></svg>
-          </span>
-          <h3 class="industry-name">Water Tank Manufacturers</h3>
-        </div>
-        <div class="industry-card">
-          <span class="industry-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="1" /><circle cx="15.3" cy="12" r="0.9" fill="currentColor" stroke="none" /></svg>
-          </span>
-          <h3 class="industry-name">Door Skin Manufacturers</h3>
-        </div>
-        <div class="industry-card">
-          <span class="industry-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8 L7 4 L12 8 L17 4 L22 8" /><path d="M2 13 L7 9 L12 13 L17 9 L22 13" /><path d="M2 18 L7 14 L12 18 L17 14 L22 18" /></svg>
-          </span>
-          <h3 class="industry-name">Roofing Sheet Manufacturers</h3>
-        </div>
-        <div class="industry-card">
-          <span class="industry-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2" /><line x1="12" y1="7" x2="12" y2="19" /><path d="M6 12 L6 15 A6 6 0 0 0 18 15 L18 12" /><line x1="8" y1="10" x2="16" y2="10" /></svg>
-          </span>
-          <h3 class="industry-name">Marine &amp; Industrial Fabrication</h3>
-        </div>
-        <div class="industry-card">
-          <span class="industry-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L20 7 L20 17 L12 22 L4 17 L4 7 Z" /><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" /></svg>
-          </span>
-          <h3 class="industry-name">Composite Manufacturing</h3>
-        </div>
-      </div>
-
-      <div class="industry-service">
-        <p class="industry-service-heading">Serving Industrial Customers Across</p>
-        <div class="industry-chips">
-          {site.statesServed.map((state) => <span class="industry-chip">{state}</span>)}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= ABOUT TEASER ================= -->
-  <section class="section about-teaser">
-    <div class="wrap about-teaser-grid">
-      <div>
-        <p class="eyebrow">About us</p>
+  <!-- ================= 06 · ABOUT & ENQUIRY ================= -->
+  <section class="hs hs-close">
+    <div class="wrap close-grid">
+      <div class="close-about">
+        <p class="eyebrow"><span class="idx">06</span>About the company</p>
         <h2>Built on consistent chemistry.</h2>
-      </div>
-      <div class="about-teaser-body">
-        <p>
+        <p class="close-copy">
           Established in {site.established}, {site.name} is a Punjab-based
           manufacturer of coating resin, fire-retardant resin, GP resin and
           allied composite materials — made to perform on the shop floor.
         </p>
-        <a href="/about/" class="btn btn-solid">More about us</a>
+        <a href="/about/" class="btn">More about us</a>
+      </div>
+
+      <div class="close-enquiry">
+        <p class="close-label">Request a quote</p>
+        <p class="close-sub">
+          Tell us the grade, quantity, application and delivery location —
+          we send prices quickly.
+        </p>
+        <div class="close-cta">
+          <a href="/contact/" class="btn btn-solid">Contact us</a>
+          <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">WhatsApp us</a>
+        </div>
+        <p class="close-lines">
+          {site.phones.map((phone) => <a href={`tel:${phone.dial}`}>{phone.display}</a>)}
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </p>
+        <p class="close-tool">Not sure which grade? <a href="/tools/resin-selector/">Use the resin selector<span aria-hidden="true"> →</span></a></p>
       </div>
     </div>
   </section>
 
-  <!-- ================= CONTACT TEASER ================= -->
-  <section class="section contact-teaser">
-    <div class="wrap contact-teaser-inner">
-      <div>
-        <p class="eyebrow">Get in touch</p>
-        <h2>Request a quote.</h2>
-        <p class="contact-teaser-sub">Tell us the grade and quantity you need — we send prices quickly.</p>
-      </div>
-      <div class="contact-teaser-cta">
-        <a href="/contact/" class="btn btn-solid">Contact us</a>
-        <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">WhatsApp us</a>
-      </div>
-    </div>
-  </section>
+  <style is:global>
+    /* Homepage-only header treatment. The header is the shared sitewide
+       component and is not edited; on this page alone it floats over the top
+       of the hero (see .home-hero's negative top margin) and only takes its
+       solid ground once the visitor has scrolled. Gated on the hero's own
+       class, so no other page can match these rules. */
+    body:has(.home-hero) .site-header {
+      background-color: transparent;
+      border-bottom-color: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      transition: background-color .35s ease, border-color .35s ease, box-shadow .35s ease;
+    }
+    html[data-home-scrolled] body:has(.home-hero) .site-header,
+    body:has(.home-hero) .site-header:has(.nav-toggle[aria-expanded="true"]) {
+      background-color: color-mix(in srgb, var(--bg) 88%, transparent);
+      border-bottom-color: rgba(var(--gold-rgb), .14);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .22);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+  </style>
 
   <style>
+    /* ==================================================================
+       HOMEPAGE — a single dark industrial register, sectioned like a
+       technical index: hairlines, mono labels, one rationed gold accent.
+       ================================================================== */
+
     /* ---------- hero ---------- */
-    /* base is transparent (not var(--bg)) so the hero sits directly on the
-       body's own navy gradient — the section below it has no background of
-       its own either, so this keeps both continuous rather than having the
-       hero as an opaque charcoal block butting up against a bluer tone.
-       Depth comes from a cinematic vignette plus a restrained champagne-gold
-       glow and a navy glow — no orange, matching the Excellence section's
-       metallic-luxury register rather than the site's molten-resin accent. */
-    /* cinematic hero: a real facility photograph sits behind the text,
-       heavily dimmed and desaturated so copy stays fully legible — the
-       first thing a visitor sees is no longer flat colour, it's the plant */
     .hero { position: relative; overflow: hidden; }
+    /* Pull the hero up under the sticky header so the header floats over the
+       footage at the top of the page (the header is 68px tall, Base.astro). */
+    .home-hero { margin-top: -68px; padding-top: 68px; }
     .hero-media { position: absolute; inset: 0; z-index: 0; }
     .hero-media img {
       width: 100%; height: 100%; object-fit: cover; object-position: center 35%;
-      filter: grayscale(.35) contrast(1.08) brightness(.85);
-      transform: scale(1.06);
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .hero-media img { animation: hero-media-drift 26s ease-in-out infinite alternate; }
-    }
-    @keyframes hero-media-drift {
-      from { transform: scale(1.06) translateY(0); }
-      to   { transform: scale(1.12) translateY(-1.5%); }
+      filter: grayscale(.25) contrast(1.06) brightness(.9);
     }
     /* Background video — sits directly on top of the still photo (which stays
-       mounted underneath as the poster/fallback), same fixed frame, same
-       desaturated cinematic treatment as the photo it replaces so the two
-       never look like two different design languages. No extra CSS drift
-       animation here: the footage supplies its own motion already, and
-       stacking a second animated transform on top read as busy in review. */
+       mounted underneath as the poster/fallback), same fixed frame. */
     .hero-video {
       position: absolute; inset: 0; z-index: 1;
       width: 100%; height: 100%; object-fit: cover; object-position: center 35%;
-      /* Brighter / less desaturated than the still photo's filter — footage
-         needs more of its own light and colour to read as resin, drums and
-         metal rather than a flat dark plate; the scrim (unchanged) still
-         carries all of the text-legibility work. */
-      filter: grayscale(0) contrast(1.08) brightness(1.28);
+      filter: grayscale(0) contrast(1.08) brightness(1.22);
       pointer-events: none;
       /* No `poster` attribute (that download was the measured LCP cost).
          A frameless <video> paints opaque black, so stay invisible until
@@ -655,537 +633,471 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       transition: opacity .45s ease;
     }
     .hero-video[data-playing="true"] { opacity: 1; }
-    @media (prefers-reduced-motion: reduce) {
-      .hero-video { transition: none; }
-    }
     /* Respect reduced-motion by never even starting playback: the poster
        frame (identical still photo) remains the entire experience. */
     @media (prefers-reduced-motion: reduce) {
-      .hero-video { display: none; }
+      .hero-video { display: none; transition: none; }
     }
-    /* These rules control which encode is VISIBLE. They do not control
-       which is downloaded.
-       Correction (measured 2026-09-08): a previous comment here claimed a
-       `display:none` <video> "is never fetched or decoded by the browser".
-       That is false for an element with `autoplay`/`preload="metadata"` and
-       a resolved <source src> — a 390px cold load fetched BOTH encodes
-       (20.7 MB + 6.4 MB). Download selection is now handled by the inline
-       script in the hero markup, which assigns `src` to one element only.
-       Breakpoint matches the site-wide nav collapse in Base.astro. */
-    @media (max-width: 760px) {
-      .hero-video-desktop { display: none; }
-    }
-    @media (min-width: 761px) {
-      .hero-video-mobile { display: none; }
-    }
+    /* These rules control which encode is VISIBLE. Download selection is
+       handled by the inline script in the hero markup, which assigns `src`
+       to one element only. Breakpoint matches the nav collapse in Base.astro. */
+    @media (max-width: 760px) { .hero-video-desktop { display: none; } }
+    @media (min-width: 761px) { .hero-video-mobile { display: none; } }
+
     .hero-scrim {
       position: absolute; inset: 0; z-index: 1;
-      /* Lightened from .78/.88 so the (now brighter) video actually reads —
-         the bottom of the hero still fades to the fully opaque page
-         background at 96% so it still resolves cleanly into the section
-         below it. */
-      background: linear-gradient(180deg, rgba(9, 11, 18, .58) 0%, rgba(9, 11, 18, .68) 45%, var(--bg) 96%),
-                  radial-gradient(120% 90% at 82% -10%, rgba(212, 175, 55, .16), transparent 55%),
-                  radial-gradient(70% 60% at 4% 108%, rgba(30, 58, 138, .2), transparent 62%);
+      background:
+        linear-gradient(180deg, rgba(9, 11, 18, .78) 0%, rgba(9, 11, 18, .5) 22%, rgba(9, 11, 18, .56) 68%, var(--bg) 100%),
+        linear-gradient(90deg, rgba(9, 11, 18, .62) 0%, rgba(9, 11, 18, .22) 55%, rgba(9, 11, 18, .05) 100%);
     }
-    .hero-grid-lines { z-index: 2; }
-    /* soft top edge-light instead of a hard rule — a thin catch of light
-       rather than a divider, since the hero shouldn't hard-cut against the nav */
-    .hero::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; z-index: 3;
-      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, .4) 40%, rgba(212, 175, 55, .4) 60%, transparent);
-    }
-    /* an almost-imperceptible band of light drifting across the whole hero,
-       like a slow reflection moving over brushed metal — never distracting */
-    .hero::after {
-      content: ''; position: absolute; inset: -20% -20%; z-index: 3; pointer-events: none;
-      background: linear-gradient(100deg, transparent 35%, rgba(212, 175, 55, .05) 48%, rgba(255, 255, 255, .04) 50%, rgba(212, 175, 55, .05) 52%, transparent 65%);
-      background-size: 220% 220%;
-      background-position: -50% -50%;
+
+    .hero-inner {
+      position: relative; z-index: 4;
+      display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.72fr);
+      gap: clamp(2rem, 5vw, 4.5rem); align-items: end;
+      padding-block: clamp(4.5rem, 10vw, 7.5rem) clamp(2.2rem, 4vw, 3rem);
     }
     @media (prefers-reduced-motion: no-preference) {
-      .hero::after { animation: hero-metal-sweep 22s ease-in-out infinite; }
-    }
-    @keyframes hero-metal-sweep {
-      0%, 45% { background-position: -50% -50%; }
-      75%, 100% { background-position: 50% 50%; }
-    }
-    .hero-grid-lines {
-      position: absolute; inset: 0;
-      background-image: linear-gradient(var(--line) 1px, transparent 1px),
-                        linear-gradient(90deg, var(--line) 1px, transparent 1px);
-      background-size: 64px 64px; opacity: .25; mask-image: radial-gradient(80% 80% at 60% 0%, #000, transparent 75%);
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .hero-grid-lines { animation: hero-grid-drift 50s linear infinite; }
-    }
-    @keyframes hero-grid-drift {
-      from { background-position: 0 0, 0 0; }
-      to { background-position: 64px 64px, 64px 64px; }
-    }
-    .hero-inner { position: relative; z-index: 4; padding-block: clamp(4.5rem, 13vw, 9.5rem); }
-    @media (prefers-reduced-motion: no-preference) {
-      .hero-inner .eyebrow,
-      .hero-inner .hero-title,
-      .hero-inner .hero-tagline,
-      .hero-inner .hero-sub,
-      .hero-inner .hero-cta,
-      .hero-inner .hero-trust {
-        animation: hero-fade-up .6s var(--ease-premium) both;
-      }
-      .hero-inner .eyebrow    { animation-delay: .05s; }
-      .hero-inner .hero-title { animation-delay: .15s; }
-      .hero-inner .hero-tagline { animation-delay: .27s; }
-      .hero-inner .hero-sub   { animation-delay: .36s; }
-      .hero-inner .hero-trust { animation-delay: .48s; }
-      .hero-inner .hero-cta   { animation-delay: .60s; }
+      .hero-copy > *, .hero-desk, .hero-ledger { animation: hero-fade-up .7s var(--ease-premium) both; }
+      .hero-eyebrow { animation-delay: .05s; }
+      .hero-title   { animation-delay: .14s; }
+      .hero-sub     { animation-delay: .24s; }
+      .hero-cta     { animation-delay: .34s; }
+      .hero-desk    { animation-delay: .46s; }
+      .hero-ledger  { animation-delay: .58s; }
     }
     @keyframes hero-fade-up {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
+    .hero-eyebrow { letter-spacing: 0.16em; }
     .hero-title {
-      font-size: clamp(2.6rem, 9vw, 6.2rem); font-weight: 700; margin-top: 1.5rem;
-      letter-spacing: 0.005em;
+      font-size: clamp(2.55rem, 5.4vw, 4.9rem); font-weight: 700; line-height: 0.98;
+      letter-spacing: 0.005em; margin-top: 1.1rem; max-width: 19ch;
+      text-wrap: balance;
     }
-    /* The premium gold headline highlight lives in the shared `.hl` rule
-       (src/styles/global.css), keeping the homepage and About hero treatment
-       visually consistent without duplicating the effect here. */
-    .hero-tagline {
-      color: var(--ink); font-size: clamp(0.95rem, 1.8vw, 1.12rem); font-weight: 600;
-      letter-spacing: 0.025em; margin-top: 1.35rem;
+    /* Static gold — the one accent word on the page, no shine animation. */
+    .hero-accent {
+      background: linear-gradient(180deg, #f5e3a6 0%, #d4af37 52%, #a9791f 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
     }
-    .hero-tagline strong { color: var(--accent-gold-light); }
-    .hero-sub { color: var(--ink-dim); font-size: clamp(1rem, 2.2vw, 1.2rem); max-width: 62ch; margin-top: 0.75rem; line-height: 1.7; }
+    .hero-sub {
+      color: var(--ink-dim); font-size: clamp(1rem, 1.6vw, 1.15rem); max-width: 56ch;
+      margin-top: 1.3rem; line-height: 1.7;
+    }
+    .hero-cta { display: flex; gap: 0.8rem; margin-top: 2rem; flex-wrap: wrap; }
 
-    .hero-trust { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2rem; }
-    /* glass-panel badges: translucent gradient fill + backdrop blur + a
-       thin metallic-gold border and inset top highlight, instead of the
-       flat solid chips used elsewhere on the site */
-    .hero-trust-item {
-      position: relative; display: inline-flex; align-items: center; gap: 0.55rem;
-      font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.03em;
-      padding: 0.6rem 1.05rem;
-      background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .015));
-      border: 1px solid rgba(212, 175, 55, .28); color: var(--ink-dim);
-      box-shadow: 0 1px 0 rgba(255, 255, 255, .07) inset, 0 8px 18px rgba(0, 0, 0, .24);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      transition: border-color .3s var(--ease-premium), color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium), background .3s var(--ease-premium);
+    /* Order desk: the one panel in the hero, a machined plate not a card. */
+    .hero-desk {
+      position: relative;
+      padding: 1.35rem 1.5rem 1.4rem;
+      background: rgba(11, 13, 19, .66);
+      border: 1px solid rgba(255, 255, 255, .11);
+      border-top: 2px solid var(--accent-gold);
+      border-radius: 4px;
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .05) inset, 0 26px 50px rgba(0, 0, 0, .38);
     }
-    .hero-trust-icon { width: 14px; height: 14px; flex-shrink: 0; color: #d4af37; opacity: .9; transition: color .3s var(--ease-premium); }
-    .hero-trust-item:hover {
-      border-color: rgba(212, 175, 55, .6); color: #f2d488; transform: translateY(-3px);
-      box-shadow: 0 1px 0 rgba(255, 255, 255, .1) inset, 0 14px 26px rgba(0, 0, 0, .3), 0 0 18px rgba(212, 175, 55, .16);
-      background: linear-gradient(180deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .02));
-    }
-    .hero-trust-item:hover .hero-trust-icon { color: #f2d488; }
-
-    .hero-cta { display: flex; gap: 0.9rem; margin-top: 2.2rem; flex-wrap: wrap; }
-
-    /* ---------- category teaser ----------
-       The 9:16 portrait `home-video.mp4` that used to sit beside this grid was
-       removed. Three measured reasons, not taste: it forced the row to the
-       video's height and left ~500px of empty background next to a short
-       grid; it added 3.07MB to a homepage that already loads three other
-       videos (hero, brand film, applications); and it carried no information
-       - the grid beside it is what a buyer came for. The file is still in
-       public/ and this is a layout change only, so restoring it is a markup
-       edit, not an asset recovery. */
-    .cats-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-    .cats-summary { color: var(--ink-dim); font-size: 0.95rem; max-width: 46ch; line-height: 1.7; }
-    .cats-summary strong { color: var(--ink); }
-
-    .cat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
-    @media (max-width: 1080px) { .cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-    @media (max-width: 760px)  { .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 420px)  { .cat-grid { grid-template-columns: 1fr; } }
-    .cat-tile {
-      display: flex; flex-direction: column; gap: 0.55rem; padding: 1.2rem 1.3rem 1.1rem;
-      background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
-      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
-    }
-    .cat-tile:hover {
-      border-color: var(--line-2); transform: translateY(-3px) scale(1.012);
-      box-shadow: var(--surface-shadow-hover);
-    }
-    .cat-tile:hover .cat-tile-cta { color: var(--accent-gold-light); }
-    .cat-tile:active { transform: translateY(-1px) scale(0.99); transition-duration: .12s; }
-    .cat-tile-top { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; }
-    .cat-tile-name {
-      font-family: var(--font-display); text-transform: uppercase; font-size: 0.95rem;
-      letter-spacing: 0.03em; line-height: 1.25;
-    }
-    /* The grade count is the point of this tile - it is the fastest honest
-       signal that the range is wider than the six grades shown further down. */
-    .cat-tile-count {
-      font-family: var(--font-mono); font-size: 1.15rem; color: var(--accent-gold-light);
-      line-height: 1; flex: 0 0 auto;
-    }
-    .cat-tile-examples { color: var(--ink-dim); font-size: 0.8rem; line-height: 1.55; flex: 1; }
-    .cat-tile-cta {
-      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.1em;
+    .hero-desk-label {
+      font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.16em;
       text-transform: uppercase; color: var(--ink-faint);
-      transition: color .3s var(--ease-premium);
     }
-    .cats-foot { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.6rem; }
+    .hero-desk-phone {
+      display: block; margin-top: 0.6rem;
+      font-family: var(--font-display); font-size: clamp(1.55rem, 2.2vw, 1.9rem); font-weight: 600;
+      letter-spacing: 0.02em; color: var(--ink); line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+      transition: color .25s var(--ease-premium);
+    }
+    .hero-desk-phone:hover { color: var(--accent-gold-light); }
+    .hero-desk-lines { display: flex; flex-direction: column; gap: 0.2rem; margin-top: 0.55rem; }
+    .hero-desk-lines a {
+      font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.02em; color: var(--ink-dim);
+      transition: color .25s var(--ease-premium);
+    }
+    .hero-desk-lines a:hover { color: var(--accent-gold-light); }
+    .hero-desk-facts {
+      list-style: none; margin-top: 1.1rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, .1);
+      display: flex; flex-direction: column; gap: 0.5rem;
+      font-size: 0.84rem; line-height: 1.5; color: var(--ink-dim);
+    }
+    .hero-desk-facts li { position: relative; padding-left: 1rem; }
+    .hero-desk-facts li::before {
+      content: ''; position: absolute; left: 0; top: 0.62em; width: 5px; height: 5px;
+      background: var(--accent-gold); transform: rotate(45deg);
+    }
+    .hero-desk-link {
+      display: inline-block; margin-top: 1.1rem;
+      font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--ink); border-bottom: 1px solid var(--line-2); padding-bottom: 0.2rem;
+      transition: color .25s var(--ease-premium), border-color .25s var(--ease-premium);
+    }
+    .hero-desk-link:hover { color: var(--accent-gold-light); border-color: var(--accent-gold); }
 
-    /* ---------- featured ---------- */
-    .featured {
-      position: relative;
-      background: linear-gradient(180deg, transparent, var(--bg-2) 64px, var(--bg-2) calc(100% - 64px), transparent);
+    /* Fact ledger along the hero's lower edge. */
+    .hero-ledger {
+      position: relative; z-index: 4;
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-top: 1px solid rgba(255, 255, 255, .14);
+      margin-top: clamp(0.6rem, 2vw, 1.2rem);
+      padding-bottom: clamp(1.4rem, 3vw, 2.2rem);
     }
-    .featured::before, .featured::after {
-      content: ''; position: absolute; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--line-2) 20%, var(--line-2) 80%, transparent);
+    .hero-ledger-item { padding: 1rem 1.2rem 0 0; border-right: 1px solid rgba(255, 255, 255, .1); }
+    .hero-ledger-item + .hero-ledger-item { padding-left: 1.2rem; }
+    .hero-ledger-item:last-child { border-right: none; }
+    .hero-ledger dt {
+      font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--ink-faint);
     }
-    .featured::before { top: 0; }
-    .featured::after { bottom: 0; }
-    .featured-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.4rem; }
-
-    /* ---------- why choose us ---------- */
-    .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); grid-auto-rows: 1fr; gap: 1.1rem; }
-    /* Only 2 cards live in this grid, so use auto-fit (not auto-fill): with
-       auto-fill the two cards would sit squeezed at the left, leaving empty
-       unused track space beside them at wide viewports. auto-fit collapses
-       those empty tracks so the pair stretches to fill the row evenly. */
-    .why-logistics-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 1.1rem; }
-    .why-card {
-      display: flex; flex-direction: column; gap: 0.8rem; padding: 1.3rem 1.4rem; height: 100%;
-      background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
-      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
-    }
-    .why-card:hover {
-      border-color: var(--line-2); transform: translateY(-3px) scale(1.012);
-      box-shadow: var(--surface-shadow-hover);
-    }
-    .why-head { display: flex; align-items: center; gap: 0.8rem; }
-    .why-check {
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-      width: 28px; height: 28px; border-radius: 50%;
-      background: transparent; border: 1.5px solid var(--line-2); color: var(--accent-gold-light);
-      font-weight: 700; font-size: 0.9rem;
-    }
-    .why-title { font-size: 0.95rem; color: var(--ink); }
-    .why-desc { color: var(--ink-dim); font-size: 0.86rem; line-height: 1.6; flex: 1; }
-    .why-cert-row { display: flex; align-items: center; gap: 0.9rem; margin-top: auto; }
-    .why-cert-thumb {
-      display: block; flex-shrink: 0; width: 56px;
-      border: 1px solid var(--line); overflow: hidden;
-    }
-    .why-cert-thumb img { width: 100%; height: auto; display: block; transition: transform .4s var(--ease-premium); }
-    .why-cert-thumb:hover img { transform: scale(1.04); }
-    .why-cert-btn { padding: 0.55rem 1rem; font-size: 0.72rem; }
-    @media (max-width: 620px) { .why-cert-btn { padding: 0.8rem 1rem; } }
-
-    .why-timeline { display: flex; align-items: center; gap: 0.6rem; margin-top: auto; }
-    .why-timeline-year {
-      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em;
-      color: var(--ink-faint); flex-shrink: 0;
-    }
-    .why-timeline-bar {
-      position: relative; flex: 1; height: 2px; border-radius: 1px;
-      background: linear-gradient(90deg, var(--accent-gold-dark), var(--accent-gold) 60%, var(--accent-gold-light));
-    }
-    .why-timeline-bar::after {
-      content: ''; position: absolute; right: -1px; top: 50%; transform: translateY(-50%);
-      width: 0; height: 0;
-      border-top: 4px solid transparent; border-bottom: 4px solid transparent;
-      border-left: 6px solid var(--accent-gold-light);
-    }
-    .why-timeline-label { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.03em; color: var(--accent-gold-light); font-weight: 500; }
-
-    .why-gst { display: flex; flex-direction: column; gap: 0.6rem; margin-top: auto; }
-    .why-gst-rule { height: 1px; background: var(--line); }
-    .why-gst-label {
-      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--ink-faint); opacity: 0.75;
-    }
-    .why-gst-number { font-family: var(--font-mono); font-size: 1.05rem; font-weight: 600; letter-spacing: 0.14em; color: var(--ink); }
-    .why-gst-copy { align-self: flex-start; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.85rem; font-size: 0.72rem; }
-    .why-gst-copy.copied { border-color: #2ee87a; color: #2ee87a; animation: why-gst-pop .35s ease; }
-    @keyframes why-gst-pop {
-      0% { transform: scale(1); }
-      35% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    .why-gst-caption { font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-faint); line-height: 1.6; }
-
-    .why-india { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; margin-top: auto; text-align: center; }
-    .why-india-map { width: 100%; max-width: 128px; height: auto; }
-    .why-india-land { fill: var(--line-2); stroke: var(--line); stroke-width: 1; stroke-linejoin: round; }
-    .why-india-dot { fill: var(--accent-gold); }
-    .why-export-neighbour { fill: var(--line-2); stroke: var(--accent-gold); stroke-width: 1.5; stroke-linejoin: round; }
-    .why-india-caption { font-family: var(--font-mono); font-size: 0.66rem; line-height: 1.7; color: var(--ink-faint); letter-spacing: 0.01em; }
-
-    .why-bulk { display: flex; flex-direction: column; gap: 0.55rem; margin-top: auto; }
-    .why-bulk-rule { height: 1px; background: var(--line); }
-    .why-bulk-row { display: flex; flex-direction: column; gap: 0.15rem; padding-block: 0.1rem; }
-    .why-bulk-value { font-family: var(--font-display); font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--ink); }
-    .why-bulk-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); }
-    .why-drums-svg { display: block; width: 100%; max-width: 128px; height: auto; margin-top: 0.15rem; opacity: 0.9; }
-    .why-drum-body { fill: var(--line-2); stroke: var(--line); stroke-width: 1; }
-    .why-drum-band { fill: var(--accent-gold); }
-
-    .why-quality {
-      display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: center;
-      margin-top: clamp(2.5rem, 6vw, 4rem); padding-top: clamp(2.5rem, 6vw, 4rem); border-top: 1px solid var(--line);
-    }
-    .why-quality-title { font-size: clamp(1.5rem, 3.5vw, 2rem); }
-    .why-quality-desc { color: var(--ink-dim); margin-top: 1rem; max-width: 52ch; }
-    .why-quality-list { list-style: none; display: flex; flex-direction: column; gap: 1.05rem; margin-top: 1.6rem; }
-    .why-quality-feature {
-      display: flex; align-items: center; gap: 0.9rem; font-size: 0.95rem; font-weight: 600; color: var(--ink);
-      line-height: 1.6; text-shadow: 0 1px 3px rgba(0, 0, 0, .25);
-      transition: color .25s var(--ease-premium), transform .25s var(--ease-premium);
-    }
-    .why-quality-feature:hover { color: #ffffff; transform: translateX(3px); }
-    .why-quality-check {
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-      width: 24px; height: 24px; border-radius: 50%;
-      background: transparent; border: 1.5px solid var(--line-2); color: var(--accent-gold-light);
-      font-weight: 700; font-size: 0.72rem;
-      transition: box-shadow .25s var(--ease-premium), transform .25s var(--ease-premium);
-    }
-    .why-quality-feature:hover .why-quality-check {
-      box-shadow: 0 0 12px rgba(var(--gold-rgb), 0.5), 0 0 0 1px rgba(var(--gold-rgb), 0.45);
-      transform: scale(1.08);
+    .hero-ledger dd {
+      margin-top: 0.35rem; font-family: var(--font-display); font-size: 1.02rem;
+      letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink); line-height: 1.2;
     }
 
-    .why-quality-photo { display: flex; flex-direction: column; gap: 0.9rem; }
-    .why-quality-frame {
-      border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, .35);
-      height: clamp(340px, 40vw, 560px);
-    }
-    .why-quality-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s var(--ease-premium); }
-    .why-quality-frame:hover img { transform: scale(1.045); }
-    .why-quality-caption {
-      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;
-      text-transform: uppercase; color: var(--ink-faint); text-align: center;
+    @media (max-width: 980px) {
+      .hero-inner { grid-template-columns: 1fr; align-items: start; }
+      .hero-desk { max-width: 520px; }
     }
     @media (max-width: 760px) {
-      .why-quality { grid-template-columns: 1fr; }
-      .why-quality-photo { order: 2; }
-      .why-quality-text { order: 1; }
+      .hero-inner { padding-top: clamp(3.2rem, 12vw, 4.5rem); gap: 2rem; }
+      .hero-title { max-width: none; }
+      .hero-cta .btn { flex: 1 1 auto; justify-content: center; }
+      .hero-ledger { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 0.4rem; }
+      .hero-ledger-item:nth-child(2) { border-right: none; }
+      .hero-ledger-item:nth-child(3) { padding-left: 0; }
+      .hero-ledger-item:nth-child(n + 3) { border-top: 1px solid rgba(255, 255, 255, .08); margin-top: 0.4rem; }
     }
 
-    /* ---------- production infrastructure ---------- */
-    /* soft-fades into the sections above/below instead of a hard-edged
-       colour block, with a hairline that itself fades out at both ends */
-    .facility {
-      position: relative;
-      background: linear-gradient(180deg, transparent, var(--bg-2) 64px, var(--bg-2) calc(100% - 64px), transparent);
+    /* ---------- section system ---------- */
+    .hs { position: relative; padding-block: clamp(3.6rem, 7vw, 5.6rem) clamp(3.9rem, 7.5vw, 6rem); }
+    .hs::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line-2) 12%, var(--line-2) 88%, transparent);
     }
-    .facility::before, .facility::after {
-      content: ''; position: absolute; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--line-2) 20%, var(--line-2) 80%, transparent);
+    /* Raised bands alternate through the page so long runs of one tone never
+       happen; slightly translucent so the sitewide ambient layer still shows
+       through in the gutters. */
+    .hs-band { background: color-mix(in srgb, var(--bg-2) 86%, transparent); }
+
+    .hs-head {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+      gap: 1.4rem clamp(2rem, 5vw, 4rem); align-items: end;
+      margin-bottom: clamp(1.9rem, 4vw, 2.8rem);
     }
-    .facility::before { top: 0; }
-    .facility::after { bottom: 0; }
-    .facility-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
-    .facility-desc { color: var(--ink-dim); margin-top: 1rem; max-width: 52ch; }
-    .facility-list { list-style: none; display: flex; flex-direction: column; gap: 1.05rem; margin-top: 1.6rem; }
-    .facility-feature {
-      display: flex; align-items: center; gap: 0.9rem; font-size: 0.95rem; font-weight: 600; color: var(--ink);
-      line-height: 1.6; text-shadow: 0 1px 3px rgba(0, 0, 0, .25);
+    .hs-head h2 { font-size: clamp(1.85rem, 3.6vw, 2.85rem); margin-top: 0.55rem; letter-spacing: 0.012em; text-wrap: balance; }
+    .idx {
+      display: inline-block; margin-right: 0.75rem; padding-right: 0.75rem;
+      border-right: 1px solid var(--line-2); color: var(--ink-faint);
+    }
+    .hs-head-aside { display: flex; flex-direction: column; gap: 0.9rem; padding-bottom: 0.25rem; }
+    .hs-lead { color: var(--ink-dim); font-size: 0.95rem; line-height: 1.7; max-width: 52ch; }
+    .hs-lead strong { color: var(--ink); }
+    .hs-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+    .hs-links a {
+      font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--ink); border-bottom: 1px solid var(--line-2); padding-bottom: 0.2rem;
+      transition: color .25s var(--ease-premium), border-color .25s var(--ease-premium);
+    }
+    .hs-links a:hover { color: var(--accent-gold-light); border-color: var(--accent-gold); }
+    @media (max-width: 860px) {
+      .hs-head { grid-template-columns: 1fr; align-items: start; }
+    }
+
+    /* ---------- 01 · family index ---------- */
+    .fam-list {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: clamp(1.5rem, 4vw, 3.5rem);
+      border-top: 1px solid var(--line-2);
+    }
+    .cat-tile {
+      display: grid; grid-template-columns: 2.1rem minmax(0, 1fr) auto auto;
+      align-items: center; gap: 0.9rem;
+      padding: 1.05rem 0.5rem 1.05rem 0;
+      border-bottom: 1px solid var(--line);
+      transition: background-color .25s var(--ease-premium);
+    }
+    .cat-tile:hover { background-color: color-mix(in srgb, var(--bg-3) 62%, transparent); }
+    .cat-tile:hover .fam-name { color: var(--accent-gold-light); }
+    .cat-tile:hover .fam-cta { color: var(--ink); transform: translateX(3px); }
+    .cat-tile:active { background-color: color-mix(in srgb, var(--bg-3) 85%, transparent); }
+    .fam-idx { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); letter-spacing: 0.04em; }
+    .fam-main { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+    .fam-name {
+      font-family: var(--font-display); text-transform: uppercase; font-size: 1.02rem; font-weight: 600;
+      letter-spacing: 0.03em; line-height: 1.2; color: var(--ink); transition: color .25s var(--ease-premium);
+    }
+    .fam-examples { color: var(--ink-dim); font-size: 0.8rem; line-height: 1.5; }
+    .fam-count {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--ink-faint); white-space: nowrap; font-variant-numeric: tabular-nums;
+    }
+    .fam-count strong { color: var(--accent-gold-light); font-size: 1rem; font-weight: 500; margin-right: 0.2rem; }
+    .fam-cta {
+      font-size: 1.05rem; line-height: 1; color: var(--ink-faint); padding-left: 0.4rem;
       transition: color .25s var(--ease-premium), transform .25s var(--ease-premium);
     }
-    .facility-feature:hover { color: #ffffff; transform: translateX(3px); }
-    .facility-check {
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-      width: 24px; height: 24px; border-radius: 50%;
-      background: transparent; border: 1.5px solid var(--line-2); color: var(--accent-gold-light);
-      font-weight: 700; font-size: 0.72rem;
-      transition: box-shadow .25s var(--ease-premium), transform .25s var(--ease-premium);
+    @media (max-width: 860px) {
+      .fam-list { grid-template-columns: 1fr; }
     }
-    .facility-feature:hover .facility-check {
-      box-shadow: 0 0 12px rgba(var(--gold-rgb), 0.5), 0 0 0 1px rgba(var(--gold-rgb), 0.45);
-      transform: scale(1.08);
-    }
-    .facility-photo { display: flex; flex-direction: column; gap: 0.9rem; }
-    .facility-frame {
-      position: relative;
-      border: 1px solid rgba(var(--gold-rgb), .22); border-radius: 18px; overflow: hidden;
-      box-shadow: 0 20px 48px rgba(0, 0, 0, .4), 0 0 0 1px rgba(255, 255, 255, .04) inset, 0 1px 0 rgba(255, 255, 255, .07) inset;
-      height: clamp(340px, 40vw, 560px);
-      transition: transform .4s var(--ease-premium), box-shadow .4s var(--ease-premium), border-color .4s var(--ease-premium);
-    }
-    .facility-frame:hover {
-      transform: translateY(-4px);
-      border-color: rgba(var(--gold-rgb), .45);
-      box-shadow: 0 26px 56px rgba(0, 0, 0, .45), 0 0 26px rgba(var(--gold-rgb), .14), 0 0 0 1px rgba(255, 255, 255, .05) inset, 0 1px 0 rgba(255, 255, 255, .08) inset;
-    }
-    .facility-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease-premium); }
-    .facility-frame:hover img { transform: scale(1.05); }
-    .facility-caption {
-      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;
-      text-transform: uppercase; color: var(--ink-faint); text-align: center;
-    }
-    @media (max-width: 760px) {
-      .facility-grid { grid-template-columns: 1fr; }
-      .facility-photo { order: 2; }
-      .facility-text { order: 1; }
+    @media (max-width: 520px) {
+      .cat-tile { grid-template-columns: 1.6rem minmax(0, 1fr) auto; }
+      .fam-cta { display: none; }
     }
 
-    /* ---------- application showcase ---------- */
-    .applications-intro { display: grid; grid-template-columns: 1.6fr 0.9fr; gap: clamp(1.5rem, 5vw, 3rem); align-items: start; }
-    /* premium "glass" frame for the hero video: rounded, a soft top-edge
-       highlight standing in for a glass bevel, and a deep ambient shadow
-       for depth — with a gentle lift on hover rather than a static plate */
-    .applications-video {
-      position: relative; align-self: start; overflow: hidden; border-radius: 18px;
-      background: var(--bg-3); border: 1px solid rgba(255, 255, 255, .08);
-      box-shadow: 0 20px 48px rgba(0, 0, 0, .42), 0 0 0 1px rgba(255, 255, 255, .05) inset, 0 1px 0 rgba(255, 255, 255, .08) inset;
-      transition: transform .4s var(--ease-premium), box-shadow .4s var(--ease-premium);
-    }
-    .applications-video:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 26px 58px rgba(0, 0, 0, .48), 0 0 0 1px rgba(255, 255, 255, .06) inset, 0 1px 0 rgba(255, 255, 255, .1) inset;
-    }
-    .applications-video video { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; background: #000; }
-    @media (max-width: 860px) { .applications-intro { grid-template-columns: 1fr; } .applications-video video { aspect-ratio: 16 / 10; } .applications-video { order: 2; } }
+    /* ---------- 02 · selected grades ---------- */
+    .flag-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.1rem; }
+    @media (max-width: 980px) { .flag-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 600px) { .flag-grid { grid-template-columns: 1fr; } }
 
-    /* the "Excellence" headline accent now reuses the shared .hl treatment
-       (global.css) instead of maintaining a second, near-identical gold
-       text-shine effect — one signature gold headline moment sitewide. */
+    /* ---------- 03 · manufacturing & quality ---------- */
+    .make-grid {
+      display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: clamp(2rem, 5vw, 4rem); align-items: start;
+    }
+    .make-label {
+      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-faint); padding-bottom: 0.8rem; border-bottom: 1px solid var(--line-2);
+    }
+    .make-steps { list-style: none; display: flex; flex-direction: column; }
+    .make-steps li {
+      display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: 0.6rem; align-items: baseline;
+      padding: 0.95rem 0; border-bottom: 1px solid var(--line);
+    }
+    .make-no { font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-gold); letter-spacing: 0.04em; }
+    .make-body { color: var(--ink-dim); font-size: 0.93rem; line-height: 1.6; }
+    .make-body strong { color: var(--ink); font-weight: 600; }
+    .make-links { margin-top: 1.5rem; }
 
-    .applications-lead {
-      font-size: clamp(1.1rem, 2.3vw, 1.4rem); font-weight: 500;
-      color: var(--ink); line-height: 1.55; letter-spacing: 0.005em;
-      margin-top: 1.3rem; max-width: 50ch;
+    .make-media {
+      display: grid; grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+      grid-template-rows: 1fr 1fr; gap: 0.8rem; align-items: stretch;
     }
-    .applications-capabilities { list-style: none; display: flex; flex-direction: column; gap: 1.05rem; margin-top: 2.1rem; }
-    .applications-capabilities li {
-      display: flex; align-items: center; gap: 0.9rem;
-      font-size: 0.97rem; font-weight: 600; color: var(--ink); line-height: 1.6;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, .25);
-      transition: color .25s var(--ease-premium), transform .25s var(--ease-premium);
+    .make-film { grid-row: 1 / 3; min-height: 0; display: flex; }
+    .make-photo { display: flex; flex-direction: column; gap: 0.55rem; min-width: 0; }
+    .make-frame {
+      position: relative; aspect-ratio: 16 / 10; overflow: hidden; flex: 1;
+      border: 1px solid var(--line-2); border-radius: 4px; background: var(--bg-3);
+      box-shadow: var(--surface-shadow-rest);
     }
-    .applications-capabilities li:hover { color: #ffffff; transform: translateX(4px); }
-    .cap-check {
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-      width: 22px; height: 22px; border-radius: 50%;
-      background: transparent; border: 1.5px solid var(--line-2); color: var(--accent-gold-light);
-      font-weight: 700; font-size: 0.68rem;
-      transition: box-shadow .25s var(--ease-premium), transform .25s var(--ease-premium);
+    .make-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease-premium); }
+    .make-photo:hover .make-frame img { transform: scale(1.035); }
+    .make-caption {
+      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-faint);
     }
-    .applications-capabilities li:hover .cap-check {
-      box-shadow: 0 0 12px rgba(var(--gold-rgb), 0.55), 0 0 0 1px rgba(var(--gold-rgb), 0.45);
-      transform: scale(1.1);
+    @media (max-width: 860px) {
+      .make-grid { grid-template-columns: 1fr; }
+      .make-media { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); }
+      .make-frame { aspect-ratio: 4 / 3; }
     }
-    .applications-closing {
-      margin-top: 1.9rem; padding-top: 1.5rem; border-top: 1px solid var(--line);
-      color: var(--ink-dim); font-size: 0.98rem; line-height: 1.6; max-width: 54ch;
+    @media (max-width: 520px) {
+      .make-media { grid-template-columns: 1fr; grid-template-rows: none; }
+      .make-film { grid-row: auto; aspect-ratio: 4 / 5; }
+      .make-frame { aspect-ratio: 16 / 10; }
     }
-    .applications-closing-brand { color: var(--accent-gold-light); font-weight: 600; }
 
-    .applications-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-top: 2.6rem; }
-    .applications-gallery-card {
-      position: relative; overflow: hidden; border: 1px solid var(--line); background: var(--bg-3);
+    /* ---------- 04 · applications ---------- */
+    /* Five columns: the lead tile (2 rows), six 4:3 tiles in a 3 x 2 block,
+       and the portrait showreel (2 rows) — the row height set by the small
+       tiles gives the showreel cell a 9:16 shape without any cropping. */
+    .apps-mosaic {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 0.9fr; gap: 0.75rem;
+    }
+    .apps-tile {
+      position: relative; overflow: hidden; display: block; min-width: 0;
+      background: var(--bg-3); border: 1px solid var(--line); border-radius: 4px;
       aspect-ratio: 4 / 3;
-      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+      transition: border-color .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
     }
-    .applications-gallery-card:hover {
-      border-color: var(--line-2); transform: translateY(-3px) scale(1.012);
-      box-shadow: var(--surface-shadow-hover);
-    }
-    .applications-gallery-card img {
+    .apps-tile:hover { border-color: var(--line-2); box-shadow: var(--surface-shadow-hover); }
+    .apps-tile:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
+    .apps-tile img, .apps-tile video {
       width: 100%; height: 100%; object-fit: cover; display: block;
       transition: transform .6s var(--ease-premium);
     }
-    .applications-gallery-card:hover img { transform: scale(1.06); }
-    .applications-gallery-caption {
-      position: absolute; inset: auto 0 0 0; padding: 1.1rem 1.2rem 1rem;
-      display: flex; flex-direction: column; gap: 0.25rem;
-      background: linear-gradient(180deg, transparent, rgba(8, 9, 11, 0.88) 72%);
+    .apps-tile:hover img { transform: scale(1.05); }
+    .apps-tile-lead { grid-column: 1; grid-row: 1 / 3; aspect-ratio: auto; min-height: 0; }
+    .apps-tile-video { grid-column: 5; grid-row: 1 / 3; aspect-ratio: auto; min-height: 0; margin: 0; background: #000; }
+    /* The two row-spanning tiles take their height from the rows the small
+       4:3 tiles define — their media is taken out of flow so its intrinsic
+       size can never stretch the rows and leave gaps under the small tiles. */
+    .apps-tile-lead img, .apps-tile-video video { position: absolute; inset: 0; }
+    .apps-tile-video video { background: #000; }
+    .apps-cap {
+      position: absolute; inset: auto 0 0 0; padding: 1.5rem 1rem 0.85rem;
+      display: flex; flex-direction: column; gap: 0.2rem;
+      background: linear-gradient(180deg, transparent, rgba(8, 9, 11, 0.9) 72%);
+      pointer-events: none;
     }
-    .applications-gallery-tag {
-      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
+    .apps-tile-lead .apps-cap { padding: 2.2rem 1.3rem 1.1rem; }
+    .apps-tag {
+      font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em;
       text-transform: uppercase; color: var(--accent-gold-light);
     }
-    .applications-gallery-title { font-family: var(--font-display); font-size: 1.05rem; color: var(--ink); letter-spacing: 0.01em; }
-    @media (max-width: 860px) { .applications-gallery { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .applications-gallery { grid-template-columns: 1fr; } }
+    .apps-title { font-family: var(--font-display); font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--ink); line-height: 1.15; }
+    .apps-tile-lead .apps-title { font-size: 1.35rem; }
+    @media (max-width: 1080px) {
+      /* Two columns: the lead tile spans both, then six tiles in three rows.
+         The showreel needs a portrait cell; below this width there is no
+         honest one, so it is not rendered at all — `display:none` keeps its
+         IntersectionObserver from ever firing, so the clip is never fetched. */
+      .apps-mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .apps-tile-lead { grid-column: 1 / 3; grid-row: auto; aspect-ratio: 16 / 8; }
+      .apps-tile-video { display: none; }
+    }
+    @media (max-width: 600px) {
+      .apps-mosaic { gap: 0.6rem; }
+      .apps-tile-lead { aspect-ratio: 16 / 10; }
+      .apps-tile-lead .apps-cap { padding: 1.5rem 1rem 0.85rem; }
+      .apps-tile-lead .apps-title { font-size: 1.1rem; }
+    }
 
-    .applications-viewall {
-      display: inline-flex; align-items: center; margin-top: 1.6rem;
-      font-family: var(--font-mono); font-size: 0.82rem; letter-spacing: 0.03em; color: var(--ink);
-      transition: color .2s var(--ease-premium);
+    .apps-industries {
+      margin-top: clamp(1.8rem, 4vw, 2.6rem); padding-top: 1.3rem; border-top: 1px solid var(--line);
+      display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 0.8rem 2rem; align-items: baseline;
     }
-    .applications-viewall:hover { color: var(--accent-gold-light); }
+    .apps-industries-label {
+      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint);
+    }
+    .apps-industries-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.55rem 0; }
+    .apps-industries-list li {
+      font-size: 0.88rem; color: var(--ink-dim); line-height: 1.4;
+      padding-right: 1rem; margin-right: 1rem; border-right: 1px solid var(--line-2);
+    }
+    .apps-industries-list li:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+    @media (max-width: 760px) {
+      .apps-industries { grid-template-columns: 1fr; }
+    }
 
-    /* ---------- industries we serve ---------- */
-    /* Same raised-panel band as .featured/.facility above and
-       .contact-teaser/footer below. Without it, "Proven Applications" →
-       "Industries We Serve" → "About teaser" ran as one unbroken ~3000px
-       stretch of flat, unvarying page background — the longest monotone
-       run on the homepage — before the next section finally introduced
-       any tonal change. This restores a light/dark rhythm through that
-       stretch using the exact existing recipe, not a new one. */
-    .industries {
-      position: relative;
-      background: linear-gradient(180deg, transparent, var(--bg-2) 64px, var(--bg-2) calc(100% - 64px), transparent);
+    /* ---------- 05 · credentials & reach ---------- */
+    .cred-grid {
+      display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: clamp(2rem, 5vw, 4rem); align-items: start;
     }
-    .industries::before, .industries::after {
-      content: ''; position: absolute; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--line-2) 20%, var(--line-2) 80%, transparent);
+    .cred-list { border-top: 1px solid var(--line-2); }
+    .cred-row {
+      display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 0.4rem 1.5rem;
+      padding: 0.95rem 0; border-bottom: 1px solid var(--line);
     }
-    .industries::before { top: 0; }
-    .industries::after { bottom: 0; }
-    .industries-desc { color: var(--ink-dim); margin-top: 1rem; max-width: 62ch; }
-    .industry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-top: 2.4rem; }
-    .industry-card {
-      display: flex; flex-direction: column; align-items: flex-start; gap: 0.9rem; padding: 1.4rem 1.5rem;
-      background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);
-      transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium), box-shadow .3s var(--ease-premium);
+    .cred-row dt {
+      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-faint); padding-top: 0.2em;
     }
-    .industry-card:hover {
-      border-color: var(--line-2); transform: translateY(-3px) scale(1.012);
-      box-shadow: var(--surface-shadow-hover);
+    .cred-row dd { color: var(--ink-dim); font-size: 0.93rem; line-height: 1.6; }
+    .cred-row dd strong { color: var(--ink); font-weight: 600; }
+    .cred-link {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--ink);
+      white-space: nowrap;
+      border-bottom: 1px solid var(--line-2); transition: color .25s var(--ease-premium), border-color .25s var(--ease-premium);
     }
-    .industry-icon {
-      display: flex; align-items: center; justify-content: center;
-      width: 42px; height: 42px; color: var(--accent-gold);
-      transition: transform .3s var(--ease-premium), color .3s var(--ease-premium);
+    .cred-link:hover { color: var(--accent-gold-light); border-color: var(--accent-gold); }
+    .cred-cert-dd { display: flex; align-items: flex-start; gap: 1rem; }
+    .cred-cert {
+      display: block; flex: 0 0 auto; width: 52px; overflow: hidden;
+      border: 1px solid var(--line-2); background: #fff;
     }
-    .industry-card:hover .industry-icon { transform: scale(1.1); color: var(--accent-gold-light); }
-    .industry-icon svg { width: 26px; height: 26px; }
-    .industry-name { font-size: 1rem; color: var(--ink); text-transform: none; letter-spacing: 0; }
-    @media (max-width: 860px) { .industry-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .industry-grid { grid-template-columns: 1fr; } }
+    .cred-cert img { width: 100%; height: auto; display: block; transition: transform .4s var(--ease-premium); }
+    .cred-cert:hover img { transform: scale(1.04); }
+    .cred-gst { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem 1rem; }
+    .cred-gst-no { font-family: var(--font-mono); font-size: 1rem; font-weight: 600; letter-spacing: 0.12em; color: var(--ink); }
+    .cred-copy {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.36rem 0.65rem; border: 1px solid var(--line-2); background: transparent; color: var(--ink-dim);
+      cursor: pointer; transition: border-color .25s var(--ease-premium), color .25s var(--ease-premium);
+    }
+    .cred-copy:hover { border-color: var(--ink-dim); color: var(--ink); }
+    .cred-copy:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
+    .cred-copy.copied { border-color: #2ee87a; color: #2ee87a; }
 
-    .industry-service {
-      margin-top: clamp(2.2rem, 5vw, 3rem); padding-top: clamp(1.8rem, 4vw, 2.4rem);
+    .reach {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: var(--line); border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+    }
+    .reach-block {
+      background: color-mix(in srgb, var(--bg-3) 80%, transparent); padding: 1.4rem 1.3rem 1.3rem;
+      display: flex; flex-direction: column; align-items: flex-start; gap: 0.7rem;
+    }
+    .reach-map { width: 100%; max-width: 150px; height: auto; }
+    .reach-map-export { max-width: 170px; }
+    .reach-land { fill: var(--line-2); stroke: var(--line); stroke-width: 1; stroke-linejoin: round; }
+    .reach-dot { fill: var(--accent-gold); }
+    .reach-neighbour { fill: var(--line-2); stroke: var(--accent-gold); stroke-width: 1.5; stroke-linejoin: round; }
+    .reach-label {
+      font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-faint); margin-top: 0.4rem;
+    }
+    .reach-list { font-size: 0.84rem; line-height: 1.7; color: var(--ink-dim); }
+    @media (max-width: 980px) {
+      .cred-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .cred-row { grid-template-columns: 1fr; gap: 0.3rem; }
+      .reach { grid-template-columns: 1fr; }
+    }
+
+    /* ---------- 06 · about & enquiry ---------- */
+    .hs-close { background: color-mix(in srgb, var(--bg-2) 88%, transparent); padding-bottom: clamp(3rem, 6vw, 4.5rem); }
+    .close-grid {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(2rem, 5vw, 4.5rem); align-items: start;
+    }
+    .close-about h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); margin-top: 0.55rem; }
+    .close-copy { color: var(--ink-dim); margin: 1.1rem 0 1.5rem; max-width: 50ch; line-height: 1.7; }
+    .close-enquiry {
+      padding: 1.6rem 1.7rem 1.5rem;
+      background: color-mix(in srgb, var(--bg-3) 85%, transparent); border: 1px solid var(--line-2);
+      border-top: 2px solid var(--accent-gold); border-radius: 4px;
+      box-shadow: var(--surface-shadow-rest);
+    }
+    .close-label {
+      font-family: var(--font-display); font-size: clamp(1.4rem, 2.4vw, 1.8rem); text-transform: uppercase;
+      letter-spacing: 0.02em; color: var(--ink); line-height: 1.05;
+    }
+    .close-sub { color: var(--ink-dim); margin-top: 0.7rem; max-width: 44ch; line-height: 1.65; font-size: 0.95rem; }
+    .close-cta { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.3rem; }
+    .close-lines {
+      display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; margin-top: 1.3rem; padding-top: 1.1rem;
       border-top: 1px solid var(--line);
     }
-    .industry-service-heading {
-      font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--ink-faint);
+    .close-lines a {
+      font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.02em; color: var(--ink-dim);
+      transition: color .25s var(--ease-premium);
     }
-    .industry-chips { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.1rem; }
-    .industry-chip {
-      font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.03em;
-      padding: 0.5rem 1rem; border: 1px solid var(--accent-gold-dark); border-radius: 999px; color: var(--accent-gold-light);
+    .close-lines a:hover { color: var(--accent-gold-light); }
+    .close-tool { margin-top: 0.9rem; font-size: 0.84rem; color: var(--ink-faint); }
+    .close-tool a { color: var(--ink); border-bottom: 1px solid var(--line-2); transition: color .25s var(--ease-premium); }
+    .close-tool a:hover { color: var(--accent-gold-light); }
+    @media (max-width: 860px) {
+      .close-grid { grid-template-columns: 1fr; }
     }
-
-    /* ---------- about teaser ---------- */
-    .about-teaser-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(1.5rem, 5vw, 4rem); }
-    .about-teaser-grid h2 { font-size: clamp(1.8rem, 4.5vw, 2.8rem); margin-top: 0.6rem; }
-    .about-teaser-body p { color: var(--ink-dim); margin-bottom: 1.3rem; max-width: 60ch; }
-    @media (max-width: 760px) { .about-teaser-grid { grid-template-columns: 1fr; } }
-
-    /* ---------- contact teaser ---------- */
-    .contact-teaser { position: relative; background: linear-gradient(180deg, transparent, var(--bg-2) 70px); }
-    .contact-teaser::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--line-2) 20%, var(--line-2) 80%, transparent);
+    @media (max-width: 480px) {
+      .close-cta .btn { flex: 1 1 auto; justify-content: center; }
     }
-    .contact-teaser-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-    .contact-teaser-inner h2 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); margin-top: 0.6rem; }
-    .contact-teaser-sub { color: var(--ink-dim); margin-top: 0.8rem; max-width: 42ch; }
-    .contact-teaser-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; }
   </style>
+
+  <script>
+    // Homepage-only header state: the header floats transparent over the hero
+    // at the top of the page and takes its solid ground once scrolled (see the
+    // `is:global` style above). Re-evaluated on every client-side navigation;
+    // on a page without the hero the attribute is cleared and nothing listens.
+    document.addEventListener('astro:page-load', () => {
+      const root = document.documentElement;
+      const previous = (window as any).__homeHeaderScroll as (() => void) | undefined;
+      if (previous) {
+        window.removeEventListener('scroll', previous);
+        (window as any).__homeHeaderScroll = undefined;
+      }
+      if (!document.querySelector('.home-hero')) {
+        root.removeAttribute('data-home-scrolled');
+        return;
+      }
+      const update = () => { root.toggleAttribute('data-home-scrolled', window.scrollY > 32); };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      (window as any).__homeHeaderScroll = update;
+    });
+  </script>
 
   <script>
     // Mobile hero video reliability. This script only ever touches
@@ -1194,9 +1106,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     // 1) Off mobile widths: nothing to do. The inline script in the hero
     //    markup only ever assigns a `src` to the encode this breakpoint
     //    uses, so outside phone viewports this element has no source and
-    //    was never requested. (It previously carried a hard-coded src that
-    //    this handler tried to remove after the fact — far too late, since
-    //    the fetch had already started at parse time.)
+    //    was never requested.
     //
     // 2) On mobile widths: real iOS Safari autoplay isn't fully verifiable
     //    through desktop-engine automation, so playback isn't left to the
@@ -1285,7 +1195,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
         try {
           await navigator.clipboard.writeText(gstin);
           btn.classList.add('copied');
-          if (label) label.textContent = 'Copied!';
+          if (label) label.textContent = 'Copied';
           window.clearTimeout(resetTimer);
           resetTimer = window.setTimeout(() => {
             btn.classList.remove('copied');
@@ -1299,14 +1209,15 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
   </script>
 
   <script>
-    // Homepage ambient videos (category teaser + application showcase):
-    // don't fetch the file until it's actually about to scroll into view
-    // (rootMargin gives it a head start so playback is ready by the time
-    // it's visible, not loading on arrival).
+    // Applications showreel: don't fetch the file until it's actually about
+    // to scroll into view (rootMargin gives it a head start so playback is
+    // ready by the time it's visible, not loading on arrival). A tile that is
+    // `display:none` at the current breakpoint never intersects, so its clip
+    // is never requested.
     document.addEventListener('astro:page-load', () => {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      // Save-Data: these below-fold clips are decorative, so they are not
-      // fetched when the visitor has asked their browser to conserve data.
+      // Save-Data: this below-fold clip is decorative, so it is not fetched
+      // when the visitor has asked their browser to conserve data.
       const conn = (navigator as any).connection;
       if (conn && conn.saveData === true) return;
 
@@ -1334,23 +1245,17 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
           for (const entry of entries) {
             if (!entry.isIntersecting) continue;
             video.muted = true;
-            // The poster travels as `data-poster` rather than `poster`.
-            // A `poster` attribute is never lazy — the browser fetches it
-            // during the initial page load regardless of where the video
-            // sits on the page, which put two below-the-fold posters
-            // (measured: 132 KB + 47 KB) on the critical path. Applying it
-            // here means it is requested at the same moment as the video
-            // it belongs to: still before the element is on screen, thanks
-            // to the 200px rootMargin, but no longer competing with the
-            // hero for bandwidth.
+            // The poster travels as `data-poster` rather than `poster`: a
+            // `poster` attribute is never lazy, so it would be fetched during
+            // the initial page load. Applying it here means it is requested
+            // at the same moment as the video it belongs to.
             const poster = video.dataset.poster;
             if (poster && !video.poster) video.poster = poster;
             video.src = src;
             // Explicit load() after assigning src: some mobile browsers
             // (notably Android Chrome) don't reliably re-run resource
             // selection from a script-assigned src on a preload="none"
-            // element without this — desktop browsers tolerate the
-            // omission, Android's stricter media pipeline does not.
+            // element without this.
             video.load();
             attemptPlay();
             io.unobserve(video);
@@ -1359,12 +1264,11 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
 
         io.observe(video);
 
-        // These ambient background videos must never stay stopped: resume
-        // on any browser-initiated pause (tab backgrounded and the media
-        // pipeline reclaimed, a network stall while re-buffering across the
-        // loop point, OS battery-saver throttling, etc.) — there is no user
-        // control to pause them, so any pause while the tab is visible is
-        // unintended and should self-heal rather than leave the video stuck.
+        // This ambient clip must never stay stopped: resume on any
+        // browser-initiated pause (tab backgrounded, a network stall across
+        // the loop point, OS battery-saver throttling) — there is no user
+        // control to pause it, so any pause while the tab is visible is
+        // unintended and should self-heal.
         video.addEventListener('pause', () => {
           if (document.visibilityState === 'visible' && video.src) attemptPlay();
         });

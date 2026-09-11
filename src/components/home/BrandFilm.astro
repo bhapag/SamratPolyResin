@@ -1,85 +1,54 @@
 ---
-// Foreground manufacturer Brand Film — a NEW section, independent of the
-// hero video and the sitewide AmbientBackground layer (does not replace or
-// touch either). Runs a managed cycle: the supplied video plays once in
-// full, then the supplied still photo holds for 5 seconds, then the video
-// plays again — forever. See the <script> below for the single-timer state
-// machine that drives it.
+// Foreground manufacturer Brand Film — independent of the hero video and the
+// sitewide AmbientBackground layer. Renders a single portrait media frame that
+// the homepage places inside its manufacturing mosaic. Runs a managed cycle:
+// the supplied video plays once in full, then the supplied still photo holds
+// for 5 seconds, then the video plays again — forever. See the <script> below
+// for the single-timer state machine that drives it.
 import { Image, getImage } from 'astro:assets';
-import { site, buildWhatsAppLink } from '../../data/site.js';
+import { site } from '../../data/site.js';
 import brandFilmStill from '../../assets/brand-film/samrat-poly-resins-brand-film-still.png';
 
-const waLink = buildWhatsAppLink('generic');
-
-// The supplied master is a 1.7 MB PNG (941x1672). It was previously served
-// straight from public/ — unprocessed — as both the <video> poster and the
-// intermission <img>, into a frame that is at most ~340 CSS px wide.
-// Routing it through Astro's image pipeline emits sized WebP derivatives
-// instead. The original master is untouched and still present in
-// public/videos/ and src/assets/brand-film/ (byte-identical, SHA-256
-// eb349919...c38cf26).
-// `poster` takes a single URL, so it gets one derivative sized for a 340px
-// slot at ~3x DPR; the <img> below is served responsively.
+// The supplied master is a 1.7 MB PNG (941x1672). Routing it through Astro's
+// image pipeline emits sized WebP derivatives; the original master is
+// untouched and still present in public/videos/ and src/assets/brand-film/.
 //
-// The poster is now applied by JS on activation (`data-poster`), not as a
-// `poster` attribute. A `poster` is never lazy: this section sits roughly
-// 6,000 px below the fold, yet its 132 KB poster was being fetched during
-// the initial page load, competing with the hero for bandwidth on a slow
-// connection. It is also redundant at that moment — the <Image> layer below
-// renders the identical still, responsively and lazily, and now starts as
-// the visible layer until the video is genuinely playing.
+// The poster is applied by JS on activation (`data-poster`), not as a `poster`
+// attribute: a `poster` is never lazy, and this frame sits well below the
+// fold. The <Image> layer below renders the identical still, responsively and
+// lazily, and is the visible layer until the video is genuinely playing.
 const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, format: 'webp' });
 ---
 
-<section class="section brandfilm">
-  <div class="wrap brandfilm-grid">
-    <div class="brandfilm-text">
-      <div class="section-head">
-        <p class="eyebrow">{site.name}</p>
-        <h2>Manufacturing, In Motion</h2>
-      </div>
-      <p class="brandfilm-desc">
-        A closer look at how {site.name} manufactures polyester, epoxy and composite
-        resin systems for FRP manufacturers and industrial applications across India.
-      </p>
-      <div class="brandfilm-cta">
-        <a href="/products/" class="btn btn-solid">Explore products</a>
-        <a href={waLink} class="btn btn-wa" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5 0-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2 2.8 1.2 2.8.8 3.3.8.5 0 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
-          WhatsApp
-        </a>
-      </div>
-    </div>
-
-    <div class="brandfilm-media">
-      <div class="brandfilm-frame" id="brandFilmFrame">
-        <video
-          class="brandfilm-layer brandfilm-video"
-          id="brandFilmVideo"
-          muted
-          playsinline
-          preload="none"
-          data-poster={brandFilmPoster.src}
-          aria-label={`${site.name} manufacturing brand film`}
-          disablepictureinpicture
-          disableremoteplayback
-        >
-          <source data-src="/videos/samrat-poly-resins-brand-film.mp4" type="video/mp4" />
-        </video>
-        <Image
-          class="brandfilm-layer brandfilm-photo is-active"
-          id="brandFilmPhoto"
-          src={brandFilmStill}
-          alt={`${site.name} manufacturing — brand film still`}
-          widths={[340, 680, 1020]}
-          sizes="(max-width: 860px) 300px, 340px"
-          format="webp"
-          loading="lazy"
-        />
-      </div>
-    </div>
-  </div>
-</section>
+<figure class="brandfilm" id="brandFilmFrame">
+  <video
+    class="brandfilm-layer brandfilm-video"
+    id="brandFilmVideo"
+    muted
+    playsinline
+    preload="none"
+    data-poster={brandFilmPoster.src}
+    aria-label={`${site.name} manufacturing brand film`}
+    disablepictureinpicture
+    disableremoteplayback
+  >
+    <source data-src="/videos/samrat-poly-resins-brand-film.mp4" type="video/mp4" />
+  </video>
+  <Image
+    class="brandfilm-layer brandfilm-photo is-active"
+    id="brandFilmPhoto"
+    src={brandFilmStill}
+    alt={`${site.name} manufacturing — brand film still`}
+    widths={[340, 680, 1020]}
+    sizes="(max-width: 860px) 50vw, 320px"
+    format="webp"
+    loading="lazy"
+  />
+  <figcaption class="brandfilm-caption">
+    <span class="brandfilm-tag">Brand film</span>
+    <span class="brandfilm-title">Inside the plant</span>
+  </figcaption>
+</figure>
 
 <script>
   document.addEventListener('astro:page-load', () => {
@@ -103,11 +72,9 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
     }
 
     let activated = false;
-    // Which half of the cycle we are in. Previously inferred from the
-    // video's `is-active` class, which no longer works as a proxy: the
-    // photo is now the initially visible layer (the video has no poster
-    // and would otherwise paint black), so the video is not `is-active`
-    // during its own first buffering.
+    // Which half of the cycle we are in. The photo is the initially visible
+    // layer (the video has no poster and would otherwise paint black), so the
+    // video is not `is-active` during its own first buffering.
     let phase: 'video' | 'photo' = 'video';
     // The single managed timer for the whole cycle — always cleared before
     // being reassigned, so pausing/resuming off-screen or a fast re-entry
@@ -127,13 +94,11 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
       }
     };
 
-    // Attach the real source only once the section is actually approaching
-    // the viewport — see the IntersectionObserver below.
+    // Attach the real source only once the frame is actually approaching the
+    // viewport — see the scroll check below.
     const ensureActivated = () => {
       if (activated) return;
       activated = true;
-      // Apply the poster now, alongside the video source, rather than
-      // letting it download during initial page load.
       const posterSrc = video.dataset.poster;
       if (posterSrc && !video.poster) video.poster = posterSrc;
       const source = video.querySelector('source');
@@ -168,14 +133,10 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
     // video is already paused and the 5s timer keeps running regardless of
     // visibility, so the cycle's timing never drifts.
     //
-    // A plain rAF-throttled scroll check, not IntersectionObserver: testing
-    // (both here and on the sitewide AmbientBackground component earlier)
-    // showed a freshly created observer's first callback isn't reliably
-    // synchronous with real layout state on a cold load in this project's
-    // test environment — confirmed independently of this component, since
-    // the site's own pre-existing `.lazy-video` observer (cats/applications
-    // section videos) exhibited the identical non-firing behavior in the
-    // same session. A synchronous rect check sidesteps that entirely.
+    // A plain rAF-throttled scroll check, not IntersectionObserver: a freshly
+    // created observer's first callback isn't reliably synchronous with real
+    // layout state on a cold load in this project's test environment. A
+    // synchronous rect check sidesteps that entirely.
     const checkVisibility = () => {
       const rect = root.getBoundingClientRect();
       const nearOrInViewport = rect.top < window.innerHeight + 200 && rect.bottom > -200;
@@ -200,32 +161,18 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
 </script>
 
 <style>
-  .brandfilm-grid {
-    display: grid;
-    grid-template-columns: 1fr 0.8fr;
-    gap: clamp(2rem, 6vw, 4.5rem);
-    align-items: center;
-  }
-  .brandfilm-text { max-width: 46ch; }
-  .brandfilm-desc { color: var(--ink-dim); margin-top: 1.1rem; line-height: 1.7; }
-  .brandfilm-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 1.8rem; }
-
-  .brandfilm-media { display: flex; justify-content: center; }
-  .brandfilm-frame {
+  /* The frame fills whatever grid cell the homepage gives it; the portrait
+     media covers the cell, so the parent decides the shape. */
+  .brandfilm {
     position: relative;
     width: 100%;
-    max-width: 340px;
-    aspect-ratio: 1080 / 1916;
-    border: 1px solid rgba(var(--gold-rgb), .22);
-    border-radius: 18px;
+    height: 100%;
+    min-height: 100%;
     overflow: hidden;
-    box-shadow: 0 20px 48px rgba(0, 0, 0, .4), 0 0 0 1px rgba(255, 255, 255, .04) inset, 0 1px 0 rgba(255, 255, 255, .07) inset;
-    transition: transform .4s var(--ease-premium), box-shadow .4s var(--ease-premium), border-color .4s var(--ease-premium);
-  }
-  .brandfilm-frame:hover {
-    transform: translateY(-4px);
-    border-color: rgba(var(--gold-rgb), .45);
-    box-shadow: 0 26px 56px rgba(0, 0, 0, .45), 0 0 26px rgba(var(--gold-rgb), .14), 0 0 0 1px rgba(255, 255, 255, .05) inset, 0 1px 0 rgba(255, 255, 255, .08) inset;
+    border: 1px solid var(--line-2);
+    border-radius: 4px;
+    background: var(--bg-3);
+    box-shadow: var(--surface-shadow-rest);
   }
   .brandfilm-layer {
     position: absolute;
@@ -240,15 +187,19 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
   .brandfilm-layer.is-active { opacity: 1; }
   .brandfilm-video { z-index: 1; }
   .brandfilm-photo { z-index: 2; }
-
-  @media (max-width: 860px) {
-    .brandfilm-grid { grid-template-columns: 1fr; }
-    .brandfilm-text { max-width: none; }
-    .brandfilm-media { order: -1; margin-bottom: 0.5rem; }
-    .brandfilm-frame { max-width: 300px; }
+  .brandfilm-caption {
+    position: absolute; inset: auto 0 0 0; z-index: 3;
+    display: flex; flex-direction: column; gap: 0.2rem;
+    padding: 1.6rem 1rem 0.9rem;
+    background: linear-gradient(180deg, transparent, rgba(8, 9, 11, 0.86) 70%);
+    pointer-events: none;
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    .brandfilm-frame:hover { transform: none; }
+  .brandfilm-tag {
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent-gold-light);
+  }
+  .brandfilm-title {
+    font-family: var(--font-display); font-size: 0.98rem; letter-spacing: 0.02em;
+    text-transform: uppercase; color: var(--ink);
   }
 </style>
