@@ -79,3 +79,12 @@ test.describe('Polyester Putty Resin posters', () => {
     await expect(page.locator('.prod-img img, img.prod-img').first()).toBeVisible();
   });
 });
+
+test('GP Gelcoat is not assigned a backbone its data sheet does not state', async ({ page }) => {
+  // TDS: "Resin Type: Polyester (surface-coating gelcoat)". No ortho/iso/NPG.
+  for (const url of ['/products/gp-gelcoat-resin/', '/applications/gelcoat-for-frp-bathware-sanitaryware/', '/products/gelcoat-resins/']) {
+    await page.goto(url);
+    const text = (await page.locator('main').innerText()).replace(/\s+/g, ' ');
+    expect(text, url).not.toMatch(/GP Gelcoat Resin is (a |an )?[^.]{0,30}(orthophthalic|isophthalic|NPG)/i);
+  }
+});
