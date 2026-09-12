@@ -1,0 +1,17 @@
+# Binary assets must never pass through end-of-line conversion. With
+# core.autocrlf=true on Windows, git had been classifying 17 PDFs as text;
+# their bytes happened to contain no CR, so nothing was corrupted, but the
+# next PDF with a CR byte would have been. Declared explicitly instead of
+# relying on content sniffing.
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.gif  binary
+*.ico  binary
+*.mp4  binary
+*.webm binary
+*.woff binary
+*.woff2 binary
