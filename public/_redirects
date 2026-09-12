@@ -215,3 +215,10 @@
 # Public product name changed to "Polyester Putty Resin"; slug follows the name.
 /products/pet-resin/                                    /products/polyester-putty-resin/  301
 /products/pet-resin                                     /products/polyester-putty-resin/  301
+
+# 2026-09-13 — the 2026-08 product catalogue PDF was withdrawn. It still
+# advertised UV Resin (removed from the range), described PET Resin as
+# thermoplastic polyethylene terephthalate chips for bottles and packaging,
+# and printed "26 CHEMIST-VERIFIED PRODUCT GRADES" against a range that is
+# now 33. Anyone holding the direct link lands on the live product range.
+/downloads/samrat-poly-resins-product-catalogue.pdf     /products/  301

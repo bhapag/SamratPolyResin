@@ -29,15 +29,20 @@ export const site = {
   // scripts/build-og-image.mjs (re-run it if those source photos change).
   ogImage: "/og-image.jpg",
 
-  // Sitewide product catalogue PDF — single source of truth for every
-  // "Download Product Catalogue" link across the site (product pages,
-  // Resources/Knowledge Centre, Contact page, footer). Swapping the file
-  // later only means updating `url` (and `sizeLabel`) here once.
+  // Single source of truth for every "Product Range" call-to-action across
+  // the site (product pages, category hubs, Resources/Knowledge Centre,
+  // Technical Documents, Contact page, footer). Changing the destination
+  // later only means updating `url` and `title` here once.
   catalogue: {
-    url: "/downloads/samrat-poly-resins-product-catalogue.pdf",
-    title: "Samrat Poly Resins Product Catalogue",
-    description: "Complete industrial product catalogue covering polyester resins, epoxy systems, gelcoats, catalysts, glass fiber, pigments and FRP composite raw materials.",
-    sizeLabel: "1.1 MB",
+    // The 2026-08 catalogue PDF was withdrawn on 2026-09-13: it still advertised
+    // UV Resin (removed from the range), described PET Resin as thermoplastic
+    // polyethylene terephthalate chips for bottles and packaging, and printed
+    // "26 CHEMIST-VERIFIED PRODUCT GRADES" against a range that is now 33.
+    // Every former catalogue call-to-action now points at the live product
+    // range, which is always current. A replacement catalogue is separate work.
+    url: "/products/",
+    title: "Samrat Poly Resins Product Range",
+    description: "The full published Samrat Poly Resins range — polyester resins, isophthalic grades, gelcoats, epoxy systems, hardeners and FRP allied materials.",
   },
 
   // --- CONTACT (swap these) ---

@@ -873,7 +873,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <p class="marble-image-note">Illustrative product graphic. Use the <a href={tdsUrl} target="_blank" rel="noopener" download>current Marble Resin TDS</a> for verified supplied-resin data, documented applications and grade selection.</p>
         )}
         {isFiberglassEpoxyResin && (
-          <p class="marble-image-note">Illustrative Fiberglass Epoxy Resin product graphics. They are not technical evidence for the supplied grade; use the <a href={tdsUrl} target="_blank" rel="noopener" download>current Fiberglass Epoxy Resin TDS</a> and catalogue as the product-data reference.</p>
+          <p class="marble-image-note">Illustrative Fiberglass Epoxy Resin product graphics. They are not technical evidence for the supplied grade; use the <a href={tdsUrl} target="_blank" rel="noopener" download>current Fiberglass Epoxy Resin TDS</a> as the product-data reference.</p>
         )}
       </div>
     </div>
@@ -1040,13 +1040,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               <span class="doc-link-arrow" aria-hidden="true">↓</span>
             </a>
           )}
-          <a href={site.catalogue.url} class="doc-link" target="_blank" rel="noopener" download
-             aria-label={`Download ${site.catalogue.title} (PDF)`}>
+          <a href={site.catalogue.url} class="doc-link"
+             aria-label={`Browse the ${site.catalogue.title}`}>
             <span class="doc-link-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V4.5A1.5 1.5 0 0 1 5.5 3H18a1 1 0 0 1 1 1v15.2"/><path d="M6.5 3v18"/><path d="M6.5 21H19a1 1 0 0 0 1-1v-.5a1 1 0 0 0-1-1H6.8"/></svg>
             </span>
-            <span class="doc-link-body"><span class="doc-link-kind">Catalogue</span><span class="doc-link-title">Full Product Range</span></span>
-            <span class="doc-link-arrow" aria-hidden="true">↓</span>
+            <span class="doc-link-body"><span class="doc-link-kind">Product range</span><span class="doc-link-title">All {products.length} published grades</span></span>
+            <span class="doc-link-arrow doc-link-arrow-go" aria-hidden="true">→</span>
           </a>
       </div>
       {/* PROTOTYPE: the product masthead ends here — image, identity, price,
@@ -1193,7 +1193,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <p class="upr-grade-guide-intro">Share the finished FRP component, exact grade if known, service medium and concentration where relevant, operating temperature where relevant, any stated fire or technical requirement, expected quantity, packaging requirement, delivery location and required documentation. This supports a focused discussion without asking buyers to design a laminate or provide a formulation.</p>
           <div class="gp-hub-actions">
             <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Review Vinyl Ester Resin TDS</a>
-            <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Review Product Catalogue</a>
+            <a href={site.catalogue.url} class="btn">Browse the product range</a>
             <a href="/applications/vinyl-ester-resin-for-chemical-storage-tanks/" class="btn">Explore documented FRP applications</a>
             <a href="#enquire" class="btn btn-solid">Request Vinyl Ester Resin Quote</a>
           </div>
@@ -1291,7 +1291,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <p class="upr-grade-guide-intro">Review the current product-specific TDS, then share the intended finished application, any stated chemistry or technical requirement, expected quantity, packaging need, delivery location and required documentation. For a service environment, include the medium, concentration and temperature where relevant; this supports a product discussion without implying a chemical-compatibility recommendation, formulation or finished-system approval.</p>
           <div class="gp-hub-actions">
             <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Review Bisphenol Resin TDS</a>
-            <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Review Product Catalogue</a>
+            <a href={site.catalogue.url} class="btn">Browse the product range</a>
             <a href="#enquire" class="btn btn-solid">Request Bisphenol Resin Quote</a>
           </div>
         </section>
@@ -1364,7 +1364,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <p class="upr-grade-guide-intro">Share your intended sheet or laminate application, required quantity, packaging need and delivery location, and we'll confirm the right grade and documentation for a quote.</p>
           <div class="gp-hub-actions">
             <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Review TDS (PDF)</a>
-            <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Review Product Catalogue</a>
+            <a href={site.catalogue.url} class="btn">Browse the product range</a>
             <a href="#enquire" class="btn btn-solid">Request a Quote</a>
           </div>
         </section>
@@ -1458,7 +1458,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <p class="upr-grade-guide-intro">Share the finished marble or stone product, any current TDS or catalogue reference, required supplied appearance or finish, applicable technical requirement, quantity, packaging need, delivery location and documentation required. If the enquiry is for quartz, engineered stone, onyx, a finished slab or another mineral composite, name that requirement explicitly so the correct product route can be reviewed.</p>
           <div class="gp-hub-actions">
             <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Review Marble Resin TDS</a>
-            <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Review Product Catalogue</a>
+            <a href={site.catalogue.url} class="btn">Browse the product range</a>
             <a href="#enquire" class="btn btn-solid">Request Marble Resin Quote</a>
           </div>
         </section>
@@ -1531,7 +1531,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               <p>Glass Fiber is a separate reinforcement-material decision. The current DMC/SMC documentation does not prescribe CSM 300, CSM 450 or a reinforcement design.</p>
             </article>
           </div>
-          <p class="upr-grade-guide-intro">Before purchase, review the current <a href="/tds/dmc-smc-resin-tds.pdf" target="_blank" rel="noopener">DMC/SMC Resin TDS</a> and <a href={site.catalogue.url} target="_blank" rel="noopener">product catalogue</a>. Share whether the requirement is DMC or SMC, the finished component, any stated specification, expected quantity, packaging need, delivery location and required documentation. This page intentionally does not provide formulation or process instructions.</p>
+          <p class="upr-grade-guide-intro">Before purchase, review the current <a href="/tds/dmc-smc-resin-tds.pdf" target="_blank" rel="noopener">DMC/SMC Resin TDS</a> and the <a href={site.catalogue.url}>published product range</a>. Share whether the requirement is DMC or SMC, the finished component, any stated specification, expected quantity, packaging need, delivery location and required documentation. This page intentionally does not provide formulation or process instructions.</p>
         </section>
       )}
 
@@ -1909,7 +1909,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             </div>
             <div class="gp-outcome-card">
               <h3>Define the full material requirement</h3>
-              <p>Share the sheet or panel, reinforcement requirement if known, visible surface role, expected quantity and delivery location. Use the current TDS and catalogue as documents for the product discussion.</p>
+              <p>Share the sheet or panel, reinforcement requirement if known, visible surface role, expected quantity and delivery location. Use the current TDS as the document for the product discussion.</p>
             </div>
           </div>
         </section>
@@ -2777,7 +2777,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="gp-hub-actions">
         <a href="#enquire" class="btn btn-solid">Discuss your GP Yellow Resin application</a>
         <a href="/resources/#gp-yellow-resin-hub-heading" class="btn">Explore GP Yellow Resin Knowledge Hub</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
       </div>
     </section>
   )}
@@ -2796,7 +2796,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href="#enquire" class="btn btn-solid">Discuss your Sheet Grade Yellow Resin requirement</a>
         <a href="/resources/#sheet-grade-resin-hub-heading" class="btn">Explore the Sheet Grade Yellow Knowledge Hub</a>
         <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download Sheet Grade Yellow TDS</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
       </div>
     </section>
   )}
@@ -2815,7 +2815,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href="#enquire" class="btn btn-solid">Discuss your PET Resin requirement</a>
         <a href="/resources/#pet-resin-hub-heading" class="btn">Explore PET Resin buyer guides</a>
         <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download PET Resin TDS</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
       </div>
     </section>
   )}
@@ -2834,7 +2834,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href="#enquire" class="btn btn-solid">Request Marble Resin Quote</a>
         <a href="/resources/#marble-resin-hub-heading" class="btn">Explore all Marble Resin guides</a>
         <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Review Marble Resin TDS</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Review Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
         <a href="/about/" class="btn">About Samrat Poly Resins</a>
       </div>
     </section>
@@ -2911,7 +2911,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href="#enquire" class="btn btn-solid">Discuss your DMC / SMC Resin requirement</a>
         <a href="/resources/#dmc-smc-resin-hub-heading" class="btn">Explore DMC / SMC buyer guides</a>
         <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download DMC / SMC Resin TDS</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
       </div>
     </section>
   )}
@@ -2975,7 +2975,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <div class="gp-hub-actions">
           <a href="#enquire" class="btn btn-solid">Discuss your Button Grade Resin requirement</a>
           <a href="/resources/#button-resin-hub-heading" class="btn">Explore the Button Resin Knowledge Hub</a>
-          <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+          <a href={site.catalogue.url} class="btn">Browse the product range</a>
         </div>
       </div>
       <div class="resources-grid">
@@ -2998,7 +2998,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href="#enquire" class="btn btn-solid">Discuss your UPR requirement</a>
         <a href="#upr-grade-guide-heading" class="btn">Compare UPR grade roles</a>
         <a href="/resources/#upr-resin-hub-heading" class="btn">Explore the UPR Knowledge Hub</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
       </div>
     </section>
   )}
@@ -3013,7 +3013,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <a href="/resources/#glass-fiber-guides-heading" class="btn btn-solid">Explore Glass Fiber guides</a>
           <a href="#enquire" class="btn">Discuss your reinforcement requirement</a>
           <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download Glass Fiber TDS</a>
-          <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+          <a href={site.catalogue.url} class="btn">Browse the product range</a>
         </div>
       </div>
       <div class="resources-grid">
@@ -3061,7 +3061,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href="#enquire" class="btn btn-solid">Discuss your FRP Polyester Pigment requirement</a>
         <a href="/resources/#frp-pigment-guides-heading" class="btn">View the pigment resource hub</a>
         <a href="/tds/frp-polyester-pigment-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Pigment TDS</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
       </div>
     </section>
   )}
@@ -3080,7 +3080,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href="#enquire" class="btn btn-solid">Discuss your MEKP requirement</a>
         <a href="/resources/#mekp-hardener-hub-heading" class="btn">Explore the MEKP Knowledge Hub</a>
         <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download MEKP TDS</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
       </div>
     </section>
   )}
@@ -3100,7 +3100,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href="#enquire" class="btn btn-solid">Discuss your Epoxy Clear Casting Resin requirement</a>
         <a href="/resources/#epoxy-casting-resin-hub-heading" class="btn">Explore the Epoxy Clear Casting Resin hub</a>
         <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download Clear Casting Resin TDS</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
         <a href="/about/" class="btn">Company and facility context</a>
       </div>
     </section>
@@ -3111,7 +3111,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="gp-hub-head">
         <p class="eyebrow">Decorative epoxy knowledge centre</p>
         <h2 id="epoxy-art-resources-heading" class="rel-h">Epoxy Art Resin guides for professional buyers</h2>
-        <p>Follow a focused decorative-epoxy route: define the art-resin surface role, compare it with contained casting or reinforced polyester FRP, review published applications and finish questions, then use the current TDS and catalogue to prepare a focused enquiry.</p>
+        <p>Follow a focused decorative-epoxy route: define the art-resin surface role, compare it with contained casting or reinforced polyester FRP, review published applications and finish questions, then use the current TDS to prepare a focused enquiry.</p>
       </div>
       <div class="resources-grid">
         {epoxyArtResources.map((resource) => <ResourceCard resource={resource} />)}
@@ -3121,7 +3121,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href="#enquire" class="btn btn-solid">Discuss your Epoxy Art Resin requirement</a>
         <a href="/resources/#epoxy-art-resin-hub-heading" class="btn">Explore the Art Resin Knowledge Hub</a>
         <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download Epoxy Art Resin TDS</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
         <a href="/about/" class="btn">Company and facility context</a>
       </div>
     </section>
@@ -3141,7 +3141,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href="#enquire" class="btn btn-solid">Discuss your UV Resin requirement</a>
         <a href="/resources/#uv-resin-hub-heading" class="btn">Explore the UV Resin Knowledge Hub</a>
         <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download UV Resin TDS</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
       </div>
     </section>
   )}
@@ -3289,7 +3289,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Use product-specific documentation</strong>
-            <span>Use the FRP Polyester Pigment TDS and product catalogue for published product information. Confirm the actual colour, base system and application before finalising a requirement.</span>
+            <span>Use the FRP Polyester Pigment TDS for published product information. Confirm the actual colour, base system and application before finalising a requirement.</span>
           </span>
         </a>
       </div>
@@ -3351,7 +3351,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="gp-hub-actions">
         <a href="/resources/#roof-light-resin-hub-heading" class="btn">Explore Roof Light resources</a>
         <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Review Roof Light Resin TDS</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
         <a href="#enquire" class="btn btn-solid">Request Roof Light Resin Quote</a>
       </div>
     </section>
@@ -3371,7 +3371,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="gp-hub-actions">
         <a href="/resources/#fire-retardant-resin-hub-heading" class="btn">Explore FR Resin resources</a>
         <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Review Fire Retardant Resin TDS</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
         <a href="#enquire" class="btn btn-solid">Discuss an FR Resin requirement</a>
       </div>
     </section>
@@ -3391,7 +3391,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="gp-hub-actions">
         <a href="/resources/#iso-fire-retardant-resin-hub-heading" class="btn">Explore ISO FR Resin resources</a>
         <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Review ISO Fire Retardant Resin TDS</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
         <a href="#enquire" class="btn btn-solid">Discuss an ISO FR requirement</a>
       </div>
     </section>
@@ -3419,7 +3419,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="gp-hub-actions">
         <a href="/resources/#fiberglass-epoxy-resin-hub-heading" class="btn">Explore Fiberglass Epoxy guides</a>
         <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Review Fiberglass Epoxy TDS</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Review Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
         <a href="#enquire" class="btn btn-solid">Discuss a Fiberglass Epoxy requirement</a>
       </div>
     </section>
@@ -3472,7 +3472,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="gp-hub-actions">
         <a href="/resources/#vinyl-ester-resin-hub-heading" class="btn">Explore Vinyl Ester guides</a>
         <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Review Vinyl Ester Resin TDS</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
         <a href="#enquire" class="btn btn-solid">Discuss a Vinyl Ester requirement</a>
       </div>
     </section>
@@ -3492,7 +3492,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="gp-hub-actions">
         <a href="/resources/#bisphenol-resin-hub-heading" class="btn">Explore Bisphenol Resin guides</a>
         <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Review Bisphenol Resin TDS</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Review Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
         <a href="#enquire" class="btn btn-solid">Discuss a Bisphenol Resin requirement</a>
       </div>
     </section>
@@ -3626,7 +3626,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href="#enquire" class="btn btn-solid">Discuss your GP White Resin requirement</a>
         <a href="/resources/#gp-white-resin-hub-heading" class="btn">View the GP White Resource Hub</a>
         <a href="/tds/gp-white-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download GP White Resin TDS</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
       </div>
     </section>
   )}
@@ -3639,7 +3639,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       </div>
       <div class="gp-hub-actions">
         <a href="#enquire" class="btn btn-solid">Discuss your GP Clear Resin application</a>
-        <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
       </div>
     </section>
   )}

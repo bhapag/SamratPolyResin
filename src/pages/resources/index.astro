@@ -466,17 +466,13 @@ const KNOWLEDGE_HUBS = [
         <div class="kc-downloads-body">
           <h2 class="kc-downloads-title">{site.catalogue.title}</h2>
           <p class="kc-downloads-desc">{site.catalogue.description}</p>
-          <p class="kc-downloads-meta">PDF · {site.catalogue.sizeLabel}</p>
         </div>
         <a
           href={site.catalogue.url}
           class="btn btn-solid"
-          target="_blank"
-          rel="noopener"
-          download
-          aria-label={`Download ${site.catalogue.title} (PDF)`}
+          aria-label={`Browse the ${site.catalogue.title}`}
         >
-          Download Catalogue
+          Browse Product Range
         </a>
       </div>
       <p class="kc-downloads-alt">
@@ -520,7 +516,7 @@ const KNOWLEDGE_HUBS = [
             <div class="kc-focus-actions">
               <a href="/products/gp-white-resin/" class="btn btn-solid">View GP White Resin</a>
               <a href="/tds/gp-white-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download GP White Resin TDS</a>
-              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href={site.catalogue.url} class="btn">Browse the product range</a>
               <a href="/contact/" class="btn">Discuss your GP White Resin requirement</a>
             </div>
           </div>
@@ -541,7 +537,7 @@ const KNOWLEDGE_HUBS = [
             <div class="kc-focus-actions">
               <a href="/products/gp-quartz-resin/" class="btn btn-solid">View GP Quartz Resin</a>
               <a href="/tds/gp-quartz-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download GP Quartz Resin TDS</a>
-              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href={site.catalogue.url} class="btn">Browse the product range</a>
               <a href="/about/" class="btn">About Samrat Poly Resins</a>
               <a href="/contact/" class="btn">Discuss a quartz-resin requirement</a>
             </div>
@@ -580,7 +576,7 @@ const KNOWLEDGE_HUBS = [
             <div class="kc-focus-actions">
               <a href="/products/marble-resin/" class="btn btn-solid">View Marble Resin</a>
               <a href="/tds/marble-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Marble Resin TDS</a>
-              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Review Product Catalogue</a>
+              <a href={site.catalogue.url} class="btn">Browse the product range</a>
               <a href="/about/" class="btn">About Samrat Poly Resins</a>
               <a href="/contact/" class="btn">Request Marble Resin Quote</a>
             </div>
@@ -619,7 +615,7 @@ const KNOWLEDGE_HUBS = [
             <div class="kc-focus-actions">
               <a href="/products/fibre-glass-mat/" class="btn btn-solid">View Glass Fiber Mat</a>
               <a href="/tds/fibre-glass-mat-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Glass Fiber TDS</a>
-              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href={site.catalogue.url} class="btn">Browse the product range</a>
               <a href="/contact/" class="btn">Discuss your reinforcement requirement with Samrat</a>
             </div>
           </div>
@@ -657,7 +653,7 @@ const KNOWLEDGE_HUBS = [
             <div class="kc-focus-actions">
               <a href="/products/frp-polyester-pigment/" class="btn btn-solid">View FRP Polyester Pigment</a>
               <a href="/tds/frp-polyester-pigment-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Pigment TDS</a>
-              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href={site.catalogue.url} class="btn">Browse the product range</a>
               <a href="/about/" class="btn">About Samrat Poly Resins</a>
               <a href="/contact/" class="btn">Discuss an FRP pigment requirement</a>
             </div>
@@ -696,7 +692,7 @@ const KNOWLEDGE_HUBS = [
             <div class="kc-focus-actions">
               <a href="/products/mekp-hardener/" class="btn btn-solid">View MEKP Hardener</a>
               <a href="/tds/mekp-hardener-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download MEKP TDS</a>
-              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href={site.catalogue.url} class="btn">Browse the product range</a>
               <a href="/about/" class="btn">About Samrat Poly Resins</a>
               <a href="/contact/" class="btn">Discuss an MEKP requirement</a>
             </div>
@@ -729,7 +725,7 @@ const KNOWLEDGE_HUBS = [
             <div class="kc-focus-actions">
               <a href="/products/epoxy-hardener/" class="btn btn-solid">View Epoxy Hardener</a>
               <a href="/tds/epoxy-hardener-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Epoxy Hardener TDS</a>
-              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href={site.catalogue.url} class="btn">Browse the product range</a>
               <a href="/contact/" class="btn">Discuss an epoxy-system requirement</a>
             </div>
           </div>
@@ -767,7 +763,7 @@ const KNOWLEDGE_HUBS = [
             <div class="kc-focus-actions">
               <a href="/products/fiberglass-epoxy-resin/" class="btn btn-solid">View Fiberglass Epoxy Resin</a>
               <a href="/tds/fiberglass-epoxy-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Fiberglass Epoxy TDS</a>
-              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Review Product Catalogue</a>
+              <a href={site.catalogue.url} class="btn">Browse the product range</a>
               <a href="/products/fiberglass-epoxy-resin/#enquire" class="btn">Discuss a composite epoxy requirement</a>
             </div>
           </div>
@@ -805,7 +801,7 @@ const KNOWLEDGE_HUBS = [
             <div class="kc-focus-actions">
               <a href="/products/epoxy-clear-casting-resin/" class="btn btn-solid">View Epoxy Clear Casting Resin</a>
               <a href="/tds/epoxy-clear-casting-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Clear Casting Resin TDS</a>
-              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href={site.catalogue.url} class="btn">Browse the product range</a>
               <a href="/about/" class="btn">Company and facility context</a>
               <a href="/contact/" class="btn">Discuss an epoxy casting requirement</a>
             </div>
@@ -839,7 +835,7 @@ const KNOWLEDGE_HUBS = [
             <div class="kc-focus-actions">
               <a href="/products/epoxy-art-resin/" class="btn btn-solid">View Epoxy Art Resin</a>
               <a href="/tds/epoxy-art-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Epoxy Art Resin TDS</a>
-              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href={site.catalogue.url} class="btn">Browse the product range</a>
               <a href="/about/" class="btn">Company and facility context</a>
               <a href="/contact/" class="btn">Discuss an Art Resin requirement</a>
             </div>
@@ -911,7 +907,7 @@ const KNOWLEDGE_HUBS = [
               <a href="/products/dmc-smc-resin/" class="btn btn-solid">View DMC/SMC Resin</a>
               <a href="/resources/dmc-vs-smc/" class="btn">Compare DMC and SMC</a>
               <a href="/tds/dmc-smc-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download DMC/SMC Resin TDS</a>
-              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href={site.catalogue.url} class="btn">Browse the product range</a>
               <a href="/contact/" class="btn">Discuss a DMC or SMC requirement</a>
             </div>
           </div>
@@ -950,7 +946,7 @@ const KNOWLEDGE_HUBS = [
               <a href="/products/polyester-putty-resin/" class="btn btn-solid">View Polyester Putty Resin</a>
               <a href="/resources/pet-resin-liquid-grade-vs-thermoplastic-pet/" class="btn">Clarify PET material form</a>
               <a href="/tds/pet-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download TDS</a>
-              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href={site.catalogue.url} class="btn">Browse the product range</a>
               <a href="/about/" class="btn">Company and facility context</a>
               <a href="/contact/" class="btn">Discuss a requirement</a>
             </div>
@@ -983,7 +979,7 @@ const KNOWLEDGE_HUBS = [
             <div class="kc-focus-actions">
               <a href="/products/roof-light-resin/" class="btn btn-solid">View Roof Light Sheet Grade Resin</a>
               <a href="/tds/roof-light-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Roof Light Resin TDS</a>
-              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
+              <a href={site.catalogue.url} class="btn">Browse the product range</a>
               <a href="/applications/roof-light-sheet-resin-for-frp-roofing-and-skylight-sheets/" class="btn">Explore roof-light sheet context</a>
               <a href="/about/" class="btn">Company and facility context</a>
               <a href="/contact/" class="btn">Discuss a roofing-sheet requirement</a>
@@ -1135,7 +1131,7 @@ const KNOWLEDGE_HUBS = [
             <div class="kc-focus-actions">
               <a href="/products/bisphenol-resin/" class="btn btn-solid">View Bisphenol Resin</a>
               <a href="/tds/bisphenol-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download Bisphenol Resin TDS</a>
-              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Review Product Catalogue</a>
+              <a href={site.catalogue.url} class="btn">Browse the product range</a>
               <a href="/contact/" class="btn">Discuss a Bisphenol requirement</a>
             </div>
           </div>

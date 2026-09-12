@@ -216,9 +216,14 @@ const trackCtaClick = (anchor: HTMLAnchorElement) => {
     return;
   }
 
-  if (url.pathname === '/downloads/samrat-poly-resins-product-catalogue.pdf') {
-    trackEvent('catalogue_download', baseDetails);
-    return;
+  // The catalogue PDF was retired; the same intent now lands on the product
+  // range page, so measure the click that used to be a download.
+  if (url.pathname === '/products/') {
+    const label = (anchor.getAttribute('aria-label') || anchor.textContent || '').toLowerCase();
+    if (label.includes('product range') || label.includes('catalogue')) {
+      trackEvent('catalogue_open', baseDetails);
+      return;
+    }
   }
 
   if (isQuoteRequest(anchor, url)) trackEvent('quote_request_click', baseDetails);

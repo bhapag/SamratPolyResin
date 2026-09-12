@@ -295,6 +295,8 @@ h1, h2 {
 }
 .doc-link:hover { border-color: var(--ink-dim); transform: translateY(-1px); }
 .doc-link:hover .doc-link-arrow { transform: translateY(2px); }
+/* A catalogue link now opens a page, not a download: it moves across, not down. */
+.doc-link:hover .doc-link-arrow-go { transform: translateX(3px); }
 .doc-link:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
 .doc-link-icon { flex-shrink: 0; display: flex; color: var(--ink-faint); }
 .doc-link-body { display: flex; flex-direction: column; gap: 0.15rem; flex: 1; min-width: 0; }

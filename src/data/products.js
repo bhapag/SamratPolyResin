@@ -1353,7 +1353,7 @@ export const products = [
       },
       {
         q: "Which documents are currently available?",
-        a: 'The current <a href="/tds/fire-retardant-resin-tds.pdf" target="_blank" rel="noopener">Fire Retardant Resin TDS</a> and the <a href="/downloads/samrat-poly-resins-product-catalogue.pdf" target="_blank" rel="noopener">product catalogue</a> are available. The repository does not include an SDS, COA, fire test report or certification document for this grade.',
+        a: 'The current <a href="/tds/fire-retardant-resin-tds.pdf" target="_blank" rel="noopener">Fire Retardant Resin TDS</a> and the <a href="/products/">published product range</a> are available. The repository does not include an SDS, COA, fire test report or certification document for this grade.',
       },
       {
         q: "What supply and technical information is published?",
@@ -1479,7 +1479,7 @@ export const products = [
       },
       {
         q: "Which documents are currently available?",
-        a: 'The current <a href="/tds/iso-fire-retardant-resin-tds.pdf" target="_blank" rel="noopener">ISO Fire Retardant Resin TDS</a> and <a href="/downloads/samrat-poly-resins-product-catalogue.pdf" target="_blank" rel="noopener">product catalogue</a> are linked. The repository does not include an SDS, COA, fire-test report, chemical-resistance chart or certification document for this grade.',
+        a: 'The current <a href="/tds/iso-fire-retardant-resin-tds.pdf" target="_blank" rel="noopener">ISO Fire Retardant Resin TDS</a> and <a href="/products/">published product range</a> are linked. The repository does not include an SDS, COA, fire-test report, chemical-resistance chart or certification document for this grade.',
       },
     ],
     relatedSlugs: [
@@ -2359,7 +2359,7 @@ export const products = [
       },
       {
         q: "Is this the same as thermoplastic PET chips or pellets?",
-        a: "No. This is a liquid, PET-modified unsaturated polyester resin. Samrat's product catalogue separately lists a thermoplastic PET item with a different physical form and different data — let us know which material form you need so we point you to the right product.",
+        a: "No. This is a liquid, PET-modified unsaturated polyester resin, not thermoplastic PET chips or pellets — a different physical form with different data. Let us know which material form you need so we point you to the right product.",
       },
       {
         q: "How is this different from GP Resin or Lamination Resin?",
@@ -2371,7 +2371,7 @@ export const products = [
       },
       {
         q: "Are the TDS and SDS available, and what should I share for a quote?",
-        a: "Yes — download the current <a href=\"/tds/pet-resin-tds.pdf\" target=\"_blank\" rel=\"noopener\">Polyester Putty Resin TDS</a> and SDS from this page, or review the <a href=\"/downloads/samrat-poly-resins-product-catalogue.pdf\" target=\"_blank\" rel=\"noopener\">product catalogue</a>. For a quote, share your intended sheet or laminate application, required quantity, packaging need and delivery location.",
+        a: "Yes — download the current <a href=\"/tds/pet-resin-tds.pdf\" target=\"_blank\" rel=\"noopener\">Polyester Putty Resin TDS</a> and SDS from this page, or review the <a href=\"/products/\">published product range</a>. For a quote, share your intended sheet or laminate application, required quantity, packaging need and delivery location.",
       },
     ],
     relatedSlugs: [
@@ -2492,7 +2492,7 @@ export const products = [
       },
       {
         q: "What packaging and quote details are published?",
-        a: "The current TDS lists 200 kg packaging and a 200 kg minimum order quantity. Review the <a href=\"/tds/marble-resin-tds.pdf\" target=\"_blank\" rel=\"noopener\">Marble Resin TDS</a> and <a href=\"/downloads/samrat-poly-resins-product-catalogue.pdf\" target=\"_blank\" rel=\"noopener\">product catalogue</a>, then share the finished marble or stone product, available requirement or drawing, appearance or finish requirement, quantity, packaging requirement, delivery location and documentation needed when requesting a quote.",
+        a: "The current TDS lists 200 kg packaging and a 200 kg minimum order quantity. Review the <a href=\"/tds/marble-resin-tds.pdf\" target=\"_blank\" rel=\"noopener\">Marble Resin TDS</a> and <a href=\"/products/\">published product range</a>, then share the finished marble or stone product, available requirement or drawing, appearance or finish requirement, quantity, packaging requirement, delivery location and documentation needed when requesting a quote.",
       },
     ],
     relatedSlugs: [

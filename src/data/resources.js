@@ -937,7 +937,7 @@ export const resources = [
         heading: "Separate the resin from the finished FRP system",
         body: [
           "The resin is one material in an FRP system. The reinforcement, construction, thickness, surface system and tested configuration can all be relevant to a project requirement. Do not transfer a product description into a finished-part classification.",
-          "For the current Samrat grade, the repository contains a TDS and catalogue but no project-specific fire-test report, certificate, SDS or COA. Include the required documentation in the enquiry instead of assuming it exists.",
+          "For the current Samrat grade, the repository contains a TDS but no project-specific fire-test report, certificate, SDS or COA. Include the required documentation in the enquiry instead of assuming it exists.",
         ],
       },
       {
@@ -1655,7 +1655,7 @@ export const resources = [
     ],
     faqs: [
       { q: "What should I include in an FR Resin quotation request?", a: "Include the finished FRP application, original fire-performance requirement if specified, required documentation, quantity, packaging need and delivery location." },
-      { q: "Which documents are currently linked for this product?", a: "The product page links the Fire Retardant Resin TDS and the product catalogue. This guide does not imply that SDS, COA, test reports or certificates are available." },
+      { q: "Which documents are currently linked for this product?", a: "The product page links the Fire Retardant Resin TDS and the published product range. This guide does not imply that SDS, COA, test reports or certificates are available." },
     ],
     sections: [
       { heading: "Start with the product and finished application", body: ["Specify Fire Retardant Resin and describe the intended finished FRP part. If the project has a named standard, classification or document request, copy its original wording into the enquiry rather than summarising it from memory."] },
@@ -1744,7 +1744,7 @@ export const resources = [
         heading: "What to include in an enquiry",
         body: [
           "Specify ISO Fire Retardant Resin and describe the intended finished FRP component. Where the requirement names isophthalic chemistry, a fire-related classification or a document request, provide the original wording rather than reducing it to a product nickname.",
-          "Share the finished component, required documentation, original project requirement, relevant service context, expected quantity, preferred packaging if relevant and delivery city or location. The product page links the ISO Fire Retardant Resin TDS and the product catalogue; neither should be represented as an SDS, COA, fire-test report, certificate or a project compliance declaration.",
+          "Share the finished component, required documentation, original project requirement, relevant service context, expected quantity, preferred packaging if relevant and delivery city or location. The product page links the ISO Fire Retardant Resin TDS; it should not be represented as an SDS, COA, fire-test report, certificate or a project compliance declaration.",
         ],
       },
     ],
@@ -3236,7 +3236,7 @@ export const resources = [
     recommendedLinks: [
       { href: "/products/epoxy-clear-casting-resin/", label: "View Epoxy Clear Casting Resin", description: "Review the published product details and current Technical Data Sheet." },
       { href: "/tds/epoxy-clear-casting-resin-tds.pdf", label: "Download Clear Casting Resin TDS", description: "Use the current product document as the controlling reference." },
-      { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Download Product Catalogue", description: "Review separate resin, coating and FRP product roles before selection." },
+      { href: "/products/", label: "Browse the product range", description: "Review separate resin, coating and FRP product roles before selection." },
       { href: "/contact/", label: "Request an epoxy casting quote", description: "Share documented project and delivery details through the existing enquiry form." },
     ],
     faqs: [
@@ -3695,7 +3695,7 @@ export const resources = [
     recommendedLinks: [
       { href: "/products/gp-quartz-resin/", label: "View GP Quartz Resin", description: "Review the current published product details and TDS." },
       { href: "/tds/gp-quartz-resin-tds.pdf", label: "Download GP Quartz Resin TDS", description: "Check the current grade-specific technical data before selection or ordering." },
-      { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Download Product Catalogue", description: "Review the wider Samrat Poly Resins product range and related product roles." },
+      { href: "/products/", label: "Browse the product range", description: "Review the wider Samrat Poly Resins product range and related product roles." },
       { href: "/contact/", label: "Request a GP Quartz Resin quote", description: "Share the documented stone-composite requirement through the existing enquiry form." },
     ],
     faqs: [
@@ -4422,7 +4422,7 @@ export const resources = [
     seo: { title: "FRP Sheet Resin Procurement Guide", keywords: ["FRP Sheet Resin Quote", "Sheet Grade Resin Supplier", "FRP Panel Resin Procurement", "Sheet Grade Yellow Resin MOQ"], ogTitle: "FRP Sheet Resin Procurement Guide", ogDescription: "Prepare a clear Sheet Grade Yellow Resin or related FRP sheet resin enquiry using product-specific documentation and commercial context." },
     quickFacts: { "Published package": "225 kg drum", "Published MOQ": "1,000 kg", "Required document": "Current product-specific TDS", "Commercial inputs": "Component, supplied appearance, quantity and delivery location" },
     relatedSlugs: ["what-is-sheet-grade-yellow-resin", "applications-of-sheet-grade-yellow-resin", "how-to-choose-resin-for-frp-sheet-and-panel-manufacturing"],
-    recommendedLinks: [{ href: "/products/sheet-grade-yellow-resin/", label: "View Sheet Grade Yellow Resin", description: "Review the current product page, TDS link, packaging and MOQ." }, { href: "/tds/sheet-grade-yellow-resin-tds.pdf", label: "Download Sheet Grade Yellow Resin TDS", description: "Use the product-specific data as the controlling reference." }, { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Download Product Catalogue", description: "Review separate product roles across the range." }, { href: "/contact/", label: "Request a Sheet Grade Yellow quote", description: "Submit the documented technical and commercial context." }],
+    recommendedLinks: [{ href: "/products/sheet-grade-yellow-resin/", label: "View Sheet Grade Yellow Resin", description: "Review the current product page, TDS link, packaging and MOQ." }, { href: "/tds/sheet-grade-yellow-resin-tds.pdf", label: "Download Sheet Grade Yellow Resin TDS", description: "Use the product-specific data as the controlling reference." }, { href: "/products/", label: "Browse the product range", description: "Review separate product roles across the range." }, { href: "/contact/", label: "Request a Sheet Grade Yellow quote", description: "Submit the documented technical and commercial context." }],
     faqs: [{ q: "What should be included in an FRP sheet resin RFQ?", a: "Include the intended sheet or panel, supplied appearance requirement, reinforcement requirement if known, visible-surface requirement, expected quantity and delivery location. Include the current product TDS or buyer specification where available." }, { q: "Does the published MOQ confirm stock or delivery time?", a: "No. The current Sheet Grade Yellow Resin listing publishes a 1,000 kg MOQ. Stock, lead time, delivery and suitability need confirmation for the actual requirement." }],
     sections: [{ heading: "Start with the product-specific document", body: ["For the Sheet Grade Yellow route, the current product-specific TDS is the controlling reference. The site publishes an orthophthalic unsaturated polyester resin, supplied pre-pigmented yellow, for sheet moulding and laminate applications, in a 225 kg drum with a 1,000 kg MOQ.", "These published commercial details do not confirm stock availability, lead time, sample availability, delivery commitment or suitability for an unreviewed component. Keep the enquiry factual and product-specific."] }, { heading: "Record the material-system context", body: ["State the finished FRP sheet or panel, supplied yellow appearance requirement, any reinforcement specification available and whether a visible mould-facing surface requirement exists. These points help distinguish the resin role from the separate Glass Fiber and Gelcoat product roles.", "Where the request is for a water-white or translucent roof-light sheet, identify that clearly so the separate Roof Light Sheet Grade Resin route can be reviewed. Do not rely on a generic request for yellow polyester resin when the finished-sheet intent is known."] }, { heading: "Quote checklist", body: ["Include the component name, supplied appearance requirement, product grade under consideration, reinforcement context if known, expected quantity, delivery location and any available drawing, purchase specification or product document. This gives the supplier a clear basis for a commercial and product-data discussion.", "This guide intentionally does not provide catalyst ratios, handling directions, processing instructions, performance guarantees or a promise of a particular finished-sheet outcome. Those matters must be reviewed against the actual product documentation and requirement."] }],
   },
@@ -4859,7 +4859,7 @@ export const resources = [
     recommendedLinks: [
       { href: "/products/dmc-smc-resin/", label: "View DMC/SMC Resin", description: "Review the product page, packaging, MOQ and current document link." },
       { href: "/tds/dmc-smc-resin-tds.pdf", label: "Download current DMC/SMC TDS", description: "Use the current product-specific document as the controlling technical reference." },
-      { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Download Product Catalogue", description: "Review the wider range while keeping the current TDS as the grade reference." },
+      { href: "/products/", label: "Browse the product range", description: "Review the wider range while keeping the current TDS as the grade reference." },
       { href: "/contact/", label: "Discuss a documented specification", description: "Share the actual component and requested technical or finished-part requirement." },
     ],
     faqs: [
@@ -4896,7 +4896,7 @@ export const resources = [
     recommendedLinks: [
       { href: "/products/dmc-smc-resin/", label: "View DMC/SMC Resin", description: "Review the published product role, packaging, MOQ and enquiry path." },
       { href: "/tds/dmc-smc-resin-tds.pdf", label: "Download DMC/SMC Resin TDS", description: "Use the current document as the technical reference for the grade." },
-      { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Download Product Catalogue", description: "Review separate resin, catalyst and reinforcement product roles." },
+      { href: "/products/", label: "Browse the product range", description: "Review separate resin, catalyst and reinforcement product roles." },
       { href: "/contact/", label: "Request a DMC/SMC Resin quote", description: "Send the compound, component, commercial and documentation requirements." },
     ],
     faqs: [
@@ -4918,7 +4918,7 @@ export const resources = [
     seo: { title: "Epoxy Hardener Procurement Guide | Epoxy Hardener RFQ Checklist", keywords: ["Epoxy Hardener Procurement", "Epoxy Hardener Supplier", "Epoxy Hardener Quote", "Epoxy Resin Hardener RFQ"], ogTitle: "Epoxy Hardener Procurement Guide", ogDescription: "Prepare a factual epoxy hardener quotation discussion using the exact resin product and current Technical Data Sheet." },
     quickFacts: { "Published packaging": "20 kg", "Published MOQ": "100 kg", "Technical document": "Current Epoxy Hardener TDS", "First RFQ input": "Exact epoxy resin product and intended application" },
     relatedSlugs: ["what-is-epoxy-hardener", "epoxy-hardener-compatibility-guide", "epoxy-hardener-for-clear-casting-and-art-resin", "epoxy-hardener-vs-mekp-hardener"],
-    recommendedLinks: [{ href: "/products/epoxy-hardener/", label: "View Epoxy Hardener", description: "Review the product role, published packaging and MOQ." }, { href: "/tds/epoxy-hardener-tds.pdf", label: "Download Epoxy Hardener TDS", description: "Use the current product-specific document as the technical reference." }, { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Download Product Catalogue", description: "Review the separate published epoxy, UV and polyester-family product routes." }, { href: "/contact/", label: "Request an Epoxy Hardener quote", description: "Submit the resin-system and commercial details for review." }],
+    recommendedLinks: [{ href: "/products/epoxy-hardener/", label: "View Epoxy Hardener", description: "Review the product role, published packaging and MOQ." }, { href: "/tds/epoxy-hardener-tds.pdf", label: "Download Epoxy Hardener TDS", description: "Use the current product-specific document as the technical reference." }, { href: "/products/", label: "Browse the product range", description: "Review the separate published epoxy, UV and polyester-family product routes." }, { href: "/contact/", label: "Request an Epoxy Hardener quote", description: "Submit the resin-system and commercial details for review." }],
     faqs: [{ q: "What should be included in an Epoxy Hardener RFQ?", a: "Include the exact epoxy resin product, intended application, required documentation, expected quantity, packaging requirement if relevant and delivery location." }, { q: "Do the published packaging and MOQ confirm stock or suitability?", a: "No. The current TDS publishes a 20 kg pack and 100 kg MOQ. Availability, lead time, delivery and product-system suitability require confirmation for the actual requirement." }],
     sections: [{ heading: "Use the current hardener document", body: ["The current Epoxy Hardener TDS is the technical reference for the published polyamide, amine-based hardener product. It lists the supplied form, viscosity, specific gravity, amine value, storage, shelf life, packaging and MOQ.", "The TDS should be reviewed with the exact compatible resin product. The catalogue uses different chemical-type wording and some different technical figures, so it should not be used to silently replace the current TDS for product selection."] }, { heading: "Prepare a compatibility-led RFQ", body: ["State the exact Samrat epoxy resin product under consideration, intended application, required component or finish, quantity, packaging requirement if relevant, delivery city/location and any requested technical documentation. Include a drawing, purchase specification or existing product reference where available.", "If the application requires a different product route, identify it early: polyester-family systems use the separate MEKP route. This avoids a vague request for 'hardener' that cannot be checked against the correct system."] }, { heading: "What this guide does not establish", body: ["Published packaging and MOQ do not confirm stock, lead time, sample policy, delivery commitment or compatibility with an unidentified resin. Confirm those points for the specific requirement.", "This guide does not repeat ratios, cure schedules, mixing instructions or process troubleshooting. Refer to the current product-specific document and approved system information instead."] }],
   },
@@ -4979,7 +4979,7 @@ export const resources = [
     recommendedLinks: [
       { href: "/products/polyester-putty-resin/", label: "View Polyester Putty Resin", description: "Open the product page for the approved liquid sheet-grade route." },
       { href: "/tds/pet-resin-tds.pdf", label: "Review PET Resin TDS", description: "Confirm the current grade, liquid form and published technical data." },
-      { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Review Product Catalogue", description: "Use carefully: its PET chip listing is a separate material-form description." },
+      { href: "/products/", label: "Browse the product range", description: "Use carefully: its PET chip listing is a separate material-form description." },
       { href: "/contact/", label: "Confirm the correct material form", description: "State whether the requirement is the liquid Samrat grade or a thermoplastic PET material." },
     ],
     faqs: [
@@ -5138,7 +5138,7 @@ export const resources = [
     recommendedLinks: [
       { href: "/products/polyester-putty-resin/", label: "View PET Resin", description: "Review the product role, current data and enquiry path." },
       { href: "/tds/pet-resin-tds.pdf", label: "Download PET Resin TDS", description: "Use the current grade-specific document as the technical reference." },
-      { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Review Product Catalogue", description: "Keep its separate thermoplastic PET chip listing distinct from this liquid-grade TDS." },
+      { href: "/products/", label: "Browse the product range", description: "Keep its separate thermoplastic PET chip listing distinct from this liquid-grade TDS." },
       { href: "/contact/", label: "Request a PET Resin quote", description: "Send the material form, application, documentation and commercial requirements." },
     ],
     faqs: [
@@ -5403,7 +5403,7 @@ export const resources = [
     recommendedLinks: [
       { href: "/products/vinyl-ester-resin/", label: "Request Vinyl Ester Resin Quote", description: "Use the product enquiry route after reviewing the actual requirement." },
       { href: "/tds/vinyl-ester-resin-tds.pdf", label: "Download Vinyl Ester Resin TDS", description: "Use the current technical document before naming a grade." },
-      { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Review Product Catalogue", description: "Keep the Vinyl Ester route distinct from other Samrat product roles." },
+      { href: "/products/", label: "Browse the product range", description: "Keep the Vinyl Ester route distinct from other Samrat product roles." },
       { href: "/contact/", label: "Discuss an industrial requirement", description: "Share the component, service requirement, quantity and delivery location." },
     ],
     faqs: [
@@ -5442,7 +5442,7 @@ export const resources = [
     recommendedLinks: [
       { href: "/products/bisphenol-resin/", label: "View Bisphenol Resin", description: "Review the current product page, published supplied-resin data and enquiry route." },
       { href: "/tds/bisphenol-resin-tds.pdf", label: "Download Bisphenol Resin TDS", description: "Use the detailed TDS as the starting technical document." },
-      { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Review Product Catalogue", description: "Explore Samrat's wider product range; use the product-specific TDS for this grade's technical data." },
+      { href: "/products/", label: "Browse the product range", description: "Explore Samrat's wider product range; use the product-specific TDS for this grade's technical data." },
       { href: "/products/vinyl-ester-resin/", label: "View separate Vinyl Ester Resin", description: "Review its own product route and TDS instead of assuming interchangeability." },
     ],
     faqs: [
@@ -5494,7 +5494,7 @@ export const resources = [
     recommendedLinks: [
       { href: "/products/bisphenol-resin/", label: "View Bisphenol Resin", description: "See the TDS-led product page and its document-discrepancy notice." },
       { href: "/tds/bisphenol-resin-tds.pdf", label: "Download current Bisphenol Resin TDS", description: "Review the full table, typical-data disclaimer, storage and supply information." },
-      { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Review Product Catalogue", description: "Use the BPR catalogue card as a separately identified document record." },
+      { href: "/products/", label: "Browse the product range", description: "Use the BPR catalogue card as a separately identified document record." },
       { href: "/resources/bisphenol-resin-procurement-checklist/", label: "Prepare a document-led RFQ", description: "Include the reference and project requirement that need confirmation." },
     ],
     faqs: [
@@ -5700,7 +5700,7 @@ export const resources = [
     recommendedLinks: [
       { href: "/products/bisphenol-resin/#enquire", label: "Request Bisphenol Resin Quote", description: "Use the product enquiry route after preparing the document and application details." },
       { href: "/tds/bisphenol-resin-tds.pdf", label: "Download Bisphenol Resin TDS", description: "Review the current product-specific document before naming a grade." },
-      { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Review Product Catalogue", description: "Explore Samrat's broader resin range before confirming the product route." },
+      { href: "/products/", label: "Browse the product range", description: "Explore Samrat's broader resin range before confirming the product route." },
       { href: "/contact/", label: "Discuss a Bisphenol Resin requirement", description: "Share the technical and commercial details for a focused review." },
     ],
     faqs: [
@@ -6168,7 +6168,7 @@ export const resources = [
   {
     slug: "fiberglass-epoxy-resin-technical-specifications-and-document-check",
     title: "Fiberglass Epoxy Resin Technical Specifications and Document Check",
-    description: "Read the current Fiberglass Epoxy Resin TDS and catalogue side by side, keep their differing labels and values visible, and avoid turning supplied-resin data into finished-composite claims.",
+    description: "Read the current Fiberglass Epoxy Resin TDS closely, keep its differences from earlier catalogue records visible, and avoid turning supplied-resin data into finished-composite claims.",
     category: "Technical & Documentation Guide",
     icon: "checklist",
     publishDate: "2026-08-10",
@@ -6176,7 +6176,7 @@ export const resources = [
       title: "Fiberglass Epoxy Resin Technical Specifications | TDS Guide",
       keywords: ["Fiberglass Epoxy Resin Technical Specifications", "Fiberglass Epoxy Resin TDS", "Composite Epoxy Resin Viscosity", "Epoxy Laminating Resin Technical Data", "Fiberglass Epoxy Resin Supplier"],
       ogTitle: "Fiberglass Epoxy Resin Technical Specifications and Document Check",
-      ogDescription: "Use the detailed TDS and catalogue carefully; their resin wording and selected values are not identical.",
+      ogDescription: "Use the detailed TDS as the controlling record; earlier catalogue wording and selected values are not identical to it.",
     },
     quickFacts: {
       "Detailed TDS viscosity": "700 cPs at 25 C",
@@ -6200,7 +6200,7 @@ export const resources = [
     recommendedLinks: [
       { href: "/products/fiberglass-epoxy-resin/", label: "View Fiberglass Epoxy Resin", description: "Review the product route and TDS access before preparing a quote." },
       { href: "/tds/fiberglass-epoxy-resin-tds.pdf", label: "Download detailed Fiberglass Epoxy TDS", description: "Use the current detailed document for supplied-resin data and its stated context." },
-      { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Review Product Catalogue", description: "Keep the catalogue summary separate from the detailed TDS record." },
+      { href: "/products/", label: "Browse the product range", description: "Keep the catalogue summary separate from the detailed TDS record." },
       { href: "/resources/fiberglass-epoxy-resin-procurement-checklist/", label: "Prepare a document-led RFQ", description: "State which product record and data requirement you are evaluating." },
     ],
     faqs: [
@@ -6278,7 +6278,7 @@ export const resources = [
     recommendedLinks: [
       { href: "/products/fiberglass-epoxy-resin/#enquire", label: "Request Fiberglass Epoxy Resin Quote", description: "Use the product enquiry form with the document and application details below." },
       { href: "/tds/fiberglass-epoxy-resin-tds.pdf", label: "Download Fiberglass Epoxy TDS", description: "Review the detailed current record before specifying supplied-resin data." },
-      { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Review Product Catalogue", description: "State if this is the record being evaluated because its summary differs from the detailed TDS." },
+      { href: "/products/", label: "Browse the product range", description: "State if this is the record being evaluated because its summary differs from the detailed TDS." },
       { href: "/products/epoxy-hardener/", label: "View separate Epoxy Hardener", description: "Confirm an exact compatible pair rather than assuming a hardener is included." },
     ],
     faqs: [
@@ -6287,7 +6287,7 @@ export const resources = [
       { q: "Should I request a chemical compatibility or service-temperature approval?", a: "If a project requires one, state the actual service condition or required document. The Fiberglass Epoxy documentation does not publish a chemical-compatibility chart, concentration limits or a continuous-service temperature limit." },
     ],
     sections: [
-      { heading: "Start with the document route", body: ["The detailed TDS and product catalogue are both available, but they use different resin wording and selected values. Identify which record you are evaluating rather than treating them as a silently merged specification.", "For the detailed TDS route, the published commercial information is a 20 kg pack, 100 kg MOQ, 12-month unopened shelf life and 20-30 C cool, dry storage. Order-specific availability and terms still require confirmation."] },
+      { heading: "Start with the document route", body: ["The detailed TDS is the current published record. An earlier catalogue entry used different resin wording and selected values, so identify which record you are evaluating rather than treating them as a silently merged specification.", "For the detailed TDS route, the published commercial information is a 20 kg pack, 100 kg MOQ, 12-month unopened shelf life and 20-30 C cool, dry storage. Order-specific availability and terms still require confirmation."] },
       { heading: "Describe the finished composite requirement", body: ["State what is being manufactured or supplied: for example, a TDS-listed marine, wind, construction, electrical or automotive FRP laminate, or a catalogue-listed structural laminate or filament-winding requirement. Use these only as application categories, not as certifications.", "Identify whether the requirement is resin only or a confirmed complete system. The TDS names an amine hardener but does not name a specific compatible Samrat hardener or say that one is included in the Fiberglass Epoxy pack."] },
       { heading: "Include material and documentation checks", body: ["Include reinforcement form if known; the detailed TDS names fabric but does not prescribe a CSM weight, fabric type, resin-to-glass ratio or laminate construction. State any required published property, drawing, written technical requirement, test requirement or document request.", "Where chemical service, water exposure, heat, UV, fire, strength or adhesion is central, state the actual project requirement. Do not rely on broad product wording as an approval, compatibility recommendation or finished-composite guarantee."] },
       { heading: "Include the commercial essentials", body: ["Add expected quantity, packaging requirement, delivery city or location, timing requirement and documentation requirement. This allows Samrat Poly Resins to understand the scope without requesting proprietary manufacturing details.", "The enquiry route intentionally does not ask for or provide hardener ratios, resin-to-glass ratios, cure schedules, laminate designs, process settings or troubleshooting information."] },
@@ -6304,7 +6304,7 @@ export const resources = [
       title: "Marble Resin Technical Specifications and RFQ Guide",
       keywords: ["Marble Resin Technical Specifications", "Marble Resin Viscosity", "Marble Resin Gel Time", "Marble Resin Procurement", "Marble Resin Quote", "Marble Resin Supplier India"],
       ogTitle: "Marble Resin Technical Specifications and RFQ Guide",
-      ogDescription: "Use the current Marble Resin TDS and catalogue carefully, then prepare a document-led industrial quotation request.",
+      ogDescription: "Use the current Marble Resin TDS carefully, note where earlier catalogue figures differ, then prepare a document-led industrial quotation request.",
     },
     quickFacts: {
       "Detailed TDS viscosity": "450 cPs at 25 C",
@@ -6316,7 +6316,7 @@ export const resources = [
     recommendedLinks: [
       { href: "/products/marble-resin/#enquire", label: "Request Marble Resin Quote", description: "Use the product enquiry route after preparing the application and document details." },
       { href: "/tds/marble-resin-tds.pdf", label: "Download Marble Resin TDS", description: "Review the detailed product-specific document for the current grade." },
-      { href: "/downloads/samrat-poly-resins-product-catalogue.pdf", label: "Review Product Catalogue", description: "Keep its short Marble Resin summary separate from the detailed TDS." },
+      { href: "/products/", label: "Browse the product range", description: "Keep its short Marble Resin summary separate from the detailed TDS." },
       { href: "/contact/", label: "Discuss a Marble Resin requirement", description: "Share technical and commercial information for an evidence-led discussion." },
     ],
     faqs: [
