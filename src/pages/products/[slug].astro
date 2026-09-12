@@ -1049,7 +1049,17 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             <span class="doc-link-arrow" aria-hidden="true">↓</span>
           </a>
       </div>
+      {/* PROTOTYPE: the product masthead ends here — image, identity, price,
+          commercial CTAs and documents. Everything below is technical reading
+          and is released to the full container width via .prod-body
+          (grid-column: 1 / -1), instead of staying trapped in the 574px
+          column beside a 470px image rail. This is a balanced tag swap: the
+          original </div> further down now closes .prod-body, and </article>
+          still closes .prod — no nesting, schema, heading order or link is
+          changed. */}
+      </div>
 
+      <div class="prod-body">
       {(detailEntries || techEntries || legacySpecEntries.length > 0) && (
         <div class="ledger specs-ledger">
           {detailEntries && (
@@ -4168,7 +4178,23 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .crumb a:hover { color: var(--accent-gold-light); }
     .crumb .cur { color: var(--ink-dim); }
 
-    .prod { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(1.5rem, 5vw, 3.5rem); padding-block: 2.2rem 3rem; }
+    /* PROTOTYPE — masthead grid.
+       Was `0.9fr 1.1fr`, which committed 470px of a 1180px container to a
+       product poster for the whole upper page and compressed every technical
+       block into 574px. The rail is now a fixed, narrower column and the
+       masthead is the only thing that shares the row; .prod-body below spans
+       the full width. Measured at 1440: content column 574px -> 740px. */
+    .prod {
+      display: grid;
+      grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: start;
+      padding-block: 2.2rem 3rem;
+    }
+    /* Technical reading is released to the full container width. */
+    .prod-body { grid-column: 1 / -1; }
+    /* The rail no longer needs to travel: it sits beside a masthead of
+       comparable height rather than beside 3,500px of scrolling text. */
     .prod-media-sticky { position: sticky; top: 90px; }
     /* Same warm neutral frame as ProductCard's .card-img — the supplied
        product photos are full marketing posters on a light background, and
@@ -4276,7 +4302,10 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .specs-table td { color: var(--ink); background: var(--bg-2); }
 
     .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--line); }
-    .spec-h { font-size: 0.8rem; letter-spacing: 0.14em; color: var(--ink); margin-bottom: 1rem; }
+    /* PROTOTYPE — one type ramp. `.spec-h` was 0.8rem (12.8px), i.e. a section
+       heading rendering SMALLER than the 16px body text and the 15.2px h3s
+       beneath it. All three product-page h2 classes now share one step. */
+    .spec-h { font-size: 1.25rem; letter-spacing: 0.02em; color: var(--ink); margin-bottom: 1rem; text-transform: none; line-height: 1.25; }
     .spec-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
     .spec-col li {
       position: relative; padding-left: 1.7rem; color: var(--ink); font-size: 0.92rem; font-weight: 600;
@@ -4296,7 +4325,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       box-shadow: 0 0 10px rgba(var(--gold-rgb), .5), 0 0 0 1px rgba(var(--gold-rgb), .45);
       transform: translateY(-50%) scale(1.08);
     }
-    @media (max-width: 860px) { .prod { grid-template-columns: 1fr; } .prod-media-sticky { position: relative; top: 0; } }
+    @media (max-width: 860px) { .prod { grid-template-columns: 1fr; } .prod-media-sticky { position: relative; top: 0; } .prod-body { grid-column: auto; } }
     @media (max-width: 460px) { .spec-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
 
     .prod-subtitle { color: var(--ink-dim); font-size: 1.05rem; margin-top: 0.55rem; max-width: 48ch; line-height: 1.5; }
@@ -4373,7 +4402,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 
     .prod-extra { padding-block: 1.5rem 0.5rem; }
     .prod-extra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.8rem, 5vw, 3.5rem); }
-    .extra-h { font-size: 1.15rem; color: var(--ink); margin-bottom: 1.2rem; letter-spacing: 0.02em; }
+    .extra-h { font-size: 1.25rem; color: var(--ink); margin-bottom: 1.2rem; letter-spacing: 0.02em; text-transform: none; line-height: 1.25; }
     .prod-faq { padding-block: 2rem 1rem; }
     @media (max-width: 760px) { .prod-extra-grid { grid-template-columns: 1fr; gap: 2rem; } }
 
@@ -4499,7 +4528,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     @media (max-width: 680px) { .mekp-process { align-items: start; flex-direction: column; } }
 
     .related { padding-block: 2rem 3rem; }
-    .rel-h { font-size: 1.1rem; color: var(--ink-dim); margin-bottom: 1.2rem; }
+    .rel-h { font-size: 1.25rem; color: var(--ink); margin-bottom: 1.2rem; letter-spacing: 0.02em; text-transform: none; line-height: 1.25; }
     .rel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.9rem; }
     .rel-card {
       display: flex; flex-direction: column; gap: 0.4rem; padding: 1rem 1.1rem;
@@ -4686,5 +4715,194 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     /* The site header is sticky, so a jump would otherwise land the heading
        underneath it. */
     .prod-section-anchor { scroll-margin-top: 5.5rem; }
+
+    /* ====================================================================
+       PROTOTYPE — premium product presentation
+       All rules below are scoped to this template by Astro. Nothing here
+       changes copy, facts, URLs, heading order, schema or canonicals.
+       ==================================================================== */
+
+    /* 1. Section headings were 60.8px at 1440 — LARGER than the 51.2px h1.
+          Brought under the h1 so the ramp reads 51 / 32 / 20 monotonically. */
+    /* These sections are siblings of .prod, not descendants, so the rule has
+       to target .section-head directly. Astro's scoping attribute keeps it to
+       this template — no other page's heading scale is affected. */
+    .section-head h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+    .section-head { margin-bottom: 2rem; }
+
+    /* 1b. Releasing the body to 1100px would otherwise set prose at ~140
+           characters per line. Tables and card grids take the full width;
+           running prose is held to a readable measure. Paragraphs already
+           inside cards are narrower than this and are unaffected. */
+    .prod-body p { max-width: 62ch; }
+
+    /* 1c. `.gp-overview` is the one prose-only panel in the body. At the full
+           1100px it became a bordered box with text in its left half and
+           ~480px of void on the right. Capped to the prose measure so the
+           panel fits its content. Card-grid sections (.gp-buyer-outcomes,
+           .upr-grade-guide, .spec-grid) genuinely use the width and keep it. */
+    .prod-body .gp-overview { max-width: 46rem; }
+    .prod-body .gp-overview p { max-width: none; }
+
+    /* 2. The ledger is the most premium element on the page and the one a
+          buyer actually reads. Released to full width it would become one
+          very long strip, so the two tables sit side by side instead. */
+    @media (min-width: 900px) {
+      .specs-ledger {
+        display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 clamp(2rem, 4vw, 3.5rem);
+        align-items: start; align-content: start;
+        /* The two tables rarely have equal row counts (6 vs 10 here), so the
+           shorter column leaves trailing space. A rule between the columns
+           makes that read as a two-column document rather than a gap, and a
+           tighter bottom padding stops it becoming a dead band. */
+        padding-bottom: 1.4rem;
+      }
+      /* Six allied-product pages (cobalt-octoate, nc-thinner, paint-brushes,
+         soap-stone-powder, styrene-monomer, wax-polish) publish only Product
+         details — no technical specifications table. In a fixed two-column
+         grid that left a 578px empty right half. With one table the panel
+         collapses to a single column sized to its content. Degrades to the
+         previous behaviour if :has() is unsupported. */
+      .specs-ledger:has(> .specs-table-wrap:only-child) {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 42rem;
+      }
+      .specs-ledger > .specs-table-wrap { margin-top: 0; }
+      .specs-ledger > .specs-table-wrap + .specs-table-wrap {
+        padding-left: clamp(2rem, 4vw, 3.5rem);
+        margin-left: calc(-1 * clamp(2rem, 4vw, 3.5rem) / 2);
+        border-left: 1px solid var(--ledger-line);
+      }
+    }
+
+    /* 3. Contents was 18 chips of 112–429px wrapping into ~11 ragged rows —
+          a tag cloud, not navigation. Now an even, scannable column set. */
+    @media (min-width: 700px) {
+      .prod-toc-list { display: block; column-count: 3; column-gap: 2rem; }
+      .prod-toc-list :global(li) { display: block; break-inside: avoid; }
+    }
+    .prod-toc-list :global(a) {
+      display: block; background: transparent; border: none;
+      border-bottom: 1px solid var(--line);
+      padding: 0.5rem 0 0.5rem 0; font-size: 0.76rem;
+    }
+    .prod-toc-list :global(a:hover),
+    .prod-toc-list :global(a:focus-visible) {
+      border-bottom-color: var(--accent-gold); color: var(--accent-gold-light);
+    }
+
+    /* 4. Two solid-gold CTAs sat within ~100px of each other, so neither won.
+          The enquiry form is the single primary (it is also the only one GA4
+          records as a key event); the in-panel quote button becomes its
+          secondary. Both destinations are unchanged. */
+    .prod-quote .prod-quote-cta.btn-solid {
+      background: transparent; color: var(--ink);
+      border-color: var(--line-2); font-weight: 500;
+    }
+    .prod-quote .prod-quote-cta.btn-solid:hover {
+      border-color: var(--accent-gold); color: var(--accent-gold-light);
+      background: transparent; box-shadow: none;
+    }
+
+    /* 4b. FAQ questions rendered at 18.7px — only 1.3px below the 20px h2
+           above them, so a question read as loud as its section heading.
+           Stepped down to restore the gap. FaqAccordion is shared with the
+           application and resource templates, so this is scoped here via
+           :global() rather than edited in the component. */
+    .prod-faq :global(.faq-item h3) { font-size: 1.06rem; }
+
+    /* 5. Masthead breathing room now that the rail is narrower. */
+    .prod-quote, .prod-docs { max-width: none; }
+    .prod-img { border-radius: 4px; overflow: hidden; }
+
+    /* 6. Once the grid stacks (<=860px) the rail's width constraint is gone,
+          so the poster would otherwise fill most of the first screen before
+          the product name is reached. Capped so identity stays above the
+          fold on tablets. */
+    @media (max-width: 860px) {
+      .prod-media-sticky { max-width: 420px; }
+      .prod-thumbs { max-width: 420px; }
+    }
+    /* 7. Phone widths: the poster is a 1:1 box, so at 355px available it was
+          355px tall, and on products with a three-line breadcrumb (e.g. Vinyl
+          Ester, "Industrial & Specialty Resins") the product name was pushed
+          to the very bottom of the first screen. A shallower box brings the
+          identity up without cropping — the poster is object-fit: contain. */
+    @media (max-width: 620px) {
+      .prod-img { aspect-ratio: 5 / 4; }
+    }
+
+    @media (max-width: 760px) {
+      /* The floating WhatsApp button is fixed bottom-right (48px at x331–379
+         in a 390px viewport). Full-bleed tap targets would run underneath it,
+         so the contents links — which this prototype changed from inline
+         chips to full-width rows — stop short of that zone. */
+      .prod-toc-list :global(a) { margin-right: 3.4rem; }
+    }
   </style>
+
+  <style is:global>
+    /* PROTOTYPE — product pages only (gated on .prod, which exists on no
+       other template). The sitewide floating button is not modified for the
+       rest of the site in this phase. */
+    @media (max-width: 860px) {
+      body:has(.prod) .wa-float { width: 48px; height: 48px; right: 0.7rem; bottom: 0.7rem; }
+      /* The sweep found a tappable element under the fixed button on 22 of 31
+         pages at 390px and 16 of 31 at 820px — always deep in the page, over
+         FAQ questions and related-product cards. Desktop was clean (0 of 31).
+         The button now steps out of the way while the reader scrolls down and
+         returns on any upward scroll, so it never sits on a tap target being
+         read toward. Progressive enhancement: with no JS it simply stays. */
+      body:has(.prod) .wa-float {
+        transition: transform .28s var(--ease-premium), opacity .28s var(--ease-premium);
+      }
+      body:has(.prod) .wa-float[data-tucked='true'] {
+        transform: translateY(140%); opacity: 0; pointer-events: none;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      body:has(.prod) .wa-float { transition: none; }
+    }
+  </style>
+
+  <script>
+    // Product pages only: tuck the floating WhatsApp button away while the
+    // reader scrolls down, restore it on any upward scroll. The button lives
+    // in Base.astro and carries transition:persist, so the previous handler
+    // is removed before a new one is attached on client-side navigation.
+    document.addEventListener('astro:page-load', () => {
+      const prev = (window as any).__prodFabTuck as (() => void) | undefined;
+      if (prev) { window.removeEventListener('scroll', prev); (window as any).__prodFabTuck = undefined; }
+
+      const fab = document.querySelector('.wa-float') as HTMLElement | null;
+      if (!fab) return;
+      // Leaving a product page must not strand the button hidden.
+      delete fab.dataset.tucked;
+      if (!document.querySelector('.prod')) return;
+
+      const small = () => window.matchMedia('(max-width: 860px)').matches;
+      let last = window.scrollY;
+      let ticking = false;
+
+      const apply = () => {
+        ticking = false;
+        const y = window.scrollY;
+        const delta = y - last;
+        if (Math.abs(delta) < 6) return;      // ignore jitter
+        last = y;
+        if (!small() || y < 240) { delete fab.dataset.tucked; return; }
+        if (delta > 0) fab.dataset.tucked = 'true';
+        else delete fab.dataset.tucked;
+      };
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(apply);
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      (window as any).__prodFabTuck = onScroll;
+    });
+  </script>
 </Base>

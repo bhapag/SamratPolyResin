@@ -58,9 +58,21 @@ test.describe('in-page section navigation', () => {
     // not apply — this asserts they do.
     await page.goto('/products/gp-clear-resin/');
     await page.waitForTimeout(400);
+    // The assertion is "a runtime-generated link carries a real rule border",
+    // not "that border is on a specific edge". The prototype's contents list
+    // uses a hairline underline instead of a full chip outline, so this reads
+    // whichever edge is actually drawn.
     const style = await page.locator('.prod-toc-list a').first().evaluate((el) => {
       const s = getComputedStyle(el);
-      return { border: parseFloat(s.borderTopWidth), family: s.fontFamily };
+      return {
+        border: Math.max(
+          parseFloat(s.borderTopWidth),
+          parseFloat(s.borderBottomWidth),
+          parseFloat(s.borderLeftWidth),
+          parseFloat(s.borderRightWidth),
+        ),
+        family: s.fontFamily,
+      };
     });
     expect(style.border).toBeGreaterThan(0);
     expect(style.family.toLowerCase()).toContain('mono');
