@@ -2325,7 +2325,9 @@ export const products = [
     // and that sheet grade are one grade or two, those documents are not
     // offered here as this product's technical documents, and their values
     // are not published as this product's values. The files remain in place
-    // and are still linked from the PET sheet-grade guides.
+    // remain in place, but the guide cluster that presented that
+    // sheet-grade identity to buyers was retired on 2026-09-12 and now
+    // redirects here, so the site states one identity for this product.
     seo: {
       title: "Polyester Putty Resin Manufacturer in India",
       description: "Liquid unsaturated polyester resin supplied in bulk to putty and body-filler manufacturers in India. Send your formulation requirement for grade data.",
@@ -2513,7 +2515,7 @@ export const products = [
       },
       {
         q: "How is Marble Resin different from Polyester Putty Resin or GP Resin?",
-        a: 'This Marble Resin is documented for cultured-marble and artificial-stone contexts. <a href="/products/polyester-putty-resin/">Polyester Putty Resin</a> is Samrat\'s separately documented liquid PET-modified sheet grade; it is not ready-made putty or a broad stone-resin route. <a href="/products/gp-clear-resin/">GP Clear Resin</a> is the separate general-purpose FRP product route. Compare the published product role and data rather than transferring values between grades.',
+        a: 'This Marble Resin is documented for cultured-marble and artificial-stone contexts. <a href="/products/polyester-putty-resin/">Polyester Putty Resin</a> is the separately published liquid base resin supplied to putty and body-filler manufacturers; it is not ready-made putty and not a stone-composite route. <a href="/products/gp-clear-resin/">GP Clear Resin</a> is the separate general-purpose FRP product route. Compare the published product role and data rather than transferring values between grades.',
       },
       {
         q: "Does Marble Resin determine the final appearance or performance of a finished marble product?",

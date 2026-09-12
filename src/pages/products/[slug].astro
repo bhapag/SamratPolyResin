@@ -724,17 +724,6 @@ const dmcSmcResources = isDmcSmcResin
   ? dmcSmcResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
   : [];
 
-const petResinResourceSlugs = [
-  'what-is-pet-modified-polyester-resin',
-  'pet-resin-liquid-grade-vs-thermoplastic-pet',
-  'pet-resin-applications-sheet-lamination-and-panels',
-  'pet-resin-vs-gp-resin',
-  'pet-resin-vs-lamination-resin',
-];
-const petResinResources = isPetResin
-  ? petResinResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
-  : [];
-
 const marbleResinResourceSlugs = [
   'what-is-marble-resin',
   'marble-resin-raw-resin-vs-finished-marble-composite',
@@ -1576,11 +1565,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               <p>GP Quartz Resin has its own documented artificial-quartz, engineered-stone and composite-mineral role. Both source sets use some artificial-stone language, so compare the documents and confirm the exact product rather than assuming an exclusive boundary.</p>
             </article>
             <article class="upr-grade-card">
-              <h3><a href="/resources/marble-resin-vs-pet-resin/">Marble Resin vs PET Resin</a> or <a href="/resources/marble-resin-vs-gp-resin/">GP Resin</a></h3>
-              <p>PET Resin / Polyester Putty Resin is our liquid sheet-grade route, separate from the catalogue's thermoplastic-chip listing. GP Clear Resin remains the broad general-FRP route. Neither is a substitute for a documented marble or stone-composite requirement.</p>
+              <h3><a href="/resources/marble-resin-vs-gp-resin/">Marble Resin vs GP Resin</a></h3>
+              <p>GP Clear Resin is the broad general-FRP route and is not a substitute for a documented marble or stone-composite requirement. Where the finished product is a cast stone component rather than a laminate, start from the Marble Resin document.</p>
             </article>
             <article class="upr-grade-card">
-              <h3><a href="/products/lamination-resin/">Lamination Resin</a> or <a href="/resources/marble-resin-vs-pet-resin/">Epoxy Casting</a></h3>
+              <h3><a href="/products/lamination-resin/">Lamination Resin</a> or <a href="/products/epoxy-clear-casting-resin/">Epoxy Casting</a></h3>
               <p>Review Lamination Resin for its door, plywood and FRP-bonding role, or the separate Epoxy Clear Casting Resin system where that material family is specified. Neither comparison establishes a universal performance ranking.</p>
             </article>
           </div>
@@ -2931,25 +2920,6 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href="#enquire" class="btn btn-solid">Discuss your Sheet Grade Yellow Resin requirement</a>
         <a href="/resources/#sheet-grade-resin-hub-heading" class="btn">Explore the Sheet Grade Yellow Knowledge Hub</a>
         <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download Sheet Grade Yellow TDS</a>
-        <a href={site.catalogue.url} class="btn">Browse the product range</a>
-      </div>
-    </section>
-  )}
-
-  {petResinResources.length > 0 && (
-    <section class="wrap prod-resources" aria-labelledby="pet-resin-resources-heading">
-      <div class="gp-hub-head">
-        <p class="eyebrow">PET Resin buyer guides</p>
-        <h2 id="pet-resin-resources-heading" class="rel-h">PET Resin Knowledge Hub</h2>
-        <p>Start with <a href="/resources/what-is-pet-modified-polyester-resin/">what Samrat's PET Resin is</a> and the <a href="/resources/pet-resin-liquid-grade-vs-thermoplastic-pet/">material-form clarification</a>. Then review its published sheet and panel contexts, compare the relevant resin routes and use the current TDS before preparing a focused industrial enquiry.</p>
-      </div>
-      <div class="resources-grid">
-        {petResinResources.map((resource) => <ResourceCard resource={resource} />)}
-      </div>
-      <div class="gp-hub-actions">
-        <a href="#enquire" class="btn btn-solid">Discuss your PET Resin requirement</a>
-        <a href="/resources/#pet-resin-hub-heading" class="btn">Explore PET Resin buyer guides</a>
-        <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Download PET Resin TDS</a>
         <a href={site.catalogue.url} class="btn">Browse the product range</a>
       </div>
     </section>

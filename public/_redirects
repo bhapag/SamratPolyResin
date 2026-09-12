@@ -136,8 +136,8 @@
 /resources/gelcoat-resin-vs-epoxy-resin                         /resources/what-is-gel-coat-resin/  301
 /resources/epoxy-hardener-vs-uv-resin-curing/                   /resources/epoxy-hardener-vs-mekp-hardener/  301
 /resources/epoxy-hardener-vs-uv-resin-curing                    /resources/epoxy-hardener-vs-mekp-hardener/  301
-/resources/marble-resin-vs-epoxy-clear-casting-resin/           /resources/marble-resin-vs-pet-resin/  301
-/resources/marble-resin-vs-epoxy-clear-casting-resin            /resources/marble-resin-vs-pet-resin/  301
+/resources/marble-resin-vs-epoxy-clear-casting-resin/           /products/marble-resin/  301
+/resources/marble-resin-vs-epoxy-clear-casting-resin            /products/marble-resin/  301
 
 # Content consolidation pass 2 (2026-09-09)
 # Thin single-topic accessory and comparison articles merged into the
@@ -222,3 +222,25 @@
 # and printed "26 CHEMIST-VERIFIED PRODUCT GRADES" against a range that is
 # now 33. Anyone holding the direct link lands on the live product range.
 /downloads/samrat-poly-resins-product-catalogue.pdf     /products/  301
+
+# 2026-09-12 — Polyester Putty Resin's guide cluster carried a second,
+# contradictory identity. Six live articles described the product as a
+# "PET-modified liquid unsaturated polyester sheet grade" for PET sheets,
+# fibre sheets, FRP sheet lamination and panels, citing a TDS the product
+# page no longer publishes — while the corrected product page and its new
+# cluster describe the base resin sold to putty manufacturers. Rather than
+# leave the site arguing with itself in public, the sheet-grade set is
+# retired to the corrected pages. Nothing here asserts that the grade is or
+# is not PET-modified; that question is for the owner and the data sheet.
+/resources/what-is-pet-modified-polyester-resin/         /resources/what-is-polyester-putty-resin/  301
+/resources/what-is-pet-modified-polyester-resin          /resources/what-is-polyester-putty-resin/  301
+/resources/pet-resin-liquid-grade-vs-thermoplastic-pet/  /resources/what-is-polyester-putty-resin/  301
+/resources/pet-resin-liquid-grade-vs-thermoplastic-pet   /resources/what-is-polyester-putty-resin/  301
+/resources/pet-resin-applications-sheet-lamination-and-panels/  /products/polyester-putty-resin/  301
+/resources/pet-resin-applications-sheet-lamination-and-panels   /products/polyester-putty-resin/  301
+/resources/pet-resin-vs-gp-resin/                        /products/polyester-putty-resin/  301
+/resources/pet-resin-vs-gp-resin                         /products/polyester-putty-resin/  301
+/resources/pet-resin-vs-lamination-resin/                /products/polyester-putty-resin/  301
+/resources/pet-resin-vs-lamination-resin                 /products/polyester-putty-resin/  301
+/resources/marble-resin-vs-pet-resin/                    /products/polyester-putty-resin/  301
+/resources/marble-resin-vs-pet-resin                     /products/polyester-putty-resin/  301

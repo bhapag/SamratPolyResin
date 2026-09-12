@@ -62,7 +62,6 @@ const marbleResinAuthoritySlugs = new Set([
   'marble-resin-raw-resin-vs-finished-marble-composite',
   'marble-resin-applications-cultured-marble-artificial-stone',
   'gp-quartz-resin-vs-marble-resin',
-  'marble-resin-vs-pet-resin',
   'marble-resin-vs-gp-resin',
   'marble-resin-technical-specifications-and-rfq',
 ]);
@@ -74,7 +73,6 @@ const marbleResinFoundationResources = published.filter((resource) => [
 ].includes(resource.slug));
 const marbleResinComparisonResources = published.filter((resource) => [
   'gp-quartz-resin-vs-marble-resin',
-  'marble-resin-vs-pet-resin',
   'marble-resin-vs-gp-resin',
 ].includes(resource.slug));
 const marbleResinVerificationResources = published.filter((resource) => [
@@ -293,23 +291,6 @@ const dmcSmcVerificationResources = published.filter((resource) => [
   'dmc-smc-resin-technical-specifications',
   'dmc-smc-resin-procurement-checklist',
 ].includes(resource.slug));
-const petResinAuthoritySlugs = new Set([
-  'what-is-pet-modified-polyester-resin',
-  'pet-resin-liquid-grade-vs-thermoplastic-pet',
-  'pet-resin-applications-sheet-lamination-and-panels',
-  'pet-resin-vs-gp-resin',
-  'pet-resin-vs-lamination-resin',
-]);
-const petResinAuthorityResources = published.filter((resource) => petResinAuthoritySlugs.has(resource.slug));
-const petResinFoundationResources = published.filter((resource) => [
-  'what-is-pet-modified-polyester-resin',
-  'pet-resin-liquid-grade-vs-thermoplastic-pet',
-].includes(resource.slug));
-const petResinDecisionResources = published.filter((resource) => [
-  'pet-resin-applications-sheet-lamination-and-panels',
-  'pet-resin-vs-gp-resin',
-  'pet-resin-vs-lamination-resin',
-].includes(resource.slug));
 const fireRetardantAuthoritySlugs = new Set([
   'what-is-fire-retardant-resin',
   'fire-retardant-polyester-resin-applications-and-benefits',
@@ -472,7 +453,7 @@ const bisphenolVerificationResources = published.filter((resource) => [
   'bisphenol-resin-procurement-checklist',
 ].includes(resource.slug));
 const gpAuthorityResourcesWithoutUpr = gpAuthorityResources.filter((resource) => !uprAuthoritySlugs.has(resource.slug));
-const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !marbleResinAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug) && !glassFiberAuthoritySlugs.has(resource.slug) && !pigmentAuthoritySlugs.has(resource.slug) && !mekpAuthoritySlugs.has(resource.slug) && !epoxyHardenerAuthoritySlugs.has(resource.slug) && !fiberglassEpoxyAuthoritySlugs.has(resource.slug) && !epoxyCastingAuthoritySlugs.has(resource.slug) && !epoxyArtAuthoritySlugs.has(resource.slug) && !sheetGradeAuthoritySlugs.has(resource.slug) && !roofLightAuthoritySlugs.has(resource.slug) && !dmcSmcAuthoritySlugs.has(resource.slug) && !petResinAuthoritySlugs.has(resource.slug) && !fireRetardantAuthoritySlugs.has(resource.slug) && !isoFireRetardantAuthoritySlugs.has(resource.slug) && !vinylEsterAuthoritySlugs.has(resource.slug) && !bisphenolAuthoritySlugs.has(resource.slug) && !isoPolyesterAuthoritySlugs.has(resource.slug) && !isoGelcoatAuthoritySlugs.has(resource.slug) && !uvStabilizedAuthoritySlugs.has(resource.slug) && !polyesterPuttyAuthoritySlugs.has(resource.slug));
+const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !marbleResinAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug) && !glassFiberAuthoritySlugs.has(resource.slug) && !pigmentAuthoritySlugs.has(resource.slug) && !mekpAuthoritySlugs.has(resource.slug) && !epoxyHardenerAuthoritySlugs.has(resource.slug) && !fiberglassEpoxyAuthoritySlugs.has(resource.slug) && !epoxyCastingAuthoritySlugs.has(resource.slug) && !epoxyArtAuthoritySlugs.has(resource.slug) && !sheetGradeAuthoritySlugs.has(resource.slug) && !roofLightAuthoritySlugs.has(resource.slug) && !dmcSmcAuthoritySlugs.has(resource.slug) && !fireRetardantAuthoritySlugs.has(resource.slug) && !isoFireRetardantAuthoritySlugs.has(resource.slug) && !vinylEsterAuthoritySlugs.has(resource.slug) && !bisphenolAuthoritySlugs.has(resource.slug) && !isoPolyesterAuthoritySlugs.has(resource.slug) && !isoGelcoatAuthoritySlugs.has(resource.slug) && !uvStabilizedAuthoritySlugs.has(resource.slug) && !polyesterPuttyAuthoritySlugs.has(resource.slug));
 // Jump navigation for the 24 knowledge hubs below. The Knowledge Centre lists
 // every live article on one page; even with the compact rows introduced
 // alongside this, that page is 37,539px on a 390px viewport, so a reader
@@ -502,7 +483,6 @@ const KNOWLEDGE_HUBS = [
   { id: 'iso-polyester-resin-hub-heading', label: 'ISO Polyester Resin' },
   { id: 'button-resin-hub-heading', label: 'Button Grade Resin' },
   { id: 'dmc-smc-resin-hub-heading', label: 'DMC / SMC Resin' },
-  { id: 'pet-resin-hub-heading', label: 'PET-Modified Sheet Grade' },
   { id: 'polyester-putty-resin-hub-heading', label: 'Polyester Putty Resin (putty base)' },
   { id: 'vinyl-ester-resin-hub-heading', label: 'Vinyl Ester Resin' },
   { id: 'bisphenol-resin-hub-heading', label: 'Bisphenol Resin' },
@@ -1014,39 +994,6 @@ const KNOWLEDGE_HUBS = [
               <h3 id="dmc-smc-verification-heading">3. Review the current TDS and prepare a focused RFQ</h3>
               <div class="kc-grid">
                 {dmcSmcVerificationResources.map((resource) => <ResourceCard resource={resource} compact />)}
-              </div>
-            </section>
-          </div>
-        </section>
-      )}
-
-      {petResinAuthorityResources.length > 0 && (
-        <section class="kc-focus" aria-labelledby="pet-resin-hub-heading">
-          <div class="kc-focus-head">
-            <div>
-              <p class="eyebrow">PET-modified sheet grade — historical record</p>
-              <h2 id="pet-resin-hub-heading">PET-Modified Sheet Grade Knowledge Hub</h2>
-              <p>Start with the current TDS to confirm the liquid PET-modified sheet grade, then review published sheet and panel applications, compare it with the GP and Lamination Resin routes, and prepare a document-led RFQ.</p>
-            </div>
-            <div class="kc-focus-actions">
-              <a href="/products/polyester-putty-resin/" class="btn btn-solid">View Polyester Putty Resin</a>
-              <a href="/resources/pet-resin-liquid-grade-vs-thermoplastic-pet/" class="btn">Clarify PET material form</a>
-              <a href={site.catalogue.url} class="btn">Browse the product range</a>
-              <a href="/about/" class="btn">Company and facility context</a>
-              <a href="/contact/" class="btn">Discuss a requirement</a>
-            </div>
-          </div>
-          <div class="kc-subgroups">
-            <section class="kc-subgroup" aria-labelledby="pet-resin-foundation-heading">
-              <h3 id="pet-resin-foundation-heading">1. Confirm the published resin identity and material form</h3>
-              <div class="kc-grid">
-                {petResinFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
-              </div>
-            </section>
-            <section class="kc-subgroup" aria-labelledby="pet-resin-decision-heading">
-              <h3 id="pet-resin-decision-heading">2. Review published applications and separate relevant resin routes</h3>
-              <div class="kc-grid">
-                {petResinDecisionResources.map((resource) => <ResourceCard resource={resource} compact />)}
               </div>
             </section>
           </div>
