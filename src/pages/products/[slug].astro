@@ -1146,18 +1146,15 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
          link is deliberately quieter navigation; and a document this grade
          does not have is stated as a fact rather than drawn as a dead
          button. Which documents exist is read from the product data, never
-         assumed: adding a TDS does not give a product an SDS. */}
+         assumed: adding a TDS does not give a product an SDS.
+         A product without a published SDS shows no SDS row of any kind — no
+         placeholder, no note, no enquiry prompt. Only the documents that exist
+         are listed and the group closes up around them. */}
       <div class="prod-docs">
           <p class="prod-docs-heading">Technical documents</p>
           {tdsUrl && <DocLink kind="tds" href={tdsUrl} productName={name} />}
           {pdsUrl && <DocLink kind="pds" href={pdsUrl} productName={name} />}
           {sdsUrl && <DocLink kind="sds" href={sdsUrl} productName={name} />}
-          {!sdsUrl && (tdsUrl || pdsUrl) && (
-            <DocLink kind="unavailable" title="Safety Data Sheet"
-                     note={pdsUrl
-                       ? 'Not applicable — this product is an article, not a chemical'
-                       : 'Not published for this grade — ask us if your process needs one'} />
-          )}
           <DocLink kind="range" href={site.catalogue.url}
                    title={`All ${products.length} published grades`}
                    note="Browse the product range" />

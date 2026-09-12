@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { products } from '../src/data/products.js';
 
 // Document rules for the product range. Every assertion is derived from the
@@ -34,6 +35,47 @@ test.describe('document files', () => {
     expect(wrong.map((d) => `${d.slug} ${d.kind} ${d.url}`)).toEqual([]);
   });
 
+  test('withdrawn working drafts are neither published nor linked', async () => {
+    // Published in 3276593 and withdrawn the same day: each still said "Working
+    // draft" and marked test conditions "to be confirmed". Their URLs 302 to the
+    // product page (public/_redirects) until an approved revision is supplied.
+    const WITHDRAWN = [
+      '/tds/iso-gelcoat-tds.pdf',
+      '/tds/iso-polyester-resin-tds.pdf',
+      '/tds/uv-stabilized-sheet-grade-yellow-resin-tds.pdf',
+    ];
+    const problems: string[] = [];
+    for (const u of WITHDRAWN) {
+      if (fs.existsSync(path.join(PUBLIC, u))) problems.push(`${u}: file still in public/`);
+      if (docs.some((d) => d.url === u)) problems.push(`${u}: still linked from a product`);
+    }
+    expect(problems, problems.join('\n')).toEqual([]);
+  });
+
+  test('six TDS stay on their previous revision until a consistent TDS/SDS pair exists', async () => {
+    // The replacement files for these six changed Flash Point from "Not
+    // Provided" to "32 C, closed cup" while keeping the same reference and
+    // revision (Rev. 01, July 2026), and each published SDS states that the TDS
+    // lists flash point as "Not Provided". A value inside the SDS's carried-over
+    // 31-34 C range is not a measurement for the grade. Until a revised pair with
+    // proper revision control is supplied, the previous TDS is what is published.
+    // Changing one of these hashes should be a deliberate act, made together with
+    // the matching SDS.
+    const HELD: Record<string, string> = {
+      'button-grade-resin': '894228cad58e4a552a9fee94086b4e5d14a7df4fa81e80c97230a1a1eb1e0e70',
+      'fire-retardant-resin': '58841fb102f29eede3c5167e9a5670f78fc3782e34f990a52db2d87d61f0ba96',
+      'gp-gelcoat-resin': '8c3c8c584af9487cbc3c2a4889ab95aa661abd8cbeb0fc357400fa8553e41948',
+      'lamination-resin': 'f35be96cc2bf27a99d02962f763756611372a1576478d5762f24fdbbbeeb2625',
+      'roof-light-resin': '5cdebfb6c78810784e8757167a82d72cbb9963755f2e8b847b0b2d4489355a4c',
+      'sheet-grade-yellow-resin': '3c131451dfce7eef2cbb1370e3ff9216a7445e40837774f6d571eb36eace2f3b',
+    };
+    const changed = Object.entries(HELD).filter(([slug, want]) => {
+      const bytes = fs.readFileSync(path.join(PUBLIC, 'tds', `${slug}-tds.pdf`));
+      return crypto.createHash('sha256').update(bytes).digest('hex') !== want;
+    }).map(([slug]) => slug);
+    expect(changed, `TDS changed without a matching SDS revision: ${changed.join(', ')}`).toEqual([]);
+  });
+
   test('retired and historical sheets are never linked from a product', async () => {
     // pet-resin-*: the historical sheet-grade documents, held back from
     // Polyester Putty Resin until the chemist establishes whether they describe
@@ -56,11 +98,11 @@ test.describe('product page document actions', () => {
       if (JSON.stringify(hrefs) !== JSON.stringify(expected)) {
         problems.push(`${p.slug}: downloads ${JSON.stringify(hrefs)} ≠ data ${JSON.stringify(expected)}`);
       }
-      // No SDS: the absence is stated, and it is not a control.
-      if (!p.sdsUrl && (p.tdsUrl || p.pdsUrl)) {
-        const none = block.locator('.doc-act-none');
-        if ((await none.count()) !== 1) problems.push(`${p.slug}: no stated SDS absence`);
-        else if ((await none.evaluate((e) => e.tagName)) !== 'P') problems.push(`${p.slug}: SDS absence rendered as a control`);
+      // No published SDS: no SDS row of any kind — no placeholder, note or
+      // enquiry prompt. The group lists only the documents that exist.
+      if (!p.sdsUrl) {
+        const text = (await block.innerText()).replace(/\s+/g, ' ');
+        if (/Safety Data Sheet|\bSDS\b/.test(text)) problems.push(`${p.slug}: mentions an SDS it does not have — "${text.slice(0, 120)}"`);
       }
       // The range link is navigation, never a download.
       const nav = block.locator('.doc-act-nav');
@@ -76,6 +118,8 @@ test.describe('product page document actions', () => {
     expect(downloads).toContain('Product Data Sheet');
     expect(downloads).not.toContain('Technical Data Sheet');
     expect(downloads).not.toContain('Safety Data Sheet');
+    const whole = await page.locator('.prod-docs').innerText();
+    expect(whole, 'no SDS row, placeholder or exemption note').not.toMatch(/Safety Data Sheet|Not applicable/);
     const label = await page.locator('.prod-docs a.doc-act-dl').first().getAttribute('aria-label');
     expect(label).toMatch(/^Download Product Data Sheet PDF for Paint Brushes/);
   });
@@ -111,6 +155,19 @@ test.describe('technical document library', () => {
     // Astro drops whitespace where literal text and an expression meet across a
     // newline; this once rendered as "in one place:31" and "grades.Each".
     expect(sub, 'punctuation glued to the next word').not.toMatch(/[:.,;][A-Za-z0-9]/);
+  });
+
+  test('a product without an SDS has an empty SDS cell, not a placeholder', async ({ page }) => {
+    await page.goto('/technical-documents/');
+    const cells = await page.locator('.td-table tbody tr').evaluateAll((rows) =>
+      rows.map((r) => ({ name: r.querySelector('th')?.textContent?.trim(), sds: r.querySelectorAll('td')[1]?.innerText.trim() })));
+    const problems: string[] = [];
+    for (const p of products as any[]) {
+      const row = cells.find((c) => c.name === p.name);
+      if (!row) continue;
+      if (!p.sdsUrl && row.sds !== '') problems.push(`${p.slug}: SDS cell says "${row.sds}"`);
+    }
+    expect(problems, problems.join('\n')).toEqual([]);
   });
 
   test('every document is downloadable from the library under its correct kind', async ({ page }) => {

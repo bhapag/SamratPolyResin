@@ -244,3 +244,11 @@
 /resources/pet-resin-vs-lamination-resin                 /products/polyester-putty-resin/  301
 /resources/marble-resin-vs-pet-resin/                    /products/polyester-putty-resin/  301
 /resources/marble-resin-vs-pet-resin                     /products/polyester-putty-resin/  301
+
+# 2026-09-13: three TDS published in 3276593 were withdrawn the same day.
+# Each file still said "Working draft" and marked test conditions "to be
+# confirmed", so none is a current document. The links go to the product
+# page until an approved revision is supplied.
+/tds/iso-gelcoat-tds.pdf                                   /products/iso-gelcoat/  302
+/tds/iso-polyester-resin-tds.pdf                           /products/iso-polyester-resin/  302
+/tds/uv-stabilized-sheet-grade-yellow-resin-tds.pdf        /products/uv-stabilized-sheet-grade-yellow-resin/  302

@@ -17,10 +17,10 @@
  *   range             navigation. No gold tile, no download control, a
  *                     chevron that travels sideways. Deliberately quieter so
  *                     it cannot be mistaken for a document.
- *   unavailable       NOT a control. Renders as a <p>, has no border, no
- *                     hover and no arrow, and says why the document is
- *                     absent. A greyed-out button would still look clickable
- *                     and would imply the document exists.
+ *
+ * There is deliberately no "unavailable" variant. A document a product does
+ * not have is simply not rendered: no placeholder row, no note and no
+ * enquiry prompt in its place.
  *
  * GOLD: the house rule rations gold and forbids it as an ambient hover state.
  * It is used here only as the persistent marker of a real document — the one
@@ -31,13 +31,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export interface Props {
-  kind: 'tds' | 'sds' | 'pds' | 'range' | 'unavailable';
+  kind: 'tds' | 'sds' | 'pds' | 'range';
   href?: string;
   /** Product name, used to build an accessible label a screen reader can act on. */
   productName?: string;
   /** Overrides the default title (used by `range`, and by the library page). */
   title?: string;
-  /** Explanatory line for `unavailable`. */
+  /** Secondary line for `range`. */
   note?: string;
   class?: string;
 }
@@ -97,13 +97,4 @@ const aria = isDownload
     </span>
     <span class="doc-act-chevron" aria-hidden="true">→</span>
   </a>
-)}
-{kind === 'unavailable' && (
-  <p class:list={['doc-act', 'doc-act-none', extraClass]}>
-    <span class="doc-act-noneicon" aria-hidden="true">—</span>
-    <span class="doc-act-body">
-      <span class="doc-act-title">{heading}</span>
-      {note && <span class="doc-act-meta">{note}</span>}
-    </span>
-  </p>
 )}

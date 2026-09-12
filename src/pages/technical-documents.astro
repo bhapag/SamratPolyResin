@@ -134,9 +134,8 @@ const collectionJsonLd = {
           <p>
             Used where a product is an article rather than a chemical — our application
             brushes, for example. It carries the product specification and the standard it
-            is described against, but no hazard classification, because the item has none
-            of its own. Observe the safety requirements of the resin or coating being
-            applied instead.
+            is described against. Where no Safety Data Sheet is published for a product,
+            none is listed.
           </p>
         </div>
         <div class="td-explain-card">
@@ -203,8 +202,10 @@ const collectionJsonLd = {
                       <span class="td-none">Not published</span>
                     )}
                   </td>
+                  {/* No published SDS: the cell stays empty. No "not published" or
+                      "not applicable" text stands in for a missing document. */}
                   <td>
-                    {p.sdsUrl ? (
+                    {p.sdsUrl && (
                       <a href={p.sdsUrl} class="td-doc" target="_blank" rel="noopener" download
                          aria-label={`Download ${p.name} Safety Data Sheet (PDF, ${documentSize(p.sdsUrl)})`}>
                         <span class="td-doc-icon" aria-hidden="true">
@@ -213,8 +214,6 @@ const collectionJsonLd = {
                         <span class="td-doc-kind">SDS</span>
                         <span class="td-doc-meta">PDF · {documentSize(p.sdsUrl)}</span>
                       </a>
-                    ) : (
-                      <span class="td-none">{p.pdsUrl ? 'Not applicable — article' : 'Not published'}</span>
                     )}
                   </td>
                 </tr>
@@ -234,7 +233,7 @@ const collectionJsonLd = {
           <h2>Grades without a published sheet</h2>
         </div>
         <p>
-          {withoutDocuments.length} products in the range do not currently have a TDS or
+          {withoutDocuments.length} products in the range do not currently have a TDS, PDS or
           SDS published on this site:{' '}
           {withoutDocuments.map((p, i) => (
             <>

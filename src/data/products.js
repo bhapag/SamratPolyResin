@@ -3861,7 +3861,7 @@ export const products = [
       },
       {
         q: "Is a technical data sheet available?",
-        a: "Yes. The Technical Data Sheet for this grade (SPR-TDS-USY) is published on this page and in the technical document library. It carries the supply properties, and marks the fields still to be confirmed as exactly that rather than estimating them. A Safety Data Sheet for this grade is not published yet, so tell us if your process or site file needs one.",
+        a: "A Technical Data Sheet for this grade is not published on this site yet. Contact us with your sheet application and requirement and our team will tell you what product data is currently available.",
       },
       {
         q: "What packaging and quantities are available?",
@@ -3874,7 +3874,6 @@ export const products = [
       "gp-yellow-resin",
       "frp-polyester-pigment",
     ],
-    tdsUrl: "/tds/uv-stabilized-sheet-grade-yellow-resin-tds.pdf",
   },
   {
     slug: "iso-polyester-resin",
@@ -3963,7 +3962,7 @@ export const products = [
       },
       {
         q: "Is a technical data sheet available?",
-        a: "Yes. The Technical Data Sheet for this grade (SPR-TDS-IPR) is published on this page and in the technical document library. It carries the supply properties, and marks the fields still to be confirmed as exactly that rather than estimating them. A Safety Data Sheet for this grade is not published yet, so tell us if your process or site file needs one.",
+        a: "A Technical Data Sheet for this grade is not published on this site yet. Contact us with your application and requirement and our team will tell you what product data is currently available.",
       },
     ],
     relatedSlugs: [
@@ -3972,7 +3971,6 @@ export const products = [
       "unsaturated-polyester-resin",
       "gp-clear-resin",
     ],
-    tdsUrl: "/tds/iso-polyester-resin-tds.pdf",
   },
   {
     slug: "iso-gelcoat",
@@ -4084,7 +4082,7 @@ export const products = [
       },
       {
         q: "Is a technical data sheet available?",
-        a: "Yes. The Technical Data Sheet for this grade (SPR-TDS-IGC) is published on this page and in the technical document library. It carries the supply properties, and marks the fields still to be confirmed as exactly that rather than estimating them. A Safety Data Sheet for this grade is not published yet, so tell us if your part or site file needs one.",
+        a: "A Technical Data Sheet for this grade is not published on this site yet. Contact us with your part, service condition and requirement and our team will tell you what product data is currently available.",
       },
     ],
     relatedSlugs: [
@@ -4094,7 +4092,6 @@ export const products = [
       "vinyl-ester-resin",
     ],
     applicationSlugs: ["gelcoat-for-boat-marine-hull-finishing", "gelcoat-for-automotive-body-panels", "gelcoat-for-frp-bathware-sanitaryware"],
-    tdsUrl: "/tds/iso-gelcoat-tds.pdf",
   },
 ];
 
