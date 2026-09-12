@@ -262,7 +262,7 @@ export const products = [
       "Storage Temperature": "30–35 °C",
     },
     techSpecs: {
-      "Resin Type": "Unsaturated polyester resin, pre-pigmented sheet grade",
+      "Resin Type": "Orthophthalic Unsaturated Polyester Resin",
       "Curing System": "Non-accelerated",
       "Viscosity": "350–450 cPs",
       "Gel Time": "< 8 minutes",
@@ -637,7 +637,6 @@ export const products = [
     image: "gp-white-resin.jpg",
     images: ["gp-white-resin-2.jpg"],
     imageAlt: "GP White Resin — water-white general-purpose unsaturated polyester resin for FRP moulding by Samrat Poly Resins",
-    tdsUrl: "/tds/gp-white-resin-tds.pdf",
     sdsUrl: "/sds/gp-white-resin-sds.pdf",
     seo: {
       title: "GP White Resin Manufacturer in India | Water-White Polyester Resin",
@@ -655,12 +654,15 @@ export const products = [
         "Polyester Moulding Resin",
       ],
     },
-    // Reorganised from the original single `specs` table into the sitewide
-    // productDetails/techSpecs pattern — every value below is unchanged from
-    // that original table, just regrouped. "Usage / Application" is not
-    // repeated here since it's already covered in full by the applications
-    // list below (same source data, no information lost). No new values
-    // invented; pending a finalized TDS for anything beyond this.
+    // 2026-09-13. Viscosity (<350 cPs), gel time (6 min), thixotropy (medium)
+    // and styrene (30-35%) are withheld. No GP White-specific document supports
+    // them: they were entered in the 1 August 2026 spec update (a333c02) with no source, the poster
+    // prints no figures, and the sheet that had been linked as the GP White
+    // TDS is GP Clear Resin's sheet under another title (reference
+    // SPR-TDS-GCR, "Clear", and GP Clear's exact values of 350-450 cPs, <8 min,
+    // 33-40%), so every published figure contradicted the linked document.
+    // That sheet is held in source-documents/held/. Restore figures only with
+    // a GP White-specific specification.
     productDetails: {
       "Minimum Order Quantity": "1000 kg",
       "Packaging": "225 kg Drum",
@@ -670,22 +672,15 @@ export const products = [
     techSpecs: {
       "Resin Type": "Orthophthalic",
       "Curing System": "Non-accelerated",
-      "Viscosity": "<350 cPs",
-      "Gel Time": "6 min",
-      "Thixotropy": "Medium Thixotropic",
-      "Styrene Content": "30–35%",
     },
     tagline: "Water-white general-purpose resin for FRP moulding.",
     description:
-      "GP White Resin is Samrat Poly Resins' water-white, general-purpose orthophthalic unsaturated polyester resin for FRP panels, general moulding, hand layup, spray-up, cooling towers and water storage tanks. The published grade is a medium-thixotropic liquid with viscosity below 350 cPs and a 6-minute gel time. Its non-accelerated system is used with MEKP catalyst and cobalt octoate accelerator at room temperature. For buyers searching for white polyester resin, the relevant question is whether this water-white supplied appearance, general-purpose laminate role and published process data match the intended FRP component; it is not a substitute for a mould-surface gelcoat or a statement about the final colour of every reinforced part.",
+      "GP White Resin is Samrat Poly Resins' water-white, general-purpose orthophthalic unsaturated polyester resin for FRP panels, general moulding, hand layup, spray-up, cooling towers and water storage tanks. Grade-specific viscosity, gel time and styrene content are not published here; confirm them for the batch you are quoting. Its non-accelerated system is used with MEKP catalyst and cobalt octoate accelerator at room temperature. For buyers searching for white polyester resin, the relevant question is whether this water-white supplied appearance, general-purpose laminate role and published process data match the intended FRP component; it is not a substitute for a mould-surface gelcoat or a statement about the final colour of every reinforced part.",
     usageNote:
       'GP White Resin is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> for hand layup and spray-up. Where a fully clear (rather than water-white) grade is preferred, see our <a href="/products/gp-clear-resin/">GP Clear Resin</a>; mould-facing surfaces can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a>, and projects needing higher chemical resistance can step up to <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a>.',
     features: [
-      "Water-white colour, low viscosity (<350 cPs)",
-      "Medium-thixotropic body resists sagging on angled surfaces",
-      "Fast 6-minute gel time for efficient production cycles",
+      "Water-white supplied appearance",
       "Non-accelerated system — dose MEKP and cobalt accelerator to suit workshop conditions",
-      "30–35% styrene content for consistent processing",
       "Excellent fibreglass wet-out and mechanical strength",
       "Supplied in 225 kg drums, minimum order 1,000 kg",
     ],
@@ -705,7 +700,7 @@ export const products = [
       "ISO 9001:2015 certified quality management system",
       "Manufacturing polyester resins since 2017",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
-      "Water-white colour with a medium-thixotropic, sag-resistant body",
+      "Water-white supplied appearance for general-purpose FRP work",
       "Supplied in bulk 225 kg drums, minimum order 1,000 kg",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
     ],
@@ -716,19 +711,11 @@ export const products = [
       },
       {
         q: "What is the difference between GP White Resin and GP Clear Resin?",
-        a: 'Both are general-purpose orthophthalic polyester resins, but GP White Resin is a water-white, medium-thixotropic grade that resists sagging on angled mould surfaces, while our <a href="/products/gp-clear-resin/">GP Clear Resin</a> is a lower-viscosity clear grade. Choose based on the colour and flow behaviour your project needs.',
-      },
-      {
-        q: "Is GP White Resin thixotropic?",
-        a: "Yes. It has a medium thixotropic body, which helps it resist sagging or running when applied to angled or vertical mould surfaces, rather than pooling before it gels.",
+        a: 'Both are general-purpose orthophthalic polyester resins. GP White Resin is supplied water-white; <a href="/products/gp-clear-resin/">GP Clear Resin</a> is supplied clear and has its own published data sheet. GP White\'s processing figures are not published in a GP White-specific sheet, so do not assume GP Clear\'s values apply to it.',
       },
       {
         q: "What is the gel time and viscosity of GP White Resin?",
-        a: "Gel time is approximately 6 minutes, and viscosity is below 350 cPs, giving good reinforcement wet-out with a fast production cycle.",
-      },
-      {
-        q: "What is the styrene content of GP White Resin?",
-        a: "Styrene content is 30–35%.",
+        a: "A GP White-specific data sheet with these figures has not been published. Ask for the gel time and viscosity of the batch you are quoting, and do not substitute GP Clear Resin's published values.",
       },
       {
         q: "How is GP White Resin cured?",
@@ -740,7 +727,7 @@ export const products = [
       },
       {
         q: "Can GP White Resin be used for FRP manufacturing?",
-        a: "This published general-purpose grade is used for FRP panels, general moulding, hand layup, spray-up, cooling towers, water storage tanks and general industrial FRP fabrication. Review the product TDS and actual component requirement before selection.",
+        a: "This published general-purpose grade is used for FRP panels, general moulding, hand layup, spray-up, cooling towers, water storage tanks and general industrial FRP fabrication. Confirm the actual component requirement before selection.",
       },
       {
         q: "What details should I share when requesting a GP White Resin quote?",
@@ -767,6 +754,12 @@ export const products = [
     images: ["gp-quartz-resin-2.jpg"],
     imageAlt: "GP Quartz Resin — orthophthalic polyester resin for engineered stone and quartz casting by Samrat Poly Resins",
     tdsUrl: "/tds/gp-quartz-resin-tds.pdf",
+    // The printed sheet is GP Quartz Resin's own (SPR-TDS-GQR) and matches this
+    // page, but the PDF's hidden text layer also contains GP Clear Resin's full
+    // sheet (SPR-TDS-GCR, 350-450 cPs, <8 min). Copy-paste, search and screen
+    // readers get GP Clear's figures first. Fix: the issuer re-exports the
+    // sheet without the stray layer. No new facts are needed.
+    tdsNote: "Use the printed values. This file's hidden text also contains GP Clear Resin's sheet.",
     sdsUrl: "/sds/gp-quartz-resin-sds.pdf",
     seo: {
       title: "GP Quartz Resin Manufacturer in India",
@@ -1399,6 +1392,10 @@ export const products = [
     images: ["iso-fire-retardant-resin-2.jpg"],
     imageAlt: "ISO Fire Retardant Resin — halogen-free, ATH-filled isophthalic fire-retardant polyester resin by Samrat Poly Resins",
     tdsUrl: "/tds/iso-fire-retardant-resin-tds.pdf",
+    // Printed sheet is ISO Fire Retardant Resin's own (SPR-TDS-IFR) and matches
+    // this page; the hidden text layer also contains GP Clear Resin's sheet
+    // (SPR-TDS-GCR). Same fix as GP Quartz: issuer re-export, no new facts.
+    tdsNote: "Use the printed values. This file's hidden text also contains GP Clear Resin's sheet.",
     sdsUrl: "/sds/iso-fire-retardant-resin-sds.pdf",
     seo: {
       title: "ISO Fire Retardant Resin Manufacturer in India",
@@ -1737,7 +1734,7 @@ export const products = [
     whyChoose: [
       "ISO 9001:2015 certified quality management system",
       "Manufacturing polyester resins since 2017",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Industrial-grade E-glass with polyester sizing for reliable wet-out",
       "Supplied in 1040 mm rolls, minimum order 500 kg",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
@@ -1807,6 +1804,12 @@ export const products = [
     imageAlt:
       "Epoxy Clear Casting Resin — crystal-clear two-part epoxy for river table and decorative casting by Samrat Poly Resins",
     tdsUrl: "/tds/epoxy-clear-casting-resin-tds.pdf",
+    // Printed sheet (SPR-TDS-CCR) gives 2:1 by weight, 900 cPs, 40 min pot life,
+    // Shore D 82 — matching this page and the SDS. Hidden beneath it is an
+    // earlier version of the same reference giving a 1:1 mix ratio and "Not
+    // Provided" fields. A screen reader or copied text gets the wrong ratio.
+    // Fix: issuer re-export without the stray layer; no new facts are needed.
+    tdsNote: "Mix 2:1 by weight, as printed. This file's hidden text still carries an earlier 1:1 draft.",
     sdsUrl: "/sds/epoxy-clear-casting-resin-sds.pdf",
     seo: {
       title: "Epoxy Clear Casting Resin – Two-Part Epoxy",
@@ -3267,7 +3270,7 @@ export const products = [
     ],
     whyChoose: [
       "ISO 9001:2015 certified quality management system",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the resin system, application and expected quantity",
       "Part of Samrat Poly Resins' broader FRP and composite raw-material range",
@@ -3368,7 +3371,7 @@ export const products = [
     ],
     whyChoose: [
       "ISO 9001:2015 certified quality management system",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the resin system, application and expected quantity",
       "Part of Samrat Poly Resins' broader FRP and composite raw-material range",
@@ -3462,7 +3465,7 @@ export const products = [
     ],
     whyChoose: [
       "ISO 9001:2015 certified quality management system",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the intended coating system, application and expected quantity",
       "Part of Samrat Poly Resins' broader FRP and composite raw-material range",
@@ -3553,7 +3556,7 @@ export const products = [
     ],
     whyChoose: [
       "ISO 9001:2015 certified quality management system",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the intended application and expected quantity",
       "Part of Samrat Poly Resins' broader FRP and composite raw-material range",
@@ -3643,7 +3646,7 @@ export const products = [
     ],
     whyChoose: [
       "ISO 9001:2015 certified quality management system",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the intended formulation and expected quantity",
       "Part of Samrat Poly Resins' broader FRP and composite raw-material range",
@@ -3736,7 +3739,7 @@ export const products = [
     ],
     whyChoose: [
       "ISO 9001:2015 certified quality management system",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the mould/tooling context and expected quantity",
       "Part of Samrat Poly Resins' broader FRP and composite raw-material range",

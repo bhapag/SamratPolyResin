@@ -37,7 +37,7 @@ export interface Props {
   productName?: string;
   /** Overrides the default title (used by `range`, and by the library page). */
   title?: string;
-  /** Secondary line for `range`. */
+  /** Secondary line for `range`; for a download, a caution about the file itself. */
   note?: string;
   class?: string;
 }
@@ -64,7 +64,7 @@ if (isDownload && href) {
 const label = isDownload ? LABELS[kind] : null;
 const heading = title ?? label?.title ?? '';
 const aria = isDownload
-  ? `Download ${heading} PDF${productName ? ` for ${productName}` : ''} (${size})`
+  ? `Download ${heading} PDF${productName ? ` for ${productName}` : ''} (${size})${note ? `. ${note}` : ''}`
   : undefined;
 ---
 {isDownload && (
@@ -80,6 +80,7 @@ const aria = isDownload
       <span class="doc-act-kind">{label!.kind}</span>
       <span class="doc-act-title">{heading}</span>
       <span class="doc-act-meta">PDF · {size} · Download</span>
+      {note && <span class="doc-act-caution">{note}</span>}
     </span>
     <span class="doc-act-go" aria-hidden="true">
       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6.5 10.5 12 16l5.5-5.5"/><path d="M5 20h14"/></svg>

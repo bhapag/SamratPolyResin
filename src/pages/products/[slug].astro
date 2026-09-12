@@ -70,7 +70,7 @@ const gpClearSeo = {
 };
 const gpWhiteSeo = {
   title: 'GP White Resin Manufacturer in India',
-  description: 'Water-white general-purpose polyester resin for FRP moulding, panels, water tanks and cooling towers. Published TDS and 225 kg drums.',
+  description: 'Water-white general-purpose polyester resin for FRP moulding, panels, water tanks and cooling towers. Published SDS, 225 kg drums, 1,000 kg MOQ.',
   keywords: [
     'GP White Resin',
     'Water White Polyester Resin',
@@ -1152,7 +1152,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
          are listed and the group closes up around them. */}
       <div class="prod-docs">
           <p class="prod-docs-heading">Technical documents</p>
-          {tdsUrl && <DocLink kind="tds" href={tdsUrl} productName={name} />}
+          {tdsUrl && <DocLink kind="tds" href={tdsUrl} productName={name} note={product.tdsNote} />}
           {pdsUrl && <DocLink kind="pds" href={pdsUrl} productName={name} />}
           {sdsUrl && <DocLink kind="sds" href={sdsUrl} productName={name} />}
           <DocLink kind="range" href={site.catalogue.url}
@@ -1920,11 +1920,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             </div>
             <div class="gp-white-outcome-card">
               <h3>Published moulding and laminate context</h3>
-              <p>The published medium-thixotropic body, viscosity below 350 cPs and 6-minute gel time are the details to review against the actual mould, reinforcement, application method and workshop conditions.</p>
+              <p>Viscosity, gel time and styrene content are not published in a GP White-specific data sheet. Confirm them for the batch being quoted against the actual mould, reinforcement, application method and workshop conditions.</p>
             </div>
             <div class="gp-white-outcome-card">
               <h3>Procurement details are available</h3>
-              <p>Review the GP White Resin TDS, 225 kg drum packaging and 1,000 kg minimum order quantity before sharing the component, required finish, process and delivery location for a quote.</p>
+              <p>Review the published SDS, 225 kg drum packaging and 1,000 kg minimum order quantity before sharing the component, required finish, process and delivery location for a quote.</p>
             </div>
           </div>
         </section>
@@ -2798,7 +2798,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="gp-white-comparison-grid">
         <article class="gp-white-comparison-card">
           <h3><a href="/products/gp-clear-resin/">GP White Resin vs GP Clear Resin</a></h3>
-          <p>Both are published general-purpose orthophthalic polyester grades. GP White Resin is water white with a medium-thixotropic body and viscosity below 350 cPs; review GP Clear Resin where its published clear grade is more relevant to the requirement.</p>
+          <p>Both are published general-purpose orthophthalic polyester grades. GP White Resin is supplied water white; GP Clear Resin is supplied clear and publishes its own viscosity and gel time, which should not be assumed for GP White.</p>
         </article>
         <article class="gp-white-comparison-card">
           <h3><a href="/products/lamination-resin/">GP White Resin vs Lamination Resin</a></h3>
@@ -2810,7 +2810,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         </article>
         <article class="gp-white-comparison-card">
           <h3><a href="/products/unsaturated-polyester-resin/">GP White Resin and the UPR category</a></h3>
-          <p>Unsaturated Polyester Resin is the parent category. Use the UPR page to compare published grade roles, then review the GP White Resin TDS and component requirement before choosing this individual grade.</p>
+          <p>Unsaturated Polyester Resin is the parent category. Use the UPR page to compare published grade roles, then confirm GP White Resin's batch data and component requirement before choosing this individual grade.</p>
         </article>
       </div>
     </section>
@@ -3788,7 +3788,6 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="gp-hub-actions">
         <a href="#enquire" class="btn btn-solid">Discuss your GP White Resin requirement</a>
         <a href="/resources/#gp-white-resin-hub-heading" class="btn">View the GP White Resource Hub</a>
-        <a href="/tds/gp-white-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download GP White Resin TDS</a>
         <a href={site.catalogue.url} class="btn">Browse the product range</a>
       </div>
     </section>
@@ -3890,7 +3889,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Published quality approach</strong>
-            <span>Our company information describes checks for viscosity, gel time and cure behaviour before batch approval; use the GP White Resin TDS for grade-specific data.</span>
+            <span>Our company information describes checks for viscosity, gel time and cure behaviour before batch approval; ask for grade-specific data for the batch being quoted.</span>
           </span>
         </a>
       </div>

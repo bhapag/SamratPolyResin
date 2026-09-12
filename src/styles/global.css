@@ -344,6 +344,13 @@ h1, h2 {
   font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.05em;
   color: var(--ink-faint); line-height: 1.3;
 }
+/* A fact about the file itself (e.g. a stray hidden text layer), not an
+   availability placeholder. Readable size, warm but not alarm-red. */
+.doc-act-caution {
+  margin-top: 0.3rem; font-family: var(--font-body); font-size: 0.8rem; line-height: 1.4;
+  color: var(--accent-gold-light); letter-spacing: 0;
+}
+.ledger .doc-act-caution { color: var(--accent-gold-dark); }
 
 /* --- a real document download --- */
 .doc-act-dl { border-left: 2px solid var(--accent-gold); }
