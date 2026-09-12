@@ -57,16 +57,34 @@ export const CATEGORIES = [
 // Add an entry here only when the corresponding .astro page actually exists.
 export const CATEGORY_HUBS = {
   "GP Resins": "gp-resins",
+  "Sheet Grade Resins": "sheet-grade-resins",
+  "GelCoat Resin": "gelcoat-resins",
+  "Fire Retardant Resins": "fire-retardant-resins",
   "Epoxy & Casting": "epoxy-resins",
   "FRP Allied Products": "frp-allied-products",
   "Industrial & Specialty Resins": "industrial-specialty-resins",
+  "Hardeners": "hardeners-accelerators",
 };
 
-// Deliberately WITHOUT hubs: "Sheet Grade Resins" (2 products), "GelCoat Resin"
-// (1), "Fire Retardant Resins" (2) and "Hardeners" (2). A hub over one or two
-// products is an empty category page — the thing the September 2026 content
-// review explicitly ruled out. Revisit only if a family grows, or if Search
-// Console shows the cluster earning impressions its product pages cannot serve.
+// An earlier review deliberately left Sheet Grade, GelCoat, Fire Retardant and
+// Hardeners without hubs, on the grounds that a hub over one or two products is
+// an empty category page. That was right for the catalogue as it then stood.
+// Two things changed it.
+//
+// The families grew: Sheet Grade went from two products to three and GelCoat
+// from one to two when the new grades were added, so each now contains a real
+// decision rather than a single option.
+//
+// More importantly, these four are not category listings. Each exists to answer
+// a choice a buyer has to make and that no single product page can make for
+// them — general-purpose against isophthalic gelcoat, halogenated against
+// halogen-free fire retardancy, which of three sheet grades suits a panel's
+// relationship with sunlight, and the fact that a catalyst and an accelerator
+// are two halves of one cure system that must never meet undiluted. If a family
+// ever loses that decision, its hub should go with it.
+//
+// "ISO Resins" stays deliberately without one: it holds a single product, and
+// ISO Polyester Resin's own page already is the answer for that search.
 
 export const products = [
   {

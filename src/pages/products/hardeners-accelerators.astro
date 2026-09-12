@@ -1,0 +1,62 @@
+---
+import Base from '../../layouts/Base.astro';
+import CategoryHub from '../../components/CategoryHub.astro';
+---
+<Base
+  title="MEKP Hardener & Cobalt Accelerator Supplier in India"
+  description="Samrat Poly Resins supplies MEKP catalyst and cobalt octoate accelerator for unsaturated polyester curing. They work together and must never be mixed directly."
+>
+  <CategoryHub
+    category="Hardeners"
+    slug="hardeners-accelerators"
+    heading="Hardeners & Accelerators for Polyester Cure"
+    eyebrow="Cure system"
+    intro="Room-temperature polyester cure is a redox pair, not a single additive. A cobalt salt decomposes the peroxide catalyst at ambient temperature to generate radicals, and styrene then crosslinks the polyester into a rigid network. Samrat Poly Resins supplies both halves: MEKP as the catalyst and cobalt octoate as the accelerator."
+    note="These two are not alternatives to each other. A resin that is already pre-accelerated needs only the peroxide; one that is not needs both, added separately and in the right order."
+    gridHeading="Cure-system products"
+    chooseHeading="Catalyst and accelerator do different jobs"
+    collectionDescription="Samrat Poly Resins' published cure-system products for unsaturated polyester: MEKP catalyst and cobalt octoate accelerator."
+    enquiryContext="hardeners-family"
+    enquiryPlaceholder="Resin grade in use, whether it is pre-accelerated, process, working time required, quantity, delivery location"
+    resourceSlugs={[
+      'what-is-mekp-hardener',
+      'what-is-cobalt-octoate',
+      'understanding-gel-time-in-polyester-resin',
+      'how-temperature-affects-polyester-cure',
+      'troubleshooting-polyester-cure-speed',
+      'common-frp-curing-problems',
+    ]}
+  >
+    <Fragment slot="choose">
+      <div class="hub-opt">
+        <p class="hub-opt-name">Catalyst / initiator</p>
+        <h3>MEKP Hardener</h3>
+        <p>
+          Methyl ethyl ketone peroxide. It is the radical source, used at a low percentage
+          and not consumed stoichiometrically, so adding more does not give a harder cure —
+          it gives a faster, hotter one, with the defects that follow.
+        </p>
+        <a href="/products/mekp-hardener/">View MEKP Hardener</a>
+      </div>
+      <div class="hub-opt">
+        <p class="hub-opt-name">Accelerator / promoter</p>
+        <h3>Cobalt Octoate</h3>
+        <p>
+          The cobalt salt that lets MEKP decompose at room temperature at all. Without it a
+          cobalt-dependent system will not cure at ambient. Many resins arrive
+          pre-accelerated, in which case this is already in the drum.
+        </p>
+        <a href="/products/cobalt-octoate/">View Cobalt Octoate</a>
+      </div>
+      <p class="hub-caution">
+        The one rule that matters more than any other on this page: never bring MEKP and
+        cobalt accelerator into direct contact. Mixed together undiluted they can react
+        violently. The accelerator goes into the resin first and is stirred in, then the
+        peroxide goes in separately. Peroxides also lose activity in storage and have real
+        temperature limits, so check the age of stock before blaming a resin for a slow
+        cure. Dosage belongs to the resin grade and the shop temperature, so confirm it
+        against the grade's own data sheet rather than carrying a figure across.
+      </p>
+    </Fragment>
+  </CategoryHub>
+</Base>

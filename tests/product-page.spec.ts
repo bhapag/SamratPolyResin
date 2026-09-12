@@ -27,8 +27,11 @@ test.describe('product page structure', () => {
   });
 
   test('a category without a hub gets a three-step breadcrumb, not a dead link', async ({ page }) => {
-    // Hardeners has no hub page, so the trail must stay Home / Products / item.
-    await page.goto('/products/mekp-hardener/');
+    // Was MEKP Hardener, until Hardeners gained a hub in September 2026.
+    // ISO Resins holds a single product and deliberately has none, so this
+    // still guards the real behaviour: a category without a hub renders as a
+    // plain label, never as a link to a page that does not exist.
+    await page.goto('/products/iso-polyester-resin/');
     const crumb = page.locator('.crumb').first();
     await expect(crumb.locator('a')).toHaveCount(2);
   });

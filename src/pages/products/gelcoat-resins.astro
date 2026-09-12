@@ -1,0 +1,63 @@
+---
+import Base from '../../layouts/Base.astro';
+import CategoryHub from '../../components/CategoryHub.astro';
+---
+<Base
+  title="Gelcoat Manufacturer in India | Polyester Gelcoat"
+  description="Samrat Poly Resins manufactures polyester gelcoats in India: a general-purpose white gelcoat and an isophthalic grade for weathering and water contact."
+>
+  <CategoryHub
+    category="GelCoat Resin"
+    slug="gelcoat-resins"
+    heading="Polyester Gelcoat — General Purpose & Isophthalic"
+    intro="A gelcoat is the outermost layer of an FRP moulding, sprayed or brushed into the mould before any reinforcement goes in. It becomes the visible surface of the finished part and its first line of protection, which is why it is formulated differently from a laminating resin: heavily pigmented, thixotropic enough to hold on a vertical mould face, and made to cure hard and glossy against the tool. Samrat Poly Resins manufactures two published gelcoat grades at Doraha, Punjab."
+    note="A gelcoat is not a laminating resin and not a paint. The structural laminate behind it is built with a separate resin, and gelcoat applied to a finished part rather than into a mould will not behave the same way."
+    gridHeading="Published gelcoat grades"
+    chooseHeading="General purpose or isophthalic?"
+    collectionDescription="Samrat Poly Resins' published polyester gelcoat grades: a general-purpose white gelcoat and an isophthalic gelcoat for surfaces facing weathering and water contact."
+    enquiryContext="gelcoat-family"
+    enquiryPlaceholder="Finished part, service condition, colour and finish requirement, quantity, delivery location"
+    resourceSlugs={[
+      'what-is-gel-coat-resin',
+      'what-is-iso-gelcoat',
+      'how-to-apply-iso-gelcoat',
+      'iso-gelcoat-applications',
+      'how-to-choose-gelcoat-resin-for-frp-products',
+      'gelcoat-resin-problems-peeling-cracking-tackiness',
+      'gelcoat-resin-storage-and-handling-guide',
+    ]}
+  >
+    <Fragment slot="choose">
+      <div class="hub-opt">
+        <p class="hub-opt-name">General purpose</p>
+        <h3>GP Gelcoat Resin</h3>
+        <p>
+          The standard-duty route for FRP mould work: a white, high-gloss polyester gelcoat
+          for moulded products and surface finishing where the part is not in sustained
+          water contact or long outdoor service. Published TDS, 50 kg and 225 kg packs.
+        </p>
+        <a href="/products/gp-gelcoat-resin/">View GP Gelcoat Resin</a>
+      </div>
+      <div class="hub-opt">
+        <p class="hub-opt-name">Isophthalic</p>
+        <h3>ISO Gelcoat</h3>
+        <p>
+          The grade normally specified where the visible surface has to hold gloss and
+          colour through weathering, water contact or outdoor service — marine topsides,
+          sanitaryware, transport and exterior panels. Its data sheet publishes brush or
+          spray application onto the mould face.
+        </p>
+        <a href="/products/iso-gelcoat/">View ISO Gelcoat</a>
+      </div>
+      <p class="hub-caution">
+        Two limits worth knowing before you specify. No polyester gelcoat is waterproof;
+        they are all permeable, and permeability rises with temperature, so blister
+        resistance is a property of the whole laminate rather than the coating alone. And
+        for a surface in continuous immersion — a pool shell or a hull bottom — industry
+        practice steps up to an isophthalic-NPG gelcoat, which is a different grade again.
+        If your part is permanently under water, say so in the enquiry rather than
+        assuming an isophthalic gelcoat covers it.
+      </p>
+    </Fragment>
+  </CategoryHub>
+</Base>

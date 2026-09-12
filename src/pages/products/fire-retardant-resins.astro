@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import CategoryHub from '../../components/CategoryHub.astro';
+---
+<Base
+  title="Fire Retardant Resin Manufacturer in India | FRP FR Grades"
+  description="Samrat Poly Resins manufactures fire-retardant polyester resins in India: a halogenated FR grade and a halogen-free, ATH-filled isophthalic grade."
+>
+  <CategoryHub
+    category="Fire Retardant Resins"
+    slug="fire-retardant-resins"
+    heading="Fire Retardant Resin — Halogenated & Halogen-Free"
+    intro="Fire retardancy in an unsaturated polyester comes from a deliberately added chemistry, not from the resin backbone. Two general routes exist: a halogenated backbone, where halogen species interfere with the combustion reaction in the flame itself, and mineral filling with aluminium trihydrate, which decomposes endothermically and releases water vapour that cools and dilutes the flammable gases. Samrat Poly Resins publishes one grade on each route."
+    note="Fire retardant is not the same as fireproof or non-combustible, and a resin does not carry a classification through into your part. Fire performance belongs to a finished system — resin, reinforcement, thickness, construction and the tested configuration together."
+    gridHeading="Published fire-retardant grades"
+    chooseHeading="Halogenated or halogen-free?"
+    collectionDescription="Samrat Poly Resins' published fire-retardant unsaturated polyester grades: a halogenated FR resin and a halogen-free, ATH-filled isophthalic FR resin."
+    enquiryContext="fire-retardant-family"
+    enquiryPlaceholder="Finished FRP component, the fire requirement in its original wording, documentation needed, quantity, delivery location"
+    resourceSlugs={[
+      'what-is-fire-retardant-resin',
+      'what-is-iso-fire-retardant-resin',
+      'iso-fire-retardant-resin-vs-upr',
+      'fire-retardant-polyester-resin-applications-and-benefits',
+      'fire-retardant-resin-procurement-checklist',
+    ]}
+  >
+    <Fragment slot="choose">
+      <div class="hub-opt">
+        <p class="hub-opt-name">Halogenated route</p>
+        <h3>Fire Retardant Resin</h3>
+        <p>
+          The separately published halogenated fire-retardant unsaturated polyester grade
+          for industrial FRP work. Halogen chemistry acts in the gas phase, on the flame
+          itself.
+        </p>
+        <a href="/products/fire-retardant-resin/">View Fire Retardant Resin</a>
+      </div>
+      <div class="hub-opt">
+        <p class="hub-opt-name">Halogen-free, ATH-filled</p>
+        <h3>ISO Fire Retardant Resin</h3>
+        <p>
+          An isophthalic-based, halogen-free grade filled with aluminium trihydrate. The
+          halogen-free route matters where smoke toxicity and corrosive combustion
+          products are a concern, such as tunnels, rail vehicles and enclosed public
+          spaces. Here ISO means isophthalic chemistry, not certification.
+        </p>
+        <a href="/products/iso-fire-retardant-resin/">View ISO Fire Retardant Resin</a>
+      </div>
+      <p class="hub-caution">
+        Neither grade is stronger or safer than the other in the abstract, and the
+        isophthalic backbone on the ISO FR grade provides the corrosion and durability
+        benefit rather than the fire behaviour. If your project names a class, a standard
+        or a test method, send that wording exactly as written rather than summarised —
+        it is what determines whether anything can be evidenced for your component.
+      </p>
+    </Fragment>
+  </CategoryHub>
+</Base>

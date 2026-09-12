@@ -1,0 +1,200 @@
+---
+// Shared category hub.
+//
+// Four of the nine catalogue categories had a bespoke hub page and five had
+// none, so "gelcoat manufacturer in india", "fire retardant frp resin" and
+// "sheet grade resin" had no landing page between the catalogue index and an
+// individual grade. Rather than copy a 200-line bespoke page four more times,
+// the shared shell lives here and each hub supplies only what is genuinely
+// different: its own copy, and its own "how to choose between these" block,
+// which is the part that earns the page.
+//
+// No product, claim or specification is introduced here. Everything shown
+// comes from products.js and the resource library.
+import ProductCard from './ProductCard.astro';
+import EnquiryForm from './EnquiryForm.astro';
+import { products } from '../data/products.js';
+import { resources } from '../data/resources.js';
+import { site, buildCanonicalUrl, ORGANIZATION_ID, WEBSITE_ID } from '../data/site.js';
+
+const {
+  category,          // exact category string in products.js
+  slug,              // hub slug under /products/
+  heading,           // H1
+  eyebrow = 'Product family',
+  intro,             // lead paragraph
+  note,              // optional second paragraph
+  gridHeading,
+  chooseHeading,
+  resourceSlugs = [],
+  collectionDescription,
+  enquiryContext,
+  enquiryPlaceholder,
+} = Astro.props;
+
+const grades = products.filter((p) => p.category === category);
+const relatedResources = resourceSlugs
+  .map((s) => resources.find((r) => r.slug === s && !r.draft))
+  .filter(Boolean);
+
+const url = buildCanonicalUrl(`/products/${slug}/`);
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: buildCanonicalUrl('/') },
+    { '@type': 'ListItem', position: 2, name: 'Products', item: buildCanonicalUrl('/products/') },
+    { '@type': 'ListItem', position: 3, name: category, item: url },
+  ],
+};
+
+const collectionJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: category,
+  url,
+  description: collectionDescription,
+  isPartOf: { '@id': WEBSITE_ID },
+  publisher: { '@id': ORGANIZATION_ID },
+  hasPart: grades.map((p) => ({
+    '@type': 'Product',
+    name: p.name,
+    url: buildCanonicalUrl(`/products/${p.slug}/`),
+  })),
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+<script type="application/ld+json" set:html={JSON.stringify(collectionJsonLd)} />
+
+<section class="section fam-hero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/products/">Products</a> <span aria-hidden="true">/</span>
+      <span aria-current="page">{category}</span>
+    </nav>
+    <div class="fam-hero-inner">
+      <div>
+        <p class="eyebrow">{eyebrow}</p>
+        <h1>{heading}</h1>
+        <p class="fam-hero-sub">{intro}</p>
+        {note && <p class="fam-hero-note">{note}</p>}
+      </div>
+      <div class="fam-hero-badge">
+        <span class="fam-hero-badge-num">{grades.length}</span>
+        <span class="fam-hero-badge-label">Published<br/>Products</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section fam-grades">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">{grades.length} products</p>
+      <h2>{gridHeading}</h2>
+    </div>
+    <div class="grid">
+      {grades.map((p) => <ProductCard product={p} />)}
+    </div>
+  </div>
+</section>
+
+<section class="section fam-links">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Choosing between them</p>
+      <h2>{chooseHeading}</h2>
+    </div>
+    <div class="hub-choose">
+      <slot name="choose" />
+    </div>
+  </div>
+</section>
+
+{relatedResources.length > 0 && (
+  <section class="section fam-links">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Guides</p>
+        <h2>Read before you specify</h2>
+      </div>
+      <div class="fam-card-grid">
+        {relatedResources.map((r) => (
+          <a class="fam-link-card" href={`/resources/${r.slug}/`}>
+            <span>
+              <strong>{r.title}</strong>
+              <span class="fam-link-desc">{r.description}</span>
+            </span>
+            <span class="fam-link-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<section class="section fam-enquire" id="enquire">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Enquiry</p>
+      <h2>Request a quote for {category.toLowerCase()}</h2>
+      <p>
+        Tell us the finished product, the service condition and the quantity, and the
+        right grade can be matched to it. {site.name} manufactures at Doraha, Punjab.
+      </p>
+    </div>
+    <div class="fam-enquire-box">
+      <EnquiryForm pageContext={enquiryContext} messagePlaceholder={enquiryPlaceholder} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .fam-hero-sub { max-width: 66ch; color: var(--ink-dim); line-height: 1.7; }
+  .fam-hero-note { max-width: 62ch; margin-top: 0.9rem; color: var(--ink-faint); font-size: 0.88rem; line-height: 1.65; }
+  .fam-hero-inner { display: flex; gap: 2rem; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; }
+  .fam-hero-badge {
+    border: 1px solid var(--line); padding: 1.1rem 1.4rem; text-align: center;
+    display: flex; flex-direction: column; gap: 0.2rem; background: var(--bg-2);
+  }
+  .fam-hero-badge-num { font-family: var(--font-display); font-size: 2rem; color: var(--accent-gold); line-height: 1; }
+  .fam-hero-badge-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+
+  /* The comparison block is the reason these hubs exist, so it reads as prose
+     with room rather than as a row of marketing tiles. */
+  .hub-choose { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+  .hub-choose :global(.hub-opt) {
+    border: 1px solid var(--line); border-radius: 10px; background: var(--bg-2);
+    padding: 1.1rem 1.2rem 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .hub-choose :global(.hub-opt-name) {
+    margin: 0; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent-gold);
+  }
+  .hub-choose :global(.hub-opt h3) { margin: 0; font-size: 1.05rem; line-height: 1.3; color: var(--ink); }
+  .hub-choose :global(.hub-opt p) { margin: 0; color: var(--ink-dim); font-size: 0.9rem; line-height: 1.6; }
+  .hub-choose :global(.hub-opt a) {
+    margin-top: auto; padding-top: 0.35rem; color: var(--accent-gold-light);
+    font-size: 0.84rem; border-bottom: 1px solid var(--line-2); align-self: flex-start;
+  }
+  .hub-choose :global(.hub-opt a:hover) { color: var(--accent-gold); border-color: var(--accent-gold); }
+  .hub-choose :global(.hub-caution) {
+    grid-column: 1 / -1; margin: 0; max-width: 70ch;
+    color: var(--ink-faint); font-size: 0.84rem; line-height: 1.65;
+  }
+
+  .fam-card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.9rem; }
+  .fam-link-card {
+    display: flex; align-items: center; justify-content: space-between; gap: 0.9rem;
+    border: 1px solid var(--line); border-radius: 10px; padding: 0.95rem 1.05rem;
+    background: var(--bg-2); transition: border-color .25s var(--ease-premium);
+  }
+  .fam-link-card:hover { border-color: var(--accent-gold); }
+  .fam-link-card strong { display: block; color: var(--ink); font-size: 0.95rem; line-height: 1.35; }
+  .fam-link-desc { display: block; margin-top: 0.3rem; color: var(--ink-faint); font-size: 0.8rem; line-height: 1.5; }
+  .fam-link-arrow { color: var(--accent-gold); flex-shrink: 0; }
+  .fam-enquire-box { margin-top: 1.2rem; }
+</style>

@@ -270,22 +270,68 @@ test.describe('category hubs', () => {
     }
   });
 
-  test('no hub exists for a category with fewer than three products', async ({ page }) => {
-    // A hub over one or two products is an empty category page. If one is ever
-    // added for GelCoat (2), Hardeners (2), Fire Retardant (2) or ISO Resins
-    // (1), this should fail and force the decision to be re-argued.
-    //
-    // Threshold moved from four to three when UV Resin was removed from the
-    // published range: that left "Epoxy & Casting" with three products (Clear
-    // Casting, Epoxy Art, Epoxy Hardener) while /products/epoxy-resins/ is an
-    // indexed hub carrying earned internal links. Retiring a live hub to
-    // satisfy a content-quality heuristic would cost more than it protects —
-    // three substantial products still make a real family page. Two does not.
+  // This replaces a product-count threshold. The old rule said no hub below
+  // three products, to stop empty category listings being published, and it
+  // asked for the decision to be re-argued if that ever changed. It was, in
+  // September 2026: counting products was a proxy for the thing that actually
+  // matters, which is whether the page answers a choice the buyer has to make.
+  //
+  // Four hubs were then added over two- and three-product families — GelCoat,
+  // Fire Retardant, Sheet Grade and Hardeners — each carrying a comparison no
+  // single product page can make. The guard is now about substance rather than
+  // arithmetic: a hub must resolve, list more than one product, and say
+  // something beyond the card grid. A bare category listing fails this.
+  test('every category hub resolves and carries substance beyond the card grid', async ({ page }) => {
     const { CATEGORY_HUBS } = await import('../src/data/products.js');
-    const tooSmall = Object.keys(CATEGORY_HUBS).filter(
-      (cat) => products.filter((p) => p.category === cat).length < 3,
-    );
-    expect(tooSmall, `hub exists for an under-populated category: ${tooSmall.join(', ')}`).toEqual([]);
+    const problems: string[] = [];
+
+    for (const [cat, slug] of Object.entries(CATEGORY_HUBS)) {
+      if (!slug) continue;
+      const count = products.filter((p) => p.category === cat).length;
+      if (count < 2) problems.push(`${cat}: hub over ${count} product(s)`);
+
+      const res = await page.goto(`/products/${slug}/`);
+      if (res?.status() !== 200) {
+        problems.push(`${cat}: /products/${slug}/ returned ${res?.status()}`);
+        continue;
+      }
+      const h1s = await page.locator('h1').count();
+      if (h1s !== 1) problems.push(`${cat}: ${h1s} h1 elements`);
+
+      // The original concern this test was written for was an empty category
+      // page: a grid of cards and nothing else. That is what it still guards.
+      //
+      // It deliberately does NOT demand a comparison from every hub. Where a
+      // category is a set of alternatives — GelCoat, Fire Retardant, Sheet
+      // Grade, Hardeners, Epoxy — the hub makes the choice explicit. Where it
+      // is a bill of materials rather than a choice, as with FRP Allied
+      // Products and Industrial & Specialty Resins, there is no comparison to
+      // make and inventing one would be worse than the listing.
+      const substance = await page.evaluate(() => {
+        const cards = [...document.querySelectorAll('.grid a, .card')];
+        const clone = document.querySelector('main')!.cloneNode(true) as HTMLElement;
+        clone.querySelectorAll('.grid, script, style, form').forEach((n) => n.remove());
+        return {
+          prose: (clone.innerText || '').replace(/\s+/g, ' ').trim().length,
+          sections: clone.querySelectorAll('h2').length,
+          cards: cards.length,
+        };
+      });
+      if (substance.cards < 2) problems.push(`${cat}: hub grid renders ${substance.cards} product link(s)`);
+      if (substance.sections < 2) problems.push(`${cat}: only ${substance.sections} section(s) beyond the grid`);
+      if (substance.prose < 600) problems.push(`${cat}: ${substance.prose} chars of prose outside the product grid`);
+    }
+    expect(problems, problems.join(' | ')).toEqual([]);
+  });
+
+  test('a single-product category still has no hub', async () => {
+    // ISO Resins holds one product. Its own page is the answer for that search,
+    // so a hub there would be a page wrapping a single link.
+    const { CATEGORY_HUBS } = await import('../src/data/products.js');
+    const singles = [...new Set(products.map((p) => p.category))]
+      .filter((cat) => products.filter((p) => p.category === cat).length < 2)
+      .filter((cat) => (CATEGORY_HUBS as Record<string, string>)[cat]);
+    expect(singles, `hub over a single-product category: ${singles.join(', ')}`).toEqual([]);
   });
 });
 
