@@ -35,21 +35,35 @@ test.describe('document files', () => {
     expect(wrong.map((d) => `${d.slug} ${d.kind} ${d.url}`)).toEqual([]);
   });
 
-  test('withdrawn working drafts are neither published nor linked', async () => {
-    // Published in 3276593 and withdrawn the same day: each still said "Working
-    // draft" and marked test conditions "to be confirmed". Their URLs 302 to the
-    // product page (public/_redirects) until an approved revision is supplied.
-    const WITHDRAWN = [
-      '/tds/iso-gelcoat-tds.pdf',
-      '/tds/iso-polyester-resin-tds.pdf',
-      '/tds/uv-stabilized-sheet-grade-yellow-resin-tds.pdf',
-    ];
+  test('ISO Polyester, ISO Gelcoat and UV Stabilized publish their final TDS, not the drafts', async () => {
+    // Working drafts of these three were published in 3276593 and withdrawn in
+    // 8832615 ("Working draft", "to be confirmed"). The owner then supplied final
+    // files, published at the same URLs. The drafts and finals share one
+    // reference and revision (Rev. 01, September 2026), so the bytes are the only
+    // thing that tells them apart — hence the pinned hashes.
+    const FINAL: Record<string, string> = {
+      'iso-polyester-resin': 'b36730c51b88e16addbbd7a5a6be15b16d04c9b147eb2d475d2d0c4c0ce2030a',
+      'iso-gelcoat': 'ccdb8ecd4748e1c21a5213c9b9cdcc8946b158499c474a35e3927522aeb3133c',
+      'uv-stabilized-sheet-grade-yellow-resin': '30e6d47591365f5004656a8019dfe33f9ef7002a95fe703770bfaf824f375702',
+    };
     const problems: string[] = [];
-    for (const u of WITHDRAWN) {
-      if (fs.existsSync(path.join(PUBLIC, u))) problems.push(`${u}: file still in public/`);
-      if (docs.some((d) => d.url === u)) problems.push(`${u}: still linked from a product`);
+    for (const [slug, want] of Object.entries(FINAL)) {
+      const url = `/tds/${slug}-tds.pdf`;
+      const p: any = products.find((x) => x.slug === slug);
+      if (p?.tdsUrl !== url) problems.push(`${slug}: tdsUrl is ${p?.tdsUrl}`);
+      const bytes = fs.readFileSync(path.join(PUBLIC, url));
+      if (crypto.createHash('sha256').update(bytes).digest('hex') !== want) problems.push(`${slug}: not the final file`);
     }
     expect(problems, problems.join('\n')).toEqual([]);
+  });
+
+  test('the historical PET sheet-grade TDS is kept, but never served or linked', async () => {
+    const hist = path.resolve('source-documents/historical/historical-spr-tds-pet-pet-resin-original.pdf');
+    expect(fs.existsSync(hist), 'historical source missing').toBe(true);
+    expect(fs.existsSync(path.join(PUBLIC, 'tds', 'pet-resin-tds.pdf')), 'PET TDS is back in public/').toBe(false);
+    const putty: any = products.find((x) => x.slug === 'polyester-putty-resin');
+    expect([putty.tdsUrl, putty.sdsUrl, putty.pdsUrl].filter(Boolean)).toEqual([]);
+    expect(products.some((x) => /^pet-resin$/.test(x.slug)), 'PET Resin recreated as a product').toBe(false);
   });
 
   test('six TDS stay on their previous revision until a consistent TDS/SDS pair exists', async () => {

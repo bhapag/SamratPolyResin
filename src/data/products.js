@@ -3861,7 +3861,7 @@ export const products = [
       },
       {
         q: "Is a technical data sheet available?",
-        a: "A Technical Data Sheet for this grade is not published on this site yet. Contact us with your sheet application and requirement and our team will tell you what product data is currently available.",
+        a: "Yes. The Technical Data Sheet for this grade (SPR-TDS-USY) can be downloaded from this page and from the technical document library.",
       },
       {
         q: "What packaging and quantities are available?",
@@ -3874,6 +3874,7 @@ export const products = [
       "gp-yellow-resin",
       "frp-polyester-pigment",
     ],
+    tdsUrl: "/tds/uv-stabilized-sheet-grade-yellow-resin-tds.pdf",
   },
   {
     slug: "iso-polyester-resin",
@@ -3962,7 +3963,7 @@ export const products = [
       },
       {
         q: "Is a technical data sheet available?",
-        a: "A Technical Data Sheet for this grade is not published on this site yet. Contact us with your application and requirement and our team will tell you what product data is currently available.",
+        a: "Yes. The Technical Data Sheet for this grade (SPR-TDS-IPR) can be downloaded from this page and from the technical document library.",
       },
     ],
     relatedSlugs: [
@@ -3971,6 +3972,7 @@ export const products = [
       "unsaturated-polyester-resin",
       "gp-clear-resin",
     ],
+    tdsUrl: "/tds/iso-polyester-resin-tds.pdf",
   },
   {
     slug: "iso-gelcoat",
@@ -4082,7 +4084,7 @@ export const products = [
       },
       {
         q: "Is a technical data sheet available?",
-        a: "A Technical Data Sheet for this grade is not published on this site yet. Contact us with your part, service condition and requirement and our team will tell you what product data is currently available.",
+        a: "Yes. The Technical Data Sheet for this grade (SPR-TDS-IGC) can be downloaded from this page and from the technical document library.",
       },
     ],
     relatedSlugs: [
@@ -4092,6 +4094,7 @@ export const products = [
       "vinyl-ester-resin",
     ],
     applicationSlugs: ["gelcoat-for-boat-marine-hull-finishing", "gelcoat-for-automotive-body-panels", "gelcoat-for-frp-bathware-sanitaryware"],
+    tdsUrl: "/tds/iso-gelcoat-tds.pdf",
   },
 ];
 

@@ -245,10 +245,9 @@
 /resources/marble-resin-vs-pet-resin/                    /products/polyester-putty-resin/  301
 /resources/marble-resin-vs-pet-resin                     /products/polyester-putty-resin/  301
 
-# 2026-09-13: three TDS published in 3276593 were withdrawn the same day.
-# Each file still said "Working draft" and marked test conditions "to be
-# confirmed", so none is a current document. The links go to the product
-# page until an approved revision is supplied.
-/tds/iso-gelcoat-tds.pdf                                   /products/iso-gelcoat/  302
-/tds/iso-polyester-resin-tds.pdf                           /products/iso-polyester-resin/  302
-/tds/uv-stabilized-sheet-grade-yellow-resin-tds.pdf        /products/uv-stabilized-sheet-grade-yellow-resin/  302
+# 2026-09-13: the original PET Resin sheet-grade TDS (SPR-TDS-PET Rev. 01,
+# July 2026) is kept as a historical source in source-documents/historical/
+# and is no longer served as a public download. It is not the Polyester Putty
+# Resin TDS, so its old URL goes to the document library rather than to that
+# product page.
+/tds/pet-resin-tds.pdf                                     /technical-documents/  301
