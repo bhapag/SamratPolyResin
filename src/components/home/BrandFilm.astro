@@ -5,6 +5,22 @@
 // the supplied video plays once in full, then the supplied still photo holds
 // for 5 seconds, then the video plays again — forever. See the <script> below
 // for the single-timer state machine that drives it.
+//
+// TWO MODES (2026-09-13). Measured on the live homepage:
+//  - iPhone (WebKit, 390/430px): the frame rendered 2x3 px. The video was
+//    actually playing, inside an invisible box, so phone visitors never saw
+//    the film. Cause: the single-column layout sized the cell only through
+//    aspect-ratio on a flex container whose children are all absolutely
+//    positioned; WebKit resolves that to zero width. Fixed in index.astro by
+//    giving the frame its own aspect ratio at phone widths.
+//  - Android (Chromium): visible, but no play control, autoplay-only, and the
+//    full 3.4 MB file downloaded as soon as the frame scrolled near.
+// So on phones/touch screens (and for reduced-motion or Save-Data visitors
+// anywhere) the film is now tap-to-play: the still and an unmistakable play
+// button show first, nothing is downloaded until the visitor taps, and one tap
+// plays it. Wide screens with a mouse keep the approved autoplay cycle.
+// The supplied file has no audio track, so the control says "no sound" rather
+// than offering a mute toggle that would do nothing.
 import { Image, getImage } from 'astro:assets';
 import { site } from '../../data/site.js';
 import brandFilmStill from '../../assets/brand-film/samrat-poly-resins-brand-film-still.png';
@@ -44,6 +60,15 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
     format="webp"
     loading="lazy"
   />
+  <button type="button" class="brandfilm-play" id="brandFilmPlay"
+          aria-controls="brandFilmVideo" aria-label="Play the brand film, 12 seconds, no sound">
+    <span class="brandfilm-play-icon" aria-hidden="true">
+      <svg class="icon-play" viewBox="0 0 24 24" width="30" height="30"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>
+      <svg class="icon-pause" viewBox="0 0 24 24" width="28" height="28"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
+      <svg class="icon-replay" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg>
+    </span>
+    <span class="brandfilm-play-label" aria-hidden="true">Play film · 0:12</span>
+  </button>
   <figcaption class="brandfilm-caption">
     <span class="brandfilm-tag">Brand film</span>
     <span class="brandfilm-title">Inside the plant</span>
@@ -60,14 +85,74 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
     const photo = document.getElementById('brandFilmPhoto') as HTMLImageElement | null;
     if (!video || !photo) return;
 
-    // Reduced motion, or Save-Data: static supplied photo only. No video
-    // load, no cycle. The <Image> layer is already the visible state, so this
-    // costs the visitor nothing but the 25.9MB-master-derived clip.
+    const showVideo = () => { video.classList.add('is-active'); photo.classList.remove('is-active'); };
+    const showPhoto = () => { photo.classList.add('is-active'); video.classList.remove('is-active'); };
+    const button = document.getElementById('brandFilmPlay') as HTMLButtonElement | null;
     const conn = (navigator as any).connection;
     const saveData = Boolean(conn && conn.saveData === true);
-    if (saveData || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      video.style.display = 'none';
-      photo.classList.add('is-active');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Must match the CSS media query that shows the button before JS runs.
+    const touchOrNarrow = window.matchMedia('(max-width: 860px), (hover: none)').matches;
+    const tapMode = touchOrNarrow || saveData || reducedMotion;
+    root.dataset.mode = tapMode ? 'tap' : 'auto';
+
+    if (tapMode && button) {
+      // Nothing is fetched until the visitor asks for it.
+      const setState = (state: 'idle' | 'loading' | 'playing' | 'paused' | 'ended') => {
+        root.dataset.state = state;
+        const labels = {
+          idle: 'Play the brand film, 12 seconds, no sound',
+          loading: 'Loading the brand film',
+          playing: 'Pause the brand film',
+          paused: 'Resume the brand film',
+          ended: 'Replay the brand film',
+        } as const;
+        button.setAttribute('aria-label', labels[state]);
+        button.setAttribute('aria-pressed', state === 'playing' ? 'true' : 'false');
+        const text = button.querySelector('.brandfilm-play-label');
+        if (text) text.textContent = state === 'ended' ? 'Replay film' : state === 'paused' ? 'Resume film' : 'Play film · 0:12';
+      };
+      setState('idle');
+      let loaded = false;
+      const play = () => {
+        if (!loaded) {
+          loaded = true;
+          const posterSrc = video.dataset.poster;
+          if (posterSrc && !video.poster) video.poster = posterSrc;
+          const source = video.querySelector('source');
+          const src = source?.dataset.src;
+          if (source && src) source.src = src;
+          video.load();
+        }
+        if (video.ended) video.currentTime = 0;
+        setState('loading');
+        video.muted = true;
+        const result = video.play();
+        if (result && typeof result.then === 'function') {
+          result.catch(() => { setState('paused'); });
+        }
+      };
+      const toggle = () => {
+        if (root.dataset.state === 'playing') { video.pause(); return; }
+        play();
+      };
+      video.addEventListener('playing', () => { showVideo(); setState('playing'); });
+      video.addEventListener('pause', () => { if (!video.ended) setState('paused'); });
+      video.addEventListener('ended', () => { showPhoto(); setState('ended'); });
+      video.addEventListener('waiting', () => { if (root.dataset.state === 'playing') setState('loading'); });
+      button.addEventListener('click', (e) => { e.stopPropagation(); toggle(); });
+      // The whole frame is the tap target, not only the button.
+      root.addEventListener('click', toggle);
+      // Scrolled away while playing: pause, so it never plays unseen.
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (ticking) return; ticking = true;
+        requestAnimationFrame(() => {
+          ticking = false;
+          const r = root.getBoundingClientRect();
+          if ((r.bottom < 0 || r.top > window.innerHeight) && !video.paused) video.pause();
+        });
+      }, { passive: true });
       return;
     }
 
@@ -81,8 +166,6 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
     // can never stack a second one.
     let photoTimer: ReturnType<typeof window.setTimeout> | undefined;
 
-    const showVideo = () => { video.classList.add('is-active'); photo.classList.remove('is-active'); };
-    const showPhoto = () => { photo.classList.add('is-active'); video.classList.remove('is-active'); };
 
     const attemptPlay = () => {
       video.muted = true;
@@ -194,6 +277,50 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
     background: linear-gradient(180deg, transparent, rgba(8, 9, 11, 0.86) 70%);
     pointer-events: none;
   }
+  /* Play control. Visible by default on narrow or touch screens so it is
+     there before any script runs; JS then sets data-mode on every device. */
+  .brandfilm-play {
+    position: absolute; left: 50%; top: 50%; z-index: 4;
+    transform: translate(-50%, -58%);
+    display: none; flex-direction: column; align-items: center; gap: 0.55rem;
+    padding: 0; border: 0; background: none; color: var(--ink); cursor: pointer;
+    font: inherit; -webkit-tap-highlight-color: transparent;
+  }
+  .brandfilm-play-icon {
+    display: flex; align-items: center; justify-content: center;
+    width: 76px; height: 76px; border-radius: 50%;
+    background: var(--accent-gold); color: #111;
+    box-shadow: 0 0 0 6px rgba(var(--gold-rgb), 0.28), 0 10px 30px rgba(0, 0, 0, 0.55);
+    transition: transform .2s var(--ease-premium);
+  }
+  .brandfilm-play-icon svg { display: none; }
+  .brandfilm-play .icon-play { display: block; margin-left: 4px; }
+  .brandfilm-play-label {
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.3rem 0.6rem; background: rgba(8, 9, 11, 0.72); color: var(--ink); border-radius: 2px;
+  }
+  .brandfilm-play:hover .brandfilm-play-icon { transform: scale(1.05); }
+  .brandfilm-play:focus-visible { outline: none; }
+  .brandfilm-play:focus-visible .brandfilm-play-icon { outline: 3px solid var(--ink); outline-offset: 4px; }
+  @media (max-width: 860px), (hover: none) {
+    .brandfilm:not([data-mode="auto"]) .brandfilm-play { display: flex; }
+    .brandfilm:not([data-mode="auto"]) { cursor: pointer; }
+  }
+  .brandfilm[data-mode="tap"] .brandfilm-play { display: flex; }
+  .brandfilm[data-mode="tap"] { cursor: pointer; }
+  /* While playing, the control recedes to a small pause button in the corner
+     so the film is not covered; loading shows a pulsing ring. */
+  .brandfilm[data-state="playing"] .brandfilm-play { left: auto; top: auto; right: 0.7rem; bottom: 0.7rem; transform: none; }
+  .brandfilm[data-state="playing"] .brandfilm-play-icon { width: 44px; height: 44px; box-shadow: 0 4px 14px rgba(0,0,0,.5); background: rgba(8, 9, 11, 0.7); color: var(--ink); }
+  .brandfilm[data-state="playing"] .brandfilm-play .icon-play { display: none; }
+  .brandfilm[data-state="playing"] .brandfilm-play .icon-pause { display: block; }
+  .brandfilm[data-state="playing"] .brandfilm-play-label { display: none; }
+  .brandfilm[data-state="playing"] .brandfilm-caption { opacity: 0; transition: opacity .3s; }
+  .brandfilm[data-state="ended"] .brandfilm-play .icon-play { display: none; }
+  .brandfilm[data-state="ended"] .brandfilm-play .icon-replay { display: block; }
+  .brandfilm[data-state="loading"] .brandfilm-play-icon { animation: brandfilm-pulse 1s ease-in-out infinite; }
+  @keyframes brandfilm-pulse { 50% { box-shadow: 0 0 0 14px rgba(var(--gold-rgb), 0.12), 0 10px 30px rgba(0,0,0,.55); } }
+  @media (prefers-reduced-motion: reduce) { .brandfilm[data-state="loading"] .brandfilm-play-icon { animation: none; } }
   .brandfilm-tag {
     font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em;
     text-transform: uppercase; color: var(--accent-gold-light);

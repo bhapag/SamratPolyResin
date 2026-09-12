@@ -892,7 +892,12 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     }
     @media (max-width: 520px) {
       .make-media { grid-template-columns: 1fr; grid-template-rows: none; }
-      .make-film { grid-row: auto; aspect-ratio: 4 / 5; }
+      /* The frame carries its own ratio as a normal block. The previous
+         aspect-ratio-on-a-flex-cell rendered the brand film at 2x3 px in
+         WebKit (every iPhone), because all of its content is absolutely
+         positioned and nothing gave the flex container a width. */
+      .make-film { grid-row: auto; display: block; width: 100%; aspect-ratio: auto; }
+      .make-film :global(.brandfilm) { aspect-ratio: 4 / 5; height: auto; min-height: 0; }
       .make-frame { aspect-ratio: 16 / 10; }
     }
 
