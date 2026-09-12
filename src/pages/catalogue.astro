@@ -1,0 +1,284 @@
+---
+/**
+ * Samrat Poly Resins product catalogue — web edition and the source of the
+ * downloadable A4 PDF (scripts/export-catalogue.mjs prints this page).
+ *
+ * TRUTH RULES, deliberately narrow:
+ *  - Every product name, category, tagline, application and document link is
+ *    read from src/data/products.js at build time. Nothing is typed in here, so
+ *    the catalogue cannot drift from the live product pages.
+ *  - No specifications. This is a marketing catalogue, not a data sheet; a
+ *    grade's figures live only in its own TDS, which each entry links.
+ *  - No product posters. Several supplied posters carry claims their grade's
+ *    evidence does not support (the Polyester Putty posters claim food-contact
+ *    suitability), and a printed catalogue cannot carry the web warnings.
+ *  - No prices, offers, stock or commercial terms, and no certificate beyond
+ *    the company ISO 9001:2015 registration the About page already shows.
+ *  - Documents are listed only where they are actually published. A product
+ *    without an SDS lists none; nothing stands in for a missing document.
+ */
+import { getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site.js';
+import { CATEGORIES, CATEGORY_HUBS, products } from '../data/products.js';
+import facility from '../assets/facility/production-infrastructure.jpg';
+import qcLab from '../assets/quality/qc-laboratory.jpg';
+
+const EDITION = 'September 2026';
+const PDF_URL = '/downloads/samrat-poly-resins-product-catalogue-2026-09.pdf';
+
+// Sized for an A4 page at print density without bloating a phone download.
+const cover = await getImage({ src: facility, width: 1100, format: 'jpg', quality: 72 });
+const lab = await getImage({ src: qcLab, width: 700, format: 'jpg', quality: 72 });
+
+const groups = CATEGORIES.map((category) => ({
+  category,
+  hub: CATEGORY_HUBS[category] ? `/products/${CATEGORY_HUBS[category]}/` : null,
+  items: products.filter((p) => p.category === category),
+})).filter((g) => g.items.length);
+
+const docsFor = (p: any) =>
+  [
+    p.tdsUrl && { kind: 'TDS', label: 'Technical Data Sheet', url: p.tdsUrl },
+    p.pdsUrl && { kind: 'PDS', label: 'Product Data Sheet', url: p.pdsUrl },
+    p.sdsUrl && { kind: 'SDS', label: 'Safety Data Sheet', url: p.sdsUrl },
+  ].filter(Boolean) as { kind: string; label: string; url: string }[];
+
+const counts = {
+  products: products.length,
+  categories: groups.length,
+  tds: products.filter((p: any) => p.tdsUrl).length,
+  sds: products.filter((p: any) => p.sdsUrl).length,
+  pds: products.filter((p: any) => p.pdsUrl).length,
+};
+const host = site.url.replace(/^https?:\/\//, '');
+const years = Number(EDITION.slice(-4)) - Number(site.established);
+---
+<Base
+  title="Product Catalogue | Samrat Poly Resins"
+  description={`Samrat Poly Resins product catalogue, ${EDITION}: all ${counts.products} grades across ${counts.categories} categories, with links to each grade's published data sheets. Download the A4 PDF.`}
+>
+  <div class="cat">
+    <div class="cat-toolbar wrap">
+      <p class="cat-toolbar-note">{EDITION} edition · {counts.products} products · {counts.categories} categories</p>
+      <a class="cat-download" href={PDF_URL} download target="_blank" rel="noopener"
+         aria-label={`Download the Samrat Poly Resins product catalogue, ${EDITION}, A4 PDF`}>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="M6.5 10.5 12 16l5.5-5.5"/><path d="M5 20h14"/></svg>
+        Download catalogue (A4 PDF)
+      </a>
+    </div>
+
+    <!-- 1. Cover -->
+    <section class="sheet sheet-cover" aria-labelledby="cat-title">
+      <img class="cover-img" src={cover.src} alt="Samrat Poly Resins production reactors at the Doraha plant" width={cover.attributes.width} height={cover.attributes.height} />
+      <div class="cover-body">
+        <p class="cover-kicker">Product Catalogue · {EDITION}</p>
+        <h1 id="cat-title">Samrat Poly Resins</h1>
+        <p class="cover-tag">{site.tagline}</p>
+        <ul class="cover-facts">
+          <li><strong>{counts.products}</strong> products</li>
+          <li><strong>{counts.categories}</strong> categories</li>
+          <li><strong>Since {site.established}</strong> Doraha, Punjab</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 2. Company + how to use this catalogue -->
+    <section class="sheet sheet-about" aria-labelledby="cat-about">
+      <div class="about-grid">
+        <div>
+          <p class="eyebrow">About the company</p>
+          <h2 id="cat-about">Resins manufactured in Punjab since {site.established}</h2>
+          <p>
+            Samrat Poly Resins manufactures unsaturated polyester, isophthalic, gelcoat and
+            specialty resins at Doraha, Ludhiana, and supplies the epoxy systems, hardeners and
+            FRP allied materials that are used alongside them.
+          </p>
+          <p>
+            The company's quality management system is registered to {site.certification.name}.
+            It is a GST-registered business (GSTIN {site.gst}).
+          </p>
+          <h3>How to use this catalogue</h3>
+          <p>
+            Each entry gives the product's role, typical applications, its page on
+            {host} and the data sheets published for it. <strong>Specifications are not reproduced here:</strong> use the
+            product's own Technical Data Sheet, which is the controlling reference, and confirm
+            the requirement with the team before ordering.
+          </p>
+        </div>
+        <figure class="about-fig">
+          <img src={lab.src} alt="Quality inspection laboratory at Samrat Poly Resins" width={lab.attributes.width} height={lab.attributes.height} loading="lazy" />
+        </figure>
+      </div>
+      <nav class="cat-index" aria-label="Categories in this catalogue">
+        <p class="eyebrow">Contents</p>
+        <ol>
+          {groups.map((g) => (
+            <li><a href={`#cat-${g.category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{g.category}</a><span>{g.items.length} {g.items.length === 1 ? 'product' : 'products'}</span></li>
+          ))}
+        </ol>
+      </nav>
+    </section>
+
+    <!-- 3. Categories -->
+    {groups.map((g) => (
+      <section class="sheet sheet-cat" id={`cat-${g.category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} aria-labelledby={`h-${g.category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>
+        <header class="cat-head">
+          <p class="eyebrow">Category</p>
+          <h2 id={`h-${g.category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{g.category}</h2>
+          {g.hub && <p class="cat-hub">Compare these grades: <a href={g.hub}>{host}{g.hub}</a></p>}
+        </header>
+        <div class="entries">
+          {g.items.map((p: any) => {
+            const docs = docsFor(p);
+            return (
+              <article class="entry">
+                <h3><a href={`/products/${p.slug}/`}>{p.name}</a></h3>
+                <p class="entry-tag">{p.tagline}</p>
+                {p.applications?.length > 0 && (
+                  <ul class="entry-apps" aria-label={`Typical applications for ${p.name}`}>
+                    {p.applications.slice(0, 3).map((a: string) => <li>{a}</li>)}
+                  </ul>
+                )}
+                <p class="entry-url">/products/{p.slug}/</p>
+                {docs.length > 0 && (
+                  <ul class="entry-docs" aria-label={`Published documents for ${p.name}`}>
+                    {docs.map((d) => (
+                      <li><a href={d.url} target="_blank" rel="noopener" download aria-label={`${d.label} for ${p.name} (PDF)`}><b>{d.kind}</b> {d.label}</a></li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            );
+          })}
+        </div>
+      </section>
+    ))}
+
+    <!-- 4. Contact -->
+    <section class="sheet sheet-contact" aria-labelledby="cat-contact">
+      <p class="eyebrow">Enquiries</p>
+      <h2 id="cat-contact">Talk to Samrat Poly Resins</h2>
+      <div class="contact-grid">
+        <div>
+          <h3>Phone &amp; WhatsApp</h3>
+          {site.phones.map((ph: any) => <p><a href={`tel:${ph.dial}`}>{ph.display}</a></p>)}
+          <p>WhatsApp: <a href={`https://wa.me/${site.whatsapp}`}>+{site.whatsapp.slice(0, 2)} {site.whatsapp.slice(2, 7)} {site.whatsapp.slice(7)}</a></p>
+        </div>
+        <div>
+          <h3>Email &amp; web</h3>
+          <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+          <p><a href="/">{host}</a></p>
+          <p><a href="/technical-documents/">{host}/technical-documents/</a></p>
+        </div>
+        <div>
+          <h3>Works</h3>
+          <p>{site.name}<br />{site.address.line1}<br />{site.address.line2} – {site.address.pin}<br />{site.address.state}</p>
+          <p>GSTIN {site.gst}</p>
+        </div>
+      </div>
+      <p class="contact-note">
+        When you enquire, share the product, the finished component or process, quantity and
+        delivery location. Product data is confirmed against the grade's current data sheet.
+        This catalogue ({EDITION}) lists {counts.tds} Technical Data Sheets, {counts.sds} Safety
+        Data Sheets and {counts.pds} Product Data Sheet published at the time of issue; the
+        website always carries the current documents.
+      </p>
+    </section>
+  </div>
+
+  <style>
+    .cat { padding-bottom: 3rem; }
+    .cat-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.8rem; padding-top: 1.4rem; padding-bottom: 1rem; }
+    .cat-toolbar-note { margin: 0; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
+    .cat-download {
+      display: inline-flex; align-items: center; gap: 0.55rem; min-height: 48px; padding: 0.7rem 1.1rem;
+      background: var(--accent-gold); color: #111; font-weight: 700; text-decoration: none; border: 1px solid var(--accent-gold);
+    }
+    .cat-download:hover { background: var(--accent-gold-light); }
+    .cat-download:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+    /* Screen: each sheet is a light paper panel, readable on the dark site. */
+    .sheet {
+      width: min(100% - 2rem, 210mm); margin: 1.2rem auto; padding: clamp(1.2rem, 4vw, 16mm);
+      background: #fbfaf7; color: #1c1a16; box-shadow: 0 10px 40px rgba(0,0,0,.35);
+    }
+    .sheet a { color: #6b4e0f; text-decoration: underline; text-underline-offset: 0.15em; }
+    /* The sitewide h1/h2 style paints glyphs with a transparent fill, a
+       near-white gradient and an 18px dark shadow, made for dark backgrounds.
+       On paper the letters vanish and only the blurred shadow prints, which is
+       what the first export showed. Same reset the site's light .ledger
+       surface uses. */
+    .sheet h1, .sheet h2, .sheet h3 {
+      color: #13213d; background: none; -webkit-text-fill-color: currentColor; text-shadow: none;
+    }
+    .eyebrow { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: #8a6312 !important; margin: 0 0 0.35rem; }
+
+    .sheet-cover { padding: 0; overflow: hidden; background: #13213d; color: #f4f2ee; }
+    .cover-img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
+    .cover-body { padding: clamp(1.4rem, 5vw, 18mm); }
+    .cover-kicker { font-family: var(--font-mono); letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.78rem; color: var(--accent-gold); margin: 0 0 0.6rem; }
+    .sheet-cover h1 { color: #fff; -webkit-text-fill-color: #fff; font-family: var(--font-display, 'Oswald', sans-serif); font-size: clamp(2.2rem, 8vw, 3.6rem); line-height: 1; margin: 0 0 0.6rem; text-transform: uppercase; letter-spacing: 0.02em; }
+    .cover-tag { margin: 0 0 1.4rem; font-size: 1.05rem; color: #d9d6cf; }
+    .cover-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem; padding: 0; margin: 0; border-top: 1px solid rgba(212,175,55,.45); padding-top: 1rem; }
+    .cover-facts li { color: #d9d6cf; font-size: 0.9rem; }
+    .cover-facts strong { color: #fff; margin-right: 0.3rem; }
+
+    .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.6rem; align-items: start; }
+    .sheet-about p { line-height: 1.6; margin: 0 0 0.8rem; }
+    .sheet-about h2 { margin: 0 0 0.8rem; font-size: 1.5rem; }
+    .sheet-about h3 { margin: 1.2rem 0 0.4rem; font-size: 1.05rem; }
+    .about-fig { margin: 0; }
+    .about-fig img { width: 100%; height: auto; display: block; }
+    .cat-index { margin-top: 1.6rem; border-top: 2px solid #13213d; padding-top: 1rem; }
+    .cat-index ol { list-style: none; padding: 0; margin: 0; columns: 2; column-gap: 2rem; }
+    .cat-index li { display: flex; justify-content: space-between; gap: 1rem; break-inside: avoid; padding: 0.35rem 0; border-bottom: 1px dotted #c9c2b3; font-size: 0.95rem; }
+    .cat-index li span { color: #5c5546; font-size: 0.85rem; white-space: nowrap; }
+
+    .cat-head { border-bottom: 2px solid #13213d; padding-bottom: 0.7rem; margin-bottom: 1rem; }
+    .cat-head h2 { margin: 0; font-size: 1.6rem; }
+    .cat-hub { margin: 0.35rem 0 0; font-size: 0.85rem; color: #5c5546; }
+    .entries { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 1.4rem; }
+    .entry { break-inside: avoid; border-left: 3px solid var(--accent-gold); padding: 0.2rem 0 0.2rem 0.8rem; }
+    .entry h3 { margin: 0 0 0.25rem; font-size: 1.05rem; }
+    .entry h3 a { color: #13213d; text-decoration: none; }
+    .entry-tag { margin: 0 0 0.4rem; font-size: 0.88rem; line-height: 1.45; color: #2e2a22; }
+    .entry-apps { margin: 0 0 0.4rem; padding-left: 1.05rem; font-size: 0.82rem; line-height: 1.45; color: #3d382e; }
+    .entry-url { margin: 0 0 0.35rem; font-family: var(--font-mono); font-size: 0.7rem; color: #5c5546; }
+    .entry-docs { list-style: none; display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0; padding: 0; }
+    .entry-docs a { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 32px; padding: 0.2rem 0.55rem; border: 1px solid #c9c2b3; background: #fff; font-size: 0.78rem; color: #1c1a16 !important; text-decoration: none !important; }
+    .entry-docs b { font-family: var(--font-mono); color: #8a6312; font-size: 0.72rem; letter-spacing: 0.08em; }
+
+    .sheet-contact h2 { margin: 0 0 1rem; font-size: 1.6rem; }
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .contact-grid h3 { font-size: 0.95rem; margin: 0 0 0.4rem; }
+    .contact-grid p { margin: 0 0 0.35rem; font-size: 0.92rem; line-height: 1.5; }
+    .contact-note { margin-top: 1.4rem; font-size: 0.85rem; line-height: 1.55; color: #3d382e; border-top: 1px solid #c9c2b3; padding-top: 0.9rem; }
+
+    @media (max-width: 640px) {
+      .about-grid, .contact-grid, .entries { grid-template-columns: 1fr; }
+      .cat-index ol { columns: 1; }
+      .entry-docs a { min-height: 44px; }
+      .cat-download { width: 100%; justify-content: center; }
+    }
+
+    /* Print / PDF: true A4 sheets, site chrome removed, one category per page. */
+    @page { size: A4; margin: 12mm; }
+    @media print {
+      :global(.site-header), :global(.site-footer), :global(.wa-float), :global(.ambient), :global([class*="ambient"]),
+      :global(.skip-link), .cat-toolbar { display: none !important; }
+      :global(body), :global(html) { background: #fff !important; }
+      .sheet { width: auto; margin: 0; padding: 0; box-shadow: none; break-after: page; background: #fff; }
+      .sheet-cover { background: #13213d; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .sheet-cover { display: flex; flex-direction: column; min-height: 271mm; }
+      .sheet-cover .cover-img { flex: 1 1 auto; aspect-ratio: auto; min-height: 150mm; }
+      .sheet-cover .cover-body { padding: 14mm; }
+      .sheet:last-child { break-after: auto; }
+      .entries { gap: 5mm 8mm; }
+      .entry { font-size: 10pt; }
+      .entry-tag { font-size: 9.5pt; } .entry-apps { font-size: 9pt; } .entry-url { font-size: 7.5pt; }
+      .entry-docs a { min-height: 0; font-size: 8pt; padding: 0.5mm 1.8mm; }
+      a { color: inherit; }
+    }
+  </style>
+</Base>

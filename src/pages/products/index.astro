@@ -11,10 +11,14 @@ const catId = (cat) => cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^
 // products.js (CATEGORY_HUBS) so the header mega-menu and mobile nav link the
 // same set of hubs and can't drift out of sync with this page.
 const familyPageSlugs = CATEGORY_HUBS;
+// Counted from the data rather than asserted: not every grade has a TDS, fewer
+// have an SDS, and the range includes supplied items that Samrat does not make.
+const tdsCount = products.filter((p) => p.tdsUrl).length;
+const sdsCount = products.filter((p) => p.sdsUrl).length;
 ---
 <Base
-  title={`Polyester & Epoxy Resin Products — ${products.length} Grades with TDS`}
-  description={`Samrat Poly Resins manufactures ${products.length} polyester, epoxy, gelcoat, fire-retardant and specialty resin grades plus FRP raw materials. Every grade lists its published specifications, with TDS and SDS to download.`}
+  title={`Polyester & Epoxy Resin Products — ${products.length} Grades`}
+  description={`Samrat Poly Resins' ${products.length}-product range: manufactured polyester, gelcoat, fire-retardant and specialty resins, plus epoxy systems, hardeners and FRP materials. ${tdsCount} Technical and ${sdsCount} Safety Data Sheets to download.`}
 >
   <section class="section prod-hero">
     <div class="wrap">
@@ -30,12 +34,13 @@ const familyPageSlugs = CATEGORY_HUBS;
         into the right family without scrolling the full catalogue.
       */}
       <p class="prod-hero-sub">
-        Samrat Poly Resins manufactures {products.length} resin grades and FRP raw materials at Doraha,
-        Ludhiana — general-purpose and lamination polyester resins, gelcoats, fire-retardant and
-        isophthalic grades, epoxy and casting systems, hardeners, glass fibre, pigments and workshop
-        consumables. Every grade below shows its published specifications, and most carry a
-        downloadable technical data sheet.
+        Samrat Poly Resins manufactures polyester resins at Doraha, Ludhiana — general-purpose and
+        lamination grades, gelcoats, fire-retardant and isophthalic grades — and supplies the epoxy and
+        casting systems, hardeners, glass fibre, pigments and workshop consumables used with them:
+        {products.length} products in all. {tdsCount} carry a downloadable Technical Data Sheet and
+        {sdsCount} a Safety Data Sheet; each product page shows exactly what is published for it.
       </p>
+      <p class="prod-hero-cat"><a href="/catalogue/">Product catalogue, September 2026 — view online or download the A4 PDF →</a></p>
       <div class="prod-hero-jump">
         {byCat.map(({ cat, items }) => (
           <a href={familyPageSlugs[cat] ? `/products/${familyPageSlugs[cat]}/` : `#${catId(cat)}`}>
@@ -162,6 +167,8 @@ const familyPageSlugs = CATEGORY_HUBS;
   </script>
 
   <style>
+    .prod-hero-cat { margin: 0.9rem 0 0; }
+    .prod-hero-cat a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 0.18em; display: inline-block; padding: 0.35rem 0; }
     .prod-hero { padding-bottom: 0; }
     .prod-hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); margin-top: 0.6rem; }
     .prod-hero-sub { color: var(--ink-dim); margin-top: 0.9rem; max-width: 68ch; line-height: 1.65; }
