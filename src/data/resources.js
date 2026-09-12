@@ -4937,7 +4937,6 @@ export const resources = [
     relatedSlugs: ["pet-resin-liquid-grade-vs-thermoplastic-pet", "pet-resin-applications-sheet-lamination-and-panels", "pet-resin-vs-gp-resin"],
     recommendedLinks: [
       { href: "/products/polyester-putty-resin/", label: "View Polyester Putty Resin", description: "Review the product role, specifications, pack and enquiry path." },
-      { href: "/tds/pet-resin-tds.pdf", label: "Download the TDS", description: "Use the grade-specific technical document as the controlling reference." },
       { href: "/products/unsaturated-polyester-resin/", label: "Explore Unsaturated Polyester Resin", description: "Understand the broader family without transferring grade data." },
       { href: "/contact/", label: "Discuss a Polyester Putty Resin requirement", description: "Share the exact liquid form and intended sheet or laminate application." },
     ],
@@ -4978,7 +4977,6 @@ export const resources = [
     relatedSlugs: ["what-is-pet-modified-polyester-resin", "pet-resin-applications-sheet-lamination-and-panels", "pet-resin-vs-gp-resin"],
     recommendedLinks: [
       { href: "/products/polyester-putty-resin/", label: "View Polyester Putty Resin", description: "Open the product page for the approved liquid sheet-grade route." },
-      { href: "/tds/pet-resin-tds.pdf", label: "Review PET Resin TDS", description: "Confirm the current grade, liquid form and published technical data." },
       { href: "/products/", label: "Browse the product range", description: "Use carefully: its PET chip listing is a separate material-form description." },
       { href: "/contact/", label: "Confirm the correct material form", description: "State whether the requirement is the liquid Samrat grade or a thermoplastic PET material." },
     ],
@@ -5009,7 +5007,6 @@ export const resources = [
     relatedSlugs: ["what-is-pet-modified-polyester-resin", "pet-resin-liquid-grade-vs-thermoplastic-pet", "pet-resin-vs-gp-resin"],
     recommendedLinks: [
       { href: "/products/polyester-putty-resin/", label: "View PET Resin", description: "Review product details, current document and quote path." },
-      { href: "/tds/pet-resin-tds.pdf", label: "Download PET Resin TDS", description: "Confirm the listed application context and liquid-resin data." },
       { href: "/products/sheet-grade-yellow-resin/", label: "View Sheet Grade Yellow Resin", description: "Review the separate pre-pigmented yellow sheet and panel product route." },
       { href: "/contact/", label: "Discuss a sheet or panel requirement", description: "Share the finished product and required material form for selection." },
     ],
@@ -5137,7 +5134,6 @@ export const resources = [
     relatedSlugs: ["what-is-pet-modified-polyester-resin", "pet-resin-liquid-grade-vs-thermoplastic-pet", "pet-resin-applications-sheet-lamination-and-panels", "pet-resin-vs-gp-resin"],
     recommendedLinks: [
       { href: "/products/polyester-putty-resin/", label: "View PET Resin", description: "Review the product role, current data and enquiry path." },
-      { href: "/tds/pet-resin-tds.pdf", label: "Download PET Resin TDS", description: "Use the current grade-specific document as the technical reference." },
       { href: "/products/", label: "Browse the product range", description: "Keep its separate thermoplastic PET chip listing distinct from this liquid-grade TDS." },
       { href: "/contact/", label: "Request a PET Resin quote", description: "Send the material form, application, documentation and commercial requirements." },
     ],
@@ -8581,7 +8577,7 @@ export const resources = [
       {
         heading: "What to establish before you buy",
         body: [
-          "Ask whether the product is isophthalic or isophthalic-NPG, and get it in writing on the data sheet, since the two are priced and positioned differently. Ask whether it is brush grade or spray grade, because thixotropy and viscosity are tuned differently and swapping them produces predictable defects. Ask whether it is pre-accelerated, and which peroxide type and strength it is qualified against.",
+          "Ask whether the product is isophthalic or isophthalic-NPG, and get it in writing on the data sheet, since the two are priced and positioned differently. Across the market, brush and spray grades are often tuned differently for thixotropy and viscosity, so it is worth asking which a given product is; Samrat publishes ISO Gelcoat for brush or spray application onto the mould face. Ask too whether it is pre-accelerated, and which peroxide type and strength it is qualified against.",
           "Then describe your own side: the part, whether the surface is immersed or not, the exposure, the colour and the finish standard, your spray equipment, your shop and mould temperatures, and your production volume.",
           "Samrat Poly Resins manufactures ISO Gelcoat at Doraha, Punjab. Grade-specific values such as viscosity, thixotropic index, gel time, recommended film thickness and catalyst range are confirmed at enquiry rather than published as generic figures, because a gelcoat number that is not tied to a named grade, a stated temperature and a stated measurement method is not usable on a shop floor.",
         ],

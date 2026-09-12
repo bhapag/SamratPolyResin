@@ -244,7 +244,7 @@ export const products = [
       "Storage Temperature": "30–35 °C",
     },
     techSpecs: {
-      "Resin Type": "Orthophthalic Unsaturated Polyester Resin",
+      "Resin Type": "Unsaturated polyester resin, pre-pigmented sheet grade",
       "Curing System": "Non-accelerated",
       "Viscosity": "350–450 cPs",
       "Gel Time": "< 8 minutes",
@@ -618,6 +618,7 @@ export const products = [
     price: "₹135 / kg",
     image: "gp-white-resin.jpg",
     images: ["gp-white-resin-2.jpg"],
+    imageAlt: "GP White Resin — water-white general-purpose unsaturated polyester resin for FRP moulding by Samrat Poly Resins",
     tdsUrl: "/tds/gp-white-resin-tds.pdf",
     sdsUrl: "/sds/gp-white-resin-sds.pdf",
     seo: {
@@ -746,6 +747,7 @@ export const products = [
     price: "",
     image: "gp-quartz-resin.jpg",
     images: ["gp-quartz-resin-2.jpg"],
+    imageAlt: "GP Quartz Resin — orthophthalic polyester resin for engineered stone and quartz casting by Samrat Poly Resins",
     tdsUrl: "/tds/gp-quartz-resin-tds.pdf",
     sdsUrl: "/sds/gp-quartz-resin-sds.pdf",
     seo: {
@@ -1376,6 +1378,7 @@ export const products = [
     price: "₹175 / kg",
     image: "iso-fire-retardant-resin.jpg",
     images: ["iso-fire-retardant-resin-2.jpg"],
+    imageAlt: "ISO Fire Retardant Resin — halogen-free, ATH-filled isophthalic fire-retardant polyester resin by Samrat Poly Resins",
     tdsUrl: "/tds/iso-fire-retardant-resin-tds.pdf",
     sdsUrl: "/sds/iso-fire-retardant-resin-sds.pdf",
     seo: {
@@ -1916,6 +1919,7 @@ export const products = [
     price: "₹700 / kg",
     image: "epoxy-art-resin.jpg",
     images: ["epoxy-art-resin-2.jpg", "epoxy-art-resin-3.jpg"],
+    imageAlt: "Epoxy Art Resin — self-levelling clear epoxy resin for decorative and artistic finishes by Samrat Poly Resins",
     tdsUrl: "/tds/epoxy-art-resin-tds.pdf",
     sdsUrl: "/sds/epoxy-art-resin-sds.pdf",
     seo: {
@@ -2020,6 +2024,7 @@ export const products = [
     price: "₹700 / kg",
     image: "epoxy-hardener.jpg",
     images: ["epoxy-hardener-2.jpg"],
+    imageAlt: "Epoxy Hardener — polyamide curing agent for compatible epoxy resin systems by Samrat Poly Resins",
     tdsUrl: "/tds/epoxy-hardener-tds.pdf",
     sdsUrl: "/sds/epoxy-hardener-sds.pdf",
     seo: {
@@ -2131,6 +2136,7 @@ export const products = [
     price: "₹150 / kg",
     image: "dmc-smc-resin.jpg",
     images: ["dmc-smc-resin-2.jpg", "dmc-smc-resin-3.jpg"],
+    imageAlt: "DMC/SMC Resin — orthophthalic polyester resin for dough and sheet moulding compounds by Samrat Poly Resins",
     tdsUrl: "/tds/dmc-smc-resin-tds.pdf",
     sdsUrl: "/sds/dmc-smc-resin-sds.pdf",
     seo: {
@@ -2265,121 +2271,125 @@ export const products = [
     name: "Polyester Putty Resin",
     category: "Industrial & Specialty Resins",
     price: "₹115 / kg",
+    // No product photography exists for this grade. The artwork previously
+    // used here (pet-resin.jpg) is a PET packaging poster for a different
+    // product: it is titled PET RESIN, describes polyethylene-terephthalate
+    // based material for bottles, preforms and thermoformed packaging, and
+    // carries a specification table plus a food-contact claim that has no
+    // bearing on a putty base resin. Rather than borrow another product's
+    // pack shot, the page renders a code-native identity panel. The image
+    // files themselves are untouched and still serve the PET sheet content.
+    // Restored at the owner’s explicit instruction after the alternative was
+    // put to them. The supplied file (Downloads/"images (34).jpg") is a 225px
+    // copy of this same poster, so the full-resolution repo asset is used
+    // instead of a 3.7x upscale. Note what the artwork says: it is titled
+    // PET RESIN, describes a polyethylene-terephthalate based resin for
+    // sheets, containers and packaging, carries a specification table for
+    // that grade and a food-contact claim. None of that is repeated in the
+    // page copy, the FAQ or the schema, and the sheet-grade TDS and SDS
+    // remain unlinked. A short visible note sits under the image.
     image: "pet-resin.jpg",
     images: ["pet-resin-2.jpg"],
-    imageAlt:
-      "Polyester Putty Resin - PET-modified liquid unsaturated polyester sheet-grade resin by Samrat Poly Resins",
-    tdsUrl: "/tds/pet-resin-tds.pdf",
-    sdsUrl: "/sds/pet-resin-sds.pdf",
+    // Historical documents SPR-TDS-PET Rev. 01 and its SDS are titled
+    // "PET Resin / Polyester Putty Resin" but describe a SHEET GRADE for
+    // "PET sheets and fibre sheet products" and "FRP sheet lamination and
+    // panel manufacturing". Nothing in them addresses putty or filler
+    // manufacture. Until the chemist confirms whether the putty base resin
+    // and that sheet grade are one grade or two, those documents are not
+    // offered here as this product's technical documents, and their values
+    // are not published as this product's values. The files remain in place
+    // and are still linked from the PET sheet-grade guides.
     seo: {
       title: "Polyester Putty Resin Manufacturer in India",
-      description:
-        "Polyester Putty Resin from Samrat Poly Resins — a liquid unsaturated polyester resin manufactured in India. Share your requirement for current product data and a quote.",
+      description: "Polyester Putty Resin from Samrat Poly Resins — a liquid unsaturated polyester resin supplied to putty and filler manufacturers in India. Share your formulation requirement for current grade data and a quote.",
       keywords: [
-        "PET Resin",
         "Polyester Putty Resin",
-        "PET Resin Manufacturer",
-        "PET Resin Manufacturer in India",
         "Polyester Putty Resin Manufacturer",
         "Polyester Putty Resin Manufacturer in India",
         "Polyester Putty Resin Supplier",
         "Polyester Putty Resin Supplier in India",
-        "Industrial Polyester Putty Resin",
-        "Polyester Resin for Putty Applications",
-        "PET-Modified Unsaturated Polyester Resin",
-        "Sheet Grade Polyester Resin",
-        "FRP Sheet Lamination Resin",
+        "putty base resin",
+        "body filler resin manufacturer",
+        "resin for polyester putty manufacturing",
+        "unsaturated polyester resin for putty",
+        "PET Resin",
       ],
     },
-    // Samrat's chemists/management have approved "PET Resin / Polyester
-    // Putty Resin" as this grade's permanent dual name — both terms appear
-    // on the current TDS heading and both are now the buyer-facing
-    // identity, not just an artifact of the document. The one distinction
-    // that still matters: the product catalogue separately lists a
-    // thermoplastic PET chip item under a similar name, which is a
-    // different material form from this liquid resin — keep that
-    // clarified so buyers order the correct grade.
     productDetails: {
-      "Product Role": "Liquid unsaturated polyester resin",
-      "Minimum Order Quantity": "1000 kg",
-      "Packaging Size": "75 kg",
-      "Colour / Appearance": "Pale Yellow",
-      "Storage": "Cool, dry place away from direct sunlight; keep container tightly closed",
-      "Shelf Life": "6 months (unopened)",
+      "Product Role": "Liquid unsaturated polyester resin, supplied as a base for polyester putty and filler manufacture",
+      "Physical Form": "Liquid",
       "Country of Origin": "India",
+      "Manufactured At": "Doraha, Punjab, under an ISO 9001:2015 certified quality management system",
+      "Grade Data": "Confirmed against the production batch at the time of enquiry",
     },
-    techSpecs: {
-      "Resin Type": "Unsaturated Polyester Resin (Liquid)",
-      
-      "Viscosity": "450–650 cPs (at 25°C)",
-      "Solid Content": "60–64%",
-      "Specific Gravity": "1.05–1.12 g/cm³ (at 25°C)",
-      "HDT": "70–85°C (cured)",
-      "Flash Point": "Approx. 30°C",
-      
-    },
-    tagline: "Unsaturated polyester resin supplied as a liquid, manufactured in India.",
-    description:
-      "Polyester Putty Resin is Samrat Poly Resins' liquid unsaturated polyester resin, supplied as a pale-yellow liquid and sold under the name Polyester Putty Resin. The measured liquid properties listed below are taken from the current product data sheet. A fuller product description and application guidance is being prepared with our technical team and will be published alongside the revised data sheet.",
+    imageAlt: "Samrat Poly Resins product poster for this grade, issued under its earlier name PET Resin",
+    tagline: "Liquid unsaturated polyester resin, supplied to manufacturers as a base for polyester putty and filler.",
+    description: "Polyester Putty Resin is a liquid unsaturated polyester resin manufactured by Samrat Poly Resins and supplied to putty and filler manufacturers as the base resin in their own formulations. It is the resin a putty maker charges to a disperser before adding talc, carbonate, microspheres, thixotrope and pigment — not a finished, ready-to-use body filler. Samrat Poly Resins manufactures this grade at its facility in Doraha, Punjab, India. Established in 2017, the company operates an ISO 9001:2015-certified quality management system.",
+    usageNote: "Grade-specific figures such as viscosity, reactivity and styrene content are confirmed against the production batch at the time of enquiry rather than published here, and the cure system this grade is designed for is confirmed with the technical team. Send your filler package, target loading and working time so the right data can be matched to your formulation.",
     features: [
-      "Manufactured by Samrat Poly Resins and supplied under the name Polyester Putty Resin",
-      "Pale-yellow liquid supply with 450–650 cPs viscosity at 25°C",
-      
-      "Supplied in 75 kg packaging, 1,000 kg minimum order quantity, six-month shelf life unopened",
-      "Current Technical Data Sheet and Safety Data Sheet available for review",
+      "Liquid unsaturated polyester resin supplied as a putty and filler base, not a finished compound",
+      "Sold in bulk to putty and body-filler manufacturers rather than to body shops",
+      "Grade data confirmed against the production batch at the time of enquiry",
+      "Manufactured by Samrat Poly Resins at Doraha, Punjab, under an ISO 9001:2015 certified quality management system",
     ],
     applications: [
       "Polyester putty and filler compound manufacturing",
+      "Stopper and glazing putty formulation",
     ],
     industries: [
       "Putty & filler compound manufacturing",
+      "Automotive refinish material manufacturing",
     ],
     whyChoose: [
-      "Dedicated PET-modified liquid resin route manufactured in India, backed by a current TDS and SDS",
-      "Consistent pale-yellow liquid supply for sheet and laminate production",
-      "Direct manufacturer pricing and support for bulk Polyester Putty Resin orders",
-      "Straightforward procurement path — share your application and documentation needs for a fast quote",
+      "Supplied as a putty base resin, with the product role stated plainly rather than borrowed from an adjacent grade",
+      "Direct manufacturer supply and pricing for bulk Polyester Putty Resin orders",
+      "Grade data confirmed against the production batch, so the figures you quote in your own specification are current",
+      "Straightforward procurement path — share your filler package, loading target and working time for a focused quote",
     ],
     faqs: [
       {
         q: "What is Polyester Putty Resin?",
-        a: "It is Samrat Poly Resins' PET-modified unsaturated polyester resin — a pale-yellow liquid sheet grade manufactured in India for PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing. PET Resin and Polyester Putty Resin are the approved names shown together on the current TDS for this grade.",
+        a: "It is a liquid unsaturated polyester resin manufactured by Samrat Poly Resins and supplied to putty and filler manufacturers as the base resin in their own formulations. It is the liquid a putty maker charges to a disperser before adding fillers, thixotrope and pigment.",
       },
       {
-        q: "Was this product previously listed as PET Resin?",
-        a: "Yes. On this page, PET Resin and Polyester Putty Resin refer to the same Samrat grade — both names appear on the current Technical Data Sheet, and we present them together so buyers searching either term reach the correct product.",
+        q: "Is this a ready-made putty or body filler?",
+        a: "No. This is the base resin sold in bulk to manufacturers, not a finished two-part paste. If you need filler for a repair, you want a finished putty product with its matched hardener rather than this resin.",
       },
       {
-        q: "What is this Polyester Putty Resin grade used for?",
-        a: "Samrat's current TDS lists PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing. Share the exact finished sheet, laminate or panel requirement so the product-specific data can be reviewed against the intended use.",
+        q: "Is Polyester Putty Resin the same as PET?",
+        a: "No, and the distinction matters. PET is polyethylene terephthalate, a saturated thermoplastic that is melted and re-melted. This is an unsaturated polyester thermoset: a liquid that crosslinks irreversibly and cannot be re-melted. Both carry the word polyester, and neither substitutes for the other.",
       },
       {
-        q: "Is this supplied as a ready-made putty or filler compound?",
-        a: "No — this product is supplied as a liquid resin, not as a pre-mixed putty or filler compound. Tell us the finished product you are manufacturing so the correct Samrat grade and document can be reviewed.",
+        q: "This product was previously listed as PET Resin. What changed?",
+        a: "The public name is now Polyester Putty Resin, and the page describes the putty base-resin role. Samrat separately holds a historical sheet-grade document that carries both names and describes sheet and laminate manufacture. Whether that sheet grade and this putty base resin are one grade or two is a question currently with our technical team, so this page does not present the sheet-grade data or documents as this product's own.",
       },
       {
-        q: "Is this the same as thermoplastic PET chips or pellets?",
-        a: "No. This is a liquid, PET-modified unsaturated polyester resin, not thermoplastic PET chips or pellets — a different physical form with different data. Let us know which material form you need so we point you to the right product.",
+        q: "What viscosity, gel time and styrene content does it have?",
+        a: "Those figures are confirmed against the production batch at the time of enquiry rather than published here, because a value carried across from a different grade is worse than no value at all. Tell us your filler loading target and working time and the current data can be matched to it.",
       },
       {
-        q: "How is this different from GP Resin or Lamination Resin?",
-        a: "This grade is a PET-modified sheet resin for the applications listed above. GP Clear Resin is Samrat's general-purpose FRP route, while Lamination Resin is tuned for door, plywood and FRP lamination work. Compare the current product-specific TDS for each against your actual finished product before choosing.",
+        q: "Which peroxide system is it designed for?",
+        a: "Confirm this with our technical team for the current grade. Polyester putty is made on more than one cure route in practice — benzoyl peroxide with an amine dominates hand-applied body filler, while ketone peroxide with cobalt is used in sprayable and some marine putties — so the answer belongs to the specific grade rather than to the category.",
       },
       {
-        q: "Which technical properties are published?",
-        a: "Sheet grade, pale-yellow liquid form, 450–650 cPs viscosity at 25°C, 60–64% solid content, 1.05–1.12 g/cm³ specific gravity, 70–85°C cured HDT and an approximate 30°C flash point. Full detail, storage guidance and shelf life are on the current TDS — confirm it before procurement.",
+        q: "How much filler will it accept?",
+        a: "That depends on your filler package as much as on the resin, since particle shape and oil absorption drive resin demand. Send your intended talc, carbonate and microsphere loading and your mixing equipment, and the achievable window can be discussed against the current grade.",
       },
       {
-        q: "Are the TDS and SDS available, and what should I share for a quote?",
-        a: "Yes — download the current <a href=\"/tds/pet-resin-tds.pdf\" target=\"_blank\" rel=\"noopener\">Polyester Putty Resin TDS</a> and SDS from this page, or review the <a href=\"/products/\">published product range</a>. For a quote, share your intended sheet or laminate application, required quantity, packaging need and delivery location.",
+        q: "Are a TDS and SDS available for this grade?",
+        a: "A revised, putty-specific data sheet is being prepared with our technical team. The historical sheet-grade document is not offered here, because it describes sheet and laminate manufacture rather than putty formulation. Request current grade data with your enquiry and it will be sent directly.",
+      },
+      {
+        q: "What should I send with an enquiry?",
+        a: "Your filler package and target loading, the working time and sanding window you are formulating to, your mixing equipment, the peroxide system your finished product uses, target colour, and the quantity, packaging and delivery location.",
       },
     ],
     relatedSlugs: [
       "unsaturated-polyester-resin",
       "gp-clear-resin",
-      "lamination-resin",
-      "sheet-grade-yellow-resin",
-      "dmc-smc-resin",
+      "soap-stone-powder",
+      "styrene-monomer",
+      "mekp-hardener",
       "marble-resin",
     ],
   },
@@ -2899,6 +2909,7 @@ export const products = [
     price: "₹220 / kg",
     image: "mekp-hardener.jpg",
     images: ["mekp-hardener-2.jpg"],
+    imageAlt: "MEKP Hardener — methyl ethyl ketone peroxide catalyst for polyester resin systems by Samrat Poly Resins",
     tdsUrl: "/tds/mekp-hardener-tds.pdf",
     sdsUrl: "/sds/mekp-hardener-sds.pdf",
     seo: {
@@ -3843,7 +3854,7 @@ export const products = [
     productDetails: {
       "Product Role": "Isophthalic unsaturated polyester resin",
       Packaging: "225 kg industrial drum",
-      "Colour / Appearance": "Off-white to light beige liquid",
+      "Grade Data": "Confirmed against the production batch at the time of enquiry",
       "Country of Origin": "India",
     },
     techSpecs: {
@@ -3920,10 +3931,22 @@ export const products = [
     name: "ISO Gelcoat",
     category: "GelCoat Resin",
     price: "",
-    image: "iso-gelcoat.jpg",
+    // The supplied poster shows swimming pools and water slides among its
+    // applications and carries a "TRUSTED BY FRP MANUFACTURERS" endorsement
+    // with nothing behind it. Enlarging it would publish an immersion claim
+    // that contradicts our own guidance, so the page renders a code-native
+    // identity panel instead. The file is untouched on disk.
+    // The supplied poster (iso-gelcoat.jpg, kept intact) carries two claims the
+    // owner-supplied data sheet SPR-TDS-IGC Rev. 01 does not support: a
+    // "swimming pools & water slides" panel, which would imply continuous
+    // immersion, and a "TRUSTED BY FRP MANUFACTURERS" endorsement with no named
+    // reference. iso-gelcoat-display.jpg is a top crop of that same file: it
+    // keeps the product visual, the identity block and the supported icon row,
+    // and ends before the unsupported panels. Both the repo original and the
+    // Downloads original are untouched.
+    image: "iso-gelcoat-display.jpg",
     images: [],
-    imageAlt:
-      "ISO Gelcoat — isophthalic polyester gelcoat for high-gloss, weather-resistant FRP surface finishing by Samrat Poly Resins",
+    imageAlt: "ISO Gelcoat — isophthalic polyester gelcoat applied to the mould face of an FRP moulding, by Samrat Poly Resins",
     seo: {
       title: "ISO Gelcoat Manufacturer in India | Isophthalic Gelcoat",
       description:
@@ -3940,6 +3963,9 @@ export const products = [
     productDetails: {
       "Product Role": "Isophthalic surface-coating gelcoat for FRP mouldings",
       "Colour / Appearance": "Creamy off-white to pale ivory gelcoat",
+      // The data sheet states plainly that no measured property has been
+      // published for this grade, so none is shown here.
+      "Measured Properties": "Not published for this grade — confirm requirements at enquiry",
       Application: "Brush or spray onto the mould face",
       "Country of Origin": "India",
     },
@@ -3949,25 +3975,31 @@ export const products = [
       Process: "Hand lay-up and spray-up FRP moulding",
     },
     tagline:
-      "Isophthalic polyester gelcoat for FRP surfaces that need better gloss retention and weather resistance than a general-purpose gelcoat.",
+      "Isophthalic polyester gelcoat, the grade normally specified where an FRP surface has to hold gloss and colour through weathering and water contact.",
     description:
       "ISO Gelcoat is an isophthalic polyester gelcoat manufactured by Samrat Poly Resins. A gelcoat is the outermost layer of an FRP moulding, applied to the mould face before any reinforcement goes in, and it gives the finished part its visible surface and its first line of protection. Isophthalic gelcoats are the grade normally specified in industry where that surface has to hold gloss and colour through weathering, water contact or outdoor service — marine, sanitaryware and transport work being the common examples. It is a separate grade from the general-purpose GP Gelcoat Resin.",
     usageNote:
       'For standard-duty FRP mould work where the part is not in sustained water contact or outdoor service, <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a> is the general-purpose route. A gelcoat is a surface coating and not a laminating resin — the structural laminate behind it is built with a separate resin such as <a href="/products/gp-clear-resin/">GP Clear Resin</a> or, for chemical and water service, <a href="/products/iso-polyester-resin/">ISO Polyester Resin</a>. Share the finished part, its service condition and the required finish with your enquiry.',
     features: [
       "Isophthalic gelcoat chemistry rather than a general-purpose polyester gelcoat",
-      "Positioned for gloss retention, weather resistance and water and hydrolysis resistance",
-      "Applied by brush or spray directly onto the mould face before reinforcement",
+      "Specified where the visible surface faces weathering, water contact or cleaning rather than continuous immersion",
+      "Applied to the mould face before any reinforcement, so it becomes the visible outer surface of the moulding",
+      "Brush or spray application, as published on the grade’s data sheet",
       "MEKP catalysed, cures at room temperature",
       "Manufactured by Samrat Poly Resins under an ISO 9001:2015 certified quality management system",
     ],
     applications: [
-      "Marine products and boat surfaces",
-      "Swimming pools and water slides",
+      // Taken from the RECOMMENDED APPLICATIONS block of the owner-supplied
+      // data sheet SPR-TDS-IGC Rev. 01. Swimming pools and water slides are
+      // deliberately absent: the sheet does not list them, and continuous
+      // immersion suitability is not inferred from it.
+      "Mould-face surface coat for FRP mouldings",
+      "Marine components",
+      "Transport and exterior panel moulding",
       "Bathroom fixtures and sanitaryware",
-      "Automotive and transport components",
+      "Parts whose surface must hold gloss and colour in service",
       "FRP panels and building components",
-      "Industrial moulded parts",
+      "Industrial moulded parts and enclosures",
     ],
     industries: [
       "Marine & boat building",

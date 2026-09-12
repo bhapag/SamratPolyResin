@@ -419,22 +419,68 @@ const legacySpecEntries = !detailEntries && !techEntries && specs ? Object.entri
 // than technical evidence for the supplied grade.
 const gallery = [image, ...(product.images ?? [])];
 
-// Resolve each gallery photo to an optimised, compressed webp — one size for
-// the large main viewer, one for the thumbnail strip. The thumbnail's
-// `data-src` carries the main-size URL so the click-to-swap script (below)
-// can assign it straight to the main <img>'s src.
+// Resolve each gallery photo to optimised, compressed webp: a responsive set
+// for the large main viewer, one small encode for the thumbnail strip. The
+// thumbnail's `data-src` carries the main-size URL so the click-to-swap
+// script (below) can assign it straight to the main <img>'s src.
 const galleryImages = await Promise.all(
   gallery.map(async (filename) => {
     const mod = resolveProductImage(filename);
     if (!mod) return null;
-    const [main, thumb] = await Promise.all([
-      getImage({ src: mod, width: 700, format: 'webp' }),
+    // The frame below is sized from the artwork, so a landscape poster is now
+    // drawn wider than the old 360px rail allowed. A single 700px encode
+    // would be upscaled at that size on a 2x screen, so emit a real srcset,
+    // and never request a width the source cannot supply.
+    // Ladder spacing matters more than ladder length. A 390px phone at 2x
+    // needs ~710px, so a gap between 700 and 1040 makes the browser jump to
+    // 1040 and roughly doubles the hero download for no visible gain. These
+    // steps keep a close candidate at every real frame size and DPR.
+    const widths = [400, 560, 720, 900, 1120, 1400].filter((w) => w <= mod.width);
+    if (!widths.length) widths.push(mod.width);
+    const [thumb, ...scaled] = await Promise.all([
       getImage({ src: mod, width: 160, format: 'webp' }),
+      ...widths.map((w) => getImage({ src: mod, width: w, format: 'webp' })),
     ]);
-    return { main, thumb };
+    // `src` points at the largest encode so a browser ignoring srcset still
+    // gets a sharp image rather than the smallest one.
+    const main = scaled[scaled.length - 1];
+    const srcset = scaled.map((im, i) => `${im.src} ${widths[i]}w`).join(', ');
+    return { main, thumb, srcset, ar: +(mod.width / mod.height).toFixed(4) };
   })
 );
 const mainImage = galleryImages[0];
+
+// --- Media frame geometry -------------------------------------------------
+// The frame follows the artwork instead of forcing every asset into a square.
+// The catalogue holds three genuine shape families — landscape posters,
+// square product shots and portrait bottle shots — so one shared rule driven
+// by each asset's own ratio serves all of them with no per-product CSS.
+//
+// The clamp exists only to stop an extreme asset producing an absurd frame;
+// inside it the ratio is the artwork's own, so `object-fit: contain` has
+// nothing to letterbox. A gallery can mix ratios, so every thumbnail carries
+// its own ratio and the swap script re-points the variable.
+const AR_MIN = 0.72;
+const AR_MAX = 1.9;
+const heroAr = mainImage ? Math.min(AR_MAX, Math.max(AR_MIN, mainImage.ar)) : 1;
+// Landscape artwork earns a wider column: at the old fixed 360px a 1.63-ratio
+// poster rendered only 219px tall inside a 360px box. Portrait art needs the
+// opposite, or the frame grows far taller than the masthead beside it.
+const mediaWidth = heroAr >= 1.15 ? 480 : heroAr <= 0.87 ? 380 : 420;
+// On phones the frame is height-capped at 320px, so a square or portrait
+// asset is narrower than the column. Declaring the true width in `sizes`
+// stops the browser fetching a candidate sized for a box it never draws.
+const mobileWidth = Math.round(Math.min(355, 320 * heroAr));
+const mediaVars = `--prod-ar:${heroAr};--prod-media-w:${mediaWidth}px;`;
+
+// Where a grade has no truthful product photography, the media frame renders
+// a code-native identity panel instead of borrowing another product's artwork
+// or showing an empty plate. Keyed off the product's own published role, so
+// it states identity rather than inventing a pack shot.
+// Kept for any grade that has no truthful artwork. Empty at present: both
+// products that used it now carry an image again.
+const IDENTITY_PANELS = {};
+const identityPanel = !mainImage ? IDENTITY_PANELS[product.slug] : undefined;
 
 // Curated related products when the product names them explicitly (lets a page
 // reference cross-category grades intentionally); otherwise auto-fill from the
@@ -889,16 +935,37 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     <a href="/">Home</a><span>/</span><a href="/products/">Products</a><span>/</span>{categoryHubUrl && (<><a href={categoryHubUrl}>{product.category}</a><span>/</span></>)}<span class="cur">{name}</span>
   </div>
 
-  <article class="wrap prod">
+  <article class="wrap prod" style={mediaVars}>
     <div class="prod-media">
       <div class="prod-media-sticky">
         <div class:list={['prod-img', { noimg: !mainImage }]}>
           {mainImage && (
-            <img src={mainImage.main.src} width={mainImage.main.attributes.width} height={mainImage.main.attributes.height}
+            <img src={mainImage.main.src} srcset={mainImage.srcset}
+                 sizes={`(max-width: 620px) ${mobileWidth}px, ${mediaWidth}px`}
+                 width={mainImage.main.attributes.width} height={mainImage.main.attributes.height}
                  alt={product.imageAlt ?? name} id="prodMainImg"
+                 loading="eager" fetchpriority="high" decoding="async"
                  transition:name={`product-photo-${product.slug}`} />
           )}
-          {isFiberglassEpoxyResin && !mainImage ? (
+          {!mainImage && identityPanel ? (
+            /* A code-native identity panel, used where no truthful product
+               photography exists for the grade. It states what the product
+               is rather than borrowing another product's pack shot, and it
+               invents no packaging, colour or laboratory scene. Readable
+               text, not an image of text. */
+            <div class="prod-identity">
+              <span class="prod-identity-mark" aria-hidden="true">
+                <svg viewBox="0 0 48 48" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 5h10M21 5v13.2L9.6 37.4A5 5 0 0 0 13.9 45h20.2a5 5 0 0 0 4.3-7.6L27 18.2V5" />
+                  <path d="M14.5 30h19" />
+                </svg>
+              </span>
+              <p class="prod-identity-kicker">{identityPanel.kicker}</p>
+              <p class="prod-identity-name">{name}</p>
+              <p class="prod-identity-role">{identityPanel.role}</p>
+              <p class="prod-identity-note">{identityPanel.note}</p>
+            </div>
+          ) : isFiberglassEpoxyResin && !mainImage ? (
             <span class="fiberglass-epoxy-placeholder" aria-hidden="true">
               <strong>Fiberglass<br />Epoxy Resin</strong>
               <small>Document-led product route</small>
@@ -910,7 +977,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         {gallery.length > 1 && (
           <div class="prod-thumbs" role="list">
             {galleryImages.map((g, i) => g && (
-              <button type="button" class:list={['prod-thumb', { active: i === 0 }]} data-src={g.main.src} aria-label={`Show photo ${i + 1} of ${name}`}>
+              <button type="button" class:list={['prod-thumb', { active: i === 0 }]}
+                      data-src={g.main.src} data-srcset={g.srcset}
+                      data-ar={Math.min(AR_MAX, Math.max(AR_MIN, g.ar))}
+                      style={`--thumb-ar:${Math.min(1.8, Math.max(0.68, g.ar))}`}
+                      aria-label={`Show photo ${i + 1} of ${name}`}>
                 <img src={g.thumb.src} width={g.thumb.attributes.width} height={g.thumb.attributes.height} alt="" loading="lazy" />
               </button>
             ))}
@@ -918,6 +989,23 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         )}
         {isMarbleResin && (
           <p class="marble-image-note">Illustrative product graphic. Use the <a href={tdsUrl} target="_blank" rel="noopener" download>current Marble Resin TDS</a> for verified supplied-resin data, documented applications and grade selection.</p>
+        )}
+        {isPolyesterPuttyResin && (
+          /* The artwork is the grade's earlier PET Resin poster and carries a
+             specification table and a food-contact claim for that earlier
+             sheet grade. The page copy, FAQ and schema do not repeat any of
+             it, and the sheet-grade documents are not linked — this note is
+             what keeps the graphic from reading as a current specification.
+             Same pattern the Marble Resin page already uses. */
+          <p class="marble-image-note">Illustrative graphic, issued under this grade&rsquo;s earlier name. Its specification table and application photographs belong to that earlier PET sheet grade, not to the putty base resin.</p>
+        )}
+        {isUvStabilizedSheetResin && (
+          /* The supplied poster describes the resin as "controlled
+             low-viscosity" with "controlled gel behaviour". Both are property
+             claims, and no approved figure exists for this grade yet, so the
+             page says so in readable text beside the artwork rather than
+             letting an enlarged graphic carry them unqualified. */
+          <p class="marble-image-note">Illustrative product graphic. The processing descriptions shown on it, including the reference to a low-viscosity resin and to controlled gel behaviour, are not yet backed by a published figure for this grade — viscosity and gel time are confirmed against the production batch at the time of enquiry.</p>
         )}
         {isFiberglassEpoxyResin && (
           <p class="marble-image-note">Illustrative Fiberglass Epoxy Resin product graphics. They are not technical evidence for the supplied grade; use the <a href={tdsUrl} target="_blank" rel="noopener" download>current Fiberglass Epoxy Resin TDS</a> as the product-data reference.</p>
@@ -4225,7 +4313,16 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           if (!main || !src || main.src.endsWith(src)) return;
           main.classList.add('fading');
           window.setTimeout(() => {
+            // srcset wins over src, so it has to be replaced too or the
+            // browser keeps serving the previous photo's candidates.
+            if (btn.dataset.srcset) main.srcset = btn.dataset.srcset;
             main.src = src;
+            // A gallery can mix shapes (a square product shot beside a
+            // portrait bottle shot). Re-point the frame ratio so the
+            // incoming photo is not letterboxed in the outgoing one's box.
+            const ar = btn.dataset.ar;
+            const frame = main.closest('.prod') as HTMLElement | null;
+            if (ar && frame) frame.style.setProperty('--prod-ar', ar);
             main.classList.remove('fading');
           }, 140);
           document.querySelectorAll('.prod-thumb').forEach((b) => b.classList.remove('active'));
@@ -4305,7 +4402,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
        the full width. Measured at 1440: content column 574px -> 740px. */
     .prod {
       display: grid;
-      grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+      grid-template-columns: minmax(0, var(--prod-media-w, 420px)) minmax(0, 1fr);
       gap: clamp(1.5rem, 4vw, 3rem);
       align-items: start;
       padding-block: 2.2rem 3rem;
@@ -4322,8 +4419,12 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
        instead makes the whole frame read as an intentional light "photo
        plate," not a colour mismatch — kept in the same gold-bordered plate
        treatment as before. */
+    /* The frame takes its ratio from the artwork (set per page in the
+       frontmatter as --prod-ar), so a landscape poster is no longer
+       letterboxed inside a square and a portrait bottle shot is no longer
+       pillarboxed. Falls back to square if the variable is ever absent. */
     .prod-img {
-      position: relative; aspect-ratio: 1 / 1; border: 1px solid var(--image-frame-border); border-radius: 14px;
+      position: relative; aspect-ratio: var(--prod-ar, 1); border: 1px solid var(--image-frame-border); border-radius: 14px;
       background: linear-gradient(135deg, #f2eee3, #e6e0cf);
       display: grid; place-items: center; overflow: hidden;
       box-shadow: var(--image-frame-shadow);
@@ -4346,15 +4447,47 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .prod-img img.fading { opacity: 0; }
     .img-fallback { display: none; position: absolute; font-family: var(--font-display); font-weight: 700; font-size: 3.5rem; color: var(--line-2); }
     .prod-img.noimg .img-fallback { display: block; }
+    /* Code-native identity panel. Sits inside the same warm plate as a
+       poster so the masthead keeps its shape, but carries real selectable
+       text rather than an image of text — which also means a screen reader
+       and a crawler both get the product identity. */
+    .prod-identity {
+      position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center;
+      gap: 0.5rem; padding: clamp(1.2rem, 4%, 2rem); text-align: left;
+      background:
+        radial-gradient(120% 90% at 12% 0%, rgba(255, 255, 255, .55), transparent 60%),
+        linear-gradient(135deg, #f6f2e7, #e4ddca);
+    }
+    .prod-identity-mark { color: var(--accent-gold); opacity: .78; margin-bottom: 0.15rem; }
+    .prod-identity-kicker {
+      margin: 0; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.13em;
+      text-transform: uppercase; color: #8a7a4f;
+    }
+    .prod-identity-name {
+      margin: 0; font-family: var(--font-display); font-weight: 700; line-height: 1.02;
+      font-size: clamp(1.5rem, 3.1vw, 2.15rem); text-transform: uppercase; color: #1d2231;
+    }
+    .prod-identity-role {
+      margin: 0.15rem 0 0; font-size: 0.9rem; line-height: 1.45; color: #3d4457; max-width: 30ch;
+    }
+    .prod-identity-note {
+      margin: auto 0 0; padding-top: 0.7rem; border-top: 1px solid rgba(29, 34, 49, .16);
+      font-size: 0.72rem; line-height: 1.5; color: #6b6650; max-width: 40ch;
+    }
     .fiberglass-epoxy-placeholder { display: grid; gap: 0.75rem; padding: 2rem; text-align: center; }
     .fiberglass-epoxy-placeholder strong { color: var(--ink-dim); font-family: var(--font-display); font-size: clamp(1.7rem, 4vw, 2.7rem); line-height: 0.95; text-transform: uppercase; }
     .fiberglass-epoxy-placeholder small { color: var(--accent-gold-light); font-family: var(--font-mono); font-size: 0.67rem; letter-spacing: 0.12em; text-transform: uppercase; }
 
-    .prod-thumbs { display: flex; gap: 0.7rem; margin-top: 0.9rem; flex-wrap: wrap; }
+    .prod-thumbs { display: flex; gap: 0.7rem; margin-top: 0.9rem; flex-wrap: wrap; align-items: flex-start; }
+    /* Thumbnails sit in a strip with no text beside them, so their width is
+       free to follow each photo's ratio. Fixing the height instead keeps the
+       strip aligned while letting a landscape frame stop being 45% empty.
+       Width is bounded so one very wide asset cannot dominate the row. */
     .prod-thumb {
       position: relative;
       padding: 0; border: 1px solid var(--line); background: linear-gradient(135deg, #f2eee3, #e6e0cf); cursor: pointer;
-      width: 76px; aspect-ratio: 1 / 1; overflow: hidden; transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium);
+      height: 76px; width: auto; min-width: 52px; max-width: 124px; aspect-ratio: var(--thumb-ar, 1);
+      overflow: hidden; transition: border-color .3s var(--ease-premium), transform .3s var(--ease-premium);
     }
     .prod-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
     .prod-thumb:hover { border-color: var(--line-2); transform: translateY(-1px); }
@@ -4937,19 +5070,29 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 
     /* 6. Once the grid stacks (<=860px) the rail's width constraint is gone,
           so the poster would otherwise fill most of the first screen before
-          the product name is reached. Capped so identity stays above the
-          fold on tablets. */
+          the product name is reached. The frame now follows the artwork, so
+          the cap is a height rather than a forced ratio: landscape posters
+          sit well under it, and only tall portrait art is limited. */
     @media (max-width: 860px) {
-      .prod-media-sticky { max-width: 420px; }
+      .prod-media-sticky { max-width: min(100%, var(--prod-media-w, 420px)); }
       .prod-thumbs { max-width: 420px; }
+      .prod-img { max-height: 460px; }
     }
-    /* 7. Phone widths: the poster is a 1:1 box, so at 355px available it was
-          355px tall, and on products with a three-line breadcrumb (e.g. Vinyl
-          Ester, "Industrial & Specialty Resins") the product name was pushed
-          to the very bottom of the first screen. A shallower box brings the
-          identity up without cropping — the poster is object-fit: contain. */
+    /* 7. Phone widths. Previously the frame was forced to 5:4 here, which
+          letterboxed landscape artwork and pillarboxed portrait artwork at
+          the size where screen space is scarcest. Keeping the artwork's own
+          ratio and capping the height instead means a landscape poster is
+          now shorter than the old box (so the product name moves UP), while
+          a portrait asset is limited rather than distorted. `contain` still
+          guarantees the complete artwork is visible.
+
+          The cap is deliberately close to the old effective height (355px
+          wide at 5:4 was 284px tall), so square and portrait products keep
+          the product name near the position buyers already see it at, while
+          still gaining drawn size because the artwork no longer has to fit a
+          ratio that is not its own. */
     @media (max-width: 620px) {
-      .prod-img { aspect-ratio: 5 / 4; }
+      .prod-img { max-height: 320px; }
     }
 
     @media (max-width: 760px) {
