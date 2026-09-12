@@ -75,16 +75,16 @@ const collectionJsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "@id": buildCanonicalUrl(Astro.url.pathname),
-  name: "Technical Data Sheets & Safety Data Sheets",
+  name: "Technical, Safety & Product Data Sheets",
   url: buildCanonicalUrl(Astro.url.pathname),
-  description: `Technical Data Sheets (TDS) and Safety Data Sheets (SDS) for ${withDocuments.length} ${site.name} resin and allied product grades.`,
+  description: `${tdsCount} Technical Data Sheets, ${sdsCount} Safety Data Sheets and ${pdsCount} Product Data Sheet published across ${withDocuments.length} ${site.name} resin and allied product grades.`,
   isPartOf: { "@type": "WebSite", name: site.name, url: site.url },
   about: { "@type": "Thing", name: "Resin technical data sheets and safety data sheets" },
 };
 ---
 <Base
   title="Resin TDS & SDS Documents"
-  description={`Download Technical Data Sheets and Safety Data Sheets for ${withDocuments.length} Samrat Poly Resins grades — polyester, epoxy, gelcoat, fire retardant and hardener products.`}
+  description={`Download ${tdsCount} Technical Data Sheets, ${sdsCount} Safety Data Sheets and ${pdsCount} Product Data Sheet for Samrat Poly Resins polyester, epoxy, gelcoat, fire retardant and allied products.`}
   keywords={['polyester resin TDS', 'resin technical data sheet', 'resin SDS', 'epoxy resin TDS', 'MEKP hardener SDS', 'resin safety data sheet India']}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
@@ -100,10 +100,8 @@ const collectionJsonLd = {
         <p class="eyebrow">Document library</p>
         <h1>Technical Data Sheets &amp; Safety Data Sheets</h1>
         <p class="td-hero-sub">
-          Every published data sheet for the {site.name} range, in one place:
-          {tdsCount} Technical Data Sheets, {sdsCount} Safety Data Sheets and
-          {pdsCount} Product Data Sheet across {withDocuments.length} of our
-          {products.length} grades. Each document is the current sheet for that grade as
+          {`Every published data sheet for the ${site.name} range, in one place: ${tdsCount} Technical Data Sheets, ${sdsCount} Safety Data Sheets and ${pdsCount} Product Data Sheet across ${withDocuments.length} of our ${products.length} grades. `}
+          Each document is the current sheet for that grade as
           supplied — the same file linked from the grade’s own product page. Download what
           you need before specifying, quoting or handling a material.
         </p>

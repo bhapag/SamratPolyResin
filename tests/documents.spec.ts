@@ -108,6 +108,9 @@ test.describe('technical document library', () => {
     expect(sub).toContain(`${tds} Technical Data Sheets`);
     expect(sub).toContain(`${sds} Safety Data Sheets`);
     expect(sub).toContain(`${pds} Product Data Sheet`);
+    // Astro drops whitespace where literal text and an expression meet across a
+    // newline; this once rendered as "in one place:31" and "grades.Each".
+    expect(sub, 'punctuation glued to the next word').not.toMatch(/[:.,;][A-Za-z0-9]/);
   });
 
   test('every document is downloadable from the library under its correct kind', async ({ page }) => {
