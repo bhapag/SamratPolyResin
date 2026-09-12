@@ -888,7 +888,11 @@ const productJsonLd = {
   category,
   sku: product.slug,
   url: buildCanonicalUrl(Astro.url.pathname),
-  image: mainImage ? buildCanonicalUrl(mainImage.main.src) : undefined,
+  // Polyester Putty Resin's only images are its earlier PET Resin posters,
+  // which carry food-contact and PET-packaging claims that do not apply. They
+  // stay visible on the page with a warning, but are not handed to search
+  // engines as the product's image.
+  image: mainImage && !isPolyesterPuttyResin ? buildCanonicalUrl(mainImage.main.src) : undefined,
   // Both point at the ONE sitewide Organization node by @id, so every product
   // page reinforces the same entity instead of declaring a fresh, unlinked
   // organisation 31 times. The name is kept alongside the @id so the markup
@@ -981,13 +985,21 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <p class="marble-image-note">Illustrative product graphic. Use the <a href={tdsUrl} target="_blank" rel="noopener" download>current Marble Resin TDS</a> for verified supplied-resin data, documented applications and grade selection.</p>
         )}
         {isPolyesterPuttyResin && (
-          /* The artwork is the grade's earlier PET Resin poster and carries a
-             specification table and a food-contact claim for that earlier
-             sheet grade. The page copy, FAQ and schema do not repeat any of
-             it, and the sheet-grade documents are not linked — this note is
-             what keeps the graphic from reading as a current specification.
-             Same pattern the Marble Resin page already uses. */
-          <p class="marble-image-note">Illustrative graphic, issued under this grade&rsquo;s earlier name. Its specification table and application photographs belong to that earlier PET sheet grade, not to the putty base resin.</p>
+          /* The owner asked for these two posters to stay on the page. Both
+             were made for the grade's earlier name, PET Resin, and claim food-
+             contact suitability, PET bottles, preforms and containers, injection
+             and blow moulding (thermoplastic processes an unsaturated polyester
+             thermoset cannot undergo) and printed strength figures. None of that
+             is supported for Polyester Putty Resin — or by the historical PET
+             sheet-grade TDS either — so the earlier note, which said the claims
+             "belong to that earlier PET sheet grade", understated it. The
+             statement below is shown at reading size, directly under the image,
+             and is announced with it. Correcting the artwork itself needs either
+             owner-approved putty artwork or permission to edit the supplied file. */
+          <div class="prod-img-warning" role="note" aria-label="About these product images">
+            <p class="prod-img-warning-title">These images do not describe this product</p>
+            <p>Both posters were made under this grade&rsquo;s earlier name, PET Resin. Do not rely on them for Polyester Putty Resin: it has no food-contact approval, it is not a PET bottle, preform, container or packaging material, it cannot be injection- or blow-moulded, and the figures printed on the posters are not this grade&rsquo;s data.</p>
+          </div>
         )}
         {isUvStabilizedSheetResin && (
           /* The supplied poster describes the resin as "controlled
@@ -4387,6 +4399,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     }
     .prod-img:hover { box-shadow: 0 1px 0 rgba(255, 255, 255, .08) inset, 0 22px 48px rgba(0, 0, 0, .46); }
     .marble-image-note { margin: 0.75rem 0 0; color: var(--ink-faint); font-size: 0.78rem; line-height: 1.5; }
+    .prod-img-warning {
+      margin: 0.85rem 0 0; padding: 0.8rem 0.95rem;
+      border: 1px solid var(--line-2); border-left: 3px solid var(--accent-gold);
+      background: var(--bg-3); color: var(--ink-dim); font-size: 0.88rem; line-height: 1.55;
+    }
+    .prod-img-warning p { margin: 0; }
+    .prod-img-warning .prod-img-warning-title { color: var(--ink); font-weight: 600; margin-bottom: 0.3rem; }
     .marble-image-note a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 0.16em; }
     .fiberglass-epoxy-route { display: flex; flex-wrap: wrap; gap: 0.55rem 0.7rem; margin-top: 1rem; }
     .fiberglass-epoxy-route a { color: var(--accent-gold-light); border-bottom: 1px solid var(--line-2); font-size: 0.8rem; line-height: 1.45; padding-bottom: 0.12rem; }

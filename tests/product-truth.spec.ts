@@ -61,3 +61,21 @@ test.describe('PDFs with a stray hidden text layer', () => {
     }
   });
 });
+
+test.describe('Polyester Putty Resin posters', () => {
+  test('stay visible with an explicit warning, and are not the schema product image', async ({ page }) => {
+    await page.goto('/products/polyester-putty-resin/');
+    const warn = page.locator('.prod-img-warning');
+    await expect(warn).toBeVisible();
+    const text = (await warn.innerText()).replace(/\s+/g, ' ');
+    for (const claim of [/food-contact/i, /bottle/i, /injection- or blow-moulded/i, /not this grade/i]) expect(text).toMatch(claim);
+    // warning is readable size, not caption size
+    const px = await warn.locator('p').last().evaluate((e) => parseFloat(getComputedStyle(e).fontSize));
+    expect(px).toBeGreaterThanOrEqual(13);
+    const product = await page.evaluate(() =>
+      [...document.querySelectorAll('script[type="application/ld+json"]')].map((s) => JSON.parse(s.textContent!))
+        .flatMap((j: any) => (Array.isArray(j) ? j : j['@graph'] || [j])).find((j: any) => j['@type'] === 'Product'));
+    expect(product.image, 'PET poster exposed as Product.image').toBeUndefined();
+    await expect(page.locator('.prod-img img, img.prod-img').first()).toBeVisible();
+  });
+});

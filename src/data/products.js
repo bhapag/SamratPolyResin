@@ -2319,8 +2319,10 @@ export const products = [
     // PET RESIN, describes a polyethylene-terephthalate based resin for
     // sheets, containers and packaging, carries a specification table for
     // that grade and a food-contact claim. None of that is repeated in the
-    // page copy, the FAQ or the schema, and the sheet-grade TDS and SDS
-    // remain unlinked. A short visible note sits under the image.
+    // page copy or FAQ; since 2026-09-13 the poster is also kept out of the
+    // Product schema image, and a reading-size warning under the image states
+    // that its food-contact, PET-packaging, moulding and figure claims do not
+    // apply. The sheet-grade TDS is archived and neither PET document is linked.
     image: "pet-resin.jpg",
     images: ["pet-resin-2.jpg"],
     // Historical documents SPR-TDS-PET Rev. 01 and its SDS are titled
@@ -2357,7 +2359,7 @@ export const products = [
       "Manufactured At": "Doraha, Punjab, under an ISO 9001:2015 certified quality management system",
       "Grade Data": "Confirmed against the production batch at the time of enquiry",
     },
-    imageAlt: "Samrat Poly Resins product poster for this grade, issued under its earlier name PET Resin",
+    imageAlt: "Earlier PET Resin poster for this grade; its food-contact, packaging and specification claims do not apply to Polyester Putty Resin",
     tagline: "Liquid unsaturated polyester resin, supplied to manufacturers as a base for polyester putty and filler.",
     description: "Polyester Putty Resin is a liquid unsaturated polyester resin manufactured by Samrat Poly Resins and supplied to putty and filler manufacturers as the base resin in their own formulations. It is the resin a putty maker charges to a disperser before adding talc, carbonate, microspheres, thixotrope and pigment — not a finished, ready-to-use body filler. Samrat Poly Resins manufactures this grade at its facility in Doraha, Punjab, India. Established in 2017, the company operates an ISO 9001:2015-certified quality management system.",
     usageNote: "Grade-specific figures such as viscosity, reactivity and styrene content are confirmed against the production batch at the time of enquiry rather than published here, and the cure system this grade is designed for is confirmed with the technical team. Send your filler package, target loading and working time so the right data can be matched to your formulation.",
