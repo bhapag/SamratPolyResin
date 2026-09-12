@@ -343,6 +343,88 @@ const isoFireRetardantDecisionResources = published.filter((resource) => [
 const isoFireRetardantRequirementsResources = published.filter((resource) => [
   'what-is-iso-fire-retardant-resin',
 ].includes(resource.slug));
+
+// --- ISO Polyester Resin (isophthalic corrosion / immersion grade) ---
+const isoPolyesterAuthoritySlugs = new Set([
+  'what-is-iso-polyester-resin',
+  'iso-polyester-resin-applications',
+  'iso-polyester-resin-vs-gp-resin',
+  'iso-polyester-resin-vs-iso-fire-retardant-resin',
+  'iso-polyester-resin-vs-vinyl-ester-resin',
+  'how-to-specify-iso-polyester-resin',
+]);
+const isoPolyesterAuthorityResources = published.filter((resource) => isoPolyesterAuthoritySlugs.has(resource.slug));
+const isoPolyesterFoundationResources = published.filter((resource) => [
+  'what-is-iso-polyester-resin',
+  'iso-polyester-resin-applications',
+].includes(resource.slug));
+const isoPolyesterDecisionResources = published.filter((resource) => [
+  'iso-polyester-resin-vs-gp-resin',
+  'iso-polyester-resin-vs-iso-fire-retardant-resin',
+  'iso-polyester-resin-vs-vinyl-ester-resin',
+].includes(resource.slug));
+const isoPolyesterRequirementsResources = published.filter((resource) => [
+  'how-to-specify-iso-polyester-resin',
+].includes(resource.slug));
+
+// --- ISO Gelcoat (isophthalic gelcoat surface grade) ---
+const isoGelcoatAuthoritySlugs = new Set([
+  'what-is-iso-gelcoat',
+  'iso-gelcoat-applications',
+  'how-to-apply-iso-gelcoat',
+]);
+const isoGelcoatAuthorityResources = published.filter((resource) => isoGelcoatAuthoritySlugs.has(resource.slug));
+const isoGelcoatFoundationResources = published.filter((resource) => [
+  'what-is-iso-gelcoat',
+].includes(resource.slug));
+const isoGelcoatDecisionResources = published.filter((resource) => [
+  'iso-gelcoat-applications',
+].includes(resource.slug));
+const isoGelcoatProcessResources = published.filter((resource) => [
+  'how-to-apply-iso-gelcoat',
+].includes(resource.slug));
+
+// --- UV Stabilized Sheet Grade Yellow Resin (outdoor sheet grade) ---
+const uvStabilizedAuthoritySlugs = new Set([
+  'what-is-uv-stabilized-sheet-grade-resin',
+  'uv-stabilized-resin-vs-uv-curing-resin',
+  'how-uv-degrades-frp-sheets',
+  'uv-stabilized-sheet-resin-applications',
+  'uv-stabilized-vs-standard-sheet-grade-yellow-resin',
+]);
+const uvStabilizedAuthorityResources = published.filter((resource) => uvStabilizedAuthoritySlugs.has(resource.slug));
+const uvStabilizedFoundationResources = published.filter((resource) => [
+  'uv-stabilized-resin-vs-uv-curing-resin',
+  'what-is-uv-stabilized-sheet-grade-resin',
+].includes(resource.slug));
+const uvStabilizedDecisionResources = published.filter((resource) => [
+  'uv-stabilized-vs-standard-sheet-grade-yellow-resin',
+  'how-uv-degrades-frp-sheets',
+].includes(resource.slug));
+const uvStabilizedRequirementsResources = published.filter((resource) => [
+  'uv-stabilized-sheet-resin-applications',
+].includes(resource.slug));
+
+// --- Polyester Putty Resin (putty / body-filler base resin) ---
+const polyesterPuttyAuthoritySlugs = new Set([
+  'what-is-polyester-putty-resin',
+  'polyester-putty-cure-systems-bpo-and-mekp',
+  'polyester-putty-fillers-and-rheology',
+  'polyester-putty-vs-epoxy-putty',
+  'polyester-putty-troubleshooting',
+]);
+const polyesterPuttyAuthorityResources = published.filter((resource) => polyesterPuttyAuthoritySlugs.has(resource.slug));
+const polyesterPuttyFoundationResources = published.filter((resource) => [
+  'what-is-polyester-putty-resin',
+  'polyester-putty-vs-epoxy-putty',
+].includes(resource.slug));
+const polyesterPuttyFormulationResources = published.filter((resource) => [
+  'polyester-putty-cure-systems-bpo-and-mekp',
+  'polyester-putty-fillers-and-rheology',
+].includes(resource.slug));
+const polyesterPuttyProblemResources = published.filter((resource) => [
+  'polyester-putty-troubleshooting',
+].includes(resource.slug));
 const vinylEsterAuthoritySlugs = new Set([
   'what-is-vinyl-ester-resin',
   'vinyl-ester-resin-vs-isophthalic-resin',
@@ -390,7 +472,7 @@ const bisphenolVerificationResources = published.filter((resource) => [
   'bisphenol-resin-procurement-checklist',
 ].includes(resource.slug));
 const gpAuthorityResourcesWithoutUpr = gpAuthorityResources.filter((resource) => !uprAuthoritySlugs.has(resource.slug));
-const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !marbleResinAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug) && !glassFiberAuthoritySlugs.has(resource.slug) && !pigmentAuthoritySlugs.has(resource.slug) && !mekpAuthoritySlugs.has(resource.slug) && !epoxyHardenerAuthoritySlugs.has(resource.slug) && !fiberglassEpoxyAuthoritySlugs.has(resource.slug) && !epoxyCastingAuthoritySlugs.has(resource.slug) && !epoxyArtAuthoritySlugs.has(resource.slug) && !sheetGradeAuthoritySlugs.has(resource.slug) && !roofLightAuthoritySlugs.has(resource.slug) && !dmcSmcAuthoritySlugs.has(resource.slug) && !petResinAuthoritySlugs.has(resource.slug) && !fireRetardantAuthoritySlugs.has(resource.slug) && !isoFireRetardantAuthoritySlugs.has(resource.slug) && !vinylEsterAuthoritySlugs.has(resource.slug) && !bisphenolAuthoritySlugs.has(resource.slug));
+const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !marbleResinAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug) && !glassFiberAuthoritySlugs.has(resource.slug) && !pigmentAuthoritySlugs.has(resource.slug) && !mekpAuthoritySlugs.has(resource.slug) && !epoxyHardenerAuthoritySlugs.has(resource.slug) && !fiberglassEpoxyAuthoritySlugs.has(resource.slug) && !epoxyCastingAuthoritySlugs.has(resource.slug) && !epoxyArtAuthoritySlugs.has(resource.slug) && !sheetGradeAuthoritySlugs.has(resource.slug) && !roofLightAuthoritySlugs.has(resource.slug) && !dmcSmcAuthoritySlugs.has(resource.slug) && !petResinAuthoritySlugs.has(resource.slug) && !fireRetardantAuthoritySlugs.has(resource.slug) && !isoFireRetardantAuthoritySlugs.has(resource.slug) && !vinylEsterAuthoritySlugs.has(resource.slug) && !bisphenolAuthoritySlugs.has(resource.slug) && !isoPolyesterAuthoritySlugs.has(resource.slug) && !isoGelcoatAuthoritySlugs.has(resource.slug) && !uvStabilizedAuthoritySlugs.has(resource.slug) && !polyesterPuttyAuthoritySlugs.has(resource.slug));
 // Jump navigation for the 24 knowledge hubs below. The Knowledge Centre lists
 // every live article on one page; even with the compact rows introduced
 // alongside this, that page is 37,539px on a 390px viewport, so a reader
@@ -411,13 +493,17 @@ const KNOWLEDGE_HUBS = [
   { id: 'lamination-resin-guides-heading', label: 'Lamination Resin' },
   { id: 'marble-resin-hub-heading', label: 'Marble Resin' },
   { id: 'sheet-grade-resin-hub-heading', label: 'Sheet Grade Yellow Resin' },
+  { id: 'uv-stabilized-sheet-resin-hub-heading', label: 'UV Stabilised Sheet Grade Yellow Resin' },
   { id: 'roof-light-resin-hub-heading', label: 'Roof Light Sheet Grade Resin' },
   { id: 'gelcoat-resin-guides-heading', label: 'Gelcoat Resin' },
+  { id: 'iso-gelcoat-hub-heading', label: 'ISO Gelcoat' },
   { id: 'fire-retardant-resin-hub-heading', label: 'Fire Retardant Resin' },
   { id: 'iso-fire-retardant-resin-hub-heading', label: 'ISO Fire Retardant Resin' },
+  { id: 'iso-polyester-resin-hub-heading', label: 'ISO Polyester Resin' },
   { id: 'button-resin-hub-heading', label: 'Button Grade Resin' },
   { id: 'dmc-smc-resin-hub-heading', label: 'DMC / SMC Resin' },
-  { id: 'pet-resin-hub-heading', label: 'PET Resin / Polyester Putty' },
+  { id: 'pet-resin-hub-heading', label: 'Polyester Putty Resin' },
+  { id: 'polyester-putty-resin-hub-heading', label: 'Polyester Putty Resin (putty base)' },
   { id: 'vinyl-ester-resin-hub-heading', label: 'Vinyl Ester Resin' },
   { id: 'bisphenol-resin-hub-heading', label: 'Bisphenol Resin' },
   { id: 'fiberglass-epoxy-resin-hub-heading', label: 'Fiberglass Epoxy Resin' },
@@ -968,6 +1054,41 @@ const KNOWLEDGE_HUBS = [
         </section>
       )}
 
+      {uvStabilizedAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="uv-stabilized-sheet-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Outdoor FRP sheet and panel selection</p>
+              <h2 id="uv-stabilized-sheet-resin-hub-heading">UV Stabilised Sheet Grade Yellow Resin Knowledge Hub</h2>
+              <p>Start here if you searched for UV resin, because two very different products share that name. This grade is cured conventionally and built to resist sunlight, not cured by a lamp. Then review how sunlight actually degrades FRP sheet and when the standard sheet grade is the better choice.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/uv-stabilized-sheet-grade-yellow-resin/" class="btn btn-solid">View UV Stabilized Sheet Grade Yellow Resin</a>
+              <a href="/contact/" class="btn">Discuss a sheet or panel requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="uv-stabilized-foundation-heading">
+              <h3 id="uv-stabilized-foundation-heading">1. Separate UV-stabilised from UV-curing, then understand the grade</h3>
+              <div class="kc-grid">
+                {uvStabilizedFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="uv-stabilized-decision-heading">
+              <h3 id="uv-stabilized-decision-heading">2. Understand the degradation mechanism and choose between the sheet grades</h3>
+              <div class="kc-grid">
+                {uvStabilizedDecisionResources.map((resource) => <ResourceCard resource={resource} compact />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="uv-stabilized-requirements-heading">
+              <h3 id="uv-stabilized-requirements-heading">3. Match the grade to your process and finished product</h3>
+              <div class="kc-grid">
+                {uvStabilizedRequirementsResources.map((resource) => <ResourceCard resource={resource} compact />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
       {roofLightAuthorityResources.length > 0 && (
         <section class="kc-focus" aria-labelledby="roof-light-resin-hub-heading">
           <div class="kc-focus-head">
@@ -1082,6 +1203,76 @@ const KNOWLEDGE_HUBS = [
         </section>
       )}
 
+      {polyesterPuttyAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="polyester-putty-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Putty and body-filler base resin</p>
+              <h2 id="polyester-putty-resin-hub-heading">Polyester Putty Resin Knowledge Hub</h2>
+              <p>This grade is the base resin a putty manufacturer buys, not the finished filler a body shop buys. These guides cover what the resin must do once it carries half its mass as mineral filler, the two cure systems that genuinely exist in putty, how filler choice drives sandability and pinholing, and what actually causes the common failures.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/polyester-putty-resin/" class="btn btn-solid">View Polyester Putty Resin</a>
+              <a href="/contact/" class="btn">Discuss a putty formulation</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="polyester-putty-foundation-heading">
+              <h3 id="polyester-putty-foundation-heading">1. Understand what the resin is and how it differs from epoxy</h3>
+              <div class="kc-grid">
+                {polyesterPuttyFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="polyester-putty-formulation-heading">
+              <h3 id="polyester-putty-formulation-heading">2. Choose the cure system and the filler package</h3>
+              <div class="kc-grid">
+                {polyesterPuttyFormulationResources.map((resource) => <ResourceCard resource={resource} compact />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="polyester-putty-problems-heading">
+              <h3 id="polyester-putty-problems-heading">3. Diagnose failures and separate formulation from workshop causes</h3>
+              <div class="kc-grid">
+                {polyesterPuttyProblemResources.map((resource) => <ResourceCard resource={resource} compact />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
+      {isoPolyesterAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="iso-polyester-resin-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Isophthalic corrosion and immersion service</p>
+              <h2 id="iso-polyester-resin-hub-heading">ISO Polyester Resin Knowledge Hub</h2>
+              <p>Understand what the isophthalic backbone actually changes, where it is genuinely specified, the alkali limit worth knowing before you commit, and how it compares with general-purpose and vinyl ester routes. Here, ISO means isophthalic chemistry, not ISO certification.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/iso-polyester-resin/" class="btn btn-solid">View ISO Polyester Resin</a>
+              <a href="/contact/" class="btn">Discuss a chemical-service requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="iso-polyester-foundation-heading">
+              <h3 id="iso-polyester-foundation-heading">1. Understand the chemistry and where it is specified</h3>
+              <div class="kc-grid">
+                {isoPolyesterFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="iso-polyester-decision-heading">
+              <h3 id="iso-polyester-decision-heading">2. Compare the routes without assuming a performance ranking</h3>
+              <div class="kc-grid">
+                {isoPolyesterDecisionResources.map((resource) => <ResourceCard resource={resource} compact />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="iso-polyester-requirements-heading">
+              <h3 id="iso-polyester-requirements-heading">3. Define the service condition and prepare an enquiry</h3>
+              <div class="kc-grid">
+                {isoPolyesterRequirementsResources.map((resource) => <ResourceCard resource={resource} compact />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
       {vinylEsterAuthorityResources.length > 0 && (
         <section class="kc-focus" aria-labelledby="vinyl-ester-resin-hub-heading">
           <div class="kc-focus-head">
@@ -1236,6 +1427,41 @@ const KNOWLEDGE_HUBS = [
         </section>
       )}
 
+      {isoGelcoatAuthorityResources.length > 0 && (
+        <section class="kc-focus" aria-labelledby="iso-gelcoat-hub-heading">
+          <div class="kc-focus-head">
+            <div>
+              <p class="eyebrow">Isophthalic gelcoat surface selection</p>
+              <h2 id="iso-gelcoat-hub-heading">ISO Gelcoat Knowledge Hub</h2>
+              <p>A gelcoat is a coating system, not pigmented resin. Understand why air inhibition is deliberate, where isophthalic sits between orthophthalic and the ISO-NPG immersion benchmark, which applications justify it, and how film thickness and cure decide whether it works.</p>
+            </div>
+            <div class="kc-focus-actions">
+              <a href="/products/iso-gelcoat/" class="btn btn-solid">View ISO Gelcoat</a>
+              <a href="/contact/" class="btn">Discuss a surface requirement</a>
+            </div>
+          </div>
+          <div class="kc-subgroups">
+            <section class="kc-subgroup" aria-labelledby="iso-gelcoat-foundation-heading">
+              <h3 id="iso-gelcoat-foundation-heading">1. Understand what a gelcoat is and where isophthalic sits</h3>
+              <div class="kc-grid">
+                {isoGelcoatFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="iso-gelcoat-applications-heading">
+              <h3 id="iso-gelcoat-applications-heading">2. Match the grade to the application and its exposure</h3>
+              <div class="kc-grid">
+                {isoGelcoatDecisionResources.map((resource) => <ResourceCard resource={resource} compact />)}
+              </div>
+            </section>
+            <section class="kc-subgroup" aria-labelledby="iso-gelcoat-process-heading">
+              <h3 id="iso-gelcoat-process-heading">3. Get the application, cure and defect control right</h3>
+              <div class="kc-grid">
+                {isoGelcoatProcessResources.map((resource) => <ResourceCard resource={resource} compact />)}
+              </div>
+            </section>
+          </div>
+        </section>
+      )}
       {gelcoatAuthorityResources.length > 0 && (
         <section class="kc-focus" aria-labelledby="gelcoat-resin-guides-heading">
           <div class="kc-focus-head">

@@ -34,6 +34,10 @@ const resolveSharedPhoto = (filename) => {
 
 const { resource } = Astro.props;
 const { title, description, icon, category, publishDate, sections, quickFacts, comparisonTable, faqs, relatedSlugs, recommendedLinks = [] } = resource;
+// The visible lead paragraph and the meta description have different jobs: the
+// lead can run long, a meta description gets truncated in results. Where an
+// article supplies a purpose-written seo.description, use it for the tag.
+const metaDescription = (resource.seo && resource.seo.description) || description;
 
 const linkedProductSlug = resourceProductLinks[resource.slug];
 const linkedProduct = linkedProductSlug ? products.find((p) => p.slug === linkedProductSlug) : null;
@@ -277,7 +281,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
 ---
 <Base
   title={resource.seo?.title ?? title}
-  description={description}
+  description={metaDescription}
   ogType="article"
   ogTitle={resource.seo?.ogTitle}
   ogDescription={resource.seo?.ogDescription}

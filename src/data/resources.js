@@ -7694,4 +7694,2506 @@ export const resources = [
       { href: "/technical-documents/", label: "All TDS & SDS", description: "Download the controlling document for any grade." },
     ],
   },
+
+  {
+    slug: "what-is-iso-polyester-resin",
+    title: "What Is ISO Polyester Resin? Isophthalic UPR Explained",
+    description:
+      "ISO Polyester Resin is an isophthalic unsaturated polyester resin. Understand what the isophthalic backbone actually changes, why it resists water and chemicals better than a general-purpose grade, where it is specified, and what ISO does and does not mean in this product name.",
+    category: "Technical Guide",
+    icon: "flask",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "What Is ISO Polyester Resin? Isophthalic Resin Guide",
+      description:
+        "A guide to isophthalic unsaturated polyester resin: what the chemistry changes, how it differs from orthophthalic GP resin, and where it is specified.",
+      keywords: [
+        "ISO Polyester Resin",
+        "Isophthalic Polyester Resin",
+        "what is isophthalic resin",
+        "isophthalic vs orthophthalic resin",
+        "ISO resin meaning",
+        "isophthalic UPR",
+      ],
+      ogTitle: "ISO Polyester Resin: The Isophthalic Grade Explained",
+      ogDescription:
+        "What the isophthalic backbone changes, why it matters for water and chemical service, and how to specify the grade.",
+    },
+    quickFacts: {
+      "Resin family": "Unsaturated polyester resin (UPR)",
+      "ISO in this name": "Isophthalic chemistry, not ISO 9001 certification",
+      "Built from": "Isophthalic acid instead of phthalic anhydride",
+      "Normally specified for": "Water immersion, chemical service and sustained outdoor exposure",
+      "Cure route": "Room-temperature MEKP catalyst with cobalt accelerator",
+      "Step up from": "General-purpose orthophthalic resin",
+    },
+    sections: [
+      {
+        heading: "The one-sentence answer",
+        body: [
+          "ISO Polyester Resin is an unsaturated polyester resin built on isophthalic acid rather than the phthalic anhydride used in ordinary general-purpose grades. That single change in the acid component is what gives the resin family its better resistance to water, hydrolysis and chemical attack, and it is the reason isophthalic grades are specified for tanks, pipes, marine parts and outdoor FRP rather than routine dry laminating work.",
+          "Everything else a buyer recognises stays familiar. It is still a styrene-containing liquid polyester resin, still cured at room temperature with a MEKP catalyst and a cobalt accelerator, and still processed by hand lay-up, spray-up, filament winding or pultrusion. The difference is in the polymer backbone, not in the workshop routine.",
+        ],
+      },
+      {
+        heading: "What ISO does not mean",
+        body: [
+          "This is the most common confusion in the category, and it is worth settling before anything else. The ISO in ISO Polyester Resin is a chemistry descriptor, short for isophthalic. It is not a reference to ISO 9001, ISO 14001 or any other management-system standard, and it is not a claim that a finished FRP part meets an ISO standard.",
+          "Samrat Poly Resins does operate an ISO 9001:2015-certified quality management system, but that is a fact about the company's quality processes and is entirely separate from the resin's chemistry. A general-purpose resin made under the same certified system is still an orthophthalic resin, and an isophthalic resin bought from an uncertified maker is still isophthalic.",
+          "The second confusion is with ISO Fire Retardant Resin, which is a different product. Both names begin with ISO because both are isophthalic-based, but fire retardancy comes from a separate mechanism, typically a halogenated backbone or a mineral filler such as aluminium trihydrate that releases water when heated. An isophthalic backbone on its own confers no fire performance at all. If a project asks for fire behaviour, the isophthalic grade is not the answer.",
+        ],
+      },
+      {
+        heading: "The chemistry, in plain terms",
+        body: [
+          "An unsaturated polyester is made by reacting a glycol with two acids: a saturated acid that forms the rigid backbone, and an unsaturated acid, almost always maleic anhydride, that supplies the carbon-carbon double bonds where styrene later crosslinks during cure. The saturated acid is the variable that names the resin family.",
+          "General-purpose resins use phthalic anhydride, where the two acid groups sit next to each other on the benzene ring, in the ortho position. Isophthalic resins use isophthalic acid, where those groups sit one position apart, in the meta arrangement. Two practical consequences follow from that geometry.",
+          "First, phthalic anhydride readily reforms its ring during manufacture, which caps the growing chain and limits how long the polyester molecule can become. Isophthalic acid cannot do this, so the process can be run to a higher molecular weight. Longer chains mean more entanglement, better toughness and better resistance to crack propagation in the cured laminate.",
+          "Second, and this is the part usually explained badly, the ortho arrangement gives water a shortcut. In an ortho ester the neighbouring carboxyl group can swing round and attack the ester linkage from within the same molecule, forming a cyclic anhydride that then hydrolyses readily. Chemists call this neighbouring-group participation, and in model compounds it makes phthalate esters hydrolyse orders of magnitude faster than the equivalent meta or para isomers. A 1,3 arrangement simply cannot reach across to do it.",
+          "So the isophthalic backbone does not merely shield the ester group. It removes a degradation route that the orthophthalic backbone carries built in. Hydrolysis, water splitting the ester bond, is the mechanism behind blistering, softening and long-term property loss in immersed polyester laminates, and closing off its fastest path is precisely what a buyer is paying for.",
+          "It is worth being clear about what this does not achieve. Every polyester contains ester linkages, and every ester linkage is hydrolysable. Isophthalic chemistry slows the process; it does not stop it.",
+        ],
+      },
+      {
+        heading: "Where isophthalic resin is genuinely the right choice",
+        body: [
+          "Isophthalic grades earn their cost where a laminate is wet, chemically loaded or outdoors for years. Chemical storage tanks and bunds are the classic case, along with process pipework, ducting and scrubbers handling dilute acids, salts and effluent. Water and wastewater treatment equipment sits in the same band.",
+          "Marine work uses isophthalic resin in the outer laminate and the skin coat immediately behind the gelcoat, where osmotic blistering starts, even when the bulk of the hull is laid up in a cheaper grade. Sanitary ware, swimming pool shells and water tanks follow the same logic: the resin that meets the water is the one that has to resist it.",
+          "Outdoor and transport work, including panels, cladding, truck bodies and cooling tower components, chooses isophthalic for weathering and hydrolytic stability rather than for chemical attack. Pultruded profiles and filament-wound pipe also commonly specify isophthalic grades for the combination of toughness and water resistance.",
+          "The honest counterpoint is that plenty of FRP does not need any of this. A dry, indoor, non-structural moulding laid up in a general-purpose resin will perform perfectly well and cost less. Specifying isophthalic for such a part is simply spending money on a property the part never uses.",
+        ],
+      },
+      {
+        heading: "How it sits against the other resin routes",
+        body: [
+          "It helps to think of a ladder rather than a set of rivals. Orthophthalic general-purpose resin sits at the bottom: lowest cost, entirely adequate for dry general FRP. Isophthalic is the first real step up, bought for water, weather and moderate chemical service.",
+          "Above that, isophthalic-NPG grades replace some of the glycol with neopentyl glycol, which shields the ester groups further and improves hydrolytic and weathering resistance again. That is the chemistry behind most marine-grade gelcoats. Vinyl ester comes next, with its ester groups concentrated only at the chain ends and an epoxy backbone in between, giving markedly better resistance to aggressive chemicals, higher temperatures and fatigue. Epoxy sits at the top for adhesion, mechanical performance and dimensional stability, at the highest cost and with a different processing discipline.",
+          "Each rung costs more than the one below. The engineering question is not which resin is best but which rung the actual service condition requires. A dilute salt solution at ambient temperature does not need vinyl ester, and a hot concentrated acid is not a job for isophthalic at any thickness.",
+          "One correction to a claim often made in sales copy: terephthalic resins generally sit slightly above isophthalic for water resistance, not below it. The common ranking for resistance to water runs terephthalic, then isophthalic, then orthophthalic.",
+        ],
+      },
+      {
+        heading: "The limit worth knowing before you specify: alkali",
+        body: [
+          "This is where isophthalic resin stops, and it stops earlier than most buyers expect. Polyester resins of every kind are vulnerable to alkaline attack, because hydroxide ions attack the ester linkage directly. Raising the backbone quality slows acid and water attack far more than it slows alkaline attack.",
+          "The widely used industry guidance is that isophthalic and terephthalic resins should not be used in continuous service above roughly pH 10.5. With a strong base such as caustic soda that corresponds to a very low concentration indeed, so a laminate can be outside its envelope at a dilution that sounds harmless.",
+          "The failure mode is also distinctive and worth recognising. Once alkaline attack begins it can move quickly, because strong bases attack the glass reinforcement as well as the resin. The characteristic appearance is fibre bloom with a soft, cheesy surface rather than the blistering seen in water service.",
+          "Ammonia and ammonium hydroxide fall in the same category. For sustained alkaline duty the normal routes are a bisphenol-A fumarate polyester or a vinyl ester, not an isophthalic grade at greater thickness.",
+        ],
+      },
+      {
+        heading: "Processing and cure: what changes and what does not",
+        body: [
+          "The cure chemistry is the same free-radical reaction used across the polyester family. A cobalt salt, usually cobalt octoate, decomposes the MEKP catalyst at room temperature to generate radicals, and styrene crosslinks the polyester chains into a rigid network. The familiar sequence of gel, exotherm peak and hardening applies unchanged.",
+          "Where isophthalic grades do demand more discipline is in reaching a genuinely complete cure. Chemical and water resistance depend on full crosslinking, and a laminate that has merely gone hard is not necessarily fully cured. A common acceptance rule is that the laminate should reach at least ninety per cent of its ultimate Barcol hardness, which can take twenty-four hours or more, and post-curing at elevated temperature is routine for tanks and pipework even though it is unnecessary for general mouldings.",
+          "Two practical cure points are worth stating plainly. Cobalt-accelerated systems lose activity disproportionately below about fifteen degrees Celsius, which is a real constraint in a cold workshop. And every polyester is air-inhibited, so the last laminated surface stays tacky unless a wax-containing topcoat is applied.",
+          "The other construction detail worth knowing is the corrosion barrier. Tanks and vessels built for chemical service are not laid up as uniform laminate. The inner face carries a resin-rich layer reinforced with a surfacing veil, backed by two or more plies of chopped strand mat, before the structural laminate begins. The veil plies run at roughly ninety per cent resin by weight, and it is that resin-rich layer that actually faces the chemical.",
+          "Two consequences follow. Most codes exclude the corrosion barrier from the structural calculation entirely, so it is not doing load-bearing work. And fillers and pigments are normally kept out of the barrier, because they detract from the resin's protective performance.",
+          "It is also worth separating the two jobs in an FRP laminate. The reinforcement contributes essentially all of the strength; the resin transfers stress into the fibres and provides the corrosion resistance. Claims about a resin making a part stronger should be read with that division in mind.",
+        ],
+      },
+      {
+        heading: "Standards and documents buyers cite",
+        body: [
+          "For an Indian buyer the directly relevant resin standard is IS 6746, which covers unsaturated polyester resin systems. It is worth understanding what it actually does, because it is often quoted as though it were a performance grade. IS 6746 does not classify resins by backbone. It sets tolerance bands around the values the manufacturer declares: viscosity, acid value, volatile content and gel time as mandatory liquid properties, with optional cured properties such as Barcol hardness, heat distortion temperature and water absorption. It also defines fire-retardant Types 1 and 2 as a separate classification axis.",
+          "So IS 6746 conformity is a consistency claim rather than a performance claim, and that is genuinely what a fabricator needs: declared values, held within stated tolerances, tested by stated methods. For finished products, IS 12709 covers GRP pipes for potable water, IS 14402 covers sewerage and industrial waste, and IS 14399 covers sectional water-storage tanks.",
+          "Fabrication of FRP tanks and vessels for chemical service is covered internationally by BS 4994 and its European successor EN 13121, which set out design, laminate construction, workmanship and testing requirements. ASTM C582 defines what a standard corrosion barrier actually is, and ASTM D3299 and D4097 cover filament-wound and contact-moulded corrosion-resistant tanks.",
+          "Chemical resistance itself is assessed by ASTM C581, which tracks how an immersed laminate's Barcol hardness, weight, thickness, appearance and flexural properties change over time in a specific medium. Mechanical properties come from ASTM D638 for tensile and ASTM D790 for flexural behaviour, heat distortion from ASTM D648, water absorption from ASTM D570 and glass content by burn-off to ASTM D2584.",
+          "Cure is normally verified by Barcol impressor hardness, long specified as ASTM D2583. One point of accuracy is worth carrying into a specification: that designation was withdrawn in 2022 and its status has since been in flux, so confirm the current designation before writing it into a contract rather than assuming the number you have always quoted still points at a live standard. The measurement itself remains the standard shop-floor cure check.",
+          "An important honesty point: a chemical-resistance chart is a screening tool, not an approval. Charts are generated for specific concentrations, temperatures and laminate constructions. A line in a chart does not transfer to your vessel unless the concentration, temperature and construction match, and mixtures of chemicals can behave differently from any single component.",
+        ],
+      },
+      {
+        heading: "What to establish before you buy",
+        body: [
+          "The single most useful thing a buyer can supply is the actual service condition: what the laminate contacts, at what concentration, at what temperature, continuously or intermittently, and how long the part is expected to last. A chemical name and concentration are worth more than the phrase corrosion resistant.",
+          "Alongside that, state the fabrication process, the finished component, whether a corrosion barrier is required, whether post-cure is possible in your facility, and any code or project specification you are working to, in its original wording rather than summarised. Quantity, packaging and delivery location complete the commercial picture.",
+          "Samrat Poly Resins supplies ISO Polyester Resin in 225 kg drums and manufactures it at Doraha, Punjab. Grade-specific figures such as viscosity, gel time and styrene content are confirmed against the production batch at the time of enquiry rather than published as a generic number here, because those values are only meaningful when tied to a specific grade and batch.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Does ISO in ISO Polyester Resin mean the resin is ISO certified?",
+        a: "No. ISO here is short for isophthalic and describes the resin's chemistry. It is not a reference to ISO 9001 or any other standard. Samrat Poly Resins does operate an ISO 9001:2015-certified quality management system, but that is a separate fact about the company, not about this grade's chemistry.",
+      },
+      {
+        q: "Is ISO Polyester Resin the same as ISO Fire Retardant Resin?",
+        a: "No, they are different products. Both are isophthalic-based, which is why both names start with ISO, but fire retardancy comes from a separate mechanism such as a halogenated backbone or an aluminium trihydrate filler. An isophthalic backbone by itself provides no fire performance. If your requirement is fire-related, review the fire-retardant grades rather than this one.",
+      },
+      {
+        q: "What actually makes isophthalic resin more water resistant?",
+        a: "Two things. The meta ring arrangement in isophthalic acid makes the ester linkages harder for water to reach and hydrolyse, and because isophthalic acid cannot cap the growing chain the way phthalic anhydride does, the polyester can be built to a higher molecular weight. Longer, more entangled chains with better-protected ester groups resist hydrolysis and crack growth better.",
+      },
+      {
+        q: "Is isophthalic resin stronger than general-purpose resin?",
+        a: "It is generally tougher and more resistant to crack propagation because of its higher molecular weight, and it holds its properties far better after water or chemical exposure. For a dry indoor part tested on day one, though, the difference in headline strength is modest. It is also worth remembering that in an FRP laminate the reinforcement supplies almost all the strength, while the resin transfers load into the fibres and provides the corrosion resistance.",
+      },
+      {
+        q: "Can I use isophthalic resin for caustic or alkaline service?",
+        a: "Generally no, and this is the most important limit to know. Industry guidance is that isophthalic and terephthalic resins should not be used continuously above about pH 10.5, which with a strong base such as caustic soda means a very low concentration. Alkaline attack can progress quickly because strong bases attack the glass as well as the resin. For sustained alkaline duty the usual routes are a bisphenol-A fumarate polyester or a vinyl ester.",
+      },
+      {
+        q: "Does IS 6746 conformity mean the resin is weather resistant or fire retardant?",
+        a: "No. IS 6746 sets tolerance bands around the manufacturer's declared values for viscosity, acid value, volatile content and gel time, with optional cured properties. It contains no weathering or ultraviolet requirement at all, and it treats fire-retardant Types 1 and 2 as a separate classification. Conformity is a consistency claim, which is valuable, but it is not a performance grade.",
+      },
+      {
+        q: "Do I need isophthalic resin for a water tank?",
+        a: "For stored water that contacts the laminate, an isophthalic resin in the contact layer is the normal industry choice, and many fabricators use a general-purpose resin only for the structural backing. Confirm the intended contents, temperature and any regulatory requirement before deciding, since approval for potable contact is a separate matter from resin chemistry.",
+      },
+      {
+        q: "Can I use an isophthalic gelcoat over a general-purpose laminate instead?",
+        a: "A gelcoat protects the surface it covers, but it is thin, and any breach, pinhole or repair exposes the laminate behind it. For immersion service the laminate immediately behind the gelcoat, the skin coat, is normally laid up in the better resin for exactly this reason. Gelcoat and laminating resin solve related but different problems.",
+      },
+      {
+        q: "Does isophthalic resin need post-curing?",
+        a: "For general mouldings, no. For chemical and immersion service it is common practice, because chemical resistance depends on a fully developed crosslink network and an ambient cure may not reach that state in a reasonable time. Fabrication codes for FRP vessels normally call for cure verification, commonly by Barcol hardness, before the vessel enters service.",
+      },
+      {
+        q: "What should I send with an enquiry for ISO Polyester Resin?",
+        a: "The chemical or medium the laminate will contact, its concentration and temperature, whether exposure is continuous or intermittent, the fabrication process, the finished component, any code or project specification in its original wording, and the quantity, packaging and delivery location.",
+      },
+    ],
+    relatedSlugs: [
+      "iso-polyester-resin-vs-gp-resin",
+      "iso-polyester-resin-vs-iso-fire-retardant-resin",
+      "iso-polyester-resin-vs-vinyl-ester-resin",
+    ],
+    recommendedLinks: [
+      { href: "/products/iso-polyester-resin/", label: "View ISO Polyester Resin", description: "See the published grade, packaging and enquiry route." },
+      { href: "/products/vinyl-ester-resin/", label: "Compare Vinyl Ester Resin", description: "The next step up for aggressive chemical service." },
+      { href: "/contact/", label: "Discuss a chemical-service requirement", description: "Send the medium, concentration and temperature for a grade discussion." },
+    ],
+  },
+
+  {
+    slug: "iso-polyester-resin-applications",
+    title: "ISO Polyester Resin Applications: Where Isophthalic Grades Are Used",
+    description:
+      "Where isophthalic polyester resin is genuinely specified: chemical tanks and bunds, process pipework and ducting, marine skin coats, water and effluent equipment, sanitaryware, pultrusion and filament winding, and how the laminate is built in each case.",
+    category: "Application Guide",
+    icon: "factory",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "ISO Polyester Resin Applications and Uses",
+      description:
+        "Chemical tanks, pipework, marine skin coats, water treatment, sanitaryware and pultrusion: where isophthalic polyester resin is specified and why.",
+      keywords: [
+        "isophthalic resin applications",
+        "ISO polyester resin uses",
+        "FRP chemical tank resin",
+        "resin for FRP pipes",
+        "marine skin coat resin",
+        "corrosion resistant FRP resin",
+      ],
+      ogTitle: "Where ISO Polyester Resin Is Actually Used",
+      ogDescription: "The applications that justify an isophthalic grade, and the laminate construction each one implies.",
+    },
+    quickFacts: {
+      "Core application": "FRP that is wet, chemically loaded or outdoors for years",
+      "Typical construction": "Resin-rich corrosion barrier with a surfacing veil, then structural laminate",
+      "Common processes": "Hand lay-up, spray-up, filament winding, pultrusion",
+      "Not needed for": "Dry, indoor, non-structural general FRP",
+      "Decisive input": "Chemical, concentration, temperature and exposure duration",
+    },
+    sections: [
+      {
+        heading: "The common thread across every application",
+        body: [
+          "Isophthalic resin is specified when the laminate has to keep its properties after exposure rather than only on the day it is made. Water, dilute chemicals, sunlight and time are the enemies, and hydrolysis of the ester linkage is the shared mechanism behind most long-term failures in polyester FRP.",
+          "That is why the applications below look varied on the surface but share one requirement. If your part is dry, indoor and non-structural, none of this applies and a general-purpose grade is the sensible choice.",
+        ],
+      },
+      {
+        heading: "Chemical storage tanks, bunds and vessels",
+        body: [
+          "This is the application that defines the grade. FRP tanks holding dilute acids, alkalis, salt solutions, brine and effluent are routinely built in isophthalic resin, often with a vinyl ester or isophthalic corrosion barrier at the inner face.",
+          "The construction matters as much as the resin. A corrosion-service tank is built inside out: a resin-rich inner layer reinforced with a surfacing veil, backed by one or more plies of chopped strand mat, and only then the structural laminate that carries the load. The resin-rich barrier is the part actually in contact with the chemical, and its thickness and freedom from pinholes and dry spots determine service life far more than total wall thickness.",
+          "Design, laminate construction and testing for these vessels are covered by BS 4994 and EN 13121. If your project cites either code, the fabrication requirements extend well beyond choosing a resin.",
+        ],
+      },
+      {
+        heading: "Process pipework, ducting and scrubbers",
+        body: [
+          "FRP pipe, ducting, stacks and scrubber bodies in chemical plants, fertiliser works, metal finishing and flue-gas handling are common isophthalic applications. Filament winding is the usual process for pipe because it places continuous fibre at a controlled angle and produces a consistent wall.",
+          "Ducting and scrubbers frequently handle warm, humid, mildly corrosive gas rather than a liquid, which is a different exposure from immersion and should be described as such in an enquiry. Temperature is usually the deciding factor between an isophthalic and a vinyl ester specification here.",
+        ],
+      },
+      {
+        heading: "Marine hulls, skin coats and deck mouldings",
+        body: [
+          "Few production hulls are laid up entirely in isophthalic resin, because the cost over a large laminate is significant. The standard approach is to use the better resin where it matters: in the gelcoat and in the skin coat immediately behind it.",
+          "Osmotic blistering begins when water permeates the gelcoat and reaches water-soluble material in the laminate behind it, generating osmotic pressure that lifts the gelcoat. Using a hydrolysis-resistant resin in the outer plies, with careful wet-out and no voids, is the accepted defence. For continuously immersed hulls many builders step further up to isophthalic-NPG or vinyl ester in that zone.",
+          "Deck mouldings, hatches, consoles and other non-immersed marine parts are chosen for weathering rather than immersion, which is a lower requirement but still beyond what a general-purpose grade offers over years of sunlight.",
+        ],
+      },
+      {
+        heading: "Water, wastewater and sanitaryware",
+        body: [
+          "Water tanks, treatment plant equipment, clarifier components, launders and covers use isophthalic resin for the same hydrolysis reason as marine work, usually without the chemical loading. Swimming pool shells and water slides sit in this group too, with the added requirement of holding colour and gloss.",
+          "Sanitaryware and bathware — bathtubs, shower trays, wash basins and vanity units — are gelcoat-led products where the visible surface does the work and the laminate behind it has to survive constant wetting, warm water and cleaning chemicals.",
+          "One caution worth stating plainly: suitability for potable water contact is a regulatory and testing question, not a chemistry question. An isophthalic resin is not automatically approved for drinking water. If potable contact is required, raise it explicitly at enquiry stage so the requirement can be addressed on its own terms.",
+        ],
+      },
+      {
+        heading: "Pultrusion, filament winding and engineered profiles",
+        body: [
+          "Pultruded profiles — gratings, ladders, handrails, cable trays, structural sections for corrosive environments — commonly specify isophthalic resin for the mix of toughness, hydrolytic stability and weathering it provides at acceptable cost.",
+          "Filament winding for pipe and pressure vessels benefits from the higher molecular weight and greater elongation of an isophthalic resin, which tolerates the strain in a wound laminate better than a brittle general-purpose grade.",
+          "Both processes place their own demands on resin reactivity and viscosity that are quite different from hand lay-up. If you are pultruding or winding, say so at enquiry stage rather than after the first drum arrives.",
+        ],
+      },
+      {
+        heading: "Outdoor panels, cladding and transport bodies",
+        body: [
+          "FRP panels, wall cladding, cooling tower fill and casings, truck and trailer bodies and refrigerated panels are outdoor applications where the enemy is weather rather than chemistry. Isophthalic resin holds mechanical properties and surface condition longer under sustained moisture and thermal cycling.",
+          "For these products the surface system usually does most of the ultraviolet work: a pigmented gelcoat, a stabilised surface resin or a protective film. Resin chemistry and surface protection are complementary, and a specification that ignores the surface will disappoint regardless of which laminating resin is chosen.",
+        ],
+      },
+      {
+        heading: "What decides the application, in practice",
+        body: [
+          "Across all of the above, four inputs decide whether an isophthalic grade is the right rung on the ladder: the medium in contact with the laminate, its concentration, its temperature, and whether contact is continuous or occasional. Expected service life and any governing code complete the picture.",
+          "Application categories are a starting point for a conversation, not a specification. A tank is not a single requirement, and listing an application here does not establish that any particular finished component is fit for a particular duty. Bring the actual service condition and the construction you intend to use.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Can I build a whole chemical tank from isophthalic resin?",
+        a: "Yes, and many are. The more important question is how the inner face is built. Corrosion-service vessels use a resin-rich barrier with a surfacing veil against the chemical, backed by chopped strand mat, before the structural laminate. That barrier does the chemical-resistance work.",
+      },
+      {
+        q: "Is isophthalic resin suitable for potable water tanks?",
+        a: "Chemistry alone does not answer this. Potable-water contact is governed by regulatory approval and testing of the finished construction, not by the resin family. Raise the potable requirement explicitly in your enquiry so it can be handled as a separate question.",
+      },
+      {
+        q: "Do I need isophthalic resin for the whole boat hull?",
+        a: "Usually not. Common practice is to use the hydrolysis-resistant resin in the gelcoat and the skin coat behind it, where blistering starts, and a general-purpose grade for the bulk structural laminate. For continuously immersed hulls, many builders step up to isophthalic-NPG or vinyl ester in the outer plies.",
+      },
+      {
+        q: "Which resin should I use for FRP pipes carrying dilute acid?",
+        a: "Isophthalic is a common starting point, but the deciding factors are the specific acid, its concentration and its temperature. Warm or concentrated service frequently moves the specification to vinyl ester. Send the actual medium and temperature rather than the phrase dilute acid.",
+      },
+      {
+        q: "Does an isophthalic laminate need a gelcoat outdoors?",
+        a: "For appearance and ultraviolet protection, generally yes. Isophthalic chemistry improves hydrolytic and weathering stability, but the surface still chalks and loses gloss under prolonged sunlight without a pigmented gelcoat, a stabilised surface layer or a protective film.",
+      },
+      {
+        q: "Can I use isophthalic resin for ordinary indoor FRP mouldings?",
+        a: "You can, but there is rarely a reason to. For dry, indoor, non-structural work a general-purpose orthophthalic grade performs well and costs less. Save the isophthalic grade for parts that are wet, chemically loaded or outdoors.",
+      },
+      {
+        q: "Is isophthalic resin suitable for pultrusion and filament winding?",
+        a: "Both processes commonly use isophthalic grades. They place different demands on reactivity and viscosity from hand lay-up, so state the process at enquiry stage so the grade can be matched to it.",
+      },
+    ],
+    relatedSlugs: [
+      "what-is-iso-polyester-resin",
+      "iso-polyester-resin-vs-vinyl-ester-resin",
+      "how-to-specify-iso-polyester-resin",
+    ],
+    recommendedLinks: [
+      { href: "/products/iso-polyester-resin/", label: "View ISO Polyester Resin", description: "See the published grade, packaging and enquiry route." },
+      { href: "/applications/", label: "Browse FRP applications", description: "Application guides across the published range." },
+      { href: "/contact/", label: "Describe your service condition", description: "Send the medium, concentration, temperature and construction." },
+    ],
+  },
+
+  {
+    slug: "iso-polyester-resin-vs-iso-fire-retardant-resin",
+    title: "ISO Polyester Resin vs ISO Fire Retardant Resin",
+    description:
+      "Two Samrat products share the ISO prefix and are routinely confused. Both are isophthalic, but only one is formulated for fire behaviour. Understand what each ISO means, how fire retardancy is actually achieved, and which grade your requirement points to.",
+    category: "Comparison Guide",
+    icon: "shield",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "ISO Polyester Resin vs ISO Fire Retardant Resin",
+      description:
+        "Both names start with ISO and both are isophthalic, but fire retardancy comes from a separate mechanism. A clear comparison before you specify.",
+      keywords: [
+        "ISO polyester resin vs ISO fire retardant resin",
+        "isophthalic vs fire retardant resin",
+        "ISO FR resin difference",
+        "fire retardant polyester resin",
+        "ATH filled resin",
+      ],
+      ogTitle: "ISO Polyester vs ISO Fire Retardant Resin",
+      ogDescription: "Same prefix, different jobs. What isophthalic chemistry does and does not give you.",
+    },
+    quickFacts: {
+      "What they share": "Both are isophthalic-based unsaturated polyester resins",
+      "ISO Polyester Resin": "Bought for water, hydrolysis and chemical resistance",
+      "ISO Fire Retardant Resin": "Bought for fire behaviour in a finished FRP system",
+      "Key point": "An isophthalic backbone provides no fire performance by itself",
+      "Decision trigger": "Is the project requirement about corrosion or about fire?",
+    },
+    sections: [
+      {
+        heading: "Why these two get confused",
+        body: [
+          "Both product names begin with ISO, both sit in the unsaturated polyester family, and both are described as isophthalic. A buyer scanning a product list reasonably assumes they are variants of one another, or that the fire-retardant version is simply the better one.",
+          "They are neither. The shared prefix describes a backbone chemistry that both happen to use. What each product is actually sold for is entirely different, and choosing on the prefix alone is how a corrosion requirement ends up specified against a fire grade or the reverse.",
+        ],
+      },
+      {
+        heading: "What the isophthalic backbone does",
+        body: [
+          "Isophthalic acid replaces the phthalic anhydride used in general-purpose resins. Because it cannot cap the growing polyester chain the way phthalic anhydride does, the resin can be built to a higher molecular weight. Its meta ring arrangement also removes a hydrolysis shortcut that the ortho backbone carries, in which the neighbouring carboxyl group attacks the ester linkage from within the same molecule.",
+          "The results are better toughness, better resistance to crack propagation and markedly better resistance to hydrolysis. Those are corrosion and durability properties. They are the reason to buy ISO Polyester Resin.",
+          "None of them is a fire property. A fully cured isophthalic polyester laminate burns much like any other polyester laminate. The backbone geometry has no bearing on ignition, flame spread or smoke.",
+        ],
+      },
+      {
+        heading: "How fire retardancy is actually achieved",
+        body: [
+          "Fire-retardant polyester resins work by one of two general routes, and sometimes both. The first is a halogenated backbone, where brominated or chlorinated acids are built into the polyester. In a fire, halogen species interfere with the radical chain reactions in the flame itself, suppressing combustion in the gas phase.",
+          "The second is mineral filling, most commonly aluminium trihydrate. When heated, ATH decomposes endothermically and releases water vapour, which absorbs heat, dilutes the flammable gases and leaves a protective mineral residue. This route is halogen-free, which matters where smoke toxicity and corrosive combustion products are a concern, and it typically requires a high filler loading that changes the resin's handling considerably.",
+          "Samrat publishes ISO Fire Retardant Resin as a halogen-free, ATH-filled isophthalic grade, and a separate standard Fire Retardant Resin on the halogenated route. Both are formulated specifically for fire behaviour in a way that ISO Polyester Resin is not.",
+        ],
+      },
+      {
+        heading: "Which requirement points to which grade",
+        body: [
+          "If your driver is what the laminate contacts — a chemical, effluent, water, humidity, salt spray, prolonged outdoor exposure — the question is corrosion and ISO Polyester Resin is the starting point.",
+          "If your driver is a fire specification, a building or transport regulation, a flame-spread class, a smoke requirement or a client asking for fire-rated FRP, the question is fire behaviour and the fire-retardant grades are the starting point.",
+          "The two requirements can coexist. A chemical plant duct may need both corrosion resistance and a fire classification. That is a real engineering problem rather than a product-selection shortcut, and it should be raised explicitly at enquiry stage with both requirements stated rather than resolved by picking whichever product name sounds closer.",
+        ],
+      },
+      {
+        heading: "What neither grade establishes on its own",
+        body: [
+          "Fire-retardant is not the same as fireproof or non-combustible. A fire-retardant resin changes how a material behaves in a fire, it does not make it inert.",
+          "More importantly, fire performance is a property of a finished system, not of a drum of liquid. Classification depends on the resin, the reinforcement, the laminate thickness and construction, any surface layer, and the tested configuration. A resin does not carry a classification through into your part. If a project names a class, a standard or a test method, that wording needs to travel with the enquiry in its original form so the requirement can be assessed against what can actually be evidenced.",
+          "Equally, ISO Polyester Resin's hydrolysis resistance does not make a finished vessel suitable for a given chemical at a given temperature. Chemical-resistance data is generated for particular concentrations, temperatures and constructions, and does not transfer automatically.",
+        ],
+      },
+      {
+        heading: "A short decision path",
+        body: [
+          "Start by naming the driver in one sentence: is this about what touches the laminate, or about how it behaves in a fire? That sentence usually settles the product family immediately.",
+          "Then describe the finished component, the service condition or the fire requirement in its original wording, the fabrication process, and the quantity and delivery details. If both drivers apply, say so at the outset rather than treating one as secondary.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is ISO Fire Retardant Resin just a better version of ISO Polyester Resin?",
+        a: "No. They are formulated for different jobs. ISO Fire Retardant Resin is built for fire behaviour, usually through a halogen-free ATH filler package. ISO Polyester Resin is built for water, hydrolysis and chemical resistance. Neither is a general upgrade over the other.",
+      },
+      {
+        q: "Does isophthalic chemistry give any fire resistance?",
+        a: "No. The isophthalic backbone improves toughness and hydrolysis resistance. It has no meaningful effect on ignition, flame spread or smoke. Fire performance comes from a halogenated backbone or a mineral filler such as aluminium trihydrate.",
+      },
+      {
+        q: "I need a duct that is both corrosion resistant and fire rated. Which do I choose?",
+        a: "Neither product answers both requirements by itself. State both drivers explicitly in the enquiry, with the chemical, concentration and temperature on one side and the fire specification in its original wording on the other, so the combination can be addressed properly.",
+      },
+      {
+        q: "Does ISO mean these resins meet an ISO standard?",
+        a: "No. In both product names ISO is short for isophthalic and describes the chemistry. It does not refer to ISO 9001 or any other standard, and it makes no claim about a finished part.",
+      },
+      {
+        q: "What does halogen-free mean and why does it matter?",
+        a: "It means fire performance is achieved without brominated or chlorinated compounds, typically using an aluminium trihydrate filler instead. It matters where smoke toxicity and corrosive combustion products are a concern, such as in tunnels, rail vehicles and enclosed public spaces.",
+      },
+      {
+        q: "Can I add a fire-retardant filler to ISO Polyester Resin myself?",
+        a: "Adding filler changes viscosity, wet-out, cure behaviour, mechanical properties and the laminate you end up with, and it does not produce a characterised fire-retardant grade. If fire performance is required, start from a resin formulated for it rather than modifying one that is not.",
+      },
+    ],
+    relatedSlugs: [
+      "what-is-iso-polyester-resin",
+      "what-is-iso-fire-retardant-resin",
+      "iso-polyester-resin-vs-gp-resin",
+    ],
+    recommendedLinks: [
+      { href: "/products/iso-polyester-resin/", label: "View ISO Polyester Resin", description: "The isophthalic corrosion and durability grade." },
+      { href: "/products/iso-fire-retardant-resin/", label: "View ISO Fire Retardant Resin", description: "The halogen-free, ATH-filled fire-retardant grade." },
+      { href: "/contact/", label: "State both requirements", description: "Send the service condition and any fire specification together." },
+    ],
+  },
+
+  {
+    slug: "iso-polyester-resin-vs-gp-resin",
+    title: "ISO Polyester Resin vs GP Resin: When Is the Step Up Worth It?",
+    description:
+      "Isophthalic and orthophthalic resins look and handle almost identically in the workshop. Understand what actually changes in the backbone, where the difference shows up in service, and the cases where paying for isophthalic is simply wasted.",
+    category: "Comparison Guide",
+    icon: "compare",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "ISO Polyester Resin vs GP Resin (Isophthalic vs Orthophthalic)",
+      description:
+        "A practical comparison of isophthalic and orthophthalic polyester resin: what changes chemically, where it matters in service and when GP resin is the right answer.",
+      keywords: [
+        "isophthalic vs orthophthalic resin",
+        "ISO resin vs GP resin",
+        "which polyester resin for water",
+        "general purpose vs isophthalic polyester",
+        "polyester resin selection",
+      ],
+      ogTitle: "ISO vs GP Polyester Resin",
+      ogDescription: "What the backbone change buys you, and when it buys you nothing.",
+    },
+    quickFacts: {
+      "GP resin backbone": "Phthalic anhydride, ortho arrangement",
+      "ISO resin backbone": "Isophthalic acid, meta arrangement",
+      "Visible difference": "Almost none in handling or cure",
+      "Real difference": "Hydrolysis resistance, toughness, retained properties over time",
+      "GP is right when": "The part is dry, indoor and non-structural",
+      "ISO is right when": "The part is wet, chemically loaded or outdoors for years",
+    },
+    sections: [
+      {
+        heading: "They are closer than the price difference suggests",
+        body: [
+          "Both are unsaturated polyester resins dissolved in styrene, both cure at room temperature with MEKP and a cobalt accelerator, both are laid up by hand or sprayed, and both gel, exotherm and harden on a familiar schedule. A laminator moving from one to the other would not notice much.",
+          "The difference is in one ingredient. General-purpose resins are built with phthalic anhydride; isophthalic resins are built with isophthalic acid. Everything that follows comes from that substitution.",
+        ],
+      },
+      {
+        heading: "What the substitution actually changes",
+        body: [
+          "Phthalic anhydride has its two acid groups adjacent on the ring, in the ortho position. During manufacture it readily closes back into a ring, which terminates the growing chain. That caps the achievable molecular weight of a general-purpose polyester.",
+          "Isophthalic acid has its acid groups one position apart, in the meta arrangement, and cannot cyclise in the same way. The polyester can therefore be built longer. Higher molecular weight means more chain entanglement, which translates into better toughness, higher elongation before cracking and better resistance to crack propagation through the cured laminate.",
+          "The meta geometry also sterically shields the ester linkages. Because hydrolysis is the dominant long-term degradation route for polyester in wet service, making those linkages harder to reach is the single most valuable thing the substitution achieves.",
+        ],
+      },
+      {
+        heading: "Where the difference shows up, and where it does not",
+        body: [
+          "On a dry test coupon pulled on the day it cured, the two are not dramatically far apart. Headline tensile and flexural figures for a good general-purpose resin are respectable, and a buyer comparing data sheets alone may wonder what the premium is for.",
+          "The difference appears with time and water. After prolonged immersion, humidity cycling or chemical contact, an orthophthalic laminate loses properties faster, absorbs more water and is far more prone to blistering. An isophthalic laminate holds its condition longer. Weathering follows the same pattern over years of sunlight and rain.",
+          "So the comparison is not really about strength. It is about whether the part has to survive an environment, and for how long.",
+        ],
+      },
+      {
+        heading: "When general-purpose resin is the correct answer",
+        body: [
+          "It is worth stating this clearly, because over-specifying is as much an error as under-specifying. Dry indoor mouldings, decorative and non-structural parts, general FRP fabrication, moulds and plugs, furniture and panel lamination, and countless everyday components perform perfectly well in a general-purpose grade.",
+          "In those cases the isophthalic premium buys a property the part never calls on. The money is better spent on laminate quality, reinforcement or finishing.",
+        ],
+      },
+      {
+        heading: "When the step up is justified",
+        body: [
+          "Move to isophthalic when the laminate is immersed or repeatedly wetted, when it contacts dilute chemicals, salts or effluent, when it is outdoors for years, or when it is the contact layer of a tank, pipe, pool or marine part even if the structural laminate behind it is general-purpose.",
+          "A common and sensible hybrid is to use isophthalic only where it works: the gelcoat and skin coat of a hull, the corrosion barrier of a tank, the outer plies of an outdoor panel, with a general-purpose grade behind. This gets most of the durability benefit for a fraction of the cost increase.",
+        ],
+      },
+      {
+        heading: "What does not change with the step up",
+        body: [
+          "Isophthalic resin is not fire retardant, is not automatically approved for potable water, and does not make a poorly built laminate durable. Voids, dry fibre, incomplete wet-out and undercure will defeat a good resin comfortably.",
+          "Cure discipline matters more, not less. Chemical and water resistance depend on a fully developed crosslink network, so cure verification and, for corrosion service, post-curing are normal practice rather than optional extras.",
+        ],
+      },
+      {
+        heading: "How to decide in one question",
+        body: [
+          "Ask what the finished part will be in contact with, and for how long. If the honest answer is air, in a building, a general-purpose grade is almost certainly right. If the answer involves water, chemicals, weather or years, the isophthalic route deserves consideration.",
+          "Then bring the specifics — medium, concentration, temperature, exposure pattern, process and construction — to the enquiry, because those are what actually decide the grade rather than the product name.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is isophthalic resin always better than GP resin?",
+        a: "It is more durable in wet, chemical and outdoor service, and tougher because of its higher molecular weight. For a dry indoor part it offers no practical benefit and costs more. Better depends entirely on what the part has to survive.",
+      },
+      {
+        q: "Can I substitute isophthalic resin directly for GP resin on my line?",
+        a: "Handling and cure are broadly similar, but reactivity, viscosity and wet-out are not identical between grades. Trial before switching production, and confirm gel time behaviour at your workshop temperature.",
+      },
+      {
+        q: "Will isophthalic resin stop my parts from blistering?",
+        a: "It substantially reduces the risk, because blistering is driven by water permeation and hydrolysis. It does not eliminate it. Voids, poor wet-out, incomplete cure and water-soluble contamination in the laminate all contribute, and construction quality matters as much as resin chemistry.",
+      },
+      {
+        q: "Is GP resin unsuitable for anything outdoors?",
+        a: "Not at all. Plenty of general-purpose FRP lives outdoors successfully, usually protected by a pigmented gelcoat. The question is expected service life and how much surface degradation is acceptable. For long-life outdoor products the isophthalic route is the safer specification.",
+      },
+      {
+        q: "Can I use isophthalic resin only for the outer layers?",
+        a: "Yes, and it is common practice. A hydrolysis-resistant resin in the gelcoat and skin coat, or in a tank's corrosion barrier, with a general-purpose grade behind, captures most of the durability benefit at a much lower cost increase.",
+      },
+      {
+        q: "Does isophthalic resin cure differently?",
+        a: "The cure chemistry is the same free-radical MEKP and cobalt reaction. What changes is how much full cure matters: chemical and water resistance depend on complete crosslinking, so cure verification and post-curing are routine for corrosion service.",
+      },
+    ],
+    relatedSlugs: [
+      "what-is-iso-polyester-resin",
+      "what-is-gp-polyester-resin",
+      "iso-polyester-resin-vs-vinyl-ester-resin",
+    ],
+    recommendedLinks: [
+      { href: "/products/iso-polyester-resin/", label: "View ISO Polyester Resin", description: "The isophthalic grade for wet and chemical service." },
+      { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "The general-purpose orthophthalic route." },
+      { href: "/tools/resin-selector/", label: "Find the right grade", description: "Answer four questions and see the grades that match." },
+    ],
+  },
+
+  {
+    slug: "iso-polyester-resin-vs-vinyl-ester-resin",
+    title: "ISO Polyester Resin vs Vinyl Ester: Where the Line Falls",
+    description:
+      "Vinyl ester is the usual step up from isophthalic polyester for aggressive service. Understand the structural reason vinyl ester resists chemicals and heat better, what it costs in money and process discipline, and how to judge which side of the line your duty sits on.",
+    category: "Comparison Guide",
+    icon: "compare",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "ISO Polyester Resin vs Vinyl Ester Resin",
+      description:
+        "Why vinyl ester outperforms isophthalic polyester in aggressive chemical and thermal service, what it costs, and how to decide which your duty needs.",
+      keywords: [
+        "isophthalic vs vinyl ester",
+        "ISO polyester vs vinyl ester resin",
+        "vinyl ester chemical resistance",
+        "FRP tank resin selection",
+        "corrosion resistant resin comparison",
+      ],
+      ogTitle: "ISO Polyester vs Vinyl Ester Resin",
+      ogDescription: "The structural reason vinyl ester wins in aggressive service, and when isophthalic is enough.",
+    },
+    quickFacts: {
+      "Isophthalic polyester": "Ester groups distributed along the whole chain",
+      "Vinyl ester": "Ester groups only at the chain ends, epoxy backbone between",
+      "Why that matters": "Fewer sites for hydrolytic and chemical attack",
+      "Vinyl ester advantages": "Aggressive chemicals, higher temperature, toughness and fatigue",
+      "Isophthalic advantages": "Lower cost, adequate for dilute ambient service",
+      "Deciding inputs": "Chemical, concentration, temperature, duration",
+    },
+    sections: [
+      {
+        heading: "Both are step-ups, on different rungs",
+        body: [
+          "Isophthalic polyester is the first meaningful step above general-purpose resin, bought for water, weather and moderate chemical service. Vinyl ester is the next rung, bought when the chemistry or the temperature becomes genuinely aggressive.",
+          "They are not rivals for the same job so much as neighbours on a ladder, and the practical skill is knowing where the line between them falls for your specific duty.",
+        ],
+      },
+      {
+        heading: "The structural reason vinyl ester resists more",
+        body: [
+          "An unsaturated polyester, isophthalic included, has ester linkages repeated all along its backbone. Every one of those linkages is a potential site for hydrolysis or chemical attack. Improving the backbone geometry, as isophthalic does, makes each site harder to reach, but the number of sites is unchanged.",
+          "A vinyl ester is built differently. An epoxy backbone, typically bisphenol-A based, is capped at each end with an unsaturated acid such as methacrylic acid. The result is a molecule with reactive unsaturation and ester groups only at its two ends, with a chemically robust epoxy chain in between.",
+          "Fewer ester groups means fewer points of attack. That is the fundamental reason vinyl ester outperforms even a good isophthalic resin in acids, alkalis, solvents, bleach and oxidising media, and why it retains properties better at elevated temperature.",
+          "The end-capped structure also gives vinyl ester greater elongation and toughness than a typical polyester, which is why it is favoured where fatigue, thermal cycling or impact matter as well as chemistry.",
+        ],
+      },
+      {
+        heading: "Where isophthalic is genuinely enough",
+        body: [
+          "Dilute solutions at or near ambient temperature, stored water, effluent that is mildly acidic or alkaline, salt exposure, humidity and weather are all within the range where a well-built isophthalic laminate performs. Much of the FRP in water treatment, sanitaryware, marine topsides and outdoor panel work sits comfortably here.",
+          "Specifying vinyl ester for these duties is not wrong, but it is usually paying for headroom the part never uses. Cost per kilogram is meaningfully higher, and on a large vessel that difference is substantial.",
+        ],
+      },
+      {
+        heading: "Where vinyl ester becomes the sensible specification",
+        body: [
+          "Alkalis are the clearest case. Industry guidance puts a ceiling of roughly pH 10.5 on continuous service for isophthalic and terephthalic resins, which with a strong base such as caustic soda corresponds to a very low concentration. Above that, the usual routes are a bisphenol-A fumarate polyester or a vinyl ester rather than more isophthalic laminate.",
+          "Concentrated acids, oxidising media such as hypochlorite, chlorinated solvents and anything at elevated temperature push past what isophthalic polyester handles reliably. Warm service is often the trigger on its own: a chemical that is manageable at ambient can become aggressive when heated.",
+          "Long design life under continuous chemical contact, flue-gas desulphurisation, chlor-alkali plant, pickling lines, and high-purity or demineralised water service are common vinyl ester territory. So is the corrosion barrier of a tank whose bulk laminate is a cheaper resin, which is a very common hybrid construction.",
+        ],
+      },
+      {
+        heading: "What vinyl ester costs beyond the price per kilogram",
+        body: [
+          "Vinyl ester systems generally need more attention to cure. Full property development commonly depends on post-curing, and the cure schedule matters more than it does for general polyester work. Shops that are casual about cure verification often fail to realise the resin's advantage.",
+          "Vinyl ester is also more sensitive to correct catalysis and to ambient conditions, and its air-inhibited surface behaviour needs managing on the last laminated layer. None of this is difficult, but it is discipline that has to be actually applied rather than assumed.",
+        ],
+      },
+      {
+        heading: "How to judge which side your duty falls on",
+        body: [
+          "Four inputs decide it: the chemical or medium, its concentration, its temperature and whether contact is continuous or intermittent. Add the required design life and any governing code.",
+          "Chemical-resistance charts are the normal screening tool, and ASTM C581 is the test method behind much of the underlying data. Treat a chart entry as a starting point rather than an approval: it was generated at a specific concentration, temperature and laminate construction, and mixtures can behave differently from any single component.",
+          "Where the duty sits near the boundary, the pragmatic answer is often a hybrid. Build the corrosion barrier in vinyl ester and the structural laminate in isophthalic polyester. This is standard practice in tank fabrication and usually the best value per unit of risk removed.",
+        ],
+      },
+      {
+        heading: "What to bring to the conversation",
+        body: [
+          "Name the medium and concentration rather than describing it as corrosive. State the operating and excursion temperatures, the exposure pattern, the design life, the fabrication process and the intended construction including any corrosion barrier.",
+          "If a project specification or code such as BS 4994 or EN 13121 governs the work, send its original wording. That single step prevents most mis-specification in this category.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is vinyl ester always better than isophthalic polyester?",
+        a: "It resists aggressive chemicals and higher temperatures better and is tougher, but it costs more and demands more cure discipline. For dilute ambient service a well-built isophthalic laminate performs perfectly well, so better depends on the duty.",
+      },
+      {
+        q: "Why does vinyl ester resist chemicals better if both contain ester groups?",
+        a: "Because of how many and where. A polyester has ester linkages repeated all along its backbone; a vinyl ester has them only at the two chain ends, with a chemically robust epoxy backbone between. Fewer points of attack means slower degradation.",
+      },
+      {
+        q: "At what temperature should I move from isophthalic to vinyl ester?",
+        a: "There is no single crossover temperature, because it depends on the medium as much as the heat. Temperature and chemistry interact, so send both figures rather than asking for a threshold. Warm service is frequently the trigger for the step up on its own.",
+      },
+      {
+        q: "Can I use vinyl ester only for the corrosion barrier?",
+        a: "Yes, and it is standard practice in tank and vessel fabrication. A vinyl ester resin-rich barrier with a surfacing veil at the contact face, backed by an isophthalic structural laminate, is a common and cost-effective construction.",
+      },
+      {
+        q: "Does vinyl ester need post-curing?",
+        a: "Full property development commonly depends on it, particularly for chemical service. Cure schedule and verification matter more with vinyl ester than with general polyester work, and shops that skip it often do not get the performance they paid for.",
+      },
+      {
+        q: "Can I rely on a chemical-resistance chart to choose between them?",
+        a: "Use it to screen, not to approve. Chart data is generated at particular concentrations, temperatures and laminate constructions, and mixtures can behave differently from single chemicals. Confirm against your actual duty and construction.",
+      },
+    ],
+    relatedSlugs: [
+      "what-is-iso-polyester-resin",
+      "vinyl-ester-resin-vs-isophthalic-resin",
+      "iso-polyester-resin-applications",
+    ],
+    recommendedLinks: [
+      { href: "/products/iso-polyester-resin/", label: "View ISO Polyester Resin", description: "The isophthalic grade for water and moderate chemical service." },
+      { href: "/products/vinyl-ester-resin/", label: "View Vinyl Ester Resin", description: "The step up for aggressive chemical and thermal duty." },
+      { href: "/contact/", label: "Send your service condition", description: "Medium, concentration, temperature and construction." },
+    ],
+  },
+
+  {
+    slug: "how-to-specify-iso-polyester-resin",
+    title: "How to Specify and Buy ISO Polyester Resin",
+    description:
+      "A practical procurement guide for isophthalic polyester resin: the service data that actually determines the grade, the construction decisions that matter more than resin choice, the documents worth requesting, and the questions that avoid a mis-specified vessel.",
+    category: "Procurement Guide",
+    icon: "clipboard",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "How to Specify and Buy ISO Polyester Resin",
+      description:
+        "What to define before buying isophthalic polyester resin: service condition, construction, cure plan, codes and documents. A buyer's checklist.",
+      keywords: [
+        "buy isophthalic polyester resin",
+        "ISO polyester resin specification",
+        "FRP tank resin procurement",
+        "isophthalic resin supplier India",
+        "corrosion resin buying guide",
+      ],
+      ogTitle: "Specifying ISO Polyester Resin",
+      ogDescription: "The service data, construction decisions and documents that decide an isophthalic specification.",
+    },
+    quickFacts: {
+      "Most important input": "Medium, concentration, temperature and exposure duration",
+      "Often overlooked": "Whether post-cure is possible in your facility",
+      "Construction matters": "The corrosion barrier does the chemical-resistance work",
+      "Codes to mention": "BS 4994 or EN 13121 if your project cites them",
+      "Packaging": "Samrat supplies this grade in 225 kg drums",
+      "Manufactured at": "Doraha, Punjab, under an ISO 9001:2015 certified system",
+    },
+    sections: [
+      {
+        heading: "Start with the duty, not the product name",
+        body: [
+          "The most common procurement error in this category is asking for corrosion-resistant resin. That phrase covers everything from a damp outdoor panel to a hot concentrated acid line, and the two requirements are several rungs apart on the resin ladder.",
+          "Define the duty instead. What will the laminate contact? At what concentration? At what temperature, including any excursions above normal running? Is contact continuous, intermittent or occasional splash? How long must the part last? Those five answers narrow the choice faster than any other information you can provide.",
+        ],
+      },
+      {
+        heading: "Describe the construction you intend to build",
+        body: [
+          "For corrosion service, how the laminate is built matters at least as much as which resin goes into it. Say whether you intend a resin-rich corrosion barrier with a surfacing veil at the contact face, how many mat plies back it, and what the structural laminate is.",
+          "A vessel with an excellent resin and a poorly built barrier will fail at the barrier. A vessel with a modest resin and a properly built, void-free, fully cured barrier will often outlast it. If you are unsure about the construction, that is a better conversation to have before ordering than after commissioning.",
+          "Mention the fabrication process explicitly: hand lay-up, spray-up, filament winding, RTM or pultrusion. Reactivity and viscosity requirements differ considerably between them, and a grade suited to hand lay-up is not automatically suited to winding.",
+        ],
+      },
+      {
+        heading: "Be realistic about cure, because the resistance depends on it",
+        body: [
+          "Chemical and hydrolytic resistance are properties of a fully crosslinked network. A laminate that has gone hard has not necessarily finished curing, and an undercured corrosion barrier will underperform badly regardless of which resin was specified.",
+          "Say whether your facility can post-cure, and at what temperature and for how long. Say what ambient conditions the laminate will cure in, because a cold workshop changes cure development significantly. Say how you verify cure, whether by Barcol impressor hardness or another method.",
+          "If post-curing is impossible in your plant, that is important information rather than something to leave unsaid. It may change the sensible recommendation.",
+        ],
+      },
+      {
+        heading: "Name any code or specification in its original wording",
+        body: [
+          "If the project cites BS 4994, EN 13121, a client specification, a consultant's document or a tender clause, send the wording as written. Summarising a clause into a product nickname is where most mis-specification begins.",
+          "The same applies to test methods. If the specification calls for chemical resistance evaluated to ASTM C581, mechanical properties to ASTM D638 and D790, heat distortion to ASTM D648 or water absorption to ASTM D570, list them. Knowing which evidence is actually required prevents both over-promising and wasted testing.",
+          "Where a potable-water or food-contact approval is required, state it as a separate requirement. It is a regulatory and testing question about a finished construction, not a property of a resin family, and it needs to be handled on its own terms.",
+        ],
+      },
+      {
+        heading: "What to ask a supplier, and what a supplier cannot tell you",
+        body: [
+          "Reasonable requests include the grade's identity and chemistry, packaging and pack size, shelf life and storage conditions, batch traceability, and what documentation accompanies a delivery.",
+          "What no supplier can honestly give you is a guarantee that a finished vessel will survive a particular duty. Service life depends on the resin, the reinforcement, the construction, the workmanship, the cure and the actual operating conditions. Treat a chemical-resistance chart as a screening tool generated under specific conditions rather than an approval of your application.",
+          "Be equally cautious with figures quoted out of context. A viscosity or gel time is meaningful for a named grade at a stated temperature, and transferring a number from one grade or one supplier's sheet to another is how selection errors propagate.",
+        ],
+      },
+      {
+        heading: "Commercial details worth settling early",
+        body: [
+          "Quantity and call-off pattern, packaging preference, delivery location and lead time expectation should travel with the technical enquiry rather than following it. Resin has a finite shelf life and defined storage requirements, so ordering pattern and storage conditions are part of the technical conversation, not separate from it.",
+          "Samrat Poly Resins manufactures ISO Polyester Resin at Doraha, Punjab, and supplies it in 225 kg drums. Grade-specific values are confirmed against the production batch at the time of enquiry rather than published as a generic figure, because those numbers only carry meaning tied to a specific grade and batch.",
+        ],
+      },
+      {
+        heading: "A short enquiry template",
+        body: [
+          "Finished component and its function. Medium in contact, with concentration. Operating temperature and any excursions. Exposure pattern and expected service life. Fabrication process. Intended laminate construction, including whether a corrosion barrier is planned. Cure and post-cure capability. Any code, specification or test method in original wording. Quantity, packaging, delivery location and timing.",
+          "An enquiry containing those eleven items can be answered properly. One that says corrosion-resistant polyester resin, urgent, usually cannot.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the single most useful thing to include in an enquiry?",
+        a: "The medium in contact with the laminate, with its concentration and temperature. Those three facts do more to narrow the grade than anything else, and without them any recommendation is guesswork.",
+      },
+      {
+        q: "Can you tell me how many years my tank will last?",
+        a: "No supplier can answer that honestly from a resin specification alone. Service life depends on the resin, reinforcement, construction, workmanship, cure and actual operating conditions. What can be discussed is whether the chemistry is a reasonable starting point for the stated duty.",
+      },
+      {
+        q: "Do I need to say which process I am using?",
+        a: "Yes. Hand lay-up, spray-up, filament winding, RTM and pultrusion place quite different demands on reactivity and viscosity. A grade well suited to one is not automatically suited to another.",
+      },
+      {
+        q: "Why do you ask whether I can post-cure?",
+        a: "Because chemical and water resistance depend on a fully developed crosslink network. If post-curing is not possible in your facility, that genuinely affects what can sensibly be recommended, so it is better stated up front.",
+      },
+      {
+        q: "Is a chemical-resistance chart enough to confirm suitability?",
+        a: "Use it to screen candidates, not to approve an application. Chart data is generated at specific concentrations, temperatures and laminate constructions, and chemical mixtures can behave differently from any single component.",
+      },
+      {
+        q: "Is ISO Polyester Resin approved for potable water?",
+        a: "Potable contact is a regulatory and testing matter concerning a finished construction, not a property of a resin family. If your project requires it, raise it as an explicit, separate requirement at enquiry stage.",
+      },
+      {
+        q: "What packaging is ISO Polyester Resin supplied in?",
+        a: "Samrat Poly Resins supplies this grade in 225 kg industrial drums, manufactured at Doraha, Punjab. Discuss quantity, call-off pattern and delivery location together with the technical requirement, since shelf life and storage conditions form part of the same conversation.",
+      },
+    ],
+    relatedSlugs: [
+      "what-is-iso-polyester-resin",
+      "iso-polyester-resin-applications",
+      "iso-polyester-resin-vs-vinyl-ester-resin",
+    ],
+    recommendedLinks: [
+      { href: "/products/iso-polyester-resin/", label: "View ISO Polyester Resin", description: "See the published grade, packaging and enquiry route." },
+      { href: "/custom-resin-request/", label: "Request a custom specification", description: "Send target properties and service conditions for review." },
+      { href: "/contact/", label: "Talk to the technical team", description: "Discuss a corrosion or immersion requirement directly." },
+    ],
+  },
+
+  {
+    slug: "what-is-iso-gelcoat",
+    title: "What Is ISO Gelcoat? Isophthalic Gelcoat Explained",
+    description:
+      "A gelcoat is not pigmented resin. Understand what an isophthalic gelcoat actually is, why air inhibition is deliberate, where ISO sits between orthophthalic and ISO-NPG, and what it can and cannot protect against.",
+    category: "Technical Guide",
+    icon: "layers",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "What Is ISO Gelcoat? Isophthalic Gelcoat Guide",
+      description:
+        "Isophthalic gelcoat explained: how it differs from laminating resin, the ortho to ISO to ISO-NPG ladder, where it fits and how it is applied.",
+      keywords: [
+        "ISO gelcoat",
+        "isophthalic gelcoat",
+        "what is gelcoat",
+        "gelcoat vs laminating resin",
+        "ISO NPG gelcoat",
+        "gelcoat chemistry",
+      ],
+      ogTitle: "ISO Gelcoat: The Isophthalic Grade Explained",
+      ogDescription: "Why a gelcoat is a coating system rather than coloured resin, and where isophthalic sits on the ladder.",
+    },
+    quickFacts: {
+      "What it is": "A pigmented, thixotropic polyester coating applied into the mould first",
+      "ISO in this name": "Isophthalic chemistry, not ISO 9001 certification",
+      "Sits above": "Orthophthalic gelcoat",
+      "Sits below": "Isophthalic-NPG, the marine immersion benchmark",
+      "Contains no wax": "The back face stays tacky on purpose, to bond with the laminate",
+      "Cure route": "MEKP catalysed, usually supplied pre-accelerated",
+    },
+    sections: [
+      {
+        heading: "A gelcoat is not resin with colour in it",
+        body: [
+          "This is the misconception worth clearing first, because almost every gelcoat problem traces back to it. A gelcoat is a separately formulated coating system that happens to share a resin family with laminating resin. It is sprayed or brushed into the mould before any reinforcement, and when the part is demoulded it becomes the visible outer surface.",
+          "Five things make it a different product. It is roughly three times more thixotropic than laminating resin, because it must hold an unsupported wet film on a vertical or overhead mould face with no glass to carry it. It carries a pigment load heavy enough to hide the laminate behind it at about half a millimetre. It carries a stabiliser and additive package aimed at weathering and surface durability rather than at wetting out fibre. It is formulated to cure hard and glossy against the tool. And it is not designed to carry load at all.",
+          "Pigmented laminating resin fails on every one of those counts. It sags, it does not hide, it has no weathering package, and it is formulated to wet out glass rather than to form a durable free surface.",
+        ],
+      },
+      {
+        heading: "Air inhibition is deliberate, and it is the whole trick",
+        body: [
+          "Polyester cure is inhibited by atmospheric oxygen. In most contexts that is a nuisance. In a mould-applied gelcoat it is the design.",
+          "The mould-side face has no access to air, so it cures hard and takes a perfect gloss from the tool. The air-side face, which will become the inside of the part, stays slightly tacky and chemically reactive. That tacky surface then co-cures with the first laminate layer, producing a genuine chemical bond rather than a mechanical one.",
+          "This is why a true gelcoat contains no surfacing wax. It is also why the single most common question about gelcoat, why is it still sticky, usually has a reassuring answer: on the open face, that is exactly what it is supposed to do.",
+          "When a polyester surface does need to cure tack-free in open air, as on a repair or a finished inner surface, the product used is a topcoat or flowcoat. That is gelcoat with a wax-in-styrene additive. The wax is incompatible with the resin, migrates to the surface during cure and forms a physical oxygen barrier. The conversion only runs one way: you can add wax to a gelcoat, you cannot remove it from a topcoat.",
+        ],
+      },
+      {
+        heading: "The chemistry ladder, and where ISO actually sits",
+        body: [
+          "Gelcoats climb a ladder driven by two independent levers: which acid forms the backbone, and which glycol goes with it. Getting this distinction right matters, because the marketing term ISO-NPG differs from ISO in the glycol, not the acid.",
+          "Orthophthalic gelcoat is the baseline. It is the cheapest, handles easily and gives good gloss off a good mould, but it is the most permeable and least hydrolytically stable of the family. It is genuinely sufficient for indoor parts, short to medium service life and cost-driven general moulding.",
+          "Isophthalic gelcoat replaces the ortho acid with isophthalic acid. The meta ring arrangement gives a more linear, higher-molecular-weight, more tightly packed polymer that is less permeable and more resistant to hydrolysis. In practice that means better water and chemical resistance, better weathering, better gloss retention and longer service life than ortho.",
+          "Isophthalic-NPG goes a step further by replacing the propylene glycol with neopentyl glycol. NPG is a branched diol whose two methyl groups sit either side of the ester linkage and sterically shield it from water. This is the recognised benchmark for continuously immersed and severely exposed surfaces, and it is why marine-grade gelcoats are normally NPG-based.",
+          "Vinyl ester gelcoat sits at the top for water and chemical resistance, with ester groups only at the chain ends, and is used for chemical duty and tooling.",
+          "The honest placement of this product, then, is that isophthalic is a real and meaningful step above orthophthalic, and one rung below the marine immersion benchmark. Saying so is more useful to a buyer than claiming the top rung.",
+        ],
+      },
+      {
+        heading: "What ISO does not mean",
+        body: [
+          "The ISO in ISO Gelcoat is short for isophthalic and describes the acid in the polymer backbone. It has no connection to ISO 9001 or any other standard from the International Organization for Standardization.",
+          "The two are genuinely unrelated. A company holding ISO 9001 can sell orthophthalic gelcoat, and a supplier with no certification at all can sell isophthalic gelcoat. Samrat Poly Resins does operate an ISO 9001:2015-certified quality management system, but that describes how the company runs its processes, not what is in this drum.",
+          "Nor is isophthalic the same as ISO-NPG. Describing a plain isophthalic gelcoat as NPG grade, or letting a buyer assume ISO means marine grade, is a material misdescription rather than a naming preference.",
+        ],
+      },
+      {
+        heading: "Where isophthalic gelcoat is genuinely the right choice",
+        body: [
+          "Marine topsides and non-immersed surfaces are the classic marine fit: decks, superstructure, cabin tops, hull sides above the waterline, consoles and hatches. These face ultraviolet light, salt spray, rain and wash-down, but not continuous immersion.",
+          "Sanitaryware and bathware is the best-documented application. Bathtubs, shower trays, wash basins and vanity units need hot-water resistance, stain resistance, cleanability and colour retention, and isophthalic gelcoats are widely specified for exactly this.",
+          "Water tanks, both the ultraviolet-exposed outer face and the hygienic inner face, sit in the same band. So do transport and truck body panels, architectural cladding and façade elements, and industrial enclosures and housings where weatherability and cleanability matter more than immersion.",
+        ],
+      },
+      {
+        heading: "Where a buyer should step up instead",
+        body: [
+          "Move to isophthalic-NPG when the surface is continuously immersed. Boat bottoms below the waterline, swimming pool shells and permanently immersed tank interiors are the standard cases. Osmotic blistering only runs when water is in permanent contact, and that is precisely where NPG's steric shielding earns its cost.",
+          "Move to vinyl ester when the duty is chemical rather than merely wet: aggressive acids, alkalis, hot water service, chlorinated solvents, oxidisers or significant thermal cycling.",
+          "Real marine practice does not pick one chemistry but layers them, with an NPG gelcoat outside, a vinyl ester or isophthalic skin coat behind it and a general-purpose structural laminate beneath. That is worth knowing because it defuses the unhelpful question of which single resin is best.",
+        ],
+      },
+      {
+        heading: "What a gelcoat cannot do",
+        body: [
+          "No polyester gelcoat is waterproof. They are all permeable, and permeability rises with temperature, which is why blistering is worse in hot climates. A gelcoat slows water ingress; it does not exclude it.",
+          "Blister resistance is a property of the whole system rather than the coating alone. It depends on chemistry, on a genuinely complete cure, on the absence of voids at the gelcoat-to-laminate interface, and on laminate quality. Voids commonly form at that interface, which is why a large share of blisters appear there, and why a resin mist coat and a fine skin coat behind the gelcoat matter so much.",
+          "A gelcoat also cannot rescue a bad mould. Gloss is a replica of the tool surface, so every imperfection in the mould has the potential to appear in the part. Poor gloss is diagnosed first as a mould problem and second as a cure problem.",
+        ],
+      },
+      {
+        heading: "What to establish before you buy",
+        body: [
+          "Ask whether the product is isophthalic or isophthalic-NPG, and get it in writing on the data sheet, since the two are priced and positioned differently. Ask whether it is brush grade or spray grade, because thixotropy and viscosity are tuned differently and swapping them produces predictable defects. Ask whether it is pre-accelerated, and which peroxide type and strength it is qualified against.",
+          "Then describe your own side: the part, whether the surface is immersed or not, the exposure, the colour and the finish standard, your spray equipment, your shop and mould temperatures, and your production volume.",
+          "Samrat Poly Resins manufactures ISO Gelcoat at Doraha, Punjab. Grade-specific values such as viscosity, thixotropic index, gel time, recommended film thickness and catalyst range are confirmed at enquiry rather than published as generic figures, because a gelcoat number that is not tied to a named grade, a stated temperature and a stated measurement method is not usable on a shop floor.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is ISO Gelcoat the same as ISO 9001 certified?",
+        a: "No, and the two are entirely unrelated. ISO here is short for isophthalic, the acid in the polymer backbone. ISO 9001 is a quality-management-system standard and says nothing about chemistry. Samrat Poly Resins holds ISO 9001:2015 certification, but that is a fact about the company's processes, not about this product's formulation.",
+      },
+      {
+        q: "Is ISO Gelcoat the same as ISO-NPG or marine grade gelcoat?",
+        a: "No. ISO names the acid; NPG names the glycol. Isophthalic-NPG is both isophthalic and neopentyl-glycol based, and it is the recognised benchmark for continuous immersion. Plain isophthalic is a real step above orthophthalic but sits one rung below NPG. Marine grade, incidentally, is a marketing description with no regulatory definition.",
+      },
+      {
+        q: "Why is my gelcoat still sticky?",
+        a: "There are three quite different causes. If it is tacky only on the air-exposed face and hard underneath, that is normal air inhibition and is exactly what a mould gelcoat should do. If it is soft all the way through, that is genuine undercure from too little or badly mixed catalyst, too thin a film, or a cold shop or mould. If it will not cure over a particular substrate, the usual culprit is polyester gelcoat applied over epoxy, whose amine chemistry inhibits peroxide cure.",
+      },
+      {
+        q: "Can I use gelcoat as paint on a finished part?",
+        a: "Not as supplied. Mould gelcoat is air-inhibited and will stay tacky in the open, so you need a wax-containing topcoat or a wax additive in the final coat. The finish will also be textured and need sanding and polishing, because gelcoat takes its gloss from a mould it no longer has.",
+      },
+      {
+        q: "Will ISO gelcoat stop my hull blistering?",
+        a: "It reduces the risk substantially compared with orthophthalic, but no polyester gelcoat is waterproof. For a continuously immersed hull bottom the honest recommendation is isophthalic-NPG or a vinyl ester barrier, together with complete cure and a void-free interface. Blister resistance is a system property, not a coating property.",
+      },
+      {
+        q: "Can I apply gelcoat over epoxy, or over paint?",
+        a: "Over paint, no. Remove the paint and prepare the substrate, since gelcoat is formulated to bond to composite substrates rather than paint films. Over epoxy, treat it as incompatible unless the supplier explicitly qualifies the combination, because polyester gelcoat frequently fails to harden over epoxy.",
+      },
+      {
+        q: "Why does the gelcoat contain no wax when topcoat does?",
+        a: "Because the tacky back face is wanted. It stays chemically reactive so it can co-cure with the first laminate layer and form a primary bond. A topcoat or flowcoat is the same chemistry plus a wax-in-styrene additive, used where a surface must cure tack-free in open air. You can turn a gelcoat into a topcoat by adding wax, but not the reverse.",
+      },
+      {
+        q: "Is isophthalic gelcoat worth the extra cost over orthophthalic?",
+        a: "It depends entirely on the part. For indoor, short-to-medium life, cost-driven work, orthophthalic is genuinely sufficient. For outdoor exposure, hot water, cleaning chemicals, sanitaryware or any surface expected to hold colour and gloss for years, the isophthalic step up is what you are paying for.",
+      },
+    ],
+    relatedSlugs: [
+      "how-to-apply-iso-gelcoat",
+      "iso-gelcoat-applications",
+      "what-is-gel-coat-resin",
+    ],
+    recommendedLinks: [
+      { href: "/products/iso-gelcoat/", label: "View ISO Gelcoat", description: "See the published grade and enquiry route." },
+      { href: "/products/gp-gelcoat-resin/", label: "View GP Gelcoat Resin", description: "The separately published general-purpose gelcoat product." },
+      { href: "/contact/", label: "Discuss a surface requirement", description: "Send the part, exposure and finish standard." },
+    ],
+  },
+
+  {
+    slug: "how-to-apply-iso-gelcoat",
+    title: "How to Apply ISO Gelcoat: Film Thickness, Cure and Defects",
+    description:
+      "Film thickness has a window with failure at both ends, the laminate window is a state rather than a clock time, and most gelcoat defects trace to a handful of causes. A practical process guide with a defect table.",
+    category: "Best Practices",
+    icon: "tool",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "How to Apply ISO Gelcoat: Thickness, Cure and Defects",
+      description:
+        "Gelcoat application explained: why thin and thick films both fail, when to laminate, mould prep, temperature and humidity, and what causes each common defect.",
+      keywords: [
+        "gelcoat application",
+        "gelcoat film thickness",
+        "gelcoat defects",
+        "gelcoat alligatoring",
+        "gelcoat pinholes",
+        "when to laminate over gelcoat",
+      ],
+      ogTitle: "Applying ISO Gelcoat Properly",
+      ogDescription: "The thickness window, the lamination window, and a defect-cause table.",
+    },
+    quickFacts: {
+      "Film thickness": "A window with failure at both ends, not a target",
+      "Measure it with": "A notched wet-film gauge, not the eye",
+      "Ready to laminate": "A state you test for, never a clock time",
+      "Too early": "Styrene attacks the soft film and it alligators",
+      "Too late": "The reactive back face has cured out and the bond weakens",
+      "Number one air-line fix": "Drain the compressor",
+    },
+    sections: [
+      {
+        heading: "Film thickness: both ends of the window fail",
+        body: [
+          "Film thickness is the most consequential variable in gelcoat work, and it is genuinely a window rather than a minimum. Too thin and too thick fail for opposite reasons.",
+          "Too thin fails through undercure. Air inhibition reaches a fixed depth into the film, so in a thin coat that inhibited zone is a large fraction of the total and the film never develops full hardness or crosslink density. An undercured film then alligators when the laminating resin's styrene attacks it. Thin films also let glass fibres from the skin coat approach the surface, producing fibre pattern and print-through, and they pinhole, which gives water a direct path into the laminate.",
+          "Too thick fails through brittleness and exotherm. Cured gelcoat is unreinforced, comparatively brittle resin. Excess thickness cracks and crazes, especially at corners and radii, and generates more exotherm, more cure shrinkage and more internal stress. Thick films also sag on vertical surfaces and are prone to pre-release from the mould.",
+          "The industry practice is to build to the supplier's specified wet film in several thin, even, overlapping passes rather than one heavy coat, and to measure with a notched wet-film gauge. A thickness that looks right by eye is very often too thin or too heavy.",
+        ],
+      },
+      {
+        heading: "The lamination window is a state, not a time",
+        body: [
+          "After the final pass the gelcoat must reach a specific condition before the skin coat goes on: firm and tack-free to a light touch, but not fully cured.",
+          "Laminate too early and styrene from the laminating resin attacks the still-soft film, producing alligatoring or wrinkling. Laminate too late and the air-inhibited back face has cured out, the chemical co-cure is lost, and you are left with a weak secondary bond that can show up later as delamination.",
+          "The shop test is a light brush or fingernail check: cured enough that a light brush leaves no trail, still tacky enough to mark with a fingernail. How long that takes depends on shop temperature, humidity, air movement, catalyst level and film thickness, which is exactly why it must be observed rather than timed from a previous job.",
+        ],
+      },
+      {
+        heading: "Mould preparation and release",
+        body: [
+          "The mould surface is the finish. Gloss is a replica of the tool, so any defect, wax build-up, dust or contamination transfers straight to the part.",
+          "Release agent quantity causes defects in both directions. Too much or unevenly applied release produces fisheyes through surface-tension imbalance, and encourages pre-release. Too little causes sticking and tear-out. Silicone contamination is the classic fisheye source and is notoriously hard to eliminate once it is loose in a shop.",
+          "Release systems are not freely interchangeable. Wax, semi-permanent chemical release and polyvinyl alcohol behave differently, and polyvinyl alcohol is well known for fisheyeing off a freshly waxed surface. Follow the release supplier's regime rather than shop habit.",
+        ],
+      },
+      {
+        heading: "What goes directly behind the gelcoat",
+        body: [
+          "The layer immediately behind the gelcoat is a structural and cosmetic buffer, not just more glass. A resin mist coat followed by a fine skin coat or surfacing veil produces a resin-rich, largely fibre-free layer that blocks the texture of the coarser reinforcement behind it and resists moisture penetration.",
+          "Standard practice is one or two layers of fine chopped strand mat behind the gelcoat before heavier fabric, specifically to stop print-through from the exotherm and shrinkage of the layers behind. Published guidance commonly calls for two layers of light mat before cloth and three before woven roving.",
+          "This is also where interface voids are created or avoided, which matters because a large share of service blisters originate at the gelcoat-to-laminate interface.",
+        ],
+      },
+      {
+        heading: "Temperature, humidity and the compressed air line",
+        body: [
+          "Temperature governs gel time, exotherm, cure completeness, viscosity and sprayability. Material temperature, mould temperature and shop temperature all count independently: a cold mould will undercure a film even in a warm shop. Excess heat shortens working time and drives porosity and cracking.",
+          "Humidity attacks through several routes. Water in the compressed air line is the single most commonly named remedy across troubleshooting guides, appearing against fisheyes, slow cure, poor gloss, chalking and water spotting. Condensation is the second route: solvent evaporation and spray-gun air cool the wet film, and if the surface drops below dew point, moisture condenses into it. Coatings practice is to stay at least three degrees above dew point. Water in the peroxide is a third, and is a named cause of wrinkling.",
+          "If a shop has an intermittent, hard-to-explain surface defect, draining the compressor and fitting a proper air dryer is the cheapest first experiment.",
+        ],
+      },
+      {
+        heading: "A defect table with general causes",
+        body: [
+          "Fisheyes, seen as circular voids down to the mould, come from surface-tension imbalance: silicone, oil or water contamination, excess or uneven release, viscosity too low, film too thin or a poor spray pattern.",
+          "Pinholes, tiny through-holes often revealed on sanding, are air or gas trapped at gel: poor atomisation, too thick a pass, high viscosity, gassy catalyst, excessive pump pressure or mould contamination.",
+          "Alligatoring and wrinkling come from styrene attacking an undercured film: laminated too early, film too thin, catalyst too low, shop too cold or cure uneven.",
+          "Print-through and fibre pattern come from the laminate's cure shrinkage and exotherm telegraphing to the surface: gelcoat too thin or undercured, fibres too close to the surface, no skin coat or veil, or demoulded too early.",
+          "Pre-release, where the gelcoat lifts before cure, comes from uneven or excessive thickness, over-fast cure, too much catalyst, delayed lamination, mould vibration or excessive release slip.",
+          "Cracking and crazing, worst at corners, come from excess thickness in high-stress areas, exotherm, cure shrinkage, demoulding undercured or insufficient laminate stiffness behind the surface.",
+          "Poor gloss is a mould problem first and a cure problem second. Chalking is ultraviolet light and moisture degrading the polyester and exposing pigment and filler, and it is accelerated by undercure. Sagging is thixotropy too low, film too thick or spray pressure too high. Poor hiding is film too thin or a pigment with insufficient opacity for that colour.",
+        ],
+      },
+      {
+        heading: "Catalyst level and post-cure",
+        body: [
+          "The correct peroxide level is a narrow band rather than a single number, and it moves with the peroxide brand and active-oxygen strength, the film thickness and the temperature. Both under-catalysing and over-catalysing are defect causes: too little gives undercure, a soft film and poor water resistance, while too much gives over-fast gel, pre-release, excess exotherm, cracking and porosity.",
+          "The practical discipline is to take the range from the data sheet and verify it with a gel-time test on the actual batch, at the actual shop temperature, rather than carrying a figure across from a different product or a different season.",
+          "Post-cure at controlled elevated temperature drives crosslinking further toward completion, raising hardness, heat-distortion temperature and chemical and water resistance while reducing residual styrene, which itself yellows under ultraviolet light. It is routine on tooling gelcoats and chemically exposed parts. The schedule must come from the data sheet, since an over-aggressive post-cure causes its own stress cracking.",
+        ],
+      },
+      {
+        heading: "Storage, settling and colour consistency",
+        body: [
+          "Pigment settling in the drum is normal. Mix to homogeneity before use and periodically during a long run, but do not mix continuously, because sustained shear destroys the thixotropic structure the product depends on. If a drum has been over-mixed, let it stand before use.",
+          "Gelcoat properties drift before a drum visibly gels: viscosity falls and cure time lengthens as the inhibitor package depletes. Store cool and out of direct sunlight, order to consumption rather than stockpiling, and re-check gel time on older stock.",
+          "On colour-critical work, use a single batch for a single structure where possible. Batch-to-batch variation is normally held to an instrumental colour tolerance, but processing adds its own shift on top of the supplier's, and a match under one light source can fail under another.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "How thick should I apply gelcoat?",
+        a: "To the window in the product's data sheet, built up in several thin overlapping passes, and measured with a notched wet-film gauge rather than judged by eye. Both ends of the window fail: too thin undercures, alligators and pinholes, while too thick cracks, sags and pre-releases.",
+      },
+      {
+        q: "How long before I can laminate over it?",
+        a: "It is a state rather than a time. The film should be firm and tack-free to a light brush but still markable with a fingernail. How long that takes depends on temperature, humidity, air movement, catalyst level and film thickness, so it must be checked rather than timed from a previous job.",
+      },
+      {
+        q: "Can I thin gelcoat?",
+        a: "Usually no. If it is unavoidable, a small percentage of styrene is the normal route, never acetone, which shifts colour and encourages yellowing and orange peel. Thinning also reduces thixotropy and viscosity, which directly causes fisheyes and sagging.",
+      },
+      {
+        q: "What causes fisheyes, and how do I stop them?",
+        a: "A surface-tension imbalance at the mould face. The usual causes are silicone, oil or water contamination, excess or uneven release agent, too low a viscosity, too thin a film or a poor spray pattern. Draining the compressed air line and reviewing the release regime address most cases.",
+      },
+      {
+        q: "Why do pinholes only appear when I sand?",
+        a: "Because they are air or gas bubbles trapped at the moment of gel, sitting just under the surface until sanding opens them. Look at atomisation, pass thickness, viscosity, pump pressure and catalyst gassing. They matter beyond cosmetics, since they are direct water paths into the laminate.",
+      },
+      {
+        q: "What shop temperature do I need?",
+        a: "Work to the data sheet's range, and remember that material, mould and shop temperatures all count separately. A cold mould undercures the film even in a warm shop. Below the product's floor temperature the film simply will not reach full cure and stays soft, dull and permeable.",
+      },
+      {
+        q: "How do I check on the shop floor that it cured properly?",
+        a: "Barcol impressor hardness read against the supplier's target is the standard proxy, and it is most useful tracked as a trend rather than as a single reading. A properly cured film also sands cleanly without gumming.",
+      },
+    ],
+    relatedSlugs: [
+      "what-is-iso-gelcoat",
+      "iso-gelcoat-applications",
+      "gelcoat-resin-problems-peeling-cracking-tackiness",
+    ],
+    recommendedLinks: [
+      { href: "/products/iso-gelcoat/", label: "View ISO Gelcoat", description: "See the published grade and enquiry route." },
+      { href: "/products/wax-polish/", label: "View mould release wax", description: "Release products for FRP moulding." },
+      { href: "/contact/", label: "Ask a process question", description: "Describe the part, equipment and shop conditions." },
+    ],
+  },
+
+  {
+    slug: "iso-gelcoat-applications",
+    title: "ISO Gelcoat Applications: Where Isophthalic Surfaces Are Specified",
+    description:
+      "Sanitaryware, water tanks, marine topsides, transport panels, architectural cladding and industrial enclosures. Where an isophthalic gelcoat is genuinely the right specification, what each application actually demands, and when to step up.",
+    category: "Application Guide",
+    icon: "factory",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "ISO Gelcoat Applications and Uses",
+      description:
+        "Where isophthalic gelcoat is specified: sanitaryware, water tanks, marine topsides, transport and architectural panels, and what each demands.",
+      keywords: [
+        "isophthalic gelcoat applications",
+        "gelcoat for sanitaryware",
+        "gelcoat for water tanks",
+        "marine topside gelcoat",
+        "gelcoat for FRP panels",
+      ],
+      ogTitle: "Where ISO Gelcoat Is Actually Used",
+      ogDescription: "The applications that justify isophthalic, and the ones that need a step up.",
+    },
+    quickFacts: {
+      "Best-documented use": "Sanitaryware and bathware",
+      "Marine fit": "Topsides and non-immersed surfaces",
+      "Step up for": "Continuous immersion, where ISO-NPG is the benchmark",
+      "Step up again for": "Chemical duty, where vinyl ester is the route",
+      "Ortho is fine for": "Indoor, short-to-medium life, cost-driven work",
+    },
+    sections: [
+      {
+        heading: "What these applications have in common",
+        body: [
+          "Isophthalic gelcoat is specified where a visible surface has to keep its appearance and its barrier function under wetting, cleaning, heat or sunlight for years. The common demand is retained gloss, retained colour and resistance to hydrolysis at a free surface.",
+          "What they do not have in common is continuous immersion. That is a different and more demanding problem, and it belongs one rung higher on the ladder.",
+        ],
+      },
+      {
+        heading: "Sanitaryware and bathware",
+        body: [
+          "This is the best-documented home for isophthalic gelcoat. Bathtubs, shower trays, shower receptors, wash basins and vanity units all present a surface that faces hot water, detergents, cosmetics and abrasive cleaning for a product lifetime measured in decades.",
+          "The performance bar in this sector is set by the plastic bathtub and shower standards, whose gelcoat-relevant tests are instructive even where they are not contractually required: boiling-water resistance, accelerated colour fastness, stain resistance against a defined list including shoe polish, ink, iodine, hair dye and lipstick, and an abrasive-slurry cleanability and wear test.",
+          "Those four tests are a good summary of what a sanitaryware buyer is actually purchasing, and they are worth quoting back to any supplier as the questions to answer.",
+        ],
+      },
+      {
+        heading: "Water tanks and stored-water equipment",
+        body: [
+          "Sectional and moulded GRP water tanks put two quite different demands on the gelcoat. The outer face takes sustained ultraviolet exposure on a roof, where chalking and colour loss are the failure modes. The inner face takes permanent or near-permanent water contact, where hydrolysis and cleanability matter.",
+          "For rooftop and above-ground tanks that are drained and refilled, isophthalic is a sensible specification. Where the inner surface is genuinely continuously immersed for years, the NPG step up deserves consideration for that face.",
+          "Potable-water suitability is a separate matter entirely. It is governed by regulatory approval and testing of the finished construction, not by resin chemistry, so it should be raised as its own requirement at enquiry stage.",
+        ],
+      },
+      {
+        heading: "Marine topsides and non-immersed surfaces",
+        body: [
+          "Decks, superstructure, cabin tops, hull sides above the waterline, consoles, hatches and locker lids are all isophthalic territory. They face ultraviolet light, salt spray, rain and regular washing, and they are judged on gloss and colour retention rather than on immersion performance.",
+          "The line in marine work is drawn hard and it is worth respecting: products designed for topsides and deck are not suitable for permanent immersion, and topside and bottom products are not interchangeable. For anything below the waterline the honest recommendation is isophthalic-NPG or a vinyl ester barrier system.",
+        ],
+      },
+      {
+        heading: "Transport, truck bodies and vehicle panels",
+        body: [
+          "FRP panel surfaces on truck and trailer bodies, recreational vehicle roof and sidewall panels, vehicle liners and bus and rail interior panels all need a surface that survives weather, washing, road grime and ultraviolet light while staying presentable.",
+          "These are cosmetic-critical, high-visibility surfaces produced in volume, which puts colour consistency between batches near the top of the requirement list alongside the weathering performance itself.",
+        ],
+      },
+      {
+        heading: "Architectural panels and industrial enclosures",
+        body: [
+          "GRP façade elements, interior and exterior wall cladding, canopies and decorative architectural mouldings are specified on appearance retention over a building's life, with colour matching across panels a recurring practical problem.",
+          "Industrial enclosures, cabinets, covers and equipment housings share the weathering requirement but add cleanability and resistance to incidental chemical contact. Neither group is immersed, which is what keeps them in isophthalic rather than NPG territory.",
+        ],
+      },
+      {
+        heading: "Where orthophthalic is genuinely sufficient",
+        body: [
+          "It is worth saying plainly, because over-specifying wastes money and undermines trust. Indoor parts, non-cosmetic-critical enclosures, short-to-medium service life and cost-driven general moulding are all fine in an orthophthalic gelcoat.",
+          "The isophthalic premium buys hydrolytic stability and weathering. If the part never sees water, sunlight or years, it never calls on either.",
+        ],
+      },
+      {
+        heading: "What to specify when you enquire",
+        body: [
+          "Name the part and say whether its surface is immersed, intermittently wetted or dry. State the exposure: indoor, outdoor, coastal, rooftop. State the thermal and chemical contact, including hot water and cleaning agents. State the colour and how tightly it must match across batches or against an existing part.",
+          "Then cover process: brush or spray, your equipment, your mould and shop temperatures, your volume and your finish standard. Those details decide grade and viscosity choice far more reliably than an application name does.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Can I use ISO gelcoat on a boat bottom?",
+        a: "For a continuously immersed hull bottom the honest answer is that isophthalic-NPG or a vinyl ester barrier is the appropriate specification. Plain isophthalic is well suited to topsides, decks and hull sides above the waterline, which is a genuinely different exposure.",
+      },
+      {
+        q: "Is isophthalic gelcoat suitable for bathtubs and shower trays?",
+        a: "Yes, this is one of its best-established applications. The demands are hot-water resistance, stain resistance, cleanability under abrasive cleaning and colour retention, and those are exactly the properties the isophthalic step up provides over orthophthalic.",
+      },
+      {
+        q: "Is ISO gelcoat approved for potable water tanks?",
+        a: "Potable-water contact is a regulatory and testing question about a finished construction, not a property of a gelcoat chemistry. Raise it explicitly as a separate requirement at enquiry stage so it can be addressed on its own terms.",
+      },
+      {
+        q: "Will the colour stay consistent across batches?",
+        a: "Batch-to-batch variation is normally held to an instrumental colour tolerance, but your own processing adds a further shift on top of the supplier's, and a match under one light source can fail under another. On colour-critical work, use one batch per structure and evaluate under the light the part will actually live in.",
+      },
+      {
+        q: "How long will the gloss and colour last outdoors?",
+        a: "That depends on the pigment system, the stabiliser package, the exposure and the cleaning regime, so it is only answerable against test evidence and a stated failure criterion. Deep and bright colours generally fade faster than white. Ask which weathering method was used and what colour and gloss retention was measured.",
+      },
+      {
+        q: "Can I use gelcoat for chemical tank interiors?",
+        a: "Industrial chemical vessels normally do not use gelcoat at all. They use a resin-rich corrosion barrier reinforced with a surfacing veil instead, and for aggressive duty the chemistry moves to vinyl ester.",
+      },
+    ],
+    relatedSlugs: [
+      "what-is-iso-gelcoat",
+      "how-to-apply-iso-gelcoat",
+      "how-to-choose-gelcoat-resin-for-frp-products",
+    ],
+    recommendedLinks: [
+      { href: "/products/iso-gelcoat/", label: "View ISO Gelcoat", description: "See the published grade and enquiry route." },
+      { href: "/applications/", label: "Browse FRP applications", description: "Application guides across the published range." },
+      { href: "/contact/", label: "Describe your surface requirement", description: "Part, exposure, colour and finish standard." },
+    ],
+  },
+
+  {
+    slug: "uv-stabilized-resin-vs-uv-curing-resin",
+    title: "UV Stabilised Resin vs UV Curing Resin: Two Opposite Products",
+    description:
+      "Both are called UV resin and they have opposite relationships to light. One is cured by a lamp; the other is built to survive sunlight. If you searched for UV resin, this page tells you in thirty seconds which one you actually need.",
+    category: "Comparison Guide",
+    icon: "sun",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "UV Stabilised Resin vs UV Curing Resin: The Difference",
+      description:
+        "UV-curing resin is polymerised by a lamp. UV-stabilised resin is a conventional polyester built to resist sunlight in service. Same two letters, opposite meaning.",
+      keywords: [
+        "UV resin difference",
+        "UV stabilised vs UV curing resin",
+        "is UV resin the same as UV cure",
+        "UV stabilized polyester resin",
+        "UV resin for FRP sheets",
+      ],
+      ogTitle: "UV Stabilised vs UV Curing Resin",
+      ogDescription: "One is cured by light. The other resists it. Make sure you are buying the right one.",
+    },
+    quickFacts: {
+      "UV curing resin": "Light at 365 to 405 nm is the energy that polymerises it",
+      "UV stabilised resin": "Additives that slow sunlight damage during service",
+      "This product is": "UV stabilised, cured conventionally with MEKP and cobalt",
+      "Needs a lamp": "No, and a lamp does not help",
+      "Typical UV-cure buyers": "3D printing, craft, nail and jewellery work",
+      "Typical UV-stabilised buyers": "FRP roofing sheet and outdoor panel manufacturers",
+    },
+    sections: [
+      {
+        heading: "The thirty-second answer",
+        body: [
+          "If you are looking for a resin you pour into a mould and harden under a lamp, in seconds, for a 3D print, a craft piece, a pendant or a nail finish, you want a UV-curing resin and this is not that product.",
+          "If you are making FRP sheets, panels or mouldings that will sit in sunlight for years, and you want the finished part to resist yellowing, chalking and surface breakdown, then UV-stabilised resin is what you are after.",
+          "The two share two letters and nothing else. In a UV-curing resin, ultraviolet light is the energy source that makes it harden. In a UV-stabilised resin, ultraviolet light is the enemy the additives are there to defend against.",
+        ],
+      },
+      {
+        heading: "How UV-curing resin works",
+        body: [
+          "A UV-curing resin is a photopolymer. It contains a photoinitiator that absorbs light at a specific wavelength, usually around 365 to 405 nanometres, and splits into radicals that start polymerisation. Take the light away and the reaction stops essentially immediately.",
+          "That gives the properties those users want: indefinite working time in the dark, then cure on demand in seconds, with excellent detail resolution. It also gives the limitations: cure depth is limited by how far light penetrates, shadowed areas do not cure, and pigmented or filled formulations are difficult because the pigment blocks the very light needed for cure.",
+          "This is why UV-curing resins are used for thin layers and small parts, and why you will not find anyone laminating a roofing sheet with one.",
+        ],
+      },
+      {
+        heading: "How UV-stabilised polyester resin works",
+        body: [
+          "UV Stabilized Sheet Grade Yellow Resin is a conventional unsaturated polyester resin. It cures by free-radical copolymerisation of styrene with the polyester's double bonds, started by a peroxide catalyst, usually MEKP, with a cobalt accelerator that lets the peroxide decompose at room temperature.",
+          "No lamp is involved at any stage. Sunlight does not cure it, a UV lamp does not help it, and leaving it in the sun will do nothing useful. What decides cure is catalyst level, accelerator level and temperature. Cobalt-accelerated systems lose activity disproportionately below about fifteen degrees Celsius, which is the practical constraint in a cold workshop.",
+          "The UV part of the name describes what happens afterwards, in service. The resin carries a light-stabiliser package intended to slow the photo-oxidation that degrades polyester outdoors, and it is pre-pigmented so the colour is dispersed under factory control rather than stirred in on the shop floor.",
+        ],
+      },
+      {
+        heading: "Why the confusion is so common",
+        body: [
+          "Search behaviour is the main reason. UV resin as a search term is dominated by the craft and 3D-printing product, which sells in enormous volume in small bottles, so anyone typing those words tends to land in that world first.",
+          "Industrial buyers then arrive at a page selling a lamp-cured photopolymer and reasonably conclude either that it is the wrong supplier or, worse, that the two are interchangeable at different scales. They are not.",
+          "There is a second layer of confusion inside the industrial category itself. UV-resistant, UV-stabilised and weatherproof get used as if they meant the same thing. They do not, and the distinction is covered in the next section.",
+        ],
+      },
+      {
+        heading: "UV resistant, UV stabilised and weatherproof are three different claims",
+        body: [
+          "UV resistant properly describes polymers that are inherently stable in sunlight because of what they are made of. Acrylic, ASA, PVDF and PTFE are the usual examples. Their stability is structural rather than added.",
+          "UV stabilised means additives have been used to slow photo-oxidation in a polymer that is not inherently stable. Unsaturated polyester falls firmly in this group: its ester linkages and its polystyrene crosslinks are both photo-oxidisable, so any outdoor durability comes from the stabiliser package rather than from the backbone.",
+          "Weatherproof is a marketing word with no test behind it, and the same goes for UV proof. Neither should appear on a technical page. The defensible version of that claim names a weathering method, an exposure duration and a measured property retained, which is a very different sentence.",
+        ],
+      },
+      {
+        heading: "Which one do you actually need?",
+        body: [
+          "Ask what supplies the energy that hardens the material. If the answer is a lamp, you want a photopolymer and should look for a UV-curing product. If the answer is a catalyst you mix in, you want a conventional polyester and the UV in the name refers to service durability.",
+          "Then ask where the finished part lives. Indoors, permanently out of sunlight, and the stabiliser package is money spent on a property the part never uses; a standard sheet grade will serve. Outdoors for years, and the stabilisation is the point of the product.",
+          "Samrat Poly Resins does not supply a UV-curing or LED-curing resin. For decorative casting and clear art work, the epoxy casting and art grades are the relevant route and they are also conventionally cured rather than lamp cured.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is this the UV resin I cure with a lamp?",
+        a: "No. This is a conventional unsaturated polyester resin cured at room temperature with a MEKP catalyst and cobalt accelerator. UV in the name refers to resistance to sunlight in service, not to the curing energy. Lamp-cured products are photopolymers sold for 3D printing, craft and nail work.",
+      },
+      {
+        q: "Will it cure faster if I put it in the sun or under a UV lamp?",
+        a: "No. Cure is controlled by catalyst level, accelerator level and temperature. A lamp contributes nothing. Warmth will speed the reaction, as it would with any polyester resin, but that is a temperature effect rather than a light effect.",
+      },
+      {
+        q: "Is UV stabilised the same as UV resistant?",
+        a: "Not quite. UV resistant properly describes polymers that are inherently stable in sunlight, such as acrylic or PVDF. UV stabilised means additives have been used to slow degradation in a polymer that is not inherently stable, which is the case for all unsaturated polyester.",
+      },
+      {
+        q: "Does UV stabilised mean weatherproof?",
+        a: "No, and weatherproof is a word worth refusing. Stabilisation slows photo-oxidation, it does not stop it. A meaningful durability claim names a weathering test method, an exposure duration and the property measured, rather than using an absolute adjective.",
+      },
+      {
+        q: "Can I use a UV-curing resin for FRP sheets?",
+        a: "No. Cure depth in a photopolymer is limited by light penetration, shadowed regions do not cure, and pigment and glass reinforcement block the light the reaction needs. FRP sheet manufacture uses conventional catalysed polyester for exactly these reasons.",
+      },
+      {
+        q: "Do you supply a UV-curing or LED-curing resin?",
+        a: "No. Samrat Poly Resins does not supply lamp-cured photopolymers. For decorative clear casting and art work the epoxy casting and art grades are the relevant products, and those also cure conventionally rather than under a lamp.",
+      },
+    ],
+    relatedSlugs: [
+      "what-is-uv-stabilized-sheet-grade-resin",
+      "how-uv-degrades-frp-sheets",
+      "uv-stabilized-vs-standard-sheet-grade-yellow-resin",
+    ],
+    recommendedLinks: [
+      { href: "/products/uv-stabilized-sheet-grade-yellow-resin/", label: "View UV Stabilized Sheet Grade Yellow Resin", description: "The pre-pigmented outdoor sheet grade." },
+      { href: "/products/epoxy-art-resin/", label: "View Epoxy Art Resin", description: "For decorative clear work, conventionally cured." },
+      { href: "/products/", label: "Browse the full product range", description: "All published grades and FRP raw materials." },
+    ],
+  },
+
+  {
+    slug: "what-is-uv-stabilized-sheet-grade-resin",
+    title: "What Is UV Stabilised Sheet Grade Resin?",
+    description:
+      "A pre-pigmented polyester resin with a light-stabiliser package, made for FRP sheet and panel work that lives outdoors. What the stabilisers actually do, why the pigment matters, what the grade cannot promise and how to specify it.",
+    category: "Technical Guide",
+    icon: "sun",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "What Is UV Stabilised Sheet Grade Resin?",
+      description:
+        "UV-stabilised pre-pigmented polyester resin for outdoor FRP sheet: how UV absorbers and HALS work, why pigment choice matters, and what no supplier can promise.",
+      keywords: [
+        "UV stabilized polyester resin",
+        "sheet grade resin",
+        "FRP roofing sheet resin",
+        "pre pigmented polyester resin",
+        "UV stabiliser HALS",
+        "outdoor FRP resin",
+      ],
+      ogTitle: "UV Stabilised Sheet Grade Resin Explained",
+      ogDescription: "What the stabiliser package does, what the pigment does, and what nobody can honestly promise.",
+    },
+    quickFacts: {
+      "Resin family": "Unsaturated polyester resin, pre-pigmented",
+      "UV in this name": "Resistance to sunlight in service, not lamp curing",
+      "Cure route": "Room-temperature MEKP with cobalt accelerator",
+      "Made for": "FRP sheet and panel work exposed to sunlight",
+      "Colour": "Yellow, dispersed at the factory rather than added on the line",
+      "Cannot promise": "A service life in years without defined exposure and construction",
+    },
+    sections: [
+      {
+        heading: "What this grade is",
+        body: [
+          "UV Stabilized Sheet Grade Yellow Resin is an unsaturated polyester resin supplied already pigmented yellow and formulated with a light-stabiliser package, intended for FRP sheet and panel production where the finished part is exposed to sunlight.",
+          "Two things distinguish it from a standard sheet grade. The colour is dispersed under factory control rather than stirred in at the laminating stage, which removes a significant source of batch-to-batch variation. And the stabiliser package is there to slow the photo-oxidation that degrades polyester outdoors.",
+          "Everything else is conventional. It cures at room temperature with a peroxide catalyst and cobalt accelerator, and it is processed by continuous lamination, hand lay-up or spray-up like any other sheet resin.",
+        ],
+      },
+      {
+        heading: "What the stabiliser package actually does",
+        body: [
+          "There is no single thing called a UV stabiliser. Outdoor protection normally comes from at least two additives doing genuinely different jobs, and a resin described only as containing UV stabiliser is close to uninformative.",
+          "Ultraviolet absorbers are the first. Benzotriazoles, benzophenones and hydroxyphenyltriazines absorb ultraviolet photons and dissipate the energy harmlessly as low-level heat before it can start radical chemistry. They work well through the bulk of a laminate.",
+          "Hindered amine light stabilisers, universally shortened to HALS, are the second and they work on a different principle. Rather than absorbing light, they scavenge the radicals that form once damage has begun, through a regenerative cycle in which one molecule neutralises many radical events over the product's life.",
+          "The reason both are needed is a real limitation rather than a marketing point. An absorber works by absorbing light along a path, so its protection is proportional to how much material the light has already passed through. At the very surface there is no path length, so an absorber provides almost no protection exactly where it is needed most. HALS, acting on radicals rather than photons, cover that surface layer.",
+        ],
+      },
+      {
+        heading: "Why stabiliser selection matters more than stabiliser presence",
+        body: [
+          "HALS are weak bases, and protonation converts them to inactive salts. Acidic components in a formulation, including some acidic pigment surface treatments, can therefore deactivate them. Additive producers address this with non-basic HALS variants designed for acidic systems.",
+          "This matters in a polyester context because an unsaturated polyester carries an acid value by definition, and photo-oxidation of the ester generates further carboxylic acid groups as the product ages. The general principle, that basic HALS are vulnerable in acidic media and non-basic types are the answer, is well established in the additive literature.",
+          "What has not been published, as far as we are aware, is a quantified study of HALS deactivation specifically in cured polyester sheet laminates. So the honest conclusion is directional rather than numerical: which stabilisers were selected matters at least as much as whether stabilisers are present, and pigment choice and stabiliser choice are not independent decisions.",
+        ],
+      },
+      {
+        heading: "The pigment is doing real work too",
+        body: [
+          "Pigmentation is not only about appearance. An opaque pigmented sheet weathers by a different mechanism from a translucent one. In an opaque sheet, pigment particles scatter and absorb ultraviolet light within the first few tens of microns, concentrating the damage in a thin surface layer and shielding the laminate beneath. In a translucent sheet, light is deliberately allowed through, so degradation is distributed across the full thickness and every resin-to-glass interface.",
+          "Titanium dioxide is the workhorse pigment because it does two jobs at once: its very high refractive index scatters visible light for opacity, and it absorbs ultraviolet light. But there is a trade-off that a serious supplier should state. Titanium dioxide is a semiconductor photocatalyst, and the ultraviolet light it absorbs generates radicals that attack the surrounding polymer. The pigment that screens the ultraviolet also catalyses chalking.",
+          "The industry's answer is what separates a durable exterior formulation from a cheap one: use rutile rather than anatase, since rutile has roughly a tenth of the photocatalytic activity, and use grades with a dense inorganic surface treatment of alumina or silica that isolates the pigment from the binder.",
+        ],
+      },
+      {
+        heading: "Why yellow, and will it fade?",
+        body: [
+          "A yellow sheet is a deliberate product choice. Yellow and amber FRP sheeting diffuses and warms daylight rather than delivering glare, which suits sheds, poultry houses, workshops and industrial daylighting, and a strongly tinted sheet masks the glass mat pattern far longer than a clear one does.",
+          "Whether the yellow fades is a genuine question, and the honest answer is that it depends on which yellow. Lightfastness varies enormously within the yellow family. Complex inorganic colour pigments generally have good lightfastness, while diarylide organic yellows are known for poor lightfastness in exterior use. Two sheets that look identical when new can behave completely differently after two summers.",
+          "So the useful question to ask any supplier is not will it fade but which pigment class is used and what colour change was measured, over what exposure. Colour change is quantified as a delta E value against the as-made colour using a standard instrumental method, and that is the form a real answer takes.",
+        ],
+      },
+      {
+        heading: "Stabilisation is not the only defence, and should not be sold as one",
+        body: [
+          "Commercial outdoor sheets commonly combine bulk stabilisation with a surface protection layer, and they do so because the two fail differently and on different timescales.",
+          "A surfacing veil or resin-rich skin keeps glass fibre away from the weather face, delaying fibre bloom. A polyester or polyvinyl fluoride film laminated on during manufacture is a genuine physical barrier that excludes oxygen and screens ultraviolet light at the interface. Both protect the plane of the sheet, which is exactly where bulk stabilisation is structurally weakest.",
+          "Bulk stabilisation earns its keep everywhere the film does not reach: cut edges, drilled fastener holes, overlaps, the underside, and the whole laminate once a surface film has eventually weathered or lifted. Neither approach substitutes for the other, and a resin supplier who implies that a stabilised resin alone makes a sheet permanent is overselling.",
+        ],
+      },
+      {
+        heading: "What the Indian standards actually require",
+        body: [
+          "For the finished product, IS 12866 covers plastic translucent sheets made from glass-fibre-reinforced thermosetting polyester. It sets a minimum glass content of thirty per cent by weight determined by calcination, light-transmission classes, a water absorption limit, a limit on Barcol hardness change as an ageing criterion, bolt shear and load-deflection requirements, and a service temperature band. It explicitly permits light stabilisers in the resin, and it explicitly provides for a surfacing veil or a polyvinyl fluoride or polyester film on the weather face.",
+          "For the resin itself, IS 6746 covers unsaturated polyester resin systems. It is worth being precise about what it does, because it is frequently quoted as though it certified weatherability. IS 6746 sets tolerance bands around the manufacturer's declared values for viscosity, acid value, volatile content and gel time, with optional cured properties, and it classifies fire-retardant Types 1 and 2.",
+          "It contains no weathering, ultraviolet, light-stability or pigmentation requirement whatsoever. A resin can be fully IS 6746 compliant and carry no ultraviolet stabilisation at all. The resin enables conformity to the sheet standard; only the tested sheet achieves it.",
+        ],
+      },
+      {
+        heading: "What to establish before you buy",
+        body: [
+          "Describe your process first: continuous lamination, hand lay-up or spray-up, and your line speed if it is a continuous line, because gel time has to be matched to it. State the reinforcement, typically chopped strand mat, and note that mat binder solubility is often the real determinant of wet-out at speed.",
+          "State the finished product, its exposure, whether a surface film or veil is used, and the colour standard and how tightly it must match across batches. State your shop temperature range, since a cold season changes cure behaviour materially.",
+          "Samrat Poly Resins supplies this grade in 225 kg drums from Doraha, Punjab. Grade-specific values, and any weathering evidence, are confirmed at enquiry rather than published as generic figures here, because a weathering claim without its test method, cycle, duration and laminate construction is not a claim a buyer can use.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is this a UV-curing resin?",
+        a: "No. It cures at room temperature with a MEKP catalyst and cobalt accelerator. UV in the name describes resistance to sunlight in service. Lamp-cured photopolymers are a completely different product sold for 3D printing, craft and nail work.",
+      },
+      {
+        q: "How many years will my sheet last?",
+        a: "No resin supplier can answer that honestly from a drum. Service life depends on the exposure site and orientation, the laminate construction and thickness, the colour and opacity, any surface film, the degree of cure, and crucially on which failure criterion you are using. A resin controls one of those. What can be discussed is the evidence behind the formulation.",
+      },
+      {
+        q: "Can I just add UV stabiliser to ordinary GP resin myself?",
+        a: "Additives exist and are used at fractions of a percent, but there are real pitfalls. You need an absorber and a HALS working together, not one additive. The HALS type has to suit an acidic polyester system. The additive must be genuinely dissolved rather than stirred in as a slurry. And doing it at the fabricator means no batch-to-batch control and no certificate, which makes the outcome your liability rather than the resin maker's.",
+      },
+      {
+        q: "Will the yellow fade?",
+        a: "All pigmented outdoor products shift to some degree, and the magnitude depends heavily on the pigment class. Complex inorganic yellows generally have good lightfastness, while diarylide organic yellows are known for poor exterior lightfastness. The meaningful answer is a measured colour change over a stated exposure rather than a yes or no.",
+      },
+      {
+        q: "Will the sheet chalk?",
+        a: "Chalking is intrinsic to photo-oxidation, and titanium dioxide's photocatalytic activity contributes to it. Durable rutile grades with inorganic surface treatment plus an absorber and HALS package slow it considerably, but nothing eliminates it. Washing restores much of the appearance.",
+      },
+      {
+        q: "Does IS 6746 compliance mean the resin is UV stabilised?",
+        a: "No. IS 6746 sets tolerances around declared values for viscosity, acid value, volatile content and gel time, and classifies fire-retardant grades. It contains no ultraviolet or weathering requirement at all. A fully compliant resin may have no stabilisation whatsoever.",
+      },
+      {
+        q: "Do I still need a surface film or veil if the resin is stabilised?",
+        a: "For exposed roofing, generally yes. They defend against different mechanisms on different timescales. A film protects the plane of the sheet, which is where bulk stabilisation is weakest, but it does not protect cut edges or fastener holes, which is exactly where the stabilised resin earns its keep.",
+      },
+      {
+        q: "Why is the resin already coloured rather than pigment being added on my line?",
+        a: "Factory dispersion is done under controlled milling with instrumental colour checking, which removes a large source of batch-to-batch variation and puts dispersion quality, pigment and stabiliser compatibility and colour consistency on the resin maker rather than on your shop floor. The trade-off is less shade flexibility.",
+      },
+    ],
+    relatedSlugs: [
+      "uv-stabilized-resin-vs-uv-curing-resin",
+      "how-uv-degrades-frp-sheets",
+      "uv-stabilized-sheet-resin-applications",
+    ],
+    recommendedLinks: [
+      { href: "/products/uv-stabilized-sheet-grade-yellow-resin/", label: "View UV Stabilized Sheet Grade Yellow Resin", description: "See the published grade, packaging and enquiry route." },
+      { href: "/products/sheet-grade-yellow-resin/", label: "Compare standard Sheet Grade Yellow Resin", description: "The general sheet grade without the stabiliser package." },
+      { href: "/contact/", label: "Discuss a sheet requirement", description: "Send your process, line speed and exposure." },
+    ],
+  },
+
+  {
+    slug: "how-uv-degrades-frp-sheets",
+    title: "How Sunlight Degrades FRP Sheets: Yellowing, Chalking, Fibre Bloom",
+    description:
+      "Photo-oxidation explained properly: why the ester and the styrene crosslinks are the weak points, why damage stays in a thin surface layer, why a sheet can get stiffer while getting worse, and why fibre bloom is a runaway loop rather than a cosmetic endpoint.",
+    category: "Technical Data",
+    icon: "sun",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "How UV Degrades FRP Sheets: The Real Mechanism",
+      description:
+        "Photo-oxidation of polyester FRP: chain scission, yellowing chromophores, chalking, fibre bloom and the wicking loop, plus how each symptom is measured.",
+      keywords: [
+        "FRP sheet UV degradation",
+        "why FRP sheets turn yellow",
+        "FRP chalking",
+        "fibre bloom FRP",
+        "polyester photo oxidation",
+        "FRP sheet weathering",
+      ],
+      ogTitle: "How Sunlight Actually Degrades FRP Sheet",
+      ogDescription: "The mechanism behind yellowing, chalking and fibre bloom, and why it stays in a thin surface layer.",
+    },
+    quickFacts: {
+      "Requires": "Light and oxygen together, not light alone",
+      "Weak points": "The ester carbonyl and the polystyrene crosslinks",
+      "Where it happens": "A thin surface layer, on the order of tens of microns",
+      "Counter-intuitive": "A weathered laminate can get stiffer while getting worse",
+      "Worst outcome": "Fibre bloom, which starts a self-feeding wicking loop",
+      "Measured by": "Colour change, gloss, light transmission and property retention",
+    },
+    sections: [
+      {
+        heading: "It is photo-oxidation, not UV burning",
+        body: [
+          "Sunlight alone does comparatively little. The damaging process needs ultraviolet light and oxygen together, and it runs as a self-sustaining radical chain: initiation when a chromophoric impurity absorbs light, propagation when the resulting radical reacts with oxygen to form a peroxy radical, chain branching when the hydroperoxide formed splits into two further radicals, and eventual termination.",
+          "The chain-branching step is what makes weathering accelerate rather than proceed linearly. One absorbed photon can eventually produce many damaging radicals, which is why a sheet that looks fine for several seasons can deteriorate noticeably in the ones that follow.",
+          "It also explains why stabilisation works the way it does. An absorber reduces initiation by soaking up photons; a HALS interrupts propagation by scavenging radicals. Attacking one step alone leaves the other running.",
+        ],
+      },
+      {
+        heading: "Two weak points in a cured polyester",
+        body: [
+          "A cured unsaturated polyester is not one material but two joined together: a polyester backbone crosslinked through polystyrene bridges. Both are vulnerable, in different ways.",
+          "The ester carbonyl is the first. Excited carbonyl groups undergo direct cleavage of the backbone, and photo-oxidation of the carbon adjacent to the carbonyl converts it to an anhydride which then hydrolyses, cleaving the chain and leaving acid end groups behind. This is the route that ties sunlight exposure to both chain scission and surface bleaching.",
+          "The polystyrene crosslinks are the second, and they are the main source of yellowing. Photo-oxidation of those aromatic units forms quinone and related structures whose extended conjugation absorbs blue light. What the eye reads as yellowing, and later browning, is the accumulation of those oxidation products.",
+        ],
+      },
+      {
+        heading: "It is a surface phenomenon, and that changes everything",
+        body: [
+          "Studies of weathered glass-reinforced polyester find the products of photo-oxidative degradation confined to a thin subsurface layer, on the order of a few tens of microns. Everything a buyer complains about happens in that skin.",
+          "This has three practical consequences. It explains why a surface film or a resin-rich veil is disproportionately effective for its cost. It explains why an ultraviolet absorber, whose protection depends on light having already travelled through material, is structurally weak at exactly the depth that matters. And it explains why washing a chalked sheet restores much of its appearance: the damage really is only skin deep, until erosion exposes the layer beneath.",
+        ],
+      },
+      {
+        heading: "Why a weathered sheet can get stiffer while getting worse",
+        body: [
+          "This is the least intuitive part and it matters commercially, because stiffness is often used as informal evidence that a sheet is healthy.",
+          "Chain scission and additional crosslinking happen at the same time. Residual unreacted styrene continues to post-cure under service exposure, and trapped radicals recombine into further crosslinks. In laboratory work on glass-reinforced polyester, samples have gained measurable flexural strength during exposure while their surfaces were simultaneously eroding and exposing fibre.",
+          "So stiffness up does not mean healthy. Toughness and appearance move the other way, and impact and flexural retention, rather than hardness, are the properties worth specifying and tracking.",
+        ],
+      },
+      {
+        heading: "The damage sequence, symptom by symptom",
+        body: [
+          "Loss of gloss comes first and is the earliest measurable signal. Micro-roughening of the degraded surface scatters light that previously reflected specularly.",
+          "Yellowing follows, from the quinone and conjugated structures formed out of the aromatic units. It is measured as a colour difference against the original, not judged by eye.",
+          "Chalking appears as a powder that wipes off. Chain scission liberates low-molecular-weight fragments and leaves loose pigment and degraded polymer at the surface, and titanium dioxide's photocatalytic activity contributes directly to it.",
+          "Fibre bloom is the serious one. Resin erodes preferentially and glass does not, so the reinforcement gradually becomes prominent at the surface. Loss of light transmission, in translucent sheet, is the combined result of yellowing absorbing light, surface roughness scattering it and fibre bloom scattering it again at every exposed resin-to-glass interface.",
+          "Embrittlement and crazing complete the sequence, as net chain scission in the surface layer creates crack initiation sites.",
+        ],
+      },
+      {
+        heading: "Fibre bloom is a loop, not an endpoint",
+        body: [
+          "Once fibres are exposed at the surface, they create paths along which moisture wicks beneath the surface. Water at the fibre-to-matrix interface degrades the bond, which loosens more resin, which exposes more fibre.",
+          "That is a self-feeding cycle rather than a state that stabilises, and it is why the point at which fibre first becomes visible is a far more important milestone than it looks. It is also the strongest practical argument for keeping glass away from the weather face, through a resin-rich surface, a surfacing veil or a film, rather than relying on stabilisation alone.",
+        ],
+      },
+      {
+        heading: "How the industry measures all of this",
+        body: [
+          "Accelerated weathering uses either fluorescent ultraviolet cabinets or xenon-arc cabinets. Fluorescent testing, typically with UVA-340 or the more aggressive UVB-313 lamps combined with condensation cycles, is fast and good for ranking formulations. Xenon-arc testing reproduces the full spectrum including visible and infrared, and is the appropriate choice when colour is the property in question, because fluorescent lamps do not reproduce the visible spectrum well.",
+          "Natural exposure on outdoor racks remains the reference against which accelerated results are validated, and the two are not interchangeable.",
+          "The appearance properties are measured as instrumental colour difference, specular gloss at a stated geometry, and, for translucent sheet, haze and luminous transmittance. Cure state is checked by Barcol impressor hardness, and glass content by burn-off. Mechanical retention uses standard tensile and flexural methods.",
+        ],
+      },
+      {
+        heading: "Why accelerated hours do not convert into years",
+        body: [
+          "This is the question every buyer asks, and the honest answer is that no conversion exists. Acceleration factors cannot be calculated from first principles; they have to be measured, and a measured factor is specific to the two tests being compared, to the material, and to the particular property being tracked. A factor derived for gloss loss on one formulation does not transfer to colour change on another.",
+          "Accelerated testing does several things genuinely well. It ranks formulations against each other under identical conditions, detects gross formulation errors quickly, and supports quality control and batch consistency. What it does not do is predict calendar life.",
+          "Two further cautions are worth carrying into any supplier conversation. A weathering result is not even interpretable without its full operating conditions: which standard, which lamp or filter, what irradiance, what panel temperature, what wet cycle and what specimen construction. And accelerated methods explicitly exclude localised effects such as atmospheric pollution, biological growth and salt exposure, which in coastal or industrial sites can matter as much as the sunlight.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Why do FRP sheets turn yellow?",
+        a: "Mainly because of the polystyrene crosslinks rather than the polyester backbone. Photo-oxidation of those aromatic units forms quinone and related conjugated structures that absorb blue light, which the eye reads as yellowing and eventually browning. Residual unreacted styrene contributes as well, which is one reason complete cure matters.",
+      },
+      {
+        q: "Is chalking a manufacturing defect?",
+        a: "No, it is the expected end state of surface photo-oxidation. Chain scission releases low-molecular-weight fragments and leaves loose pigment at the surface, and titanium dioxide's photocatalytic activity accelerates it. Formulation slows it considerably; nothing prevents it. Washing restores much of the appearance.",
+      },
+      {
+        q: "My sheet feels harder than when it was new. Is that good?",
+        a: "Not necessarily. Chain scission and additional crosslinking run at the same time, and residual styrene continues post-curing in service, so stiffness can rise while toughness and appearance decline. Impact and flexural retention are better indicators of condition than hardness.",
+      },
+      {
+        q: "What is fibre bloom and why does it matter so much?",
+        a: "It is the reinforcement becoming prominent at the surface as resin erodes preferentially. It matters because it is self-feeding: exposed fibres wick moisture beneath the surface, which degrades the fibre-to-matrix bond, which exposes more fibre. Keeping glass away from the weather face is the practical defence.",
+      },
+      {
+        q: "How many QUV hours equals how many years outdoors?",
+        a: "There is no conversion. Acceleration factors have to be measured rather than calculated, and any measured factor applies only to the specific pair of tests, the specific material and the specific property tracked. Accelerated testing ranks formulations well; it does not predict calendar life.",
+      },
+      {
+        q: "Does a weathering result mean anything without its test conditions?",
+        a: "No. A number of hours is uninterpretable on its own. You need the standard, the lamp or filter type, the irradiance, the panel temperature, the wet cycle, the specimen construction and which property was tracked to which limit.",
+      },
+      {
+        q: "Will a sheet weather faster in India than in a temperate climate?",
+        a: "Generally yes. Temperature accelerates every step of the oxidation chain, so hot, high-ultraviolet regions weather material faster. Coastal salt and industrial pollution add further effects that standard accelerated weathering methods explicitly do not simulate.",
+      },
+    ],
+    relatedSlugs: [
+      "what-is-uv-stabilized-sheet-grade-resin",
+      "uv-stabilized-resin-vs-uv-curing-resin",
+      "uv-stabilized-sheet-resin-applications",
+    ],
+    recommendedLinks: [
+      { href: "/products/uv-stabilized-sheet-grade-yellow-resin/", label: "View UV Stabilized Sheet Grade Yellow Resin", description: "The pre-pigmented outdoor sheet grade." },
+      { href: "/products/roof-light-resin/", label: "View Roof Light Sheet Grade Resin", description: "The published translucent roofing sheet route." },
+      { href: "/contact/", label: "Ask about weathering evidence", description: "Request the test basis behind a durability discussion." },
+    ],
+  },
+
+  {
+    slug: "uv-stabilized-sheet-resin-applications",
+    title: "UV Stabilised Sheet Resin Applications: Outdoor FRP Sheet and Panel",
+    description:
+      "Roofing and cladding sheet, skylights and canopies, cooling tower casings, truck bodies, portable cabins and agricultural sheeting. Where a stabilised pre-pigmented sheet resin is specified, and what each process needs from it.",
+    category: "Application Guide",
+    icon: "factory",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "UV Stabilised Sheet Resin Applications and Uses",
+      description:
+        "Where UV-stabilised pre-pigmented polyester sheet resin is used: roofing, cladding, canopies, cooling towers, transport panels and agricultural sheeting.",
+      keywords: [
+        "FRP roofing sheet resin",
+        "FRP cladding panel resin",
+        "cooling tower panel resin",
+        "agricultural FRP sheet",
+        "continuous lamination resin",
+      ],
+      ogTitle: "Where UV Stabilised Sheet Resin Is Used",
+      ogDescription: "Outdoor FRP sheet and panel applications, and what each process demands.",
+    },
+    quickFacts: {
+      "Primary process": "Continuous lamination for corrugated and flat sheet",
+      "Also used in": "Hand lay-up and spray-up for panels and mouldings",
+      "Reinforcement": "Chopped strand mat, where binder solubility drives wet-out",
+      "Indian sheet standard": "IS 12866, minimum thirty per cent glass by weight",
+      "Not needed for": "Indoor parts permanently out of sunlight",
+    },
+    sections: [
+      {
+        heading: "The common requirement",
+        body: [
+          "Every application below puts the finished part in sunlight for years and asks it to keep its appearance and its integrity. The failure modes are the ones described in the weathering guide: gloss loss, yellowing, chalking and eventually fibre bloom.",
+          "If a part lives indoors, none of that applies and a standard sheet grade is the sensible and cheaper choice. Over-specifying here buys a property the part never uses.",
+        ],
+      },
+      {
+        heading: "Roofing and cladding sheet",
+        body: [
+          "Corrugated and flat FRP roofing and wall cladding sheet is the core application, usually produced on a continuous lamination line. The sheet is expected to last through many summers on a roof with minimal maintenance, which makes the surface system and the stabiliser package the decisive factors rather than the laminate's strength.",
+          "For the Indian market, IS 12866 is the governing standard for translucent glass-reinforced polyester sheet. It sets a minimum glass content of thirty per cent by weight verified by calcination, defines light-transmission classes, limits water absorption, uses a limit on Barcol hardness change as an ageing criterion, and specifies bolt shear and load-deflection requirements along with a service temperature band.",
+          "It also explicitly permits light stabilisers in the resin and provides for a surfacing veil or a polyvinyl fluoride or polyester film on the weather face, which is a useful reminder that the standard treats resin stabilisation and surface protection as complementary rather than alternative.",
+        ],
+      },
+      {
+        heading: "Skylights, daylighting panels and canopies",
+        body: [
+          "Translucent sheet used for skylights and daylighting strips is the hardest weathering case, because the product is sold on light transmission and ultraviolet light is deliberately allowed through the full thickness. Degradation is distributed rather than confined to a surface, and the commercially relevant failure, loss of transmission, is caused by exactly the property the product exists to provide.",
+          "A pigmented yellow or amber sheet sits at the other end of that trade-off. It diffuses and warms daylight rather than maximising it, and the opacity that reduces transmission also shields the laminate and masks fibre pattern for far longer.",
+          "Awnings, canopies and porch roofing share the requirement with less emphasis on transmission and more on appearance retention.",
+        ],
+      },
+      {
+        heading: "Cooling towers, industrial panels and enclosures",
+        body: [
+          "Cooling tower casings, louvres and panel components combine sunlight with constant wetting and, often, treated water chemistry. Industrial panels, plant enclosures and equipment covers add incidental chemical contact and cleaning.",
+          "These parts are typically produced by hand lay-up or spray-up rather than on a continuous line, which changes what the resin has to do: wet-out behaviour, thixotropy on vertical surfaces and working time at shop temperature matter more than line speed.",
+        ],
+      },
+      {
+        heading: "Transport bodies, portable cabins and agricultural sheeting",
+        body: [
+          "Truck and trailer body panels, refrigerated panel skins and bus and rail exterior components need weathering performance combined with a presentable, consistent surface across large areas, which puts colour consistency between batches high on the requirement list.",
+          "Portable cabins, bunk houses and site accommodation use FRP panels for the same reasons with a longer tolerance for appearance change.",
+          "Agricultural and poultry-shed sheeting is a large and under-discussed application. Here the diffused, warmed light from a yellow or amber sheet is a functional benefit rather than a compromise, and the economics reward a sheet that stays serviceable rather than one that stays pristine.",
+        ],
+      },
+      {
+        heading: "What each process asks of the resin",
+        body: [
+          "Continuous lamination is the most demanding on reactivity. Reinforcement is laid onto a carrier film, resin is applied by dip, spray or roller, compaction rollers consolidate and de-air the laminate, and cure runs through heated rollers or an oven before the sheet is formed and cut. Gel time has to be matched to line speed, and wet-out has to happen in the seconds available, which makes mat binder solubility a critical and often overlooked variable.",
+          "Hand lay-up and spray-up are more forgiving on timing but place more weight on wet-out quality, air release and thixotropy. Glass content is typically lower than on a continuous line, and more variable.",
+          "Across all of them, resin-to-glass ratio at the surface and completeness of cure govern outdoor life. Too little resin at the weather face puts glass near the surface and starts fibre bloom immediately. Undercure leaves a softer, more permeable surface with more extractable material and continued dimensional change.",
+        ],
+      },
+      {
+        heading: "What to send with an enquiry",
+        body: [
+          "Name the finished product and its exposure. State the process and, for a continuous line, the line speed. State the reinforcement type and weight, the target glass content, and whether a surfacing veil or film is used on the weather face.",
+          "State the colour standard and the batch-matching tolerance you need, your shop or line temperature range across the seasons, and whether you are working to IS 12866 or another finished-product specification. Then the commercial details: quantity, call-off pattern, packaging and delivery location.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is this resin suitable for continuous lamination lines?",
+        a: "It is formulated for FRP sheet and panel work, and continuous lamination is the primary process for corrugated and flat sheet. Because gel time has to be matched to line speed, state your line speed at enquiry so reactivity can be discussed against it rather than assumed.",
+      },
+      {
+        q: "What glass content do I need for IS 12866?",
+        a: "The standard requires a minimum of thirty per cent glass by weight, determined by calcination. That is an auditable test rather than an estimate, so glass content claims are checkable and should be stated precisely.",
+      },
+      {
+        q: "Why does mat binder matter more than I expect?",
+        a: "On a continuous line the mat has only seconds to conform and wet out. If the binder does not break down quickly in the styrene, the mat will not conform and shows as white patches in the finished sheet. Binder solubility is often the real wet-out variable rather than resin viscosity.",
+      },
+      {
+        q: "Can I use this resin for translucent skylight sheet?",
+        a: "This grade is pre-pigmented yellow, so it is opaque or strongly tinted rather than water clear. For high light transmission the roof light sheet grade route is the relevant product. A tinted sheet trades transmission for better shielding of the laminate and longer masking of fibre pattern.",
+      },
+      {
+        q: "Is it suitable for cooling tower components?",
+        a: "Cooling tower casings and panels combine sunlight with constant wetting, which is a reasonable fit. Mention the water chemistry, since treated circulating water can raise questions that belong with the corrosion-resistant grades rather than a sheet grade.",
+      },
+      {
+        q: "Do I need this grade for indoor panels?",
+        a: "No. If the part is permanently out of sunlight the stabiliser package does nothing for it, and a standard sheet grade will perform the same for less. Save this grade for parts that are genuinely exposed.",
+      },
+    ],
+    relatedSlugs: [
+      "what-is-uv-stabilized-sheet-grade-resin",
+      "how-uv-degrades-frp-sheets",
+      "uv-stabilized-vs-standard-sheet-grade-yellow-resin",
+    ],
+    recommendedLinks: [
+      { href: "/products/uv-stabilized-sheet-grade-yellow-resin/", label: "View UV Stabilized Sheet Grade Yellow Resin", description: "See the published grade, packaging and enquiry route." },
+      { href: "/applications/resin-for-roofing-sheet-manufacturing/", label: "Resin for roofing sheet manufacturing", description: "The application guide for FRP roofing production." },
+      { href: "/contact/", label: "Send your line details", description: "Process, line speed, reinforcement and exposure." },
+    ],
+  },
+
+  {
+    slug: "uv-stabilized-vs-standard-sheet-grade-yellow-resin",
+    title: "UV Stabilised vs Standard Sheet Grade Yellow Resin",
+    description:
+      "Samrat publishes two yellow sheet grades and they are not interchangeable. What the stabiliser package adds, when the standard grade is the correct and cheaper choice, and how to decide without guessing from the name.",
+    category: "Comparison Guide",
+    icon: "compare",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "UV Stabilised vs Standard Sheet Grade Yellow Resin",
+      description:
+        "Two yellow sheet grades compared: what UV stabilisation adds, where the standard grade is sufficient, and how to choose for your finished product.",
+      keywords: [
+        "sheet grade yellow resin comparison",
+        "UV stabilized sheet resin",
+        "which sheet grade resin",
+        "FRP sheet resin selection",
+      ],
+      ogTitle: "UV Stabilised vs Standard Sheet Grade Yellow",
+      ogDescription: "What the stabiliser package adds, and when you do not need it.",
+    },
+    quickFacts: {
+      "Shared": "Both are pre-pigmented yellow polyester sheet grades",
+      "Standard grade": "General FRP sheet and panel manufacturing",
+      "UV stabilised grade": "Adds a light-stabiliser package for outdoor exposure",
+      "Choose standard when": "The finished part lives indoors or has a short service life",
+      "Choose stabilised when": "The part is in sunlight for years",
+      "Both cure": "At room temperature with MEKP and cobalt",
+    },
+    sections: [
+      {
+        heading: "Two grades, one colour, different jobs",
+        body: [
+          "Samrat Poly Resins publishes Sheet Grade Yellow Resin and UV Stabilized Sheet Grade Yellow Resin as separate products. They share a colour and a process family, which makes them easy to confuse on a product list.",
+          "The difference is the light-stabiliser package. The standard grade is supplied for general FRP sheet and panel manufacturing. The stabilised grade adds a formulation intended to slow photo-oxidation in parts that live in sunlight.",
+          "Neither is a general upgrade on the other. They answer different questions about where the finished part will spend its life.",
+        ],
+      },
+      {
+        heading: "What stays the same",
+        body: [
+          "Both are unsaturated polyester resins, both are supplied with the yellow pigment already dispersed at the factory rather than added at the laminating stage, and both cure at room temperature with a peroxide catalyst and cobalt accelerator.",
+          "Both are used in the same processes: continuous lamination for sheet, and hand lay-up or spray-up for panels and mouldings. A laminator moving between them would not change their working method.",
+          "Pre-pigmentation is worth noting as a shared advantage over adding colour on the line. Factory dispersion is done under controlled milling with instrumental colour checking, which removes a significant source of batch-to-batch variation and moves dispersion quality and pigment compatibility onto the resin maker.",
+        ],
+      },
+      {
+        heading: "What the stabilised grade adds",
+        body: [
+          "A light-stabiliser package, which in practice means more than one additive doing different jobs. Ultraviolet absorbers reduce initiation by soaking up photons through the bulk of the laminate, and hindered amine light stabilisers scavenge radicals, including at the very surface where an absorber is structurally weak.",
+          "The targeted failure modes are the ones that define outdoor FRP: gloss loss, yellowing, chalking and eventually fibre bloom. All of them originate in a thin surface layer, and all of them get worse faster in hot, high-ultraviolet conditions.",
+          "What it does not add is a different strength, a different cure, a fire classification or a guarantee. Stabilisation slows photo-oxidation; it does not stop it, and it does not change what the laminate is.",
+        ],
+      },
+      {
+        heading: "When the standard grade is the right answer",
+        body: [
+          "Indoor panels, partitions and linings. Parts that are permanently out of direct sunlight simply never call on the stabiliser package, and paying for it is spending on an unused property.",
+          "Short-service-life or consumable products, temporary structures and formwork, where the part will be replaced long before weathering becomes the limiting factor.",
+          "Products where a surface film or gelcoat does the ultraviolet work, and the laminating resin behind it is not the exposed surface. Even here, be careful: cut edges and fastener holes are not covered by a film, so the calculation depends on the construction.",
+        ],
+      },
+      {
+        heading: "When the stabilised grade earns its cost",
+        body: [
+          "Roofing and cladding sheet, canopies, awnings and any product expected to serve for years on a roof or a wall.",
+          "Agricultural and poultry-shed sheeting, portable cabins, cooling tower components and transport body panels, all of which combine sunlight with a service life measured in years.",
+          "Any product where the buyer's own customer will judge the sheet on appearance after several seasons, or where a warranty conversation is likely. In that case the stabiliser package is not just a durability decision but a commercial one.",
+        ],
+      },
+      {
+        heading: "How to decide without guessing",
+        body: [
+          "Ask one question first: will the finished part be in direct sunlight, and for how long is it expected to stay serviceable? Indoors or under a year, the standard grade. Outdoors for years, the stabilised grade.",
+          "Then ask a second: does the construction already carry a surface film or veil on the weather face, and are cut edges and fastener holes exposed? A film shifts the balance but does not remove the case for stabilisation, because the film does not protect everywhere.",
+          "Neither grade currently carries a published technical data sheet, so grade-specific values are confirmed at enquiry. That makes it more important, not less, to describe the finished product and its exposure rather than choosing from the product name.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is the UV stabilised grade simply a better version of the standard grade?",
+        a: "Not in general. It adds a light-stabiliser package aimed at outdoor service. For an indoor part that package does nothing useful, so the standard grade is the better choice on cost with no performance penalty.",
+      },
+      {
+        q: "Can I substitute one for the other on my line?",
+        a: "They are in the same process family, but reactivity and handling are not guaranteed identical between grades. Trial before switching production, and confirm gel time behaviour at your line speed and shop temperature.",
+      },
+      {
+        q: "Do both grades have the same yellow colour?",
+        a: "Both are supplied pre-pigmented yellow, but they are separate products and you should not assume an exact colour match between them. If you need a match to existing stock, raise it explicitly and work from a physical reference rather than the product name.",
+      },
+      {
+        q: "If I use a surface film, do I still need the stabilised grade?",
+        a: "It depends on the construction. A film protects the plane of the sheet but not cut edges, drilled fastener holes, overlaps or the underside, and it can eventually weather or lift. Bulk stabilisation covers what the film does not, so the two are complementary rather than alternative.",
+      },
+      {
+        q: "Does either grade carry a fire classification?",
+        a: "Fire performance is a separate formulation question and belongs with the fire-retardant grades. Neither of these sheet grades should be assumed to carry a fire classification, and any project fire requirement should be raised in its original wording.",
+      },
+      {
+        q: "Which grade meets IS 12866?",
+        a: "IS 12866 is a standard for the finished translucent sheet, not for the resin. A resin enables conformity; only a tested sheet achieves it. The standard permits light stabilisers in the resin and provides for a veil or film on the weather face, so both the grade choice and the construction matter.",
+      },
+    ],
+    relatedSlugs: [
+      "what-is-uv-stabilized-sheet-grade-resin",
+      "what-is-sheet-grade-yellow-resin",
+      "how-uv-degrades-frp-sheets",
+    ],
+    recommendedLinks: [
+      { href: "/products/uv-stabilized-sheet-grade-yellow-resin/", label: "View UV Stabilized Sheet Grade Yellow Resin", description: "The stabilised outdoor sheet grade." },
+      { href: "/products/sheet-grade-yellow-resin/", label: "View Sheet Grade Yellow Resin", description: "The standard sheet and panel grade." },
+      { href: "/tools/resin-selector/", label: "Find the right grade", description: "Answer four questions and see the grades that match." },
+    ],
+  },
+
+  {
+    slug: "what-is-polyester-putty-resin",
+    title: "What Is Polyester Putty Resin? The Base Resin Behind Body Filler",
+    description:
+      "Polyester putty resin is what a putty manufacturer buys, not what a body shop buys. Understand the difference, what the resin has to do once it carries fifty per cent filler, why it is usually pre-accelerated, and what that means for safety.",
+    category: "Technical Guide",
+    icon: "flask",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "What Is Polyester Putty Resin? Body Filler Base Resin",
+      description:
+        "The unsaturated polyester resin used to manufacture body filler and putty: what it must do at high filler loading, why it is often pre-accelerated, and who buys it.",
+      keywords: [
+        "polyester putty resin",
+        "body filler resin",
+        "putty base resin",
+        "unsaturated polyester putty",
+        "body filler manufacturing",
+        "polyester stopper resin",
+      ],
+      ogTitle: "Polyester Putty Resin Explained",
+      ogDescription: "The base resin behind body filler, and what a putty formulator actually needs from it.",
+    },
+    quickFacts: {
+      "What it is": "An unsaturated polyester resin formulated as a putty base",
+      "Who buys it": "Putty and body-filler manufacturers, in bulk",
+      "Who does not": "Body shops, who buy the finished two-part paste",
+      "Typical finished putty": "Roughly a third resin, half mineral filler, the rest styrene",
+      "Often supplied": "Pre-thixotroped and pre-accelerated with a built-in amine",
+      "Safety consequence": "Never add peroxide and accelerator together",
+    },
+    sections: [
+      {
+        heading: "Two different products share one name",
+        body: [
+          "The most important thing to establish first is who buys what. Polyester putty, known in most markets as body filler, is the spreadable paste a body shop mixes with a coloured hardener and applies to a panel. Polyester putty resin is the liquid unsaturated polyester that a putty manufacturer buys by the drum and turns into that paste.",
+          "Samrat Poly Resins supplies the resin. The customer is the formulator who charges it to a disperser and adds talc, carbonate, microspheres, fumed silica and pigment under shear. The body shop never sees this product.",
+          "Both audiences search the same words, which is why this guide covers the resin properly and the guides alongside it answer the workshop questions separately.",
+        ],
+      },
+      {
+        heading: "What is actually in a finished putty",
+        body: [
+          "A finished body filler is an unsaturated polyester dissolved in styrene, heavily loaded with mineral and hollow fillers, thixotroped, pigmented and supplied as a paste. Published analyses of commercial repair putties put the composition envelope at roughly a third unsaturated polyester, ten to twenty per cent styrene, and something close to half the mass as inorganic filler.",
+          "Patent literature describes total filler anywhere from a quarter to eighty per cent by weight, with the practical preference sitting in the thirty-five to sixty per cent band. Whichever figure you take, the headline is the same: more than half of what a putty maker sells is not resin.",
+          "That single fact drives the whole specification. The resin has to accept an enormous mineral load and still behave like a knife-spreadable paste that does not slump off a vertical door skin, cures reliably in a humid workshop, and sands cleanly minutes later.",
+        ],
+      },
+      {
+        heading: "Why putty resin is usually pre-accelerated, and why that matters for safety",
+        body: [
+          "Most putty-grade resins are supplied pre-thixotroped and pre-accelerated, with a tertiary amine promoter already in the drum. Peroxide producers describe the two-component putty architecture in exactly these terms: a paste or powder side carrying filler, pigment and the peroxide, and a liquid side that is polyester resin with a built-in amine accelerator.",
+          "This is a commercial convenience and a technical necessity. It lets the formulator set working time by balancing the peroxide level on one side against the amine level on the other, and it means the finished putty cures on demand at ambient temperature.",
+          "It also carries the single most important safety consequence on this page. If the resin already contains an amine accelerator, then a drum of it is a drum of accelerated resin. Peroxides and accelerators must never be brought together directly, because the reaction can be violent. The correct order is always accelerator into resin first and peroxide last, each handled separately. A plant receiving pre-accelerated resin needs to know that before the first delivery, not after.",
+        ],
+      },
+      {
+        heading: "What a putty formulator actually asks of the resin",
+        body: [
+          "Filler acceptance comes first. The resin must wet out and carry the target mineral load and still spread. Low resin viscosity buys loading headroom, but too low and the paste sags. Resin demand depends as much on the filler's oil absorption and particle shape as on the resin itself.",
+          "Thixotropy is second. The paste must yield instantly under the spreader and rebuild before gel. Some resins come pre-thixotroped; others leave it to the formulator's fumed silica and microcrystalline talc. There is no industry-standard thixotropic index for putty, so any figure is meaningless without the spindle, the speeds, the temperature and the equilibration time.",
+          "Then reactivity and pot life, where gel time at twenty-five degrees is the most quoted number and is a property of the supplied pre-accelerated resin rather than of the peroxide dose alone. Then base colour, because a dark resin forecloses light-coloured putties. Then adhesion, shrinkage, sandability, thin-film surface cure, styrene content and shelf stability.",
+        ],
+      },
+      {
+        heading: "Adhesion is a resin-level property, not just a preparation question",
+        body: [
+          "It is tempting to treat adhesion as the body shop's problem, solved by sanding to the right grit. It is partly a resin problem too, and the clearest evidence is galvanised steel.",
+          "Zinc coatings interfere with the interfacial cure of materials that harden by free-radical polymerisation, which retards cure at the bond line and delays the point at which the repair can be sanded. Patent literature exists specifically to address adhesion failure on galvanised sheet, and backbone chemistry is one of the levers: dicyclopentadiene-backbone putty resins are marketed on exactly this property.",
+          "So when a formulator asks whether a resin sticks to galvanised and aluminium rather than only to cold-rolled steel, that is a substantive question about the resin, and the answer should come with a test method and a stated failure mode rather than a yes.",
+        ],
+      },
+      {
+        heading: "Air inhibition and why putty resins are sold on air drying",
+        body: [
+          "Free-radical cure of unsaturated polyester is inhibited by atmospheric oxygen at the exposed surface. Left unaddressed it produces the classic complaint of a filler that is hard underneath and tacky on top, sometimes persisting for a very long time.",
+          "The conventional countermeasure is a small quantity of paraffin wax that is incompatible with the resin, migrates to the surface during cure and forms a physical oxygen barrier. Putty resins are therefore often described by their air-drying or tack-free character, and that is a genuinely separate property from through-cure and from sandability.",
+          "This matters commercially because the sanding window is the formulator's main selling point to a body shop. A putty that cannot be sanded promptly costs labour on every repair.",
+        ],
+      },
+      {
+        heading: "Backbone chemistry changes the putty",
+        body: [
+          "Putty-grade resins are built on orthophthalic, isophthalic or dicyclopentadiene backbones, and the choice is not cosmetic.",
+          "Dicyclopentadiene grades are associated with lower cure shrinkage, faster surface cure and better adhesion to galvanised sheet, which is why several commercial putty resins use them. Orthophthalic grades are the cost-driven route and typically accept high filler loading. Isophthalic grades appear where moisture resistance in the cured putty matters more.",
+          "Cure shrinkage is worth understanding here. All of it comes from the crosslinking of styrene with the polyester, so a heavily filled putty shrinks far less than the neat resin simply because half of it is inert mineral. Excess shrinkage shows up downstream as edge mapping and sand-scratch telegraphing through the topcoat, which is the body shop's complaint but the formulator's problem.",
+        ],
+      },
+      {
+        heading: "What to establish before you buy",
+        body: [
+          "State your filler package and loading target, your mixing equipment, and whether you use hollow microspheres, since those constrain the shear you can apply. State the working time and sanding window you are selling to, your target colour, and which peroxide system your finished product uses.",
+          "Ask the supplier whether the grade is pre-accelerated and with what, what peroxide system it is designed for, what the shelf life and gel-time drift behaviour are, and what parameters appear on the batch certificate.",
+          "Samrat Poly Resins manufactures Polyester Putty Resin at Doraha, Punjab. Grade-specific values are confirmed at enquiry rather than published as generic figures, because a gel time or viscosity quoted without the peroxide system, the temperature and the measurement conditions is not usable by a formulator.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is this the finished body filler I can buy in a tin?",
+        a: "No. This is the base resin that putty manufacturers buy in bulk to make that product. The finished filler additionally contains mineral and hollow fillers, thixotropes and pigment, and is supplied with a matched hardener paste. If you need filler for a repair, you want a finished two-part putty rather than this resin.",
+      },
+      {
+        q: "Is polyester putty resin the same as PET?",
+        a: "No, and the distinction matters. PET is polyethylene terephthalate, a saturated thermoplastic polyester that is melted and re-melted. Putty resin is an unsaturated polyester thermoset: a liquid pre-polymer in styrene that crosslinks irreversibly and cannot be re-melted. Both carry the word polyester and neither substitutes for the other.",
+      },
+      {
+        q: "Is the resin pre-accelerated?",
+        a: "Putty-grade resins commonly are, with a tertiary amine promoter already present, which is what allows the finished two-part putty to cure at ambient temperature. Confirm it for the specific grade at enquiry, because it changes both how you formulate and how you must handle peroxides in your plant.",
+      },
+      {
+        q: "Why can I not mix peroxide and accelerator together?",
+        a: "Because the reaction between a concentrated peroxide and an accelerator can be violent. The correct sequence is always accelerator into the resin first and peroxide last, with each handled separately. This is especially important with a pre-accelerated resin, since the accelerator is already in the drum when it arrives.",
+      },
+      {
+        q: "How much filler will the resin accept?",
+        a: "Finished putties commonly run around half their mass as inorganic filler, but the achievable loading depends on the filler's oil absorption and particle shape as much as on the resin. Talc without a wetting aid is often described as topping out around half, with substantially more possible when a wetting aid is used.",
+      },
+      {
+        q: "Does polyester putty shrink?",
+        a: "The neat resin shrinks materially on cure, because all of it comes from crosslinking. A heavily filled putty shrinks far less, since about half of it is inert mineral that does not participate. Thick application, over-catalysing and sanding too early all make the visible result worse.",
+      },
+      {
+        q: "Which backbone should a putty resin use?",
+        a: "It depends on what you are selling. Dicyclopentadiene grades are associated with lower shrinkage, fast surface cure and better adhesion to galvanised sheet. Orthophthalic is the cost-driven route with good filler acceptance. Isophthalic appears where moisture resistance of the cured putty matters more.",
+      },
+      {
+        q: "Is there an Indian standard for polyester putty?",
+        a: "Not for the putty itself, as far as we are aware. IS 6746 covers unsaturated polyester resin systems and works as a tolerance framework around declared values rather than as a product grade, and it does not mention putty or body filler. IS 419 covers linseed-oil window-glazing putty, which is an entirely different material and should not be cited here.",
+      },
+    ],
+    relatedSlugs: [
+      "polyester-putty-cure-systems-bpo-and-mekp",
+      "polyester-putty-fillers-and-rheology",
+      "polyester-putty-vs-epoxy-putty",
+    ],
+    recommendedLinks: [
+      { href: "/products/polyester-putty-resin/", label: "View Polyester Putty Resin", description: "See the published grade and enquiry route." },
+      { href: "/products/soap-stone-powder/", label: "View Soap Stone Powder", description: "The talc filler used in putty and FRP formulation." },
+      { href: "/contact/", label: "Discuss a putty formulation", description: "Send your filler package, loading target and working time." },
+    ],
+  },
+
+  {
+    slug: "polyester-putty-cure-systems-bpo-and-mekp",
+    title: "Polyester Putty Cure Systems: BPO and Amine, or MEKP and Cobalt?",
+    description:
+      "Body filler uses a cream hardener; laminating polyester uses MEKP and cobalt. Both routes genuinely exist in putty. Understand why filler-loaded hand putties conventionally use one and sprayable putties often use the other.",
+    category: "Technical Data",
+    icon: "beaker",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "Polyester Putty Cure: BPO Cream Hardener vs MEKP and Cobalt",
+      description:
+        "Why body filler uses a BPO cream hardener with an amine, why spray putties often use ketone peroxide with cobalt, and why they are not interchangeable.",
+      keywords: [
+        "body filler hardener",
+        "BPO cream hardener",
+        "MEKP vs BPO",
+        "polyester putty cure",
+        "benzoyl peroxide body filler",
+        "why is my filler not hardening",
+      ],
+      ogTitle: "Polyester Putty Cure Systems Compared",
+      ogDescription: "Two real routes, different reasons, and the safety line that matters most.",
+    },
+    quickFacts: {
+      "Hand body filler": "Usually benzoyl peroxide cream with a tertiary amine",
+      "Spray and some marine putties": "Often ketone peroxide with cobalt",
+      "Why the cream is coloured": "The dye is a mix indicator, not a decoration",
+      "BPO route strength": "Cure barely affected by filler load or humidity",
+      "Ketone peroxide route strength": "Better light resistance in the cured film",
+      "Never do this": "Bring peroxide and accelerator together directly",
+    },
+    sections: [
+      {
+        heading: "Both routes are real, and the absolutes are wrong",
+        body: [
+          "You will see it stated that polyester putty must use benzoyl peroxide with an amine, and you will see it stated that body-filler hardener contains MEKP. Neither absolute survives contact with the literature.",
+          "What is accurate is that benzoyl peroxide with a tertiary amine dominates hand-applied automotive body filler, while ketone peroxides with cobalt appear in sprayable polyester putties and in some marine and general fairing putties. Two products in the same category can legitimately use different peroxides.",
+          "The practical consequence for anyone buying or formulating is that the cure system is a property of the specific product, and hardeners are not interchangeable between them.",
+        ],
+      },
+      {
+        heading: "The benzoyl peroxide and amine route",
+        body: [
+          "This is the classic body-filler system and the source of the familiar red, blue or cream hardener paste. The hardener is benzoyl peroxide dispersed in a plasticiser carrier with a dye, and the resin side carries a tertiary amine such as dimethyl-p-toluidine, often already built in by the resin maker.",
+          "The chemistry is an amine and peroxide redox pair. The amine attacks the peroxide to generate radicals at ambient temperature, so no heat and no cobalt are required.",
+          "The technical reason it dominates filled putty is specific and worth knowing. Peroxide producers describe this system as showing a very fast cure that is hardly influenced by humidity and fillers, and as giving a relatively good cure even at low temperatures. Insensitivity to filler load and humidity is precisely what a paste carrying half its mass as mineral, applied in a humid workshop, needs.",
+          "Its documented disadvantage is yellowing and poor light resistance in the cured film. For body filler that is irrelevant, because the putty is sanded and buried under primer and topcoat.",
+        ],
+      },
+      {
+        heading: "The ketone peroxide and cobalt route",
+        body: [
+          "Cyclohexanone peroxide and MEKP with a cobalt accelerator is the system used across laminating and casting polyester, and it is genuinely used in putty as well. Peroxide producers describe the cyclohexanone peroxide and cobalt system as particularly suitable for lacquers and spray putties, and note that it makes light-resistant parts possible, in contrast to the benzoyl peroxide and amine system.",
+          "That is the trade-off in a sentence. Where the finished surface will be visible or where yellowing matters, the ketone peroxide route has an advantage. Where the product is a heavily filled paste that will be sanded and painted over, the benzoyl peroxide route's insensitivity to filler and humidity wins.",
+          "The market bears this out. Two marine polyester fairing compounds from different suppliers use different peroxides: one is catalysed with MEKP, the other requires a benzoyl peroxide hardener at a stated weight ratio. Same product category, two different systems.",
+        ],
+      },
+      {
+        heading: "Why the hardener is coloured",
+        body: [
+          "The dye in a cream hardener is a mix indicator. Because the correct dose is a low single-digit percentage of a stiff paste, and because nobody in a body shop weighs it, the colour is how the user confirms the peroxide has been folded uniformly through the mass. Streaks mean unmixed putty, and unmixed putty means soft patches.",
+          "This is also why finished-putty makers insist on their own matched hardener. The dose is calibrated to the peroxide concentration in that specific paste, to the amine level in that specific resin and to the target working time. Substituting a hardener from another product changes all three at once.",
+        ],
+      },
+      {
+        heading: "Why both too much and too little hardener cause staining",
+        body: [
+          "This is the most useful thing a body shop can learn about polyester cure, and it is counter-intuitive because the error is symmetrical.",
+          "Too much peroxide leaves free oxidant that can migrate upward and attack basecoat and clearcoat pigment, and the additional exotherm gasses the film and produces pinholes. Too little leaves an incompletely cured putty with unreacted species that migrate up through primer and base to discolour the clear. Both ends produce staining and bleed-through.",
+          "Manufacturers say this explicitly. One major filler data sheet carries the instruction not to under-catalyse in capital letters, while another warns against exceeding the recommended hardener level to avoid bleeding and spot marking. The correct ratio is the only safe answer, and the word hardener is itself part of the problem, as the next section explains.",
+        ],
+      },
+      {
+        heading: "Hardener, catalyst and accelerator are three different things",
+        body: [
+          "Strictly, the peroxide is an initiator. It is used catalytically at a low percentage and is not consumed stoichiometrically. The accelerator or promoter is the tertiary amine, in benzoyl peroxide systems, or the cobalt salt, in ketone peroxide systems, and its job is to make the peroxide decompose at room temperature.",
+          "Hardener is a colloquialism borrowed from epoxy, where the hardener genuinely is a stoichiometric co-reactant and where using more of it does change the ratio. That borrowed word is the direct source of the belief that more hardener gives a harder filler. In a polyester system it gives staining and pinholes instead.",
+          "Getting the vocabulary right is not pedantry here. It prevents a specific, common and expensive mistake.",
+        ],
+      },
+      {
+        heading: "The safety line that matters most",
+        body: [
+          "Benzoyl peroxide and MEKP are different peroxides with different accelerators, different dose regimes and different hazards, and they must never be casually interchanged. Benzoyl peroxide is classified as an organic peroxide that may cause fire or explosion on heating, as an eye irritant and as a skin sensitiser. MEKP is corrosive and a serious eye hazard.",
+          "Both have real storage constraints. Recommended maximum storage temperatures around twenty-five degrees Celsius, with self-accelerating decomposition temperatures not far above that, are a genuine issue in an Indian warehouse rather than a formality.",
+          "And the absolute rule: never bring a peroxide and an accelerator together directly. Accelerator goes into the resin first, peroxide last, each handled separately. This applies with particular force when a resin arrives pre-accelerated, because the amine is already in the drum.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Does body filler hardener contain MEKP?",
+        a: "Usually not. Cream hardeners for hand-applied body filler are normally benzoyl peroxide dispersed in a carrier with a dye, and major manufacturers name benzoyl peroxide explicitly. Some sprayable polyester putties and marine fairing compounds do use MEKP or another ketone peroxide, so the accurate answer is that it depends on the product.",
+      },
+      {
+        q: "Can I use MEKP instead of the cream hardener that came with my filler?",
+        a: "No. They are different peroxides working with different accelerators at different dose levels. The cream hardener is calibrated to the peroxide concentration in that paste, the amine in that resin and the intended working time. Substituting changes all three and the result is unpredictable.",
+      },
+      {
+        q: "Why is my filler still gummy on top but hard underneath?",
+        a: "That is almost always oxygen inhibition at the exposed surface rather than a bad batch. Free-radical polyester cure is inhibited by atmospheric oxygen, and the conventional fix is a wax that migrates to the surface and forms a barrier. If the filler is soft all the way through instead, the cause is under-catalysing, cold conditions, expired hardener or poor mixing.",
+      },
+      {
+        q: "Will more hardener make the filler harder?",
+        a: "No, and it causes two distinct problems. Excess peroxide leaves free oxidant that can attack the topcoat and produce staining, and the extra exotherm gasses the film into pinholes. Under-catalysing also causes staining, from unreacted material migrating up through the paint. The correct ratio is the only safe answer.",
+      },
+      {
+        q: "Why is the hardener coloured?",
+        a: "The dye is a mix indicator. Since the dose is a small percentage of a stiff paste and nobody weighs it, the colour is how a user confirms the peroxide has been folded uniformly through the mass. Streaks mean the putty is not properly mixed.",
+      },
+      {
+        q: "Why does my filler not cure over self-etch primer?",
+        a: "Acid inhibits polyester cure. Self-etch and acid primers, and acidic prep wipes, are a hard prohibition under polyester putty for that reason. Both major schools of thought on filler over primer agree on this one point.",
+      },
+      {
+        q: "What does pre-accelerated mean for handling peroxide in my plant?",
+        a: "It means the accelerator is already present in the resin as delivered. That is convenient for formulation, but it makes the rule against bringing peroxide and accelerator together directly more important, not less. Peroxide always goes in last, handled separately.",
+      },
+    ],
+    relatedSlugs: [
+      "what-is-polyester-putty-resin",
+      "polyester-putty-troubleshooting",
+      "polyester-putty-fillers-and-rheology",
+    ],
+    recommendedLinks: [
+      { href: "/products/polyester-putty-resin/", label: "View Polyester Putty Resin", description: "See the published grade and enquiry route." },
+      { href: "/products/mekp-hardener/", label: "View MEKP Hardener", description: "The ketone peroxide used across laminating polyester." },
+      { href: "/products/cobalt-octoate/", label: "View Cobalt Octoate", description: "The accelerator used with ketone peroxide systems." },
+    ],
+  },
+
+  {
+    slug: "polyester-putty-fillers-and-rheology",
+    title: "Polyester Putty Fillers and Rheology: Talc, Microspheres and Silica",
+    description:
+      "Why talc dominates, what hollow microspheres actually buy you, how fumed silica creates non-sag behaviour, and the single concept that explains pinholing, porosity and crumbling feather edges.",
+    category: "Technical Data",
+    icon: "layers",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "Polyester Putty Fillers: Talc, Microspheres and Thixotropy",
+      description:
+        "How filler choice drives sandability, shrinkage, sag resistance and pinholing in polyester putty, and why over-filling causes porosity.",
+      keywords: [
+        "polyester putty filler",
+        "talc body filler",
+        "glass microspheres filler",
+        "fumed silica thixotropy",
+        "lightweight body filler",
+        "putty formulation",
+      ],
+      ogTitle: "Fillers and Rheology in Polyester Putty",
+      ogDescription: "Talc, carbonate, microspheres and silica, and the concept that explains porosity.",
+    },
+    quickFacts: {
+      "Dominant filler": "Talc, because it is the softest mineral and platy",
+      "What ruins sandability": "Hard accessory minerals, especially quartz",
+      "Lightweight fillers": "Hollow glass microspheres, which crush under high shear",
+      "Non-sag comes from": "Fumed silica building a reversible hydrogen-bonded network",
+      "Over-filling causes": "Voids that the resin cannot fill, so porosity and pinholes",
+      "Shrinkage falls": "As filler volume rises, since only the resin shrinks",
+    },
+    sections: [
+      {
+        heading: "Talc, and why it is almost always the base filler",
+        body: [
+          "Talc is the softest mineral on the Mohs scale and it is lamellar, cleaving easily along basal planes. Both properties matter. Softness means it does not blunt the abrasive, which is the direct reason talc-filled putties sand easily and finish well.",
+          "That advantage is conditional on purity. Hard accessory minerals, quartz above all, cause scratching and wear the paper rapidly. A talc specified only by particle size, with no statement about accessory minerals, is not fully specified for this use.",
+          "Producers cite three further reasons. Low and consistent oil absorption means less resin is needed for a given rheology, which is both a cost and a styrene-reduction lever. The platy shape gives a large parallel contact area at the substrate. And talc's hydrophobic surface, with platelets aligned in the film, creates a tortuous path that improves moisture resistance.",
+          "Bimodal sizing is real practice rather than theory: a fine fraction packs the interstices for surface smoothness while a coarse fraction carries bulk loading at low resin demand.",
+        ],
+      },
+      {
+        heading: "Calcium carbonate, and where it stops",
+        body: [
+          "Ground calcium carbonate is a cost and volume extender with low oil absorption. Precipitated grades are finer, higher in surface area and higher in oil absorption, and are usually surface treated.",
+          "The limit is hardness. Calcite is several times harder than talc on the Mohs scale, so carbonate is the more abrasive of the two and is normally used as a partial replacement rather than a base. Patent formulations commonly pair a small percentage of carbonate against a much larger talc fraction.",
+          "Carbonate is also acid sensitive, which is chemically uncontroversial and relevant wherever acid-etch primers or acidic preparation wipes are in the process. We have not found a primary source quantifying that effect inside a cured polyester putty, so it is better treated as a reason for caution than as a measured penalty.",
+        ],
+      },
+      {
+        heading: "Hollow microspheres and the lightweight grades",
+        body: [
+          "Hollow glass microspheres are what separates a lightweight filler from a standard one. They are non-porous, so unlike a porous extender they do not absorb resin, and their volumetric effect is dramatic: a kilogram of glass bubbles displaces roughly an order of magnitude more volume than a kilogram of carbonate. Density therefore falls sharply at a low weight fraction, which is why patent formulations use only a few per cent.",
+          "Their spherical shape also gives a ball-bearing effect and lower resin demand than platy talc, so total filler volume can rise without the viscosity climbing out of control.",
+          "The manufacturing risk is crush, and it is specific enough to be worth stating plainly. Microsphere producers advise avoiding high-shear processes, naming high-speed dissolvers, gear pumps and three-roll mills. Broken bubbles stop reducing density, release trapped air and raise resin demand, so a formulator who adds microspheres without changing the mixing regime can end up with a heavier, more porous product than before.",
+        ],
+      },
+      {
+        heading: "Fumed silica and how non-sag behaviour actually works",
+        body: [
+          "Fumed silica particles carry surface silanol groups that hydrogen bond to one another, building a temporary three-dimensional network through the liquid. Macroscopically that reads as thickening. Under mechanical load the network breaks down and viscosity falls; at rest the particles re-associate and viscosity rebounds.",
+          "That is exactly the putty requirement: yield instantly under the spreader, then rebuild before gel so the paste does not slump off a vertical panel.",
+          "Two consequences from the additive literature are worth knowing. The thixotropic effect depends on system polarity and actually rises as styrene content rises, because a less polar resin wets the silanol groups less and lets them bond to each other more. So cutting styrene for regulatory reasons reduces the efficiency of the thixotrope, which is a genuine formulation tension rather than a free choice. And the temperature during dispersion affects storage stability, with higher dispersion temperatures increasing the tendency to sediment.",
+          "It is also worth noting that some microcrystalline talc grades act as thixotropes in their own right and can partly replace fumed silica in polyester systems.",
+        ],
+      },
+      {
+        heading: "The one concept that explains porosity, pinholes and crumbling edges",
+        body: [
+          "Critical pigment volume concentration is the idea that ties the failures together. Above it, there is simply not enough resin to fill the voids between filler particles, so air voids remain in the cured film and properties fall away.",
+          "That single mechanism explains why an over-filled putty is porous and pinholes on sanding, and why a resin-starved feather edge crumbles rather than thinning away to nothing. It is a first-principles explanation rather than a vendor claim, and it is more useful than any rule of thumb about loading percentages.",
+          "The opposite error has its own signature. A resin-rich putty smears under the abrasive and loads the paper instead of cutting cleanly.",
+        ],
+      },
+      {
+        heading: "How loading drives every other property",
+        body: [
+          "Shrinkage falls as filler volume rises, because all cure shrinkage comes from the crosslinking of styrene with the polyester and the mineral takes no part in it. Sag resistance rises with loading and with platy or microcrystalline talc.",
+          "Density is essentially a volume-weighted mix, and only microspheres move it meaningfully. Resin demand is set by oil absorption and particle shape, with talc commonly described as topping out around half the mass without a wetting aid and substantially higher with one.",
+          "Sandability is a function of crosslink completeness, backbone rigidity and the filler package together. Flexible polyester formulations are documented as sanding badly, which is why a flexible putty for plastic substrates is a genuinely different product rather than a softer version of the same one.",
+        ],
+      },
+      {
+        heading: "The other fillers, briefly",
+        body: [
+          "Wollastonite is acicular and reinforcing, adding crack resistance over welds at the cost of sandability, since it is considerably harder than talc. Mica is a high-aspect platelet that raises modulus and moisture and heat resistance.",
+          "Barytes is inert and very dense, used for damping in heavy stoppers and entirely wrong for a lightweight product. Aluminium powder replaces talc in metal-filled grades and is associated with increased strength, durability and water resistance, with some grades drillable and tappable; these characteristically use a liquid hardener rather than a cream.",
+          "Short or milled glass fibre adds strength and water resistance over weld seams and moulded composite panels, at a real cost in sandability, which is why fibre-reinforced fillers are normally skimmed over with a talc-filled grade.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Why is talc the standard filler in body filler?",
+        a: "Because it is the softest mineral and platy. Softness means it does not blunt the abrasive, which is the direct reason talc-filled putties sand cleanly. Its shape gives good substrate contact and a tortuous path that helps moisture resistance, and its low oil absorption keeps resin demand down.",
+      },
+      {
+        q: "Why does my putty scratch the surface when sanding?",
+        a: "The usual cause is hard accessory minerals in the talc, quartz in particular. Talc itself is too soft to scratch, so a scratching filler is a purity problem rather than a talc problem. Specify the talc by accessory mineral content, not only by particle size.",
+      },
+      {
+        q: "What makes a lightweight filler lightweight?",
+        a: "Hollow glass microspheres replacing part of the mineral. Because a given mass of bubbles displaces far more volume than the same mass of carbonate, density falls sharply at only a few per cent loading. They are also non-porous, so they do not soak up resin.",
+      },
+      {
+        q: "Why did adding microspheres make my putty heavier and more porous?",
+        a: "Almost certainly because the mixing regime crushed them. Microsphere producers advise avoiding high-shear equipment such as high-speed dissolvers, gear pumps and three-roll mills. Broken bubbles stop reducing density, release trapped air and raise resin demand.",
+      },
+      {
+        q: "Why does my putty pinhole when I sand it?",
+        a: "At formulation level, the usual cause is over-filling past the point where there is enough resin to fill the voids between particles, so air voids remain in the cured film. In the workshop the causes are air whipped in by stirring rather than folding, over-catalysing, applying too thick, or sanding too early.",
+      },
+      {
+        q: "Can I reduce styrene without affecting anything else?",
+        a: "Not quite. Lower styrene reduces viscosity headroom and, less obviously, reduces the thixotropic efficiency of fumed silica, because a less polar resin lets the silica particles bond to each other more readily. It is a real trade-off rather than a free improvement.",
+      },
+      {
+        q: "Is there a standard thixotropic index target for putty?",
+        a: "No published target exists for body filler, and figures quoted for laminating resins and gel coats do not transfer, because putty is far stiffer. Any thixotropic index is meaningless without the spindle, the speeds, the temperature and the equilibration time.",
+      },
+    ],
+    relatedSlugs: [
+      "what-is-polyester-putty-resin",
+      "polyester-putty-cure-systems-bpo-and-mekp",
+      "what-is-soapstone-talc-powder",
+    ],
+    recommendedLinks: [
+      { href: "/products/polyester-putty-resin/", label: "View Polyester Putty Resin", description: "See the published grade and enquiry route." },
+      { href: "/products/soap-stone-powder/", label: "View Soap Stone Powder", description: "The talc filler used in putty and FRP formulation." },
+      { href: "/contact/", label: "Discuss a filler package", description: "Send your loading target and mixing equipment." },
+    ],
+  },
+
+  {
+    slug: "polyester-putty-vs-epoxy-putty",
+    title: "Polyester Putty vs Epoxy Putty: Which One and Why",
+    description:
+      "Polyester dominates body filler on speed, sandability and cost. Epoxy wins on adhesion, shrinkage and flexible substrates. The honest comparison, including where each one genuinely fails.",
+    category: "Comparison Guide",
+    icon: "compare",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "Polyester Putty vs Epoxy Putty Compared",
+      description:
+        "How polyester and epoxy putty differ chemically, and why polyester owns the body-filler market while epoxy wins on plastics and dimensional work.",
+      keywords: [
+        "polyester putty vs epoxy putty",
+        "body filler vs epoxy filler",
+        "epoxy body filler",
+        "which filler for plastic bumper",
+        "polyester vs epoxy filler",
+      ],
+      ogTitle: "Polyester Putty vs Epoxy Putty",
+      ogDescription: "Different cure chemistry, different trade-offs, different jobs.",
+    },
+    quickFacts: {
+      "Polyester cure": "Free-radical crosslinking of styrene, peroxide initiated",
+      "Epoxy cure": "Stoichiometric polyaddition with an amine hardener",
+      "Polyester wins on": "Speed, sandability, buildable volume and cost",
+      "Epoxy wins on": "Adhesion, low shrinkage, flexibility and impact",
+      "Ratio discipline": "Catalytic for polyester, stoichiometric for epoxy",
+      "Neither belongs": "Over rust, or over acid-etch primer for polyester",
+    },
+    sections: [
+      {
+        heading: "They cure by completely different chemistry",
+        body: [
+          "Polyester putty cures by free-radical crosslinking. Styrene copolymerises across the unsaturation in the polyester chain, started by a peroxide at a low catalytic percentage. The reaction involves volatile styrene and produces meaningful cure shrinkage.",
+          "Epoxy putty cures by polyaddition. The epoxide groups and the amine hardener react stoichiometrically, every molecule of hardener taking part, with no volatile loss and correspondingly lower shrinkage.",
+          "That difference explains almost everything else, including the ratio discipline. In polyester the peroxide is catalytic, so more of it does not give a harder cure, it gives staining and gassing. In epoxy the hardener is a co-reactant, so getting the ratio wrong genuinely leaves unreacted material and a permanently inferior cure. The same instruction, mix accurately, is right for opposite reasons.",
+        ],
+      },
+      {
+        heading: "Why polyester owns the body-filler market",
+        body: [
+          "Speed is the decisive factor. A body filler goes from mixed paste to sandable in the order of fifteen to twenty minutes at workshop temperature, and a competent technician can shape it in the green stage with a body file within minutes. Epoxy is much slower.",
+          "Sandability is the second. Talc-filled polyester cuts cleanly and finishes well, and the whole repair process is built around that behaviour.",
+          "Buildable volume is the third. Filler is applied in real thickness to restore panel shape, and heavy mineral loading makes that affordable. Epoxy at the same volume would cost several times more, is more viscous and is harder to shape.",
+          "Cost is the fourth, and in a trade where materials are a per-repair cost it matters.",
+        ],
+      },
+      {
+        heading: "Where epoxy genuinely wins",
+        body: [
+          "Adhesion is the clearest case, particularly on difficult substrates and on plastics. Epoxy is also the basis of the corrosion-protection primer that many procedures call for on bare steel, which is a different job from filling but sits adjacent to it in the process.",
+          "Low shrinkage matters wherever dimensional accuracy is the point rather than cosmetic restoration: pattern work, tooling repairs and precision fits.",
+          "Flexibility and impact resistance matter on plastic components. It is worth noting that some products sold as flexible fillers for bumpers are epoxy rather than polyester, which is a genuine category boundary rather than a branding difference.",
+          "Moisture resistance is the last. Epoxy's polyaddition network and better adhesion give it an advantage where water exposure is sustained.",
+        ],
+      },
+      {
+        heading: "Where each one fails",
+        body: [
+          "Polyester fails over acid. Self-etch and acid primers, and acidic preparation wipes, inhibit polyester cure, and this is a hard prohibition rather than a preference. It also fails at excessive thickness, where trapped exotherm gasses the film and leaves an undercured core, and it fails cosmetically through shrinkage and scratch telegraphing when applied thick or sanded early.",
+          "Epoxy fails on speed and cost in a production repair environment, and it fails when the ratio is wrong, because unlike polyester there is no catalytic forgiveness. Amine blush and surface contamination between coats are its own class of problem.",
+          "Neither belongs over rust. Filler is not a barrier coating, rust is not a bondable substrate, and the oxide keeps growing beneath whatever is put on top of it. There is a genuine industry argument about whether rust appearing under repairs originates from the filler or from environment and time, but both readings end at the same instruction: remove the rust, protect the steel, then fill.",
+        ],
+      },
+      {
+        heading: "What this means for a putty manufacturer",
+        body: [
+          "If you are formulating a product to compete in the body-filler market, polyester is the chemistry that market is built around, and the competitive axes are working time, sanding window, pinhole freedom, feather-edge behaviour and adhesion across the substrate list.",
+          "If you are asked for a filler for flexible plastics, dimensional work or sustained water exposure, that is a different product and often a different chemistry, and it is more honest to say so than to stretch a polyester formulation to cover it.",
+          "Samrat Poly Resins supplies Polyester Putty Resin as a putty base, and separately supplies epoxy systems and hardeners. The two answer different questions rather than competing for the same one.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is epoxy putty simply better than polyester putty?",
+        a: "It is better on adhesion, shrinkage, flexibility and impact, and worse on speed, sandability, buildable volume and cost. For volume cosmetic panel repair, polyester's advantages are the ones that decide the job. For plastics or dimensional work, epoxy's are.",
+      },
+      {
+        q: "Can I use body filler on a plastic bumper?",
+        a: "Standard polyester body filler is formulated for rigid substrates and will generally crack on a flexing plastic panel. Flexible fillers exist for this, and some of them are epoxy rather than polyester. Check what the product actually is rather than assuming a flexible filler is a softer polyester.",
+      },
+      {
+        q: "Why does more hardener ruin polyester but help epoxy?",
+        a: "Because the roles are different. In polyester the peroxide is a catalytic initiator that is not consumed stoichiometrically, so excess leaves free oxidant that causes staining and gassing. In epoxy the hardener is a stoichiometric co-reactant, so the ratio genuinely determines the network. More is not better in either case, but for opposite reasons.",
+      },
+      {
+        q: "Can I put polyester filler over epoxy primer?",
+        a: "Many products allow it and many procedures use it, but it is not universal and compatibility should be confirmed with the coating manufacturer. Some filler data sheets list steel, galvanised, aluminium and moulded composite but do not list epoxy primer. What both sides agree on is that acid-etch primers are never acceptable under polyester.",
+      },
+      {
+        q: "Can I use either one to fill over rust?",
+        a: "No. Filler is not a barrier coating and rust is not a bondable substrate, so the oxide continues to grow and eventually breaks the bond. Remove the rust down to sound metal, protect the steel, then fill.",
+      },
+      {
+        q: "Which shrinks more?",
+        a: "Polyester, because its cure involves volatile styrene crosslinking and produces genuine cure shrinkage, whereas epoxy cures by polyaddition with no volatile loss. Heavy mineral loading reduces polyester's shrinkage considerably, since only the resin fraction shrinks.",
+      },
+    ],
+    relatedSlugs: [
+      "what-is-polyester-putty-resin",
+      "polyester-putty-troubleshooting",
+      "what-is-epoxy-hardener",
+    ],
+    recommendedLinks: [
+      { href: "/products/polyester-putty-resin/", label: "View Polyester Putty Resin", description: "The polyester putty base resin." },
+      { href: "/products/epoxy-hardener/", label: "View Epoxy Hardener", description: "The amine hardener side of an epoxy system." },
+      { href: "/products/", label: "Browse the full product range", description: "All published grades and FRP raw materials." },
+    ],
+  },
+
+  {
+    slug: "polyester-putty-troubleshooting",
+    title: "Polyester Putty Troubleshooting: Gummy, Pinholes, Staining, Mapping",
+    description:
+      "The five complaints that account for most polyester putty problems, what actually causes each one, and which of them are formulation faults rather than workshop faults.",
+    category: "Troubleshooting Guide",
+    icon: "alert",
+    publishDate: "2026-09-12",
+    seo: {
+      title: "Polyester Putty Troubleshooting Guide",
+      description:
+        "Why filler stays gummy, why it pinholes, why paint stains over a repair, why edges map, and which causes sit with the formulator rather than the technician.",
+      keywords: [
+        "body filler not hardening",
+        "filler pinholes",
+        "body filler staining",
+        "edge mapping filler",
+        "polyester putty problems",
+        "filler troubleshooting",
+      ],
+      ogTitle: "Polyester Putty Troubleshooting",
+      ogDescription: "Five common failures, their real causes, and where responsibility actually sits.",
+    },
+    quickFacts: {
+      "Gummy surface, hard core": "Oxygen inhibition, normal and fixable",
+      "Soft all through": "Under-catalysed, cold, expired hardener or poor mixing",
+      "Pinholes": "Whipped-in air, over-catalysing, too thick, or over-filled formulation",
+      "Staining": "Caused by both too much and too little hardener",
+      "Edge mapping": "Shrinkage, poor feather edge and coarse scratch",
+      "Never works": "Filler over rust, or over acid-etch primer",
+    },
+    sections: [
+      {
+        heading: "Gummy on top, hard underneath",
+        body: [
+          "This is the most common complaint and usually the least serious. Free-radical polyester cure is inhibited by atmospheric oxygen at the exposed surface, so the film can be properly cured through its thickness while the top few microns remain tacky.",
+          "The conventional countermeasure is a small quantity of paraffin wax in the formulation that is incompatible with the resin, migrates to the surface during cure and forms a physical oxygen barrier. Putty resins are often sold on this air-drying or tack-free character, and it is a formulation property rather than a workshop error.",
+          "Distinguish it carefully from the genuine fault below, because the remedies are different and adding more hardener to an air-inhibited surface makes things worse rather than better.",
+        ],
+      },
+      {
+        heading: "Soft all the way through",
+        body: [
+          "This is genuine undercure and it has a short list of causes. Under-catalysing is first. Expired or non-matching hardener is second, and it is worth remembering that peroxides lose activity in storage and have real temperature limits.",
+          "Cold is third, and it includes the case where the product is warm but the panel is not, since the substrate pulls heat out of a thin film. Poor mixing is fourth: folding rather than stirring is the correct technique, and streaks of unmixed colour are the visible warning.",
+          "Fifth, and frequently overlooked, is substrate chemistry. Acid inhibits polyester cure, so applying over a self-etch or acid primer, or over a surface still carrying an acidic preparation wipe, will leave the bond line soft no matter how well the mix was done.",
+        ],
+      },
+      {
+        heading: "Pinholes",
+        body: [
+          "Pinholes come from two directions, and separating them decides whose problem it is.",
+          "In the workshop, they come from air whipped in by stirring instead of folding, from over-catalysing where the extra exotherm gasses the film, from applying too thick a layer so exotherm is trapped, and from sanding before the putty has properly cured so that voids open in a still-plastic matrix.",
+          "In the formulation, they come from over-filling. Above the point where there is enough resin to fill the voids between filler particles, air voids simply remain in the cured film. A putty that pinholes consistently across users, applied correctly, is telling you something about its filler loading rather than about the technicians.",
+          "Crushed hollow microspheres are a third and more specific formulation cause, since broken bubbles release trapped air into the paste.",
+        ],
+      },
+      {
+        heading: "Staining and bleed-through into the paint",
+        body: [
+          "This is the failure that surprises people, because both ends of the mixing error produce it.",
+          "Too much peroxide leaves free oxidant in the cured putty that can migrate upward and attack basecoat and clearcoat pigment. Too little leaves incompletely cured material whose unreacted species migrate up through primer and base to discolour the clear coat.",
+          "Manufacturers say both. One major data sheet instructs users in capitals not to under-catalyse; another warns against exceeding the recommended hardener level to avoid bleeding and spot marking. Since both errors give the same symptom, the correct ratio is the only remedy, and eyeballing a ribbon of hardener across a puddle degrades as the puddle gets bigger.",
+          "A separate and preventable cause is failing to seal the filler. Cured putty is porous and talc-bearing, and it will absorb and hold solvent. Unsealed filler produces staining, sand-scratch swelling and topcoat adhesion loss, which is why colour and clear should never see raw filler.",
+        ],
+      },
+      {
+        heading: "Edge mapping and scratch telegraphing",
+        body: [
+          "Edge mapping, sometimes called ringing, is the halo that appears around a repair after the topcoat goes on. It has three contributing causes and they compound.",
+          "Shrinkage is the first, worsened by thick application, over-catalysing and premature sanding. A poor feather edge is the second: if the filler does not taper cleanly to nothing, the transition will show. Working from the edges toward the centre is the technique that prevents it.",
+          "Coarse sand scratch is the third. A grit scratch appropriate for bare metal will not be filled by primer and will telegraph through the topcoat, which is exactly why a fine, low-shrink glazing putty exists as a step between the body filler and the primer.",
+        ],
+      },
+      {
+        heading: "Applying too thick, and why the limit is real",
+        body: [
+          "Every major finished-filler data sheet caps thickness, and the caps differ by product, so a universal number is not worth publishing. What is worth understanding is why the limit exists.",
+          "A thick fill traps its own exotherm. That gasses the film into pinholes, increases shrinkage and can leave the core undercured even while the surface is hard. The consistent instruction across manufacturers is to build in multiple thin layers rather than one heavy application.",
+          "The same logic explains why fibre-reinforced fillers, which cure very hard and are difficult to sand, are normally skimmed over with a talc-filled grade rather than finished directly.",
+        ],
+      },
+      {
+        heading: "Which of these are formulation problems",
+        body: [
+          "It is worth being straight about where responsibility sits, because a resin supplier is only accountable for part of this.",
+          "Consistent pinholing under correct application, poor feather-edge behaviour, a paste that sags on vertical panels, a surface that never goes tack-free, poor sandability and excessive shrinkage all point back toward the formulation, and through it to the resin, the filler package and the thixotrope.",
+          "Under-catalysing, poor mixing, application over acid primer or rust, excessive thickness and premature sanding are workshop causes. Substituting a non-matching hardener sits in between, since it is a user action that a manufacturer can only prevent by labelling clearly.",
+          "Mixing ratios, it is worth repeating, come from the finished putty maker's own instructions. A resin supplier can say what a resin is designed for; it cannot specify the hardener dose for someone else's finished product, because that depends on the peroxide concentration, the amine level, the filler package and the target working time.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "My filler is tacky on the surface but hard underneath. Is it a bad batch?",
+        a: "Almost certainly not. That is oxygen inhibition, which affects all free-radical polyester cure at the exposed surface. The formulation countermeasure is a wax that migrates to the surface and forms an oxygen barrier. Adding more hardener will not fix it and creates other problems.",
+      },
+      {
+        q: "Why did my filler stay soft everywhere?",
+        a: "Under-catalysing, expired or non-matching hardener, cold product or cold panel, poor mixing that left unmixed regions, or application over an acid-etch primer or acidic prep wipe. Acid inhibits polyester cure, so that last cause defeats an otherwise perfect mix.",
+      },
+      {
+        q: "Is pinholing my fault or the product's?",
+        a: "Both are possible. Whipped-in air, over-catalysing, excessive thickness and sanding too early are workshop causes. Consistent pinholing across correct applications points at over-filling in the formulation, where there is not enough resin to fill the voids between particles, or at crushed hollow microspheres.",
+      },
+      {
+        q: "Why is my paint staining over the repair?",
+        a: "Either too much hardener, leaving free oxidant that attacks topcoat pigment, or too little, leaving unreacted material that migrates up through the paint. Both produce the same symptom, which is why the correct ratio is the only answer. Failing to seal the porous filler before colour is a separate and equally common cause.",
+      },
+      {
+        q: "What causes the halo around my repair?",
+        a: "Edge mapping comes from shrinkage, a poorly feathered edge and coarse sand scratch, and these compound. Thin layers, working from the edges inward, and a fine glazing putty between filler and primer are the three practical defences.",
+      },
+      {
+        q: "How thick can I apply polyester putty?",
+        a: "The limit is product-specific and stated on the data sheet, so a universal figure is not useful. What matters is the reason: a thick fill traps its own exotherm, which gasses the film, increases shrinkage and can leave an undercured core. Build in multiple thin layers.",
+      },
+      {
+        q: "Can I wet sand polyester filler?",
+        a: "Generally the advice is not to, because polyester filler can take up water that later has to leave, but it is grade-dependent and some modern products are explicitly wet-sandable. Follow the finished putty maker's data sheet rather than a blanket rule.",
+      },
+    ],
+    relatedSlugs: [
+      "polyester-putty-cure-systems-bpo-and-mekp",
+      "polyester-putty-fillers-and-rheology",
+      "what-is-polyester-putty-resin",
+    ],
+    recommendedLinks: [
+      { href: "/products/polyester-putty-resin/", label: "View Polyester Putty Resin", description: "The polyester putty base resin." },
+      { href: "/products/polyester-putty-resin/#enquire", label: "Discuss a formulation problem", description: "Send the symptom, the filler package and the cure system." },
+      { href: "/resources/", label: "Browse the Knowledge Centre", description: "Technical guides across the published range." },
+    ],
+  },
 ];

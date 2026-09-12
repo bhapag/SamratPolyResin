@@ -50,6 +50,10 @@ const isSheetGradeYellowResin = product.slug === 'sheet-grade-yellow-resin';
 const isRoofLightResin = product.slug === 'roof-light-resin';
 const isFireRetardantResin = product.slug === 'fire-retardant-resin';
 const isIsoFireRetardantResin = product.slug === 'iso-fire-retardant-resin';
+const isIsoPolyesterResin = product.slug === 'iso-polyester-resin';
+const isIsoGelcoat = product.slug === 'iso-gelcoat';
+const isUvStabilizedSheetResin = product.slug === 'uv-stabilized-sheet-grade-yellow-resin';
+const isPolyesterPuttyResin = product.slug === 'polyester-putty-resin';
 
 const gpClearSeo = {
   title: 'GP Clear Resin Manufacturer in India',
@@ -575,6 +579,49 @@ const isoFireRetardantResourceSlugs = [
 ];
 const isoFireRetardantResources = isIsoFireRetardantResin
   ? isoFireRetardantResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
+const isoPolyesterResourceSlugs = [
+  'what-is-iso-polyester-resin',
+  'iso-polyester-resin-applications',
+  'iso-polyester-resin-vs-gp-resin',
+  'iso-polyester-resin-vs-iso-fire-retardant-resin',
+  'iso-polyester-resin-vs-vinyl-ester-resin',
+  'how-to-specify-iso-polyester-resin',
+];
+const isoPolyesterResources = isIsoPolyesterResin
+  ? isoPolyesterResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
+const isoGelcoatResourceSlugs = [
+  'what-is-iso-gelcoat',
+  'iso-gelcoat-applications',
+  'how-to-apply-iso-gelcoat',
+];
+const isoGelcoatResources = isIsoGelcoat
+  ? isoGelcoatResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
+const uvStabilizedResourceSlugs = [
+  'uv-stabilized-resin-vs-uv-curing-resin',
+  'what-is-uv-stabilized-sheet-grade-resin',
+  'how-uv-degrades-frp-sheets',
+  'uv-stabilized-sheet-resin-applications',
+  'uv-stabilized-vs-standard-sheet-grade-yellow-resin',
+];
+const uvStabilizedResources = isUvStabilizedSheetResin
+  ? uvStabilizedResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
+  : [];
+
+const polyesterPuttyResourceSlugs = [
+  'what-is-polyester-putty-resin',
+  'polyester-putty-cure-systems-bpo-and-mekp',
+  'polyester-putty-fillers-and-rheology',
+  'polyester-putty-vs-epoxy-putty',
+  'polyester-putty-troubleshooting',
+];
+const polyesterPuttyResources = isPolyesterPuttyResin
+  ? polyesterPuttyResourceSlugs.map((slug) => resources.find((resource) => resource.slug === slug && !resource.draft)).filter(Boolean)
   : [];
 
 const fiberglassEpoxyResourceSlugs = [
@@ -3377,6 +3424,78 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     </section>
   )}
 
+  {polyesterPuttyResources.length > 0 && (
+    <section class="wrap prod-resources" aria-labelledby="polyester-putty-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Putty formulation resources</p>
+        <h2 id="polyester-putty-resources-heading" class="rel-h">Polyester Putty Resin guides</h2>
+        <p>These guides cover what this resin has to do once it carries half its mass as mineral filler, the two cure systems that genuinely exist in putty, how talc, microspheres and fumed silica drive sandability, sag and pinholing, and which common failures are formulation faults rather than workshop faults.</p>
+        <p class="gp-hub-case-link">This grade is the <strong>base resin a putty manufacturer buys</strong>, not the finished two-part filler a body shop buys.</p>
+      </div>
+      <div class="resources-grid">
+        {polyesterPuttyResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="/resources/#polyester-putty-resin-hub-heading" class="btn">Explore the Polyester Putty Resin hub</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
+        <a href="#enquire" class="btn btn-solid">Discuss a putty formulation</a>
+      </div>
+    </section>
+  )}
+  {isoPolyesterResources.length > 0 && (
+    <section class="wrap prod-resources" aria-labelledby="iso-polyester-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Isophthalic resin selection</p>
+        <h2 id="iso-polyester-resources-heading" class="rel-h">ISO Polyester Resin guides</h2>
+        <p>These guides cover what the isophthalic backbone actually changes, where the grade is genuinely specified, the alkali limit that decides when to step up to vinyl ester, and what to send with an enquiry so a grade can be matched to a real service condition.</p>
+        <p class="gp-hub-case-link">Here, <strong>ISO</strong> refers to isophthalic chemistry, not ISO certification, and this grade is a different product from ISO Fire Retardant Resin.</p>
+      </div>
+      <div class="resources-grid">
+        {isoPolyesterResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="/resources/#iso-polyester-resin-hub-heading" class="btn">Explore the ISO Polyester Resin hub</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
+        <a href="#enquire" class="btn btn-solid">Discuss a chemical-service requirement</a>
+      </div>
+    </section>
+  )}
+  {isoGelcoatResources.length > 0 && (
+    <section class="wrap prod-resources" aria-labelledby="iso-gelcoat-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Isophthalic gelcoat selection</p>
+        <h2 id="iso-gelcoat-resources-heading" class="rel-h">ISO Gelcoat guides</h2>
+        <p>These guides explain why a gelcoat is a coating system rather than pigmented resin, where isophthalic sits between orthophthalic and the ISO-NPG immersion benchmark, which applications justify it, and how film thickness, the lamination window and cure decide whether it performs.</p>
+        <p class="gp-hub-case-link">Here, <strong>ISO</strong> refers to isophthalic chemistry, not ISO certification, and isophthalic is not the same as ISO-NPG.</p>
+      </div>
+      <div class="resources-grid">
+        {isoGelcoatResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="/resources/#iso-gelcoat-hub-heading" class="btn">Explore the ISO Gelcoat hub</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
+        <a href="#enquire" class="btn btn-solid">Discuss a surface requirement</a>
+      </div>
+    </section>
+  )}
+  {uvStabilizedResources.length > 0 && (
+    <section class="wrap prod-resources" aria-labelledby="uv-stabilized-resources-heading">
+      <div class="gp-hub-head">
+        <p class="eyebrow">Outdoor FRP sheet selection</p>
+        <h2 id="uv-stabilized-resources-heading" class="rel-h">UV Stabilised Sheet Grade Yellow Resin guides</h2>
+        <p>Start with the disambiguation guide if you arrived searching for UV resin, then read how sunlight actually degrades FRP sheet, which applications suit this grade, and when the standard Sheet Grade Yellow Resin is the better and cheaper choice.</p>
+        <p class="gp-hub-case-link">This grade is <strong>UV stabilised</strong>, not UV curing. It cures conventionally with MEKP and cobalt, and no lamp is involved.</p>
+      </div>
+      <div class="resources-grid">
+        {uvStabilizedResources.map((resource) => <ResourceCard resource={resource} />)}
+      </div>
+      <div class="gp-hub-actions">
+        <a href="/resources/#uv-stabilized-sheet-resin-hub-heading" class="btn">Explore the UV Stabilised Sheet Resin hub</a>
+        <a href={site.catalogue.url} class="btn">Browse the product range</a>
+        <a href="#enquire" class="btn btn-solid">Discuss a sheet or panel requirement</a>
+      </div>
+    </section>
+  )}
   {isoFireRetardantResources.length > 0 && (
     <section class="wrap prod-resources" aria-labelledby="iso-fire-retardant-resources-heading">
       <div class="gp-hub-head">
