@@ -34,19 +34,20 @@ const relatedResources = relatedResourceSlugs
   .filter(Boolean);
 ---
 <Base
-  title="Epoxy Resin Manufacturer in India"
-  description="Samrat Poly Resins manufactures epoxy resin systems — clear casting, art resin and epoxy hardener — for casting, art and industrial applications across India."
+  title="Epoxy Resin Manufacturer in India | Casting, Art & Laminating"
+  description="Samrat Poly Resins manufactures epoxy systems in India: clear casting, art resin, fibreglass laminating, bisphenol resin and a polyamide hardener."
 >
   <section class="section fam-hero">
     <div class="wrap fam-hero-inner">
       <div>
         <p class="eyebrow">Product family</p>
-        <h1>Epoxy Resin — Casting, Art &amp; Curing Systems</h1>
+        <h1>Epoxy Resin — Casting, Art &amp; Laminating Systems</h1>
         <p class="fam-hero-sub">
-          Samrat Poly Resins manufactures {grades.length} epoxy products — clear casting resin, self-levelling
-          art resin and epoxy hardener — for casting, decorative and industrial
-          applications. Each is a distinct, published product with its own technical data sheet; this
-          page is the starting point for choosing the right one.
+          Samrat Poly Resins manufactures {grades.length} epoxy products: clear casting resin,
+          self-levelling art resin, a fibreglass laminating epoxy, a bisphenol-A epoxy for
+          industrial work, and the polyamide hardener that cures them. Each is a distinct
+          published grade with its own technical data sheet, and this page is the starting
+          point for choosing between them.
         </p>
       </div>
       <div class="fam-hero-badge">
@@ -65,6 +66,56 @@ const relatedResources = relatedResourceSlugs
       <div class="grid">
         {grades.map((p) => <ProductCard product={p} />)}
       </div>
+    </div>
+  </section>
+
+  <!-- The distinction buyers actually get wrong. An epoxy is cured by an amine
+       hardener at a fixed ratio; an epoxy VINYL ESTER is a polyester-family
+       resin cured by MEKP. The names are close enough that people order the
+       wrong hardener, which does not cure and wastes the batch. Every fact
+       below is from the products' own published data sheets. -->
+  <section class="section fam-links">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Before you order</p>
+        <h2>Epoxy and epoxy vinyl ester are cured by different chemistry</h2>
+        <p>
+          Two products on this site carry Bisphenol-A in their description and are
+          routinely confused. They are not interchangeable, and neither is their
+          hardener.
+        </p>
+      </div>
+      <div class="epoxy-cure-grid">
+        <div class="epoxy-cure-card">
+          <p class="epoxy-cure-kind">Epoxy</p>
+          <p class="epoxy-cure-list">
+            Clear Casting Resin, Epoxy Art Resin, Fiberglass Epoxy Resin and
+            Bisphenol Resin
+          </p>
+          <p>
+            Cured by an <strong>amine hardener</strong> mixed at a fixed ratio. Samrat's
+            Epoxy Hardener is a polyamide curing agent published at 2:1 by weight. The
+            ratio is stoichiometric, so guessing it leaves a permanently soft cure.
+          </p>
+          <a href="/products/epoxy-hardener/">See the published hardener data</a>
+        </div>
+        <div class="epoxy-cure-card">
+          <p class="epoxy-cure-kind">Epoxy vinyl ester</p>
+          <p class="epoxy-cure-list">Vinyl Ester Resin</p>
+          <p>
+            Built on a Bisphenol-A epoxy backbone but finished as a vinyl ester, so it
+            cures like a polyester: <strong>MEKP catalyst</strong>, published at 1.5% for
+            its stated gel time. An amine epoxy hardener will not cure it.
+          </p>
+          <a href="/products/vinyl-ester-resin/">See Vinyl Ester Resin</a>
+        </div>
+      </div>
+      <p class="epoxy-cure-note">
+        Epoxy Hardener's data sheet states compatibility with epoxy resin systems and gives
+        its type and ratio, but it does not name a specific Samrat resin as a qualified
+        partner. Confirm the exact resin and hardener pairing with us before ordering rather
+        than assuming one hardener suits every grade on this page.
+      </p>
     </div>
   </section>
 
@@ -145,6 +196,31 @@ const relatedResources = relatedResourceSlugs
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.4rem; }
 
     .fam-card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.9rem; }
+    /* Cure-system comparison. Two plain cards side by side on desktop, stacked
+       on a phone — the contrast is the content, so it needs no decoration. */
+    .epoxy-cure-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem; margin-top: 0.4rem;
+    }
+    .epoxy-cure-card {
+      border: 1px solid var(--line); border-radius: 10px; padding: 1.1rem 1.2rem 1.2rem;
+      background: var(--bg-2); display: flex; flex-direction: column; gap: 0.55rem;
+    }
+    .epoxy-cure-kind {
+      margin: 0; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent-gold);
+    }
+    .epoxy-cure-list { margin: 0; color: var(--ink); font-weight: 600; line-height: 1.4; }
+    .epoxy-cure-card p { margin: 0; color: var(--ink-dim); font-size: 0.9rem; line-height: 1.6; }
+    .epoxy-cure-card a {
+      margin-top: auto; padding-top: 0.3rem; color: var(--accent-gold-light);
+      font-size: 0.84rem; border-bottom: 1px solid var(--line-2); align-self: flex-start;
+    }
+    .epoxy-cure-card a:hover { color: var(--accent-gold); border-color: var(--accent-gold); }
+    .epoxy-cure-note {
+      margin: 1rem 0 0; max-width: 62ch; color: var(--ink-faint);
+      font-size: 0.82rem; line-height: 1.6;
+    }
     .fam-link-card {
       display: flex; align-items: center; justify-content: space-between; gap: 0.9rem;
       padding: 1rem 1.2rem; background: var(--bg-3); border: 1px solid var(--line); box-shadow: var(--surface-shadow-rest);

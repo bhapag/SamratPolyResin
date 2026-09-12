@@ -1945,10 +1945,15 @@ export const products = [
       "Finish": "High Gloss",
     },
     techSpecs: {
-      "Component Type": "Two Component",
+      "Resin Type": "Epoxy, two-component system",
+      Composition: "Bisphenol-A and epichlorohydrin based",
+      "Colour / Appearance": "Water clear",
+      Finish: "High gloss",
       "Curing Time": "24 hours",
       "Mix Ratio": "2:1",
-      "UV Resistant": "Yes",
+      Viscosity: "900–1200 cPs (mixed, at 25 °C)",
+      "Flow Behaviour": "Self-levelling, with bubble release",
+      "UV Resistance": "UV stabilised; the TDS states it resists yellowing",
     },
     tagline: "Self-levelling, crystal-clear epoxy for artistic finishes.",
     description:
@@ -2056,6 +2061,10 @@ export const products = [
     },
     techSpecs: {
       "Hardener Type": "Polyamide (amine-based curing agent)",
+      "Colour / Appearance": "Clear, transparent liquid",
+      "Mixing Ratio (resin : hardener)": "2:1 by weight",
+      "Pot Life": "30–60 minutes (at 25 °C)",
+      "Full Cure Time": "Approx. 24 hours (at 25 °C)",
       "Compatibility": "Compatible epoxy resin systems — confirm the resin/hardener pairing before ordering",
       "Viscosity": "500 cPs (at 25 °C)",
       "Specific Gravity / Density": "0.97 g/cm³",
@@ -2527,7 +2536,7 @@ export const products = [
     seo: {
       title: "Vinyl Ester Resin Manufacturer in India",
       description:
-        "Bisphenol-A epoxy vinyl ester resin for documented industrial FRP tanks, pipelines, ducts, scrubbers, filament winding and pultrusion applications. Review the current TDS before ordering.",
+        "Vinyl Ester Resin from Samrat Poly Resins — Bisphenol-A epoxy vinyl ester for FRP chemical and corrosion service, MEKP cured. Request a quote.",
       keywords: [
         "Vinyl Ester Resin",
         "Vinyl Ester Resin Manufacturer India",
@@ -2553,6 +2562,7 @@ export const products = [
       "Viscosity": "350 cPs (at 25°C)",
       "Gel Time": "15–20 minutes at 25°C (see TDS test condition)",
       "Styrene Content": "40%",
+      "Catalyst / Dosage": "MEKP at 1.5% — the dosage the published gel time is measured at",
       "Specific Gravity / Density": "1.05 g/cm³",
       "Thermal Data": "110°C (TDS typical data; not a stated service-temperature limit)",
       "Flash Point": "32°C (closed cup)",
@@ -2649,7 +2659,9 @@ export const products = [
   {
     slug: "fiberglass-epoxy-resin",
     name: "Fiberglass Epoxy Resin",
-    category: "Industrial & Specialty Resins",
+    // Epoxy by its own TDS ("Resin Type: Epoxy", amine-hardener cure), so it
+    // belongs in the epoxy hub rather than the specialty catch-all.
+    category: "Epoxy & Casting",
     price: "₹800 / kg",
     image: "fiberglass-epoxy-resin.jpg",
     images: ["fiberglass-epoxy-resin-2.jpg", "fiberglass-epoxy-resin-3.jpg"],
@@ -2659,7 +2671,7 @@ export const products = [
     seo: {
       title: "Fiberglass Epoxy Resin Manufacturer in India",
       description:
-        "Fiberglass Epoxy Resin for Samrat's TDS-listed fabric reinforcement, hand lay-up and lamination contexts. Review current technical documents and request an industrial quote.",
+        "Fiberglass Epoxy Resin from Samrat Poly Resins — an epoxy laminating resin for fibreglass reinforcement, cured with an amine hardener. Request grade data.",
       keywords: [
         "Fiberglass Epoxy Resin",
         "Fibreglass Epoxy Resin",
@@ -2689,7 +2701,7 @@ export const products = [
     },
     techSpecs: {
       "Resin type": "Epoxy (current TDS); catalogue calls it Bisphenol-A Epoxy Resin",
-      "Curing system": "Room-temperature cure; TDS identifies an amine hardener but does not name a confirmed product pairing",
+      "Curing system": "Room-temperature cure with an amine hardener at 2:1 by weight (TDS). The TDS gives the hardener type and ratio but does not name a specific Samrat hardener as the qualified partner — confirm the pairing before ordering",
       "Published processing": "Hand lay-up and lamination (current TDS); catalogue separately lists filament winding",
       "Viscosity": "700 cPs at 25°C (TDS); catalogue lists 900 cPs",
       "Gel / pot-life data": "35-45 minutes at 25°C (TDS gel time); catalogue lists 35 minutes as Gel Time / Pot Life",
@@ -2782,7 +2794,10 @@ export const products = [
   {
     slug: "bisphenol-resin",
     name: "Bisphenol Resin",
-    category: "Industrial & Specialty Resins",
+    // Bisphenol-A + epichlorohydrin cured with an amine hardener is a
+    // bisphenol-A epoxy resin. Distinct from Vinyl Ester Resin, which is a
+    // Bisphenol-A epoxy VINYL ESTER and cures with MEKP, not an amine.
+    category: "Epoxy & Casting",
     price: "₹125 / kg",
     image: "bisphenol-resin.jpg",
     images: ["bisphenol-resin-2.jpg"],
@@ -2792,7 +2807,7 @@ export const products = [
     seo: {
       title: "Bisphenol Resin Manufacturer in India",
       description:
-        "Bisphenol Resin for laminating, casting, coating and encapsulation applications. View technical details and request a quote from Samrat Poly Resins.",
+        "Bisphenol Resin from Samrat Poly Resins — a bisphenol-A and epichlorohydrin epoxy for laminating, casting, coating and encapsulation. Request a quote.",
       keywords: [
         "Bisphenol Resin",
         "Bisphenol Resin Manufacturer India",
@@ -2814,6 +2829,8 @@ export const products = [
     },
     techSpecs: {
       "Resin type": "Bisphenol A & epichlorohydrin based (thermosetting) - current TDS wording",
+      "Curing methods": "Room-temperature cure with an amine hardener (TDS)",
+      "Processing methods": "Laminating, casting, coating, encapsulation (TDS)",
       Viscosity: "600 cPs (at 25°C)",
       "Gel time": "35-45 minutes (at 25°C; TDS typical data)",
       "Styrene content": "Not applicable",
