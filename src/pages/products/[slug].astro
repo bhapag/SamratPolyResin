@@ -4352,9 +4352,21 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
   </script>
 
   <style>
+    /* One line, always. On phones the longest trails ("Industrial & Specialty
+       Resins > Polyester Putty Resin") sat right at the width limit, and the
+       mono web font is wider than its fallback: when it swapped in, the trail
+       wrapped and pushed the whole product masthead 29px down — a measured,
+       reproducible CLS of 0.157 on a throttled Pixel 5. Truncating the category
+       and current-page labels keeps the height identical in every font state;
+       the current page name is repeated in full in the H1 directly below. */
     .crumb {
       display: flex; gap: 0.6rem; align-items: center; padding-top: 1.5rem;
       font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-faint); letter-spacing: 0.04em;
+      flex-wrap: nowrap; white-space: nowrap; min-width: 0; overflow: hidden;
+    }
+    .crumb > * { flex-shrink: 0; }
+    .crumb > a:nth-last-of-type(1):not(:first-child), .crumb .cur {
+      flex-shrink: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis;
     }
     .crumb a:hover { color: var(--accent-gold-light); }
     .crumb .cur { color: var(--ink-dim); }

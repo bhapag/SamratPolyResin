@@ -85,6 +85,13 @@ const ambientPosterMobile = await getImage({ src: heroVideoPosterMobile, width: 
 
     const ensureActivated = () => {
       if (reducedMotion || saveData) return;
+      // Phones, inner pages: poster only. Measured on production, a Pixel 5
+      // opening any product or document page started streaming the full
+      // 1.6 MB looping video for a layer drawn at 34% opacity behind opaque
+      // cards, over a still poster that already carries the look. On the
+      // homepage (.hero present) the same file is the approved hero video and
+      // is already downloaded, so the ambient layer there still plays for free.
+      if (isMobile() && !document.querySelector('.hero') && activeVideo().dataset.activated !== 'true') return;
       const video = activeVideo();
       if (video.dataset.activated === 'true') return;
       video.dataset.activated = 'true';
