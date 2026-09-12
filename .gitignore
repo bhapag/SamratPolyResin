@@ -15,3 +15,6 @@ playwright-report/
 
 # --- local tool artefacts ---
 .playwright-cli/
+
+# Local scratch scripts at the repo root (screenshots, renders). Never shipped.
+/_*.mjs
