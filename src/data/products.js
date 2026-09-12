@@ -2066,7 +2066,6 @@ export const products = [
         "Epoxy Curing Agent",
         "Epoxy Resin Hardener",
         "Hardener for Epoxy Resin",
-        "Epoxy Hardener Manufacturer",
         "Epoxy Hardener Supplier",
       ],
     },
@@ -2697,7 +2696,7 @@ export const products = [
     tdsUrl: "/tds/fiberglass-epoxy-resin-tds.pdf",
     sdsUrl: "/sds/fiberglass-epoxy-resin-sds.pdf",
     seo: {
-      title: "Fiberglass Epoxy Resin Manufacturer in India",
+      title: "Fiberglass Epoxy Resin Supplier in India",
       description:
         "Fiberglass Epoxy Resin from Samrat Poly Resins — an epoxy laminating resin for fibreglass reinforcement, cured with an amine hardener. Request grade data.",
       keywords: [
@@ -2708,7 +2707,6 @@ export const products = [
         "Composite Epoxy Resin",
         "Epoxy Laminating Resin",
         "Epoxy Resin for Composite Laminates",
-        "Fiberglass Epoxy Resin Manufacturer India",
         "Fiberglass Epoxy Resin Supplier India",
       ],
     },
@@ -2833,12 +2831,11 @@ export const products = [
     tdsUrl: "/tds/bisphenol-resin-tds.pdf",
     sdsUrl: "/sds/bisphenol-resin-sds.pdf",
     seo: {
-      title: "Bisphenol Resin Manufacturer in India",
+      title: "Bisphenol Resin Supplier in India",
       description:
         "Bisphenol Resin from Samrat Poly Resins — a bisphenol-A and epichlorohydrin epoxy for laminating, casting, coating and encapsulation. Request a quote.",
       keywords: [
         "Bisphenol Resin",
-        "Bisphenol Resin Manufacturer India",
         "Bisphenol Resin Supplier India",
         "Bisphenol A Resin System",
         "Bisphenol Resin for Laminating",

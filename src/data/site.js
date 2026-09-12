@@ -179,7 +179,7 @@ export function buildOrganizationSchema({ logoUrl, knowsAbout = [] } = {}) {
     name: site.name,
     url: site.url,
     slogan: site.tagline,
-    description: `${site.name} is a ${site.address.state.replace(', India', '')}-based manufacturer of GP polyester, gelcoat, fire-retardant, epoxy and specialty resin systems, supplying FRP and composite manufacturers across India from ${site.address.line2}. Established ${site.established}.`,
+    description: `${site.name} is a ${site.address.state.replace(', India', '')}-based manufacturer of GP polyester, gelcoat, fire-retardant and specialty polyester resins, and supplier of epoxy systems, hardeners and FRP materials, serving FRP and composite manufacturers across India from ${site.address.line2}. Established ${site.established}.`,
     ...(logoUrl ? { logo: logoUrl, image: logoUrl } : {}),
     telephone: site.phones.map((phone) => phone.dial),
     email: site.email,

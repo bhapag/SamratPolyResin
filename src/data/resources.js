@@ -6007,7 +6007,7 @@ export const resources = [
     publishDate: "2026-08-10",
     seo: {
       title: "Fiberglass Epoxy Resin Procurement Checklist | RFQ Guide",
-      keywords: ["Fiberglass Epoxy Resin Procurement", "Fiberglass Epoxy Resin Quote", "Fiberglass Epoxy Resin Manufacturer India", "Fiberglass Epoxy Resin Supplier India", "Composite Epoxy Resin RFQ"],
+      keywords: ["Fiberglass Epoxy Resin Procurement", "Fiberglass Epoxy Resin Quote", "Fiberglass Epoxy Resin Supplier India", "Composite Epoxy Resin RFQ"],
       ogTitle: "Fiberglass Epoxy Resin Procurement Checklist",
       ogDescription: "Request Fiberglass Epoxy Resin with a clear composite application, document reference, system status and commercial requirement.",
     },
