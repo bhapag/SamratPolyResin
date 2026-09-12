@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import fs from 'node:fs';
+import { execSync } from 'node:child_process';
 import path from 'node:path';
 import { products } from '../src/data/products.js';
 
@@ -52,22 +53,26 @@ test('bought-in and article items are not sold on "manufacturer" framing', async
   }
 });
 
-test.describe('PDFs with a stray hidden text layer', () => {
-  // The printed sheet is correct in each case; the embedded text is not.
-  const CASES: Record<string, RegExp> = {
-    'gp-quartz-resin': /GP Clear Resin/,
-    'iso-fire-retardant-resin': /GP Clear Resin/,
-    'epoxy-clear-casting-resin': /2:1.*1:1/,
+test.describe('TDS files formerly carrying a stray hidden text layer', () => {
+  // Replaced 2026-09-13 by copies with the covered text removed. Extracted text
+  // must now be the printed sheet only; the previous files are kept internally.
+  const CASES: Record<string, { ref: string; must: RegExp[]; mustNot: RegExp }> = {
+    'gp-quartz-resin': { ref: 'SPR-TDS-GQR', must: [/Viscosity\s+400-800 cPs/, /Gel Time\s+7-10 minutes/], mustNot: /GP CLEAR|SPR-TDS-GCR|Crystal-Clear/i },
+    'iso-fire-retardant-resin': { ref: 'SPR-TDS-IFR', must: [/Purity\s+≥99%/, /Viscosity\s+400 cPs/], mustNot: /GP CLEAR|SPR-TDS-GCR|350-450/i },
+    'epoxy-clear-casting-resin': { ref: 'SPR-TDS-CCR', must: [/Mix Ratio\s+2:1/, /Pot Life\s+40 Minutes/], mustNot: /1:1|12:1|Not Provided/i },
   };
-  test('the product page says so inside the download, including its accessible name', async ({ page }) => {
-    for (const [slug, re] of Object.entries(CASES)) {
-      expect(bySlug(slug).tdsNote, slug).toMatch(re);
-      await page.goto(`/products/${slug}/`);
-      const link = page.locator('.prod-docs a.doc-act-dl[href^="/tds/"]');
-      await expect(link.locator('.doc-act-caution'), slug).toHaveText(bySlug(slug).tdsNote);
-      expect(await link.getAttribute('aria-label'), slug).toContain(bySlug(slug).tdsNote);
-    }
-  });
+  for (const [slug, c] of Object.entries(CASES)) {
+    test(`${slug}: served TDS text is the printed sheet only`, async () => {
+      let text = '';
+      try { text = execSync(`pdftotext -enc UTF-8 -layout "public/tds/${slug}-tds.pdf" -`).toString(); } catch { test.skip(true, 'pdftotext not available'); }
+      expect(text).toContain(c.ref);
+      expect(text.match(new RegExp(c.ref, 'g'))?.length).toBe(1);
+      for (const re of c.must) expect(text).toMatch(re);
+      expect(text).not.toMatch(c.mustNot);
+      expect(bySlug(slug).tdsNote, 'stale hidden-layer note').toBeUndefined();
+      expect(fs.existsSync(path.resolve(`source-documents/historical/superseded-file-${slug}-tds-with-hidden-layer.pdf`))).toBe(true);
+    });
+  }
 });
 
 test.describe('Polyester Putty Resin posters', () => {

@@ -765,11 +765,10 @@ export const products = [
     imageAlt: "GP Quartz Resin — orthophthalic polyester resin for engineered stone and quartz casting by Samrat Poly Resins",
     tdsUrl: "/tds/gp-quartz-resin-tds.pdf",
     // The printed sheet is GP Quartz Resin's own (SPR-TDS-GQR) and matches this
-    // page, but the PDF's hidden text layer also contains GP Clear Resin's full
-    // sheet (SPR-TDS-GCR, 350-450 cPs, <8 min). Copy-paste, search and screen
-    // readers get GP Clear's figures first. Fix: the issuer re-exports the
-    // sheet without the stray layer. No new facts are needed.
-    tdsNote: "Use the printed values. This file's hidden text also contains GP Clear Resin's sheet.",
+    // page. The file first issued also carried GP Clear Resin's sheet as a
+    // hidden text layer; 2026-09-13 it was replaced by a copy with that covered
+    // text removed (render pixel-identical, same Doc. Ref and Rev.). Previous
+    // file: source-documents/historical/.
     sdsUrl: "/sds/gp-quartz-resin-sds.pdf",
     seo: {
       title: "GP Quartz Resin Manufacturer in India",
@@ -1403,9 +1402,9 @@ export const products = [
     imageAlt: "ISO Fire Retardant Resin — halogen-free, ATH-filled isophthalic fire-retardant polyester resin by Samrat Poly Resins",
     tdsUrl: "/tds/iso-fire-retardant-resin-tds.pdf",
     // Printed sheet is ISO Fire Retardant Resin's own (SPR-TDS-IFR) and matches
-    // this page; the hidden text layer also contains GP Clear Resin's sheet
-    // (SPR-TDS-GCR). Same fix as GP Quartz: issuer re-export, no new facts.
-    tdsNote: "Use the printed values. This file's hidden text also contains GP Clear Resin's sheet.",
+    // this page. The hidden GP Clear Resin text layer in the first-issued file
+    // was removed 2026-09-13, as for GP Quartz (previous file kept in
+    // source-documents/historical/).
     sdsUrl: "/sds/iso-fire-retardant-resin-sds.pdf",
     seo: {
       title: "ISO Fire Retardant Resin Manufacturer in India",
@@ -1815,11 +1814,10 @@ export const products = [
       "Epoxy Clear Casting Resin — crystal-clear two-part epoxy for river table and decorative casting by Samrat Poly Resins",
     tdsUrl: "/tds/epoxy-clear-casting-resin-tds.pdf",
     // Printed sheet (SPR-TDS-CCR) gives 2:1 by weight, 900 cPs, 40 min pot life,
-    // Shore D 82 — matching this page and the SDS. Hidden beneath it is an
+    // Shore D 82 — matching this page and the SDS. The first-issued file hid an
     // earlier version of the same reference giving a 1:1 mix ratio and "Not
-    // Provided" fields. A screen reader or copied text gets the wrong ratio.
-    // Fix: issuer re-export without the stray layer; no new facts are needed.
-    tdsNote: "Mix 2:1 by weight, as printed. This file's hidden text still carries an earlier 1:1 draft.",
+    // Provided" fields. That covered text was removed 2026-09-13 (render
+    // pixel-identical; previous file kept in source-documents/historical/).
     sdsUrl: "/sds/epoxy-clear-casting-resin-sds.pdf",
     seo: {
       title: "Epoxy Clear Casting Resin – Two-Part Epoxy",
