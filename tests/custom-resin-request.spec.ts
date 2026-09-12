@@ -167,7 +167,10 @@ test('desktop layout, catalogue source and entry-point CTAs remain intact', asyn
   const companyBox = await page.locator('#requestCompany').boundingBox();
   expect(nameBox?.y).toBe(companyBox?.y);
   expect(companyBox!.x).toBeGreaterThan(nameBox!.x);
-  expect(await page.locator('#requestProduct option').allTextContents()).toContain('PET Resin / Polyester Putty Resin');
+  // Renamed 2026-09-13: the public product name is now "Polyester Putty Resin".
+  // The assertion still guards the same thing — that the catalogue feeds the
+  // enquiry form's product select.
+  expect(await page.locator('#requestProduct option').allTextContents()).toContain('Polyester Putty Resin');
   await expect(page.locator('body')).not.toContainText('Samrat FRP Traders');
   await expect(page.locator('body')).not.toContainText('+977 9805526904');
 

@@ -234,27 +234,6 @@ const epoxyArtBuyerResources = published.filter((resource) => [
   'epoxy-art-resin-vs-polyester-resin',
   'what-is-epoxy-art-resin',
 ].includes(resource.slug));
-const uvResinAuthoritySlugs = new Set([
-  'what-is-uv-resin',
-  'applications-of-uv-resin',
-  'uv-resin-vs-epoxy-art-resin',
-  'uv-resin-vs-epoxy-clear-casting-resin',
-  'uv-resin-vs-polyester-resin',
-  'uv-resin-buyer-guide',
-]);
-const uvResinAuthorityResources = published.filter((resource) => uvResinAuthoritySlugs.has(resource.slug));
-const uvResinFoundationResources = published.filter((resource) => [
-  'what-is-uv-resin',
-  'applications-of-uv-resin',
-].includes(resource.slug));
-const uvResinComparisonResources = published.filter((resource) => [
-  'uv-resin-vs-epoxy-art-resin',
-  'uv-resin-vs-epoxy-clear-casting-resin',
-  'uv-resin-vs-polyester-resin',
-].includes(resource.slug));
-const uvResinBuyerResources = published.filter((resource) => [
-  'uv-resin-buyer-guide',
-].includes(resource.slug));
 const sheetGradeAuthoritySlugs = new Set([
   'what-is-sheet-grade-yellow-resin',
   'applications-of-sheet-grade-yellow-resin',
@@ -411,8 +390,8 @@ const bisphenolVerificationResources = published.filter((resource) => [
   'bisphenol-resin-procurement-checklist',
 ].includes(resource.slug));
 const gpAuthorityResourcesWithoutUpr = gpAuthorityResources.filter((resource) => !uprAuthoritySlugs.has(resource.slug));
-const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !marbleResinAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug) && !glassFiberAuthoritySlugs.has(resource.slug) && !pigmentAuthoritySlugs.has(resource.slug) && !mekpAuthoritySlugs.has(resource.slug) && !epoxyHardenerAuthoritySlugs.has(resource.slug) && !fiberglassEpoxyAuthoritySlugs.has(resource.slug) && !epoxyCastingAuthoritySlugs.has(resource.slug) && !epoxyArtAuthoritySlugs.has(resource.slug) && !uvResinAuthoritySlugs.has(resource.slug) && !sheetGradeAuthoritySlugs.has(resource.slug) && !roofLightAuthoritySlugs.has(resource.slug) && !dmcSmcAuthoritySlugs.has(resource.slug) && !petResinAuthoritySlugs.has(resource.slug) && !fireRetardantAuthoritySlugs.has(resource.slug) && !isoFireRetardantAuthoritySlugs.has(resource.slug) && !vinylEsterAuthoritySlugs.has(resource.slug) && !bisphenolAuthoritySlugs.has(resource.slug));
-// Jump navigation for the 25 knowledge hubs below. The Knowledge Centre lists
+const otherResources = published.filter((resource) => !gpAuthoritySlugs.has(resource.slug) && !gpWhiteAuthoritySlugs.has(resource.slug) && !gpQuartzAuthoritySlugs.has(resource.slug) && !marbleResinAuthoritySlugs.has(resource.slug) && !laminationAuthoritySlugs.has(resource.slug) && !gelcoatAuthoritySlugs.has(resource.slug) && !buttonAuthoritySlugs.has(resource.slug) && !uprAuthoritySlugs.has(resource.slug) && !glassFiberAuthoritySlugs.has(resource.slug) && !pigmentAuthoritySlugs.has(resource.slug) && !mekpAuthoritySlugs.has(resource.slug) && !epoxyHardenerAuthoritySlugs.has(resource.slug) && !fiberglassEpoxyAuthoritySlugs.has(resource.slug) && !epoxyCastingAuthoritySlugs.has(resource.slug) && !epoxyArtAuthoritySlugs.has(resource.slug) && !sheetGradeAuthoritySlugs.has(resource.slug) && !roofLightAuthoritySlugs.has(resource.slug) && !dmcSmcAuthoritySlugs.has(resource.slug) && !petResinAuthoritySlugs.has(resource.slug) && !fireRetardantAuthoritySlugs.has(resource.slug) && !isoFireRetardantAuthoritySlugs.has(resource.slug) && !vinylEsterAuthoritySlugs.has(resource.slug) && !bisphenolAuthoritySlugs.has(resource.slug));
+// Jump navigation for the 24 knowledge hubs below. The Knowledge Centre lists
 // every live article on one page; even with the compact rows introduced
 // alongside this, that page is 37,539px on a 390px viewport, so a reader
 // arriving for one resin family had to scroll past every other family to
@@ -444,7 +423,6 @@ const KNOWLEDGE_HUBS = [
   { id: 'fiberglass-epoxy-resin-hub-heading', label: 'Fiberglass Epoxy Resin' },
   { id: 'epoxy-casting-resin-hub-heading', label: 'Epoxy Clear Casting Resin' },
   { id: 'epoxy-art-resin-hub-heading', label: 'Epoxy Art Resin' },
-  { id: 'uv-resin-hub-heading', label: 'UV Resin' },
   { id: 'epoxy-hardener-hub-heading', label: 'Epoxy Hardener' },
   { id: 'mekp-hardener-hub-heading', label: 'MEKP Hardener' },
   { id: 'glass-fiber-guides-heading', label: 'Glass Fiber / CSM' },
@@ -883,44 +861,6 @@ const KNOWLEDGE_HUBS = [
         </section>
       )}
 
-      {uvResinAuthorityResources.length > 0 && (
-        <section class="kc-focus" aria-labelledby="uv-resin-hub-heading">
-          <div class="kc-focus-head">
-            <div>
-              <p class="eyebrow">UV/LED curing knowledge hub</p>
-              <h2 id="uv-resin-hub-heading">UV Resin Knowledge Hub</h2>
-              <p>Start with the published UV/LED-curable product role and applications, compare it with the separate Art Resin, Clear Casting Resin and polyester-resin routes, then use the current TDS and a focused commercial enquiry.</p>
-            </div>
-            <div class="kc-focus-actions">
-              <a href="/products/uv-resin/" class="btn btn-solid">View UV Resin</a>
-              <a href="/tds/uv-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download UV Resin TDS</a>
-              <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>
-              <a href="/about/" class="btn">Company and facility context</a>
-              <a href="/contact/" class="btn">Discuss a UV Resin requirement</a>
-            </div>
-          </div>
-          <div class="kc-subgroups">
-            <section class="kc-subgroup" aria-labelledby="uv-resin-foundation-heading">
-              <h3 id="uv-resin-foundation-heading">1. Define the UV Resin role and published applications</h3>
-              <div class="kc-grid">
-                {uvResinFoundationResources.map((resource) => <ResourceCard resource={resource} compact />)}
-              </div>
-            </section>
-            <section class="kc-subgroup" aria-labelledby="uv-resin-comparison-heading">
-              <h3 id="uv-resin-comparison-heading">2. Compare the separate product routes</h3>
-              <div class="kc-grid">
-                {uvResinComparisonResources.map((resource) => <ResourceCard resource={resource} compact />)}
-              </div>
-            </section>
-            <section class="kc-subgroup" aria-labelledby="uv-resin-buyer-heading">
-              <h3 id="uv-resin-buyer-heading">3. Review documentation and prepare the enquiry</h3>
-              <div class="kc-grid">
-                {uvResinBuyerResources.map((resource) => <ResourceCard resource={resource} compact />)}
-              </div>
-            </section>
-          </div>
-        </section>
-      )}
 
       {sheetGradeAuthorityResources.length > 0 && (
         <section class="kc-focus" aria-labelledby="sheet-grade-resin-hub-heading">
@@ -1002,12 +942,12 @@ const KNOWLEDGE_HUBS = [
         <section class="kc-focus" aria-labelledby="pet-resin-hub-heading">
           <div class="kc-focus-head">
             <div>
-              <p class="eyebrow">PET Resin / Polyester Putty Resin documentation and selection</p>
-              <h2 id="pet-resin-hub-heading">PET Resin / Polyester Putty Resin Knowledge Hub</h2>
+              <p class="eyebrow">Polyester Putty Resin documentation and selection</p>
+              <h2 id="pet-resin-hub-heading">Polyester Putty Resin Knowledge Hub</h2>
               <p>Start with the current TDS to confirm the liquid PET-modified sheet grade, then review published sheet and panel applications, compare it with the GP and Lamination Resin routes, and prepare a document-led RFQ.</p>
             </div>
             <div class="kc-focus-actions">
-              <a href="/products/pet-resin/" class="btn btn-solid">View PET Resin / Polyester Putty Resin</a>
+              <a href="/products/polyester-putty-resin/" class="btn btn-solid">View Polyester Putty Resin</a>
               <a href="/resources/pet-resin-liquid-grade-vs-thermoplastic-pet/" class="btn">Clarify PET material form</a>
               <a href="/tds/pet-resin-tds.pdf" class="btn" target="_blank" rel="noopener" download>Download TDS</a>
               <a href={site.catalogue.url} class="btn" target="_blank" rel="noopener" download>Download Product Catalogue</a>

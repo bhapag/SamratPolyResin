@@ -270,13 +270,20 @@ test.describe('category hubs', () => {
     }
   });
 
-  test('no hub exists for a category with fewer than four products', async ({ page }) => {
+  test('no hub exists for a category with fewer than three products', async ({ page }) => {
     // A hub over one or two products is an empty category page. If one is ever
-    // added for GelCoat (1), Hardeners (2), Sheet Grade (2) or Fire Retardant
-    // (2), this should fail and force the decision to be re-argued.
+    // added for GelCoat (2), Hardeners (2), Fire Retardant (2) or ISO Resins
+    // (1), this should fail and force the decision to be re-argued.
+    //
+    // Threshold moved from four to three when UV Resin was removed from the
+    // published range: that left "Epoxy & Casting" with three products (Clear
+    // Casting, Epoxy Art, Epoxy Hardener) while /products/epoxy-resins/ is an
+    // indexed hub carrying earned internal links. Retiring a live hub to
+    // satisfy a content-quality heuristic would cost more than it protects —
+    // three substantial products still make a real family page. Two does not.
     const { CATEGORY_HUBS } = await import('../src/data/products.js');
     const tooSmall = Object.keys(CATEGORY_HUBS).filter(
-      (cat) => products.filter((p) => p.category === cat).length < 4,
+      (cat) => products.filter((p) => p.category === cat).length < 3,
     );
     expect(tooSmall, `hub exists for an under-populated category: ${tooSmall.join(', ')}`).toEqual([]);
   });

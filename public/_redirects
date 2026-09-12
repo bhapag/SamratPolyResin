@@ -10,8 +10,8 @@
 
 # Consolidated duplicate resource intent (2026-08-13)
 # Product pages now own current specifications and commercial/RFQ intent.
-/resources/pet-resin-technical-specifications-and-rfq/  /products/pet-resin/  301
-/resources/pet-resin-technical-specifications-and-rfq   /products/pet-resin/  301
+/resources/pet-resin-technical-specifications-and-rfq/  /products/polyester-putty-resin/  301
+/resources/pet-resin-technical-specifications-and-rfq   /products/polyester-putty-resin/  301
 /resources/bisphenol-resin-technical-data-and-document-check/  /products/bisphenol-resin/  301
 /resources/bisphenol-resin-technical-data-and-document-check   /products/bisphenol-resin/  301
 
@@ -190,3 +190,28 @@
 /resources/applications-of-epoxy-art-resin                    /resources/what-is-epoxy-art-resin/  301
 /resources/epoxy-art-resin-buyer-guide/                       /resources/what-is-epoxy-art-resin/  301
 /resources/epoxy-art-resin-buyer-guide                        /resources/what-is-epoxy-art-resin/  301
+
+# 2026-09-13 — first product-range pass.
+# UV Resin (UV/LED-curable epoxy acrylate) removed from the published range:
+# it was never a product this company manufactures. Its URLs point at the
+# epoxy family it sat in, or at the specific epoxy grade each comparison was
+# about. NONE point at UV Stabilized Sheet Grade Yellow Resin — that is a
+# UV-RESISTANT polyester sheet grade, an unrelated product.
+/products/uv-resin/                                     /products/epoxy-resins/  301
+/products/uv-resin                                      /products/epoxy-resins/  301
+/resources/what-is-uv-resin/                            /products/epoxy-resins/  301
+/resources/what-is-uv-resin                             /products/epoxy-resins/  301
+/resources/applications-of-uv-resin/                    /products/epoxy-resins/  301
+/resources/applications-of-uv-resin                     /products/epoxy-resins/  301
+/resources/uv-resin-buyer-guide/                        /products/epoxy-resins/  301
+/resources/uv-resin-buyer-guide                         /products/epoxy-resins/  301
+/resources/uv-resin-vs-polyester-resin/                 /products/epoxy-resins/  301
+/resources/uv-resin-vs-polyester-resin                  /products/epoxy-resins/  301
+/resources/uv-resin-vs-epoxy-art-resin/                 /products/epoxy-art-resin/  301
+/resources/uv-resin-vs-epoxy-art-resin                  /products/epoxy-art-resin/  301
+/resources/uv-resin-vs-epoxy-clear-casting-resin/       /products/epoxy-clear-casting-resin/  301
+/resources/uv-resin-vs-epoxy-clear-casting-resin        /products/epoxy-clear-casting-resin/  301
+
+# Public product name changed to "Polyester Putty Resin"; slug follows the name.
+/products/pet-resin/                                    /products/polyester-putty-resin/  301
+/products/pet-resin                                     /products/polyester-putty-resin/  301

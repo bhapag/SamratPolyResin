@@ -36,6 +36,7 @@
 
 export const CATEGORIES = [
   "GP Resins",
+  "ISO Resins",
   "Sheet Grade Resins",
   "GelCoat Resin",
   "Fire Retardant Resins",
@@ -137,6 +138,7 @@ export const products = [
     ],
     industries: [
       "FRP sheet & panel manufacturing",
+      
       "Electrical & switchgear enclosures",
       "Construction formwork & partitions",
       "General industrial moulding",
@@ -1826,7 +1828,7 @@ export const products = [
     description:
       "Epoxy Clear Casting Resin is Samrat Poly Resins' two-part epoxy system for casting, river tables, jewellery and decorative artwork — a different resin chemistry entirely from our polyester-based GP Clear Resin, GP Yellow Resin, GP Gelcoat Resin, Vinyl Ester Resin and Lamination Resin, all of which cure with an MEKP and cobalt system rather than a two-part epoxy reaction. Mixed 2:1 by weight (resin:hardener), it reaches an initial, de-mouldable cure in around 24 hours and a full cure in around 72 hours, delivering a crystal-clear, high-gloss finish with low bubble formation. Its 900 cPs viscosity gives moderate self-levelling in a contained mould and supports casting depths up to 30 mm per pour — deeper work such as most river tables is built up in stages rather than poured all at once. Once fully cured it reaches Shore D 82 hardness with under 0.2% shrinkage, and its UV-stabilised formulation is significantly more resistant to yellowing than a standard epoxy, though no clear epoxy is entirely immune to gradual colour change under prolonged UV exposure. Supplied in 20 kg packs, with a minimum order quantity of 100 kg.",
     usageNote:
-      'Epoxy Clear Casting Resin is mixed 2:1 by weight with a compatible <a href="/products/epoxy-hardener/">Epoxy Hardener</a> before pouring — accurate weight measurement matters more here than with a polyester resin dosed by catalyst percentage. For a self-levelling grade formulated specifically for floor art and table-top coating rather than deeper casting, see our <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a>; for fast UV/LED-curing craft work instead of a multi-day room-temperature cure, our <a href="/products/uv-resin/">UV Resin</a> may be more suitable. Our polyester-based <a href="/products/gp-clear-resin/">GP Clear Resin</a> and <a href="/products/gp-yellow-resin/">GP Yellow Resin</a> use an entirely different MEKP/cobalt cure system and are not interchangeable with this epoxy system for FRP structural laminating work.',
+      'Epoxy Clear Casting Resin is mixed 2:1 by weight with a compatible <a href="/products/epoxy-hardener/">Epoxy Hardener</a> before pouring — accurate weight measurement matters more here than with a polyester resin dosed by catalyst percentage. For a self-levelling grade formulated specifically for floor art and table-top coating rather than deeper casting, see our <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a>. Our polyester-based <a href="/products/gp-clear-resin/">GP Clear Resin</a> and <a href="/products/gp-yellow-resin/">GP Yellow Resin</a> use an entirely different MEKP/cobalt cure system and are not interchangeable with this epoxy system for FRP structural laminating work.',
     features: [
       "Crystal-clear, high-gloss finish with low bubble formation",
       "2:1 mix ratio by weight; 24-hour initial cure, 72-hour full cure",
@@ -1896,7 +1898,6 @@ export const products = [
     relatedSlugs: [
       "epoxy-art-resin",
       "epoxy-hardener",
-      "uv-resin",
     ],
     // Card-only stubs (draft: true) approved via Step 1 audit + Step 3 —
     // slugs prefixed "epoxy-clear-casting-resin-" so they stay unambiguous
@@ -1949,7 +1950,7 @@ export const products = [
     description:
       "A crystal-clear, two-component epoxy system formulated for artistic and decorative applications. Mixed 2:1 and curing in around 24 hours, it offers excellent transparency, superior gloss, outstanding self-levelling properties and excellent bubble release for a flawless finish. Supplied in 15 kg packs, with a minimum order quantity of 100 kg, its UV-resistant formulation is designed to hold its clarity and gloss over time, making it well suited to floor art, table tops and other surfaces exposed to daylight.",
     usageNote:
-      'Epoxy Art Resin is mixed 2:1 with a compatible <a href="/products/epoxy-hardener/">epoxy hardener</a> before pouring. For deeper pours up to 30 mm rather than a self-levelling surface coat, see our <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a>; for fast UV-curing craft work, our <a href="/products/uv-resin/">UV Resin</a> may be more suitable.',
+      'Epoxy Art Resin is mixed 2:1 with a compatible <a href="/products/epoxy-hardener/">epoxy hardener</a> before pouring. For deeper pours up to 30 mm rather than a self-levelling surface coat, see our <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a>.',
     features: [
       "Water-clear, high-gloss finish",
       "2:1 mix ratio, 24-hour cure",
@@ -2010,111 +2011,6 @@ export const products = [
     relatedSlugs: [
       "epoxy-clear-casting-resin",
       "epoxy-hardener",
-      "uv-resin",
-    ],
-  },
-  {
-    slug: "uv-resin",
-    name: "UV Resin",
-    category: "Epoxy & Casting",
-    price: "₹140 / kg",
-    image: "uv-resin.jpg",
-    images: ["uv-resin-2.jpg"],
-    tdsUrl: "/tds/uv-resin-tds.pdf",
-    sdsUrl: "/sds/uv-resin-sds.pdf",
-    seo: {
-      title: "UV Resin – Fast-Curing Epoxy Acrylate Resin",
-      description:
-        "UV Resin — a fast UV/LED-curing, low-viscosity epoxy acrylate resin for jewellery, encapsulation and craft coatings. Crystal clear, scratch resistant.",
-      keywords: [
-        "UV Resin",
-        "UV Curing Resin",
-        "Epoxy Acrylate Resin",
-        "UV LED Resin",
-        "Craft Resin",
-      ],
-    },
-    // Reorganised into productDetails/techSpecs — every value is unchanged
-    // from the original single `specs` table, just regrouped. "Usage /
-    // Application" is not repeated in the table since it's already covered
-    // by the applications list below. No new values invented.
-    productDetails: {
-      "Minimum Order Quantity": "1000 kg",
-      "Packaging Size": "200 kg",
-      "Colour / Appearance": "Clear",
-    },
-    techSpecs: {
-      "Resin Chemistry": "Epoxy Acrylate",
-      "Curing Type": "UV LED Cure",
-      "Viscosity": "Low",
-      "Hardness": "Medium",
-    },
-    tagline: "Fast UV-curing resin for crystal-clear craft work.",
-    description:
-      "An epoxy-acrylate resin that cures rapidly under UV/LED light to a crystal-clear, high-gloss finish. Low-viscosity and fast-curing, it offers excellent scratch resistance, low shrinkage and outstanding surface hardness for detailed decorative work. Supplied in 200 kg packs, with a minimum order quantity of 1,000 kg, its medium hardness and low viscosity suit fine encapsulation, doming and coating work where a fast production cycle matters as much as clarity.",
-    usageNote:
-      'UV Resin is cured directly under UV/LED light with no separate hardener needed. Where a longer-working-time, room-temperature-cure system is preferred for deeper pours, see our <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> or <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a>.',
-    features: [
-      "Fast UV/LED curing",
-      "Low viscosity, clear finish",
-      "Excellent scratch resistance, low shrinkage",
-      "Medium hardness for durable coated and encapsulated surfaces",
-      "Supplied in 200 kg packs, minimum order 1000 kg",
-    ],
-    applications: [
-      "Jewellery making and resin art",
-      "Encapsulation and doming",
-      "Crafts, coatings and miniature models",
-      "Adhesive, label, electronics, metal and wood coating",
-    ],
-    industries: [
-      "Jewellery & fashion accessories",
-      "Electronics & component encapsulation",
-      "Craft & decorative coatings",
-      "Wood & metal finishing",
-    ],
-    whyChoose: [
-      "ISO 9001:2015 certified quality management system",
-      "Manufacturing polyester resins since 2017",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
-      "Fast UV/LED cure with excellent scratch resistance",
-      "Supplied in 200 kg packs, minimum order 1,000 kg",
-      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
-    ],
-    faqs: [
-      {
-        q: "What is UV Resin?",
-        a: "UV Resin is an epoxy-acrylate resin that cures rapidly under UV/LED light to a crystal-clear, high-gloss finish, used for jewellery, encapsulation, doming and craft coatings.",
-      },
-      {
-        q: "How is UV Resin cured?",
-        a: "It cures directly under UV or LED light, without needing a separate hardener or long room-temperature cure time.",
-      },
-      {
-        q: "What is the viscosity and hardness of UV Resin?",
-        a: "Viscosity is low, and cured hardness is medium, giving a durable surface for coatings and encapsulated work.",
-      },
-      {
-        q: "Does UV Resin resist scratching and shrinkage?",
-        a: "Yes. It is formulated for excellent scratch resistance and low shrinkage on cure.",
-      },
-      {
-        q: "What applications is UV Resin suited for?",
-        a: "It is used for jewellery making, resin art, encapsulation, doming, and adhesive, label, electronics, metal and wood coating work.",
-      },
-      {
-        q: "What packaging and minimum order quantity does UV Resin come in?",
-        a: "It is supplied in 200 kg packs, with a minimum order quantity of 1,000 kg.",
-      },
-      {
-        q: "What is the difference between UV Resin and Epoxy Art Resin?",
-        a: 'UV Resin cures in seconds to minutes under UV/LED light, suited to thin layers and fast production. Our <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a> is a room-temperature, 24-hour-cure system better suited to thicker, self-levelling table-top pours.',
-      },
-    ],
-    relatedSlugs: [
-      "epoxy-art-resin",
-      "epoxy-clear-casting-resin",
-      "epoxy-hardener",
     ],
   },
   {
@@ -2164,7 +2060,7 @@ export const products = [
     description:
       "Epoxy Hardener is Samrat Poly Resins' published polyamide, amine-based curing agent for compatible epoxy resin systems. It is the separate hardener component of an epoxy system, not the epoxy resin itself and not a polyester-resin catalyst. The current TDS identifies a clear/transparent liquid with 500 cPs viscosity at 25 °C, 0.97 g/cm³ specific gravity and 320 mg KOH/g amine value. Review the actual epoxy resin, intended application and current Technical Data Sheet together before confirming a resin/hardener pairing. The published commercial format is a 20 kg pack with a 100 kg minimum order quantity.",
     usageNote:
-      'The existing <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> and <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a> product routes identify a compatible Epoxy Hardener as part of their separate two-component systems. That does not establish universal compatibility with every epoxy product or supplier. For a UV/LED-curable route that does not use this separate hardener component, review <a href="/products/uv-resin/">UV Resin</a>. For unsaturated polyester, vinyl ester or gelcoat systems, review the separate <a href="/products/mekp-hardener/">MEKP Hardener</a> product route instead.',
+      'The existing <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> and <a href="/products/epoxy-art-resin/">Epoxy Art Resin</a> product routes identify a compatible Epoxy Hardener as part of their separate two-component systems. That does not establish universal compatibility with every epoxy product or supplier. For unsaturated polyester, vinyl ester or gelcoat systems, review the separate <a href="/products/mekp-hardener/">MEKP Hardener</a> product route instead.',
     features: [
       "Published polyamide (amine-based) epoxy curing-agent type",
       "Clear / transparent liquid supplied form",
@@ -2225,7 +2121,6 @@ export const products = [
     relatedSlugs: [
       "epoxy-clear-casting-resin",
       "epoxy-art-resin",
-      "uv-resin",
       "mekp-hardener",
     ],
   },
@@ -2366,20 +2261,20 @@ export const products = [
     ],
   },
   {
-    slug: "pet-resin",
-    name: "PET Resin / Polyester Putty Resin",
+    slug: "polyester-putty-resin",
+    name: "Polyester Putty Resin",
     category: "Industrial & Specialty Resins",
     price: "₹115 / kg",
     image: "pet-resin.jpg",
     images: ["pet-resin-2.jpg"],
     imageAlt:
-      "PET Resin / Polyester Putty Resin - PET-modified liquid unsaturated polyester sheet-grade resin by Samrat Poly Resins",
+      "Polyester Putty Resin - PET-modified liquid unsaturated polyester sheet-grade resin by Samrat Poly Resins",
     tdsUrl: "/tds/pet-resin-tds.pdf",
     sdsUrl: "/sds/pet-resin-sds.pdf",
     seo: {
-      title: "Polyester Putty Resin (PET Resin) for Sheet & Laminate",
+      title: "Polyester Putty Resin Manufacturer in India",
       description:
-        "Samrat Poly Resins manufactures PET Resin / Polyester Putty Resin: a PET-modified polyester resin for sheet and laminate manufacturing in India. Request a quote.",
+        "Polyester Putty Resin from Samrat Poly Resins — a liquid unsaturated polyester resin manufactured in India. Share your requirement for current product data and a quote.",
       keywords: [
         "PET Resin",
         "Polyester Putty Resin",
@@ -2405,7 +2300,7 @@ export const products = [
     // different material form from this liquid resin — keep that
     // clarified so buyers order the correct grade.
     productDetails: {
-      "Product Role": "PET-modified liquid sheet-grade resin",
+      "Product Role": "Liquid unsaturated polyester resin",
       "Minimum Order Quantity": "1000 kg",
       "Packaging Size": "75 kg",
       "Colour / Appearance": "Pale Yellow",
@@ -2414,50 +2309,48 @@ export const products = [
       "Country of Origin": "India",
     },
     techSpecs: {
-      "Resin Type": "PET-Modified Unsaturated Polyester Resin (Liquid)",
-      "Grade": "Sheet Grade",
+      "Resin Type": "Unsaturated Polyester Resin (Liquid)",
+      
       "Viscosity": "450–650 cPs (at 25°C)",
       "Solid Content": "60–64%",
       "Specific Gravity": "1.05–1.12 g/cm³ (at 25°C)",
       "HDT": "70–85°C (cured)",
       "Flash Point": "Approx. 30°C",
-      "Published End Use": "Fibre sheets, PET sheets",
+      
     },
-    tagline: "PET-modified unsaturated polyester resin manufactured in India for sheet, laminate and panel applications.",
+    tagline: "Unsaturated polyester resin supplied as a liquid, manufactured in India.",
     description:
-      "PET Resin / Polyester Putty Resin is Samrat Poly Resins' PET-modified unsaturated polyester resin, supplied as a pale-yellow liquid sheet grade. It is manufactured for PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing. Both names appear on the current TDS and refer to this same Samrat grade; its product-specific technical data is listed below.",
+      "Polyester Putty Resin is Samrat Poly Resins' liquid unsaturated polyester resin, supplied as a pale-yellow liquid and sold under the name Polyester Putty Resin. The measured liquid properties listed below are taken from the current product data sheet. A fuller product description and application guidance is being prepared with our technical team and will be published alongside the revised data sheet.",
     features: [
-      "Manufactured and marketed as PET Resin / Polyester Putty Resin — Samrat's PET-modified unsaturated polyester sheet grade",
+      "Manufactured by Samrat Poly Resins and supplied under the name Polyester Putty Resin",
       "Pale-yellow liquid supply with 450–650 cPs viscosity at 25°C",
-      "Suited to sheet, fibre-sheet, FRP sheet-lamination and panel-manufacturing work",
+      
       "Supplied in 75 kg packaging, 1,000 kg minimum order quantity, six-month shelf life unopened",
       "Current Technical Data Sheet and Safety Data Sheet available for review",
     ],
     applications: [
-      "PET sheets and fibre sheet products",
-      "FRP sheet lamination and panel manufacturing",
+      "Polyester putty and filler compound manufacturing",
     ],
     industries: [
-      "FRP sheet & panel manufacturing",
-      "Fibre & sheet manufacturing",
+      "Putty & filler compound manufacturing",
     ],
     whyChoose: [
       "Dedicated PET-modified liquid resin route manufactured in India, backed by a current TDS and SDS",
       "Consistent pale-yellow liquid supply for sheet and laminate production",
-      "Direct manufacturer pricing and support for bulk PET Resin / Polyester Putty Resin orders",
+      "Direct manufacturer pricing and support for bulk Polyester Putty Resin orders",
       "Straightforward procurement path — share your application and documentation needs for a fast quote",
     ],
     faqs: [
       {
-        q: "What is PET Resin / Polyester Putty Resin?",
+        q: "What is Polyester Putty Resin?",
         a: "It is Samrat Poly Resins' PET-modified unsaturated polyester resin — a pale-yellow liquid sheet grade manufactured in India for PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing. PET Resin and Polyester Putty Resin are the approved names shown together on the current TDS for this grade.",
       },
       {
-        q: "Is PET Resin the same product as Polyester Putty Resin?",
+        q: "Was this product previously listed as PET Resin?",
         a: "Yes. On this page, PET Resin and Polyester Putty Resin refer to the same Samrat grade — both names appear on the current Technical Data Sheet, and we present them together so buyers searching either term reach the correct product.",
       },
       {
-        q: "What is this PET Resin / Polyester Putty Resin grade used for?",
+        q: "What is this Polyester Putty Resin grade used for?",
         a: "Samrat's current TDS lists PET sheets, fibre sheet products, FRP sheet lamination and panel manufacturing. Share the exact finished sheet, laminate or panel requirement so the product-specific data can be reviewed against the intended use.",
       },
       {
@@ -2478,7 +2371,7 @@ export const products = [
       },
       {
         q: "Are the TDS and SDS available, and what should I share for a quote?",
-        a: "Yes — download the current <a href=\"/tds/pet-resin-tds.pdf\" target=\"_blank\" rel=\"noopener\">PET Resin / Polyester Putty Resin TDS</a> and SDS from this page, or review the <a href=\"/downloads/samrat-poly-resins-product-catalogue.pdf\" target=\"_blank\" rel=\"noopener\">product catalogue</a>. For a quote, share your intended sheet or laminate application, required quantity, packaging need and delivery location.",
+        a: "Yes — download the current <a href=\"/tds/pet-resin-tds.pdf\" target=\"_blank\" rel=\"noopener\">Polyester Putty Resin TDS</a> and SDS from this page, or review the <a href=\"/downloads/samrat-poly-resins-product-catalogue.pdf\" target=\"_blank\" rel=\"noopener\">product catalogue</a>. For a quote, share your intended sheet or laminate application, required quantity, packaging need and delivery location.",
       },
     ],
     relatedSlugs: [
@@ -2582,8 +2475,8 @@ export const products = [
         a: 'Marble Resin is the TDS-listed route for cultured marble and artificial stone. <a href="/products/gp-quartz-resin/">GP Quartz Resin</a> is documented for artificial quartz stone, engineered-stone slabs and composite mineral surfaces. The documents overlap around some artificial-marble or artificial-stone wording, so they do not establish a universal boundary or a performance ranking. Start with the exact finished product, mineral or filler context, required appearance and the grade-specific TDS.',
       },
       {
-        q: "How is Marble Resin different from PET Resin / Polyester Putty Resin or GP Resin?",
-        a: 'This Marble Resin is documented for cultured-marble and artificial-stone contexts. <a href="/products/pet-resin/">PET Resin / Polyester Putty Resin</a> is Samrat\'s separately documented liquid PET-modified sheet grade; it is not ready-made putty or a broad stone-resin route. <a href="/products/gp-clear-resin/">GP Clear Resin</a> is the separate general-purpose FRP product route. Compare the published product role and data rather than transferring values between grades.',
+        q: "How is Marble Resin different from Polyester Putty Resin or GP Resin?",
+        a: 'This Marble Resin is documented for cultured-marble and artificial-stone contexts. <a href="/products/polyester-putty-resin/">Polyester Putty Resin</a> is Samrat\'s separately documented liquid PET-modified sheet grade; it is not ready-made putty or a broad stone-resin route. <a href="/products/gp-clear-resin/">GP Clear Resin</a> is the separate general-purpose FRP product route. Compare the published product role and data rather than transferring values between grades.',
       },
       {
         q: "Does Marble Resin determine the final appearance or performance of a finished marble product?",
@@ -2605,7 +2498,7 @@ export const products = [
     relatedSlugs: [
       "gp-quartz-resin",
       "gp-clear-resin",
-      "pet-resin",
+      "polyester-putty-resin",
       "lamination-resin",
       "epoxy-clear-casting-resin",
     ],
@@ -3826,6 +3719,299 @@ export const products = [
       "what-is-frp-mould-release-wax",
       "what-is-frp-mould-release-wax",
       "what-is-frp-mould-release-wax",
+    ],
+  },
+  {
+    slug: "uv-stabilized-sheet-grade-yellow-resin",
+    name: "UV Stabilized Sheet Grade Yellow Resin",
+    category: "Sheet Grade Resins",
+    price: "",
+    image: "uv-stabilized-sheet-grade-yellow-resin.jpg",
+    images: [],
+    imageAlt:
+      "UV Stabilized Sheet Grade Yellow Resin — pre-pigmented yellow unsaturated polyester resin for outdoor FRP roofing, cladding and coloured sheet manufacturing by Samrat Poly Resins",
+    seo: {
+      title: "UV Stabilized Sheet Grade Yellow Resin Manufacturer in India",
+      description:
+        "UV Stabilized Sheet Grade Yellow Resin from Samrat Poly Resins — a pre-pigmented yellow unsaturated polyester resin for outdoor FRP roofing, cladding and coloured sheet manufacturing. Request a quote.",
+      keywords: [
+        "UV Stabilized Sheet Grade Yellow Resin",
+        "UV Stabilised Sheet Grade Resin",
+        "UV Stabilized Polyester Resin",
+        "Yellow FRP Sheet Resin",
+        "Pre-Pigmented Polyester Resin",
+        "FRP Roofing Sheet Resin Manufacturer",
+      ],
+    },
+    productDetails: {
+      "Product Role": "Pre-pigmented sheet-grade resin with a UV-stabilised formulation",
+      Packaging: "225 kg industrial drum",
+      "Colour / Appearance": "Yellow, pre-pigmented liquid",
+      "Country of Origin": "India",
+    },
+    techSpecs: {
+      "Resin Type": "Orthophthalic Unsaturated Polyester Resin",
+      Form: "Pre-pigmented yellow liquid resin",
+      "Curing System": "MEKP catalyst with cobalt octoate accelerator",
+    },
+    tagline:
+      "Pre-pigmented yellow polyester resin with a UV-stabilised formulation, for outdoor FRP sheet and panel work.",
+    description:
+      "UV Stabilized Sheet Grade Yellow Resin is a pre-pigmented unsaturated polyester resin manufactured by Samrat Poly Resins for FRP sheet and panel production where the finished part is exposed to sunlight. It is supplied as a yellow liquid with the pigment already dispersed at the factory, so colour does not have to be added on the shop floor, and it carries a UV-stabilised formulation intended to improve resistance to prolonged outdoor exposure and weathering. It is a distinct grade from the standard Sheet Grade Yellow Resin, which is supplied for general sheet and panel manufacturing without a UV-stabiliser package.",
+    usageNote:
+      'This grade is positioned for outdoor-exposed coloured sheet work. Where the finished sheet is translucent and optical clarity matters rather than colour, review <a href="/products/roof-light-resin/">Roof Light Sheet Grade Resin</a> instead; for general interior sheet and panel manufacturing, see <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a>. Confirm the intended sheet product, exposure condition and processing route with us before selecting a grade.',
+    features: [
+      "Pre-pigmented yellow resin — colour dispersed at the factory rather than added at the laminating stage",
+      "UV-stabilised formulation intended for prolonged outdoor exposure",
+      "Formulated for FRP sheet moulding and lamination processes",
+      "Supplied in 225 kg industrial drums",
+      "Manufactured by Samrat Poly Resins under an ISO 9001:2015 certified quality management system",
+    ],
+    applications: [
+      "FRP roofing sheets",
+      "FRP cladding panels",
+      "Coloured FRP sheets",
+      "Industrial panels",
+      "Moulded and laminated FRP parts",
+    ],
+    industries: [
+      "FRP sheet & panel manufacturing",
+      "Roofing & cladding manufacturing",
+      "General industrial moulding",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+      "Enquiry can begin with the intended sheet product, exposure condition and expected quantity",
+    ],
+    faqs: [
+      {
+        q: "What is UV Stabilized Sheet Grade Yellow Resin?",
+        a: "It is a pre-pigmented yellow unsaturated polyester resin manufactured by Samrat Poly Resins for FRP sheet and panel production, supplied with a UV-stabilised formulation intended for parts exposed to sunlight.",
+      },
+      {
+        q: "How is this different from Sheet Grade Yellow Resin?",
+        a: 'The difference is the UV-stabilised formulation. <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a> is the standard pre-pigmented yellow grade for general FRP sheet and panel manufacturing; this grade is positioned for sheet that will be exposed to prolonged outdoor UV. Share the intended application and exposure condition and we will confirm which grade fits.',
+      },
+      {
+        q: "Is this the same as Roof Light Sheet Grade Resin?",
+        a: 'No. <a href="/products/roof-light-resin/">Roof Light Sheet Grade Resin</a> is a water-white grade for translucent roof light and skylight panels where light transmission matters. This grade is pre-pigmented yellow and is intended for opaque coloured sheet and cladding work.',
+      },
+      {
+        q: "Does UV stabilisation mean the resin cures under UV light?",
+        a: "No — those are opposite things. UV stabilisation means the cured part is formulated to resist degradation from sunlight. This resin cures with an MEKP catalyst and a cobalt octoate accelerator at room temperature, in the normal way for an unsaturated polyester resin.",
+      },
+      {
+        q: "Is a technical data sheet available?",
+        a: "A product-specific technical data sheet for this grade is being prepared and is not published yet. Contact us with your sheet application and requirement and our team will share the current product data directly.",
+      },
+      {
+        q: "What packaging and quantities are available?",
+        a: "It is supplied in 225 kg industrial drums. Share your expected quantity and delivery location with your enquiry and we will confirm availability and pricing.",
+      },
+    ],
+    relatedSlugs: [
+      "sheet-grade-yellow-resin",
+      "roof-light-resin",
+      "gp-yellow-resin",
+      "frp-polyester-pigment",
+    ],
+  },
+  {
+    slug: "iso-polyester-resin",
+    name: "ISO Polyester Resin",
+    category: "ISO Resins",
+    price: "",
+    image: "iso-polyester-resin.jpg",
+    images: [],
+    imageAlt:
+      "ISO Polyester Resin — isophthalic unsaturated polyester resin for chemical-resistant and water-resistant FRP applications by Samrat Poly Resins",
+    seo: {
+      title: "ISO Polyester Resin Manufacturer in India | Isophthalic Resin",
+      description:
+        "ISO Polyester Resin from Samrat Poly Resins — an isophthalic unsaturated polyester resin for FRP work needing improved chemical, water and hydrolysis resistance. Request a quote.",
+      keywords: [
+        "ISO Polyester Resin",
+        "Isophthalic Polyester Resin",
+        "Isophthalic Resin Manufacturer India",
+        "ISO Resin Manufacturer",
+        "Chemical Resistant Polyester Resin",
+        "Isophthalic UPR",
+      ],
+    },
+    productDetails: {
+      "Product Role": "Isophthalic unsaturated polyester resin",
+      Packaging: "225 kg industrial drum",
+      "Colour / Appearance": "Off-white to light beige liquid",
+      "Country of Origin": "India",
+    },
+    techSpecs: {
+      "Resin Type": "Isophthalic Unsaturated Polyester Resin",
+      "Curing System": "MEKP catalyst with cobalt octoate accelerator",
+    },
+    tagline:
+      "Isophthalic unsaturated polyester resin for FRP work that needs better chemical and water resistance than a general-purpose grade.",
+    description:
+      "ISO Polyester Resin is an isophthalic unsaturated polyester resin manufactured by Samrat Poly Resins. Isophthalic resins are built on isophthalic acid rather than the phthalic anhydride used in general-purpose orthophthalic grades. In general industry terms that difference allows a higher-molecular-weight polyester chain, which is why isophthalic resins are normally specified where a laminate faces water immersion, chemical service or sustained outdoor conditions rather than routine dry FRP work. Samrat Poly Resins supplies this grade for those more demanding FRP applications.",
+    usageNote:
+      'Where the requirement is routine general-purpose FRP lamination rather than chemical or water service, our orthophthalic grades such as <a href="/products/gp-clear-resin/">GP Clear Resin</a> and <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> are the usual route. Where the service medium is aggressive and a stated chemical-resistance requirement applies, review <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> as well. Share the FRP component, service medium and operating condition with your enquiry so the right grade can be confirmed.',
+    features: [
+      "Isophthalic backbone rather than the orthophthalic chemistry used in general-purpose grades",
+      "Positioned for chemical, water and hydrolysis resistance in FRP service",
+      "Room-temperature cure with MEKP catalyst and cobalt octoate accelerator",
+      "Supplied in 225 kg industrial drums",
+      "Manufactured by Samrat Poly Resins under an ISO 9001:2015 certified quality management system",
+    ],
+    applications: [
+      "FRP chemical storage tanks",
+      "FRP pipes and process equipment",
+      "Marine and boat components",
+      "FRP panels and sheet moulding",
+      "Cooling towers and corrosion-service equipment",
+    ],
+    industries: [
+      "Chemical process & storage",
+      "Marine & boat building",
+      "Water & effluent treatment",
+      "FRP & composites manufacturing",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+      "Enquiry can begin with the FRP component, service medium and expected quantity",
+    ],
+    faqs: [
+      {
+        q: "What is ISO Polyester Resin?",
+        a: "It is an isophthalic unsaturated polyester resin — a resin built on isophthalic acid rather than the phthalic anhydride used in general-purpose orthophthalic grades. Samrat Poly Resins supplies it for FRP work that needs better chemical and water resistance than a standard GP resin.",
+      },
+      {
+        q: "Does ISO here mean ISO 9001 certification?",
+        a: "No. In resin naming, ISO is short for isophthalic and describes the chemistry of the resin. It is unrelated to ISO 9001:2015, which is the quality management system Samrat Poly Resins is certified to. Both are true of this product but they mean different things.",
+      },
+      {
+        q: "How is isophthalic resin different from orthophthalic resin?",
+        a: "The difference is the diacid used to build the polyester chain — isophthalic acid instead of phthalic anhydride. General industry literature attributes better hydrolytic stability, chemical resistance and heat distortion performance to isophthalic resins, which is why they are normally specified for immersion and chemical service. Confirm the requirement for your component with us before selecting.",
+      },
+      {
+        q: "How does this compare with Vinyl Ester Resin?",
+        a: 'Vinyl ester is a further step for aggressive chemical service. <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> is Samrat\'s documented bisphenol-A epoxy vinyl ester grade. Share the service medium, concentration and temperature and we will advise which route fits the duty.',
+      },
+      {
+        q: "Is this the same as ISO Fire Retardant Resin?",
+        a: 'No. <a href="/products/iso-fire-retardant-resin/">ISO Fire Retardant Resin</a> is an isophthalic grade formulated for fire performance. This grade is the general isophthalic resin without that fire-retardant package.',
+      },
+      {
+        q: "Is a technical data sheet available?",
+        a: "A product-specific technical data sheet for this grade is being prepared and is not published yet. Contact us with your application and requirement and our team will share the current product data directly.",
+      },
+    ],
+    relatedSlugs: [
+      "vinyl-ester-resin",
+      "iso-fire-retardant-resin",
+      "unsaturated-polyester-resin",
+      "gp-clear-resin",
+    ],
+  },
+  {
+    slug: "iso-gelcoat",
+    name: "ISO Gelcoat",
+    category: "GelCoat Resin",
+    price: "",
+    image: "iso-gelcoat.jpg",
+    images: [],
+    imageAlt:
+      "ISO Gelcoat — isophthalic polyester gelcoat for high-gloss, weather-resistant FRP surface finishing by Samrat Poly Resins",
+    seo: {
+      title: "ISO Gelcoat Manufacturer in India | Isophthalic Gelcoat",
+      description:
+        "ISO Gelcoat from Samrat Poly Resins — an isophthalic polyester gelcoat for FRP surfaces needing better gloss retention, weather and water resistance. Request a quote.",
+      keywords: [
+        "ISO Gelcoat",
+        "Isophthalic Gelcoat",
+        "ISO Gelcoat Manufacturer India",
+        "Marine Gelcoat",
+        "Weather Resistant Gelcoat",
+        "FRP Surface Gelcoat",
+      ],
+    },
+    productDetails: {
+      "Product Role": "Isophthalic surface-coating gelcoat for FRP mouldings",
+      "Colour / Appearance": "Creamy off-white to pale ivory gelcoat",
+      Application: "Brush or spray onto the mould face",
+      "Country of Origin": "India",
+    },
+    techSpecs: {
+      "Resin Type": "Isophthalic Polyester Gelcoat",
+      "Curing System": "MEKP catalysed polyester gelcoat system",
+      Process: "Hand lay-up and spray-up FRP moulding",
+    },
+    tagline:
+      "Isophthalic polyester gelcoat for FRP surfaces that need better gloss retention and weather resistance than a general-purpose gelcoat.",
+    description:
+      "ISO Gelcoat is an isophthalic polyester gelcoat manufactured by Samrat Poly Resins. A gelcoat is the outermost layer of an FRP moulding, applied to the mould face before any reinforcement goes in, and it gives the finished part its visible surface and its first line of protection. Isophthalic gelcoats are the grade normally specified in industry where that surface has to hold gloss and colour through weathering, water contact or outdoor service — marine, sanitaryware and transport work being the common examples. It is a separate grade from the general-purpose GP Gelcoat Resin.",
+    usageNote:
+      'For standard-duty FRP mould work where the part is not in sustained water contact or outdoor service, <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a> is the general-purpose route. A gelcoat is a surface coating and not a laminating resin — the structural laminate behind it is built with a separate resin such as <a href="/products/gp-clear-resin/">GP Clear Resin</a> or, for chemical and water service, <a href="/products/iso-polyester-resin/">ISO Polyester Resin</a>. Share the finished part, its service condition and the required finish with your enquiry.',
+    features: [
+      "Isophthalic gelcoat chemistry rather than a general-purpose polyester gelcoat",
+      "Positioned for gloss retention, weather resistance and water and hydrolysis resistance",
+      "Applied by brush or spray directly onto the mould face before reinforcement",
+      "MEKP catalysed, cures at room temperature",
+      "Manufactured by Samrat Poly Resins under an ISO 9001:2015 certified quality management system",
+    ],
+    applications: [
+      "Marine products and boat surfaces",
+      "Swimming pools and water slides",
+      "Bathroom fixtures and sanitaryware",
+      "Automotive and transport components",
+      "FRP panels and building components",
+      "Industrial moulded parts",
+    ],
+    industries: [
+      "Marine & boat building",
+      "Sanitaryware & bathware manufacturing",
+      "Automotive & transport",
+      "FRP & composites manufacturing",
+    ],
+    whyChoose: [
+      "ISO 9001:2015 certified quality management system",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Dispatch across North & East India, with exports to Nepal and Bangladesh",
+      "Enquiry can begin with the finished part, service condition and required finish",
+    ],
+    faqs: [
+      {
+        q: "What is ISO Gelcoat?",
+        a: "It is an isophthalic polyester gelcoat — the surface layer applied to an FRP mould before the laminate is built up. Samrat Poly Resins supplies it for parts whose surface has to hold gloss and colour under weathering or water contact.",
+      },
+      {
+        q: "How is ISO Gelcoat different from GP Gelcoat Resin?",
+        a: 'The chemistry differs. <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a> is Samrat\'s general-purpose surface-coating gelcoat for standard-duty work. ISO Gelcoat uses isophthalic chemistry, which industry literature associates with better gloss retention, weather resistance and water and hydrolysis resistance. Share the finished part and its service condition and we will confirm which grade fits.',
+      },
+      {
+        q: "Does ISO here refer to ISO 9001 certification?",
+        a: "No. ISO in a gelcoat name is short for isophthalic and describes the chemistry. Samrat Poly Resins is separately certified to ISO 9001:2015 for its quality management system — the two are unrelated terms that happen to share an abbreviation.",
+      },
+      {
+        q: "Can ISO Gelcoat be used as a laminating resin?",
+        a: "No. A gelcoat is a surface coating applied to the mould face, not a resin for wetting out glass-fibre reinforcement. The laminate behind it is built with a separate laminating resin.",
+      },
+      {
+        q: "How is it applied?",
+        a: "It is brushed or sprayed directly onto the prepared mould face before any reinforcement is laid up, and it cures with an MEKP catalyst at room temperature.",
+      },
+      {
+        q: "Is a technical data sheet available?",
+        a: "A product-specific technical data sheet for this grade is being prepared and is not published yet. Contact us with your part, service condition and requirement and our team will share the current product data directly.",
+      },
+    ],
+    relatedSlugs: [
+      "gp-gelcoat-resin",
+      "iso-polyester-resin",
+      "gp-clear-resin",
+      "vinyl-ester-resin",
     ],
   },
 ];
