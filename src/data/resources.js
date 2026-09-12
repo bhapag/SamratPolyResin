@@ -7690,7 +7690,7 @@ export const resources = [
 
     recommendedLinks: [
       { href: "/tools/resin-selector/", label: "Find the right grade", description: "Answer four questions and see the grades that match." },
-      { href: "/products/", label: "Browse all products", description: "31 resin grades and FRP raw materials with published specifications." },
+      { href: "/products/", label: "Browse all products", description: "33 resin grades and FRP raw materials with published specifications." },
       { href: "/technical-documents/", label: "All TDS & SDS", description: "Download the controlling document for any grade." },
     ],
   },
