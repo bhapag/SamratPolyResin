@@ -486,7 +486,7 @@ export const products = [
     seo: {
       title: "GP Clear Resin Manufacturer | General Purpose Polyester Resin",
       description:
-        "GP Clear Resin — the clear orthophthalic general-purpose polyester resin for FRP hand lay-up, spray-up and moulding. Published viscosity and gel time, downloadable TDS and SDS, made in Punjab.",
+        "Clear orthophthalic general-purpose polyester resin for FRP hand lay-up, spray-up and moulding. Published viscosity and gel time, TDS and SDS.",
       // "Unsaturated Polyester Resin" and "Orthophthalic Polyester Resin" were
       // removed from here — the dedicated /unsaturated-polyester-resin/ page
       // now owns that search intent; keeping both here would have the two
@@ -624,7 +624,7 @@ export const products = [
     seo: {
       title: "GP White Resin Manufacturer in India | Water-White Polyester Resin",
       description:
-        "GP White Resin manufacturer in India for water-white general-purpose FRP moulding, panels, water tanks, cooling towers and fabrication. Published TDS and 225 kg drum packaging.",
+        "Water-white general-purpose polyester resin for FRP moulding, panels, water tanks and cooling towers. Published TDS and 225 kg drums.",
       keywords: [
         "GP White Resin",
         "Water White Polyester Resin",
@@ -753,7 +753,7 @@ export const products = [
     seo: {
       title: "GP Quartz Resin Manufacturer in India",
       description:
-        "GP Quartz Resin for artificial quartz stone, engineered stone slabs and composite mineral surfaces. Orthophthalic polyester resin with published TDS, 400–800 cPs viscosity and 7–10 minute gel time.",
+        "Orthophthalic polyester resin for artificial quartz, engineered stone slabs and mineral composite surfaces. Published viscosity and gel time.",
       keywords: [
         "GP Quartz Resin",
         "Quartz Resin",
@@ -1384,7 +1384,7 @@ export const products = [
     seo: {
       title: "ISO Fire Retardant Resin Manufacturer in India",
       description:
-        "ISO Fire Retardant Resin is Samrat Poly Resins' published halogen-free, ATH-filled isophthalic FR polyester resin. Here, ISO refers to isophthalic chemistry—not ISO certification. Review the current TDS and project requirement before selection.",
+        "Halogen-free, ATH-filled isophthalic fire-retardant polyester resin. ISO here means isophthalic chemistry, not certification. TDS available.",
       keywords: [
         "ISO Fire Retardant Resin",
         "Isophthalic Fire Retardant Resin",
@@ -2033,7 +2033,7 @@ export const products = [
     tdsUrl: "/tds/epoxy-hardener-tds.pdf",
     sdsUrl: "/sds/epoxy-hardener-sds.pdf",
     seo: {
-      title: "Epoxy Hardener Manufacturer in India | Polyamide Curing Agent",
+      title: "Epoxy Hardener in India | Polyamide Curing Agent",
       description:
         "Epoxy Hardener is Samrat Poly Resins' published polyamide curing agent for compatible epoxy resin systems. Review the current TDS and request an industrial quote for the required epoxy system.",
       keywords: [
@@ -2149,9 +2149,9 @@ export const products = [
     tdsUrl: "/tds/dmc-smc-resin-tds.pdf",
     sdsUrl: "/sds/dmc-smc-resin-sds.pdf",
     seo: {
-      title: "DMC & SMC Resin Manufacturer in India",
+      title: "DMC / SMC Resin Manufacturer in India",
       description:
-        "DMC/SMC orthophthalic unsaturated polyester resin for the published Dough and Sheet Moulding Compound applications. Review the current TDS and request an industrial quote from Samrat Poly Resins.",
+        "Orthophthalic unsaturated polyester resin for dough and sheet moulding compounds. Published TDS, with an industrial quote route.",
       keywords: [
         "DMC Resin",
         "SMC Resin",
@@ -2310,7 +2310,7 @@ export const products = [
     // and are still linked from the PET sheet-grade guides.
     seo: {
       title: "Polyester Putty Resin Manufacturer in India",
-      description: "Polyester Putty Resin from Samrat Poly Resins — a liquid unsaturated polyester resin supplied to putty and filler manufacturers in India. Share your formulation requirement for current grade data and a quote.",
+      description: "Liquid unsaturated polyester resin supplied in bulk to putty and body-filler manufacturers in India. Send your formulation requirement for grade data.",
       keywords: [
         "Polyester Putty Resin",
         "Polyester Putty Resin Manufacturer",
@@ -2415,7 +2415,7 @@ export const products = [
     seo: {
       title: "Marble Resin Manufacturer in India | Cultured Marble Resin",
       description:
-        "Marble Resin for cultured-marble slabs, vanity tops, wash basins and cast architectural stone. Water-white unsaturated polyester, published viscosity and gel time, downloadable TDS. Made in Punjab.",
+        "Water-white unsaturated polyester resin for cultured marble, vanity tops, wash basins and cast architectural stone. Published TDS.",
       keywords: [
         "Marble Resin",
         "Cultured Marble Resin",
@@ -3198,7 +3198,7 @@ export const products = [
     seo: {
       title: "Cobalt Octoate Accelerator / Promoter | Samrat Poly Resins",
       description:
-        "Cobalt Octoate — a cobalt-based accelerator / promoter for compatible unsaturated polyester resin curing systems, commonly used alongside MEKP-initiated cure. Request an industrial quote.",
+        "Cobalt accelerator for unsaturated polyester curing, used alongside MEKP. Never mix the two directly. Industrial quantities from Punjab.",
       keywords: [
         "Cobalt Octoate",
         "Cobalt Octoate Accelerator",
@@ -3301,9 +3301,9 @@ export const products = [
     imageAlt:
       "Styrene Monomer — reactive monomer / reactive diluent for unsaturated polyester resin systems by Samrat Poly Resins",
     seo: {
-      title: "Styrene Monomer | Reactive Diluent for Polyester Resin Systems",
+      title: "Styrene Monomer Supplier in India",
       description:
-        "Styrene Monomer — a reactive monomer / reactive diluent used in compatible unsaturated polyester resin systems to help reduce viscosity and support flow. Request an industrial quote.",
+        "Reactive monomer and diluent for unsaturated polyester systems, used to adjust viscosity and support flow. Industrial supply from Punjab.",
       keywords: [
         "Styrene Monomer",
         "Reactive Diluent",
@@ -3396,7 +3396,7 @@ export const products = [
     seo: {
       title: "NC Thinner | Nitrocellulose Lacquer Thinner",
       description:
-        "NC Thinner — a nitrocellulose (NC) thinner / professional thinner blend for compatible NC lacquer and coating systems, used for viscosity adjustment and application support. Request an industrial quote.",
+        "Nitrocellulose thinner for NC lacquer and coating systems, used for viscosity adjustment and application. Industrial supply from Punjab.",
       keywords: [
         "NC Thinner",
         "Nitrocellulose Thinner",
@@ -3486,7 +3486,7 @@ export const products = [
     seo: {
       title: "Paint Brushes | Application Brushes for Resin & FRP Work",
       description:
-        "Paint Brushes — professional application tools suitable for resin application, hand lay-up, gelcoat application, FRP repair and composite fabrication. Request an industrial quote.",
+        "Application brushes for resin, gelcoat, hand lay-up and FRP repair work, in the widths a composite workshop actually uses.",
       keywords: [
         "Paint Brushes",
         "Resin Application Brush",
@@ -3575,7 +3575,7 @@ export const products = [
     seo: {
       title: "Soap Stone Powder | Industrial Mineral Filler",
       description:
-        "Soap Stone Powder — a soapstone / talc-type industrial mineral powder used as a filler / extender in suitable resin compounds, putties, coatings and industrial formulations. Request an industrial quote.",
+        "Industrial talc and soapstone powder used as filler and extender in resin compounds, putties and coatings. Bulk supply from Punjab.",
       keywords: [
         "Soap Stone Powder",
         "Soapstone Powder",
@@ -3667,7 +3667,7 @@ export const products = [
     seo: {
       title: "Wax Polish | FRP Mould Release & Parting Wax",
       description:
-        "Wax Polish — an FRP mould release / parting wax used for mould preparation, part release and polished tooling surfaces in composite/FRP moulding workflows. Request an industrial quote.",
+        "FRP mould release and parting wax for mould preparation, clean part release and polished tooling surfaces. Bulk supply from Punjab.",
       keywords: [
         "Wax Polish",
         "FRP Mould Release Wax",
@@ -3761,7 +3761,7 @@ export const products = [
     seo: {
       title: "UV Stabilized Sheet Grade Yellow Resin Manufacturer in India",
       description:
-        "UV Stabilized Sheet Grade Yellow Resin from Samrat Poly Resins — a pre-pigmented yellow unsaturated polyester resin for outdoor FRP roofing, cladding and coloured sheet manufacturing. Request a quote.",
+        "Pre-pigmented yellow polyester resin with a UV-stabilised formulation, for outdoor FRP roofing, cladding and coloured sheet. Not a UV-curing resin.",
       keywords: [
         "UV Stabilized Sheet Grade Yellow Resin",
         "UV Stabilised Sheet Grade Resin",
@@ -3856,9 +3856,9 @@ export const products = [
     imageAlt:
       "ISO Polyester Resin — isophthalic unsaturated polyester resin for chemical-resistant and water-resistant FRP applications by Samrat Poly Resins",
     seo: {
-      title: "ISO Polyester Resin Manufacturer in India | Isophthalic Resin",
+      title: "ISO Polyester Resin Manufacturer in India",
       description:
-        "ISO Polyester Resin from Samrat Poly Resins — an isophthalic unsaturated polyester resin for FRP work needing improved chemical, water and hydrolysis resistance. Request a quote.",
+        "Isophthalic unsaturated polyester resin for FRP facing water, chemicals or years outdoors. ISO means isophthalic chemistry, not certification.",
       keywords: [
         "ISO Polyester Resin",
         "Isophthalic Polyester Resin",
@@ -3967,7 +3967,7 @@ export const products = [
     seo: {
       title: "ISO Gelcoat Manufacturer in India | Isophthalic Gelcoat",
       description:
-        "ISO Gelcoat from Samrat Poly Resins — an isophthalic polyester gelcoat for FRP surfaces needing better gloss retention, weather and water resistance. Request a quote.",
+        "Isophthalic polyester gelcoat for FRP surfaces that must hold gloss and colour through weathering and water contact. Brush or spray.",
       keywords: [
         "ISO Gelcoat",
         "Isophthalic Gelcoat",
