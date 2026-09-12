@@ -35,6 +35,7 @@ const isUnsaturatedPolyesterResin = product.slug === 'unsaturated-polyester-resi
 const isGpWhiteResin = product.slug === 'gp-white-resin';
 const isGpQuartzResin = product.slug === 'gp-quartz-resin';
 const isGlassFiber = product.slug === 'fibre-glass-mat';
+const manufactureEvidenced = !['Epoxy & Casting', 'FRP Allied Products', 'Hardeners'].includes(product.category) && product.slug !== 'vinyl-ester-resin';
 const isFrpPolyesterPigment = product.slug === 'frp-polyester-pigment';
 const isMekpHardener = product.slug === 'mekp-hardener';
 const isEpoxyClearCastingResin = product.slug === 'epoxy-clear-casting-resin';
@@ -895,7 +896,10 @@ const productJsonLd = {
   // organisation 31 times. The name is kept alongside the @id so the markup
   // still reads correctly on its own.
   brand: { "@type": "Organization", "@id": ORGANIZATION_ID, name: site.name },
-  ...(!isGlassFiber ? { manufacturer: { "@type": "Organization", "@id": ORGANIZATION_ID, name: site.name } } : {}),
+  // manufacturer is asserted only where the evidence covers manufacture: the
+  // unsaturated polyester families. Epoxy, vinyl ester, hardeners and allied
+  // items keep the brand but make no manufacturing claim either way.
+  ...(manufactureEvidenced ? { manufacturer: { "@type": "Organization", "@id": ORGANIZATION_ID, name: site.name } } : {}),
   ...(additionalProperty.length ? { additionalProperty } : {}),
 };
 
@@ -1023,7 +1027,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       )}
       {isGpWhiteResin && (
         <p class="gp-white-buyer-intro">
-          Samrat Poly Resins supplies GP White Resin to Indian FRP manufacturers seeking a white general-purpose polyester resin for panels, moulding, hand layup, spray-up, cooling towers and water tanks.
+          Samrat Poly Resins supplies GP White Resin to Indian FRP manufacturers seeking a general-purpose orthophthalic polyester resin for panels, moulding, hand layup, spray-up, cooling towers and water tanks.
         </p>
       )}
       {isGpQuartzResin && (
