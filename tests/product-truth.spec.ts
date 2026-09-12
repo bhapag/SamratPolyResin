@@ -9,22 +9,30 @@ import { products } from '../src/data/products.js';
 const bySlug = (s: string): any => products.find((p) => p.slug === s);
 
 test.describe('GP White Resin', () => {
-  test('publishes no processing figures without a GP White-specific sheet', async ({ page }) => {
-    // The page had <350 cPs, 6 min, medium thixotropic, 30-35% with no source,
-    // while its linked "TDS" was GP Clear Resin's sheet renamed.
+  // Resolution (2026-09-13): the GP White SDS cites the same base resin and
+  // processing as GP Clear, so GP White carries GP Clear's issued TDS as a
+  // shared base specification. The former page figures (<350 cPs, 6 min,
+  // medium thixotropic, 30-35%) had no source and stay removed. Appearance is
+  // unresolved: TDS "Clear" vs SDS "white pigmented", so no water-white claim.
+  test('carries the shared GP Clear base specification, not the unsourced figures', async ({ page }) => {
     const p = bySlug('gp-white-resin');
-    expect(p.tdsUrl, 'GP White TDS re-linked; is it a GP White-specific sheet?').toBeFalsy();
-    for (const k of ['Viscosity', 'Gel Time', 'Thixotropy', 'Styrene Content']) {
-      expect(p.techSpecs?.[k], `techSpecs.${k} restored without a source`).toBeUndefined();
+    const clear = bySlug('gp-clear-resin');
+    expect(p.tdsUrl).toBe('/tds/gp-white-resin-tds.pdf');
+    for (const k of Object.keys(clear.techSpecs)) {
+      if (k === 'Appearance' || k === 'Colour') continue;
+      expect(p.techSpecs[k], k).toBe(clear.techSpecs[k]);
     }
     await page.goto('/products/gp-white-resin/');
     const text = await page.locator('main').innerText();
     expect(text).not.toMatch(/<\s?350 cPs|below 350 cPs|6[- ]minute gel|medium[- ]thixotrop|30[–-]35% styrene/i);
+    expect(text).not.toMatch(/water[- ]white/i);
+    expect(text).toMatch(/not (yet )?confirmed/i);
   });
 
-  test('the renamed GP Clear sheet is held, not served', async () => {
-    expect(fs.existsSync(path.resolve('public/tds/gp-white-resin-tds.pdf'))).toBe(false);
-    expect(fs.existsSync(path.resolve('source-documents/held/gp-white-resin-tds.pdf'))).toBe(true);
+  test('the issued GP White TDS file is served again, not held', async () => {
+    const served = fs.readFileSync(path.resolve('public/tds/gp-white-resin-tds.pdf'));
+    expect(served.length).toBeGreaterThan(10000);
+    expect(fs.existsSync(path.resolve('source-documents/held/gp-white-resin-tds.pdf'))).toBe(false);
   });
 });
 

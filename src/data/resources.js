@@ -138,7 +138,7 @@ export const resources = [
     ],
     recommendedLinks: [
       { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Review the published general-purpose grade, TDS and procurement details." },
-      { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "Review the separately published water-white general-purpose FRP grade." },
+      { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "Review the general-purpose FRP grade issued on GP Clear Resin's base specification." },
       { href: "/resources/applications-of-gp-polyester-resin/", label: "Explore GP Resin applications", description: "Match the resin discussion to the finished FRP product." },
     ],
 
@@ -575,7 +575,7 @@ export const resources = [
     recommendedLinks: [
       { href: "/products/unsaturated-polyester-resin/", label: "Start with the UPR product hub", description: "Map a broad polyester-resin requirement to the relevant published product role." },
       { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Review the published TDS before selecting a grade for the process." },
-      { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "Review the published water-white GP grade, TDS and process data where that appearance is relevant." },
+      { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "Review the GP grade, its shared-base TDS and process data; confirm supplied appearance." },
       { href: "/products/lamination-resin/", label: "View Lamination Resin", description: "Review the published lamination-focused grade and TDS for door, plywood or FRP bonding work." },
       { href: "/applications/resin-for-hand-lay-up-process/", label: "Hand lay-up guide", description: "Review a common GP Clear Resin process use case." },
     ],
@@ -1312,7 +1312,7 @@ export const resources = [
       "how-to-store-unsaturated-polyester-resin",
     ],
     recommendedLinks: [
-      { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "Review its published water-white grade and non-accelerated system alongside actual conditions." },
+      { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "Review its shared GP base specification alongside actual conditions." },
       { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Compare published GP grade data rather than assuming one gel-time value applies to every grade." },
     ],
 
@@ -1993,7 +1993,7 @@ export const resources = [
     relatedSlugs: ["what-is-gp-polyester-resin", "how-to-select-polyester-resin-for-frp-manufacturing", "applications-of-gp-polyester-resin"],
     recommendedLinks: [
       { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "For broad general-purpose FRP manufacturing requirements." },
-      { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "For the separately published water-white general-purpose FRP context." },
+      { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "For the general-purpose GP grade on GP Clear Resin's base specification." },
       { href: "/products/lamination-resin/", label: "View Lamination Resin", description: "For door, plywood and FRP bonding requirements." },
       { href: "/applications/resin-for-general-frp-lamination/", label: "General FRP lamination guide", description: "Review the process before deciding on a grade." },
     ],
@@ -2094,7 +2094,7 @@ export const resources = [
     relatedSlugs: ["what-is-gp-polyester-resin", "what-is-gel-coat-resin", "what-is-gel-coat-resin", "gelcoat-resin-vs-vinyl-ester-resin"],
     recommendedLinks: [
       { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "For the general-purpose FRP laminate requirement." },
-      { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "For the separately published water-white general-purpose laminate role." },
+      { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "For the general-purpose GP laminate grade on GP Clear Resin's base specification." },
       { href: "/products/gp-gelcoat-resin/", label: "View GP Gelcoat Resin", description: "For the mould-facing surface-coating requirement." },
       { href: "/resources/what-is-gel-coat-resin/", label: "Read the gelcoat guide", description: "Understand gelcoat selection and role in a composite build-up." },
     ],
@@ -3301,13 +3301,13 @@ export const resources = [
   },
   {
     slug: "what-is-gp-white-resin",
-    title: "GP White Resin: Water-White General-Purpose Polyester Guide",
+    title: "GP White Resin: General-Purpose Polyester Guide",
     description: "What GP White Resin is, its published viscosity and gel time, where it is used across FRP panels, moulding, tanks and cooling towers, and how it differs from GP Clear Resin and from white gelcoat.",
     category: "Technical Explainer",
     icon: "info",
     publishDate: "2026-08-06",
     seo: {
-      title: "GP White Resin: Water-White Polyester Resin Guide",
+      title: "GP White Resin: White GP Polyester Resin Guide",
       keywords: [
         "What is GP White Resin",
         "GP White Resin",
@@ -3317,12 +3317,12 @@ export const resources = [
         "GP White Resin uses",
       ],
       ogTitle: "GP White Resin Explained",
-      ogDescription: "Understand GP White Resin as a published water-white general-purpose polyester grade, its applications, and how it differs from clear GP resin and white gelcoat.",
+      ogDescription: "Understand GP White Resin as a published general-purpose polyester grade on GP Clear Resin's base specification, its applications, and how it differs from clear GP resin and white gelcoat.",
     },
     quickFacts: {
-      "Published appearance": "Water White",
+      "Published appearance": "Not confirmed: TDS reads Clear, SDS reads white pigmented",
       "Product role": "General-purpose orthophthalic polyester resin for reinforced FRP contexts",
-      "Published process data": "Below 350 cPs viscosity; 6-minute gel time; medium thixotropic",
+      "Published process data": "350-450 cPs; gel under 8 minutes; 33-40% styrene (shared with GP Clear Resin)",
       "Published packaging": "225 kg drum, 1,000 kg MOQ",
       "Do not assume": "The supplied resin appearance alone determines the finished FRP surface colour",
     },
@@ -3330,14 +3330,14 @@ export const resources = [
       {
         heading: "The buyer question behind 'white resin'",
         body: [
-          "Buyers may search for white polyester resin when the supplied appearance matters to a panel, moulding or general FRP requirement. On this site, GP White Resin is published as water white and general purpose. The question to resolve is whether that grade's product role and published data fit the component and process.",
-          "Water white describes the supplied resin appearance. It is not a promise that every finished FRP part will appear white, because the reinforcement, pigments and mould-facing surface layer are separate parts of the finished build-up.",
+          "Buyers may search for white polyester resin when the supplied appearance matters to a panel, moulding or general FRP requirement. On this site, GP White Resin is published as a general-purpose grade on GP Clear Resin's base specification. Its supplied appearance is not yet confirmed: the TDS reads 'Clear', while the GP White SDS describes a white-pigmented resin. The question to resolve is whether that grade's product role and published data fit the component and process.",
+          "Whatever the supplied resin looks like, it is not a promise that every finished FRP part will appear white, because the reinforcement, pigments and mould-facing surface layer are separate parts of the finished build-up.",
         ],
       },
       {
         heading: "Published GP White Resin role",
         body: [
-          "The product page publishes GP White Resin for panels and general-purpose moulding, hand layup and spray-up work, cooling towers, water storage tanks and general industrial FRP fabrication. Its published data lists viscosity below 350 cPs, a 6-minute gel time, medium thixotropy and a non-accelerated curing system.",
+          "The product page publishes GP White Resin for panels and general-purpose moulding, hand layup and spray-up work, cooling towers, water storage tanks and general industrial FRP fabrication. Its published data, shared with GP Clear Resin, lists 350-450 cPs viscosity, a gel time under 8 minutes, 33-40% styrene and a non-accelerated curing system.",
           "These are product facts to review alongside the component, reinforcement, mould, production method and TDS. They are not universal process instructions or proof of suitability for every manufacturing line.",
         ],
       },
@@ -3345,19 +3345,19 @@ export const resources = [
         heading: "Where GP White Resin is used",
         body: [
           "The published applications cover panels and general-purpose moulding, plus hand layup, spray-up, cooling towers, water storage tanks and general industrial FRP fabrication. Begin by identifying the actual component, then compare it with the specific product data.",
-          "A broad request for white FRP resin is not enough on its own. Clarify whether the water-white supplied appearance matters to the process, whether the component is reinforced, and whether a visible mould-side surface is required. Review the published viscosity, gel time and curing system against the actual reinforcement, mould, equipment and workshop conditions rather than treating a general application label as a production approval.",
+          "A broad request for white FRP resin is not enough on its own. Clarify whether the supplied appearance matters to the process (it is not yet confirmed for this grade), whether the component is reinforced, and whether a visible mould-side surface is required. Review the published viscosity, gel time and curing system against the actual reinforcement, mould, equipment and workshop conditions rather than treating a general application label as a production approval.",
         ],
       },
       {
         heading: "GP White compared with GP Clear",
         body: [
-          "Both are published general-purpose orthophthalic polyester grades, but the supplied appearance and published processing data differ. Compare the specific GP White and GP Clear product pages before selecting a grade — a shared family does not allow values to be carried between the two routes.",
+          "Both are published general-purpose orthophthalic polyester grades, and they share one published base specification. The unresolved difference is appearance: GP White's TDS reads Clear, while its SDS describes a white-pigmented resin.",
         ],
       },
       {
         heading: "GP White compared with white gelcoat",
         body: [
-          "GP White Resin is published Water White and general purpose for reinforced FRP manufacture. GP Gelcoat Resin is published as a white, high-gloss polyester surface-coating product. The shared colour language does not make them substitutes.",
+          "GP White Resin is published as general purpose for reinforced FRP manufacture. GP Gelcoat Resin is published as a white, high-gloss polyester surface-coating product. The shared colour language does not make them substitutes.",
           "The first selection question is whether the requirement is for the laminate built with glass-fibre reinforcement, or for the visible mould-facing surface layer. GP White Resin is the product to review for the reinforced laminate; GP Gelcoat Resin is the product to review where the requirement is the mould-facing surface, with its own product data, mould condition, application method and required finish considered separately from the laminate behind it.",
         ],
       },
@@ -3372,11 +3372,11 @@ export const resources = [
     faqs: [
       {
         q: "What is GP White Resin?",
-        a: "GP White Resin is Samrat Poly Resins' published water-white, general-purpose orthophthalic polyester resin for reinforced FRP manufacture, including panels, general moulding, hand layup, spray-up, cooling towers and water storage tanks.",
+        a: "GP White Resin is Samrat Poly Resins' published general-purpose orthophthalic polyester resin for reinforced FRP manufacture, including panels, general moulding, hand layup, spray-up, cooling towers and water storage tanks.",
       },
       {
         q: "Does GP White Resin make every finished FRP part white?",
-        a: "No. The published product appearance is water white as supplied. The final appearance of an FRP component also depends on the reinforcement, pigment, mould-side surface layer and manufacturing build-up.",
+        a: "Not necessarily. The supplied appearance is not yet confirmed for this grade (TDS: Clear; SDS: white pigmented), and the final appearance of an FRP component also depends on the reinforcement, pigment, mould-side surface layer and manufacturing build-up.",
       },
       {
         q: "Is GP White Resin the same as white gelcoat?",
@@ -3417,7 +3417,7 @@ export const resources = [
   {
     slug: "gp-white-resin-vs-gp-clear-resin",
     title: "GP White Resin vs GP Clear Resin",
-    description: "Compare the published water-white GP White Resin and clear GP Clear Resin data before selecting a general-purpose polyester grade for FRP work.",
+    description: "GP White Resin and GP Clear Resin share one published base specification; see what differs before selecting a general-purpose polyester grade for FRP work.",
     category: "Comparison Guide",
     icon: "checklist",
     publishDate: "2026-08-06",
@@ -3428,36 +3428,36 @@ export const resources = [
       ogDescription: "Compare supplied appearance, published data and product role before choosing a general-purpose GP polyester resin.",
     },
     quickFacts: {
-      "GP White Resin": "Water White; processing figures not published in a GP White-specific data sheet",
+      "GP White Resin": "Same base specification as GP Clear (SPR-TDS-GCR); appearance not confirmed",
       "GP Clear Resin": "Clear; 350-450 cPs; gel time under 8 minutes",
       "Shared role": "Published general-purpose orthophthalic polyester grades for FRP work",
       "Selection rule": "Do not use supplied colour alone to predict the final reinforced or surface-finished part",
     },
     comparisonTable: {
       title: "Published product-data comparison",
-      note: "The values below are product-page facts, not a universal recommendation. GP White Resin's processing figures are not published in a GP White-specific data sheet.",
+      note: "The values below are product-page facts, not a universal recommendation. Both TDS carry reference SPR-TDS-GCR; the GP White SDS confirms the same base resin.",
       headers: ["Decision factor", "GP White Resin", "GP Clear Resin"],
       rows: [
-        ["Published appearance", "Water White", "Clear"],
-        ["Published viscosity", "Not published for this grade", "350-450 cPs"],
-        ["Published gel time", "Not published for this grade", "Under 8 minutes"],
+        ["Published appearance", "Not confirmed (TDS: Clear; SDS: white pigmented)", "Clear"],
+        ["Published viscosity", "350-450 cPs (shared)", "350-450 cPs"],
+        ["Published gel time", "Under 8 minutes (shared)", "Under 8 minutes"],
         ["Packaging / MOQ", "225 kg drum / 1,000 kg", "225 kg drum / 1,000 kg"],
       ],
     },
     relatedSlugs: ["what-is-gp-white-resin", "what-is-gp-white-resin", "what-is-gp-white-resin", "how-to-select-polyester-resin-for-frp-manufacturing"],
     recommendedLinks: [
-      { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "Review the published water-white grade and SDS." },
+      { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "Review the published GP White grade, TDS and SDS." },
       { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Review the separate published clear grade and TDS." },
       { href: "/products/unsaturated-polyester-resin/", label: "View the UPR product hub", description: "Compare GP White and GP Clear in the broader published polyester-resin family." },
     ],
     faqs: [
-      { q: "What is the main difference between GP White Resin and GP Clear Resin?", a: "The published supplied appearance differs: GP White Resin is Water White and GP Clear Resin is Clear. GP Clear Resin publishes viscosity and gel time; GP White Resin does not yet have a grade-specific sheet for those figures, so do not transfer them." },
-      { q: "Does water white mean GP White Resin is a gelcoat?", a: "No. GP White Resin is the published general-purpose laminate grade. A white mould-facing surface requirement should be assessed against the separate GP Gelcoat Resin product." },
+      { q: "What is the main difference between GP White Resin and GP Clear Resin?", a: "They share one published base specification, so viscosity, gel time and styrene content are the same. The unresolved difference is appearance: GP White's TDS reads Clear, while its SDS describes a white-pigmented resin." },
+      { q: "Does 'White' in the name mean GP White Resin is a gelcoat?", a: "No. GP White Resin is the published general-purpose laminate grade. A white mould-facing surface requirement should be assessed against the separate GP Gelcoat Resin product." },
       { q: "Which grade should a buyer quote?", a: "Share the component, process, required supplied appearance or finish, quantity and delivery location, then confirm the selected grade's data before a quotation discussion." },
     ],
     sections: [
-      { heading: "The comparison starts with supplied appearance", body: ["GP White Resin and GP Clear Resin are related published general-purpose orthophthalic polyester grades for FRP work. GP White Resin is published Water White; GP Clear Resin is published Clear. This is a product-selection fact, not a guarantee of the finished part's visible colour.", "The final appearance of an FRP part can also depend on reinforcement, pigments and the mould-side surface layer. A buyer should therefore identify what 'white' or 'clear' needs to mean in the actual build-up before selecting a grade."] },
-      { heading: "Compare the published technical data", body: ["GP Clear Resin is published with 350-450 cPs viscosity and gel time under 8 minutes. GP White Resin has no grade-specific data sheet publishing those figures yet, so confirm them for the batch being quoted rather than borrowing GP Clear's values.", "Do not transfer thixotropy, gel time, storage or any other figure from one grade to the other unless it is published for that exact product."] },
+      { heading: "The comparison starts with supplied appearance", body: ["GP White Resin and GP Clear Resin are related published general-purpose orthophthalic polyester grades for FRP work. GP Clear Resin is published Clear; GP White Resin's appearance is not yet confirmed (its TDS reads Clear, its SDS white pigmented). Appearance is not a guarantee of the finished part's visible colour.", "The final appearance of an FRP part can also depend on reinforcement, pigments and the mould-side surface layer. A buyer should therefore identify what 'white' or 'clear' needs to mean in the actual build-up before selecting a grade."] },
+      { heading: "Compare the published technical data", body: ["Both grades publish 350-450 cPs viscosity, gel time under 8 minutes and 33-40% styrene from one shared base specification, reference SPR-TDS-GCR. The GP White SDS confirms the same base resin.", "Do not transfer thixotropy, gel time, storage or any other figure from one grade to the other unless it is published for that exact product."] },
       { heading: "When another product role is relevant", body: ["If the requirement is for a mould-facing white surface, review GP Gelcoat Resin. If it is door, plywood or FRP bonding, review Lamination Resin. If a project has a stated chemical- or corrosion-resistance requirement, review Vinyl Ester Resin and its separate product data."] },
     ],
   },
@@ -3476,25 +3476,25 @@ export const resources = [
     },
     quickFacts: {
       "Start with": "The actual FRP component and manufacturing process",
-      "Appearance check": "Water-white supplied resin versus the required finished appearance",
+      "Appearance check": "Supplied appearance is not yet confirmed for this grade; state the finished appearance you need",
       "Published commercial details": "225 kg drum packaging and 1,000 kg MOQ",
       "Technical control": "Grade data confirmed for the batch being quoted",
     },
     relatedSlugs: ["what-is-gp-white-resin", "what-is-gp-white-resin", "gp-white-resin-vs-gp-clear-resin", "what-is-gp-white-resin"],
     recommendedLinks: [
-      { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "Review the published product data and SDS." },
+      { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "Review the published product data, TDS and SDS." },
       { href: "/resources/how-to-select-polyester-resin-for-frp-manufacturing/", label: "Read the general resin-selection guide", description: "Use the existing guide for broader FRP product-role context." },
       { href: "/contact/", label: "Request a GP White Resin quote", description: "Share the documented requirement through the existing enquiry form." },
     ],
     faqs: [
       { q: "What details should I include in a GP White Resin enquiry?", a: "Include the FRP component or application, expected quantity, required supplied appearance or finish, manufacturing process and delivery location. Add any stated drawing or specification wording where relevant." },
-      { q: "Should I select GP White Resin only because the product is called white?", a: "No. Confirm that the published water-white appearance, general-purpose laminate role and product data match the actual requirement. A visible mould-side surface may require separate gelcoat review." },
-      { q: "What document should be checked before ordering?", a: "A GP White-specific Technical Data Sheet is not published. Ask for the grade data for the batch being quoted, and do not use a different GP or UPR product's data as a substitute." },
+      { q: "Should I select GP White Resin only because the product is called white?", a: "No. Confirm that the general-purpose laminate role, shared base specification and supplied appearance match the actual requirement. A visible mould-side surface may require separate gelcoat review." },
+      { q: "What document should be checked before ordering?", a: "The GP White Resin TDS, which shares GP Clear Resin's base specification (reference SPR-TDS-GCR), and the GP White SDS. Confirm the supplied appearance, since the two documents disagree on it." },
     ],
     sections: [
       { heading: "Describe the FRP component first", body: ["State whether the enquiry is for a panel, general moulding, hand layup, spray-up, water-storage, cooling-tower or another industrial FRP component. This identifies the published context to compare with GP White Resin before a quote is prepared."] },
-      { heading: "Clarify what 'white' needs to mean", body: ["Confirm whether water-white supplied resin is relevant to the process, or whether the actual requirement is a visible white surface. These are different questions: the general-purpose GP White laminate and the mould-facing GP Gelcoat product have separate roles."] },
-      { heading: "Review the published product data", body: ["The GP White Resin page publishes Water White appearance, an orthophthalic resin type, a non-accelerated curing system, 225 kg drum packaging and a 1,000 kg MOQ. Viscosity, gel time and styrene content are not published in a GP White-specific sheet; confirm them before selection."] },
+      { heading: "Clarify what 'white' needs to mean", body: ["Confirm the supplied appearance you need (it is not yet confirmed for this grade), or whether the actual requirement is a visible white surface. These are different questions: the general-purpose GP White laminate and the mould-facing GP Gelcoat product have separate roles."] },
+      { heading: "Review the published product data", body: ["The GP White Resin page publishes an orthophthalic resin type, the base specification shared with GP Clear Resin (350-450 cPs, gel under 8 minutes, 33-40% styrene, non-accelerated), 225 kg drum packaging and a 1,000 kg MOQ. Its supplied appearance is not yet confirmed: the TDS reads 'Clear', while the GP White SDS describes a white-pigmented resin."] },
       { heading: "Send a focused quotation request", body: ["Share the component, manufacturing process, quantity, required supplied appearance or finish and delivery location. This helps the sales or technical discussion start from documented needs rather than an unsupported assumption about the correct grade."] },
     ],
   },
@@ -3718,7 +3718,7 @@ export const resources = [
       { heading: "Begin with the actual stone-composite requirement", body: ["A useful GP Quartz Resin enquiry identifies the finished product first: artificial quartz stone, engineered stone slab, composite mineral surface, countertop, artificial marble, decorative cast stone, tabletop or interior panel. Then add the filler or mineral type, intended process if known, required finish and any customer drawing or stated specification.", "This avoids the common procurement problem of asking for a broad 'quartz resin' without enough context to compare the application with the published GP Quartz Resin role."] },
       { heading: "Review the grade-specific data and TDS", body: ["The current listing publishes an orthophthalic unsaturated polyester resin, clear-to-pale-yellow appearance, 400-800 cPs viscosity, 7-10 minute gel time, non-accelerated system, approximate two-hour cure time, three-month shelf life and 30-35 C storage temperature. Confirm the current TDS before selection.", "The published figures do not authorise a process, formulation, filler level or final-performance claim. The exact application and applicable instructions must be reviewed before use."] },
       { heading: "Plan around the published commercial details", body: ["GP Quartz Resin is currently published in 225 kg drums with a 1,000 kg MOQ. Include the expected quantity and delivery location in the enquiry so commercial availability can be discussed without implying an unlisted price, lead time or delivery promise."] },
-      { heading: "Use the right comparison path", body: ["For a broad general-FRP requirement, review GP Clear Resin or the Unsaturated Polyester Resin product hub. For cultured marble and artificial-stone work, review Marble Resin. For a water-white general-purpose FRP role, mould-facing surface layer or dedicated lamination application, review GP White Resin, GP Gelcoat Resin or Lamination Resin respectively. These are product-role checks, not claims that the grades are interchangeable."] },
+      { heading: "Use the right comparison path", body: ["For a broad general-FRP requirement, review GP Clear Resin or the Unsaturated Polyester Resin product hub. For cultured marble and artificial-stone work, review Marble Resin. For the GP White general-purpose FRP role, mould-facing surface layer or dedicated lamination application, review GP White Resin, GP Gelcoat Resin or Lamination Resin respectively. These are product-role checks, not claims that the grades are interchangeable."] },
     ],
   },
   {
@@ -3783,7 +3783,7 @@ export const resources = [
       {
         heading: "Choosing the resin side of the system",
         body: [
-          "For a general FRP resin context, review GP Clear Resin or the parent Unsaturated Polyester Resin page. GP White Resin has its own published water-white general-purpose role. Lamination Resin has separate published bonding and lamination contexts. Vinyl Ester Resin is the page to review where the project has a stated chemical- or corrosion-resistance requirement.",
+          "For a general FRP resin context, review GP Clear Resin or the parent Unsaturated Polyester Resin page. GP White Resin has its own published general-purpose role. Lamination Resin has separate published bonding and lamination contexts. Vinyl Ester Resin is the page to review where the project has a stated chemical- or corrosion-resistance requirement.",
           "GP Gelcoat Resin should be reviewed when the requirement is a mould-facing surface layer. It is not the structural reinforcement or a substitute for the resin selected for the laminate behind that surface.",
         ],
       },

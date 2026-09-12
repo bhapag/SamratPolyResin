@@ -252,9 +252,3 @@
 # Resin TDS, so its old URL goes to the document library rather than to that
 # product page.
 /tds/pet-resin-tds.pdf                                     /technical-documents/  301
-
-# 2026-09-13: the sheet linked as the GP White Resin TDS was GP Clear Resin's
-# sheet under another title (reference SPR-TDS-GCR, "Clear", GP Clear's exact
-# values) and contradicted every figure on the GP White page. Held in
-# source-documents/held/ until a GP White-specific sheet exists.
-/tds/gp-white-resin-tds.pdf                                /products/gp-white-resin/  302
