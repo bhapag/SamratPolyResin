@@ -7,7 +7,9 @@ import { products } from '../src/data/products.js';
 // silently.
 
 const withDocs = products.find((p) => p.tdsUrl && p.sdsUrl);
-const allied = products.find((p) => !p.tdsUrl && !p.sdsUrl);
+// A product with no document of ANY kind. Paint Brushes has neither a TDS nor
+// an SDS but does publish a Product Data Sheet, so it no longer qualifies.
+const allied = products.find((p: any) => !p.tdsUrl && !p.sdsUrl && !p.pdsUrl);
 
 test.describe('product page structure', () => {
   test('has exactly one h1 and a breadcrumb that mirrors the URL', async ({ page }) => {
@@ -122,7 +124,7 @@ test.describe('documents and conversion', () => {
   test('a product without documents does not pretend to have them', async ({ page }) => {
     test.skip(!allied, 'every product has documents');
     await page.goto(`/products/${allied!.slug}/`);
-    await expect(page.locator('a[href^="/tds/"], a[href^="/sds/"]')).toHaveCount(0);
+    await expect(page.locator('a[href^="/tds/"], a[href^="/sds/"], a[href^="/pds/"]')).toHaveCount(0);
   });
 
   test('every product page offers a route to a quotation', async ({ page }) => {

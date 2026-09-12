@@ -1,0 +1,109 @@
+---
+/**
+ * DocLink — the single component for every product document action.
+ *
+ * WHY THIS EXISTS
+ * Before this, one `.doc-link` class rendered three different things in the
+ * same shape: a TDS download, an SDS download, and a link to the product
+ * range. Three near-identical dark rows with a small arrow, so nothing told a
+ * buyer which one downloaded a file and which one opened a page, and the
+ * download affordance was a 12px character.
+ *
+ * The variants now differ in KIND, not just in label:
+ *
+ *   tds / sds / pds   a real file. Gold document tile, the file's true type
+ *                     and size read from disk, and an explicit round download
+ *                     control on the right. Unmistakably "this saves a PDF".
+ *   range             navigation. No gold tile, no download control, a
+ *                     chevron that travels sideways. Deliberately quieter so
+ *                     it cannot be mistaken for a document.
+ *   unavailable       NOT a control. Renders as a <p>, has no border, no
+ *                     hover and no arrow, and says why the document is
+ *                     absent. A greyed-out button would still look clickable
+ *                     and would imply the document exists.
+ *
+ * GOLD: the house rule rations gold and forbids it as an ambient hover state.
+ * It is used here only as the persistent marker of a real document — the one
+ * thing on this row that is genuinely singular — and for the focus ring.
+ * Hover stays neutral, per that rule.
+ */
+import fs from 'node:fs';
+import path from 'node:path';
+
+export interface Props {
+  kind: 'tds' | 'sds' | 'pds' | 'range' | 'unavailable';
+  href?: string;
+  /** Product name, used to build an accessible label a screen reader can act on. */
+  productName?: string;
+  /** Overrides the default title (used by `range`, and by the library page). */
+  title?: string;
+  /** Explanatory line for `unavailable`. */
+  note?: string;
+  class?: string;
+}
+
+const { kind, href, productName, title, note, class: extraClass } = Astro.props;
+
+const LABELS = {
+  tds: { kind: 'TDS', title: 'Technical Data Sheet' },
+  sds: { kind: 'SDS', title: 'Safety Data Sheet' },
+  pds: { kind: 'PDS', title: 'Product Data Sheet' },
+} as const;
+
+const isDownload = kind === 'tds' || kind === 'sds' || kind === 'pds';
+
+// Real size from disk at build time. A missing file fails the build here
+// rather than shipping a dead download, which is how the library page has
+// always treated it.
+let size = '';
+if (isDownload && href) {
+  const bytes = fs.statSync(path.join(path.resolve('public'), href)).size;
+  size = bytes >= 1024 * 1024 ? `${(bytes / (1024 * 1024)).toFixed(1)} MB` : `${Math.round(bytes / 1024)} KB`;
+}
+
+const label = isDownload ? LABELS[kind] : null;
+const heading = title ?? label?.title ?? '';
+const aria = isDownload
+  ? `Download ${heading} PDF${productName ? ` for ${productName}` : ''} (${size})`
+  : undefined;
+---
+{isDownload && (
+  <a href={href} class:list={['doc-act', 'doc-act-dl', extraClass]} target="_blank" rel="noopener" download aria-label={aria}>
+    <span class="doc-act-tile" aria-hidden="true">
+      {kind === 'sds' ? (
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L20 6.5 L20 12.5 C20 17 16.5 20.5 12 22 C7.5 20.5 4 17 4 12.5 L4 6.5 Z"/><path d="M9 12 L11 14 L15.5 9.5"/></svg>
+      ) : (
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H15l5 5v11.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19.5z"/><path d="M15 3v4a1 1 0 0 0 1 1h4"/><path d="M8 13.2h8M8 16.6h8M8 9.8h4"/></svg>
+      )}
+    </span>
+    <span class="doc-act-body">
+      <span class="doc-act-kind">{label!.kind}</span>
+      <span class="doc-act-title">{heading}</span>
+      <span class="doc-act-meta">PDF · {size} · Download</span>
+    </span>
+    <span class="doc-act-go" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6.5 10.5 12 16l5.5-5.5"/><path d="M5 20h14"/></svg>
+    </span>
+  </a>
+)}
+{kind === 'range' && (
+  <a href={href} class:list={['doc-act', 'doc-act-nav', extraClass]}>
+    <span class="doc-act-navicon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V4.5A1.5 1.5 0 0 1 5.5 3H18a1 1 0 0 1 1 1v15.2"/><path d="M6.5 3v18"/><path d="M6.5 21H19a1 1 0 0 0 1-1v-.5a1 1 0 0 0-1-1H6.8"/></svg>
+    </span>
+    <span class="doc-act-body">
+      <span class="doc-act-title">{heading}</span>
+      {note && <span class="doc-act-meta">{note}</span>}
+    </span>
+    <span class="doc-act-chevron" aria-hidden="true">→</span>
+  </a>
+)}
+{kind === 'unavailable' && (
+  <p class:list={['doc-act', 'doc-act-none', extraClass]}>
+    <span class="doc-act-noneicon" aria-hidden="true">—</span>
+    <span class="doc-act-body">
+      <span class="doc-act-title">{heading}</span>
+      {note && <span class="doc-act-meta">{note}</span>}
+    </span>
+  </p>
+)}

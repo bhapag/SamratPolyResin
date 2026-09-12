@@ -307,6 +307,120 @@ h1, h2 {
 .doc-link-title { font-size: 0.86rem; color: var(--ink); font-family: var(--font-body); letter-spacing: 0; }
 .doc-link-arrow { flex-shrink: 0; color: var(--ink-faint); transition: transform .2s var(--ease-premium); }
 
+/* --- document actions (DocLink.astro) — THREE shapes, not one ---------------
+   The previous .doc-link rendered a TDS download, an SDS download and a link
+   to the product range in the same dark row with the same small arrow, so
+   nothing distinguished "saves a PDF" from "opens a page", and the download
+   affordance was a 12px character. These variants differ in kind:
+
+     .doc-act-dl    a real file: gold document tile, true type and size, and
+                    an explicit round download control.
+     .doc-act-nav   navigation: no tile, no control, a chevron travelling
+                    sideways. Quieter on purpose.
+     .doc-act-none  not a control at all: a <p>, no border, no hover, no
+                    arrow. A greyed-out button would still read as clickable
+                    and would imply the document exists.
+
+   GOLD: rationed per the rule at the top of this file. It marks a real
+   document — the singular thing in this group — and draws the focus ring.
+   Hover stays neutral (--line-2 + lift), so gold never becomes ambient. */
+.doc-act {
+  display: flex; align-items: center; gap: 0.85rem;
+  padding: 0.85rem 1rem; min-height: 64px;
+  border: 1px solid var(--line-2); background: var(--bg-3);
+  color: var(--ink); text-decoration: none;
+  transition: border-color .25s var(--ease-premium), background-color .25s var(--ease-premium),
+              transform .2s var(--ease-premium);
+}
+.doc-act-body { display: flex; flex-direction: column; gap: 0.12rem; flex: 1; min-width: 0; }
+.doc-act-kind {
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent-gold); line-height: 1;
+}
+.doc-act-title {
+  font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
+  color: var(--ink); letter-spacing: 0; line-height: 1.25;
+}
+.doc-act-meta {
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.05em;
+  color: var(--ink-faint); line-height: 1.3;
+}
+
+/* --- a real document download --- */
+.doc-act-dl { border-left: 2px solid var(--accent-gold); }
+.doc-act-tile {
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px;
+  background: rgba(var(--gold-rgb), 0.1);
+  border: 1px solid rgba(var(--gold-rgb), 0.32);
+  color: var(--accent-gold);
+  transition: background-color .25s var(--ease-premium), border-color .25s var(--ease-premium);
+}
+.doc-act-go {
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid var(--line-2); color: var(--ink-dim);
+  transition: transform .2s var(--ease-premium), border-color .25s var(--ease-premium),
+              color .25s var(--ease-premium), background-color .25s var(--ease-premium);
+}
+.doc-act-dl:hover { border-color: var(--ink-dim); background: var(--bg-2); transform: translateY(-1px); }
+.doc-act-dl:hover .doc-act-tile { background: rgba(var(--gold-rgb), 0.18); border-color: rgba(var(--gold-rgb), 0.55); }
+.doc-act-dl:hover .doc-act-go { transform: translateY(2px); color: var(--ink); border-color: var(--ink-dim); }
+.doc-act-dl:active { transform: translateY(0); }
+
+/* --- navigation, not a download --- */
+.doc-act-nav { background: transparent; }
+.doc-act-nav .doc-act-title { font-weight: 500; color: var(--ink-dim); }
+.doc-act-navicon { flex-shrink: 0; display: flex; color: var(--ink-faint); }
+.doc-act-chevron {
+  flex-shrink: 0; color: var(--ink-faint); font-size: 0.95rem;
+  transition: transform .2s var(--ease-premium), color .25s var(--ease-premium);
+}
+.doc-act-nav:hover { border-color: var(--ink-dim); background: var(--bg-3); }
+.doc-act-nav:hover .doc-act-title { color: var(--ink); }
+.doc-act-nav:hover .doc-act-chevron { transform: translateX(4px); color: var(--ink); }
+
+/* --- absent document: information, not an action --- */
+.doc-act-none {
+  border: 0; background: none; min-height: 0; padding: 0.5rem 0.15rem;
+  cursor: default; align-items: flex-start;
+}
+.doc-act-none .doc-act-title { font-weight: 500; font-size: 0.88rem; color: var(--ink-dim); }
+.doc-act-noneicon {
+  flex-shrink: 0; width: 40px; text-align: center; color: var(--ink-faint);
+  font-family: var(--font-mono); line-height: 1.4;
+}
+
+.doc-act:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 3px; }
+
+/* Small screens: the row is the tap target, so give it real height and let
+   the title wrap rather than truncate. 360px is the narrowest supported. */
+@media (max-width: 430px) {
+  .doc-act { gap: 0.7rem; padding: 0.8rem 0.75rem; min-height: 68px; }
+  .doc-act-tile { width: 36px; height: 36px; }
+  .doc-act-go { width: 32px; height: 32px; }
+  .doc-act-title { font-size: 0.9rem; }
+  .doc-act-meta { font-size: 0.66rem; }
+  .doc-act-noneicon { width: 36px; }
+}
+
+/* Light "ledger" surfaces (the technical-document library uses them). */
+.ledger .doc-act { background: #ffffff; border-color: var(--ledger-line); color: var(--ledger-ink); }
+.ledger .doc-act-title { color: var(--ledger-ink); }
+.ledger .doc-act-meta { color: var(--ledger-ink-dim); }
+.ledger .doc-act-dl { border-left-color: var(--accent-gold-dark); }
+.ledger .doc-act-tile { color: var(--accent-gold-dark); border-color: rgba(var(--gold-rgb), 0.5); background: rgba(var(--gold-rgb), 0.12); }
+.ledger .doc-act-go { border-color: var(--ledger-line); color: var(--ledger-ink-dim); }
+.ledger .doc-act-dl:hover { border-color: var(--ledger-ink-dim); background: var(--ledger-bg); }
+.ledger .doc-act-nav { background: transparent; }
+.ledger .doc-act-nav:hover { background: #ffffff; }
+.ledger .doc-act-none .doc-act-title { color: var(--ledger-ink-dim); }
+
+@media (prefers-reduced-motion: reduce) {
+  .doc-act, .doc-act-go, .doc-act-chevron, .doc-act-tile { transition: none; }
+  .doc-act-dl:hover { transform: none; }
+}
+
 /* --- badge — square/flag label, not a pill. Used for grade/category/type
    markers (e.g. "TDS-BACKED", "EXPORT GRADE") --- */
 .badge {

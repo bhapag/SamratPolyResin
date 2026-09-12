@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import EnquiryForm from '../../components/EnquiryForm.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
 import ResourceCard from '../../components/ResourceCard.astro';
+import DocLink from '../../components/DocLink.astro';
 import { products, CATEGORY_HUBS } from '../../data/products.js';
 import { applications as applicationGuides } from '../../data/applications.js';
 import { resources } from '../../data/resources.js';
@@ -24,7 +25,7 @@ const resolveAppImage = (filename) => appImageModules[`/src/assets/applications/
 
 const { product } = Astro.props;
 const { name, image, description, features, applications, category, specs } = product;
-const { tagline, usageNote, industries, whyChoose, faqs, tdsUrl, sdsUrl } = product;
+const { tagline, usageNote, industries, whyChoose, faqs, tdsUrl, pdsUrl, sdsUrl } = product;
 const isGpClearResin = product.slug === 'gp-clear-resin';
 const isLaminationResin = product.slug === 'lamination-resin';
 const isGpGelcoatResin = product.slug === 'gp-gelcoat-resin';
@@ -1138,40 +1139,28 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <a href={productWaLink} class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
       </div>
 
-      {/* Technical documents — grouped and visually distinct from the
-         commercial CTAs above (gold solid buttons), so a buyer scanning the
-         page can tell "opens a PDF" from "starts a conversation" at a glance,
-         using the shared .doc-link component (global.css). */}
+      {/* Technical documents. Three different things used to render in the
+         same row shape here: a TDS download, an SDS download and a link to
+         the product range. DocLink now separates them by kind — a real file
+         gets the gold tile, its true size and a download control; the range
+         link is deliberately quieter navigation; and a document this grade
+         does not have is stated as a fact rather than drawn as a dead
+         button. Which documents exist is read from the product data, never
+         assumed: adding a TDS does not give a product an SDS. */}
       <div class="prod-docs">
           <p class="prod-docs-heading">Technical documents</p>
-          {tdsUrl && (
-            <a href={tdsUrl} class="doc-link" target="_blank" rel="noopener" download
-               aria-label={`Download Technical Data Sheet PDF for ${name}`}>
-              <span class="doc-link-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H15l5 5v11.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19.5z"/><path d="M15 3v4a1 1 0 0 0 1 1h4"/><path d="M8 13.2h8M8 16.6h8M8 9.8h4"/></svg>
-              </span>
-              <span class="doc-link-body"><span class="doc-link-kind">TDS</span><span class="doc-link-title">Technical Data Sheet</span></span>
-              <span class="doc-link-arrow" aria-hidden="true">↓</span>
-            </a>
+          {tdsUrl && <DocLink kind="tds" href={tdsUrl} productName={name} />}
+          {pdsUrl && <DocLink kind="pds" href={pdsUrl} productName={name} />}
+          {sdsUrl && <DocLink kind="sds" href={sdsUrl} productName={name} />}
+          {!sdsUrl && (tdsUrl || pdsUrl) && (
+            <DocLink kind="unavailable" title="Safety Data Sheet"
+                     note={pdsUrl
+                       ? 'Not applicable — this product is an article, not a chemical'
+                       : 'Not published for this grade — ask us if your process needs one'} />
           )}
-          {sdsUrl && (
-            <a href={sdsUrl} class="doc-link" target="_blank" rel="noopener" download
-               aria-label={`Download Safety Data Sheet PDF for ${name}`}>
-              <span class="doc-link-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L20 6.5 L20 12.5 C20 17 16.5 20.5 12 22 C7.5 20.5 4 17 4 12.5 L4 6.5 Z"/><path d="M9 12 L11 14 L15.5 9.5"/></svg>
-              </span>
-              <span class="doc-link-body"><span class="doc-link-kind">SDS</span><span class="doc-link-title">Safety Data Sheet</span></span>
-              <span class="doc-link-arrow" aria-hidden="true">↓</span>
-            </a>
-          )}
-          <a href={site.catalogue.url} class="doc-link"
-             aria-label={`Browse the ${site.catalogue.title}`}>
-            <span class="doc-link-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V4.5A1.5 1.5 0 0 1 5.5 3H18a1 1 0 0 1 1 1v15.2"/><path d="M6.5 3v18"/><path d="M6.5 21H19a1 1 0 0 0 1-1v-.5a1 1 0 0 0-1-1H6.8"/></svg>
-            </span>
-            <span class="doc-link-body"><span class="doc-link-kind">Product range</span><span class="doc-link-title">All {products.length} published grades</span></span>
-            <span class="doc-link-arrow doc-link-arrow-go" aria-hidden="true">→</span>
-          </a>
+          <DocLink kind="range" href={site.catalogue.url}
+                   title={`All ${products.length} published grades`}
+                   note="Browse the product range" />
       </div>
       {/* PROTOTYPE: the product masthead ends here — image, identity, price,
           commercial CTAs and documents. Everything below is technical reading
@@ -4495,10 +4484,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
     .prod-desc { color: var(--ink-dim); margin-top: 1.6rem; font-size: 1rem; }
     .prod-cta { display: flex; gap: 0.8rem; margin-top: 1.4rem; flex-wrap: wrap; }
 
-    /* Technical documents — deliberately NOT .btn-solid, so it reads as
+    /* Technical documents — deliberately NOT .btn-solid, so the group reads as
        "reference material" rather than competing with the Enquire/WhatsApp
-       commercial actions above it. One .doc-link per document, all the
-       same shape, so TDS/SDS/Catalogue are instantly recognisable as a set. */
+       commercial actions above it. Within the group the rows are NOT all the
+       same shape any more: see DocLink.astro, where a real file, a link to the
+       range and an absent document each render differently. Identical shapes
+       were the original problem — a buyer could not tell which row saved a
+       PDF. */
     .prod-docs { margin-top: 1.8rem; max-width: 420px; display: flex; flex-direction: column; gap: 0.6rem; }
     .prod-docs-heading {
       font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;

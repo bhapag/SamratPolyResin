@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import EnquiryForm from '../components/EnquiryForm.astro';
 import { site, buildWhatsAppLink, buildCanonicalUrl, buildOrganizationSchema, ORGANIZATION_ID } from '../data/site.js';
+import DocLink from '../components/DocLink.astro';
 
 const waLink = buildWhatsAppLink('generic');
 
@@ -81,14 +82,7 @@ const contactPageJsonLd = {
         </div>
         <div class="contact-catalogue-note">
           <p class="contact-catalogue-heading">Need our complete product range?</p>
-          <a href={site.catalogue.url} class="doc-link"
-             aria-label={`Browse the ${site.catalogue.title}`}>
-            <span class="doc-link-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V4.5A1.5 1.5 0 0 1 5.5 3H18a1 1 0 0 1 1 1v15.2"/><path d="M6.5 3v18"/><path d="M6.5 21H19a1 1 0 0 0 1-1v-.5a1 1 0 0 0-1-1H6.8"/></svg>
-            </span>
-            <span class="doc-link-body"><span class="doc-link-kind">Product range</span><span class="doc-link-title">{site.catalogue.title}</span></span>
-            <span class="doc-link-arrow doc-link-arrow-go" aria-hidden="true">→</span>
-          </a>
+          <DocLink kind="range" href={site.catalogue.url} title={site.catalogue.title} note="Browse the product range" />
         </div>
       </div>
       <div class="contact-form" id="enquiry">

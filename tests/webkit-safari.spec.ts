@@ -10,7 +10,10 @@ import { webkit } from '@playwright/test';
 // hero autoplay, poster/still fallback, source selection, and the disclosure
 // based mobile navigation.
 
-const BASE = 'http://localhost:4322';
+// Same port rule as playwright.config.ts. This was hardcoded to 4322, so with
+// PW_PORT set the rest of the suite ran in isolation while these tests still
+// hit whatever stale server another checkout had left on 4322.
+const BASE = `http://localhost:${process.env.PW_PORT ?? 4322}`;
 
 test.describe('WebKit (Safari engine)', () => {
   test.describe.configure({ mode: 'serial' });
