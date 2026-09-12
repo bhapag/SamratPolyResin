@@ -1388,6 +1388,7 @@ export const products = [
       "gp-gelcoat-resin",
       "vinyl-ester-resin",
     ],
+    applicationSlugs: ["fire-retardant-resin-for-railway-and-transport-frp"],
   },
   {
     slug: "iso-fire-retardant-resin",
@@ -1511,6 +1512,7 @@ export const products = [
       "fibre-glass-mat",
       "gp-gelcoat-resin",
     ],
+    applicationSlugs: ["fire-retardant-resin-for-railway-and-transport-frp"],
   },
   {
     slug: "frp-polyester-pigment",
@@ -2039,6 +2041,7 @@ export const products = [
       "epoxy-clear-casting-resin",
       "epoxy-hardener",
     ],
+    applicationSlugs: ["epoxy-art-resin-for-table-tops-and-surface-coating"],
   },
   {
     slug: "epoxy-hardener",
@@ -4082,6 +4085,7 @@ export const products = [
       "gp-clear-resin",
       "vinyl-ester-resin",
     ],
+    applicationSlugs: ["gelcoat-for-boat-marine-hull-finishing", "gelcoat-for-automotive-body-panels", "gelcoat-for-frp-bathware-sanitaryware"],
   },
 ];
 

@@ -1,6 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 import { site, ORGANIZATION_ID, WEBSITE_ID } from '../src/data/site.js';
-import { products } from '../src/data/products.js';
+import { products, CATEGORY_HUBS } from '../src/data/products.js';
 
 // ---------------------------------------------------------------------------
 // Brand / entity signals.
@@ -184,12 +184,17 @@ test.describe('product attribution', () => {
   });
 
   test('every product and hub page names the company in visible copy', async ({ page }) => {
+    // Forty-odd sequential page loads inside one test. It fits the default
+    // timeout comfortably when run alone and intermittently did not under a
+    // full parallel run, where the clock running out read as a content
+    // failure. The budget is explicit now rather than implied.
+    test.setTimeout(120_000);
+    // Hubs are read from CATEGORY_HUBS rather than a hardcoded four, so a hub
+    // added later is covered without anyone remembering to extend this list.
+    // The four added in September 2026 were not covered.
     const slugs = [
       ...products.map((p) => `/products/${p.slug}/`),
-      '/products/gp-resins/',
-      '/products/epoxy-resins/',
-      '/products/frp-allied-products/',
-      '/products/industrial-specialty-resins/',
+      ...[...new Set(Object.values(CATEGORY_HUBS))].map((hub) => `/products/${hub}/`),
     ];
     const missing: string[] = [];
     for (const path of slugs) {

@@ -1107,9 +1107,9 @@ export const applications = [
       description: "How GP Gelcoat Resin forms an FRP boat hull's outer finish, applied before the structural laminate, and when Vinyl Ester Resin suits hulls kept in water.",
       keywords: ["Gelcoat for Boat Hulls", "Marine Gelcoat Finish", "FRP Hull Gelcoat", "Boat Hull Surface Coating"],
     },
-    intro: "Every FRP boat hull starts life inside a mould, and the very first material to touch that mould face isn't the structural laminate — it's gelcoat. Sprayed or brushed onto the mould before anything else, it's what becomes the hull's finished, visible outer surface once the boat is demoulded. This page covers that specific outer-skin step, not the structural lay-up covered on our Boat & Marine Components page.",
+    intro: "Every FRP boat hull starts life inside a mould, and the very first material to touch that mould face isn't the structural laminate — it's gelcoat. Sprayed or brushed onto the mould before anything else, it's what becomes the hull's finished, visible outer surface once the boat is demoulded. This page covers that specific outer-skin step, not the structural lay-up covered on our Boat & Marine Components page. A hull surface is in water and weather for its whole working life, so which gelcoat grade goes into the mould is a decision worth making deliberately.",
     whatTheyManufacture: "Marine gelcoat finishes the outer surface of FRP boat hulls, decks, cabin structures and other exterior marine components — the smooth, glossy, coloured skin visible on a finished boat, applied to the mould before the structural laminate is built up behind it.",
-    whySuitable: 'GP Gelcoat Resin is thixotropic and much thicker (around 11,000 cPs) than a laminating resin, which is exactly what a curved, often vertical hull mould needs — it clings to the mould face without sagging or running while it gels. It is not the structural material of the hull: once it has gelled, <a href="/products/fibre-glass-mat/">glass fibre</a> reinforcement wet out with <a href="/products/gp-clear-resin/">GP Clear Resin</a> is built up behind it to form the actual structural laminate that gives the hull its strength. For hulls that stay in the water continuously, some builders step up to a <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> laminate behind the gelcoat instead of GP Clear Resin, since vinyl ester offers meaningfully better resistance to the osmotic blistering that continuous immersion can cause — this is a laminate-side decision, not a change to the gelcoat itself.',
+    whySuitable: 'GP Gelcoat Resin is thixotropic and much thicker (around 11,000 cPs) than a laminating resin, which is exactly what a curved, often vertical hull mould needs — it clings to the mould face without sagging or running while it gels. It is not the structural material of the hull: once it has gelled, <a href="/products/fibre-glass-mat/">glass fibre</a> reinforcement wet out with <a href="/products/gp-clear-resin/">GP Clear Resin</a> is built up behind it to form the actual structural laminate that gives the hull its strength. For hulls that stay in the water continuously, some builders step up to a <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> laminate behind the gelcoat instead of GP Clear Resin, since vinyl ester offers meaningfully better resistance to the osmotic blistering that continuous immersion can cause — this is a laminate-side decision, not a change to the gelcoat itself. On the gelcoat side there is a parallel choice: Samrat publishes an <a href="/products/iso-gelcoat/">ISO Gelcoat</a> alongside the general-purpose grade, and an isophthalic gelcoat is what is normally specified where the visible surface has to hold gloss and colour through weathering and water contact. The <a href="/products/gelcoat-resins/">gelcoat hub</a> sets the two side by side, including the limits that apply to both — no polyester gelcoat is waterproof, and a hull bottom in continuous immersion steps up to a different grade again.',
     requiredCharacteristics: [
       "Thixotropic body that clings to curved, vertical hull mould surfaces without sagging",
       "High gloss, smooth cured finish straight off the mould face",
@@ -1151,7 +1151,7 @@ export const applications = [
         a: "For hulls in continuous water immersion, a Vinyl Ester Resin laminate behind the gelcoat offers meaningfully better resistance to osmotic blistering than a standard polyester laminate. This changes the laminate behind the gelcoat, not the gelcoat layer itself.",
       },
     ],
-    relatedProductSlugs: ["gp-clear-resin", "mekp-hardener", "frp-polyester-pigment", "vinyl-ester-resin"],
+    relatedProductSlugs: ["iso-gelcoat", "gp-clear-resin", "mekp-hardener", "frp-polyester-pigment", "vinyl-ester-resin"],
     ctaHeading: "Need gelcoat for your boat or marine hull production?",
     ctaText: "Get a bulk quote or talk to our technical team about the right gelcoat and laminate combination for your hull.",
   },
@@ -1169,7 +1169,7 @@ export const applications = [
     },
     intro: "The smooth, glossy surface of an FRP bathtub or shower tray is what a customer actually touches and sees — and it isn't the structural fibreglass laminate underneath. It's a gelcoat layer, sprayed or brushed onto the mould before any reinforcement goes in, that becomes the finished surface once the part is demoulded. This page covers that surface-coating step specifically, not the structural laminate behind it.",
     whatTheyManufacture: "Gelcoat finishes the visible, mould-facing surface of FRP bathtubs, shower trays, wash basins and general sanitaryware — the smooth, coloured, easy-to-clean surface, applied before the structural laminate is built up behind it.",
-    whySuitable: 'Bathware moulds are often deep, curved shapes, and <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>\'s thixotropic body clings to those curved mould surfaces without sagging while it gels — the same property that suits vertical hull moulds works well here too. It is not the structural material of the tub or tray: once the gelcoat has gelled, <a href="/products/fibre-glass-mat/">glass fibre</a> reinforcement wet out with <a href="/products/gp-clear-resin/">GP Clear Resin</a> is built up behind it to form the actual structural shell. GP Gelcoat Resin is a general-purpose orthophthalic grade — some premium sanitaryware uses a more specialised gelcoat chemistry for continuous wet-service durability, so for demanding commercial installations it is worth confirming your specific requirement with our technical team.',
+    whySuitable: 'Bathware moulds are often deep, curved shapes, and <a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>\'s thixotropic body clings to those curved mould surfaces without sagging while it gels — the same property that suits vertical hull moulds works well here too. It is not the structural material of the tub or tray: once the gelcoat has gelled, <a href="/products/fibre-glass-mat/">glass fibre</a> reinforcement wet out with <a href="/products/gp-clear-resin/">GP Clear Resin</a> is built up behind it to form the actual structural shell. GP Gelcoat Resin is a general-purpose orthophthalic grade — some premium sanitaryware uses a more specialised gelcoat chemistry for continuous wet-service durability. Samrat\'s <a href="/products/iso-gelcoat/">ISO Gelcoat</a> is the isophthalic grade published for surfaces facing water contact, and the <a href="/products/gelcoat-resins/">gelcoat hub</a> compares the two routes. For a demanding commercial installation, confirm the actual service condition with the technical team rather than choosing on grade name alone — permeability is a property of the whole laminate, not of the coating by itself.',
     requiredCharacteristics: [
       "Thixotropic body that clings to deep, curved bathware mould shapes without sagging",
       "High gloss, smooth cured finish requiring no further surface work",
@@ -1210,7 +1210,7 @@ export const applications = [
         a: "Applying it first, against the smooth mould face, is what gives the finished tub or tray its glossy surface once demoulded — there is no way to achieve the same mould-facing finish by coating the part afterward.",
       },
     ],
-    relatedProductSlugs: ["gp-clear-resin", "mekp-hardener", "fibre-glass-mat", "frp-polyester-pigment"],
+    relatedProductSlugs: ["iso-gelcoat", "gp-clear-resin", "mekp-hardener", "fibre-glass-mat", "frp-polyester-pigment"],
     ctaHeading: "Need gelcoat for your bathware or sanitaryware production?",
     ctaText: "Get a bulk quote or talk to our technical team about the right gelcoat and laminate combination for your mould.",
   },
@@ -1344,9 +1344,9 @@ export const applications = [
       description: "GP Gelcoat Resin for FRP body panels on buses, commercial and utility vehicles — the mould-facing finish, applied before the structural laminate behind it.",
       keywords: ["Gelcoat for Bus Body Panels", "Commercial Vehicle FRP Gelcoat", "Truck Body Panel Gelcoat", "Transport Panel Surface Coating"],
     },
-    intro: "Bus, commercial and utility vehicle body fabricators across India build exterior panels from FRP, and — as with any open-mould FRP part — the finished, visible surface of those panels comes from gelcoat, applied to the mould before the structural laminate is built up behind it. This page covers that finishing step for buses, commercial vehicles, utility vehicles and truck bodies specifically.",
+    intro: "Bus, commercial and utility vehicle body fabricators across India build exterior panels from FRP, and — as with any open-mould FRP part — the finished, visible surface of those panels comes from gelcoat, applied to the mould before the structural laminate is built up behind it. This page covers that finishing step for buses, commercial vehicles, utility vehicles and truck bodies specifically — vehicles whose exterior is in sunlight and weather every day they are in service.",
     whatTheyManufacture: "Gelcoat finishes the visible surface of FRP body panels for buses, tourist and staff coaches, commercial and utility vehicle bodies, and truck bodies — including insulated panel bodies for goods transport — applied to the mould before the structural laminate behind it is built up.",
-    whySuitable: '<a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>\'s thixotropic body and high gloss finish suit the flat and gently curved panel moulds typical of bus and commercial vehicle body fabrication. It is not the structural material of the panel: <a href="/products/fibre-glass-mat/">glass fibre</a> reinforcement wet out with <a href="/products/gp-clear-resin/">GP Clear Resin</a> forms the structural laminate behind it, often over a foam or honeycomb core for insulated panel bodies. Because transport body panels are exposed outdoors for the vehicle\'s working life, the same caution applies here as with any long-term outdoor gelcoat use: GP Gelcoat Resin has no UV-stabiliser package confirmed in its specification, so where long-term outdoor colour stability matters, discuss UV-stabilised formulation requirements with our technical team before specifying.',
+    whySuitable: '<a href="/products/gp-gelcoat-resin/">GP Gelcoat Resin</a>\'s thixotropic body and high gloss finish suit the flat and gently curved panel moulds typical of bus and commercial vehicle body fabrication. It is not the structural material of the panel: <a href="/products/fibre-glass-mat/">glass fibre</a> reinforcement wet out with <a href="/products/gp-clear-resin/">GP Clear Resin</a> forms the structural laminate behind it, often over a foam or honeycomb core for insulated panel bodies. Because transport body panels are exposed outdoors for the vehicle\'s working life, the same caution applies here as with any long-term outdoor gelcoat use: GP Gelcoat Resin has no UV-stabiliser package confirmed in its specification, which matters on a vehicle exterior. Where long-term outdoor colour stability is the requirement, the <a href="/products/iso-gelcoat/">ISO Gelcoat</a> grade is the one normally specified for surfaces facing weathering and outdoor service — compare the two on the <a href="/products/gelcoat-resins/">gelcoat hub</a>, and raise the expected service life and colour with the technical team before specifying either.',
     requiredCharacteristics: [
       "Thixotropic body suited to flat and gently curved panel moulds",
       "High gloss, smooth cured finish ready for the vehicle body without further finishing",
@@ -1387,7 +1387,7 @@ export const applications = [
         a: "It is cured at room temperature with an MEKP catalyst (around 1.5%) and a cobalt octoate accelerator (around 0.4%), the same system used across Samrat Poly Resins' gelcoat and general-purpose grades.",
       },
     ],
-    relatedProductSlugs: ["gp-clear-resin", "mekp-hardener", "frp-polyester-pigment", "fibre-glass-mat"],
+    relatedProductSlugs: ["iso-gelcoat", "gp-clear-resin", "mekp-hardener", "frp-polyester-pigment", "fibre-glass-mat"],
     ctaHeading: "Need gelcoat for your bus or commercial vehicle body panel production?",
     ctaText: "Get a bulk quote or talk to our technical team about the right gelcoat and laminate combination for your body panels.",
   },
@@ -2407,5 +2407,172 @@ export const applications = [
     ],
     ctaHeading: "Discuss a Roof Light Sheet Grade Resin requirement",
     ctaText: "Share the finished roof-light or roofing sheet, required supplied appearance, reinforcement context if known, expected quantity and delivery location so the product role and current TDS can be reviewed.",
+  },
+  // ---------------------------------------------------------------------
+  //  Epoxy Art Resin — the COATING job.
+  //
+  //  The three existing epoxy application pages all cover casting: river
+  //  tables, jewellery, and the casting process itself. None covers pouring a
+  //  thin self-levelling film over a finished surface, which is the other half
+  //  of what buyers arrive asking for and the reason Art Resin is a separate
+  //  product from Clear Casting Resin. Figures below are Epoxy Art Resin's own
+  //  published data: 2:1 mix, 24-hour cure, 900-1200 cPs mixed at 25 C,
+  //  self-levelling with bubble release, UV stabilised, water clear, 15 kg
+  //  packs with a 100 kg minimum.
+  // ---------------------------------------------------------------------
+  {
+    slug: "epoxy-art-resin-for-table-tops-and-surface-coating",
+    title: "Epoxy Art Resin for Table Tops & Surface Coating",
+    cardDescription: "A selection guide for pouring Epoxy Art Resin as a self-levelling clear coat over table tops, counters, artwork and decorative panels — the coating role, as distinct from casting a thick block.",
+    cardBenefit: "Choose between the coating and casting epoxy routes before you buy.",
+    cardImageAlt: "Clear high-gloss epoxy coating poured over a wooden table top",
+    seo: {
+      title: "Epoxy Resin for Table Tops & Surface Coating",
+      description: "How to select Samrat Poly Resins Epoxy Art Resin for clear table-top, counter and artwork coating: published mix ratio, viscosity, cure time and what the data does not establish.",
+      keywords: ["Epoxy Resin for Table Tops", "Epoxy Coating Resin", "Self Levelling Epoxy Resin", "Clear Epoxy Table Top Coating", "Epoxy Art Resin India"],
+    },
+    draft: false,
+    intro: "A coating pour and a casting pour are different jobs, and they are the reason Samrat publishes two clear epoxy products rather than one. Coating means flooding a thin, even film across a surface that already exists — a table top, a counter, a panel, a finished artwork — and letting it find its own level into a glass-like skin. Casting means filling a depth: a river-table channel, a mould, a bezel. This page covers the coating job and the Epoxy Art Resin data published for it.",
+    introSecondary: "If the requirement is depth rather than surface, start instead from Epoxy Clear Casting Resin, whose own pages cover river tables, jewellery and the casting process.",
+    whatTheyManufacture: "Furniture makers, interior fabricators, signage and decor workshops and artists apply a clear epoxy coat as the last step on a finished piece. The substrate is already built — timber, ply, MDF, stone, a printed or painted surface, a canvas — and the epoxy is there to seal it, lift the colour underneath and leave a hard gloss the surface could not achieve on its own.",
+    whySuitable: 'Epoxy Art Resin is published as a two-component, water-clear system that mixes at 2:1 to a viscosity of 900-1200 cPs at 25 &deg;C and cures over 24 hours to a high-gloss finish. The TDS describes it as self-levelling with bubble release and UV stabilised, stating that it resists yellowing. Those four properties are precisely what a coating pour needs: thin enough to flow out flat rather than sit where it lands, slow enough to let trapped air rise before it gels, and stabilised so a clear film over a visible surface does not go amber. Read the published data on the <a href="/products/epoxy-art-resin/">Epoxy Art Resin product page</a> before selecting.',
+    requiredCharacteristics: [
+      "The substrate and its condition — bare timber, sealed board, stone, a print or a painted surface each behave differently under a flood coat",
+      "The surface area to be coated, so the quantity can be worked out against 15 kg packs and the 100 kg minimum order",
+      "Whether the piece is indoors or will see direct sun, and for how long",
+      "Working temperature in the workshop, since both viscosity and cure time are quoted at 25 &deg;C",
+      "Whether a pigment, dye or metallic effect is going into the coat",
+    ],
+    manufacturingProcess: 'This is a product-selection page, not an application manual. What the published data does establish is the mix ratio and the cure window; what it does not establish is a pour thickness per coat, a recoat interval, a surface-preparation specification, a sanding or polishing schedule, or an adhesion result on any particular substrate. Those depend on the piece, the workshop and the surface being coated, and should be confirmed against the current TDS and a trial on your own substrate rather than assumed. <a href="/products/epoxy-hardener/">Epoxy Hardener</a> is a separate product with its own published role — see <a href="/resources/epoxy-resin-vs-epoxy-hardener/">how the two components differ</a>.',
+    advantages: [
+      "Uses Epoxy Art Resin's own published mix ratio, viscosity, cure time and UV positioning",
+      "Separates the coating role from the casting role rather than treating clear epoxy as one product",
+      "Keeps liquid-resin data distinct from the finished surface's durability",
+      "Names what a buyer should confirm on their own substrate before committing to a quantity",
+    ],
+    commonProducts: [
+      "Epoxy-coated wooden and live-edge table tops",
+      "Bar, counter and reception-desk surfaces",
+      "Decorative wall and interior panels",
+      "Artwork, photo and print surface coats",
+      "Signage and display faces",
+    ],
+    faqs: [
+      {
+        q: "What is the difference between Epoxy Art Resin and Epoxy Clear Casting Resin?",
+        a: 'They are published for different roles. Art Resin is the self-levelling coating product, mixed 2:1 and poured as a film over a finished surface. <a href="/products/epoxy-clear-casting-resin/">Epoxy Clear Casting Resin</a> is published for filling depth, such as a river-table channel or a mould. <a href="/resources/casting-resin-vs-coating-resin/">Casting resin vs coating resin</a> sets out the choice in full.',
+      },
+      {
+        q: "How thick can a single coat be poured?",
+        a: "No pour thickness is published for this grade, so no figure should be assumed from a general epoxy description. Thickness, recoat interval and any depth limit belong to the current TDS and to a trial on your own piece. Deep pours are a casting question rather than a coating one.",
+      },
+      {
+        q: "Will the coating yellow in sunlight?",
+        a: "The TDS states that the grade is UV stabilised and resists yellowing. That is a formulation statement about the supplied resin, not a warranty on a finished piece over a given number of years in a given location. Outdoor and direct-sun exposure should be raised in the enquiry rather than inferred.",
+      },
+      {
+        q: "How much resin do I need for a table top?",
+        a: "Coverage depends on the area and the film thickness you are pouring, neither of which is fixed by the product data. Share the surface dimensions and the number of coats intended along with your enquiry. Epoxy Art Resin is supplied in 15 kg packs with a 100 kg minimum order quantity.",
+      },
+      {
+        q: "Does the resin cure hard enough to use as a worktop?",
+        a: "The published data gives a 24-hour cure and a high-gloss finish; it does not publish hardness, scratch resistance, heat resistance or food-contact status. Where the finished surface has a service requirement of that kind, state it in the enquiry so the requirement can be reviewed against the available documentation.",
+      },
+    ],
+    relatedProductSlugs: ["epoxy-art-resin", "epoxy-hardener", "epoxy-clear-casting-resin"],
+    relatedLinksHeading: "Check the epoxy route before ordering",
+    recommendedLinks: [
+      { href: "/resources/casting-resin-vs-coating-resin/", label: "Casting resin vs coating resin", description: "Which of the two published clear-epoxy roles your piece actually needs." },
+      { href: "/resources/what-is-epoxy-art-resin/", label: "What Epoxy Art Resin is", description: "The grade explained, with its published properties in context." },
+      { href: "/resources/epoxy-resin-vs-epoxy-hardener/", label: "Resin and hardener are two products", description: "What each component does, and why the ratio is not a suggestion." },
+      { href: "/tds/epoxy-art-resin-tds.pdf", label: "Epoxy Art Resin TDS", description: "Open the product data sheet before finalising a specification." },
+    ],
+    ctaHeading: "Coating a surface in clear epoxy?",
+    ctaText: "Send the substrate, the surface area, whether the piece will see direct sun, and the quantity and delivery location, so the right published grade can be confirmed before you order.",
+  },
+  // ---------------------------------------------------------------------
+  //  Fire Retardant resins — the fire-performance job, covering BOTH grades.
+  //
+  //  Deliberately one page for two products rather than one each. The choice
+  //  between halogenated and halogen-free is made on the Fire Retardant hub;
+  //  what neither the hub nor either product page covers is the buyer's actual
+  //  job, which is specifying FRP for a component where somebody else has
+  //  written a fire requirement into the contract. No standard, rating,
+  //  classification or test result is claimed for either grade here, because
+  //  neither TDS publishes one.
+  // ---------------------------------------------------------------------
+  {
+    slug: "fire-retardant-resin-for-railway-and-transport-frp",
+    title: "Fire Retardant Resin for Railway & Transport FRP",
+    cardDescription: "What to establish before specifying a fire retardant polyester resin for railway, bus and transport FRP components — including the one thing the resin data cannot tell you.",
+    cardBenefit: "Separates what the resin publishes from what your project specification demands.",
+    cardImageAlt: "Interior FRP panelling and mouldings inside a passenger rail coach",
+    seo: {
+      title: "Fire Retardant Resin for Railway & Transport FRP",
+      description: "Buyer guidance for selecting Samrat Poly Resins fire retardant polyester resins for railway, bus and transport FRP components, and why a resin grade is not a fire certification.",
+      keywords: ["Fire Retardant Resin for Railway", "FR Resin for Transport FRP", "Fire Retardant FRP Panel Resin", "Halogen Free FR Resin India", "Fire Retardant Polyester Resin Manufacturer"],
+    },
+    draft: false,
+    intro: "Railway interiors, bus bodies and transport enclosures are among the few FRP markets where somebody other than the fabricator decides the material. A tender, a rolling-stock specification or a customer's own standard sets a fire requirement, and the component has to be built to satisfy it. Samrat Poly Resins publishes two fire retardant polyester grades for work of this kind, and this page is about specifying them honestly.",
+    introSecondary: "Read the one thing that matters most first: a fire retardant resin grade is not a fire certification, and no resin data sheet can approve a finished component against a standard.",
+    whatTheyManufacture: "Coach interior panelling, seat shells and mouldings, bus body panels and roof sections, ducting, electrical enclosures and cable-management housings, and infrastructure components for tunnels and stations. In each case the FRP part is one item inside a larger specification, and the fire requirement is usually written against the finished component rather than against the resin drum.",
+    whySuitable: 'Both published grades list transport work among their applications. <a href="/products/fire-retardant-resin/">Fire Retardant Resin</a> is the halogenated grade. <a href="/products/iso-fire-retardant-resin/">ISO Fire Retardant Resin</a> is a halogen-free, ATH-filled isophthalic formulation, published at 400 cPs with a 5.5-minute gel time, 35% styrene and a density of 1.18 g/cm&sup3;. Which of the two suits a project is a real decision and it is made on the <a href="/products/fire-retardant-resins/">fire retardant resin hub</a>, not by price. Note that ISO in that product name refers to isophthalic chemistry and is not a certification claim.',
+    requiredCharacteristics: [
+      "The exact fire requirement in the project specification, quoted as written — a standard number, a class, or a customer clause",
+      "Who is responsible for testing the finished component, and against which configuration",
+      "The component itself: laminate construction, thickness, reinforcement, any core, and the surface system",
+      "Whether the specification rules out halogenated chemistry, which decides the grade before anything else does",
+      "Quantity, documentation required and delivery location",
+    ],
+    manufacturingProcess: 'This is a product-selection page and it does not certify anything. A fire retardant resin changes how a laminate behaves in fire, but the behaviour that gets tested belongs to the finished component — its construction, thickness, reinforcement, filler loading, core, surface system and cure state — not to the liquid in the drum. Neither grade\'s TDS publishes a flame-spread rating, smoke or toxicity index, oxygen index, standard classification or test certificate, so none should be inferred from the words "fire retardant". Where a project requires a tested and certified component, that testing is part of the project, and the resin selection is one input to it. <a href="/resources/what-is-fire-retardant-resin/">The FR grade guide</a> sets out these limits in plain terms.',
+    advantages: [
+      "States the halogenated and halogen-free routes as a real decision rather than a single FR product",
+      "Uses only the figures each grade actually publishes",
+      "Keeps resin data separate from finished-component fire performance and certification",
+      "Tells a buyer exactly what to extract from their own specification before enquiring",
+    ],
+    commonProducts: [
+      "Railway coach interior panels and mouldings",
+      "Bus and commercial vehicle body panels",
+      "FRP electrical enclosures and cable housings",
+      "Ducting and ventilation components",
+      "Tunnel, station and infrastructure FRP components",
+    ],
+    faqs: [
+      {
+        q: "Does using a fire retardant resin make my component fire certified?",
+        a: 'No, and this is the single most important thing on the page. Certification belongs to a tested finished component in a tested configuration. The resin is one input. Neither grade publishes a rating, classification or test certificate, so none can be passed on to your part. See <a href="/resources/what-is-fire-retardant-resin/">the FR grade guide</a> for what the term does and does not promise.',
+      },
+      {
+        q: "Which grade should I use — halogenated or halogen-free?",
+        a: 'If the project specification rules out halogenated chemistry, that decides it: the halogen-free, ATH-filled <a href="/products/iso-fire-retardant-resin/">ISO Fire Retardant Resin</a> is the route. Where the specification is silent, the choice should be made against the actual requirement rather than by default. The <a href="/products/fire-retardant-resins/">fire retardant hub</a> sets the two routes side by side.',
+      },
+      {
+        q: "Does ISO in ISO Fire Retardant Resin mean it is ISO certified?",
+        a: "No. ISO in that product name refers to isophthalic resin chemistry, which is a description of the backbone, not a certification. This is a common and expensive misreading in tender documents, so it is worth confirming in writing before a submission relies on it.",
+      },
+      {
+        q: "What does ATH-filled mean?",
+        a: "ATH is aluminium trihydrate, a mineral filler used in halogen-free fire retardant formulations. Its published role in the grade is as the fire retardant filler system. Loading levels, and the effect of filler on handling and on a finished laminate, are formulation and process questions to raise directly rather than infer.",
+      },
+      {
+        q: "Can I use a fire retardant resin the same way as a general purpose one?",
+        a: "Do not assume so. The published gel time and viscosity differ from a general-purpose grade, and a filled system handles differently during lay-up. Confirm working properties against the grade's own TDS and trial the process before committing a production run.",
+      },
+      {
+        q: "What should I send with a fire retardant resin enquiry?",
+        a: "The fire requirement exactly as your specification words it, the finished component and its construction, whether halogenated chemistry is permitted, the documentation you need, quantity and delivery location. A product name alone cannot answer a specification.",
+      },
+    ],
+    relatedProductSlugs: ["fire-retardant-resin", "iso-fire-retardant-resin", "fibre-glass-mat"],
+    relatedLinksHeading: "Before specifying a fire retardant grade",
+    recommendedLinks: [
+      { href: "/products/fire-retardant-resins/", label: "Compare the two FR routes", description: "Halogenated against halogen-free, and what decides between them." },
+      { href: "/resources/fire-retardant-resin-procurement-checklist/", label: "FR procurement checklist", description: "What to pin down before an FR resin purchase order goes out." },
+      { href: "/resources/what-is-iso-fire-retardant-resin/", label: "The halogen-free grade explained", description: "ISO Fire Retardant Resin, its published data and its buying context." },
+      { href: "/resources/what-is-fire-retardant-resin/", label: "The halogenated grade explained", description: "Fire Retardant Resin, and where it is published for use." },
+    ],
+    ctaHeading: "Have a fire requirement in your specification?",
+    ctaText: "Send the requirement as written, the finished component, whether halogenated chemistry is permitted, the documentation you need, quantity and delivery location.",
   },
 ];
