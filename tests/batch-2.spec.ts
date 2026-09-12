@@ -87,11 +87,17 @@ test.describe('/technical-documents/', () => {
     });
   }
 
-  test('the wide document table scrolls inside its own container', async ({ page }) => {
+  // Superseded 2026-09-13. This used to require the table to scroll sideways
+  // inside its container at 390px, which is exactly what hid the SDS column on
+  // phones. Phones now get a card per product with no scrolling at all (see
+  // documents.spec.ts); wider screens keep the scroll container as a safety net.
+  test('the document table never makes the page scroll sideways', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 900 });
     await page.goto('/technical-documents/');
-    const overflowX = await page.locator('.td-table-scroll').first()
-      .evaluate((el) => getComputedStyle(el).overflowX);
+    const phone = await page.locator('.td-table-scroll').first().evaluate((el) => el.scrollWidth - el.clientWidth);
+    expect(phone).toBeLessThanOrEqual(0);
+    await page.setViewportSize({ width: 768, height: 900 });
+    const overflowX = await page.locator('.td-table-scroll').first().evaluate((el) => getComputedStyle(el).overflowX);
     expect(overflowX).toBe('auto');
   });
 });

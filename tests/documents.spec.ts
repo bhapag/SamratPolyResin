@@ -198,3 +198,21 @@ test.describe('technical document library', () => {
     expect(problems, problems.join('\n')).toEqual([]);
   });
 });
+
+test.describe('document library on a phone', () => {
+  for (const width of [360, 390, 430]) {
+    test(`at ${width}px every document is visible without sideways scrolling`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto('/technical-documents/');
+      const r = await page.evaluate(() => ({
+        pageOverflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        tableScroll: [...document.querySelectorAll('.td-table-scroll')].filter((x) => x.scrollWidth > x.clientWidth + 1).length,
+        clipped: [...document.querySelectorAll('a.td-doc')].filter((a) => { const b = a.getBoundingClientRect(); return b.right > window.innerWidth + 1 || b.left < -1; }).length,
+        shortTap: [...document.querySelectorAll('a.td-doc')].filter((a) => a.getBoundingClientRect().height < 44).length,
+        hiddenNames: [...document.querySelectorAll('a.td-doc .td-doc-name')].filter((n) => getComputedStyle(n).display === 'none').length,
+        visibleEmptySds: [...document.querySelectorAll('td.td-cell-empty')].filter((c) => getComputedStyle(c).display !== 'none').length,
+      }));
+      expect(r).toEqual({ pageOverflow: 0, tableScroll: 0, clipped: 0, shortTap: 0, hiddenNames: 0, visibleEmptySds: 0 });
+    });
+  }
+});

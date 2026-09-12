@@ -171,40 +171,42 @@ const collectionJsonLd = {
           )}
         </div>
         <div class="td-table-scroll">
-          <table class="td-table">
+          <table class="td-table" role="table">
             <thead>
               <tr>
-                <th scope="col">Product</th>
-                <th scope="col">Technical / Product Data Sheet</th>
-                <th scope="col">Safety Data Sheet</th>
+                <th scope="col" role="columnheader">Product</th>
+                <th scope="col" role="columnheader">Technical / Product Data Sheet</th>
+                <th scope="col" role="columnheader">Safety Data Sheet</th>
               </tr>
             </thead>
             <tbody>
               {group.items.map((p) => (
                 <tr>
-                  <th scope="row"><a href={`/products/${p.slug}/`}>{p.name}</a></th>
+                  <th scope="row" role="rowheader"><a href={`/products/${p.slug}/`}>{p.name}</a></th>
                   {/* A product publishes EITHER a TDS or, where it is an article
                       rather than a chemical, a PDS. Showing "Not published" for a
                       grade that does have a document, just a different kind of
                       one, would be wrong — so the cell renders whichever exists
                       under its own correct label. */}
-                  <td>
+                  <td role="cell">
                     {p.tdsUrl || p.pdsUrl ? (
                       <a href={p.tdsUrl || p.pdsUrl} class="td-doc" target="_blank" rel="noopener" download
-                         aria-label={`Download ${p.name} ${p.tdsUrl ? 'Technical' : 'Product'} Data Sheet (PDF, ${documentSize(p.tdsUrl || p.pdsUrl)})`}>
+                         aria-label={`Download ${p.name} ${p.tdsUrl ? 'Technical' : 'Product'} Data Sheet (PDF, ${documentSize(p.tdsUrl || p.pdsUrl)})${p.tdsNote ? `. ${p.tdsNote}` : ''}`}>
                         <span class="td-doc-icon" aria-hidden="true">
                           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6.5 10.5 12 16l5.5-5.5"/><path d="M5 20h14"/></svg>
                         </span>
                         <span class="td-doc-kind">{p.tdsUrl ? 'TDS' : 'PDS'}</span>
+                        <span class="td-doc-name">{p.tdsUrl ? 'Technical Data Sheet' : 'Product Data Sheet'}</span>
                         <span class="td-doc-meta">PDF · {documentSize(p.tdsUrl || p.pdsUrl)}</span>
                       </a>
                     ) : (
-                      <span class="td-none">Not published</span>
+                      <span class="td-none">Technical Data Sheet not published</span>
                     )}
+                    {p.tdsUrl && p.tdsNote && <p class="td-doc-caution">{p.tdsNote}</p>}
                   </td>
                   {/* No published SDS: the cell stays empty. No "not published" or
                       "not applicable" text stands in for a missing document. */}
-                  <td>
+                  <td role="cell" class:list={[!p.sdsUrl && 'td-cell-empty']}>
                     {p.sdsUrl && (
                       <a href={p.sdsUrl} class="td-doc" target="_blank" rel="noopener" download
                          aria-label={`Download ${p.name} Safety Data Sheet (PDF, ${documentSize(p.sdsUrl)})`}>
@@ -212,6 +214,7 @@ const collectionJsonLd = {
                           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6.5 10.5 12 16l5.5-5.5"/><path d="M5 20h14"/></svg>
                         </span>
                         <span class="td-doc-kind">SDS</span>
+                        <span class="td-doc-name">Safety Data Sheet</span>
                         <span class="td-doc-meta">PDF · {documentSize(p.sdsUrl)}</span>
                       </a>
                     )}
@@ -338,8 +341,33 @@ const collectionJsonLd = {
    not apply. */
     :global(.td-doc-link) { margin-top: 1.6rem; }
 
+    /* The full document name is only needed where the column headers are not
+       visible (the mobile card layout below). */
+    .td-doc-name { display: none; }
+    .td-doc-caution { margin: 0.45rem 0 0; font-size: 0.78rem; line-height: 1.4; color: var(--accent-gold-light); max-width: 34ch; }
+
     @media (max-width: 640px) {
       .td-hero-badge { display: none; }
+
+      /* Phone: every product becomes a card. The earlier table needed a
+         sideways scroll to reach the SDS column, so a buyer could not see at a
+         glance which documents a grade has. Now each available document is a
+         full-width control carrying its full name; a product with no SDS simply
+         shows no SDS control. ARIA roles are set on the elements because
+         changing a table's display can drop its semantics. */
+      .td-table-scroll { overflow-x: visible; }
+      .td-table, .td-table tbody, .td-table tr, .td-table th, .td-table td { display: block; width: 100%; }
+      .td-table { min-width: 0; background: transparent; border: 0; }
+      .td-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+      .td-table tr { background: var(--bg-3); border: 1px solid var(--line-2); padding: 0.9rem 0.9rem 0.3rem; margin-bottom: 0.75rem; }
+      .td-table th, .td-table td { border: 0; padding: 0 0 0.6rem; }
+      .td-table tbody th { font-size: 1rem; padding-bottom: 0.7rem; }
+      .td-table td.td-cell-empty { display: none; }
+      .td-doc { display: grid; grid-template-columns: auto auto 1fr auto; align-items: center; column-gap: 0.55rem; width: 100%; min-height: 52px; padding: 0.55rem 0.8rem; }
+      .td-doc-name { display: inline; color: var(--ink); font-weight: 600; font-size: 0.92rem; }
+      .td-doc-meta { justify-self: end; font-size: 0.74rem; white-space: nowrap; }
+      .td-doc-caution { max-width: none; }
+      .td-none { display: block; font-size: 0.85rem; padding: 0.2rem 0; }
     }
   </style>
 </Base>
