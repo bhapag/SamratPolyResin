@@ -129,7 +129,22 @@ const webSiteJsonLd = buildWebSiteSchema();
 <body data-product-slug={trackingProductSlug} data-product-name={trackingProductName}>
   <AmbientBackground />
   <a href="#main-content" class="skip-link">Skip to content</a>
-  <header class="site-header" transition:persist>
+  <!-- Explicit persist NAME, not the auto-generated one.
+
+       Astro derives an unnamed `transition:persist` key from the component
+       scope plus a per-page element index: this header rendered as
+       "astro-2flubgne-15" on the homepage, "astro-2flubgne-5" on a product
+       page and "astro-2flubgne-17" on a category hub. Those keys never match
+       between two pages, so the pairing failed and the header — with the
+       hamburger's click listener attached to it — was REPLACED on every
+       client-side navigation rather than carried over. The replacement is a
+       fresh server-rendered button with no listener, and the inline script
+       below does not re-run on a client-side swap, so the menu was dead for
+       the rest of the session after the first in-page navigation.
+
+       A stable string is the same key on every page, so the real node and
+       its listener survive the swap. -->
+  <header class="site-header" transition:persist="site-header">
     <div class="wrap header-inner">
       <a href="/" class="brand">
         <img src={logoMark.src} alt={`${site.name} logo`} class="brand-mark" width="40" height="40" />
@@ -232,25 +247,41 @@ const webSiteJsonLd = buildWebSiteSchema();
        sufficient for the whole session. -->
   <script is:inline>
     (function () {
-      var toggle = document.getElementById('navToggle');
-      var panel = document.getElementById('mobileNav');
-      if (!toggle || !panel || toggle.dataset.wired === 'true') return;
-      toggle.dataset.wired = 'true';
+      // Wiring is idempotent and keyed off a marker on the button itself, so
+      // it can safely run more than once. Two entry points on purpose:
+      //
+      //   1. Immediately, inline — covers the very first page load without
+      //      waiting on `astro:page-load` (which does not fire until
+      //      `window.load`, i.e. after the hero video finishes downloading).
+      //   2. On every `astro:page-load` — a no-op while the persisted header
+      //      survives a client-side swap, but it re-attaches the listener if
+      //      the node is ever replaced again. That replacement is exactly the
+      //      bug this fix addresses; this second entry point means a future
+      //      regression degrades to "re-wired a bit late" instead of "menu
+      //      silently dead for the rest of the session".
+      function wireNav() {
+        var toggle = document.getElementById('navToggle');
+        var panel = document.getElementById('mobileNav');
+        if (!toggle || !panel || toggle.dataset.wired === 'true') return;
+        toggle.dataset.wired = 'true';
 
-      function closeMenu() {
-        toggle.setAttribute('aria-expanded', 'false');
-        panel.classList.remove('is-open');
+        function closeMenu() {
+          toggle.setAttribute('aria-expanded', 'false');
+          panel.classList.remove('is-open');
+        }
+        toggle.addEventListener('click', function () {
+          var isOpen = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!isOpen));
+          panel.classList.toggle('is-open', !isOpen);
+        });
+        var desktopNav = window.matchMedia('(min-width: 761px)');
+        desktopNav.addEventListener('change', function (event) { if (event.matches) closeMenu(); });
+        var links = panel.querySelectorAll('a');
+        for (var i = 0; i < links.length; i++) links[i].addEventListener('click', closeMenu);
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
       }
-      toggle.addEventListener('click', function () {
-        var isOpen = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!isOpen));
-        panel.classList.toggle('is-open', !isOpen);
-      });
-      var desktopNav = window.matchMedia('(min-width: 761px)');
-      desktopNav.addEventListener('change', function (event) { if (event.matches) closeMenu(); });
-      var links = panel.querySelectorAll('a');
-      for (var i = 0; i < links.length; i++) links[i].addEventListener('click', closeMenu);
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+      wireNav();
+      document.addEventListener('astro:page-load', wireNav);
     })();
   </script>
 
@@ -315,7 +346,7 @@ const webSiteJsonLd = buildWebSiteSchema();
   </footer>
 
   <!-- floating whatsapp -->
-  <a href={waLink} class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" transition:persist>
+  <a href={waLink} class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" transition:persist="wa-float">
     <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5 0-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.3 4.7L7 20.4A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
   </a>
 
@@ -423,7 +454,10 @@ const webSiteJsonLd = buildWebSiteSchema();
     .skip-link:focus { top: 1rem; }
 
     .site-header {
-      position: sticky; top: 0; z-index: 50;
+      /* Above the floating WhatsApp action, which sits at z-index 60. The
+         open menu panel is a child of this header, so at 50 the float was
+         painted on top of the navigation. */
+      position: sticky; top: 0; z-index: 70;
       background: color-mix(in srgb, var(--bg) 88%, transparent);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(var(--gold-rgb), .14);
@@ -560,7 +594,17 @@ const webSiteJsonLd = buildWebSiteSchema();
        visually finished closing, not before. prefers-reduced-motion is
        already handled globally (global.css forces every transition-duration
        to ~0 under that media query), so this needs no extra guard here. */
+    /* Overlays the page instead of sitting in the header's flow.
+       In flow, opening the panel grew the sticky header by ~420px, which grew
+       the document and made the browser scroll to keep the viewport anchored:
+       tapping the hamburger moved the reader ~410px down the page, and closing
+       it left them somewhere else entirely. Absolute positioning takes the
+       panel out of layout, so opening and closing changes nothing about the
+       document's height and the reader stays exactly where they were.
+       The header is `position: sticky`, which is a positioned value, so it is
+       the containing block for this. */
     .mobile-nav {
+      position: absolute; top: 100%; left: 0; right: 0;
       display: flex;
       flex-direction: column;
       background: var(--bg);
