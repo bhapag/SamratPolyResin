@@ -133,7 +133,9 @@ const brandFilmPoster = await getImage({ src: brandFilmStill, width: 1020, forma
         }
       };
       const toggle = () => {
-        if (root.dataset.state === 'playing') { video.pause(); return; }
+        // Pause whenever the film is running, including while it buffers
+        // (state 'loading'); a tap during buffering used to restart play.
+        if (!video.paused) { video.pause(); return; }
         play();
       };
       video.addEventListener('playing', () => { showVideo(); setState('playing'); });
