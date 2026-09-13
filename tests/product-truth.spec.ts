@@ -124,3 +124,17 @@ test('Product schema asserts manufacturer only for evidenced polyester families'
     expect(/"@type":"Product"[\s\S]*"manufacturer"/.test(ld), slug).toBe(expected);
   }
 });
+
+test('FRP Polyester Pigment packaging follows the final TDS (1 kg bottle)', async ({ page }) => {
+  const tds = 'public/tds/frp-polyester-pigment-tds.pdf';
+  const { createHash } = await import('node:crypto');
+  expect(createHash('sha256').update(fs.readFileSync(tds)).digest('hex')).toBe('ea980e2efb7daa1106bf944eb95650f7df972265a9f788f036ece20730b8a22c');
+  const p = bySlug('frp-polyester-pigment');
+  expect(p.productDetails['Packaging Size']).toBe('1 kg bottle');
+  expect(JSON.stringify(p)).not.toMatch(/10 ?kg/);
+  for (const url of ['/products/frp-polyester-pigment/', '/resources/what-is-frp-polyester-pigment/', '/how-to-order/', '/tools/quantity-guidance/']) {
+    await page.goto(url);
+    const text = await page.locator('main').innerText();
+    expect(text, url).not.toMatch(/(?<![\d.])10 ?kg/);
+  }
+});

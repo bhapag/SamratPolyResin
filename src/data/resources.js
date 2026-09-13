@@ -3937,7 +3937,7 @@ export const resources = [
     quickFacts: {
       "Published product form": "Polyester pigment paste for FRP",
       "Published system context": "UPR, vinyl ester and gelcoat systems",
-      "Published packaging": "10 kg bottles",
+      "Published packaging": "1 kg bottles",
       "Published MOQ": "100 kg",
       "Published storage": "Cool, dry conditions at 15–30°C; protect from direct sunlight",
       "Published unopened shelf life": "12 months",
@@ -3988,7 +3988,7 @@ export const resources = [
       {
         heading: "Storage and published commercial details",
         body: [
-          "The current listing publishes 10 kg bottle packaging and a 100 kg MOQ. Include the expected quantity and delivery location in the enquiry. This supports a commercial discussion without implying an unlisted stock position, lead time, sample policy or delivery promise.",
+          "The current listing publishes 1 kg bottle packaging and a 100 kg MOQ. Include the expected quantity and delivery location in the enquiry. This supports a commercial discussion without implying an unlisted stock position, lead time, sample policy or delivery promise.",
           "The current TDS publishes storage at 15–30°C in cool, dry conditions with protection from direct sunlight, plus a 12-month unopened shelf life. Keep receipt, container and storage records with the material. Do not transfer dosage, colour, compatibility or performance information from a different supplier's pigment paste to this material.",
         ],
       },
@@ -4014,7 +4014,7 @@ export const resources = [
       },
       {
         q: "What commercial details are published for FRP Polyester Pigment?",
-        a: "The current product data publishes 10 kg bottle packaging and a 100 kg MOQ. Confirm the actual commercial requirement when requesting a quotation.",
+        a: "The current product data publishes 1 kg bottle packaging and a 100 kg MOQ. Confirm the actual commercial requirement when requesting a quotation.",
       },
       {
         q: "What storage information is published?",

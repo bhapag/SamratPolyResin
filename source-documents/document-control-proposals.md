@@ -71,3 +71,9 @@ The certificate image shows the following:
 Needed: the latest surveillance or recertification letter from the issuer.
 
 Website meanwhile: describes the certificate (issuer, first registration, scope). It does not say "currently certified".
+
+## 7. FRP Polyester Pigment SDS still cites the superseded packaging
+
+- On 2026-09-14 the FRP Polyester Pigment TDS was replaced by the issuer's final file (SPR-TDS-FPP Rev. 01, July 2026). The only content change is Packaging: 10 kg bottle → **1 kg bottle**. The Rev. and date were not changed in the supplied final.
+- The SDS SPR-SDS-FPP, Section 7, still reads "Packaging Material: 10 kg bottle, per manufacturer TDS". The SDS was not edited (standing instruction).
+- Proposal: at the next SDS revision, change it to "1 kg bottle, per manufacturer TDS". The issuer should also consider whether the TDS packaging change warrants Rev. 02.

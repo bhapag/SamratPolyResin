@@ -1559,7 +1559,7 @@ export const products = [
     // with the broadened Binder Compatibility line below.
     productDetails: {
       "Minimum Order Quantity": "100 kg",
-      "Packaging Size": "10 kg",
+      "Packaging Size": "1 kg bottle",
       "Pack Type": "Bottle",
       "Colour / Appearance": "Multicolour (custom RAL & Pantone matching)",
       "Shelf Life": "12 months (unopened)",
@@ -1576,7 +1576,7 @@ export const products = [
     },
     tagline: "Colour paste for FRP resin and gelcoat systems.",
     description:
-      "FRP Polyester Pigment is Samrat Poly Resins' colour paste for FRP products made with unsaturated polyester, vinyl ester and gelcoat systems. It is not a structural resin, glass-fibre reinforcement or a gelcoat in its own right; it is the colour component blended into the separately selected resin or gelcoat. At the published 2–5% recommended dosage before catalysing, its high tinting strength (≥95%) provides colour at a controlled addition level. The TDS lists heat resistance up to 180°C and 7–8 Blue Wool Scale light fastness for the pigment itself; finished-part weathering still depends on the surrounding resin or gelcoat system. Supplied as a paste in 10 kg bottles with a 100 kg minimum order quantity, it is available in standard and custom colours, including RAL and Pantone matches.",
+      "FRP Polyester Pigment is Samrat Poly Resins' colour paste for FRP products made with unsaturated polyester, vinyl ester and gelcoat systems. It is not a structural resin, glass-fibre reinforcement or a gelcoat in its own right; it is the colour component blended into the separately selected resin or gelcoat. At the published 2–5% recommended dosage before catalysing, its high tinting strength (≥95%) provides colour at a controlled addition level. The TDS lists heat resistance up to 180°C and 7–8 Blue Wool Scale light fastness for the pigment itself; finished-part weathering still depends on the surrounding resin or gelcoat system. Supplied as a paste in 1 kg bottles with a 100 kg minimum order quantity, it is available in standard and custom colours, including RAL and Pantone matches.",
     usageNote:
       'FRP Polyester Pigment is stirred thoroughly into <a href="/products/gp-clear-resin/">GP Clear Resin</a>, <a href="/products/gp-yellow-resin/">GP Yellow Resin</a> or a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> before catalysing with an <a href="/products/mekp-hardener/">MEKP hardener</a> — mixing pigment in after catalysing risks uneven colour as working time runs out. It is also compatible with <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> binder systems. For a pre-pigmented, factory-coloured sheet resin instead of adding pigment yourself, see our <a href="/products/sheet-grade-yellow-resin/">Sheet Grade Yellow Resin</a>.',
     features: [
@@ -1585,7 +1585,7 @@ export const products = [
       "Withstands exothermic curing heat, rated up to 180°C",
       "7–8 Blue Wool Scale light-fastness for the pigment's own colour retention",
       "Available in RAL and Pantone custom matches",
-      "Supplied in 10 kg bottles, minimum order 100 kg",
+      "Supplied in 1 kg bottles, minimum order 100 kg",
     ],
     applications: [
       "FRP tanks and pipes",
@@ -1638,7 +1638,7 @@ export const products = [
       },
       {
         q: "What packaging and minimum order quantity does FRP Polyester Pigment come in?",
-        a: "It is supplied in 10 kg bottles, with a minimum order quantity of 100 kg.",
+        a: "It is supplied in 1 kg bottles, with a minimum order quantity of 100 kg.",
       },
       {
         q: "How is FRP Polyester Pigment used?",
