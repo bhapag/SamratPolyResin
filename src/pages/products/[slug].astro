@@ -190,7 +190,7 @@ const buttonGradeSeo = {
 };
 const unsaturatedPolyesterSeo = {
   title: 'Unsaturated Polyester Resin (UPR) Manufacturer in India',
-  description: 'Unsaturated polyester resin (UPR) manufactured in Doraha, Punjab. ISO 9001:2015-certified quality system, with TDS and SDS available on request.',
+  description: 'Unsaturated polyester resin (UPR) manufactured in Doraha, Punjab. Published TDS and SDS; ISO 9001:2015 registration.',
   keywords: [
     'Unsaturated Polyester Resin',
     'UPR Resin',
@@ -478,7 +478,23 @@ const mediaVars = `--prod-ar:${heroAr};--prod-media-w:${mediaWidth}px;`;
 // it states identity rather than inventing a pack shot.
 // Kept for any grade that has no truthful artwork. Empty at present: both
 // products that used it now carry an image again.
-const IDENTITY_PANELS = {};
+const IDENTITY_PANELS = {
+  'polyester-putty-resin': {
+    kicker: 'Base resin for putty & filler makers',
+    role: 'Liquid unsaturated polyester resin, supplied in bulk as the base of polyester putty and filler formulations. Not a finished filler.',
+    note: 'No product photograph is published for this grade.',
+  },
+};
+// Artwork kept on a page for the record but not presented as the product
+// image: rendered closed, under a warning, below the product frame.
+const archivedPosters = await Promise.all(
+  (product.archivedPosters ?? []).map(async (filename) => {
+    const mod = resolveProductImage(filename);
+    if (!mod) return null;
+    const im = await getImage({ src: mod, width: Math.min(720, mod.width), format: 'webp' });
+    return { src: im.src, width: im.attributes.width, height: im.attributes.height };
+  })
+).then((list) => list.filter(Boolean));
 const identityPanel = !mainImage ? IDENTITY_PANELS[product.slug] : undefined;
 
 // Curated related products when the product names them explicitly (lets a page
@@ -997,18 +1013,41 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
              statement below is shown at reading size, directly under the image,
              and is announced with it. Correcting the artwork itself needs either
              owner-approved putty artwork or permission to edit the supplied file. */
-          <div class="prod-img-warning" role="note" aria-label="About these product images">
-            <p class="prod-img-warning-title">These images do not describe this product</p>
-            <p>Both posters were made under this grade&rsquo;s earlier name, PET Resin. Do not rely on them for Polyester Putty Resin: it has no food-contact approval, it is not a PET bottle, preform, container or packaging material, it cannot be injection- or blow-moulded, and the figures printed on the posters are not this grade&rsquo;s data.</p>
-          </div>
+          <details class="prod-archive-art">
+            <summary>Earlier PET Resin posters <span>not this product&rsquo;s data</span></summary>
+            <div class="prod-img-warning" role="note" aria-label="About these earlier posters">
+              <p class="prod-img-warning-title">These posters do not describe Polyester Putty Resin</p>
+              <p>Both were made under this grade&rsquo;s earlier name, PET Resin. Do not rely on them: this resin has no food-contact approval, it is not a PET bottle, preform, container or packaging material, it cannot be injection- or blow-moulded, and the figures printed on the posters are not this grade&rsquo;s data.</p>
+            </div>
+            <div class="prod-archive-grid">
+              {archivedPosters.map((p, i) => (
+                <img src={p.src} width={p.width} height={p.height} loading="lazy" decoding="async"
+                     alt={`Earlier PET Resin poster ${i + 1}; its claims do not apply to Polyester Putty Resin`} />
+              ))}
+            </div>
+          </details>
         )}
         {isUvStabilizedSheetResin && (
-          /* The supplied poster describes the resin as "controlled
-             low-viscosity" with "controlled gel behaviour". Both are property
-             claims, and no approved figure exists for this grade yet, so the
-             page says so in readable text beside the artwork rather than
-             letting an enlarged graphic carry them unqualified. */
-          <p class="marble-image-note">Illustrative product graphic. The processing descriptions shown on it, including the reference to a low-viscosity resin and to controlled gel behaviour, are not yet backed by a published figure for this grade — viscosity and gel time are confirmed against the production batch at the time of enquiry.</p>
+          /* Poster checked against final TDS SPR-TDS-USY Rev. 01 (Sept 2026).
+             Supported: pre-pigmented yellow, UV-stabilised (UV absorber +
+             HALS), low viscosity (280 cPs), gel 6.5 min, outdoor roofing and
+             cladding sheet. Not stated by the TDS: colour uniformity between
+             production batches (it states a factory master shade only). */
+          <p class="marble-image-note">Product graphic. Its claims were checked against the <a href={tdsUrl} target="_blank" rel="noopener" download>current TDS</a>: low viscosity (280 cPs), 6.5-minute gel time, UV absorber with HALS and outdoor roofing and cladding use are stated there. The TDS gives a factory master yellow shade but no batch-to-batch colour tolerance, so the poster&rsquo;s &ldquo;more uniform colour across production batches&rdquo; is not a documented figure.</p>
+        )}
+        {isIsoPolyesterResin && (
+          /* Poster checked against final TDS SPR-TDS-IPR Rev. 01 (Sept 2026).
+             "Higher mechanical strength" and "better thermal stability" are
+             comparative claims the TDS does not make; it gives absolute cured
+             values only. */
+          <p class="marble-image-note">Product graphic. The <a href={tdsUrl} target="_blank" rel="noopener" download>current TDS</a> positions this grade for chemical, water and hydrolysis resistance and publishes cured values (90 °C HDT, 75 MPa tensile, 125 MPa flexural). It does not compare those values with a general-purpose grade, so the poster&rsquo;s &ldquo;higher mechanical strength&rdquo; and &ldquo;better thermal stability&rdquo; are not documented comparisons.</p>
+        )}
+        {isIsoGelcoat && (
+          /* Poster checked against final TDS SPR-TDS-IGC Rev. 01 (Sept 2026).
+             Supported: gloss retention and UV/weather (1,000 h xenon arc, 80%
+             gloss retention), water resistance, hard surface (Barcol 42).
+             Not stated: chemical resistance, hydrolysis resistance. */
+          <p class="marble-image-note">Product graphic. The <a href={tdsUrl} target="_blank" rel="noopener" download>current TDS</a> supports its gloss-retention, weathering, water-resistance and hardness claims (1,000 h xenon arc with 80% gloss retention; water resistance good to very good; Barcol 42). It publishes no chemical-resistance or hydrolysis test, so those two poster labels are not documented for this grade.</p>
         )}
         {isFiberglassEpoxyResin && (
           <p class="marble-image-note">Illustrative Fiberglass Epoxy Resin product graphics. They are not technical evidence for the supplied grade; use the <a href={tdsUrl} target="_blank" rel="noopener" download>current Fiberglass Epoxy Resin TDS</a> as the product-data reference.</p>
@@ -1722,7 +1761,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             GP White Resin is Samrat Poly Resins' general-purpose orthophthalic polyester resin for reinforced FRP manufacture, issued on the same base technical specification as GP Clear Resin. It is selected as a laminate resin for the published panel, moulding, hand layup, spray-up, cooling-tower and water-tank contexts.
           </p>
           <p>
-            Buyers often use “white resin” as a search term. This product's supplied appearance is not yet confirmed (its TDS reads Clear, its SDS reads white pigmented), so confirm it with the plant before ordering; it is not a white mould-surface gelcoat and it does not by itself determine the final colour of a pigmented, reinforced or surface-finished FRP part. Review the required supplied appearance and product role before selection.
+            Buyers often use “white resin” as a search term. This product is documented as white pigmented by its SDS (its TDS is GP Clear's shared base sheet, whose 'Clear' row does not apply to this grade); it is not a white mould-surface gelcoat and it does not by itself determine the final colour of a pigmented, reinforced or surface-finished FRP part. Review the required supplied appearance and product role before selection.
           </p>
         </section>
       )}
@@ -1929,11 +1968,11 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <div class="gp-white-outcomes-grid">
             <div class="gp-white-outcome-card">
               <h3>Supplied appearance</h3>
-              <p>Confirm the supplied appearance with the plant before selection: the TDS reads Clear and the SDS reads white pigmented. The supplied resin colour and the final finished surface are separate decisions.</p>
+              <p>GP White is supplied white pigmented, as its SDS describes. The TDS is GP Clear's base sheet under the GP White name, so ignore its 'Clear' appearance row. The supplied resin colour and the final finished surface are separate decisions.</p>
             </div>
             <div class="gp-white-outcome-card">
               <h3>Published moulding and laminate context</h3>
-              <p>Viscosity 350-450 cPs, gel time under 8 minutes and 33-40% styrene come from the base specification shared with GP Clear Resin. Review them against the actual mould, reinforcement, application method and workshop conditions, and confirm the supplied appearance, which the TDS and SDS describe differently.</p>
+              <p>Viscosity 350-450 cPs, gel time under 8 minutes and 33-40% styrene come from the base specification shared with GP Clear Resin. Review them against the actual mould, reinforcement, application method and workshop conditions. Appearance comes from the SDS (white pigmented), not the TDS's carried-over 'Clear' row.</p>
             </div>
             <div class="gp-white-outcome-card">
               <h3>Procurement details are available</h3>
@@ -2811,7 +2850,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       <div class="gp-white-comparison-grid">
         <article class="gp-white-comparison-card">
           <h3><a href="/products/gp-clear-resin/">GP White Resin vs GP Clear Resin</a></h3>
-          <p>Both are published general-purpose orthophthalic polyester grades. They share one published base specification (SPR-TDS-GCR). GP Clear Resin is supplied clear; GP White Resin's appearance is not yet confirmed, as its TDS reads Clear and its SDS white pigmented.</p>
+          <p>Both are published general-purpose orthophthalic polyester grades. They share one published base specification (SPR-TDS-GCR). GP Clear Resin is supplied clear; GP White Resin is white pigmented (SDS). GP White's TDS reuses GP Clear's sheet, so its 'Clear' row is a carried-over error.</p>
         </article>
         <article class="gp-white-comparison-card">
           <h3><a href="/products/lamination-resin/">GP White Resin vs Lamination Resin</a></h3>
@@ -4418,6 +4457,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       background: var(--bg-3); color: var(--ink-dim); font-size: 0.88rem; line-height: 1.55;
     }
     .prod-img-warning p { margin: 0; }
+    .prod-archive-art { margin: 0.85rem 0 0; border: 1px solid var(--line-2); border-radius: 10px; background: var(--bg-2); }
+    .prod-archive-art summary { cursor: pointer; padding: 0.7rem 0.95rem; color: var(--ink-dim); font-size: 0.86rem; list-style-position: inside; }
+    .prod-archive-art summary span { color: var(--ink-faint); font-size: 0.78rem; margin-left: 0.35rem; }
+    .prod-archive-art[open] summary { border-bottom: 1px solid var(--line-2); }
+    .prod-archive-art .prod-img-warning { margin: 0.8rem 0.95rem 0; }
+    .prod-archive-grid { display: grid; gap: 0.6rem; padding: 0.8rem 0.95rem 0.95rem; }
+    .prod-archive-grid img { width: 100%; height: auto; border-radius: 6px; }
     .prod-img-warning .prod-img-warning-title { color: var(--ink); font-weight: 600; margin-bottom: 0.3rem; }
     .marble-image-note a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 0.16em; }
     .fiberglass-epoxy-route { display: flex; flex-wrap: wrap; gap: 0.55rem 0.7rem; margin-top: 1rem; }

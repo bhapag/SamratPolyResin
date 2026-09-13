@@ -96,7 +96,8 @@ const years = Number(EDITION.slice(-4)) - Number(site.established);
             materials that are used alongside them.
           </p>
           <p>
-            The company's quality management system is registered to {site.certification.name}.
+            The company holds an {site.certification.name} certificate of registration
+            ({site.certification.issuer}, first registered 2019).
             It is a GST-registered business (GSTIN {site.gst}).
           </p>
           <h3>How to use this catalogue</h3>
@@ -263,7 +264,11 @@ const years = Number(EDITION.slice(-4)) - Number(site.established);
       .cat-download { width: 100%; justify-content: center; }
     }
 
-    /* Print / PDF: true A4 sheets, site chrome removed, one category per page. */
+    /* Print / PDF: A4, site chrome removed. The cover and the company page are
+       full sheets. Categories then run on (2026-09-14): one category per page
+       left five pages mostly empty, which read as unfinished. Each category
+       keeps its heading with its first entries, no entry splits across a page,
+       and a category that fits on one page is never split across two. */
     @page { size: A4; margin: 12mm; }
     @media print {
       :global(.site-header), :global(.site-footer), :global(.wa-float), :global(.ambient), :global([class*="ambient"]),
@@ -275,6 +280,12 @@ const years = Number(EDITION.slice(-4)) - Number(site.established);
       .sheet-cover .cover-img { flex: 1 1 auto; aspect-ratio: auto; min-height: 150mm; }
       .sheet-cover .cover-body { padding: 14mm; }
       .sheet:last-child { break-after: auto; }
+      .sheet-cat, .sheet-contact { break-after: auto; break-inside: avoid; }
+      .sheet-cat + .sheet-cat, .sheet-cat + .sheet-contact { margin-top: 10mm; }
+      .cat-head { break-after: avoid; break-inside: avoid; }
+      .entries { break-before: avoid; }
+      .entry { break-inside: avoid; }
+      .sheet-contact { break-inside: avoid; }
       .entries { gap: 5mm 8mm; }
       .entry { font-size: 10pt; }
       .entry-tag { font-size: 9.5pt; } .entry-apps { font-size: 9pt; } .entry-url { font-size: 7.5pt; }

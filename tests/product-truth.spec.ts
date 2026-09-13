@@ -13,8 +13,8 @@ test.describe('GP White Resin', () => {
   // Resolution (2026-09-13): the GP White SDS cites the same base resin and
   // processing as GP Clear, so GP White carries GP Clear's issued TDS as a
   // shared base specification. The former page figures (<350 cPs, 6 min,
-  // medium thixotropic, 30-35%) had no source and stay removed. Appearance is
-  // unresolved: TDS "Clear" vs SDS "white pigmented", so no water-white claim.
+  // medium thixotropic, 30-35%) had no source and stay removed. Appearance
+  // follows the SDS ("white pigmented"); the TDS "Clear" row is a carried-over error.
   test('carries the shared GP Clear base specification, not the unsourced figures', async ({ page }) => {
     const p = bySlug('gp-white-resin');
     const clear = bySlug('gp-clear-resin');
@@ -27,7 +27,8 @@ test.describe('GP White Resin', () => {
     const text = await page.locator('main').innerText();
     expect(text).not.toMatch(/<\s?350 cPs|below 350 cPs|6[- ]minute gel|medium[- ]thixotrop|30[–-]35% styrene/i);
     expect(text).not.toMatch(/water[- ]white/i);
-    expect(text).toMatch(/not (yet )?confirmed/i);
+    expect(text).toMatch(/white pigmented/i);
+    expect(text).not.toMatch(/appearance (is )?not (yet )?confirmed/i);
   });
 
   test('the issued GP White TDS file is served again, not held', async () => {
@@ -76,20 +77,34 @@ test.describe('TDS files formerly carrying a stray hidden text layer', () => {
 });
 
 test.describe('Polyester Putty Resin posters', () => {
-  test('stay visible with an explicit warning, and are not the schema product image', async ({ page }) => {
+  // 2026-09-14: the PET Resin posters no longer lead the page. The product
+  // frame is a text identity panel; the posters remain on the page, closed,
+  // in a labelled archive that opens onto the warning.
+  test('the product frame is an identity panel, not a PET poster', async ({ page }) => {
     await page.goto('/products/polyester-putty-resin/');
-    const warn = page.locator('.prod-img-warning');
+    await expect(page.locator('.prod-img .prod-identity')).toBeVisible();
+    await expect(page.locator('.prod-img img')).toHaveCount(0);
+    await expect(page.locator('.prod-identity-name')).toHaveText('Polyester Putty Resin');
+  });
+
+  test('the posters are kept in a closed archive with a readable warning', async ({ page }) => {
+    await page.goto('/products/polyester-putty-resin/');
+    const archive = page.locator('details.prod-archive-art');
+    await expect(archive).toHaveCount(1);
+    expect(await archive.evaluate((d: HTMLDetailsElement) => d.open)).toBe(false);
+    await expect(archive.locator('summary')).toContainText(/not this product/i);
+    await archive.locator('summary').click();
+    const warn = archive.locator('.prod-img-warning');
     await expect(warn).toBeVisible();
     const text = (await warn.innerText()).replace(/\s+/g, ' ');
     for (const claim of [/food-contact/i, /bottle/i, /injection- or blow-moulded/i, /not this grade/i]) expect(text).toMatch(claim);
-    // warning is readable size, not caption size
     const px = await warn.locator('p').last().evaluate((e) => parseFloat(getComputedStyle(e).fontSize));
     expect(px).toBeGreaterThanOrEqual(13);
+    await expect(archive.locator('img')).toHaveCount(2);
     const product = await page.evaluate(() =>
       [...document.querySelectorAll('script[type="application/ld+json"]')].map((s) => JSON.parse(s.textContent!))
         .flatMap((j: any) => (Array.isArray(j) ? j : j['@graph'] || [j])).find((j: any) => j['@type'] === 'Product'));
     expect(product.image, 'PET poster exposed as Product.image').toBeUndefined();
-    await expect(page.locator('.prod-img img, img.prod-img').first()).toBeVisible();
   });
 });
 

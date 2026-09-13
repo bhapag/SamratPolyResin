@@ -1144,7 +1144,7 @@ export const applications = [
       },
       {
         q: "Does GP Gelcoat Resin resist UV fading on a boat kept outdoors?",
-        a: "GP Gelcoat Resin has no specific UV-stabiliser package confirmed in its specification. Like any unstabilised polyester surface, it can gradually yellow or chalk under prolonged direct sun exposure. For a hull expected to hold its colour long-term outdoors, discuss UV-stabilised formulation requirements with our technical team before specifying.",
+        a: "Its TDS lists UV resistance as High, but it names no stabiliser system and publishes no weathering test (method, hours, colour change or gloss retention). For a hull expected to hold gloss and colour outdoors for years, compare ISO Gelcoat, whose TDS publishes a 1,000-hour xenon-arc result, and state the exposure when you enquire.",
       },
       {
         q: "Should I use Vinyl Ester Resin instead of GP Clear Resin behind the gelcoat for a hull kept permanently in water?",

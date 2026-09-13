@@ -118,7 +118,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
 ---
 <Base
   title="Samrat Poly Resins | Polyester Resin Manufacturer, Epoxy & FRP Supplies"
-  description="Samrat Poly Resins: ISO 9001:2015 certified manufacturer of polyester, gelcoat and fire-retardant resins, supplying epoxy systems and FRP materials. Based in Ludhiana, Punjab — request a quote."
+  description="Samrat Poly Resins: manufacturer of polyester, gelcoat and fire-retardant resins with ISO 9001:2015 registration, supplying epoxy systems and FRP materials. Based in Ludhiana, Punjab — request a quote."
 >
   <!-- ================= HERO ================= -->
   <section class="hero home-hero">
@@ -217,12 +217,12 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
       <div class="hero-copy">
         <p class="eyebrow hero-eyebrow">Resin manufacturer · {site.address.line2}, Punjab · Est. {site.established}</p>
         <h1 class="hero-title">
-          Polyester, Epoxy &amp; Composite Resin <span class="hero-accent">Manufacturer</span>
+          Polyester &amp; Composite Resin <span class="hero-accent">Manufacturer</span>
         </h1>
         <p class="hero-sub">
-          {site.name} manufactures premium GP Polyester, Gel Coat, Fire Retardant,
-          Epoxy and Specialty Resin systems for FRP manufacturers and industrial
-          applications across India.
+          {site.name} manufactures GP polyester, gelcoat, fire-retardant and
+          specialty polyester resins, and supplies epoxy systems, hardeners and
+          FRP materials to manufacturers across India.
         </p>
         <div class="hero-cta">
           <a href="/products/" class="btn btn-solid">Explore products</a>
@@ -251,7 +251,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
 
     <div class="wrap">
       <dl class="hero-ledger">
-        <div class="hero-ledger-item"><dt>Quality system</dt><dd>ISO 9001:2015 certified</dd></div>
+        <div class="hero-ledger-item"><dt>Quality system</dt><dd>ISO 9001:2015 registration</dd></div>
         <div class="hero-ledger-item"><dt>Established</dt><dd>{site.established} · {years} years</dd></div>
         <div class="hero-ledger-item"><dt>Product range</dt><dd>{products.length} grades · {CATEGORIES.length} families</dd></div>
         <div class="hero-ledger-item"><dt>GSTIN</dt><dd class="num">{site.gst}</dd></div>
@@ -468,7 +468,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
                 <img src={certificateUrl} alt="ISO 9001:2015 Certificate of Registration — Samrat Poly Resins" width="727" height="1055" loading="lazy" />
               </a>
               <span>
-                <strong>ISO 9001:2015</strong> — Quality Management System<br />
+                <strong>ISO 9001:2015</strong> certificate of registration, {site.certification.issuer}, first registered 2019<br />
                 <a class="cred-link" href={certificateUrl} target="_blank" rel="noopener">View the certificate<span aria-hidden="true"> →</span></a>
               </span>
             </dd>

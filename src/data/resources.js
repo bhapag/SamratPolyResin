@@ -575,7 +575,7 @@ export const resources = [
     recommendedLinks: [
       { href: "/products/unsaturated-polyester-resin/", label: "Start with the UPR product hub", description: "Map a broad polyester-resin requirement to the relevant published product role." },
       { href: "/products/gp-clear-resin/", label: "View GP Clear Resin", description: "Review the published TDS before selecting a grade for the process." },
-      { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "Review the GP grade, its shared-base TDS and process data; confirm supplied appearance." },
+      { href: "/products/gp-white-resin/", label: "View GP White Resin", description: "Review the white-pigmented GP grade and its shared-base TDS and process data." },
       { href: "/products/lamination-resin/", label: "View Lamination Resin", description: "Review the published lamination-focused grade and TDS for door, plywood or FRP bonding work." },
       { href: "/applications/resin-for-hand-lay-up-process/", label: "Hand lay-up guide", description: "Review a common GP Clear Resin process use case." },
     ],
@@ -3320,7 +3320,7 @@ export const resources = [
       ogDescription: "Understand GP White Resin as a published general-purpose polyester grade on GP Clear Resin's base specification, its applications, and how it differs from clear GP resin and white gelcoat.",
     },
     quickFacts: {
-      "Published appearance": "Not confirmed: TDS reads Clear, SDS reads white pigmented",
+      "Documented appearance": "White pigmented (SDS); the shared TDS's Clear row is carried over from GP Clear",
       "Product role": "General-purpose orthophthalic polyester resin for reinforced FRP contexts",
       "Published process data": "350-450 cPs; gel under 8 minutes; 33-40% styrene (shared with GP Clear Resin)",
       "Published packaging": "225 kg drum, 1,000 kg MOQ",
@@ -3330,7 +3330,7 @@ export const resources = [
       {
         heading: "The buyer question behind 'white resin'",
         body: [
-          "Buyers may search for white polyester resin when the supplied appearance matters to a panel, moulding or general FRP requirement. On this site, GP White Resin is published as a general-purpose grade on GP Clear Resin's base specification. Its supplied appearance is not yet confirmed: the TDS reads 'Clear', while the GP White SDS describes a white-pigmented resin. The question to resolve is whether that grade's product role and published data fit the component and process.",
+          "Buyers may search for white polyester resin when the supplied appearance matters to a panel, moulding or general FRP requirement. On this site, GP White Resin is published as a general-purpose grade on GP Clear Resin's base specification. Its documented appearance is white pigmented, as described by the GP White SDS; the 'Clear' row in its shared TDS is carried over from GP Clear Resin. The question to resolve is whether that grade's product role and published data fit the component and process.",
           "Whatever the supplied resin looks like, it is not a promise that every finished FRP part will appear white, because the reinforcement, pigments and mould-facing surface layer are separate parts of the finished build-up.",
         ],
       },
@@ -3345,13 +3345,13 @@ export const resources = [
         heading: "Where GP White Resin is used",
         body: [
           "The published applications cover panels and general-purpose moulding, plus hand layup, spray-up, cooling towers, water storage tanks and general industrial FRP fabrication. Begin by identifying the actual component, then compare it with the specific product data.",
-          "A broad request for white FRP resin is not enough on its own. Clarify whether the supplied appearance matters to the process (it is not yet confirmed for this grade), whether the component is reinforced, and whether a visible mould-side surface is required. Review the published viscosity, gel time and curing system against the actual reinforcement, mould, equipment and workshop conditions rather than treating a general application label as a production approval.",
+          "A broad request for white FRP resin is not enough on its own. Clarify whether a white-pigmented supplied resin suits the process, whether the component is reinforced, and whether a visible mould-side surface is required. Review the published viscosity, gel time and curing system against the actual reinforcement, mould, equipment and workshop conditions rather than treating a general application label as a production approval.",
         ],
       },
       {
         heading: "GP White compared with GP Clear",
         body: [
-          "Both are published general-purpose orthophthalic polyester grades, and they share one published base specification. The unresolved difference is appearance: GP White's TDS reads Clear, while its SDS describes a white-pigmented resin.",
+          "Both are published general-purpose orthophthalic polyester grades, and they share one published base specification. The difference is appearance: GP White is white pigmented (SDS), GP Clear is clear. GP White's TDS reuses GP Clear's sheet, so its 'Clear' appearance row is a carried-over error; the technical values are shared.",
         ],
       },
       {
@@ -3376,7 +3376,7 @@ export const resources = [
       },
       {
         q: "Does GP White Resin make every finished FRP part white?",
-        a: "Not necessarily. The supplied appearance is not yet confirmed for this grade (TDS: Clear; SDS: white pigmented), and the final appearance of an FRP component also depends on the reinforcement, pigment, mould-side surface layer and manufacturing build-up.",
+        a: "Not necessarily. GP White is documented as white pigmented (SDS), but the final appearance of an FRP component also depends on the reinforcement, pigment, mould-side surface layer and manufacturing build-up.",
       },
       {
         q: "Is GP White Resin the same as white gelcoat?",
@@ -3384,7 +3384,7 @@ export const resources = [
       },
       {
         q: "Can GP White Resin be used for FRP panels?",
-        a: "FRP panels are a published GP White Resin application context. Confirm the supplied appearance, reinforcement and process before selection.",
+        a: "FRP panels are a published GP White Resin application context. Confirm the reinforcement and process before selection.",
       },
       {
         q: "Can GP White Resin be used for hand layup or spray-up?",
@@ -3428,7 +3428,7 @@ export const resources = [
       ogDescription: "Compare supplied appearance, published data and product role before choosing a general-purpose GP polyester resin.",
     },
     quickFacts: {
-      "GP White Resin": "Same base specification as GP Clear (SPR-TDS-GCR); appearance not confirmed",
+      "GP White Resin": "Same base specification as GP Clear (SPR-TDS-GCR); white pigmented (SDS)",
       "GP Clear Resin": "Clear; 350-450 cPs; gel time under 8 minutes",
       "Shared role": "Published general-purpose orthophthalic polyester grades for FRP work",
       "Selection rule": "Do not use supplied colour alone to predict the final reinforced or surface-finished part",
@@ -3438,7 +3438,7 @@ export const resources = [
       note: "The values below are product-page facts, not a universal recommendation. Both TDS carry reference SPR-TDS-GCR; the GP White SDS confirms the same base resin.",
       headers: ["Decision factor", "GP White Resin", "GP Clear Resin"],
       rows: [
-        ["Published appearance", "Not confirmed (TDS: Clear; SDS: white pigmented)", "Clear"],
+        ["Documented appearance", "White pigmented (SDS; the shared TDS's Clear row is carried over)", "Clear"],
         ["Published viscosity", "350-450 cPs (shared)", "350-450 cPs"],
         ["Published gel time", "Under 8 minutes (shared)", "Under 8 minutes"],
         ["Packaging / MOQ", "225 kg drum / 1,000 kg", "225 kg drum / 1,000 kg"],
@@ -3451,12 +3451,12 @@ export const resources = [
       { href: "/products/unsaturated-polyester-resin/", label: "View the UPR product hub", description: "Compare GP White and GP Clear in the broader published polyester-resin family." },
     ],
     faqs: [
-      { q: "What is the main difference between GP White Resin and GP Clear Resin?", a: "They share one published base specification, so viscosity, gel time and styrene content are the same. The unresolved difference is appearance: GP White's TDS reads Clear, while its SDS describes a white-pigmented resin." },
+      { q: "What is the main difference between GP White Resin and GP Clear Resin?", a: "They share one published base specification, so viscosity, gel time and styrene content are the same. The difference is appearance: GP White is white pigmented (SDS), GP Clear is clear. GP White's TDS reuses GP Clear's sheet, so its 'Clear' appearance row is a carried-over error; the technical values are shared." },
       { q: "Does 'White' in the name mean GP White Resin is a gelcoat?", a: "No. GP White Resin is the published general-purpose laminate grade. A white mould-facing surface requirement should be assessed against the separate GP Gelcoat Resin product." },
       { q: "Which grade should a buyer quote?", a: "Share the component, process, required supplied appearance or finish, quantity and delivery location, then confirm the selected grade's data before a quotation discussion." },
     ],
     sections: [
-      { heading: "The comparison starts with supplied appearance", body: ["GP White Resin and GP Clear Resin are related published general-purpose orthophthalic polyester grades for FRP work. GP Clear Resin is published Clear; GP White Resin's appearance is not yet confirmed (its TDS reads Clear, its SDS white pigmented). Appearance is not a guarantee of the finished part's visible colour.", "The final appearance of an FRP part can also depend on reinforcement, pigments and the mould-side surface layer. A buyer should therefore identify what 'white' or 'clear' needs to mean in the actual build-up before selecting a grade."] },
+      { heading: "The comparison starts with supplied appearance", body: ["GP White Resin and GP Clear Resin are related published general-purpose orthophthalic polyester grades for FRP work. GP Clear Resin is published Clear; GP White Resin is documented as white pigmented by its SDS; its shared TDS's 'Clear' row is carried over from GP Clear. Appearance is not a guarantee of the finished part's visible colour.", "The final appearance of an FRP part can also depend on reinforcement, pigments and the mould-side surface layer. A buyer should therefore identify what 'white' or 'clear' needs to mean in the actual build-up before selecting a grade."] },
       { heading: "Compare the published technical data", body: ["Both grades publish 350-450 cPs viscosity, gel time under 8 minutes and 33-40% styrene from one shared base specification, reference SPR-TDS-GCR. The GP White SDS confirms the same base resin.", "Do not transfer thixotropy, gel time, storage or any other figure from one grade to the other unless it is published for that exact product."] },
       { heading: "When another product role is relevant", body: ["If the requirement is for a mould-facing white surface, review GP Gelcoat Resin. If it is door, plywood or FRP bonding, review Lamination Resin. If a project has a stated chemical- or corrosion-resistance requirement, review Vinyl Ester Resin and its separate product data."] },
     ],
@@ -3476,7 +3476,7 @@ export const resources = [
     },
     quickFacts: {
       "Start with": "The actual FRP component and manufacturing process",
-      "Appearance check": "Supplied appearance is not yet confirmed for this grade; state the finished appearance you need",
+      "Appearance check": "Supplied white pigmented (SDS); state the finished appearance you need",
       "Published commercial details": "225 kg drum packaging and 1,000 kg MOQ",
       "Technical control": "Grade data confirmed for the batch being quoted",
     },
@@ -3489,12 +3489,12 @@ export const resources = [
     faqs: [
       { q: "What details should I include in a GP White Resin enquiry?", a: "Include the FRP component or application, expected quantity, required supplied appearance or finish, manufacturing process and delivery location. Add any stated drawing or specification wording where relevant." },
       { q: "Should I select GP White Resin only because the product is called white?", a: "No. Confirm that the general-purpose laminate role, shared base specification and supplied appearance match the actual requirement. A visible mould-side surface may require separate gelcoat review." },
-      { q: "What document should be checked before ordering?", a: "The GP White Resin TDS, which shares GP Clear Resin's base specification (reference SPR-TDS-GCR), and the GP White SDS. Confirm the supplied appearance, since the two documents disagree on it." },
+      { q: "What document should be checked before ordering?", a: "The GP White Resin TDS, which shares GP Clear Resin's base specification (reference SPR-TDS-GCR), and the GP White SDS. Use the SDS for appearance (white pigmented): the TDS's 'Clear' row is carried over from GP Clear." },
     ],
     sections: [
       { heading: "Describe the FRP component first", body: ["State whether the enquiry is for a panel, general moulding, hand layup, spray-up, water-storage, cooling-tower or another industrial FRP component. This identifies the published context to compare with GP White Resin before a quote is prepared."] },
-      { heading: "Clarify what 'white' needs to mean", body: ["Confirm the supplied appearance you need (it is not yet confirmed for this grade), or whether the actual requirement is a visible white surface. These are different questions: the general-purpose GP White laminate and the mould-facing GP Gelcoat product have separate roles."] },
-      { heading: "Review the published product data", body: ["The GP White Resin page publishes an orthophthalic resin type, the base specification shared with GP Clear Resin (350-450 cPs, gel under 8 minutes, 33-40% styrene, non-accelerated), 225 kg drum packaging and a 1,000 kg MOQ. Its supplied appearance is not yet confirmed: the TDS reads 'Clear', while the GP White SDS describes a white-pigmented resin."] },
+      { heading: "Clarify what 'white' needs to mean", body: ["Confirm whether a white-pigmented supplied resin is what you need, or whether the actual requirement is a visible white surface. These are different questions: the general-purpose GP White laminate and the mould-facing GP Gelcoat product have separate roles."] },
+      { heading: "Review the published product data", body: ["The GP White Resin page publishes an orthophthalic resin type, the base specification shared with GP Clear Resin (350-450 cPs, gel under 8 minutes, 33-40% styrene, non-accelerated), 225 kg drum packaging and a 1,000 kg MOQ. Its documented appearance is white pigmented (GP White SDS); the TDS's 'Clear' row is carried over from GP Clear."] },
       { heading: "Send a focused quotation request", body: ["Share the component, manufacturing process, quantity, required supplied appearance or finish and delivery location. This helps the sales or technical discussion start from documented needs rather than an unsupported assumption about the correct grade."] },
     ],
   },
@@ -7482,7 +7482,7 @@ export const resources = [
         heading: "What ISO does not mean",
         body: [
           "This is the most common confusion in the category, and it is worth settling before anything else. The ISO in ISO Polyester Resin is a chemistry descriptor, short for isophthalic. It is not a reference to ISO 9001, ISO 14001 or any other management-system standard, and it is not a claim that a finished FRP part meets an ISO standard.",
-          "Samrat Poly Resins does operate an ISO 9001:2015-certified quality management system, but that is a fact about the company's quality processes and is entirely separate from the resin's chemistry. A general-purpose resin made under the same certified system is still an orthophthalic resin, and an isophthalic resin bought from an uncertified maker is still isophthalic.",
+          "Samrat Poly Resins holds an ISO 9001:2015 certificate of registration for its quality management system, but that is a fact about the company's quality processes and is entirely separate from the resin's chemistry. A general-purpose resin made under the same certified system is still an orthophthalic resin, and an isophthalic resin bought from an uncertified maker is still isophthalic.",
           "The second confusion is with ISO Fire Retardant Resin, which is a different product. Both names begin with ISO because both are isophthalic-based, but fire retardancy comes from a separate mechanism, typically a halogenated backbone or a mineral filler such as aluminium trihydrate that releases water when heated. An isophthalic backbone on its own confers no fire performance at all. If a project asks for fire behaviour, the isophthalic grade is not the answer.",
         ],
       },
@@ -7551,14 +7551,14 @@ export const resources = [
         body: [
           "The single most useful thing a buyer can supply is the actual service condition: what the laminate contacts, at what concentration, at what temperature, continuously or intermittently, and how long the part is expected to last. A chemical name and concentration are worth more than the phrase corrosion resistant.",
           "Alongside that, state the fabrication process, the finished component, whether a corrosion barrier is required, whether post-cure is possible in your facility, and any code or project specification you are working to, in its original wording rather than summarised. Quantity, packaging and delivery location complete the commercial picture.",
-          "Samrat Poly Resins supplies ISO Polyester Resin in 225 kg drums and manufactures it at Doraha, Punjab. Grade-specific figures such as viscosity, gel time and styrene content are confirmed against the production batch at the time of enquiry rather than published as a generic number here, because those values are only meaningful when tied to a specific grade and batch.",
+          "Samrat Poly Resins supplies ISO Polyester Resin in 225 kg drums and manufactures it at Doraha, Punjab. Its TDS (SPR-TDS-IPR) publishes typical values: 500 cPs at 25 °C, 15-minute gel time, 40% styrene, 90 °C HDT and 0.15% water absorption after 24 h. Typical values are not guaranteed limits, so confirm them against the batch you are buying.",
         ],
       },
     ],
     faqs: [
       {
         q: "Does ISO in ISO Polyester Resin mean the resin is ISO certified?",
-        a: "No. ISO here is short for isophthalic and describes the resin's chemistry. It is not a reference to ISO 9001 or any other standard. Samrat Poly Resins does operate an ISO 9001:2015-certified quality management system, but that is a separate fact about the company, not about this grade's chemistry.",
+        a: "No. ISO here is short for isophthalic and describes the resin's chemistry. It is not a reference to ISO 9001 or any other standard. Samrat Poly Resins holds an ISO 9001:2015 certificate of registration for its quality management system, but that is a separate fact about the company, not about this grade's chemistry.",
       },
       {
         q: "Is ISO Polyester Resin the same as ISO Fire Retardant Resin?",
@@ -8130,7 +8130,7 @@ export const resources = [
       "Construction matters": "The corrosion barrier does the chemical-resistance work",
       "Codes to mention": "BS 4994 or EN 13121 if your project cites them",
       "Packaging": "Samrat supplies this grade in 225 kg drums",
-      "Manufactured at": "Doraha, Punjab, under an ISO 9001:2015 certified system",
+      "Manufactured at": "Doraha, Punjab",
     },
     sections: [
       {
@@ -8176,7 +8176,7 @@ export const resources = [
         heading: "Commercial details worth settling early",
         body: [
           "Quantity and call-off pattern, packaging preference, delivery location and lead time expectation should travel with the technical enquiry rather than following it. Resin has a finite shelf life and defined storage requirements, so ordering pattern and storage conditions are part of the technical conversation, not separate from it.",
-          "Samrat Poly Resins manufactures ISO Polyester Resin at Doraha, Punjab, and supplies it in 225 kg drums. Grade-specific values are confirmed against the production batch at the time of enquiry rather than published as a generic figure, because those numbers only carry meaning tied to a specific grade and batch.",
+          "Samrat Poly Resins manufactures ISO Polyester Resin at Doraha, Punjab, and supplies it in 225 kg drums. Typical values are published on its TDS (SPR-TDS-IPR); confirm the current batch values with your order.",
         ],
       },
       {
@@ -8293,7 +8293,7 @@ export const resources = [
         heading: "What ISO does not mean",
         body: [
           "The ISO in ISO Gelcoat is short for isophthalic and describes the acid in the polymer backbone. It has no connection to ISO 9001 or any other standard from the International Organization for Standardization.",
-          "The two are genuinely unrelated. A company holding ISO 9001 can sell orthophthalic gelcoat, and a supplier with no certification at all can sell isophthalic gelcoat. Samrat Poly Resins does operate an ISO 9001:2015-certified quality management system, but that describes how the company runs its processes, not what is in this drum.",
+          "The two are genuinely unrelated. A company holding ISO 9001 can sell orthophthalic gelcoat, and a supplier with no certification at all can sell isophthalic gelcoat. Samrat Poly Resins holds an ISO 9001:2015 certificate of registration for its quality management system, but that describes how the company runs its processes, not what is in this drum.",
           "Nor is isophthalic the same as ISO-NPG. Describing a plain isophthalic gelcoat as NPG grade, or letting a buyer assume ISO means marine grade, is a material misdescription rather than a naming preference.",
         ],
       },
@@ -8326,14 +8326,14 @@ export const resources = [
         body: [
           "Ask whether the product is isophthalic or isophthalic-NPG, and get it in writing on the data sheet, since the two are priced and positioned differently. Across the market, brush and spray grades are often tuned differently for thixotropy and viscosity, so it is worth asking which a given product is; Samrat publishes ISO Gelcoat for brush or spray application onto the mould face. Ask too whether it is pre-accelerated, and which peroxide type and strength it is qualified against.",
           "Then describe your own side: the part, whether the surface is immersed or not, the exposure, the colour and the finish standard, your spray equipment, your shop and mould temperatures, and your production volume.",
-          "Samrat Poly Resins manufactures ISO Gelcoat at Doraha, Punjab. Grade-specific values such as viscosity, thixotropic index, gel time, recommended film thickness and catalyst range are confirmed at enquiry rather than published as generic figures, because a gelcoat number that is not tied to a named grade, a stated temperature and a stated measurement method is not usable on a shop floor.",
+          "Samrat Poly Resins manufactures ISO Gelcoat at Doraha, Punjab. Its TDS (SPR-TDS-IGC) publishes typical values with temperatures stated: 40,000 cPs low-shear and 1,500 cPs high-shear viscosity at 25 °C, an 8-minute gel time, MEKP at 2.0%, and a 700 µm wet film target within 600–800 µm. Confirm the current batch values with your order.",
         ],
       },
     ],
     faqs: [
       {
         q: "Is ISO Gelcoat the same as ISO 9001 certified?",
-        a: "No, and the two are entirely unrelated. ISO here is short for isophthalic, the acid in the polymer backbone. ISO 9001 is a quality-management-system standard and says nothing about chemistry. Samrat Poly Resins holds ISO 9001:2015 certification, but that is a fact about the company's processes, not about this product's formulation.",
+        a: "No, and the two are entirely unrelated. ISO here is short for isophthalic, the acid in the polymer backbone. ISO 9001 is a quality-management-system standard and says nothing about chemistry. Samrat Poly Resins holds an ISO 9001:2015 certificate of registration, but that is a fact about the company's processes, not about this product's formulation.",
       },
       {
         q: "Is ISO Gelcoat the same as ISO-NPG or marine grade gelcoat?",
