@@ -147,3 +147,16 @@ test('no fabricated ratings or reviews in structured data, and every image has a
     expect(missing, url).toBe(0);
   }
 });
+
+test('on a phone the WhatsApp button does not cover either consent choice', async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 740 });
+  await page.goto('/');
+  const wa = (await page.locator('.wa-float').boundingBox())!;
+  for (const name of ['Allow analytics', /Don.t allow/]) {
+    const b = (await page.getByRole('button', { name }).boundingBox())!;
+    const overlap = !(b.x + b.width <= wa.x || wa.x + wa.width <= b.x || b.y + b.height <= wa.y || wa.y + wa.height <= b.y);
+    expect(overlap, String(name)).toBe(false);
+  }
+  await page.getByRole('button', { name: /Don.t allow/ }).click();
+  await expect(page.locator('#analyticsConsent')).toBeHidden();
+});
