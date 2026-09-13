@@ -2751,7 +2751,7 @@ export const products = [
     description:
       "Fiberglass Epoxy Resin is a general-purpose epoxy resin system manufactured by Samrat Poly Resins at Doraha, Punjab, for fibreglass reinforcement, composite manufacturing, hand lay-up and lamination. It is used with fibreglass fabric and cures at room temperature with an amine hardener at 2:1 by weight. Its TDS lists boat and marine components, wind-turbine components, and construction, electrical and automotive FRP laminates.",
     usageNote:
-      'Fiberglass Epoxy Resin cures with an amine hardener at 2:1 by weight; tell us whether you need resin only or the complete system when you enquire. <a href="/products/fibre-glass-mat/">Glass Fiber</a> is a separate reinforcement product. Fiberglass Epoxy Resin is a separate product from <a href="/products/bisphenol-resin/">Bisphenol Resin</a>, with its own TDS values.',
+      'Fiberglass Epoxy Resin cures with an amine hardener at 2:1 by weight; tell us whether you need resin only or the complete system when you enquire. <a href="/products/epoxy-hardener/">Epoxy Hardener</a> is listed as a separate product. <a href="/products/fibre-glass-mat/">Glass Fiber</a> is a separate reinforcement product. Fiberglass Epoxy Resin is a separate product from <a href="/products/bisphenol-resin/">Bisphenol Resin</a>, with its own TDS values.',
     features: [
       "General-purpose epoxy system for fibreglass fabric reinforcement",
       "Low 700 cPs viscosity at 25°C for fabric wet-out",
@@ -2786,7 +2786,7 @@ export const products = [
       },
       {
         q: "Is Fiberglass Epoxy Resin supplied as resin only or as a complete system?",
-        a: 'It cures with an amine hardener at 2:1 by weight. Tell us whether you need resin only or the complete system when you ask for a quotation.',
+        a: 'It cures with an amine hardener at 2:1 by weight. Tell us whether you need resin only or the complete system when you ask for a quotation. <a href="/products/epoxy-hardener/">Epoxy Hardener</a> is a separately listed product.',
       },
       {
         q: "Is Epoxy Laminating Resin an accurate term for this product?",
