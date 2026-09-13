@@ -5,7 +5,7 @@ import { test, expect, devices, webkit, chromium } from '@playwright/test';
 // play control and downloaded 3.4 MB on scroll. These run in both engines.
 const BASE = `http://localhost:${process.env.PW_PORT ?? 4322}`;
 
-// Timing notes (2026-09-14). Under the full parallel suite this test failed
+// Timing notes (2026-09-13). Under the full parallel suite this test failed
 // about one run in two with "Test timeout of 30000ms exceeded", never with a
 // wrong state. Instrumented runs under the same load showed the film behaving
 // correctly (tap -> play -> playing within 0.5 s) while the test's own
@@ -23,6 +23,10 @@ for (const [name, engine, profile] of [
     const browser = await engine.launch();
     try {
       const ctx = await browser.newContext(profile);
+      // A visitor who has already answered the analytics question: otherwise
+      // the consent panel sits over the lower part of a phone screen, where
+      // the corner pause control can land after scrolling.
+      await ctx.addInitScript(() => localStorage.setItem('spr_analytics_consent_v1', JSON.stringify({ choice: 'denied', at: 'test' })));
       const page = await ctx.newPage();
       const filmRequests: string[] = [];
       page.on('request', (r) => { if (/brand-film\.mp4/.test(r.url())) filmRequests.push(r.url()); });

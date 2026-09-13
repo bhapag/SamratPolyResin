@@ -171,13 +171,11 @@ const trackEvent = (eventName: string, details: TrackingDetails = {}) => {
     if (!payload[key]) delete payload[key];
   });
 
-  // The existing GA4 tag accepts gtag events. The dataLayer fallback keeps
-  // the event contract available if a future deployment changes the tag.
+  // Events go to Google Analytics only when the visitor has allowed analytics
+  // (components/AnalyticsConsent.astro defines window.gtag at that point).
+  // Without consent nothing is queued, so no pre-consent activity is sent later.
   if (typeof window.gtag === 'function') {
     window.gtag('event', eventName, payload);
-  } else {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: eventName, ...payload });
   }
 };
 

@@ -1,0 +1,97 @@
+---
+import LegalPage from '../components/LegalPage.astro';
+import { site } from '../data/site.js';
+
+// Website terms for an informational B2B enquiry site (no accounts, no online
+// ordering or payment), written 2026-09-13. Items flagged for the business's
+// lawyer are listed in the private legal source register (kept outside this public repository).
+const effective = '13 September 2026';
+const sections = [
+  { id: 'about', title: 'About these terms' },
+  { id: 'information', title: 'Website information' },
+  { id: 'technical', title: 'Technical documents and product suitability' },
+  { id: 'orders', title: 'Quotations, orders, returns and complaints' },
+  { id: 'ip', title: 'Intellectual property' },
+  { id: 'use', title: 'Acceptable use' },
+  { id: 'links', title: 'External links and services' },
+  { id: 'liability', title: 'Liability' },
+  { id: 'law', title: 'Governing law' },
+  { id: 'contact', title: 'Contact' },
+];
+---
+<LegalPage
+  title="Website Terms"
+  path="/terms/"
+  description="Terms for using the Samrat Poly Resins website: how its product information, technical documents and enquiry routes work, and how quotations and orders are handled."
+  effective={effective}
+  revised={effective}
+  sections={sections}
+>
+  <h2 id="about">About these terms</h2>
+  <p>
+    These terms apply to your use of <strong>samratpolyresins.in</strong>, operated by {site.name} (proprietor {site.proprietor}), {site.address.line1},
+    {' '}{site.address.line2} — {site.address.pin}, {site.address.state}, GSTIN {site.gst}. By using the website you accept them.
+    They cover the website only. A quotation, order confirmation, contract, Technical Data Sheet (TDS) or Safety Data Sheet (SDS) issued for a product takes precedence over anything on these pages.
+  </p>
+
+  <h2 id="information">Website information</h2>
+  <p>
+    The website describes our products, publishes their data sheets and explains how to enquire. We try to keep it accurate and current, but product ranges, pack sizes,
+    documents and availability change. Prices are not published; any price, lead time, freight or payment term is given only in a quotation.
+    Guides and articles are general information for buyers, not advice for a specific application.
+  </p>
+
+  <h2 id="technical">Technical documents and product suitability</h2>
+  <ul>
+    <li>Values in a TDS and on product pages are <strong>typical values, not guaranteed specifications</strong>. Properties can vary between batches within normal manufacturing tolerances.</li>
+    <li>You are responsible for deciding whether a product suits your process, component and conditions, including trials and testing before production use.</li>
+    <li>Read the SDS for a product before handling it, and follow applicable safety and environmental rules.</li>
+    <li>Where a product page and its current data sheet differ, the current data sheet applies. Please tell us about any difference you notice.</li>
+  </ul>
+
+  <h2 id="orders">Quotations, orders, returns and complaints</h2>
+  <p>
+    You cannot place an order or pay through this website. Sending an enquiry does not create an order or an obligation on either side.
+    An order exists only when a quotation is accepted and the order is confirmed by us. Quantity, price, delivery, payment, and any return, replacement or claim
+    are governed by that quotation or order and by applicable law. This website does not set separate return or refund terms.
+  </p>
+  <p>
+    If you have a concern about a product or an order, contact us with the invoice or order details, the product and batch identification, and a description of the issue,
+    at <a href={`mailto:${site.email}`}>{site.email}</a> or {site.phones[0].display}.
+  </p>
+
+  <h2 id="ip">Intellectual property</h2>
+  <p>
+    The {site.name} name and logo, and the website's text, data sheets, photographs and product graphics, are protected by copyright and other rights of their owners.
+    You may view, download and print pages and data sheets for evaluating or using our products. You may not copy them for republication, pass off our documents or images as your own,
+    or alter a data sheet, without our written permission. Fonts used on the site are open-licensed and remain their authors' work.
+  </p>
+
+  <h2 id="use">Acceptable use</h2>
+  <p>
+    Do not misuse the website: no false or misleading enquiries, spam, attempts to gain unauthorised access, interference with its operation, or automated collection of content in a way that burdens the site.
+    Do not send unlawful content through the enquiry form.
+  </p>
+
+  <h2 id="links">External links and services</h2>
+  <p>
+    Links to other websites and services, such as WhatsApp and Google Maps, are provided for convenience. Those services are run by others under their own terms, and we are not responsible for their content or availability.
+  </p>
+
+  <h2 id="liability">Liability</h2>
+  <p>
+    The website is provided for information. To the extent the law allows, {site.name} is not liable for loss arising from reliance on website content alone,
+    or from the website being unavailable. Nothing in these terms limits liability that cannot be limited by law, or changes the rights and obligations in a quotation, order or contract.
+  </p>
+
+  <h2 id="law">Governing law</h2>
+  <p>
+    These terms are governed by the laws of India. Disputes about the website are subject to the jurisdiction of the courts at Ludhiana, Punjab.
+    A quotation, order or contract may set its own governing-law and dispute terms.
+  </p>
+
+  <h2 id="contact">Contact</h2>
+  <p>
+    Questions about these terms: <a href={`mailto:${site.email}`}>{site.email}</a>. How we handle personal data is explained in the <a href="/privacy-policy/">Privacy Policy</a>.
+  </p>
+</LegalPage>

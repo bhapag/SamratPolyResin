@@ -1,0 +1,119 @@
+---
+// Analytics consent (2026-09-13).
+//
+// Measured before this change, on every page and before any interaction:
+// Google Analytics 4 (G-20DFSNPJ80) loaded from googletagmanager.com, sent a
+// hit to google-analytics.com and set _ga and _ga_20DFSNPJ80 cookies with a
+// 400-day lifetime. That is analytics, not something the site needs to work.
+//
+// Now: nothing from Google Analytics loads until the visitor chooses "Allow
+// analytics". "Don't allow" is offered with equal weight, nothing is
+// preselected, and the choice can be changed at any time from the footer
+// ("Analytics settings") or the Cookie Policy page. The choice itself is kept
+// in localStorage (key below) so the question is not asked on every page;
+// that storage is necessary to honour the choice and holds no identifier.
+const GA_ID = 'G-20DFSNPJ80';
+---
+<div class="consent" id="analyticsConsent" role="region" aria-label="Analytics choice" hidden transition:persist="analytics-consent">
+  <div class="consent-inner">
+    <p class="consent-title" id="consentTitle">Allow analytics?</p>
+    <p class="consent-text">
+      With your permission we use Google Analytics to count visits and see which pages and documents are used.
+      It sets cookies and sends your IP address and activity on this site to Google. Nothing is loaded unless you allow it.
+      <a href="/cookie-policy/">Cookie Policy</a>
+    </p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" data-consent="granted">Allow analytics</button>
+      <button type="button" class="consent-btn" data-consent="denied">Don&rsquo;t allow</button>
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ GA_ID }}>
+  (function () {
+    if (window.__sprConsentInit) { window.__sprConsentApply && window.__sprConsentApply(); return; }
+    window.__sprConsentInit = true;
+    var KEY = 'spr_analytics_consent_v1';
+    var read = function () { try { var v = JSON.parse(localStorage.getItem(KEY) || 'null'); return v && (v.choice === 'granted' || v.choice === 'denied') ? v.choice : null; } catch (e) { return null; } };
+    var write = function (choice) { try { localStorage.setItem(KEY, JSON.stringify({ choice: choice, at: new Date().toISOString().slice(0, 10) })); } catch (e) {} };
+    var loaded = false;
+    var loadGa = function () {
+      if (loaded) return; loaded = true;
+      window['ga-disable-' + GA_ID] = false;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      // Analytics only: no Google signals or ad-personalisation data.
+      window.gtag('config', GA_ID, { allow_google_signals: false, allow_ad_personalization_signals: false });
+      var s = document.createElement('script');
+      s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+    };
+    var clearGaCookies = function () {
+      window['ga-disable-' + GA_ID] = true;
+      var host = location.hostname, parts = host.split('.'), domains = ['', host];
+      for (var i = 0; i < parts.length - 1; i++) domains.push('.' + parts.slice(i).join('.'));
+      document.cookie.split(';').forEach(function (c) {
+        var name = c.split('=')[0].trim();
+        if (/^_ga(_|$)|^_gid$|^_gat/.test(name)) {
+          domains.forEach(function (d) { document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + (d ? '; domain=' + d : ''); });
+        }
+      });
+    };
+    var banner = function () { return document.getElementById('analyticsConsent'); };
+    var show = function (focus) { var b = banner(); if (!b) return; b.hidden = false; if (focus) { var first = b.querySelector('button'); first && first.focus(); } };
+    var hide = function () { var b = banner(); if (b) b.hidden = true; };
+    var choose = function (choice) {
+      var previous = read();
+      write(choice); hide();
+      if (choice === 'granted') loadGa();
+      else { clearGaCookies(); if (previous === 'granted' && loaded) location.reload(); }
+      document.dispatchEvent(new CustomEvent('spr:consent-changed', { detail: { choice: choice } }));
+    };
+    window.sprAnalyticsConsent = { get: read, open: function () { show(true); }, set: choose };
+    window.__sprConsentApply = function () {
+      var choice = read();
+      if (choice === 'granted') { loadGa(); hide(); }
+      else if (choice === 'denied') { hide(); }
+      else { show(false); }
+      document.querySelectorAll('[data-consent]').forEach(function (btn) {
+        if (btn.dataset.wired) return; btn.dataset.wired = '1';
+        btn.addEventListener('click', function () { choose(btn.getAttribute('data-consent')); });
+      });
+      document.querySelectorAll('[data-consent-open]').forEach(function (btn) {
+        if (btn.dataset.wired) return; btn.dataset.wired = '1';
+        btn.addEventListener('click', function () { show(true); });
+      });
+    };
+    // Load at once for a returning visitor who allowed analytics, so events
+    // fired by page scripts during load are not missed.
+    if (read() === 'granted') loadGa();
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', window.__sprConsentApply);
+    else window.__sprConsentApply();
+    document.addEventListener('astro:page-load', window.__sprConsentApply);
+  })();
+</script>
+
+<style>
+  .consent {
+    position: fixed; left: 1rem; bottom: 1rem; z-index: 60;
+    width: min(26rem, calc(100vw - 2rem));
+    background: var(--bg-2); color: var(--ink);
+    border: 1px solid var(--line-2); border-left: 3px solid var(--accent-gold);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+  }
+  .consent-inner { padding: 1rem 1.1rem 1.05rem; }
+  .consent-title { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.05rem; margin: 0 0 0.4rem; }
+  .consent-text { color: var(--ink-dim); font-size: 0.88rem; line-height: 1.55; margin: 0; }
+  .consent-text a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 0.16em; }
+  .consent-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-top: 0.9rem; }
+  /* Both choices carry identical weight: same size, same style. */
+  .consent-btn {
+    min-height: 44px; padding: 0.55rem 0.8rem; cursor: pointer;
+    font: 600 0.9rem/1.2 var(--font-body);
+    background: transparent; color: var(--ink); border: 1px solid var(--ink-dim);
+  }
+  .consent-btn:hover { border-color: var(--accent-gold-light); color: var(--accent-gold-light); }
+  .consent-btn:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
+  @media (max-width: 420px) { .consent { left: 0.5rem; bottom: 0.5rem; width: calc(100vw - 1rem); } }
+</style>

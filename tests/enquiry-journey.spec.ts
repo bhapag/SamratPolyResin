@@ -136,7 +136,7 @@ test.describe('enquiry form', () => {
     await page.locator('#enquiryForm input[name="name"]').focus();
 
     const order: string[] = [];
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 10; i++) {
       order.push(await page.evaluate(() => {
         const el = document.activeElement as HTMLElement | null;
         return el ? (el.getAttribute('name') || el.tagName.toLowerCase()) : 'none';

@@ -1,7 +1,19 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import { getImage } from 'astro:assets';
+import '@fontsource/oswald/400.css';
+import '@fontsource/oswald/500.css';
+import '@fontsource/oswald/600.css';
+import '@fontsource/oswald/700.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+import '@fontsource/jetbrains-mono/700.css';
 import '../styles/global.css';
+import AnalyticsConsent from '../components/AnalyticsConsent.astro';
 import { site, buildCanonicalUrl, buildWhatsAppLink, buildOrganizationSchema, buildWebSiteSchema } from '../data/site.js';
 import { products, CATEGORIES, CATEGORY_HUBS } from '../data/products.js';
 import AmbientBackground from '../components/AmbientBackground.astro';
@@ -116,15 +128,8 @@ const webSiteJsonLd = buildWebSiteSchema();
   <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(webSiteJsonLd)} />
   <ClientRouter />
-  <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-20DFSNPJ80"></script>
-<script is:inline>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-20DFSNPJ80');
-</script>
+  <!-- Google Analytics loads only after the visitor allows it: see
+       components/AnalyticsConsent.astro. -->
 </head>
 <body data-product-slug={trackingProductSlug} data-product-name={trackingProductName}>
   <AmbientBackground />
@@ -301,7 +306,7 @@ const webSiteJsonLd = buildWebSiteSchema();
       <div>
         <img src={logoMark.src} alt={`${site.name} logo`} class="brand-mark big" width="64" height="64" />
         <p class="foot-name">{site.name}</p>
-        <p class="foot-dim">Manufacturer of coating &amp; composite resins.<br/>Established {site.established}.</p>
+        <p class="foot-dim">Manufacturer of polyester resins; supplier of epoxy systems and FRP materials.<br/>Established {site.established}.</p>
       </div>
       <div>
         <h3 class="foot-h">Quick links</h3>
@@ -342,8 +347,15 @@ const webSiteJsonLd = buildWebSiteSchema();
     </div>
     <div class="wrap foot-bottom">
       <span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span>
+      <nav class="foot-legal" aria-label="Policies">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/cookie-policy/">Cookie Policy</a>
+        <a href="/terms/">Website Terms</a>
+        <button type="button" class="foot-legal-btn" data-consent-open>Analytics settings</button>
+      </nav>
     </div>
   </footer>
+  <AnalyticsConsent />
 
   <!-- floating whatsapp -->
   <a href={waLink} class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" transition:persist="wa-float">
@@ -442,6 +454,36 @@ const webSiteJsonLd = buildWebSiteSchema();
 
   <script>
     import '../scripts/lead-attribution.ts';
+
+    // WCAG 2.1.1: a table that scrolls sideways (phones, zoom) must be
+    // reachable by keyboard. Any horizontally scrolling table wrapper that
+    // actually overflows becomes a focusable, named region; wrappers that fit
+    // are left out of the tab order.
+    const labelScrollers = () => {
+      document.querySelectorAll<HTMLElement>('[class*="table-scroll"], .legal-table-wrap, .specs-table-wrap').forEach((el) => {
+        const overflows = el.scrollWidth > el.clientWidth + 1;
+        if (overflows && !el.hasAttribute('tabindex')) {
+          const table = el.querySelector('table');
+          const caption = table?.querySelector('caption')?.textContent?.trim();
+          const heading = el.closest('section, article, div')?.querySelector('h2, h3')?.textContent?.trim();
+          el.setAttribute('tabindex', '0');
+          el.setAttribute('role', 'region');
+          el.setAttribute('aria-label', `${caption || heading || 'Table'} (scrolls sideways)`);
+          el.dataset.a11yScroller = 'true';
+        } else if (!overflows && el.dataset.a11yScroller === 'true') {
+          el.removeAttribute('tabindex'); el.removeAttribute('role'); el.removeAttribute('aria-label');
+          delete el.dataset.a11yScroller;
+        }
+      });
+    };
+    document.addEventListener('astro:page-load', () => {
+      labelScrollers();
+      // Web fonts can widen a table after first layout; check again once they load.
+      document.fonts?.ready.then(labelScrollers);
+      window.setTimeout(labelScrollers, 1200);
+    });
+    let scrollerTimer: number | undefined;
+    window.addEventListener('resize', () => { window.clearTimeout(scrollerTimer); scrollerTimer = window.setTimeout(labelScrollers, 200); });
   </script>
 
   <style>
@@ -708,6 +750,13 @@ const webSiteJsonLd = buildWebSiteSchema();
       border-top: 1px solid var(--line); padding-block: 1.3rem;
       font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); letter-spacing: 0.04em;
     }
+    .foot-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1.4rem; }
+    .foot-legal { display: flex; flex-wrap: wrap; gap: 0.2rem 1.1rem; }
+    .foot-legal a, .foot-legal-btn {
+      color: var(--ink-dim); font: inherit; letter-spacing: inherit; background: none; border: 0; padding: 0.55rem 0; cursor: pointer;
+      text-decoration: underline; text-underline-offset: 0.18em; text-decoration-color: var(--line-2);
+    }
+    .foot-legal a:hover, .foot-legal-btn:hover { color: var(--accent-gold-light); }
     @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
     @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
 

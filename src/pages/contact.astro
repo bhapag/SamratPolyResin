@@ -51,8 +51,8 @@ const contactPageJsonLd = {
         <p class="eyebrow">Get in touch</p>
         <h1>Request a quote.</h1>
         <p class="contact-lead">
-          Tell us the grade and quantity you need. We send prices quickly —
-          or reach us directly on WhatsApp or phone.
+          Tell us the grade and quantity you need and we will reply with prices
+          and availability, or reach us directly on WhatsApp or phone.
         </p>
         <div class="contact-lines">
           {site.phones.map((phone) => (
@@ -74,11 +74,18 @@ const contactPageJsonLd = {
             <span class="cline-body"><span class="cline-k">Plant &amp; office — get directions</span>{fullAddress}</span>
           </a>
         </div>
-        <div class="map-embed">
-          <iframe
-            title="Location map"
-            src={`https://www.google.com/maps?q=${site.mapsQuery}&output=embed`}
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        {/* Click-to-load (2026-09-13). The embedded Google Map used to load on
+            every visit to this page, making ~30 requests to google.com,
+            maps.googleapis.com and places.googleapis.com before the visitor
+            asked for a map. It now loads only on request; the directions
+            link above works without it. */}
+        <div class="map-embed" id="mapEmbed" data-src={`https://www.google.com/maps?q=${site.mapsQuery}&output=embed`}>
+          <div class="map-placeholder">
+            <p class="map-placeholder-title">Map of the plant at {site.address.line2}</p>
+            <p class="map-placeholder-note">Loading the map connects to Google Maps, which receives your IP address.</p>
+            <button type="button" class="btn btn-solid map-load" id="mapLoad">Show Google Map</button>
+            <a href={mapsUrl} target="_blank" rel="noopener" class="map-open">Open directions in Google Maps<span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
         </div>
         <div class="contact-catalogue-note">
           <p class="contact-catalogue-heading">Need our complete product range?</p>
@@ -117,6 +124,24 @@ const contactPageJsonLd = {
     </div>
   </section>
 
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const wrap = document.getElementById('mapEmbed');
+      const btn = document.getElementById('mapLoad');
+      if (!wrap || !btn || btn.dataset.wired) return;
+      btn.dataset.wired = '1';
+      btn.addEventListener('click', () => {
+        const frame = document.createElement('iframe');
+        frame.title = 'Google Map showing the Samrat Poly Resins plant location';
+        frame.src = wrap.dataset.src || '';
+        frame.loading = 'lazy';
+        frame.referrerPolicy = 'no-referrer-when-downgrade';
+        wrap.replaceChildren(frame);
+        frame.focus();
+      });
+    });
+  </script>
+
   <style>
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 4rem); }
     .contact-info h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); margin-top: 0.6rem; }
@@ -152,6 +177,11 @@ const contactPageJsonLd = {
 
     .map-embed { margin-top: 1.8rem; border: 1px solid var(--line); aspect-ratio: 16 / 10; }
     .map-embed iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.3) contrast(1.05); }
+    .map-embed { display: grid; place-items: center; background: var(--bg-2); }
+    .map-placeholder { padding: 1.4rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.7rem; max-width: 34ch; }
+    .map-placeholder-title { font-family: var(--font-display); text-transform: uppercase; font-size: 1.05rem; }
+    .map-placeholder-note { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.5; }
+    .map-open { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 0.16em; font-size: 0.88rem; padding: 0.4rem 0; }
 
     .contact-catalogue-note { margin-top: 1.8rem; display: flex; flex-direction: column; gap: 0.6rem; max-width: 420px; }
     .contact-catalogue-heading {

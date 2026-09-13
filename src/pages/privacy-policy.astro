@@ -1,0 +1,163 @@
+---
+import LegalPage from '../components/LegalPage.astro';
+import { site } from '../data/site.js';
+
+// Written 2026-09-13 from what the site was measured to do (scripts/audit-privacy.mjs)
+// and from the code, not from a template. If the site starts collecting
+// something new, or a provider changes, this page has to change with it.
+// Legal sources and open questions for the business's adviser:
+// the private legal source register (kept outside this public repository).
+const effective = '13 September 2026';
+const sections = [
+  { id: 'who', title: 'Who we are' },
+  { id: 'collect', title: 'What we collect and why' },
+  { id: 'providers', title: 'Services that receive data' },
+  { id: 'keep', title: 'How long we keep it' },
+  { id: 'security', title: 'Security' },
+  { id: 'choices', title: 'Your choices and rights' },
+  { id: 'contact', title: 'Privacy questions and complaints' },
+  { id: 'changes', title: 'Changes to this policy' },
+];
+---
+<LegalPage
+  title="Privacy Policy"
+  path="/privacy-policy/"
+  description="How the Samrat Poly Resins website handles enquiry details, analytics and other personal data, which services receive it, and how to contact us about it."
+  effective={effective}
+  revised={effective}
+  sections={sections}
+>
+  <p>
+    This policy explains what personal data the website <strong>samratpolyresins.in</strong> collects, why, who else receives it
+    and what you can ask us to do. It covers this website only. It does not replace the terms of a quotation or order.
+  </p>
+
+  <h2 id="who">Who we are</h2>
+  <p>
+    {site.name} is a business run by its proprietor, {site.proprietor}, at {site.address.line1}, {site.address.line2} — {site.address.pin},
+    {' '}{site.address.state} (GSTIN {site.gst}). We decide how personal data collected through this website is used.
+  </p>
+
+  <h2 id="collect">What we collect and why</h2>
+  <div class="legal-table-wrap">
+    <table>
+      <caption>Personal data handled through this website</caption>
+      <thead>
+        <tr><th scope="col">When</th><th scope="col">What</th><th scope="col">Why</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>You send the enquiry form</td>
+          <td>
+            Your name and message; a phone number or email address (at least one); and, if you fill them in, your company, product of interest,
+            requirement type, quantity and delivery location. The form also attaches context: the page you sent it from, the first page you
+            visited in that browser session, the website that linked you here (address only, without any query string), any campaign tags in
+            the link you arrived by (for example <code>utm_source</code>), and the product page you were on.
+          </td>
+          <td>To reply, prepare a quotation or technical answer, and understand which product and page the enquiry relates to.</td>
+        </tr>
+        <tr>
+          <td>You use the custom resin request page</td>
+          <td>
+            The details you type stay in your browser. Nothing is sent until you choose &ldquo;Send via WhatsApp&rdquo; or &ldquo;Send via Email&rdquo;,
+            which opens that app with the request filled in for you to send. A request reference number is kept in your browser's local storage so it stays the same for the day.
+          </td>
+          <td>To review a requested specification and reply.</td>
+        </tr>
+        <tr>
+          <td>You call, email or WhatsApp us</td>
+          <td>Whatever you share, plus your number or address.</td>
+          <td>To answer you and carry out any business that follows.</td>
+        </tr>
+        <tr>
+          <td>Every visit</td>
+          <td>
+            Technical request data that any web server receives: IP address, browser and device type, the page requested and the time.
+            This is processed by our hosting provider, Cloudflare, to deliver the site and protect it.
+          </td>
+          <td>To serve the website and keep it available and secure.</td>
+        </tr>
+        <tr>
+          <td>Every visit</td>
+          <td>
+            Cloudflare Web Analytics counts page views. It does not set cookies or store anything on your device. It records the page,
+            referring site, browser, device type and country.
+          </td>
+          <td>To see, in aggregate, which pages are used.</td>
+        </tr>
+        <tr>
+          <td>Only if you allow analytics</td>
+          <td>
+            Google Analytics records the pages you view, how you arrived, device and browser details, approximate location derived from your IP address,
+            and site actions: product page views, clicks on phone, WhatsApp, quotation and product-range links, and that an enquiry form was sent (not its contents).
+            It sets cookies named <code>_ga</code> and <code>_ga_20DFSNPJ80</code>.
+          </td>
+          <td>To understand which products and pages buyers use and improve them. See the <a href="/cookie-policy/">Cookie Policy</a>.</td>
+        </tr>
+        <tr>
+          <td>Only if you choose &ldquo;Show Google Map&rdquo; on the contact page</td>
+          <td>Google Maps receives your IP address and browser details when the map loads.</td>
+          <td>To show the plant location.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    We do not sell personal data. The website has no user accounts, no online payments and no newsletter sign-up.
+    Please do not send sensitive information such as bank, card or identity numbers through the enquiry form.
+  </p>
+
+  <h2 id="providers">Services that receive data</h2>
+  <ul>
+    <li><strong>Web3Forms</strong> delivers enquiry form submissions to our email inbox. The data passes through its service on the way.</li>
+    <li><strong>Cloudflare</strong> hosts the website and provides Cloudflare Web Analytics.</li>
+    <li><strong>Google</strong> provides Google Analytics (only if you allow it) and Google Maps (only if you load the map).</li>
+    <li><strong>WhatsApp</strong> (Meta) handles messages you send us on WhatsApp, under its own terms and privacy policy.</li>
+    <li>Our <strong>email provider</strong> stores enquiry emails and emails you send us.</li>
+  </ul>
+  <p>
+    These providers may process data outside India. Each handles data under its own terms and privacy policy.
+  </p>
+
+  <h2 id="keep">How long we keep it</h2>
+  <p>
+    Enquiries and messages are kept for as long as they are needed to deal with the enquiry and any business that follows, and for as long as records must be kept under law
+    (for example tax records when a sale is made). We do not currently apply a fixed automatic deletion period to enquiry emails. You can ask us to delete an enquiry that is no longer needed.
+  </p>
+  <p>
+    Google Analytics data is kept according to the data-retention setting of our Google Analytics property. The analytics choice you make on this website is kept in your browser until you change it or clear your browser storage.
+  </p>
+
+  <h2 id="security">Security</h2>
+  <p>
+    The website is served over HTTPS (plain HTTP requests are redirected to it), and the enquiry form sends your details to Web3Forms over an encrypted connection. Beyond that, enquiries are protected by the security of the email account they arrive in.
+    No method of sending or storing data is completely secure. If a breach affecting your personal data comes to our attention, we will tell you and take the steps the law requires.
+  </p>
+
+  <h2 id="choices">Your choices and rights</h2>
+  <ul>
+    <li><strong>Analytics:</strong> Google Analytics does not run unless you allow it. You can change your choice at any time with &ldquo;Analytics settings&rdquo; in the footer.</li>
+    <li><strong>Access and correction:</strong> you can ask what personal data we hold about you from this website and ask us to correct it.</li>
+    <li><strong>Deletion:</strong> you can ask us to delete it, unless we need to keep it for a legal obligation or an ongoing business matter.</li>
+    <li><strong>Withdrawal:</strong> where we rely on your consent, you can withdraw it as easily as you gave it.</li>
+  </ul>
+  <p>
+    Indian data-protection law, including the Information Technology Act, 2000 and its rules, and the Digital Personal Data Protection Act, 2023 as its provisions come into force, also gives you rights and routes of complaint.
+  </p>
+
+  <h2 id="contact">Privacy questions and complaints</h2>
+  <p>
+    Contact the proprietor, {site.proprietor}, who handles privacy requests and complaints for {site.name}:
+  </p>
+  <ul>
+    <li>Email: <a href={`mailto:${site.email}?subject=Privacy%20request`}>{site.email}</a> (subject &ldquo;Privacy request&rdquo;)</li>
+    <li>Phone: {site.phones.map((p, i) => <>{i > 0 && ' or '}<a href={`tel:${p.dial}`}>{p.display}</a></>)}</li>
+    <li>Post: {site.name}, {site.address.line1}, {site.address.line2} — {site.address.pin}, {site.address.state}</li>
+  </ul>
+  <p>Tell us what you are asking for and how we can reach you. We may need to confirm who you are before acting on a request.</p>
+
+  <h2 id="changes">Changes to this policy</h2>
+  <p>
+    We will update this page when the website changes what it collects or which services it uses, and change the revision date at the top.
+  </p>
+</LegalPage>

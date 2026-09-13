@@ -12,6 +12,7 @@ const demo = !site.formEndpoint;
 <form
   class="enq"
   id="enquiryForm"
+  novalidate
   data-demo={demo ? 'true' : 'false'}
   data-lead-form
   data-product-slug={productSlug}
@@ -38,25 +39,50 @@ const demo = !site.formEndpoint;
   <!-- honeypot -->
   <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
 
+  {/* 2026-09-13 data minimisation: phone was mandatory even for buyers who
+      prefer email. Now either one is enough; name and message stay required
+      because a reply is not possible without them. */}
   <div class="row two">
     <label>
       <span>Name</span>
-      <input type="text" name="name" required autocomplete="name" placeholder="Your name" />
+      <input type="text" name="name" required autocomplete="name" placeholder="Your name" aria-describedby="enqNameError" />
+      <small class="enq-field-error" id="enqNameError" hidden>Please enter your name.</small>
     </label>
     <label>
-      <span>Phone</span>
-      <input type="tel" name="phone" required autocomplete="tel" placeholder="Mobile number" />
+      <span>Company <em>(optional)</em></span>
+      <input type="text" name="company" autocomplete="organization" placeholder="Company or workshop" />
     </label>
   </div>
 
+  <fieldset class="row enq-contact" aria-describedby="enqContactHelp enqContactError">
+    <legend class="enq-legend">How should we reply? <em>(phone or email, at least one)</em></legend>
+    <div class="row two">
+      <label>
+        <span>Phone / WhatsApp</span>
+        <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="Mobile number" />
+      </label>
+      <label>
+        <span>Email</span>
+        <input type="email" name="email" autocomplete="email" placeholder="you@company.com" />
+      </label>
+    </div>
+    <small class="enq-help" id="enqContactHelp">We only use these to answer this enquiry.</small>
+    <small class="enq-field-error" id="enqContactError" hidden>Please give a phone number or an email address so we can reply.</small>
+  </fieldset>
+
   <div class="row two">
     <label>
-      <span>Email <em>(optional)</em></span>
-      <input type="email" name="email" autocomplete="email" placeholder="you@company.com" />
+      <span>Product of interest <em>(optional)</em></span>
+      <input type="text" name="product" value={product ?? ''} placeholder="e.g. Fire Retardant Resin" />
     </label>
     <label>
-      <span>Product of interest</span>
-      <input type="text" name="product" value={product ?? ''} placeholder="e.g. Fire Retardant Resin" />
+      <span>Requirement type <em>(optional)</em></span>
+      <select name="requirement_type">
+        <option value="">Select an option</option>
+        <option value="Quote request">Quote request</option>
+        <option value="TDS request">TDS request</option>
+        <option value="Technical discussion">Technical discussion</option>
+      </select>
     </label>
   </div>
 
@@ -72,19 +98,17 @@ const demo = !site.formEndpoint;
   </div>
 
   <label class="row">
-    <span>Requirement type <em>(optional)</em></span>
-    <select name="requirement_type">
-      <option value="">Select an option</option>
-      <option value="Quote request">Quote request</option>
-      <option value="TDS request">TDS request</option>
-      <option value="Technical discussion">Technical discussion</option>
-    </select>
+    <span>Requirement / message</span>
+    <textarea name="message" rows="4" required placeholder={messagePlaceholder} aria-describedby="enqMessageError"></textarea>
+    <small class="enq-field-error" id="enqMessageError" hidden>Please describe what you need.</small>
   </label>
 
-  <label class="row">
-    <span>Requirement / message</span>
-    <textarea name="message" rows="4" required placeholder={messagePlaceholder}></textarea>
-  </label>
+  <p class="enq-privacy">
+    Your enquiry is delivered to our email inbox by Web3Forms, a form-delivery service.
+    The page you sent it from and how you reached the site (for example a search or a link) are attached so we know what you were looking at.
+    We use the details to reply to you and discuss your requirement. This form does not sign you up to any newsletter or mailing list.
+    <a href="/privacy-policy/">Privacy Policy</a>
+  </p>
 
   <div class="enq-foot">
     <button type="submit" class="btn btn-solid">Send enquiry</button>
@@ -120,6 +144,14 @@ const demo = !site.formEndpoint;
   .enq input::placeholder, .enq textarea::placeholder { color: var(--ink-faint); }
   .enq-foot { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; margin-top: 0.3rem; }
   .enq-status { font-family: var(--font-mono); font-size: 0.8rem; }
+  .enq-contact { border: 0; padding: 0; margin: 0; min-width: 0; }
+  .enq-legend { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 0.5rem; padding: 0; }
+  .enq-legend em { color: var(--ink-faint); font-style: normal; text-transform: none; letter-spacing: 0.02em; }
+  .enq-help { color: var(--ink-faint); font-size: 0.8rem; }
+  .enq-field-error { color: #ff8a8a; font-size: 0.85rem; }
+  .enq [aria-invalid="true"] { border-color: #ff8a8a; }
+  .enq-privacy { color: var(--ink-dim); font-size: 0.84rem; line-height: 1.55; margin: 0; }
+  .enq-privacy a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 0.16em; }
   .enq-status.ok { color: #2ee87a; }
   .enq-status.err { color: #ff6b6b; }
   .demo-note {
@@ -163,8 +195,34 @@ const demo = !site.formEndpoint;
       // A malformed query string must never stop the form from working.
     }
 
+    const field = (name: string) => form.querySelector(`[name="${name}"]`) as HTMLInputElement | HTMLTextAreaElement;
+    const setError = (el: HTMLElement | null, targets: Element[], show: boolean) => {
+      if (el) el.hidden = !show;
+      targets.forEach((t) => (show ? t.setAttribute('aria-invalid', 'true') : t.removeAttribute('aria-invalid')));
+    };
+    const validate = () => {
+      const name = field('name'), phone = field('phone'), email = field('email') as HTMLInputElement, message = field('message');
+      const nameOk = name.value.trim() !== '';
+      const emailFormatOk = !email.value.trim() || email.validity.valid;
+      const contactOk = (phone.value.trim() !== '' || email.value.trim() !== '') && emailFormatOk;
+      const messageOk = message.value.trim() !== '';
+      setError(document.getElementById('enqNameError'), [name], !nameOk);
+      const contactErr = document.getElementById('enqContactError');
+      if (contactErr) contactErr.textContent = emailFormatOk ? 'Please give a phone number or an email address so we can reply.' : 'Please check the email address.';
+      setError(contactErr, [phone, email], !contactOk);
+      setError(document.getElementById('enqMessageError'), [message], !messageOk);
+      const firstBad = !nameOk ? name : !contactOk ? (emailFormatOk ? phone : email) : !messageOk ? message : null;
+      if (firstBad) (firstBad as HTMLElement).focus();
+      return !firstBad;
+    };
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (!validate()) {
+        statusEl.className = 'enq-status err';
+        statusEl.textContent = 'Please fix the highlighted fields.';
+        return;
+      }
       const isDemo = form.dataset.demo === 'true';
       statusEl.className = 'enq-status';
       document.dispatchEvent(new CustomEvent('samrat:prepare-lead-form', { detail: { form } }));

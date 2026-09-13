@@ -137,7 +137,7 @@ const disclaimer = 'This document records customer-requested target specificatio
       <div class="custom-requirements">
         <div class="custom-requirements-head">
           <div>
-            <h3>Additional requirements</h3>
+            <h2 class="custom-requirements-title">Additional requirements</h2>
             <p>Add a property and the target or preference you want reviewed.</p>
           </div>
           <button id="addCustomRequirement" type="button" class="btn btn-compact">+ Add Another Requirement</button>
@@ -191,6 +191,10 @@ const disclaimer = 'This document records customer-requested target specificatio
         <button id="printRequest" type="button" class="btn">Print / Save as PDF</button>
       </div>
       <p id="requestStatus" class="request-status" role="status" aria-live="polite"></p>
+      <p class="request-privacy">
+        Nothing is sent from this page by itself. &ldquo;Send via WhatsApp&rdquo; opens WhatsApp and &ldquo;Send via Email&rdquo; opens your email app with the request filled in; you send it from there.
+        We use the details only to review and answer the request. <a href="/privacy-policy/">Privacy Policy</a>
+      </p>
     </section>
 
     <aside class="request-disclaimer">
@@ -567,7 +571,7 @@ const disclaimer = 'This document records customer-requested target specificatio
   .recommend-check small { color: var(--ink-dim); line-height: 1.45; }
   .custom-requirements { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
   .custom-requirements-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-  .custom-requirements h3 { font-size: 1rem; color: var(--ink); }
+  .custom-requirements .custom-requirements-title { font-size: 1rem; color: var(--ink); margin: 0; }
   .custom-requirements p { color: var(--ink-dim); font-size: 0.85rem; margin-top: 0.25rem; }
   .btn-compact { padding: 0.6rem 0.8rem; font-size: 0.75rem; flex: 0 0 auto; }
   .custom-requirement-rows { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1rem; }
@@ -657,4 +661,6 @@ const disclaimer = 'This document records customer-requested target specificatio
     .print-disclaimer p { margin: 3pt 0 0; }
     .print-footer { display: flex; justify-content: space-between; gap: 12pt; margin-top: 12pt; padding-top: 7pt; border-top: 1px solid #bbb; color: #555; font-size: 8pt; }
   }
+  .request-privacy { color: var(--ink-dim); font-size: 0.84rem; line-height: 1.55; margin-top: 0.8rem; }
+  .request-privacy a { color: var(--accent-gold-light); text-decoration: underline; text-underline-offset: 0.16em; }
 </style>

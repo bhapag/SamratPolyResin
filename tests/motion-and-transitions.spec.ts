@@ -19,6 +19,14 @@ const eventNames = (page: any) => page.evaluate(() =>
     .map((args: any[]) => args[1]));
 
 test.describe('client-side navigation', () => {
+  // Analytics events only exist once the visitor has allowed analytics
+  // (2026-09-13 consent change), so these tests allow it up front and block
+  // the Google requests themselves.
+  test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem('spr_analytics_consent_v1', JSON.stringify({ choice: 'granted', at: 'test' })));
+    await page.route(/googletagmanager|google-analytics/, (r) => r.abort());
+  });
+
   test('a CTA click fires exactly one analytics event, after several hops', async ({ page }) => {
     await page.goto('/');
     // Navigate around using real in-page links, so View Transitions run.

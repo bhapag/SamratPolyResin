@@ -9,7 +9,10 @@
    See GOLD USAGE below before adding a new gold border/glow/fill.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+/* Fonts are self-hosted (@fontsource, imported in Base.astro) since
+   2026-09-13, so a page view no longer sends the visitor's IP address to
+   fonts.googleapis.com / fonts.gstatic.com. Same families and weights as the
+   previous Google Fonts request; all three are SIL Open Font Licence. */
 
 :root {
   --bg:        #0d0f12;   /* near-black charcoal */
@@ -22,7 +25,7 @@
   --line-2:    #3a424d;   /* also the default hover/focus border — NOT gold (see GOLD USAGE) */
   --ink:       #f4f2ee;   /* off-white text */
   --ink-dim:   #a6adb8;   /* secondary text */
-  --ink-faint: #838a96;   /* captions — kept ≥4.5:1 against --bg for WCAG AA at small sizes */
+  --ink-faint: #8e95a1;   /* captions — ≥4.5:1 on every dark panel (was #838a96: 4.48:1 on raised cards) */
 
   /* --- GOLD USAGE — read before touching --accent-gold anywhere ---
      One accent, rationed on purpose ("less accent, more impact"): gold is
@@ -54,7 +57,7 @@
   --ledger-ink:     #221e17;   /* near-black warm ink, for body reading */
   --ledger-ink-dim: #5c5546;
   --ledger-line:    #d9cfba;
-  --ledger-accent:  #8a6a24;   /* muted gold-brown — links, rules, emphasis on paper */
+  --ledger-accent:  #735618;   /* muted gold-brown — links, rules, emphasis on paper (was #8a6a24: 3.8:1 on the paper stripe) */
 
   /* --- shared elevation tokens ---
      Every flat --bg-3 panel (cards, forms, boxes) gets a resting shadow so
@@ -439,7 +442,7 @@ h1, h2 {
   --line-2: color-mix(in srgb, var(--ledger-line) 60%, var(--ledger-ink));
   --ink: var(--ledger-ink);
   --ink-dim: var(--ledger-ink-dim);
-  --ink-faint: color-mix(in srgb, var(--ledger-ink-dim) 75%, var(--ledger-bg));
+  --ink-faint: #625b4c;   /* ≥4.5:1 on both paper tones (the 75% mix was 3.2:1) */
   --accent-gold: var(--ledger-accent);
   --accent-gold-light: var(--ledger-accent);
   --accent-gold-dark: var(--ledger-accent);
@@ -463,3 +466,6 @@ h1, h2 {
 .ledger .btn-solid { background: var(--ledger-accent); border-color: var(--ledger-accent); color: var(--ledger-bg); }
 .ledger .btn-solid:hover { background: color-mix(in srgb, var(--ledger-accent) 85%, black); border-color: color-mix(in srgb, var(--ledger-accent) 85%, black); }
 .ledger :focus-visible { outline-color: var(--ledger-accent); }
+
+/* Text for screen readers only (e.g. "opens in a new tab"). */
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }

@@ -1,0 +1,99 @@
+---
+import LegalPage from '../components/LegalPage.astro';
+import { site } from '../data/site.js';
+
+// Matches what was measured on 2026-09-13 with scripts/audit-privacy.mjs
+// (fresh browser, no interaction) and the code in
+// components/AnalyticsConsent.astro, scripts/lead-attribution.ts and
+// components/CustomResinRequestForm.astro. Re-measure before editing.
+const effective = '13 September 2026';
+const sections = [
+  { id: 'summary', title: 'Summary' },
+  { id: 'list', title: 'Everything stored or loaded' },
+  { id: 'choice', title: 'Changing your analytics choice' },
+  { id: 'contact', title: 'Questions' },
+];
+---
+<LegalPage
+  title="Cookie Policy"
+  path="/cookie-policy/"
+  description="The cookies, browser storage and third-party services the Samrat Poly Resins website uses, what each is for, and how to change your analytics choice."
+  effective={effective}
+  revised={effective}
+  sections={sections}
+>
+  <h2 id="summary">Summary</h2>
+  <p>
+    Without your permission this website sets <strong>no cookies</strong>. It keeps two small items in your browser's storage that the site needs to work as described below.
+    Google Analytics, which does set cookies, runs only if you choose &ldquo;Allow analytics&rdquo;. Google Maps loads only if you ask for the map.
+  </p>
+
+  <h2 id="list">Everything stored or loaded</h2>
+  <div class="legal-table-wrap">
+    <table>
+      <caption>Cookies, browser storage and third-party services</caption>
+      <thead>
+        <tr><th scope="col">Name / service</th><th scope="col">Type</th><th scope="col">Purpose</th><th scope="col">When and how long</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>spr_analytics_consent_v1</code> (local storage)</td>
+          <td>Necessary</td>
+          <td>Remembers whether you allowed analytics, so you are not asked on every page. Holds only the choice and the date.</td>
+          <td>Set when you choose; kept until you change it or clear browser storage.</td>
+        </tr>
+        <tr>
+          <td><code>samrat_lead_attribution_v1</code> (session storage)</td>
+          <td>Functional</td>
+          <td>Remembers the first page you visited, the referring site and any campaign tags for this visit, so an enquiry you send can say what you were looking at.</td>
+          <td>Set on your first page view; deleted when you close the tab.</td>
+        </tr>
+        <tr>
+          <td><code>samrat-custom-resin-request-reference</code> (local storage)</td>
+          <td>Functional</td>
+          <td>Keeps the same request reference number on the custom resin request page for the day.</td>
+          <td>Only on that page; replaced the next day.</td>
+        </tr>
+        <tr>
+          <td><code>_ga</code>, <code>_ga_20DFSNPJ80</code> (cookies, Google Analytics)</td>
+          <td>Analytics</td>
+          <td>Distinguish visits and measure page use for our Google Analytics property.</td>
+          <td><strong>Only after you allow analytics.</strong> Google sets them for up to 400 days. Choosing &ldquo;Don't allow&rdquo; later deletes them from this site.</td>
+        </tr>
+        <tr>
+          <td>Cloudflare Web Analytics</td>
+          <td>Analytics (no cookies)</td>
+          <td>Counts page views in aggregate. It does not set cookies or use browser storage.</td>
+          <td>Loads on every page, provided by our hosting platform.</td>
+        </tr>
+        <tr>
+          <td>Google Maps (contact page)</td>
+          <td>Third-party content</td>
+          <td>Shows the plant location. Google may set its own cookies inside the map.</td>
+          <td>Only after you choose &ldquo;Show Google Map&rdquo;.</td>
+        </tr>
+        <tr>
+          <td>WhatsApp links</td>
+          <td>Third-party service</td>
+          <td>Open WhatsApp to message us.</td>
+          <td>Only when you follow a WhatsApp link; WhatsApp's own terms apply there.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Fonts are served from this website, not from Google Fonts. There are no advertising pixels, social-media widgets or embedded videos from other sites.
+  </p>
+
+  <h2 id="choice">Changing your analytics choice</h2>
+  <p>
+    Use the button below, or &ldquo;Analytics settings&rdquo; in the footer of any page, to allow or stop Google Analytics at any time.
+  </p>
+  <p><button type="button" class="btn btn-solid" data-consent-open>Change analytics settings</button></p>
+  <p>You can also block or delete cookies and site data in your browser settings.</p>
+
+  <h2 id="contact">Questions</h2>
+  <p>
+    Email <a href={`mailto:${site.email}`}>{site.email}</a>. More detail about personal data is in the <a href="/privacy-policy/">Privacy Policy</a>.
+  </p>
+</LegalPage>
