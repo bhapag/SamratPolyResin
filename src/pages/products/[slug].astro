@@ -35,7 +35,7 @@ const isUnsaturatedPolyesterResin = product.slug === 'unsaturated-polyester-resi
 const isGpWhiteResin = product.slug === 'gp-white-resin';
 const isGpQuartzResin = product.slug === 'gp-quartz-resin';
 const isGlassFiber = product.slug === 'fibre-glass-mat';
-const manufactureEvidenced = !['Epoxy & Casting', 'FRP Allied Products', 'Hardeners'].includes(product.category) && product.slug !== 'vinyl-ester-resin';
+const manufactureEvidenced = !['FRP Allied Products', 'Hardeners'].includes(product.category) && !['vinyl-ester-resin', 'epoxy-hardener'].includes(product.slug);
 const isFrpPolyesterPigment = product.slug === 'frp-polyester-pigment';
 const isMekpHardener = product.slug === 'mekp-hardener';
 const isEpoxyClearCastingResin = product.slug === 'epoxy-clear-casting-resin';
@@ -190,7 +190,7 @@ const buttonGradeSeo = {
 };
 const unsaturatedPolyesterSeo = {
   title: 'Unsaturated Polyester Resin (UPR) Manufacturer in India',
-  description: 'Unsaturated polyester resin (UPR) manufactured in Doraha, Punjab. Published TDS and SDS; ISO 9001:2015 registration.',
+  description: 'Unsaturated polyester resin (UPR) manufactured in Doraha, Punjab. ISO 9001:2015 certified quality system, with published TDS and SDS.',
   keywords: [
     'Unsaturated Polyester Resin',
     'UPR Resin',
@@ -251,7 +251,7 @@ const mekpHardenerSeo = {
   ],
 };
 const epoxyClearCastingSeo = {
-  title: 'Epoxy Clear Casting Resin Supplier in India',
+  title: 'Epoxy Clear Casting Resin Manufacturer & Supplier in India',
   description: 'Two-part epoxy casting resin for river tables, jewellery and decorative casting, with published mix ratio, pot life and 30 mm maximum pour depth.',
   keywords: [
     'Epoxy Clear Casting Resin',
@@ -266,7 +266,7 @@ const epoxyClearCastingSeo = {
   ],
 };
 const epoxyArtSeo = {
-  title: 'Epoxy Art Resin Supplier in India | Self-Levelling Art Resin',
+  title: 'Epoxy Art Resin Manufacturer in India | Self-Levelling Art Resin',
   description: 'Water-clear, self-levelling two-component epoxy art resin for floor art, table tops, river tables and decorative casting. Published mix ratio and cure data.',
   keywords: [
     'Epoxy Art Resin',
@@ -998,9 +998,6 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             ))}
           </div>
         )}
-        {isMarbleResin && (
-          <p class="marble-image-note">Illustrative product graphic. Use the <a href={tdsUrl} target="_blank" rel="noopener" download>current Marble Resin TDS</a> for verified supplied-resin data, documented applications and grade selection.</p>
-        )}
         {isPolyesterPuttyResin && (
           /* The owner asked for these two posters to stay on the page. Both
              were made for the grade's earlier name, PET Resin, and claim food-
@@ -1026,31 +1023,6 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               ))}
             </div>
           </details>
-        )}
-        {isUvStabilizedSheetResin && (
-          /* Poster checked against final TDS SPR-TDS-USY Rev. 01 (Sept 2026).
-             Supported: pre-pigmented yellow, UV-stabilised (UV absorber +
-             HALS), low viscosity (280 cPs), gel 6.5 min, outdoor roofing and
-             cladding sheet. Not stated by the TDS: colour uniformity between
-             production batches (it states a factory master shade only). */
-          <p class="marble-image-note">Product graphic. Its claims were checked against the <a href={tdsUrl} target="_blank" rel="noopener" download>current TDS</a>: low viscosity (280 cPs), 6.5-minute gel time, UV absorber with HALS and outdoor roofing and cladding use are stated there. The TDS gives a factory master yellow shade but no batch-to-batch colour tolerance, so the poster&rsquo;s &ldquo;more uniform colour across production batches&rdquo; is not a documented figure.</p>
-        )}
-        {isIsoPolyesterResin && (
-          /* Poster checked against final TDS SPR-TDS-IPR Rev. 01 (Sept 2026).
-             "Higher mechanical strength" and "better thermal stability" are
-             comparative claims the TDS does not make; it gives absolute cured
-             values only. */
-          <p class="marble-image-note">Product graphic. The <a href={tdsUrl} target="_blank" rel="noopener" download>current TDS</a> positions this grade for chemical, water and hydrolysis resistance and publishes cured values (90 °C HDT, 75 MPa tensile, 125 MPa flexural). It does not compare those values with a general-purpose grade, so the poster&rsquo;s &ldquo;higher mechanical strength&rdquo; and &ldquo;better thermal stability&rdquo; are not documented comparisons.</p>
-        )}
-        {isIsoGelcoat && (
-          /* Poster checked against final TDS SPR-TDS-IGC Rev. 01 (Sept 2026).
-             Supported: gloss retention and UV/weather (1,000 h xenon arc, 80%
-             gloss retention), water resistance, hard surface (Barcol 42).
-             Not stated: chemical resistance, hydrolysis resistance. */
-          <p class="marble-image-note">Product graphic. The <a href={tdsUrl} target="_blank" rel="noopener" download>current TDS</a> supports its gloss-retention, weathering, water-resistance and hardness claims (1,000 h xenon arc with 80% gloss retention; water resistance good to very good; Barcol 42). It publishes no chemical-resistance or hydrolysis test, so those two poster labels are not documented for this grade.</p>
-        )}
-        {isFiberglassEpoxyResin && (
-          <p class="marble-image-note">Illustrative Fiberglass Epoxy Resin product graphics. They are not technical evidence for the supplied grade; use the <a href={tdsUrl} target="_blank" rel="noopener" download>current Fiberglass Epoxy Resin TDS</a> as the product-data reference.</p>
         )}
       </div>
     </div>
@@ -1369,7 +1341,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             The current product-specific TDS identifies a premium-grade Bisphenol A &amp; epichlorohydrin-based thermosetting resin system. It describes a low-viscosity liquid and lists laminating, casting, coating and encapsulation as product contexts. This is the exact TDS terminology used on this page; the document does not identify the product as a general-purpose UPR or as Vinyl Ester Resin.
           </p>
           <p>
-            Use the current product-specific TDS for this grade&rsquo;s identity and technical data. The product catalogue is a general overview of Samrat&rsquo;s wider resin range; it is not a replacement for the detailed grade-specific TDS.
+            Use the product-specific TDS for this grade&rsquo;s chemistry, technical data and supply details. Bisphenol Resin is manufactured by Samrat Poly Resins at Doraha, Punjab, and is a separate product from Fiberglass Epoxy Resin.
           </p>
         </section>
       )}
@@ -1383,8 +1355,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               <p>The current TDS publishes this grade&rsquo;s resin wording, supplied-resin data, packaging, MOQ, shelf life, storage, listed curing system and application contexts.</p>
             </div>
             <div class="gp-outcome-card">
-              <h3>General range catalogue</h3>
-              <p>Use the catalogue to explore Samrat&rsquo;s broader product range. Use the current Bisphenol Resin TDS when checking this grade&rsquo;s chemistry, properties and commercial data.</p>
+              <h3>Separate from Fiberglass Epoxy Resin</h3>
+              <p>Bisphenol Resin (600 cPs, 1.10 g/cm³) and Fiberglass Epoxy Resin (700 cPs, 1.15 g/cm³) are separate products with their own TDS. Choose by the finished application.</p>
             </div>
             <div class="gp-outcome-card">
               <h3>Application-led selection</h3>
@@ -1538,16 +1510,13 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <p>
             The dedicated Marble Resin TDS identifies this product as a water-white, liquid unsaturated polyester resin for cultured marble and artificial stone. It is a raw resin component supplied to manufacturers, not a finished marble sheet, slab, countertop, vanity top, wash basin, wall panel or architectural item.
           </p>
-          <p>
-            The catalogue separately calls it a filled resin for cultured marble and onyx production and labels it orthophthalic UPR. That catalogue wording does not publish a filler type, filler level or formulation, while the TDS does not state the orthophthalic designation. The page therefore presents unsaturated polyester resin as the shared documented family and keeps the source-specific terminology visible.
-          </p>
         </section>
       )}
 
       {isMarbleResin && (
         <section class="upr-grade-guide" aria-labelledby="marble-resin-document-check-heading">
           <h2 id="marble-resin-document-check-heading" class="spec-h">Use the Marble Resin documents as a grade check</h2>
-          <p class="upr-grade-guide-intro">The TDS is the detailed product-data reference. The catalogue is useful for its short product role, but its viscosity and gel-time values differ. Neither source should be turned into a universal formulation or finished-product claim.</p>
+          <p class="upr-grade-guide-intro">The TDS is the product-data reference for Marble Resin: supplied form, typical technical data and supply details.</p>
           <div class="upr-grade-grid">
             <article class="upr-grade-card">
               <h3>Supplied liquid resin</h3>
@@ -1558,12 +1527,8 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
               <p>The TDS lists 450 cPs viscosity at 25 °C, 15-20 minute gel time at 25 °C, 20-40 minute curing time and 1.12 g/cm³ specific gravity as typical product data.</p>
             </article>
             <article class="upr-grade-card">
-              <h3>Catalogue differences</h3>
-              <p>The catalogue lists 300 cPs viscosity and 15-minute gel time. Those values are shown alongside the TDS data above rather than being averaged or silently replaced.</p>
-            </article>
-            <article class="upr-grade-card">
-              <h3>No published formulation</h3>
-              <p>Neither document provides mineral type, filler loading, pigment level, resin-to-filler ratio or a production recipe. Confirm the actual requirement directly rather than inferring one from the product name.</p>
+              <h3>Your formulation</h3>
+              <p>Mineral type, filler loading, pigment level and resin-to-filler ratio belong to your own formulation. Share them with your enquiry.</p>
             </article>
           </div>
         </section>
@@ -1580,10 +1545,6 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             <div class="gp-outcome-card">
               <h3>What remains system-dependent</h3>
               <p>Finished appearance, gloss, shrinkage, hardness, polishability, chemical performance and dimensional result can depend on the complete formulation, construction, cure state, surface system and tested configuration.</p>
-            </div>
-            <div class="gp-outcome-card">
-              <h3>What is not published</h3>
-              <p>No chemical-compatibility chart, UV or non-yellowing result, filler-loading limit, substrate-adhesion test, scratch or stain rating, or finished-product approval is published for this grade.</p>
             </div>
           </div>
         </section>
@@ -1617,7 +1578,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
       {isMarbleResin && (
         <section class="upr-grade-guide" aria-labelledby="marble-resin-rfq-heading">
           <h2 id="marble-resin-rfq-heading" class="spec-h">Before ordering Marble Resin</h2>
-          <p class="upr-grade-guide-intro">Share the finished marble or stone product, any current TDS or catalogue reference, required supplied appearance or finish, applicable technical requirement, quantity, packaging need, delivery location and documentation required. If the enquiry is for quartz, engineered stone, onyx, a finished slab or another mineral composite, name that requirement explicitly so the correct product route can be reviewed.</p>
+          <p class="upr-grade-guide-intro">Share the finished marble or stone product, required supplied appearance or finish, applicable technical requirement, quantity, packaging need, delivery location and documentation required. If the enquiry is for quartz, engineered stone, onyx, a finished slab or another mineral composite, name that requirement explicitly so the correct product route can be reviewed.</p>
           <div class="gp-hub-actions">
             <a href={tdsUrl} class="btn" target="_blank" rel="noopener" download>Review Marble Resin TDS</a>
             <a href={site.catalogue.url} class="btn">Browse the product range</a>
@@ -1883,7 +1844,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
             FRP Polyester Pigment is a colour concentrate paste for an FRP resin or gelcoat system. It supplies colour to the selected base material; it is not the structural resin that binds reinforcement, the glass-fibre reinforcement itself or the mould-side gelcoat layer that creates the finished surface.
           </p>
           <p>
-            The published product data lists compatibility with unsaturated polyester, vinyl ester and gelcoat systems. The catalogue lists white, black, red, blue, green and yellow, while the product TDS also supports standard and custom RAL or Pantone colour matching. Confirm the required colour and the actual base system before ordering.
+            The published product data lists compatibility with unsaturated polyester, vinyl ester and gelcoat systems. The TDS lists standard and custom colours, including RAL and Pantone matching. Confirm the required colour and the actual base system before ordering.
           </p>
         </section>
       )}
@@ -2566,7 +2527,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           The published Button Grade Resin data describes a transparent, semi-liquid polyester casting grade for buttons and other small decorative mouldings. It is catalysed with the listed MEKP and cobalt octoate system; the product's published gel time is 9.5 minutes and curing time is approximately two hours.
         </p>
         <p>
-          The catalogue does not publish a specific button-sheet, rod, blank or production-line method for this grade. Share the intended product and casting method so suitability can be discussed against the TDS rather than assumed from a general resin name.
+          Share the intended button product and casting method so the grade can be discussed against its TDS.
         </p>
       </div>
       <a href="#enquire" class="btn btn-solid button-process-cta">Discuss your button application</a>
@@ -3008,7 +2969,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 33vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Keep the document record visible</strong>
-            <span>Use the detailed TDS for grade data and keep its catalogue differences visible. Neither document is presented as a formulation sheet, finished-marble approval, UV result or certificate.</span>
+            <span>Use the Marble Resin TDS for grade data, applications and supply details.</span>
           </span>
         </a>
       </div>
@@ -3033,7 +2994,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Use the dedicated PET Resin TDS</strong>
-            <span>The current TDS is the product-specific reference for the published PET-modified liquid UPR sheet grade, supplied form, listed applications and commercial details. It should not be combined with the catalogue&rsquo;s separate PET chip entry.</span>
+            <span>The current TDS is the product-specific reference for the published PET-modified liquid UPR sheet grade, supplied form, listed applications and commercial details.</span>
           </span>
         </a>
       </div>
@@ -3176,7 +3137,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <Image src={factoryGate} alt={`${site.name} factory gate in ${site.address.line2}, ${site.address.state}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Punjab-based company context</strong>
-            <span>Samrat Poly Resins was established in 2017 and manufactures polyester resin systems in Doraha, Ludhiana. Its published catalogue includes Glass Fiber within a wider FRP-material range.</span>
+            <span>Samrat Poly Resins was established in 2017 and manufactures polyester resin systems in Doraha, Ludhiana. Glass Fiber is supplied as part of its FRP-materials range.</span>
           </span>
         </a>
         <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
@@ -3307,7 +3268,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Use the current product-specific document</strong>
-            <span>The existing company page describes its general quality-checking approach. Use the UV Resin TDS, catalogue and actual finished-product requirement for a product-specific discussion.</span>
+            <span>The existing company page describes its general quality-checking approach. Use the UV Resin TDS and actual finished-product requirement for a product-specific discussion.</span>
           </span>
         </a>
       </div>
@@ -3332,7 +3293,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Use the current product-specific document</strong>
-            <span>The existing company page describes its general quality-checking approach. Use the Epoxy Art Resin TDS, catalogue and actual finished-surface requirement for product-specific discussion.</span>
+            <span>Epoxy Art Resin is manufactured by Samrat Poly Resins at Doraha, Punjab. Use its TDS and your finished-surface requirement for a product-specific discussion.</span>
           </span>
         </a>
       </div>
@@ -3506,7 +3467,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         <p class="eyebrow">FR resin selection resources</p>
         <h2 id="fire-retardant-resources-heading" class="rel-h">Fire Retardant Resin buyer guides</h2>
         <p>Review the published product role, application categories, finished-system questions and quotation details before treating an FR Resin requirement as a product-selection decision.</p>
-        <p class="gp-hub-case-link">The guides distinguish a resin product description from a finished FRP requirement; they do not present an unverified fire rating or project approval.</p>
+        <p class="gp-hub-case-link">The guides distinguish a resin product description from a finished FRP requirement; they do not present a fire rating or project approval.</p>
       </div>
       <div class="resources-grid">
         {fireRetardantResources.map((resource) => <ResourceCard resource={resource} />)}
@@ -3665,7 +3626,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 33vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Keep both product records visible</strong>
-            <span>The detailed TDS and catalogue use different resin wording and selected figures. Use the document-check guide and current TDS before quoting properties; neither record is a certificate, confirmed resin-hardener pairing or finished-composite approval.</span>
+            <span>Fiberglass Epoxy Resin is manufactured by Samrat Poly Resins at Doraha, Punjab, and is a separate product from Bisphenol Resin. Use its TDS for grade data.</span>
           </span>
         </a>
       </div>
@@ -4284,10 +4245,10 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
         {isIsoFireRetardantResin && <p class="fire-retardant-enquiry-note">Share the finished FRP component, whether an isophthalic or halogen-free FR grade is specified, the exact fire standard or classification if one is named, required documentation, service environment where relevant, quantity, packaging requirement and delivery location. This supports a focused product discussion without implying a finished-system approval.</p>}
         {isDmcSmcResin && <p class="upr-buyer-intro">Share whether the requirement is DMC or SMC, the finished component or application, any stated product or performance specification, compound/process context if known, expected quantity, packaging need, delivery location and required documentation. This supports product selection without requesting a public formulation recipe.</p>}
         {isPetResin && <p class="upr-buyer-intro">Share your intended PET-sheet, fibre-sheet, FRP-sheet or panel application, expected quantity, packaging need and delivery location so we can prepare a quote. If you need thermoplastic PET chips or a finished putty/filler compound instead, let us know so we can point you to the right product.</p>}
-        {isMarbleResin && <p class="upr-buyer-intro">Share the finished marble, artificial-stone, quartz, onyx or other stone-composite product; the current TDS or catalogue reference being evaluated; required appearance or finish; any written technical requirement; expected quantity; packaging need; delivery location; and documentation required. This supports a grade discussion without implying a formulation, finished-product approval or chemical-compatibility recommendation.</p>}
+        {isMarbleResin && <p class="upr-buyer-intro">Share the finished marble, artificial-stone, quartz, onyx or other stone-composite product; required appearance or finish; any written technical requirement; expected quantity; packaging need; delivery location; and documentation required. This supports a grade discussion without implying a formulation, finished-product approval or chemical-compatibility recommendation.</p>}
         {isVinylEsterResin && <p class="upr-buyer-intro">Share the finished FRP component, exact grade if known, service medium and concentration where relevant, operating temperature where relevant, any stated fire or technical requirement, expected quantity, packaging need, delivery location and required documentation. This supports grade selection without implying chemical compatibility or finished-system approval.</p>}
         {isBisphenolResin && <p class="upr-buyer-intro">Review the current Bisphenol Resin TDS, then share the intended finished application, any stated chemistry or technical requirement, expected quantity, packaging need, delivery location and required documentation. Where a service environment matters, include the medium, concentration and temperature where relevant; this supports product selection without implying chemical compatibility, a formulation or finished-system approval.</p>}
-        {isFiberglassEpoxyResin && <p class="upr-buyer-intro">Share the finished fiberglass or composite component, whether resin only or a complete system is required, the current TDS or catalogue reference, reinforcement form if known, relevant listed process context, required published data or documentation, quantity, packaging need and delivery location. The current documents do not name a confirmed compatible hardener, prescribe a laminate design or establish finished-component approval.</p>}
+        {isFiberglassEpoxyResin && <p class="upr-buyer-intro">Share the finished fiberglass or composite component, whether resin only or a complete system is required, reinforcement form if known, process, required data or documentation, quantity, packaging need and delivery location.</p>}
         {isButtonGradeResin && <p class="button-enquiry-note">Share the expected quantity, intended button or small-moulding requirement, clarity or pigment-colour requirement, casting method if known and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isMekpHardener && <p class="mekp-enquiry-note">Share the base resin grade or system, intended component or application, expected quantity, production process if known and delivery location so we can understand the requirement before preparing a quote.</p>}
         {isEpoxyArtResin && <p class="epoxy-art-enquiry-note">Share the intended finished surface or artwork, substrate if known, whether the requirement is for an open surface coat or contained cast, expected quantity, finish requirement and delivery location so we can understand the requirement before preparing a quote.</p>}
@@ -4302,9 +4263,9 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           messagePlaceholder={isBisphenolResin
             ? 'Intended application, technical or service requirement, required documentation, quantity, packaging need and delivery location'
             : isMarbleResin
-            ? 'Finished marble or stone product, TDS or catalogue reference, appearance or finish requirement, documentation needed, quantity and delivery location'
+            ? 'Finished marble or stone product, appearance or finish requirement, documentation needed, quantity and delivery location'
             : isFiberglassEpoxyResin
-            ? 'Finished fiberglass or composite application, resin only or complete system, TDS or catalogue reference, reinforcement form if known, documentation needed, quantity and delivery location'
+            ? 'Finished fiberglass or composite application, resin only or complete system, reinforcement form if known, documentation needed, quantity and delivery location'
             : undefined}
         />
       </div>

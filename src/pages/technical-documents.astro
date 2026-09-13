@@ -199,9 +199,7 @@ const collectionJsonLd = {
                         <span class="td-doc-name">{p.tdsUrl ? 'Technical Data Sheet' : 'Product Data Sheet'}</span>
                         <span class="td-doc-meta">PDF · {documentSize(p.tdsUrl || p.pdsUrl)}</span>
                       </a>
-                    ) : (
-                      <span class="td-none">Technical Data Sheet not published</span>
-                    )}
+                    ) : null}
                     {p.tdsUrl && p.tdsNote && <p class="td-doc-caution">{p.tdsNote}</p>}
                   </td>
                   {/* No published SDS: the cell stays empty. No "not published" or

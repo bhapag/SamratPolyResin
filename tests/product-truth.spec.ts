@@ -119,8 +119,8 @@ test('GP Gelcoat is not assigned a backbone its data sheet does not state', asyn
   }
 });
 
-test('Product schema asserts manufacturer only for evidenced polyester families', async ({ page }) => {
-  for (const [slug, expected] of [['gp-clear-resin', true], ['bisphenol-resin', false], ['epoxy-hardener', false], ['vinyl-ester-resin', false], ['styrene-monomer', false]] as const) {
+test('Product schema asserts manufacturer for polyester and epoxy resins, not supplied items', async ({ page }) => {
+  for (const [slug, expected] of [['gp-clear-resin', true], ['bisphenol-resin', true], ['fiberglass-epoxy-resin', true], ['epoxy-hardener', false], ['vinyl-ester-resin', false], ['styrene-monomer', false]] as const) {
     await page.goto(`/products/${slug}/`);
     const ld = (await page.locator('script[type="application/ld+json"]').allTextContents()).join(' ');
     expect(/"@type":"Product"[\s\S]*"manufacturer"/.test(ld), slug).toBe(expected);

@@ -52,3 +52,9 @@ test('downloadable PDF exists and matches the current product data', async () =>
   const sds = products.filter((p: any) => p.sdsUrl).length;
   expect(text.replace(/\s+/g, ' ')).toContain(`lists ${tds} Technical Data Sheets, ${sds} Safety Data Sheets`);
 });
+
+test('catalogue PDF links point at the live site, never a local server', async () => {
+  const raw = fs.readFileSync(PDF).toString('latin1');
+  expect(raw).not.toMatch(/localhost|127\.0\.0\.1/);
+  expect(raw).toContain('https://samratpolyresins.in/products/');
+});

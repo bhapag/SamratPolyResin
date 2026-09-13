@@ -45,7 +45,7 @@ const breadcrumbJsonLd = {
 ---
 <Base
   title="Samrat Poly Resins — Resin Manufacturer, Ludhiana"
-  description={`${site.name} is a resin manufacturer at ${site.address.line2}, ${site.address.state}, established ${site.established}. GP polyester, gelcoat, fire-retardant and specialty polyester resins; epoxy systems and FRP materials supplied. Proprietor ${site.proprietor}. GSTIN ${site.gst}.`}
+  description={`${site.name} is a resin manufacturer at ${site.address.line2}, ${site.address.state}, established ${site.established}. GP polyester, gelcoat, fire-retardant, specialty polyester and epoxy resins; FRP materials supplied. ISO 9001:2015 certified. Proprietor ${site.proprietor}. GSTIN ${site.gst}.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(brandPageJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
@@ -66,12 +66,11 @@ const breadcrumbJsonLd = {
         {site.name} is a resin manufacturer based at {site.address.line2},{' '}
         {site.address.state}, established in {site.established} and run by
         proprietor {site.proprietor}. We make GP polyester, gelcoat,
-        fire-retardant and specialty polyester resins, supply epoxy systems,
-        hardeners and FRP materials alongside them — {products.length} published
+        fire-retardant, specialty polyester and epoxy resins, supply hardeners
+        and FRP materials alongside them — {products.length} published
         products in total — and serve FRP and composite manufacturers across
         {' '}{site.statesServed.filter((s) => !s.startsWith('Export')).length} Indian states.
-        The company holds an ISO 9001:2015 certificate of registration for the
-        manufacture and supply of polyester resins and allied products.
+        Quality management is certified to ISO 9001:2015.
       </p>
     </div>
   </section>
@@ -106,7 +105,7 @@ const breadcrumbJsonLd = {
         <li><span>GSTIN</span>{site.gst}</li>
         <li><span>Established</span>{site.established} ({years}+ yrs)</li>
         <li><span>Product Range</span>{products.length}+ resin grades</li>
-        <li><span>Certification</span><a href="/certificates/iso-9001-2015-certificate-current.jpg" target="_blank" rel="noopener">ISO 9001:2015 certificate of registration</a> ({site.certification.issuer}, first registered June 2019, ref. {site.certification.reference}; scope: {site.certification.scope.toLowerCase()})</li>
+        <li><span>Certification</span><a href="/certificates/iso-9001-2015-certificate-current.jpg" target="_blank" rel="noopener">ISO 9001:2015 certified</a> — {site.certification.scope}; certificate {site.certification.reference}, issued by {site.certification.issuer}, valid until {site.certification.validUntil}</li>
       </ul>
     </div>
   </section>

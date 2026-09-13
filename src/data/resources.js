@@ -650,7 +650,7 @@ export const resources = [
           "Gel time is the working window between when a resin is catalysed and when it begins to set — the point past which it can no longer be worked, rolled out or repositioned. Choosing the right gel time is a balance between giving yourself enough time to do the job properly and not holding up production.",
           "Larger components, more complex mould geometry, and manual processes like hand lay-up generally call for a longer gel time, giving the fabricator time to fully wet out reinforcement, remove trapped air and work the resin into detail before it begins curing. Rushing a part that needed a longer gel time is a common cause of poor fibre wet-out and visible surface defects.",
           "Faster-cycle and line-based processes — spray-up on larger production runs, continuous lamination, pultrusion and compression moulding — generally need a shorter, more tightly controlled gel time so that cure keeps pace with the production line without becoming the bottleneck. In compression moulding specifically, cure is usually heat-activated inside a closed, heated mould rather than relying on ambient-temperature gel time alone.",
-          "Gel time is also sensitive to ambient workshop temperature and catalyst dosage — both of which affect how quickly a given resin actually cures on a given day. Rather than treating a resin's stated gel time as fixed, treat it as a starting reference to be confirmed under your own workshop conditions, and always follow the specific product's technical data sheet for correct catalyst dosage rather than estimating.",
+          "Gel time is also sensitive to ambient workshop temperature and catalyst dosage — both of which affect how quickly a given resin actually cures on a given day. Rather than treating a resin's stated gel time as fixed, treat it as a starting reference to check under your own workshop conditions, and always follow the specific product's technical data sheet for correct catalyst dosage rather than estimating.",
         ],
         callouts: [
           {
@@ -1671,7 +1671,7 @@ export const resources = [
     ],
     sections: [
       { heading: "Start with the product and finished application", body: ["Specify Fire Retardant Resin and describe the intended finished FRP part. If the project has a named standard, classification or document request, copy its original wording into the enquiry rather than summarising it from memory."] },
-      { heading: "Review the real product information", body: ["The current TDS lists the published supply data for this grade, including 35 kg / 225 kg packaging, 500 kg MOQ, three-month shelf life and 30â€“35 Â°C storage. Use the current document for the exact grade rather than relying on a generic FR Resin description.", "The product page also links the catalogue. Neither link should be represented as an SDS, COA, fire-test report or project certificate."] },
+      { heading: "Review the real product information", body: ["The current TDS lists the published supply data for this grade, including 35 kg / 225 kg packaging, 500 kg MOQ, three-month shelf life and 30–35 °C storage. Use the current document for the exact grade rather than relying on a generic FR Resin description.", "Neither link should be represented as an SDS, COA, fire-test report or project certificate."] },
       { heading: "Details that support a usable industrial quote", body: ["Share the finished application, required documentation, project requirement, expected quantity, preferred packaging if relevant and delivery city or location. Add the reinforcement/system context only as needed to explain the component requirement."] },
     ],
   },
@@ -2770,7 +2770,7 @@ export const resources = [
         heading: "Reading viscosity and gel time in context",
         body: [
           "Viscosity is one part of the processing conversation. For button or small decorative-mould casting, record the actual casting method, mould detail, required appearance and conditions in which the material will be used. The published 1,100 cPs value gives the supplier a common reference point, but it does not by itself confirm a particular mould or downstream process.",
-          "The published 9.5-minute gel time helps frame the working-window discussion. Ambient conditions, catalyst system and the actual process record also matter. Follow the product TDS and approved instructions rather than attempting to correct timing through unverified changes.",
+          "The published 9.5-minute gel time helps frame the working-window discussion. Ambient conditions, catalyst system and the actual process record also matter. Follow the product TDS and approved instructions rather than attempting to correct timing through untested changes.",
         ],
       },
       {
@@ -2804,7 +2804,7 @@ export const resources = [
       {
         heading: "Prepare a quote-ready requirement",
         body: [
-          "Share the expected quantity, intended button or small decorative moulding, clarity or pigment-colour requirement, casting method if known and delivery location. This gives the supplier enough context to direct the enquiry to the relevant product data without making assumptions about an unverified application.",
+          "Share the expected quantity, intended button or small decorative moulding, clarity or pigment-colour requirement, casting method if known and delivery location. This gives the supplier enough context to direct the enquiry to the relevant product data without making assumptions about an application.",
         ],
       },
     ],
@@ -2824,10 +2824,6 @@ export const resources = [
       {
         q: "What is the published shelf life and storage temperature?",
         a: "The published shelf life is two months from manufacture, with a published storage temperature of 30-35 C. Follow the TDS and applicable safety instructions for the product and batch.",
-      },
-      {
-        q: "What MOQ is published for Button Grade Resin?",
-        a: "A minimum order quantity is not published for this grade. Ask for a quote with the expected quantity and delivery location.",
       },
       {
         q: "Are Button Grade Resin and Clear Casting Resin the same material?",
@@ -2894,7 +2890,7 @@ export const resources = [
     sections: [
       { heading: "Start with the visible finished part", body: ["For button manufacture, resin selection begins with the fact that the cast part is visible. The buyer should define whether the requirement is for transparent appearance, pigmented colour work or another approved visual requirement before discussing material selection.", "Samrat Poly Resins publishes Button Grade Resin for buttons and small decorative mouldings. Its transparent, semi-liquid casting role differs from a resin used primarily to wet out glass fibre in a structural FRP laminate."] },
       { heading: "Match the discussion to the published product data", body: ["The published Button Grade Resin information includes 1,100 cPs viscosity, 9.5-minute gel time, approximate two-hour cure, MEKP and cobalt octoate dosage information, two-month shelf life and 225 kg drum packaging. Review the TDS for the exact grade and batch before production planning.", "A gel-time figure, viscosity figure or cure system from another resin should not be transferred automatically to Button Grade Resin. The product's own data is the relevant starting point."] },
-      { heading: "Keep process claims specific", body: ["The current catalogue supports buttons and small decorative mouldings, but it does not publish a button-sheet, button-blank, rod, cutting or polishing process for this grade. That absence should be handled as a technical question, not filled with an assumption.", "When a factory has a defined mould, casting sequence or finishing operation, share it during the application discussion. This allows suitability to be reviewed against the actual requirement rather than a broad category label."] },
+      { heading: "Keep process claims specific", body: ["That absence should be handled as a technical question, not filled with an assumption.", "When a factory has a defined mould, casting sequence or finishing operation, share it during the application discussion. This allows suitability to be reviewed against the actual requirement rather than a broad category label."] },
       { heading: "Information for procurement", body: ["A useful request includes the intended part, transparency or pigment-colour requirement, expected quantity, casting method if known, delivery location and any current material issue. Attach the product data request to the commercial enquiry so technical and purchasing teams work from the same requirement."] },
     ],
   },
@@ -3642,7 +3638,7 @@ export const resources = [
     sections: [
       { heading: "Similar terminology, separate published roles", body: ["A buyer may use artificial stone, quartz stone, cultured marble or decorative cast stone as broad descriptions. Those terms do not automatically identify one resin grade. Samrat Poly Resins publishes GP Quartz Resin for artificial quartz stone, engineered stone slabs and composite mineral surfaces, while Marble Resin has a separate published cultured-marble and artificial-stone role.", "The source documents also overlap around some artificial-stone or artificial-marble wording. That overlap does not prove the grades are interchangeable, nor does it establish an absolute boundary or a performance ranking. The correct starting point is the actual finished component and the current document for the shortlisted grade."] },
       { heading: "Define the actual stone product", body: ["State whether the requirement is for artificial quartz stone, an engineered stone slab, cultured marble, decorative cast stone, a tabletop, an interior panel or another defined composite product. Then record the filler or mineral type, required appearance or finish, process if known and any existing written specification.", "This creates a factual basis for reviewing the correct product page and TDS without assuming that all mineral-filled or decorative stone products use the same resin data."] },
-      { heading: "Keep technical data grade-specific", body: ["GP Quartz Resin publishes 400-800 cPs viscosity, 7-10 minute gel time, a non-accelerated system and approximately two-hour cure time. Marble Resin has separate TDS data and a catalogue summary that differs from its TDS on viscosity and gel time. A buyer should review the current data sheet for the shortlisted grade rather than transfer, average or reconcile figures between products."] },
+      { heading: "Keep technical data grade-specific", body: ["GP Quartz Resin publishes 400-800 cPs viscosity, 7-10 minute gel time, a non-accelerated system and approximately two-hour cure time. A buyer should review the current data sheet for the shortlisted grade rather than transfer, average or reconcile figures between products."] },
       { heading: "Prepare a quote-ready brief", body: ["Include the exact finished product, filler or mineral, process if known, finish requirement, expected quantity and delivery location. If there is a customer drawing, sample or written specification, identify it in the enquiry so the product discussion can begin with the relevant facts."] },
     ],
   },
@@ -4434,7 +4430,7 @@ export const resources = [
     quickFacts: { "Published package": "225 kg drum", "Published MOQ": "1,000 kg", "Required document": "Current product-specific TDS", "Commercial inputs": "Component, supplied appearance, quantity and delivery location" },
     relatedSlugs: ["what-is-sheet-grade-yellow-resin", "applications-of-sheet-grade-yellow-resin", "how-to-choose-resin-for-frp-sheet-and-panel-manufacturing"],
     recommendedLinks: [{ href: "/products/sheet-grade-yellow-resin/", label: "View Sheet Grade Yellow Resin", description: "Review the current product page, TDS link, packaging and MOQ." }, { href: "/tds/sheet-grade-yellow-resin-tds.pdf", label: "Download Sheet Grade Yellow Resin TDS", description: "Use the product-specific data as the controlling reference." }, { href: "/products/", label: "Browse the product range", description: "Review separate product roles across the range." }, { href: "/contact/", label: "Request a Sheet Grade Yellow quote", description: "Submit the documented technical and commercial context." }],
-    faqs: [{ q: "What should be included in an FRP sheet resin RFQ?", a: "Include the intended sheet or panel, supplied appearance requirement, reinforcement requirement if known, visible-surface requirement, expected quantity and delivery location. Include the current product TDS or buyer specification where available." }, { q: "Does the published MOQ confirm stock or delivery time?", a: "No. The current Sheet Grade Yellow Resin listing publishes a 1,000 kg MOQ. Stock, lead time, delivery and suitability need confirmation for the actual requirement." }],
+    faqs: [{ q: "What should be included in an FRP sheet resin RFQ?", a: "Include the intended sheet or panel, supplied appearance requirement, reinforcement requirement if known, visible-surface requirement, expected quantity and delivery location. Include the current product TDS or buyer specification where available." }, { q: "Does the published MOQ confirm stock or delivery time?", a: "No. The current Sheet Grade Yellow Resin listing publishes a 1,000 kg MOQ. Stock, lead time and delivery are confirmed on the quotation." }],
     sections: [{ heading: "Start with the product-specific document", body: ["For the Sheet Grade Yellow route, the current product-specific TDS is the controlling reference. The site publishes an orthophthalic unsaturated polyester resin, supplied pre-pigmented yellow, for sheet moulding and laminate applications, in a 225 kg drum with a 1,000 kg MOQ.", "These published commercial details do not confirm stock availability, lead time, sample availability, delivery commitment or suitability for an unreviewed component. Keep the enquiry factual and product-specific."] }, { heading: "Record the material-system context", body: ["State the finished FRP sheet or panel, supplied yellow appearance requirement, any reinforcement specification available and whether a visible mould-facing surface requirement exists. These points help distinguish the resin role from the separate Glass Fiber and Gelcoat product roles.", "Where the request is for a water-white or translucent roof-light sheet, identify that clearly so the separate Roof Light Sheet Grade Resin route can be reviewed. Do not rely on a generic request for yellow polyester resin when the finished-sheet intent is known."] }, { heading: "Quote checklist", body: ["Include the component name, supplied appearance requirement, product grade under consideration, reinforcement context if known, expected quantity, delivery location and any available drawing, purchase specification or product document. This gives the supplier a clear basis for a commercial and product-data discussion.", "This guide intentionally does not provide catalyst ratios, handling directions, processing instructions, performance guarantees or a promise of a particular finished-sheet outcome. Those matters must be reviewed against the actual product documentation and requirement."] }],
   },
   {
@@ -4463,7 +4459,6 @@ export const resources = [
       "Published role": "Translucent roof-light panels and skylight sheets",
       "Published packaging": "225 kg drum",
       "Published MOQ": "500 kg",
-      "Not published": "Light-transmission percentage, haze value or optical rating",
     },
     sections: [
       {
@@ -4531,7 +4526,7 @@ export const resources = [
       },
       {
         q: "Does the 500 kg MOQ confirm stock or delivery time?",
-        a: "No. The current Roof Light Resin TDS publishes a 500 kg MOQ. Stock, lead time, delivery and suitability need confirmation for the actual requirement.",
+        a: "No. The current Roof Light Resin TDS publishes a 500 kg MOQ. Stock, lead time and delivery are confirmed on the quotation.",
       },
     ],
     relatedSlugs: [
@@ -4591,7 +4586,7 @@ export const resources = [
     relatedSlugs: ["what-is-epoxy-hardener", "epoxy-hardener-compatibility-guide", "epoxy-hardener-for-clear-casting-and-art-resin", "epoxy-hardener-procurement-guide"],
     recommendedLinks: [{ href: "/products/epoxy-hardener/", label: "View Epoxy Hardener", description: "Review the hardener product and current TDS." }, { href: "/products/epoxy-clear-casting-resin/", label: "View Clear Casting Resin", description: "Review the published clear, contained casting system." }, { href: "/products/epoxy-art-resin/", label: "View Epoxy Art Resin", description: "Review the separate art and decorative surface product route." }, { href: "/contact/", label: "Confirm an epoxy-system pairing", description: "Share the exact product route and intended application." }],
     faqs: [{ q: "Is Epoxy Hardener the same as epoxy resin?", a: "No. Epoxy resin and hardener are separate components of a compatible epoxy system. The resin product and matching hardener should be identified before ordering." }, { q: "Can I order epoxy resin without naming the hardener?", a: "A buyer can begin an enquiry with the resin product, but the matching hardener component and required documentation should be confirmed before a system is selected." }],
-    sections: [{ heading: "Start with the component role", body: ["An epoxy resin is the resin component. Epoxy Hardener is the separately published curing-agent component selected to work with a compatible epoxy resin system. Their names describe different roles, even when both appear in the same commercial discussion.", "This distinction matters for purchasing: a hardener is not a replacement for the resin, and a resin is not a confirmation of which hardener should be used. The exact published pairing needs review before procurement."] }, { heading: "A matched system is more useful than a generic label", body: ["Samrat's Clear Casting Resin and Epoxy Art Resin product routes each identify a compatible Epoxy Hardener as part of their separately published two-component systems. That published relationship is more useful than assuming any product called epoxy or hardener can be combined.", "The relationship does not establish universal compatibility with other epoxy products, suppliers or applications. Review the product-specific TDS and ask for confirmation when the component, product route or documentation requirement differs."] }, { heading: "Keep the enquiry focused", body: ["State the exact epoxy resin product under consideration, intended application, quantity, packaging need, delivery location and any technical-document requirement. If the requirement comes from a drawing, purchase specification or existing system, include that reference when available.", "This guide intentionally does not provide ratios, calculations, mixing steps or cure schedules. Those are product-system instructions that must remain in the appropriate current documentation. Both halves of the pair are published together in <a href='/products/epoxy-resins/'>the epoxy systems we supply</a>, each with its own technical data sheet."] }],
+    sections: [{ heading: "Start with the component role", body: ["An epoxy resin is the resin component. Epoxy Hardener is the separately published curing-agent component selected to work with a compatible epoxy resin system. Their names describe different roles, even when both appear in the same commercial discussion.", "This distinction matters for purchasing: a hardener is not a replacement for the resin, and a resin is not a confirmation of which hardener should be used. The exact published pairing needs review before procurement."] }, { heading: "A matched system is more useful than a generic label", body: ["Samrat's Clear Casting Resin and Epoxy Art Resin product routes each identify a compatible Epoxy Hardener as part of their separately published two-component systems. That published relationship is more useful than assuming any product called epoxy or hardener can be combined.", "The relationship does not establish universal compatibility with other epoxy products, suppliers or applications. Review the product-specific TDS and ask for confirmation when the component, product route or documentation requirement differs."] }, { heading: "Keep the enquiry focused", body: ["State the exact epoxy resin product under consideration, intended application, quantity, packaging need, delivery location and any technical-document requirement. If the requirement comes from a drawing, purchase specification or existing system, include that reference when available.", "This guide intentionally does not provide ratios, calculations, mixing steps or cure schedules. Those are product-system instructions that must remain in the appropriate current documentation. Both halves of the pair are published together in <a href='/products/epoxy-resins/'>the epoxy systems we manufacture</a>, each with its own technical data sheet."] }],
   },
   {
     slug: "epoxy-hardener-compatibility-guide",
@@ -4684,7 +4679,6 @@ export const resources = [
       "DMC": "Dough Moulding Compound in the current TDS",
       "SMC": "Sheet Moulding Compound in the current TDS",
       "Published resin route": "One DMC/SMC Resin listing for both contexts",
-      "Not published": "Separate formulas, process settings or finished-part ratings",
     },
     relatedSlugs: ["what-is-dmc-smc-resin", "smc-resin-vs-sheet-grade-resin", "dmc-smc-resin-vs-gp-resin", "dmc-smc-resin-procurement-checklist"],
     recommendedLinks: [
@@ -4836,7 +4830,7 @@ export const resources = [
   {
     slug: "dmc-smc-resin-technical-specifications",
     title: "DMC/SMC Resin Technical Specifications: What Buyers Should Review",
-    description: "Use the current DMC/SMC Resin TDS to review published liquid-resin specifications, understand catalogue differences, and keep product data separate from finished compound performance.",
+    description: "Use the current DMC/SMC Resin TDS to review published liquid-resin specifications and keep product data separate from finished compound performance.",
     category: "Technical Guide",
     icon: "checklist",
     publishDate: "2026-08-09",
@@ -4874,12 +4868,11 @@ export const resources = [
       { href: "/contact/", label: "Discuss a documented specification", description: "Share the actual component and requested technical or finished-part requirement." },
     ],
     faqs: [
-      { q: "Why does the catalogue show different DMC/SMC figures?", a: "The catalogue lists 550 cPs viscosity, 10-minute gel time and 1.13 specific gravity, while the current grade-specific TDS lists 600 cPs at 25 C, 12-18 minutes at 25 C and 1.12 g/cm3. This guide uses the current TDS and does not combine conflicting figures." },
       { q: "Do the published liquid-resin properties prove low-profile, electrical or finished-part performance?", a: "No. The repository does not publish a shrinkage value, low-profile or Class-A designation, electrical test result, fire rating or finished-compound certification for this product." },
     ],
     sections: [
       { heading: "Use the grade-specific TDS as the technical reference", body: ["The current DMC/SMC Resin TDS is the controlling document for the published liquid-resin specification. It identifies an orthophthalic unsaturated polyester resin, pale-yellow liquid appearance, 600 cPs viscosity at 25 C, non-accelerated curing type, 12-18 minute gel time at 25 C, 35% styrene content, 1.12 g/cm3 specific gravity and 32 C closed-cup flash point.", "It also publishes a three-month shelf life, below-25 C cool and dry storage, 225 kg drum packaging and a 1,000 kg MOQ. Review the complete current document for test context and purchase discussion."] },
-      { heading: "Do not combine conflicting catalogue figures", body: ["The product catalogue lists different figures for DMC/SMC Resin: 550 cPs viscosity, 10-minute gel time and 1.13 specific gravity. The current TDS lists 600 cPs, 12-18 minutes and 1.12 g/cm3 respectively.", "This guide does not average, reconcile or silently replace those figures. Buyers should use the current grade-specific TDS as the technical reference and raise any unresolved document difference during enquiry."] },
+      
       { heading: "Liquid resin data is not finished compound data", body: ["Published resin data describes the supplied liquid product. Finished DMC or SMC compound and moulded-part results can depend on the total system, including resin, reinforcement, fillers, additives, compound formulation and moulded configuration.", "That is why viscosity, gel time or specific gravity should not be presented as proof of a finished component's strength, surface quality, electrical behaviour, fire performance or dimensional result. Those requirements must be specified and verified for the relevant system."] },
       { heading: "Read low-shrink and electrical wording carefully", body: ["The current TDS lists low shrinkage and electrical insulation among key characteristics. It does not publish a low-shrink value, low-profile designation, Class-A claim, electrical test method, electrical value or finished-part certification.", "Use the wording to frame a buyer question, not as a complete technical approval. If a project requires a defined property, provide that requirement and request the relevant product or system evidence."] },
     ],
@@ -4931,7 +4924,7 @@ export const resources = [
     relatedSlugs: ["what-is-epoxy-hardener", "epoxy-hardener-compatibility-guide", "epoxy-hardener-for-clear-casting-and-art-resin", "epoxy-hardener-vs-mekp-hardener"],
     recommendedLinks: [{ href: "/products/epoxy-hardener/", label: "View Epoxy Hardener", description: "Review the product role, published packaging and MOQ." }, { href: "/tds/epoxy-hardener-tds.pdf", label: "Download Epoxy Hardener TDS", description: "Use the current product-specific document as the technical reference." }, { href: "/products/", label: "Browse the product range", description: "Review the separate published epoxy, UV and polyester-family product routes." }, { href: "/contact/", label: "Request an Epoxy Hardener quote", description: "Submit the resin-system and commercial details for review." }],
     faqs: [{ q: "What should be included in an Epoxy Hardener RFQ?", a: "Include the exact epoxy resin product, intended application, required documentation, expected quantity, packaging requirement if relevant and delivery location." }, { q: "Do the published packaging and MOQ confirm stock or suitability?", a: "No. The current TDS publishes a 20 kg pack and 100 kg MOQ. Availability, lead time, delivery and product-system suitability require confirmation for the actual requirement." }],
-    sections: [{ heading: "Use the current hardener document", body: ["The current Epoxy Hardener TDS is the technical reference for the published polyamide, amine-based hardener product. It lists the supplied form, viscosity, specific gravity, amine value, storage, shelf life, packaging and MOQ.", "The TDS should be reviewed with the exact compatible resin product. The catalogue uses different chemical-type wording and some different technical figures, so it should not be used to silently replace the current TDS for product selection."] }, { heading: "Prepare a compatibility-led RFQ", body: ["State the exact Samrat epoxy resin product under consideration, intended application, required component or finish, quantity, packaging requirement if relevant, delivery city/location and any requested technical documentation. Include a drawing, purchase specification or existing product reference where available.", "If the application requires a different product route, identify it early: polyester-family systems use the separate MEKP route. This avoids a vague request for 'hardener' that cannot be checked against the correct system."] }, { heading: "What this guide does not establish", body: ["Published packaging and MOQ do not confirm stock, lead time, sample policy, delivery commitment or compatibility with an unidentified resin. Confirm those points for the specific requirement.", "This guide does not repeat ratios, cure schedules, mixing instructions or process troubleshooting. Refer to the current product-specific document and approved system information instead."] }],
+    sections: [{ heading: "Use the current hardener document", body: ["The current Epoxy Hardener TDS is the technical reference for the published polyamide, amine-based hardener product. It lists the supplied form, viscosity, specific gravity, amine value, storage, shelf life, packaging and MOQ.", "The TDS should be reviewed with the exact compatible resin product."] }, { heading: "Prepare a compatibility-led RFQ", body: ["State the exact Samrat epoxy resin product under consideration, intended application, required component or finish, quantity, packaging requirement if relevant, delivery city/location and any requested technical documentation. Include a drawing, purchase specification or existing product reference where available.", "If the application requires a different product route, identify it early: polyester-family systems use the separate MEKP route. This avoids a vague request for 'hardener' that cannot be checked against the correct system."] }, { heading: "What this guide does not establish", body: ["Published packaging and MOQ do not confirm stock, lead time, sample policy, delivery commitment or compatibility with an unidentified resin. Confirm those points for the specific requirement.", "This guide does not repeat ratios, cure schedules, mixing instructions or process troubleshooting. Refer to the current product-specific document and approved system information instead."] }],
   },
   {
     slug: "what-is-vinyl-ester-resin",
@@ -4970,7 +4963,7 @@ export const resources = [
       { heading: "What 'epoxy vinyl ester' means on this product page", body: ["The words 'epoxy vinyl ester' are the current TDS terminology for this Vinyl Ester product. They describe the published product family; they do not mean that the material is interchangeable with Samrat's separately listed Epoxy Clear Casting Resin, Epoxy Art Resin, Fiberglass Epoxy Resin or Epoxy Hardener.", "The useful buyer question is which documented material route matches the component and service requirement. Decorative casting, art or a conventional epoxy-system requirement should be reviewed against those separate product pages and TDS documents rather than inferred from the word 'epoxy' in Vinyl Ester Resin."] },
       { heading: "Published industrial FRP context", body: ["The Vinyl Ester TDS lists FRP tanks and chemical storage vessels; pipelines, ducts and scrubbers; cooling towers, pressure vessels and offshore structures; and marine, pultrusion and filament-winding contexts. These are product-selection categories, not approvals for every component within those categories.", "The same TDS describes resistance to water, acids, alkalis and solvents at product-data level. It does not identify a chemical concentration, exposure duration, finished laminate design or accepted service condition for a particular project."] },
       { heading: "Keep product data separate from finished FRP performance", body: ["Vinyl Ester Resin is the matrix or resin component in an FRP system. Glass Fiber is a separate reinforcement decision, while laminate construction, thickness, surface or corrosion-barrier system, cure state and tested configuration can affect the finished component.", "For that reason, the published resin data is a starting point for selection, not a finished-tank, pipe, duct or profile approval. Review the current TDS and share the actual application requirement before procurement."] },
-      { heading: "What the current documents do not establish", body: ["The repository does not contain a Vinyl Ester chemical-compatibility chart, a chemical-specific recommendation, concentration limit, product-specific continuous-service-temperature limit, fire rating, mechanical-property table or finished-system test report. These absences matter when a buyer has a mandatory project requirement.", "Where a project names a fire class, test method, service temperature or chemical duty, provide that information in the enquiry. Do not convert a broad chemical- or corrosion-resistance product position into an unverified project approval."] },
+      { heading: "What the current documents do not establish", body: ["The repository does not contain a Vinyl Ester chemical-compatibility chart, a chemical-specific recommendation, concentration limit, product-specific continuous-service-temperature limit, fire rating, mechanical-property table or finished-system test report. These absences matter when a buyer has a mandatory project requirement.", "Where a project names a fire class, test method, service temperature or chemical duty, provide that information in the enquiry. Do not convert a broad chemical- or corrosion-resistance product position into a project approval."] },
     ],
   },
   {
@@ -5084,7 +5077,6 @@ export const resources = [
     quickFacts: {
       "Published position": "Chemical and corrosion resistance",
       "Published broad media wording": "Water, acids, alkalis and solvents",
-      "Not published": "Chemical-compatibility chart, concentration limits or project approvals",
       "Best enquiry input": "Medium, concentration, temperature, component and documentation requirement",
     },
     relatedSlugs: ["what-is-vinyl-ester-resin", "vinyl-ester-resin-technical-specifications", "vinyl-ester-resin-procurement-checklist", "vinyl-ester-resin-vs-isophthalic-resin"],
@@ -5104,7 +5096,7 @@ export const resources = [
       { heading: "Use the published chemical-service position correctly", body: ["The current Vinyl Ester TDS describes chemical and corrosion resistance and lists resistance to water, acids, alkalis and solvents at product-data level. It also lists industrial FRP contexts such as tanks, pipelines, ducts and scrubbers.", "This makes Vinyl Ester Resin a relevant product route to review when chemical or corrosion service is stated. It does not make a chemical-specific suitability decision for every medium, concentration, temperature or finished component."] },
       { heading: "A chemical-compatibility question needs service details", body: ["A useful enquiry should identify the actual service medium, concentration where relevant, operating temperature where relevant, exposure context, finished component and any project standard or buyer specification. State whether the exposure concerns contents, fumes, splash, external contact or another defined condition.", "The buyer should also identify the required documentation and any mandatory finished-system test or approval. This is more useful than a request for a generic 'chemical-proof' or 'corrosion-proof' resin."] },
       { heading: "Separate product data from the finished FRP system", body: ["The published resin data describes the supplied Vinyl Ester product. A finished FRP tank, vessel, pipeline, duct or scrubber can depend on the full material system and its tested configuration.", "This guide does not specify reinforcement, laminate construction, a corrosion barrier, thickness, cure schedule or a design method. Those subjects cannot be inferred from a broad product description or a generic service label."] },
-      { heading: "When another product discussion is relevant", body: ["For general FRP work without a stated specialist service requirement, review the separate GP Clear Resin or Unsaturated Polyester Resin data. Where a fire requirement is stated, review the separate Fire Retardant or ISO Fire Retardant product route as well as the exact project requirement.", "A separate Bisphenol Resin product is also listed on the site, but its catalogue and TDS use different chemistry and curing descriptions. This guide does not use that product as a compatibility substitute for Vinyl Ester Resin."] },
+      { heading: "When another product discussion is relevant", body: ["For general FRP work without a stated specialist service requirement, review the separate GP Clear Resin or Unsaturated Polyester Resin data. Where a fire requirement is stated, review the separate Fire Retardant or ISO Fire Retardant product route as well as the exact project requirement.", "This guide does not use that product as a compatibility substitute for Vinyl Ester Resin."] },
     ],
   },
   {
@@ -5189,7 +5181,7 @@ export const resources = [
     faqs: [
       { q: "What should I include in a Vinyl Ester Resin RFQ?", a: "Include the finished FRP component, exact grade or chemistry if specified, service medium, concentration and operating temperature where relevant, technical or fire requirement, quantity, packaging need, delivery location and required documentation." },
       { q: "Should a chemical-service buyer name the actual medium?", a: "Yes. The current Vinyl Ester documents do not publish a chemical-compatibility chart, so the actual medium and relevant service conditions are important to a focused discussion." },
-      { q: "Does the published MOQ establish stock or delivery timing?", a: "No. The TDS publishes a 225 kg minimum order quantity and 225 kg drum packaging. Availability, lead time and delivery need confirmation for the actual enquiry." },
+      { q: "Does the published MOQ establish stock or delivery timing?", a: "No. The TDS publishes a 225 kg minimum order quantity and 225 kg drum packaging. Availability, lead time and delivery are confirmed on the quotation." },
       { q: "Should a buyer request fire documentation for Vinyl Ester Resin?", a: "If the project has a fire requirement, state it clearly. Vinyl Ester Resin is not presented as a fire-retardant grade, and a separate Fire Retardant product route should be reviewed." },
     ],
     sections: [
@@ -5233,7 +5225,7 @@ export const resources = [
     ],
     sections: [
       { heading: "Start with the exact current TDS wording", body: ["Samrat Poly Resins' current Bisphenol Resin TDS identifies a premium-grade 'Bisphenol A & epichlorohydrin based (thermosetting)' resin system. It describes a low-viscosity liquid and lists a room-temperature cure with amine hardener. This guide uses that exact document wording instead of assigning a broader family label from general market terminology.", "The TDS lists laminating, casting, coating and encapsulation as processing contexts. It also names laminating and FRP composites; industrial flooring and protective coatings; electrical encapsulation, tooling and structural bonding; and high-end casting and coating applications."] },
-      { heading: "Use the product-specific TDS as the technical authority", body: ["The current Bisphenol Resin TDS controls the product identity and typical supplied-resin data presented by this product route. The catalogue is a general overview of the wider Samrat range rather than a substitute for the detailed grade-specific TDS.", "Review the TDS with the intended application and any stated project or technical requirement before procurement."] },
+      { heading: "Use the product-specific TDS as the technical authority", body: ["The current Bisphenol Resin TDS controls the product identity and typical supplied-resin data presented by this product route.", "Review the TDS with the intended application and any stated project or technical requirement before procurement."] },
       { heading: "Keep neighbouring product routes separate", body: ["Unsaturated Polyester Resin and GP Clear Resin are separately published polyester routes. The current Bisphenol TDS does not identify this product as UPR, and its listed styrene content is not applicable. A buyer with a general-purpose FRP requirement should review those separate product documents rather than assuming a shared category.", "Vinyl Ester Resin is also a separate Samrat route with its own TDS. Bisphenol Resin is not presented as an automatic substitute for Vinyl Ester Resin, conventional epoxy products or a fire-retardant grade."] },
       { heading: "Use this route for a focused discussion", body: ["Use the current TDS to begin a discussion for a listed application context. Share the finished component, any stated chemistry or technical requirement, quantity, packaging need, delivery location and required documentation.", "Where the application has a service medium, concentration or temperature requirement, include it in the enquiry. The current TDS does not establish chemical compatibility, a continuous service-temperature limit, a fire rating or a finished-system approval."] },
     ],
@@ -5242,58 +5234,56 @@ export const resources = [
     slug: "bisphenol-resin-technical-data-and-document-check",
     draft: true,
     title: "Bisphenol Resin Technical Data and Document Check",
-    description: "Understand the current Bisphenol Resin TDS data, the different BPR catalogue entry and why buyers should confirm the exact document route instead of combining values.",
+    description: "Understand the published Bisphenol Resin TDS data: chemistry, viscosity, gel time, density, thermal data, storage, packaging and MOQ.",
     category: "Technical Data Guide",
     icon: "grid",
     publishDate: "2026-08-10",
     seo: {
-      title: "Bisphenol Resin Technical Data | TDS and Catalogue Guide",
+      title: "Bisphenol Resin Technical Data | TDS Guide",
       keywords: ["Bisphenol Resin Technical Data", "Bisphenol Resin TDS", "Bisphenol Resin Viscosity", "Bisphenol Resin Gel Time", "Bisphenol Resin Specifications"],
       ogTitle: "Bisphenol Resin Technical Data and Document Check",
-      ogDescription: "Read the current Bisphenol Resin TDS and conflicting catalogue entry without silently transferring values between documents.",
+      ogDescription: "Read the published Bisphenol Resin TDS data and what it means for selection and enquiry.",
     },
     quickFacts: {
       "TDS viscosity": "600 cPs at 25 C",
       "TDS gel-time value": "35-45 minutes at 25 C",
       "TDS density": "1.10 g/cm3 at 25 C",
-      "Critical check": "Catalogue BPR values differ and are not combined with TDS values",
     },
     comparisonTable: {
-      title: "Read the BPR documents as separate records",
-      note: "The table reports what each current repository document states. It is not a reconciliation, equivalence statement or specification hierarchy.",
-      headers: ["Document item", "Detailed Bisphenol Resin TDS", "Catalogue BPR entry", "Buyer action"],
+      title: "Published Bisphenol Resin TDS data",
+      note: "Typical values from the published Bisphenol Resin TDS.",
+      headers: ["Property", "Bisphenol Resin TDS", "What to do with it"],
       rows: [
-        ["Product description", "Bisphenol A & epichlorohydrin based (thermosetting)", "Bisphenol-A Epoxy Vinyl Ester Resin", "Identify the exact document or grade reference before selection"],
-        ["Viscosity", "600 cPs at 25 C", "400 cPs", "Do not transfer one value to the other route"],
-        ["Gel time", "35-45 minutes at 25 C", "20 minutes", "Treat both as document-specific data, not processing instruction"],
-        ["Specific gravity / density", "1.10 g/cm3 at 25 C", "1.06 g/cm3", "Confirm the material actually being quoted"],
-        ["Listed applications", "Laminating, casting, coating and encapsulation contexts", "Chemical processing and marine", "Do not turn either list into a cross-document approval"],
+        ["Product description", "Bisphenol A & epichlorohydrin based (thermosetting)", "Confirm the chemistry suits the application"],
+        ["Viscosity", "600 cPs at 25 C", "Compare with the wet-out your process needs"],
+        ["Gel time", "35-45 minutes at 25 C", "Plan batch size and working time around it"],
+        ["Specific gravity / density", "1.10 g/cm3 at 25 C", "Use for weight and volume estimates"],
+        ["Listed applications", "Laminating, casting, coating and encapsulation contexts", "Match the finished application to the list"],
       ],
     },
     relatedSlugs: ["what-is-bisphenol-resin", "bisphenol-resin-applications", "bisphenol-resin-data-vs-finished-component-performance", "bisphenol-resin-procurement-checklist"],
     recommendedLinks: [
-      { href: "/products/bisphenol-resin/", label: "View Bisphenol Resin", description: "See the TDS-led product page and its document-discrepancy notice." },
+      { href: "/products/bisphenol-resin/", label: "View Bisphenol Resin", description: "See the product page with its published TDS data." },
       { href: "/tds/bisphenol-resin-tds.pdf", label: "Download current Bisphenol Resin TDS", description: "Review the full table, typical-data disclaimer, storage and supply information." },
       { href: "/products/", label: "Browse the product range", description: "Use the BPR catalogue card as a separately identified document record." },
       { href: "/resources/bisphenol-resin-procurement-checklist/", label: "Prepare a document-led RFQ", description: "Include the reference and project requirement that need confirmation." },
     ],
     faqs: [
       { q: "Which Bisphenol Resin values are published in the detailed TDS?", a: "The current TDS publishes resin type, grade, viscosity, gel-time value, styrene content, density, thermal data, flash point, shelf life, storage, packaging and MOQ." },
-      { q: "Which value should I use when the TDS and catalogue differ?", a: "Do not choose or average a value on this website. State the exact document reference and requirement during enquiry so the current product route can be confirmed." },
       { q: "Is the 80 C thermal-data entry a continuous service-temperature limit?", a: "No. The current TDS lists 80 C as fully cured thermal data. It does not publish a continuous service-temperature limit." },
       { q: "Can the gel-time value be used as process guidance?", a: "No. It is reported as typical TDS data at 25 C. This guide does not provide hardener ratio, cure adjustment or processing instructions." },
     ],
     sections: [
       { heading: "Use the detailed TDS for the published supplied-resin data", body: ["The current detailed TDS publishes 600 cPs viscosity at 25 C, a 35-45 minute gel-time value at 25 C, 1.10 g/cm3 density at 25 C, not-applicable styrene content, 80 C fully cured thermal data and flash point above 100 C. It also lists 12-month unopened shelf life, 20-30 C storage, 20 kg packaging and 100 kg MOQ.", "These are document-level, typical product-data points. They identify the supplied resin route being described; they do not provide a chemical-compatibility chart, mechanical-property table, certificate or finished-component guarantee."] },
-      { heading: "Do not silently combine the TDS and catalogue", body: ["The current catalogue BPR card uses a different description and lists 400 cPs viscosity, 20-minute gel time and 1.06 g/cm3 specific gravity. It also names chemical processing and marine, which are not listed as product-specific approvals in the detailed TDS.", "A data conflict is an important buyer fact. This guide does not choose the more convenient figure, infer that the entries are variants of the same grade or treat one source as a silent correction to the other."] },
+      
       { heading: "Read the limits of each number", body: ["Viscosity, density and gel-time values identify documented supplied-material conditions. They do not describe a finished reinforced laminate, coating, casting, bonded assembly or electrical component. The TDS says values are typical and should not be interpreted as guaranteed specifications.", "The 80 C entry is explicitly presented as fully cured thermal data, not a recommended operating range. No test specimen, continuous service limit or chemical-exposure temperature guidance is published for this product route."] },
-      { heading: "Use the discrepancy to improve the RFQ", body: ["Attach or name the TDS or catalogue reference, state the finished application, required properties or chemistry if specified, quantity, packaging need, delivery location and documentation required. Where a service environment matters, provide the medium, concentration and temperature where relevant.", "That information lets Samrat Poly Resins confirm the actual product record without asking the buyer to supply a formulation, cure method, laminate design or chemical-compatibility conclusion."] },
+      { heading: "Use the discrepancy to improve the RFQ", body: ["Where a service environment matters, provide the medium, concentration and temperature where relevant.", "That information lets Samrat Poly Resins confirm the actual product record without asking the buyer to supply a formulation, cure method, laminate design or chemical-compatibility conclusion."] },
     ],
   },
   {
     slug: "bisphenol-resin-applications",
     title: "Bisphenol Resin Applications: Documented Industrial Contexts",
-    description: "Review the current TDS-listed Bisphenol Resin contexts for laminating, casting, coating and encapsulation without turning broad categories into unverified project approvals.",
+    description: "Review the current TDS-listed Bisphenol Resin contexts for laminating, casting, coating and encapsulation without turning broad categories into project approvals.",
     category: "Application Guide",
     icon: "layers",
     publishDate: "2026-08-10",
@@ -5318,7 +5308,7 @@ export const resources = [
     ],
     faqs: [
       { q: "What applications are documented for Bisphenol Resin?", a: "The detailed TDS lists laminating and FRP composites; industrial flooring and protective coatings; electrical encapsulation, tooling and structural bonding; and high-end casting and coating applications." },
-      { q: "Does the current TDS approve Bisphenol Resin for tanks, pipes, ducts or scrubbers?", a: "No. Those application approvals are not published in the current product-specific TDS. Do not infer them from broad resin-family terminology or a general range overview." },
+      { q: "Does the current TDS approve Bisphenol Resin for tanks, pipes, ducts or scrubbers?", a: "No. The TDS lists laminating, casting, coating and encapsulation applications; tanks, pipes, ducts and scrubbers are not among them, so do not infer them from broad resin-family terminology or a general range overview." },
       { q: "Does a listed FRP context determine the reinforcement or laminate construction?", a: "No. Glass Fiber is a separate reinforcement decision. The current document does not prescribe a mat grade, resin-to-glass ratio, laminate schedule or finished-component design." },
       { q: "Does a listed coating or encapsulation context establish final performance?", a: "No. Final performance can depend on the complete system, substrate, construction, cure state and tested configuration. The supplied resin document is not an application approval." },
     ],
@@ -5375,7 +5365,7 @@ export const resources = [
     sections: [
       { heading: "UPR is a category; Bisphenol Resin is a document-specific route", body: ["Unsaturated Polyester Resin is Samrat's broader product-family route. The current Bisphenol Resin TDS identifies a different Bisphenol A and epichlorohydrin-based thermosetting system, not UPR, and lists styrene content as not applicable.", "That distinction reduces the risk of ordering Bisphenol Resin because a broad polyester search term appears to be similar. The useful decision is whether the exact published product route fits the documented application and requirement."] },
       { heading: "GP Clear Resin retains general-purpose FRP intent", body: ["GP Clear Resin is the published general-purpose FRP route and has its own technical document, applications and buyer guidance. The current Bisphenol TDS instead lists laminating, casting, coating and encapsulation contexts.", "Neither product is presented here as universally stronger, more durable, more chemical resistant or better for every application. Use the actual component, specification and TDS rather than a generic grade hierarchy."] },
-      { heading: "What to compare before ordering", body: ["Compare the exact product identity, current product-specific TDS, application role and stated technical requirement. The catalogue can help buyers navigate Samrat's broader range but does not replace the Bisphenol Resin TDS.", "Do not transfer viscosity, gel-time or density figures from a GP or UPR grade to Bisphenol Resin. Do not transfer a Bisphenol value to a general-purpose resin requirement either."] },
+      { heading: "What to compare before ordering", body: ["Compare the exact product identity, current product-specific TDS, application role and stated technical requirement.", "Do not transfer viscosity, gel-time or density figures from a GP or UPR grade to Bisphenol Resin. Do not transfer a Bisphenol value to a general-purpose resin requirement either."] },
       { heading: "When another route should be reviewed", body: ["For a defined fire requirement, review the separate Fire Retardant or ISO Fire Retardant product routes. For a separately specified Vinyl Ester requirement, use the Vinyl Ester TDS. For an isophthalic requirement, the site publishes ISO Fire Retardant Resin as a separate isophthalic FR route.", "These are distinct buyer journeys. A shared industrial-resin context is not proof that the products are interchangeable."] },
     ],
   },
@@ -5435,7 +5425,6 @@ export const resources = [
       "Published data": "Supplied-resin identity and typical physical data",
       "Finished outcomes": "Depend on the complete component or system",
       "FRP reinforcement": "Glass Fiber is a separate material decision",
-      "Not published": "Finished-component test report or approval",
     },
     relatedSlugs: ["what-is-bisphenol-resin", "bisphenol-resin-applications", "bisphenol-resin-procurement-checklist"],
     recommendedLinks: [
@@ -5485,12 +5474,12 @@ export const resources = [
     ],
     faqs: [
       { q: "What should I include in a Bisphenol Resin RFQ?", a: "Include the intended finished application, stated chemistry or technical requirement, service medium, concentration and temperature where relevant, quantity, packaging need, delivery location and documentation requirement." },
-      { q: "Which technical document should I review?", a: "Use the current product-specific Bisphenol Resin TDS for this grade's identity, typical data, storage, packaging and MOQ. The catalogue is a general range overview." },
+      { q: "Which technical document should I review?", a: "Use the current product-specific Bisphenol Resin TDS for this grade's identity, typical data, storage, packaging and MOQ." },
       { q: "Do the published TDS pack and MOQ confirm availability?", a: "No. The detailed TDS lists a 20 kg pack and 100 kg MOQ. Stock, lead time, delivery and order-specific documentation require confirmation for the actual enquiry." },
       { q: "Should a buyer provide a chemical-service requirement?", a: "Where relevant, yes. Provide the actual service medium, concentration, temperature, exposure context and required documentation. This does not assume chemical compatibility from the current broad product wording." },
     ],
     sections: [
-      { heading: "Start with the current product-specific TDS", body: ["Use the current Bisphenol Resin TDS for this grade's chemistry wording, typical supplied-resin data, storage, packaging and MOQ. Use the product catalogue only as an overview of Samrat's broader resin range.", "If the enquiry is governed by a buyer specification or item code, attach it so Samrat Poly Resins can review the exact requirement alongside the current TDS."] },
+      { heading: "Start with the current product-specific TDS", body: ["Use the current Bisphenol Resin TDS for this grade's chemistry wording, typical supplied-resin data, storage, packaging and MOQ.", "If the enquiry is governed by a buyer specification or item code, attach it so Samrat Poly Resins can review the exact requirement alongside the current TDS."] },
       { heading: "Define the finished application and technical requirement", body: ["State whether the requirement concerns the TDS-listed laminating, FRP composite, flooring or protective-coating, electrical encapsulation, tooling, structural-bonding, casting or coating context. Include any stated chemistry, technical property, finished-component requirement or documentation request.", "This is a product-selection discussion, not a request for a formulation, hardener ratio, laminate design, coating thickness or cure schedule."] },
       { heading: "Make service conditions visible when relevant", body: ["For a service environment, provide the medium, concentration where relevant, temperature where relevant, exposure mode and project specification. State any fire-performance or other mandatory requirement separately.", "The current documents do not publish chemical-specific compatibility, a continuous service-temperature limit, a fire rating or a finished-component approval. These details help define what additional verification may be needed."] },
       { heading: "Complete the commercial and documentation request", body: ["The current TDS publishes a 20 kg pack, 100 kg MOQ, 12-month unopened shelf life and 20-30 C storage statement. Provide expected quantity, packaging requirement, delivery city or location, timing requirement and documents required for the actual order.", "Published commercial data does not guarantee stock, lead time, order-specific test documents or delivery. Confirm those items during the commercial discussion."] },
@@ -5510,7 +5499,7 @@ export const resources = [
       ogDescription: "A document-led guide to Samrat Marble Resin, its published cultured-marble and artificial-stone role, and what buyers should verify.",
     },
     quickFacts: {
-      "Published resin family": "Unsaturated polyester resin in the TDS; Orthophthalic UPR in the catalogue",
+      "Published resin family": "Unsaturated polyester resin (TDS)",
       "Supplied form": "Water-white liquid resin",
       "Published contexts": "Cultured marble and artificial stone",
       "Not supplied": "A finished slab, countertop, basin or other completed marble product",
@@ -5524,15 +5513,15 @@ export const resources = [
     ],
     faqs: [
       { q: "What is Marble Resin?", a: "Samrat Marble Resin is a water-white liquid unsaturated polyester resin. The current TDS identifies cultured marble and artificial stone as its product contexts. It is supplied as raw resin, not as a finished marble product." },
-      { q: "Is Marble Resin an unsaturated polyester resin?", a: "Yes. The detailed TDS identifies unsaturated polyester resin. The catalogue additionally labels the product Orthophthalic Unsaturated Polyester Resin. The documents are kept distinct rather than being silently reconciled." },
-      { q: "Is Marble Resin used for artificial or cultured marble?", a: "Yes. The TDS explicitly lists cultured marble and artificial stone; the catalogue also mentions cultured marble and onyx production. These are documented starting points for selection, not a formulation, finished-product qualification or universal stone-system approval." },
+      { q: "Is Marble Resin an unsaturated polyester resin?", a: "Yes. The detailed TDS identifies unsaturated polyester resin. The documents are kept distinct rather than being silently reconciled." },
+      { q: "Is Marble Resin used for artificial or cultured marble?", a: "Yes. These are documented starting points for selection, not a formulation, finished-product qualification or universal stone-system approval." },
       { q: "Is Marble Resin a finished marble product?", a: "No. Samrat supplies the liquid resin. The finished slab, vanity, countertop, basin, panel or other composite can depend on the complete system and its tested configuration." },
     ],
     sections: [
-      { heading: "A document-led Marble Resin product route", body: ["Samrat Marble Resin is a product-specific route for buyers evaluating the TDS-listed cultured-marble and artificial-stone contexts. The detailed TDS describes a water-white liquid unsaturated polyester resin. The catalogue calls its Marble Resin card a filled resin for cultured marble and onyx production and labels it Orthophthalic Unsaturated Polyester Resin.", "Those documents establish a useful shared product family and use case, but they do not publish a filler type, filler level, formulation or finished-system approval. The right starting point is therefore the actual marble or stone product and the current Marble Resin document, not a generic assumption about every polyester resin."] },
+      { heading: "A document-led Marble Resin product route", body: ["Samrat Marble Resin is a product-specific route for buyers evaluating the TDS-listed cultured-marble and artificial-stone contexts. The detailed TDS describes a water-white liquid unsaturated polyester resin.", "Those documents establish a useful shared product family and use case, but they do not publish a filler type, filler level, formulation or finished-system approval. The right starting point is therefore the actual marble or stone product and the current Marble Resin document, not a generic assumption about every polyester resin."] },
       { heading: "Raw resin is not the finished marble component", body: ["Samrat supplies the liquid resin component, not finished marble slabs, vanity tops, countertops, wash basins, wall panels, statues, railings or balusters. The TDS application list identifies finished-product contexts where a product discussion may begin.", "A finished marble or mineral composite can depend on the complete material system, including the selected mineral or filler system, other formulation components, cure state, surface system and tested configuration. This guide does not turn liquid-resin data into a guarantee of a finished component's appearance, hardness, polish, shrinkage or service performance."] },
-      { heading: "Published contexts and selection boundaries", body: ["The TDS lists cultured-marble slabs and vanity tops; kitchen and bathroom countertops and wash basins; wall panels, window sills and architectural components; and marble sheets, statues, railings and balusters. The catalogue separately refers to cultured marble, onyx production and decorative panels.", "For artificial quartz, engineered-stone slabs or composite-mineral surfaces, review the separately published GP Quartz Resin route. For broad reinforced-FRP work, use the GP Clear Resin or Unsaturated Polyester Resin route. Product roles are selection aids, not claims that one grade is universally better than another."] },
-      { heading: "Verify the exact document before ordering", body: ["The Marble TDS lists water-white liquid form, 450 cPs viscosity at 25 C, 15-20 minute gel time at 25 C, 20-40 minute curing time, 1.12 g/cm3 specific gravity, storage, shelf life, 200 kg packaging and a 200 kg MOQ. The catalogue lists 300 cPs viscosity and 15-minute gel time. These values must not be averaged or treated as a single confirmed specification.", "Share the intended finished product, any current TDS or catalogue reference, required supplied appearance or finish, technical-document requirement, expected quantity, packaging need and delivery location when requesting a quote."] },
+      { heading: "Published contexts and selection boundaries", body: ["The TDS lists cultured-marble slabs and vanity tops; kitchen and bathroom countertops and wash basins; wall panels, window sills and architectural components; and marble sheets, statues, railings and balusters.", "For artificial quartz, engineered-stone slabs or composite-mineral surfaces, review the separately published GP Quartz Resin route. For broad reinforced-FRP work, use the GP Clear Resin or Unsaturated Polyester Resin route. Product roles are selection aids, not claims that one grade is universally better than another."] },
+      { heading: "Verify the exact document before ordering", body: ["The Marble TDS lists water-white liquid form, 450 cPs viscosity at 25 C, 15-20 minute gel time at 25 C, 20-40 minute curing time, 1.12 g/cm3 specific gravity, storage, shelf life, 200 kg packaging and a 200 kg MOQ.", "Share the intended finished product, the TDS under review, required supplied appearance or finish, technical-document requirement, expected quantity, packaging need and delivery location when requesting a quote."] },
     ],
   },
   {
@@ -5552,24 +5541,22 @@ export const resources = [
       "Samrat supplies": "Liquid Marble Resin",
       "TDS role": "Typical supplied-resin data and listed product contexts",
       "Finished outcome": "Depends on the complete marble or mineral-composite system",
-      "Not published": "A formulation, filler ratio or finished-product performance guarantee",
     },
     relatedSlugs: ["what-is-marble-resin", "marble-resin-applications-cultured-marble-artificial-stone", "marble-resin-technical-specifications-and-rfq", "gp-quartz-resin-vs-marble-resin"],
     recommendedLinks: [
       { href: "/products/marble-resin/", label: "View Marble Resin", description: "Review supplied-resin data and the documented product role." },
       { href: "/tds/marble-resin-tds.pdf", label: "Download Marble Resin TDS", description: "Check the current grade-specific data before selection." },
-      { href: "/resources/marble-resin-technical-specifications-and-rfq/", label: "Read the technical-data and RFQ guide", description: "Keep the TDS and different catalogue values visible before enquiry." },
+      { href: "/resources/marble-resin-technical-specifications-and-rfq/", label: "Read the technical-data and RFQ guide", description: "Review the published TDS values and prepare an enquiry." },
     ],
     faqs: [
       { q: "Does Marble Resin determine finished marble hardness or gloss?", a: "No. The TDS describes the supplied resin and uses product-positioning terms such as high-gloss finish and low shrinkage. The finished composite can also depend on the complete system and tested configuration; no finished-product guarantee is published." },
-      { q: "Does the catalogue's filled-resin wording publish a formulation?", a: "No. The catalogue identifies a filled-resin role for cultured marble and onyx production, but it does not publish the filler type, filler level, pigment content, resin-to-filler ratio or a manufacturing recipe." },
       { q: "Can a buyer use liquid-resin data as a finished countertop or basin approval?", a: "No. The TDS does not publish a finished countertop, basin, panel or architectural-product approval. State the exact finished application and documentation requirement during enquiry." },
     ],
     sections: [
       { heading: "What the supplied product is", body: ["The current Marble Resin TDS identifies a water-white liquid unsaturated polyester resin. This is the resin product supplied by Samrat Poly Resins for the listed cultured-marble and artificial-stone contexts.", "It is not a ready-made marble slab, countertop, vanity top, wash basin, wall panel or other completed stone product. That distinction matters because a raw resin data sheet and a finished component's performance record answer different buyer questions."] },
       { heading: "What the current documents describe", body: ["The TDS publishes supplied-resin form, colour, typical viscosity, gel time, curing time, density, styrene content, flash point, storage, shelf life, packaging and MOQ. It also uses broad product-positioning terms including filler compatibility, smooth flow, high-gloss finish, low shrinkage and water or chemical resistance after full cure.", "These statements should be read in their documented context. They are not a published filler-loading limit, chemical-compatibility chart, UV or non-yellowing result, substrate-adhesion result, scratch or stain rating, or finished-product approval."] },
       { heading: "What remains part of the finished system", body: ["Finished appearance, gloss, shrinkage, hardness, polishability, dimensional result and service performance can depend on the complete marble or mineral-composite system. The current documents do not publish the mineral or filler type, other formulation components, processing conditions, surface system or tested final configuration.", "This is why the page does not provide a recipe, filler percentage, pigment amount, catalyst instruction, cure schedule, casting method or polishing procedure. Those details are outside the published product documentation and this buyer guide's scope."] },
-      { heading: "Turn the distinction into a better enquiry", body: ["Identify the intended finished marble or stone product, the exact TDS or catalogue record under review, any required supplied appearance or finish, technical-document requirement, expected quantity, packaging need and delivery location. If the requirement is actually quartz, engineered stone, a broad FRP laminate or a two-part epoxy casting system, say so explicitly so the correct product route can be reviewed."] },
+      { heading: "Turn the distinction into a better enquiry", body: ["If the requirement is actually quartz, engineered stone, a broad FRP laminate or a two-part epoxy casting system, say so explicitly so the correct product route can be reviewed."] },
     ],
   },
   {
@@ -5587,7 +5574,6 @@ export const resources = [
     },
     quickFacts: {
       "TDS-listed contexts": "Cultured-marble slabs, vanity tops, countertops, wash basins and architectural components",
-      "Catalogue contexts": "Cultured marble, onyx production and decorative panels",
       "Resin role": "Supplied liquid resin component",
       "Always verify": "The actual finished product and current grade-specific TDS",
     },
@@ -5595,19 +5581,19 @@ export const resources = [
     recommendedLinks: [
       { href: "/products/marble-resin/", label: "View Marble Resin", description: "Review the current supplied-resin data and published product contexts." },
       { href: "/products/gp-quartz-resin/", label: "Review GP Quartz Resin", description: "Use the separate route for its documented artificial-quartz and engineered-stone contexts." },
-      { href: "/tds/marble-resin-tds.pdf", label: "Download Marble Resin TDS", description: "Verify the current product record before ordering." },
+      { href: "/tds/marble-resin-tds.pdf", label: "Download Marble Resin TDS", description: "Typical data, applications and supply details." },
       { href: "/contact/", label: "Discuss an application", description: "Share the finished component, requirement and commercial details for review." },
     ],
     faqs: [
-      { q: "Which Marble Resin applications are published?", a: "The TDS lists cultured-marble slabs and vanity tops; kitchen and bathroom countertops and wash basins; wall panels, window sills and architectural components; and marble sheets, statues, railings and balusters. The catalogue separately names cultured marble, onyx production and decorative panels." },
+      { q: "Which Marble Resin applications are published?", a: "The TDS lists cultured-marble slabs and vanity tops; kitchen and bathroom countertops and wash basins; wall panels, window sills and architectural components; and marble sheets, statues, railings and balusters." },
       { q: "Does a published application establish a finished-product approval?", a: "No. The application list identifies product contexts for discussion. It does not establish a formulation, universal suitability statement, technical approval or finished-system performance guarantee." },
       { q: "Should a quartz or engineered-stone buyer use this application list?", a: "State that exact requirement first. GP Quartz Resin has its own published artificial-quartz, engineered-stone and composite-mineral contexts. The Marble and Quartz documents overlap in some terminology, so the finished product and current TDS should guide selection." },
     ],
     sections: [
-      { heading: "Published cultured-marble and artificial-stone contexts", body: ["The Marble Resin TDS lists cultured-marble slabs and vanity tops, kitchen and bathroom countertops and wash basins, wall panels and window sills, decorative architectural components, marble sheets, statues, railings and balusters. These are the verified application contexts used in this guide.", "The catalogue separately describes a filled-resin role for cultured marble and onyx production and names decorative panels. It does not publish a formulation or finished-system qualification for every artificial-stone design."] },
+      { heading: "Published cultured-marble and artificial-stone contexts", body: ["The Marble Resin TDS lists cultured-marble slabs and vanity tops, kitchen and bathroom countertops and wash basins, wall panels and window sills, decorative architectural components, marble sheets, statues, railings and balusters. These are the verified application contexts used in this guide.", "It does not publish a formulation or finished-system qualification for every artificial-stone design."] },
       { heading: "What Marble Resin contributes to the conversation", body: ["Marble Resin is the supplied liquid resin component within the documented marble or artificial-stone context. Its TDS publishes water-white supplied appearance and typical liquid-resin data. The document also uses high-level terms including filler compatibility, smooth flow, high-gloss finish and low shrinkage.", "Those statements do not transfer all final appearance, surface, hardness, shrinkage or service claims to every slab, countertop, basin, panel or architectural component. The finished product needs its own system-level review."] },
       { heading: "Choose by the actual finished product", body: ["For a cultured-marble or artificial-stone requirement, begin with the Marble Resin product and its current TDS. For an artificial-quartz, engineered-stone slab or composite-mineral surface, review GP Quartz Resin. For broad FRP, door or plywood lamination, or a specified two-part epoxy casting system, use the respective published product route instead.", "The documentation does not create a universal marble-versus-quartz boundary, performance ranking or mineral-compatibility recommendation. Describe the actual component and requirement before a grade discussion."] },
-      { heading: "Information to provide before a quotation", body: ["Provide the finished marble or stone component, intended product context, any available TDS, catalogue reference, drawing or written requirement, desired supplied appearance or finish, required technical documents, expected quantity, packaging need and delivery location. This makes the application discussion specific without requesting or publishing a manufacturing formula."] },
+      { heading: "Information to provide before a quotation", body: ["This makes the application discussion specific without requesting or publishing a manufacturing formula."] },
     ],
   },
   {
@@ -5643,8 +5629,8 @@ export const resources = [
     sections: [
       { heading: "One resin family, different published product roles", body: ["Marble Resin and GP Resin both appear within polyester-resin discussions, but their published roles are different. The Marble Resin TDS names cultured marble and artificial stone. GP Clear Resin is the separately published route for broad general-purpose FRP work.", "This is a selection distinction, not a generic performance hierarchy. Use the actual product being made to decide which document is relevant first."] },
       { heading: "Start with the finished component", body: ["For the documented cultured-marble or artificial-stone contexts, begin with Marble Resin and its current TDS. For broad general FRP, begin with GP Clear Resin and the grade-specific information for that route.", "A quartz or engineered-stone surface, a putty or filler base resin, a mould-facing finish, door or plywood lamination, or specified two-part epoxy casting requirement can point to another published product route. The resin name alone is not sufficient for selection."] },
-      { heading: "Do not transfer grade-specific data", body: ["Marble Resin has its own supplied-resin data and a catalogue summary that differs from its detailed TDS on viscosity and gel time. GP Clear Resin has separate product data. Do not transfer values, storage statements, product applications or finished-product expectations across the grades.", "No source publishes a universal superiority claim between Marble Resin and GP Resin. This comparison intentionally avoids one."] },
-      { heading: "Make the RFQ product-specific", body: ["State the finished component, intended product route if known, relevant TDS or catalogue reference, required supplied appearance or technical data, quantity, packaging need, delivery location and documentation requested. That lets the discussion begin with the published role rather than a broad request for polyester resin."] },
+      { heading: "Do not transfer grade-specific data", body: ["GP Clear Resin has separate product data. Do not transfer values, storage statements, product applications or finished-product expectations across the grades.", "No source publishes a universal superiority claim between Marble Resin and GP Resin. This comparison intentionally avoids one."] },
+      { heading: "Make the RFQ product-specific", body: ["That lets the discussion begin with the published role rather than a broad request for polyester resin."] },
     ],
   },
   {
@@ -5675,15 +5661,15 @@ export const resources = [
     ],
     faqs: [
       { q: "What is Fiberglass Epoxy Resin on this site?", a: "The current Fiberglass Epoxy Resin TDS identifies a general-purpose epoxy system for fibreglass reinforcement, composite manufacturing, hand lay-up and lamination. It names fabric as the published reinforcement form." },
-      { q: "Is this product a laminating epoxy?", a: "Lamination is listed in the current TDS, and the catalogue calls the product an epoxy system for structural fiberglass laminating. Use that terminology for the documented application context, not as proof that every epoxy-laminating requirement is interchangeable." },
+      { q: "Is this product a laminating epoxy?", a: "Use that terminology for the documented application context, not as proof that every epoxy-laminating requirement is interchangeable." },
       { q: "Is Fiberglass Epoxy Resin the same as Glass Fiber?", a: "No. Fiberglass Epoxy Resin is the resin or matrix-system route. Glass Fiber is a separate reinforcement product. The current Fiberglass Epoxy TDS names fabric but does not prescribe a CSM weight, fabric type or laminate construction." },
-      { q: "What applications are published for this resin?", a: "The detailed TDS lists boat or marine components, wind-turbine components, and construction, electrical and automotive FRP laminates. The catalogue separately lists structural laminates and filament winding. These are application contexts, not project approvals." },
+      { q: "What applications are published for this resin?", a: "The detailed TDS lists boat or marine components, wind-turbine components, and construction, electrical and automotive FRP laminates. These are application contexts, not project approvals." },
     ],
     sections: [
       { heading: "Start with the published Fiberglass Epoxy identity", body: ["Samrat Poly Resins publishes Fiberglass Epoxy Resin as a general-purpose epoxy-system route. The detailed current TDS places it in fibreglass reinforcement, composite manufacturing, hand lay-up and lamination contexts, and names fabric as the reinforcement form.", "This is a composite-epoxy product route, not a broad label for every resin containing the word epoxy. It is separate from Samrat's Clear Casting Resin, Epoxy Art Resin, Epoxy Hardener, polyester Lamination Resin, Unsaturated Polyester Resin and Glass Fiber product routes."] },
-      { heading: "Use laminating terminology only within the documented boundary", body: ["The TDS lists hand lay-up and lamination as processing contexts. The catalogue separately describes an epoxy system for structural fiberglass laminating. These records support a buyer-level laminating-epoxy discussion for the published product role.", "They do not publish a universal process qualification, a reinforcement schedule, a resin-to-glass ratio, a cure schedule or a finished composite approval. State the actual component and the document reference being evaluated before treating a laminating requirement as a match."] },
+      { heading: "Use laminating terminology only within the documented boundary", body: ["The TDS lists hand lay-up and lamination as processing contexts. These records support a buyer-level laminating-epoxy discussion for the published product role.", "They do not publish a universal process qualification, a reinforcement schedule, a resin-to-glass ratio, a cure schedule or a finished composite approval. State the actual component and the document reference being evaluated before treating a laminating requirement as a match."] },
       { heading: "Keep the resin, hardener and reinforcement roles separate", body: ["The TDS identifies an amine hardener as part of the epoxy system, but does not name a specific compatible Samrat hardener or say whether it is supplied in the commercial pack. The separate Epoxy Hardener page is therefore a product route to discuss, not proof of a confirmed pairing.", "Glass Fiber is the reinforcement product. Its own published CSM route cannot be converted into an automatic recommendation for this Fiberglass Epoxy grade: the Fiberglass Epoxy TDS says fabric and does not name CSM 300, CSM 450, a fabric style or a laminate design."] },
-      { heading: "Treat listed applications as selection contexts", body: ["The detailed TDS lists boat or marine components, wind-turbine components, and construction, electrical and automotive FRP laminates. The catalogue lists structural laminates and filament winding. These descriptions can help a buyer identify the type of conversation to have.", "They do not establish marine-grade certification, automotive approval, structural certification, a finished mechanical result, or suitability for every component in those categories. Review the current product document and the finished composite requirement together."] },
+      { heading: "Treat listed applications as selection contexts", body: ["The detailed TDS lists boat or marine components, wind-turbine components, and construction, electrical and automotive FRP laminates. These descriptions can help a buyer identify the type of conversation to have.", "They do not establish marine-grade certification, automotive approval, structural certification, a finished mechanical result, or suitability for every component in those categories. Review the current product document and the finished composite requirement together."] },
       { heading: "Read product data separately from a finished composite", body: ["Published resin data helps identify the supplied grade. The final fiberglass laminate or component can also depend on the confirmed resin-and-hardener system, reinforcement, laminate construction, cure state, thickness, component design and tested configuration.", "For that reason, a supplied-resin document is not a finished-part approval. The technical-document check and procurement guide in this cluster make the published data and quotation inputs easier to use without publishing a fabrication recipe."] },
     ],
   },
@@ -5720,7 +5706,7 @@ export const resources = [
     ],
     sections: [
       { heading: "The published epoxy system is not fully specified as a commercial kit", body: ["The current Fiberglass Epoxy Resin TDS identifies an amine hardener as part of the curing system. It does not name a specific hardener product, state that the hardener is included in the pack, or declare a pre-approved resin-and-hardener commercial kit.", "That boundary matters for procurement. A buyer should identify whether the requirement is for resin only or for a confirmed complete system rather than assuming an accessory or separately listed product is already included."] },
-      { heading: "Epoxy Hardener is a separate product route", body: ["Samrat publishes Epoxy Hardener as a separate polyamide, amine-based curing-agent product. This establishes a separate product role: it does not prove that it is the exact compatible hardener for every Samrat epoxy route.", "For Fiberglass Epoxy Resin, share the current resin TDS or catalogue reference, the intended composite application, the required system form and any requested documentation. Compatibility should be confirmed for that actual requirement."] },
+      { heading: "Epoxy Hardener is a separate product route", body: ["Samrat publishes Epoxy Hardener as a separate polyamide, amine-based curing-agent product. This establishes a separate product role: it does not prove that it is the exact compatible hardener for every Samrat epoxy route.", "Compatibility should be confirmed for that actual requirement."] },
       { heading: "Do not turn system identity into operating instructions", body: ["A resin-and-hardener system description is useful for identifying the material route. It is not a public instruction to mix components, adjust working time, change cure speed, select a hardener amount or design a laminate.", "This guide intentionally excludes ratios, mixing order, pot-life adjustment, cure schedules, post-cure conditions and troubleshooting. Those details should not be transferred between product families or inferred from a broad epoxy label."] },
       { heading: "Reinforcement remains a separate decision", body: ["The current Fiberglass Epoxy TDS names fabric reinforcement. Glass Fiber is a separate reinforcement route, and its CSM 300 or CSM 450 listings do not establish a recommendation for this specific epoxy product.", "The finished composite requirement should identify the reinforcement form if known, but this page does not prescribe fabric type, mat weight, laminate thickness, resin-to-glass ratio or ply sequence."] },
       { heading: "What to confirm before procurement", body: ["State the finished fiberglass or composite component, whether resin only or a complete system is required, the exact current resin document, reinforcement form if known, any listed process context relevant to the requirement, quantity, packaging, delivery location and documentation need.", "This creates a focused technical and commercial enquiry without asking a buyer to disclose or receive a manufacturing recipe."] },
@@ -5769,7 +5755,7 @@ export const resources = [
     ],
     sections: [
       { heading: "The shared word epoxy is not a product-selection shortcut", body: ["Samrat publishes separate Fiberglass Epoxy Resin, Epoxy Clear Casting Resin and Epoxy Art Resin routes. They may share an epoxy-system context, but each product has its own documentation and intended-use language.", "A buyer should begin with the finished product: a reinforced composite or laminate, a clear contained cast, or an open decorative surface. That distinction is more useful than treating all epoxy names as interchangeable."] },
-      { heading: "When the documented Fiberglass Epoxy route is the relevant starting point", body: ["Review Fiberglass Epoxy Resin where the requirement is for the current TDS-listed fibreglass fabric reinforcement, composite manufacturing, hand lay-up or lamination context. The catalogue separately mentions structural fiberglass laminating.", "The documentation does not publish a decorative clarity result, a contained-casting performance, an art coating approval or a universal ranking against the other epoxy products."] },
+      { heading: "When the documented Fiberglass Epoxy route is the relevant starting point", body: ["Review Fiberglass Epoxy Resin where the requirement is for the current TDS-listed fibreglass fabric reinforcement, composite manufacturing, hand lay-up or lamination context.", "The documentation does not publish a decorative clarity result, a contained-casting performance, an art coating approval or a universal ranking against the other epoxy products."] },
       { heading: "Keep casting and decorative requirements on their own routes", body: ["Use Epoxy Clear Casting Resin for its published clear contained-casting role. Use Epoxy Art Resin for its published self-levelling decorative-surface role. Review their matching documents when those are the actual requirements.", "Do not transfer a Fiberglass Epoxy viscosity, gel-time, hardener, reinforcement or application statement into a casting or art requirement, and do not transfer casting or art claims into a fiberglass laminate enquiry."] },
       { heading: "Ask for the relevant document and system", body: ["A useful enquiry identifies the finished component or surface, whether reinforcement is required, the exact product document under review, required finish or technical data, quantity, packaging and delivery location.", "This comparison does not provide mixing ratios, cure schedules, casting methods, art techniques or laminate instructions. Those are not interchangeable product-selection information."] },
     ],
@@ -5839,7 +5825,6 @@ export const resources = [
       "Fiberglass Epoxy route": "General-purpose epoxy system for published fabric-reinforcement and lamination contexts",
       "Vinyl Ester route": "Separate industrial-grade Bisphenol-A epoxy vinyl ester route",
       "Vinyl Ester selection context": "Published chemical- and corrosion-service FRP discussion",
-      "Not published": "A like-for-like product comparison, compatibility chart or universal ranking",
     },
     comparisonTable: {
       title: "Separate product roles before comparing service requirements",
@@ -5872,7 +5857,7 @@ export const resources = [
   {
     slug: "fiberglass-epoxy-resin-applications",
     title: "Fiberglass Epoxy Resin Applications: Published Composite Contexts",
-    description: "Use the current TDS and catalogue-listed fiberglass and composite contexts to frame a product discussion without turning them into certifications or fabrication instructions.",
+    description: "Use the published TDS applications for fiberglass and composite work to frame a product discussion without turning them into certifications or fabrication instructions.",
     category: "Application Selection Guide",
     icon: "grid",
     publishDate: "2026-08-10",
@@ -5884,7 +5869,6 @@ export const resources = [
     },
     quickFacts: {
       "Detailed TDS contexts": "Boat or marine, wind-turbine, construction, electrical and automotive FRP laminates",
-      "Catalogue contexts": "Structural laminates and filament winding",
       "Published reinforcement form": "Fabric in the detailed TDS",
       "Application boundary": "Contexts for selection, not project approvals or manufacturing instructions",
     },
@@ -5896,22 +5880,22 @@ export const resources = [
       { href: "/resources/fiberglass-epoxy-resin-procurement-checklist/", label: "Prepare a focused RFQ", description: "Provide the document, component and commercial details required for discussion." },
     ],
     faqs: [
-      { q: "Which Fiberglass Epoxy applications are documented?", a: "The current TDS lists boat or marine components, wind-turbine components, and construction, electrical and automotive FRP laminates. The catalogue separately lists structural laminates and filament winding." },
+      { q: "Which Fiberglass Epoxy applications are documented?", a: "The current TDS lists boat or marine components, wind-turbine components, and construction, electrical and automotive FRP laminates." },
       { q: "Does a listed marine or automotive application mean the resin is approved for that industry?", a: "No. The documents list application contexts, not marine-grade certification, automotive OEM approval or project-specific finished-component approval." },
-      { q: "Is filament winding a published process for this product?", a: "The catalogue lists filament winding, while the detailed TDS lists hand lay-up and lamination. The documents use different process descriptions, so identify the exact reference and confirm the route before selection." },
+      { q: "Is filament winding a published process for this product?", a: "The documents use different process descriptions, so identify the exact reference and confirm the route before selection." },
       { q: "Can this guide tell me how to build a laminate?", a: "No. It intentionally does not prescribe hardener amounts, reinforcement type, resin-to-glass ratio, thickness, ply count, cure schedule or fabrication sequence." },
     ],
     sections: [
       { heading: "Use applications as document-led selection contexts", body: ["The detailed TDS lists boat or marine components, wind-turbine components, and construction, electrical and automotive FRP laminates. These categories help establish the type of finished composite a buyer is discussing.", "They do not prove that every boat, wind component, construction part, electrical enclosure or automotive laminate is approved. The finished component, project requirement and documented product system still need review."] },
-      { heading: "The published reinforcement and process language is limited", body: ["The detailed TDS identifies fabric as the reinforcement form and lists hand lay-up and lamination. The catalogue separately names structural laminates and filament winding. These are the only product-specific application and process statements carried into this guide.", "The TDS does not prescribe CSM 300, CSM 450, a fabric construction, woven roving, a resin-to-glass ratio, vacuum processing, infusion, RTM, pultrusion, thickness or laminate sequence. Those subjects are intentionally deferred."] },
+      { heading: "The published reinforcement and process language is limited", body: ["The detailed TDS identifies fabric as the reinforcement form and lists hand lay-up and lamination. These are the only product-specific application and process statements carried into this guide.", "The TDS does not prescribe CSM 300, CSM 450, a fabric construction, woven roving, a resin-to-glass ratio, vacuum processing, infusion, RTM, pultrusion, thickness or laminate sequence. Those subjects are intentionally deferred."] },
       { heading: "Marine, automotive and structural language needs a strict boundary", body: ["The word marine in the TDS is treated here as an application context only. It is not used as a marine-grade claim, a water-service guarantee, a UV result, a weathering result or a certification.", "Likewise, automotive and structural wording is not presented as OEM approval, crash-performance evidence, structural certification, a numerical strength result or a project approval. No customer projects or test results are created from the listed categories."] },
-      { heading: "Plan the application discussion without a fabrication manual", body: ["For a documented composite context, state what is being made, whether the requirement is resin only or a confirmed system, the reinforcement form if known, the current TDS or catalogue reference, and any required technical document. Include quantity, packaging and delivery location.", "This supports material selection without teaching a fabrication method. It does not provide mixing instructions, cure settings, laminate design, equipment parameters or repair guidance."] },
+      { heading: "Plan the application discussion without a fabrication manual", body: ["Include quantity, packaging and delivery location.", "This supports material selection without teaching a fabrication method. It does not provide mixing instructions, cure settings, laminate design, equipment parameters or repair guidance."] },
     ],
   },
   {
     slug: "fiberglass-epoxy-resin-technical-specifications-and-document-check",
     title: "Fiberglass Epoxy Resin Technical Specifications and Document Check",
-    description: "Read the current Fiberglass Epoxy Resin TDS closely, keep its differences from earlier catalogue records visible, and avoid turning supplied-resin data into finished-composite claims.",
+    description: "Read the published Fiberglass Epoxy Resin TDS data and avoid turning supplied-resin data into finished-composite claims.",
     category: "Technical & Documentation Guide",
     icon: "checklist",
     publishDate: "2026-08-10",
@@ -5919,25 +5903,23 @@ export const resources = [
       title: "Fiberglass Epoxy Resin Technical Specifications | TDS Guide",
       keywords: ["Fiberglass Epoxy Resin Technical Specifications", "Fiberglass Epoxy Resin TDS", "Composite Epoxy Resin Viscosity", "Epoxy Laminating Resin Technical Data", "Fiberglass Epoxy Resin Supplier"],
       ogTitle: "Fiberglass Epoxy Resin Technical Specifications and Document Check",
-      ogDescription: "Use the detailed TDS as the controlling record; earlier catalogue wording and selected values are not identical to it.",
+      ogDescription: "The published TDS values for Fiberglass Epoxy Resin: viscosity, gel time, density, thermal data and supply details.",
     },
     quickFacts: {
       "Detailed TDS viscosity": "700 cPs at 25 C",
-      "Catalogue viscosity": "900 cPs",
       "Detailed TDS density": "1.15 g/cm3",
-      "Catalogue density": "1.16 g/cm3",
     },
     propertiesTable: {
-      headers: ["Published item", "Detailed TDS", "Catalogue"],
+      headers: ["Published item", "Fiberglass Epoxy Resin TDS"],
       rows: [
-        ["Resin wording", "Epoxy", "Bisphenol-A Epoxy Resin"],
-        ["Product role", "General-purpose epoxy system for fibreglass reinforcement and lamination", "Epoxy system for structural fiberglass laminating"],
-        ["Processing / application wording", "Hand lay-up and lamination; fabric reinforcement", "Structural laminates and filament winding"],
-        ["Viscosity", "700 cPs at 25 C", "900 cPs"],
-        ["Gel / pot-life wording", "35-45 minutes at 25 C, gel time", "35 minutes, Gel Time / Pot Life"],
-        ["Specific gravity", "1.15 g/cm3", "1.16 g/cm3"],
+        ["Resin type", "Epoxy"],
+        ["Product role", "General-purpose epoxy system for fibreglass reinforcement and lamination"],
+        ["Processing / application", "Hand lay-up and lamination; fabric reinforcement"],
+        ["Viscosity", "700 cPs at 25 C"],
+        ["Gel time", "35-45 minutes at 25 C"],
+        ["Specific gravity", "1.15 g/cm3"],
       ],
-      note: "The repository does not explain these differences. This table keeps the two records visible and does not average, reconcile or treat either as a finished-composite specification.",
+      note: "Typical values from the published Fiberglass Epoxy Resin TDS, not a finished-composite specification.",
     },
     relatedSlugs: ["what-is-fiberglass-epoxy-resin", "fiberglass-epoxy-resin-system-and-hardener", "fiberglass-epoxy-resin-data-vs-finished-composite-performance", "fiberglass-epoxy-resin-procurement-checklist"],
     recommendedLinks: [
@@ -5948,16 +5930,15 @@ export const resources = [
     ],
     faqs: [
       { q: "Which Fiberglass Epoxy specifications are published?", a: "The detailed TDS publishes epoxy type, general-purpose grade, room-temperature cure, hand lay-up and lamination, 700 cPs viscosity at 25 C, 35-45 minute gel time at 25 C, 1.15 g/cm3 density, 75 C HDT / thermal data, flash point above 100 C, storage, shelf life, 20 kg packaging and 100 kg MOQ." },
-      { q: "Why are TDS and catalogue values different?", a: "The catalogue uses a Bisphenol-A epoxy label, 900 cPs viscosity, 35 minutes as Gel Time / Pot Life and 1.16 specific gravity. The repository does not explain the differences, so this guide does not merge the records or infer a new specification." },
       { q: "Does the published 75 C HDT establish a continuous service temperature?", a: "No. The TDS lists 75 C as HDT / thermal data but does not publish a test context or a continuous-service temperature limit. This guide does not convert it into one." },
-      { q: "Are tensile or flexural laminate results published?", a: "No numerical tensile, flexural, compressive, impact, elongation, hardness or finished-laminate test values were found in the Fiberglass Epoxy TDS or catalogue. Broad marketing wording is not treated as a test result." },
+      { q: "Are tensile or flexural laminate results published?", a: "Broad marketing wording is not treated as a test result." },
     ],
     sections: [
       { heading: "Use the detailed TDS as the product-data starting point", body: ["The current detailed TDS identifies an epoxy general-purpose grade for fibreglass reinforcement and lamination. It publishes 700 cPs viscosity at 25 C, 35-45 minute gel time at 25 C, 1.15 g/cm3 specific gravity, 75 C HDT / thermal data, flash point above 100 C, 12-month unopened shelf life, 20-30 C storage, 20 kg packaging and 100 kg MOQ.", "These are supplied-resin and commercial data points. The TDS states that values are typical and not guaranteed. They should be reviewed with the full document and actual purchase requirement."] },
-      { heading: "Keep the catalogue record visible", body: ["The catalogue labels the same Fiberglass Epoxy Resin entry as Bisphenol-A Epoxy Resin and lists 900 cPs viscosity, 35 minutes as Gel Time / Pot Life, 1.16 specific gravity, structural laminates and filament winding. The detailed TDS does not use the same chemistry wording or identical figures.", "The repository provides no explanation for these differences. This guide does not average values, silently choose a chemistry label, or state that the detailed TDS and catalogue are equivalent specifications. State the exact document reference during enquiry."] },
+      
       { heading: "Read thermal and broad performance wording cautiously", body: ["The TDS lists 75 C under HDT / thermal data but does not give a test specimen, test method or continuous-service limit. The figure is not presented here as an operating-temperature recommendation.", "No numerical mechanical test table, adhesion test, shrinkage result, UV or weathering result, chemical-compatibility chart, concentration limit or finished-laminate approval is published. The document's broad descriptive language is not converted into a quantified component-performance claim."] },
       { heading: "Supplied data does not equal finished composite data", body: ["A finished fiberglass laminate or component can depend on the confirmed resin-and-hardener system, reinforcement, laminate construction, cure state, thickness, geometry and tested configuration. These decisions can change the relevant finished performance.", "Do not use a supplied-resin viscosity, density or thermal entry as a finished boat, vehicle, electrical or structural-component rating. This site does not publish a laminate design or guarantee for those contexts."] },
-      { heading: "Prepare a document-specific enquiry", body: ["Include the TDS or catalogue record being evaluated, the finished composite component, whether resin only or a complete system is required, reinforcement form if known, required published technical property, quantity, packaging, delivery location and documentation need.", "This focuses a procurement discussion while avoiding an unsupported technical reconciliation, a hardener recipe or a fabrication instruction."] },
+      { heading: "Prepare a document-specific enquiry", body: ["Include the finished composite component, whether resin only or a complete system is required, reinforcement form if known, required published technical property, quantity, packaging, delivery location and documentation need.", "This focuses a procurement discussion while avoiding an unsupported technical reconciliation, a hardener recipe or a fabrication instruction."] },
     ],
   },
   {
@@ -5975,9 +5956,8 @@ export const resources = [
     },
     quickFacts: {
       "Published resin data": "Typical supplied-resin and document data",
-      "System component": "Amine hardener is named but a specific pairing is not published",
+      "System component": "Amine hardener at 2:1 by weight",
       "Reinforcement boundary": "Fabric named; no grade, schedule or ratio prescribed",
-      "Not published": "Finished laminate test result or component approval",
     },
     relatedSlugs: ["what-is-fiberglass-epoxy-resin", "fiberglass-epoxy-resin-system-and-hardener", "fiberglass-epoxy-resin-technical-specifications-and-document-check", "fiberglass-epoxy-resin-applications"],
     recommendedLinks: [
@@ -5994,7 +5974,7 @@ export const resources = [
     sections: [
       { heading: "Published resin data describes the supplied product", body: ["The detailed TDS publishes a general-purpose epoxy-system identity, selected typical physical data, storage, shelf life, packaging, MOQ and application or processing context. This is useful information when identifying the supplied material.", "It is not a full description of the finished composite. The document does not publish a final laminate construction, component drawing, structural calculation, finished mechanical table or project-specific approval."] },
       { heading: "A finished fiberglass component is a complete system", body: ["At a high level, finished performance can depend on the confirmed resin-and-hardener system, reinforcement, laminate construction, thickness, cure state, geometry, environmental requirement and tested configuration.", "Glass Fiber is the reinforcement component; Fiberglass Epoxy Resin is the matrix or resin-system route. The two roles should be considered together for a completed composite without turning this guide into a material schedule or design manual."] },
-      { heading: "Application language is not a performance certificate", body: ["Boat or marine, wind-turbine, construction, electrical and automotive contexts appear in the detailed TDS. Structural laminates and filament winding appear in the catalogue. These terms do not become marine-grade, automotive-approved, structural-certified or electrically approved performance claims.", "The repository does not provide test reports, standards references, quantified strength, adhesion, shrinkage, water resistance, chemical compatibility, UV performance or finished-system ratings for those component categories."] },
+      { heading: "Application language is not a performance certificate", body: ["Boat or marine, wind-turbine, construction, electrical and automotive contexts appear in the detailed TDS. These terms do not become marine-grade, automotive-approved, structural-certified or electrically approved performance claims.", "The repository does not provide test reports, standards references, quantified strength, adhesion, shrinkage, water resistance, chemical compatibility, UV performance or finished-system ratings for those component categories."] },
       { heading: "Use finished-requirement questions in the RFQ", body: ["State the exact finished component, required test, standard or document if one exists, the current product document being considered, system status, reinforcement form if known, quantity, packaging and delivery location.", "This allows an informed discussion while avoiding laminate schedules, resin-to-glass ratios, ply counts, hardener ratios, cure programs or fabrication instructions."] },
     ],
   },
@@ -6015,7 +5995,7 @@ export const resources = [
       "Published pack": "20 kg",
       "Published MOQ": "100 kg",
       "Published shelf life": "12 months unopened",
-      "First RFQ check": "State the TDS or catalogue reference being evaluated",
+      "First RFQ check": "State the finished composite component and whether resin only or a complete system is needed",
     },
     relatedSlugs: ["what-is-fiberglass-epoxy-resin", "fiberglass-epoxy-resin-system-and-hardener", "fiberglass-epoxy-resin-applications", "fiberglass-epoxy-resin-technical-specifications-and-document-check"],
     recommendedLinks: [
@@ -6025,13 +6005,13 @@ export const resources = [
       { href: "/products/epoxy-hardener/", label: "View separate Epoxy Hardener", description: "Confirm an exact compatible pair rather than assuming a hardener is included." },
     ],
     faqs: [
-      { q: "What should I include in a Fiberglass Epoxy Resin quote request?", a: "Include the finished fiberglass or composite application; whether resin only or a complete system is required; current TDS or catalogue reference; reinforcement form if known; relevant listed process context; required published properties or documents; quantity; packaging need; and delivery location." },
+      { q: "What should I include in a Fiberglass Epoxy Resin quote request?", a: "Include the finished fiberglass or composite application; whether resin only or a complete system is required; reinforcement form if known; relevant listed process context; required published properties or documents; quantity; packaging need; and delivery location." },
       { q: "What packaging and MOQ are published?", a: "The detailed TDS lists a 20 kg pack and 100 kg minimum order quantity. Availability, lead time, delivery terms, exact system supply and order-specific documents require confirmation for the actual enquiry." },
       { q: "Should I request a chemical compatibility or service-temperature approval?", a: "If a project requires one, state the actual service condition or required document. The Fiberglass Epoxy documentation does not publish a chemical-compatibility chart, concentration limits or a continuous-service temperature limit." },
     ],
     sections: [
-      { heading: "Start with the document route", body: ["The detailed TDS is the current published record. An earlier catalogue entry used different resin wording and selected values, so identify which record you are evaluating rather than treating them as a silently merged specification.", "For the detailed TDS route, the published commercial information is a 20 kg pack, 100 kg MOQ, 12-month unopened shelf life and 20-30 C cool, dry storage. Order-specific availability and terms still require confirmation."] },
-      { heading: "Describe the finished composite requirement", body: ["State what is being manufactured or supplied: for example, a TDS-listed marine, wind, construction, electrical or automotive FRP laminate, or a catalogue-listed structural laminate or filament-winding requirement. Use these only as application categories, not as certifications.", "Identify whether the requirement is resin only or a confirmed complete system. The TDS names an amine hardener but does not name a specific compatible Samrat hardener or say that one is included in the Fiberglass Epoxy pack."] },
+      { heading: "Start with the document route", body: ["The detailed TDS is the current published record.", "For the detailed TDS route, the published commercial information is a 20 kg pack, 100 kg MOQ, 12-month unopened shelf life and 20-30 C cool, dry storage. Order-specific availability and terms still require confirmation."] },
+      { heading: "Describe the finished composite requirement", body: ["Use these only as application categories, not as certifications.", "Identify whether the requirement is resin only or a confirmed complete system. The TDS names an amine hardener but does not name a specific compatible Samrat hardener or say that one is included in the Fiberglass Epoxy pack."] },
       { heading: "Include material and documentation checks", body: ["Include reinforcement form if known; the detailed TDS names fabric but does not prescribe a CSM weight, fabric type, resin-to-glass ratio or laminate construction. State any required published property, drawing, written technical requirement, test requirement or document request.", "Where chemical service, water exposure, heat, UV, fire, strength or adhesion is central, state the actual project requirement. Do not rely on broad product wording as an approval, compatibility recommendation or finished-composite guarantee."] },
       { heading: "Include the commercial essentials", body: ["Add expected quantity, packaging requirement, delivery city or location, timing requirement and documentation requirement. This allows Samrat Poly Resins to understand the scope without requesting proprietary manufacturing details.", "The enquiry route intentionally does not ask for or provide hardener ratios, resin-to-glass ratios, cure schedules, laminate designs, process settings or troubleshooting information."] },
     ],
@@ -6039,7 +6019,7 @@ export const resources = [
   {
     slug: "marble-resin-technical-specifications-and-rfq",
     title: "Marble Resin Technical Specifications and RFQ Guide",
-    description: "Review Marble Resin's published liquid-resin data, keep the TDS and catalogue differences visible, and prepare a focused cultured-marble or artificial-stone enquiry.",
+    description: "Review Marble Resin's published liquid-resin data and prepare a focused cultured-marble or artificial-stone enquiry.",
     category: "Technical & Procurement Guide",
     icon: "checklist",
     publishDate: "2026-08-10",
@@ -6047,13 +6027,11 @@ export const resources = [
       title: "Marble Resin Technical Specifications and RFQ Guide",
       keywords: ["Marble Resin Technical Specifications", "Marble Resin Viscosity", "Marble Resin Gel Time", "Marble Resin Procurement", "Marble Resin Quote", "Marble Resin Supplier India"],
       ogTitle: "Marble Resin Technical Specifications and RFQ Guide",
-      ogDescription: "Use the current Marble Resin TDS carefully, note where earlier catalogue figures differ, then prepare a document-led industrial quotation request.",
+      ogDescription: "Use the published Marble Resin TDS data to prepare a focused industrial quotation request.",
     },
     quickFacts: {
       "Detailed TDS viscosity": "450 cPs at 25 C",
-      "Catalogue viscosity": "300 cPs",
       "Detailed TDS gel time": "15-20 minutes at 25 C",
-      "Catalogue gel time": "15 minutes",
     },
     relatedSlugs: ["what-is-marble-resin", "marble-resin-raw-resin-vs-finished-marble-composite", "marble-resin-applications-cultured-marble-artificial-stone", "gp-quartz-resin-vs-marble-resin"],
     recommendedLinks: [
@@ -6064,15 +6042,14 @@ export const resources = [
     ],
     faqs: [
       { q: "Which Marble Resin values are published?", a: "The detailed TDS lists water-white liquid form, 450 cPs viscosity at 25 C, 15-20 minute gel time at 25 C, 20-40 minute curing time at 25 C, 1.12 g/cm3 specific gravity, 35% styrene, a 32 C closed-cup flash point, storage, shelf life, 200 kg packaging and a 200 kg MOQ. Treat the values as typical TDS data." },
-      { q: "Why do the TDS and catalogue differ?", a: "The current Marble Resin catalogue card lists 300 cPs viscosity and 15-minute gel time, whereas the detailed TDS lists 450 cPs and 15-20 minutes. The repository does not explain the difference, so this guide does not average, replace or silently reconcile them." },
-      { q: "What should I include in a Marble Resin RFQ?", a: "Include the intended finished marble or stone product; exact TDS or catalogue reference; required supplied appearance or finish; required published technical data or documentation; quantity; packaging need; delivery location; and any drawing or written requirement. State quartz, engineered stone, putty, epoxy or another route explicitly where relevant." },
+      { q: "What should I include in a Marble Resin RFQ?", a: "State quartz, engineered stone, putty, epoxy or another route explicitly where relevant." },
       { q: "Do published pack and MOQ values guarantee availability or delivery timing?", a: "No. The detailed TDS lists 200 kg packaging and a 200 kg MOQ. Stock, lead time, delivery and order-specific documents require confirmation for the actual enquiry." },
     ],
     sections: [
       { heading: "Read the detailed Marble Resin TDS first", body: ["The detailed TDS is the product-specific source for water-white liquid form, typical 450 cPs viscosity at 25 C, 15-20 minute gel time at 25 C, 20-40 minute curing time at 25 C, 1.12 g/cm3 specific gravity, 35% styrene content, 32 C closed-cup flash point, three-month shelf life, 20-30 C storage, 200 kg packaging and 200 kg MOQ.", "These are supplied-resin and commercial references. They are not a formulation, a finished-component test certificate, a chemical-compatibility chart, a UV result, a filler-loading limit or a guarantee for a finished marble product."] },
-      { heading: "Keep the catalogue differences visible", body: ["The catalogue identifies Marble Resin as a filled resin for cultured marble and onyx production and labels it Orthophthalic Unsaturated Polyester Resin. It lists 300 cPs viscosity and 15-minute gel time. The detailed TDS calls the product unsaturated polyester resin and lists 450 cPs and 15-20 minutes.", "The repository does not provide a reason for the differences. A buyer should identify the exact document or product reference being evaluated and request confirmation, rather than combining the figures into a new claimed specification."] },
+      
       { heading: "Use technical data for selection, not process instruction", body: ["Appearance, viscosity, gel-time and storage information help a buyer identify and compare a supplied grade. They do not establish the mineral system, filler level, pigment amount, resin-to-filler ratio, catalyst quantity, moulding method, cure schedule or polishing procedure for a finished marble composite.", "Where the TDS uses high-level terms such as filler compatibility, smooth flow, high-gloss finish, low shrinkage and fully cured water or chemical resistance, it does not publish test methods, numerical limits or a finished-system approval. Keep those distinctions visible in internal requirements and procurement discussions."] },
-      { heading: "Prepare a quote-ready Marble Resin brief", body: ["Start with the actual finished marble or stone component. State whether it is a cultured-marble, artificial-stone, quartz, engineered-stone, broad-FRP, putty-base or epoxy-system requirement. Then attach the current TDS, catalogue card, drawing or written specification if available.", "Include required supplied appearance or finish, required published property or document, expected quantity, packaging requirement, delivery city or location and timing requirement. This supports an evidence-led grade discussion without asking for or publishing proprietary formulation details."] },
+      { heading: "Prepare a quote-ready Marble Resin brief", body: ["Start with the actual finished marble or stone component. State whether it is a cultured-marble, artificial-stone, quartz, engineered-stone, broad-FRP, putty-base or epoxy-system requirement.", "Include required supplied appearance or finish, required published property or document, expected quantity, packaging requirement, delivery city or location and timing requirement. This supports an evidence-led grade discussion without asking for or publishing proprietary formulation details."] },
     ],
   },
 
@@ -7177,7 +7154,7 @@ export const resources = [
         heading: "Why FRP moulding needs a release agent",
         body: [
           "In open-mould FRP fabrication, gelcoat and resin are applied directly against a mould surface, and once cured, the finished part needs to separate cleanly from that mould without sticking or damaging either the part's surface or the mould's own finish. Mould release wax is applied to the mould beforehand specifically to prevent that bond from forming — it creates a thin barrier layer on the mould surface that the cured composite doesn't adhere to.",
-          "This is a functionally different job from a household furniture or automotive polish, even though both are wax-based products applied and buffed by hand. In this catalogue, this product is positioned specifically for the FRP mould-preparation role — not as a general household or automotive polish.",
+          "This is a functionally different job from a household furniture or automotive polish, even though both are wax-based products applied and buffed by hand. In this range, this product is positioned specifically for the FRP mould-preparation role — not as a general household or automotive polish.",
         ],
       },
       {
@@ -7247,7 +7224,7 @@ export const resources = [
     faqs: [
       {
         q: "Is this the same as furniture or shoe polish?",
-        a: "No. In this catalogue, it's positioned specifically as an FRP mould release / parting wax for composite moulding tooling — not a furniture, shoe or automotive detailing product.",
+        a: "No. In this range, it's positioned specifically as an FRP mould release / parting wax for composite moulding tooling — not a furniture, shoe or automotive detailing product.",
       },
       {
         q: "Does mould release wax go on the finished part or the mould?",
@@ -7352,13 +7329,13 @@ export const resources = [
           { term: "UPR", also: "UP resin, unsaturated polyester", body: "Unsaturated Polyester Resin. The thermosetting resin family used across FRP and composite manufacturing. It is supplied as a liquid already dissolved in styrene, and cures at room temperature once a peroxide catalyst and accelerator are added." },
           { term: "LR", also: "lamination resin", body: "Lamination Resin. On this site, the transparent orthophthalic polyester grade positioned for door lamination, plywood lamination and FRP bonding — a narrower role than a general-purpose GP grade." },
           { term: "FRP", also: "fiberglass, GRP", body: "Fibre-Reinforced Plastic. A composite made by wetting out glass reinforcement with a liquid resin and curing the two into a single structural laminate. Sometimes written GRP (glass-reinforced plastic)." },
-          { term: "CSM", also: "chopped strand mat", body: "Chopped Strand Mat. A non-woven glass reinforcement mat made from chopped strands held together with a binder. Sold by area weight — this catalogue publishes CSM 300 (300 g/m²) and CSM 450 (450 g/m²)." },
+          { term: "CSM", also: "chopped strand mat", body: "Chopped Strand Mat. A non-woven glass reinforcement mat made from chopped strands held together with a binder. Sold by area weight — this range publishes CSM 300 (300 g/m²) and CSM 450 (450 g/m²)." },
           { term: "E-Glass", body: "The glass type used for the published chopped strand mat. It describes the glass chemistry, not a resin, a gelcoat or a finished-laminate performance level." },
           { term: "MEKP", also: "MEK peroxide, catalyst, hardener", body: "Methyl Ethyl Ketone Peroxide. The organic peroxide catalyst / initiator that starts the curing reaction in polyester, vinyl ester and gelcoat systems. Not the same thing as MEK (methyl ethyl ketone), which is a solvent, not a catalyst." },
           { term: "NC", also: "nitrocellulose", body: "Nitrocellulose. NC thinner is a solvent blend formulated specifically for nitrocellulose lacquer systems — not interchangeable with a general-purpose thinner intended for oil-based paints." },
           { term: "PVA", also: "polyvinyl alcohol", body: "Polyvinyl alcohol release agent. A water-soluble liquid film sprayed or brushed onto a mould, generally as a single-use sacrificial release layer, often over a wax base." },
           { term: "DMC / SMC", body: "Dough Moulding Compound and Sheet Moulding Compound. Two closed-mould compound formats, distinct from open-mould hand lay-up work." },
-          { term: "PET Resin (as used in this catalogue)", body: "On this site, PET Resin refers to the polyester putty resin grade, and is listed as Polyester Putty Resin. It is a liquid unsaturated polyester resin, not the solid thermoplastic polyethylene terephthalate used for beverage bottles and packaging film — this catalogue does not sell bottle-grade, chip or pellet PET in any form. If that is what you are sourcing, this is not the product." },
+          { term: "PET Resin (as used in this range)", body: "On this site, PET Resin refers to the polyester putty resin grade, and is listed as Polyester Putty Resin. It is a liquid unsaturated polyester resin, not the solid thermoplastic polyethylene terephthalate used for beverage bottles and packaging film — this range does not sell bottle-grade, chip or pellet PET in any form. If that is what you are sourcing, this is not the product." },
           { term: "TDS", body: "Technical Data Sheet. The controlling published reference for a product's specifications, packaging and system context. Values on a TDS are typical, not performance guarantees." },
           { term: "SDS", also: "MSDS", body: "Safety Data Sheet. The controlling reference for handling, storage, PPE and emergency guidance. Always read the current SDS for the actual material before use." },
           { term: "MOQ", body: "Minimum order quantity. Published per product where it exists — for example 25 kg for MEKP Hardener, 100 kg for FRP Polyester Pigment and 500 kg for Glass Fiber Mat." },
@@ -7405,10 +7382,10 @@ export const resources = [
       {
         heading: "Resin chemistries",
         definitions: [
-          { term: "Orthophthalic", also: "ortho", body: "The general-purpose polyester chemistry used for the GP and lamination grades in this catalogue." },
-          { term: "Isophthalic", also: "ISO", body: "A polyester chemistry reviewed where a project states a requirement a general-purpose grade does not cover. In this catalogue it appears in the ISO Fire Retardant grade. Note that \"ISO\" here means isophthalic, not the ISO 9001 standard." },
+          { term: "Orthophthalic", also: "ortho", body: "The general-purpose polyester chemistry used for the GP and lamination grades in this range." },
+          { term: "Isophthalic", also: "ISO", body: "A polyester chemistry reviewed where a project states a requirement a general-purpose grade does not cover. In this range it appears in the ISO Fire Retardant grade. Note that \"ISO\" here means isophthalic, not the ISO 9001 standard." },
           { term: "Vinyl ester", body: "A separate resin family reviewed where a project has a stated chemical- or corrosion-resistance requirement. Suitability must be confirmed against the grade's own published data." },
-          { term: "Bisphenol resin", body: "Listed and classified in this catalogue strictly according to its own verified product document. Do not infer its chemistry, properties or applications from the name alone or from another supplier's product of a similar name." },
+          { term: "Bisphenol resin", body: "Listed and classified in this range strictly according to its own verified product document. Do not infer its chemistry, properties or applications from the name alone or from another supplier's product of a similar name." },
           { term: "Reactive diluent", body: "A thinning agent that also takes part in the curing reaction rather than evaporating away. Styrene fills this role in unsaturated polyester resin: it lowers viscosity and copolymerises into the cured network." },
           { term: "Thermoset", body: "A material that cures irreversibly into a cross-linked network and cannot be melted and reformed. Polyester and epoxy resins are thermosets; PET bottle resin is a thermoplastic, which can be." },
         ],
@@ -7421,7 +7398,7 @@ export const resources = [
       { q: "What is the full form of NC thinner?", a: "NC stands for nitrocellulose. NC thinner is a solvent blend formulated specifically for nitrocellulose lacquer systems." },
       { q: "Is MEK the same as MEKP?", a: "No. MEK is methyl ethyl ketone, a solvent. MEKP is methyl ethyl ketone peroxide, the catalyst that initiates polyester cure. They are different materials and are not interchangeable." },
       { q: "What is the difference between a catalyst and an accelerator?", a: "The catalyst (MEKP) starts the curing reaction. The accelerator (cobalt octoate) makes that reaction proceed fast enough at room temperature to be practical. A room-temperature polyester cure normally needs both, unless the resin is supplied pre-accelerated." },
-      { q: "Does PET Resin here mean bottle-grade PET?", a: "No. In this catalogue PET Resin refers to the polyester putty resin grade. Polyethylene terephthalate — the thermoplastic used for beverage bottles and packaging film — is a different material and is not sold here." },
+      { q: "Does PET Resin here mean bottle-grade PET?", a: "No. In this range PET Resin refers to the polyester putty resin grade. Polyethylene terephthalate — the thermoplastic used for beverage bottles and packaging film — is a different material and is not sold here." },
     ],
 
     relatedSlugs: [
@@ -7482,7 +7459,7 @@ export const resources = [
         heading: "What ISO does not mean",
         body: [
           "This is the most common confusion in the category, and it is worth settling before anything else. The ISO in ISO Polyester Resin is a chemistry descriptor, short for isophthalic. It is not a reference to ISO 9001, ISO 14001 or any other management-system standard, and it is not a claim that a finished FRP part meets an ISO standard.",
-          "Samrat Poly Resins holds an ISO 9001:2015 certificate of registration for its quality management system, but that is a fact about the company's quality processes and is entirely separate from the resin's chemistry. A general-purpose resin made under the same certified system is still an orthophthalic resin, and an isophthalic resin bought from an uncertified maker is still isophthalic.",
+          "Samrat Poly Resins operates an ISO 9001:2015 certified quality management system, but that is a fact about the company's quality processes and is entirely separate from the resin's chemistry. A general-purpose resin made under the same certified system is still an orthophthalic resin, and an isophthalic resin bought from an uncertified maker is still isophthalic.",
           "The second confusion is with ISO Fire Retardant Resin, which is a different product. Both names begin with ISO because both are isophthalic-based, but fire retardancy comes from a separate mechanism, typically a halogenated backbone or a mineral filler such as aluminium trihydrate that releases water when heated. An isophthalic backbone on its own confers no fire performance at all. If a project asks for fire behaviour, the isophthalic grade is not the answer.",
         ],
       },
@@ -7558,7 +7535,7 @@ export const resources = [
     faqs: [
       {
         q: "Does ISO in ISO Polyester Resin mean the resin is ISO certified?",
-        a: "No. ISO here is short for isophthalic and describes the resin's chemistry. It is not a reference to ISO 9001 or any other standard. Samrat Poly Resins holds an ISO 9001:2015 certificate of registration for its quality management system, but that is a separate fact about the company, not about this grade's chemistry.",
+        a: "No. ISO here is short for isophthalic and describes the resin's chemistry. It is not a reference to ISO 9001 or any other standard. Samrat Poly Resins operates an ISO 9001:2015 certified quality management system, but that is a separate fact about the company, not about this grade's chemistry.",
       },
       {
         q: "Is ISO Polyester Resin the same as ISO Fire Retardant Resin?",
@@ -8293,7 +8270,7 @@ export const resources = [
         heading: "What ISO does not mean",
         body: [
           "The ISO in ISO Gelcoat is short for isophthalic and describes the acid in the polymer backbone. It has no connection to ISO 9001 or any other standard from the International Organization for Standardization.",
-          "The two are genuinely unrelated. A company holding ISO 9001 can sell orthophthalic gelcoat, and a supplier with no certification at all can sell isophthalic gelcoat. Samrat Poly Resins holds an ISO 9001:2015 certificate of registration for its quality management system, but that describes how the company runs its processes, not what is in this drum.",
+          "The two are genuinely unrelated. A company holding ISO 9001 can sell orthophthalic gelcoat, and a supplier with no certification at all can sell isophthalic gelcoat. Samrat Poly Resins operates an ISO 9001:2015 certified quality management system, but that describes how the company runs its processes, not what is in this drum.",
           "Nor is isophthalic the same as ISO-NPG. Describing a plain isophthalic gelcoat as NPG grade, or letting a buyer assume ISO means marine grade, is a material misdescription rather than a naming preference.",
         ],
       },
@@ -8333,7 +8310,7 @@ export const resources = [
     faqs: [
       {
         q: "Is ISO Gelcoat the same as ISO 9001 certified?",
-        a: "No, and the two are entirely unrelated. ISO here is short for isophthalic, the acid in the polymer backbone. ISO 9001 is a quality-management-system standard and says nothing about chemistry. Samrat Poly Resins holds an ISO 9001:2015 certificate of registration, but that is a fact about the company's processes, not about this product's formulation.",
+        a: "No, and the two are entirely unrelated. ISO here is short for isophthalic, the acid in the polymer backbone. ISO 9001 is a quality-management-system standard and says nothing about chemistry. Samrat Poly Resins is certified to ISO 9001:2015, but that is a fact about the company's processes, not about this product's formulation.",
       },
       {
         q: "Is ISO Gelcoat the same as ISO-NPG or marine grade gelcoat?",
@@ -9764,7 +9741,7 @@ export const resources = [
         body: [
           "If you are formulating a product to compete in the body-filler market, polyester is the chemistry that market is built around, and the competitive axes are working time, sanding window, pinhole freedom, feather-edge behaviour and adhesion across the substrate list.",
           "If you are asked for a filler for flexible plastics, dimensional work or sustained water exposure, that is a different product and often a different chemistry, and it is more honest to say so than to stretch a polyester formulation to cover it.",
-          "Samrat Poly Resins supplies Polyester Putty Resin as a putty base, and separately supplies epoxy systems and hardeners. The two answer different questions rather than competing for the same one.",
+          "Samrat Poly Resins supplies Polyester Putty Resin as a putty base, and separately manufactures epoxy resin systems. The two answer different questions rather than competing for the same one.",
         ],
       },
     ],

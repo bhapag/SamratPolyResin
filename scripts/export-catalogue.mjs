@@ -18,6 +18,15 @@ const browser = await chromium.launch();
 const page = await browser.newPage();
 await page.goto(`${base}/catalogue/`, { waitUntil: 'networkidle' });
 await page.emulateMedia({ media: 'print' });
+// Links in the PDF must point at the live site, not at the local preview
+// server the PDF is rendered from (the 2026-09-13 exports linked to
+// localhost:4460 until this was added).
+await page.evaluate((site) => {
+  document.querySelectorAll('a[href]').forEach((a) => {
+    const href = a.getAttribute('href') || '';
+    if (href.startsWith('/') && !href.startsWith('//')) a.setAttribute('href', site + href);
+  });
+}, 'https://samratpolyresins.in');
 await page.pdf({
   path: out,
   format: 'A4',

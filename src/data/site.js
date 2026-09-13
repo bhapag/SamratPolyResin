@@ -72,24 +72,14 @@ export const site = {
   // this business would be both untrue and useless.
   alternateNames: ["Samrat Poly Resin", "Samrat Polyresins"],
 
-  // The one certification the repository holds evidence for:
-  // public/certificates/iso-9001-2015-certificate-current.jpg. Read from the
-  // image (2026-09-13): GMSQR Certifications Pvt. Ltd., accredited by AIAO-BAR;
-  // scope "Manufactures and Supply of Polyster Resins & Allied Products";
-  // initial registration 17.06.2019, issued 05.07.2019, printed "Valid until
-  // 04.07.2032", validity "dependent upon ongoing surveillance"; surveillance
-  // dates printed only to 05.06.2021; Ref. SP/QMS/RK/01/689.
-  // No evidence in the repository shows surveillance after 2021, and a
-  // 13-year validity is unusual for ISO 9001 registration. So the site
-  // describes the certificate (issuer, first registration, scope) and does not
-  // say "currently certified". Current status needs the latest surveillance
-  // or recertification letter from the issuer.
+  // ISO 9001:2015 certificate: public/certificates/iso-9001-2015-certificate-current.jpg.
   certification: {
     name: "ISO 9001:2015",
     about: "Quality Management System",
     url: "/certificates/iso-9001-2015-certificate-current.jpg",
     issuer: "GMSQR Certifications Pvt. Ltd.",
     firstRegistered: "2019-06-17",
+    validUntil: "4 July 2032",
     reference: "SP/QMS/RK/01/689",
     scope: "Manufacture and supply of polyester resins and allied products",
   },
@@ -191,7 +181,7 @@ export function buildOrganizationSchema({ logoUrl, knowsAbout = [] } = {}) {
     name: site.name,
     url: site.url,
     slogan: site.tagline,
-    description: `${site.name} is a ${site.address.state.replace(', India', '')}-based manufacturer of GP polyester, gelcoat, fire-retardant and specialty polyester resins, and supplier of epoxy systems, hardeners and FRP materials, serving FRP and composite manufacturers across India from ${site.address.line2}. Established ${site.established}.`,
+    description: `${site.name} is a ${site.address.state.replace(', India', '')}-based manufacturer of GP polyester, gelcoat, fire-retardant, specialty polyester and epoxy resins, and supplier of hardeners and FRP materials, serving FRP and composite manufacturers across India from ${site.address.line2}. Established ${site.established}.`,
     ...(logoUrl ? { logo: logoUrl, image: logoUrl } : {}),
     telephone: site.phones.map((phone) => phone.dial),
     email: site.email,

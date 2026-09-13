@@ -162,7 +162,7 @@ export const products = [
       "General industrial moulding",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "Manufacturing polyester resins since 2017",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Factory-controlled pigmentation for consistent colour",
@@ -200,7 +200,7 @@ export const products = [
       },
       {
         q: "What is the viscosity and styrene content of Sheet Grade Yellow Resin?",
-        a: "Viscosity is approximately 280 cPs and styrene content is 35%. Purity is not published on the current TDS for this grade — ask us if your specification requires it.",
+        a: "Viscosity is approximately 280 cPs and styrene content is 35%.",
       },
       {
         q: "What is the shelf life and storage temperature for Sheet Grade Yellow Resin?",
@@ -275,7 +275,7 @@ export const products = [
     },
     tagline: "The versatile, general-purpose workhorse resin for FRP.",
     description:
-      "Samrat Poly Resins manufactures Unsaturated Polyester Resin (UPR) at its facility in Doraha, Punjab, India. Established in 2017, the company holds an ISO 9001:2015 certificate of registration for the manufacture and supply of polyester resins. UPR is a thermosetting resin widely used across the fibreglass-reinforced plastic (FRP) industry for its versatility and reliable mechanical properties. It crosslinks with styrene monomer through free-radical polymerisation, catalysed with MEKP, hardening into a rigid, durable composite. Polyester resins are broadly grouped into orthophthalic, isophthalic and vinyl ester families, differing in chemical resistance and cost. Samrat Poly Resins' standard UPR grade is a general-purpose orthophthalic resin — a clear liquid with 350–450 cPs viscosity, a gel time under 8 minutes and 99% purity — suited to hand layup, spray-up, moulding and everyday FRP work.",
+      "Samrat Poly Resins manufactures Unsaturated Polyester Resin (UPR) at its facility in Doraha, Punjab, India. Established in 2017, the company operates an ISO 9001:2015 certified quality management system. UPR is a thermosetting resin widely used across the fibreglass-reinforced plastic (FRP) industry for its versatility and reliable mechanical properties. It crosslinks with styrene monomer through free-radical polymerisation, catalysed with MEKP, hardening into a rigid, durable composite. Polyester resins are broadly grouped into orthophthalic, isophthalic and vinyl ester families, differing in chemical resistance and cost. Samrat Poly Resins' standard UPR grade is a general-purpose orthophthalic resin — a clear liquid with 350–450 cPs viscosity, a gel time under 8 minutes and 99% purity — suited to hand layup, spray-up, moulding and everyday FRP work.",
     usageNote:
       'Samrat Poly Resins supplies this standard orthophthalic UPR grade under the product name <a href="/products/gp-clear-resin/">GP Clear Resin</a>, typically catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and cobalt accelerator, then reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> for hand layup and spray-up. For door and plywood lamination work, see our <a href="/products/lamination-resin/">Lamination Resin</a>; for higher chemical and corrosion resistance, step up to <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a>; and pair with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a> for a finished decorative surface.',
     features: [
@@ -301,7 +301,7 @@ export const products = [
       "Pultrusion & casting",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "Manufacturing polyester resins since 2017",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Consistent 99% purity with batch-to-batch quality control",
@@ -400,7 +400,6 @@ export const products = [
       "Viscosity": "400 cPs",
       "Gel Time": "5 Minutes",
       "Styrene Content": "35%",
-      "Specific Gravity / Density": "Not published in the current TDS",
       "Cure Time": "30 Minutes – 1 Hour",
       "MEKP Dosage": "1.5%",
       "Cobalt Octoate Dosage": "0.4%",
@@ -433,7 +432,7 @@ export const products = [
       "General FRP moulding & hand layup",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "Manufacturing polyester resins since 2017",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Consistent 100% purity with batch-to-batch quality control",
@@ -459,7 +458,7 @@ export const products = [
       },
       {
         q: "What is the viscosity, styrene content and density of Lamination Resin?",
-        a: "Viscosity is approximately 400 cPs, styrene content is 35% and purity is 100%. Specific gravity / density is recorded as \"Not Provided\" on the current TDS, so no figure is quoted here.",
+        a: "Viscosity is approximately 400 cPs, styrene content is 35% and purity is 100%.",
       },
       {
         q: "What packaging and minimum order quantity does Lamination Resin come in?",
@@ -569,7 +568,7 @@ export const products = [
       "General moulding & fabrication",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "Manufacturing polyester resins since 2017",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Consistent 99% purity with batch-to-batch quality control",
@@ -666,9 +665,7 @@ export const products = [
     // contradicted by both GP White documents. Appearance (owner decision,
     // 2026-09-13, confirmed by the owner): GP White Resin uses the published
     // GP Clear base-resin specification, with white pigmentation as described
-    // in the GP White SDS. The TDS "Clear" row describes the base resin
-    // and recorded as a TDS error awaiting reissue (see source-documents/
-    // document-control-proposals.md).
+    // in the GP White SDS. The TDS "Clear" row describes the base resin.
     productDetails: {
       "Minimum Order Quantity": "1000 kg",
       "Packaging": "225 kg Drum",
@@ -711,7 +708,7 @@ export const products = [
       "General moulding & fabrication",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "Manufacturing polyester resins since 2017",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Published base specification shared with GP Clear Resin",
@@ -843,7 +840,7 @@ export const products = [
       "Composite stone products",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "Manufacturing polyester resins since 2017",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "High filler-loading compatibility with consistent mechanical strength",
@@ -968,7 +965,7 @@ export const products = [
       "General FRP moulding & fabrication",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "Manufacturing polyester resins since 2017",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Consistent 100% purity with batch-to-batch quality control",
@@ -1110,7 +1107,7 @@ export const products = [
       "General small-parts casting",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "Manufacturing polyester resins since 2017",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Supplied in bulk 225 kg drums for manufacturers",
@@ -1534,7 +1531,6 @@ export const products = [
     imageAlt:
       "FRP Polyester Pigment — multicolour resin colour paste; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/frp-polyester-pigment-tds.pdf",
-    sdsUrl: "/sds/frp-polyester-pigment-sds.pdf",
     seo: {
       title: "FRP Polyester Pigment Supplier in India | Polyester Pigment Paste",
       description:
@@ -1601,7 +1597,7 @@ export const products = [
       "Electrical enclosure manufacturing",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "Supplied by Samrat Poly Resins, Doraha, Punjab (established 2017)",
       "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Heat-stable, fade-resistant multicolour formulation",
@@ -1745,7 +1741,7 @@ export const products = [
       "General moulding & fabrication",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "Supplied by Samrat Poly Resins, Doraha, Punjab (established 2017)",
       "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Industrial-grade E-glass with polyester sizing for reliable wet-out",
@@ -1888,9 +1884,9 @@ export const products = [
       "Industrial casting applications",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
-      "Supplied by Samrat Poly Resins, Doraha, Punjab (established 2017)",
-      "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
+      "ISO 9001:2015 certified quality management system",
+      "Manufactured by Samrat Poly Resins at Doraha, Punjab (established 2017)",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Crystal-clear, high-gloss finish with low bubble formation",
       "Supplied in 20 kg packs, minimum order 100 kg",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
@@ -2015,9 +2011,9 @@ export const products = [
       "Art & decorative casting",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
-      "Supplied by Samrat Poly Resins, Doraha, Punjab (established 2017)",
-      "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
+      "ISO 9001:2015 certified quality management system",
+      "Manufactured by Samrat Poly Resins at Doraha, Punjab (established 2017)",
+      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Self-levelling, UV-resistant formulation for a lasting high-gloss finish",
       "Supplied in 15 kg packs, minimum order 100 kg",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
@@ -2376,7 +2372,7 @@ export const products = [
     },
     imageAlt: "Earlier PET Resin poster; its food-contact, packaging and specification claims do not apply to Polyester Putty Resin",
     tagline: "Liquid unsaturated polyester resin, supplied to manufacturers as a base for polyester putty and filler.",
-    description: "Polyester Putty Resin is a liquid unsaturated polyester resin manufactured by Samrat Poly Resins and supplied to putty and filler manufacturers as the base resin in their own formulations. It is the resin a putty maker charges to a disperser before adding talc, carbonate, microspheres, thixotrope and pigment — not a finished, ready-to-use body filler. Samrat Poly Resins manufactures this grade at its facility in Doraha, Punjab, India. Established in 2017, the company holds an ISO 9001:2015 certificate of registration for the manufacture and supply of polyester resins.",
+    description: "Polyester Putty Resin is a liquid unsaturated polyester resin manufactured by Samrat Poly Resins and supplied to putty and filler manufacturers as the base resin in their own formulations. It is the resin a putty maker charges to a disperser before adding talc, carbonate, microspheres, thixotrope and pigment — not a finished, ready-to-use body filler. Samrat Poly Resins manufactures this grade at its facility in Doraha, Punjab, India. Established in 2017, the company operates an ISO 9001:2015 certified quality management system.",
     usageNote: "Grade-specific figures such as viscosity, reactivity and styrene content are confirmed against the production batch at the time of enquiry rather than published here, and the cure system this grade is designed for is confirmed with the technical team. Send your filler package, target loading and working time so the right data can be matched to your formulation.",
     features: [
       "Liquid unsaturated polyester resin supplied as a putty and filler base, not a finished compound",
@@ -2452,7 +2448,7 @@ export const products = [
     price: "₹125 / kg",
     image: "marble-resin.jpg",
     images: ["marble-resin-2.jpg"],
-    imageAlt: "Marble Resin; illustrative Samrat Poly Resins product graphic",
+    imageAlt: "Marble Resin — water-white unsaturated polyester resin for cultured marble; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/marble-resin-tds.pdf",
     sdsUrl: "/sds/marble-resin-sds.pdf",
     seo: {
@@ -2483,9 +2479,9 @@ export const products = [
       "Storage": "20–30 °C; cool, dry place away from direct sunlight",
     },
     techSpecs: {
-      "Resin Family": "Unsaturated polyester resin (TDS); catalogue labels it Orthophthalic UPR",
-      "Viscosity": "450 cPs at 25 °C (TDS); catalogue lists 300 cPs",
-      "Gel Time": "15–20 minutes at 25 °C (TDS typical data); catalogue lists 15 minutes",
+      "Resin Family": "Unsaturated polyester resin",
+      "Viscosity": "450 cPs at 25 °C",
+      "Gel Time": "15–20 minutes at 25 °C",
       "Curing Time": "20–40 minutes at 25 °C (TDS)",
       "Specific Gravity / Density": "1.12 g/cm³",
       "Styrene Content": "35% (TDS)",
@@ -2493,9 +2489,9 @@ export const products = [
     },
     tagline: "Water-white liquid unsaturated polyester resin for documented cultured-marble and artificial-stone contexts.",
     description:
-      "Samrat Marble Resin is a water-white liquid unsaturated polyester resin. Its current Technical Data Sheet positions the supplied resin for cultured marble and artificial stone, including the listed slab, vanity-top, countertop, wash-basin, wall-panel and architectural-product contexts. Samrat supplies the liquid resin, not finished marble slabs, countertops, wash basins or other completed stone products. The current catalogue separately calls the product a filled resin for cultured marble and onyx production; it does not publish a filler type, filler level or formulation. Review the current product document with the actual finished product before selecting a grade.",
+      "Samrat Marble Resin is a water-white liquid unsaturated polyester resin. Its current Technical Data Sheet positions the supplied resin for cultured marble and artificial stone, including the listed slab, vanity-top, countertop, wash-basin, wall-panel and architectural-product contexts. Samrat supplies the liquid resin, not finished marble slabs, countertops, wash basins or other completed stone products. Review the current product document with the actual finished product before selecting a grade.",
     usageNote:
-      'Use the dedicated Marble Resin TDS for its supplied-resin data. The catalogue gives a separate short product summary and differs on viscosity and gel time, so its figures are not merged into a single claimed specification. For a quartz or engineered-stone requirement, review <a href="/products/gp-quartz-resin/">GP Quartz Resin</a>; both documents use some artificial-stone terminology, so the exact finished product and current TDS should guide selection. For broad general FRP, door/plywood lamination or a specified two-part epoxy system, review <a href="/products/gp-clear-resin/">GP Clear Resin</a>, <a href="/products/lamination-resin/">Lamination Resin</a> or <a href="/products/epoxy-clear-casting-resin/">Clear Casting Resin</a> respectively.',
+      'Use the dedicated Marble Resin TDS for its supplied-resin data. For a quartz or engineered-stone requirement, review <a href="/products/gp-quartz-resin/">GP Quartz Resin</a>; both documents use some artificial-stone terminology, so the exact finished product and current TDS should guide selection. For broad general FRP, door/plywood lamination or a specified two-part epoxy system, review <a href="/products/gp-clear-resin/">GP Clear Resin</a>, <a href="/products/lamination-resin/">Lamination Resin</a> or <a href="/products/epoxy-clear-casting-resin/">Clear Casting Resin</a> respectively.',
     features: [
       "TDS-identified water-white liquid unsaturated polyester resin",
       "TDS-listed cultured-marble and artificial-stone product contexts",
@@ -2522,15 +2518,15 @@ export const products = [
       },
       {
         q: "Is Marble Resin an unsaturated polyester resin?",
-        a: "Yes. The Marble Resin TDS identifies the product as unsaturated polyester resin. The current catalogue additionally labels it Orthophthalic Unsaturated Polyester Resin; this page keeps that source distinction visible rather than treating the catalogue summary as a replacement for the TDS.",
+        a: "Yes. The Marble Resin TDS identifies the product as unsaturated polyester resin.",
       },
       {
         q: "What applications are published for Marble Resin?",
-        a: "The current TDS lists cultured-marble slabs and vanity tops; kitchen and bathroom countertops and wash basins; wall panels, window sills and architectural components; and marble sheets, statues, railings and balusters. The catalogue separately mentions cultured marble, onyx production and decorative panels. Confirm the actual finished product against the current TDS before selection.",
+        a: "The current TDS lists cultured-marble slabs and vanity tops; kitchen and bathroom countertops and wash basins; wall panels, window sills and architectural components; and marble sheets, statues, railings and balusters. Confirm the actual finished product against the current TDS before selection.",
       },
       {
         q: "Is Marble Resin used for artificial or cultured marble?",
-        a: "Yes. The current TDS explicitly names cultured marble and artificial stone. The catalogue also mentions cultured marble and onyx production. Neither document publishes a formulation, finished-system qualification or a universal suitability claim for every artificial-stone design.",
+        a: "Yes. The current TDS explicitly names cultured marble and artificial stone. Neither document publishes a formulation, finished-system qualification or a universal suitability claim for every artificial-stone design.",
       },
       {
         q: "What is the difference between Marble Resin and GP Quartz Resin?",
@@ -2550,7 +2546,7 @@ export const products = [
       },
       {
         q: "Which technical properties should buyers review?",
-        a: "The current TDS lists water-white liquid form, 450 cPs viscosity at 25 °C, 15-20 minute gel time at 25 °C, 20-40 minute curing time at 25 °C, 1.12 g/cm³ specific gravity, 35% styrene content, 32 °C closed-cup flash point, storage and shelf life. The catalogue lists 300 cPs viscosity and 15-minute gel time, so the two sources should not be silently combined. Review the current TDS for the exact grade under consideration.",
+        a: "The current TDS lists water-white liquid form, 450 cPs viscosity at 25 °C, 15-20 minute gel time at 25 °C, 20-40 minute curing time at 25 °C, 1.12 g/cm³ specific gravity, 35% styrene content, 32 °C closed-cup flash point, storage and shelf life. Review the current TDS for the exact grade under consideration.",
       },
       {
         q: "What packaging and quote details are published?",
@@ -2708,11 +2704,11 @@ export const products = [
     price: "₹800 / kg",
     image: "fiberglass-epoxy-resin.jpg",
     images: ["fiberglass-epoxy-resin-2.jpg", "fiberglass-epoxy-resin-3.jpg"],
-    imageAlt: "Fiberglass Epoxy Resin; illustrative Samrat Poly Resins product graphic",
+    imageAlt: "Fiberglass Epoxy Resin — epoxy system for fibreglass lamination; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/fiberglass-epoxy-resin-tds.pdf",
     sdsUrl: "/sds/fiberglass-epoxy-resin-sds.pdf",
     seo: {
-      title: "Fiberglass Epoxy Resin Supplier in India",
+      title: "Fiberglass Epoxy Resin Manufacturer & Supplier in India",
       description:
         "Fiberglass Epoxy Resin from Samrat Poly Resins — an epoxy laminating resin for fibreglass reinforcement, cured with an amine hardener. Request grade data.",
       keywords: [
@@ -2742,44 +2738,42 @@ export const products = [
       "Storage": "20-30°C; cool, dry place",
     },
     techSpecs: {
-      "Resin type": "Epoxy (current TDS); catalogue calls it Bisphenol-A Epoxy Resin",
-      "Curing system": "Room-temperature cure with an amine hardener at 2:1 by weight (TDS). The TDS gives the hardener type and ratio but does not name a specific Samrat hardener as the qualified partner — confirm the pairing before ordering",
-      "Published processing": "Hand lay-up and lamination (current TDS); catalogue separately lists filament winding",
-      "Viscosity": "700 cPs at 25°C (TDS); catalogue lists 900 cPs",
-      "Gel / pot-life data": "35-45 minutes at 25°C (TDS gel time); catalogue lists 35 minutes as Gel Time / Pot Life",
-      "Specific gravity / density": "1.15 g/cm³ (TDS); catalogue lists 1.16 g/cm³",
-      "Thermal data": "75°C HDT / thermal data (TDS; no test context or continuous-service limit published)",
-      "Flash point": ">100°C (TDS)",
+      "Resin type": "Epoxy",
+      "Curing system": "Room-temperature cure with an amine hardener at 2:1 by weight",
+      "Processing": "Hand lay-up and lamination; fabric reinforcement",
+      "Viscosity": "700 cPs at 25°C",
+      "Gel time": "35-45 minutes at 25°C",
+      "Specific gravity / density": "1.15 g/cm³",
+      "HDT / thermal data": "75°C",
+      "Flash point": ">100°C",
     },
-    tagline: "Documented epoxy-system route for fibreglass fabric reinforcement and lamination.",
+    tagline: "General-purpose epoxy resin system for fibreglass fabric reinforcement and lamination.",
     description:
-      "Samrat Fiberglass Epoxy Resin is the current TDS-listed general-purpose epoxy-system route for fibreglass reinforcement, composite manufacturing, hand lay-up and lamination. The detailed TDS identifies fabric reinforcement and lists boat or marine components, wind-turbine components, and construction, electrical and automotive FRP laminates as application contexts. It does not publish a finished-part approval, numerical mechanical test results, a reinforcement schedule or a universal compatibility statement for every glass-fibre product.",
+      "Fiberglass Epoxy Resin is a general-purpose epoxy resin system manufactured by Samrat Poly Resins at Doraha, Punjab, for fibreglass reinforcement, composite manufacturing, hand lay-up and lamination. It is used with fibreglass fabric and cures at room temperature with an amine hardener at 2:1 by weight. Its TDS lists boat and marine components, wind-turbine components, and construction, electrical and automotive FRP laminates.",
     usageNote:
-      'The TDS identifies an amine hardener as part of the epoxy system, but it does not name a specific compatible Samrat hardener or state whether hardener is included with this product. <a href="/products/epoxy-hardener/">Epoxy Hardener</a> is a separate polyamide curing-agent route; confirm the exact resin/hardener pairing before procurement. <a href="/products/fibre-glass-mat/">Glass Fiber</a> is a separate reinforcement product. The Fiberglass Epoxy TDS says fabric reinforcement and does not prescribe CSM 300, CSM 450, a resin-to-glass ratio or a laminate design.',
+      'Fiberglass Epoxy Resin cures with an amine hardener at 2:1 by weight; tell us whether you need resin only or the complete system when you enquire. <a href="/products/fibre-glass-mat/">Glass Fiber</a> is a separate reinforcement product. Fiberglass Epoxy Resin is a separate product from <a href="/products/bisphenol-resin/">Bisphenol Resin</a>, with its own TDS values.',
     features: [
-      "Current TDS identifies an epoxy system and a general-purpose grade",
-      "TDS-listed fabric-reinforcement, hand lay-up and lamination contexts",
-      "Published supplied-resin viscosity, gel-time, density, packaging, MOQ, storage and shelf-life data",
-      "Catalogue-versus-TDS chemistry and property differences disclosed before ordering",
-      "Separate resin, hardener and reinforcement roles made clear for RFQs",
+      "General-purpose epoxy system for fibreglass fabric reinforcement",
+      "Low 700 cPs viscosity at 25°C for fabric wet-out",
+      "Room-temperature cure with an amine hardener at 2:1 by weight",
+      "35-45 minute gel time at 25°C",
+      "Manufactured by Samrat Poly Resins at Doraha, Punjab",
     ],
     applications: [
-      "TDS-listed boat building and marine components",
-      "TDS-listed wind-turbine components",
-      "TDS-listed construction, electrical and automotive FRP laminates",
-      "Catalogue-listed structural laminates and filament winding — confirm document route before selection",
+      "Boat building and marine components",
+      "Wind-turbine components",
+      "Construction, electrical and automotive FRP laminates",
     ],
     industries: [
       "Fibreglass composite and laminating buyers",
-      "Marine, wind, construction, electrical and automotive requirements named in the TDS",
-      "Structural-laminate and filament-winding enquiries named in the catalogue",
+      "Marine and boat building",
+      "Wind energy, construction, electrical and automotive composites",
     ],
     whyChoose: [
-      "Current product-specific TDS and catalogue available for review",
-      "Published 20 kg packaging, 100 kg MOQ, storage and shelf-life information",
-      "TDS-listed resin-system and fabric-reinforcement context",
-      "Transparent disclosure that the source documents use different chemistry labels and values",
-      "Focused enquiry route for the finished composite, system components and documentation need",
+      "Manufactured by Samrat Poly Resins at Doraha, Punjab",
+      "Published TDS and SDS for the grade",
+      "20 kg packs with a 100 kg minimum order quantity",
+      "12-month shelf life unopened",
     ],
     faqs: [
       {
@@ -2788,15 +2782,15 @@ export const products = [
       },
       {
         q: "How is Fiberglass Epoxy Resin different from Bisphenol Resin?",
-        a: 'Both have their own TDS and SDS: Bisphenol Resin is SPR-TDS-BPR, Fiberglass Epoxy Resin is SPR-TDS-FER. The two sheets share an amine hardener at 2:1 by weight, a 35–45 minute gel time at 25 °C, no styrene, a flash point above 100 °C, 12-month shelf life, 20 kg packs and a 100 kg MOQ. They differ in viscosity (600 vs 700 cPs at 25 °C), density (1.10 vs 1.15 g/cm³), thermal data (80 °C vs 75 °C), grade (premium vs general purpose) and listed uses: Bisphenol Resin names Bisphenol A and epichlorohydrin chemistry for laminating, casting, coating, flooring and encapsulation; Fiberglass Epoxy Resin names epoxy for fabric lamination in boat, wind-turbine, construction, electrical and automotive laminates. Neither document says whether they are separate formulations or two grades of one epoxy platform, so choose by the sheet that matches your process and confirm the grade with the plant when ordering. See <a href="/products/bisphenol-resin/">Bisphenol Resin</a>.',
+        a: 'They are separate products, each with its own TDS and SDS (Bisphenol Resin: SPR-TDS-BPR; Fiberglass Epoxy Resin: SPR-TDS-FER). Bisphenol Resin is a premium Bisphenol A and epichlorohydrin based resin at 600 cPs and 1.10 g/cm³, with 80 °C thermal data, for laminating, casting, coating, flooring and encapsulation. Fiberglass Epoxy Resin is a general-purpose epoxy system at 700 cPs and 1.15 g/cm³, with 75 °C thermal data, for fibreglass fabric lamination in marine, wind-turbine, construction, electrical and automotive laminates. Both cure at room temperature with an amine hardener at 2:1 by weight and have a 35–45 minute gel time at 25 °C. See <a href="/products/bisphenol-resin/">Bisphenol Resin</a>.',
       },
       {
         q: "Is Fiberglass Epoxy Resin supplied as resin only or as a complete system?",
-        a: 'The current TDS identifies an amine hardener as part of the epoxy system, but it does not say whether hardener is included with the Fiberglass Epoxy Resin pack or name a specific compatible Samrat product. Confirm whether the requirement is resin only or a complete system before ordering. <a href="/products/epoxy-hardener/">Epoxy Hardener</a> is a separately listed product route.',
+        a: 'It cures with an amine hardener at 2:1 by weight. Tell us whether you need resin only or the complete system when you ask for a quotation.',
       },
       {
         q: "Is Epoxy Laminating Resin an accurate term for this product?",
-        a: "The TDS lists fibreglass reinforcement and lamination, with hand lay-up and lamination as published processing methods. The catalogue separately calls the product an epoxy system for structural fiberglass laminating. Use the exact current document and application rather than assuming every laminating-epoxy requirement is identical.",
+        a: "The TDS lists fibreglass reinforcement and lamination, with hand lay-up and lamination as published processing methods. Use the exact current document and application rather than assuming every laminating-epoxy requirement is identical.",
       },
       {
         q: "What reinforcement is documented for Fiberglass Epoxy Resin?",
@@ -2816,7 +2810,7 @@ export const products = [
       },
       {
         q: "Which technical data should Fiberglass Epoxy buyers review?",
-        a: "The detailed TDS lists epoxy type, general-purpose grade, room-temperature cure, hand lay-up and lamination, 700 cPs viscosity at 25°C, 35-45 minute gel time at 25°C, 1.15 g/cm³ density, 75°C HDT / thermal data, storage, shelf life, packaging and MOQ. The catalogue uses a Bisphenol-A epoxy label and different viscosity, time and density figures, so do not combine the two records without confirmation.",
+        a: "The detailed TDS lists epoxy type, general-purpose grade, room-temperature cure, hand lay-up and lamination, 700 cPs viscosity at 25°C, 35-45 minute gel time at 25°C, 1.15 g/cm³ density, 75°C HDT / thermal data, storage, shelf life, packaging and MOQ.",
       },
       {
         q: "Does resin data establish finished fiberglass-composite performance?",
@@ -2824,7 +2818,7 @@ export const products = [
       },
       {
         q: "What should I include in a Fiberglass Epoxy Resin quote request?",
-        a: "Share the finished composite or fiberglass application, whether resin only or a complete system is required, the reinforcement form if known, the exact TDS or catalogue reference being evaluated, required published properties, quantity, packaging need, delivery location and documentation requirement. Do not rely on a product name alone to establish the resin/hardener pairing or a finished-system result.",
+        a: "Do not rely on a product name alone to establish the resin/hardener pairing or a finished-system result.",
       },
     ],
     relatedSlugs: [
@@ -2851,7 +2845,7 @@ export const products = [
     tdsUrl: "/tds/bisphenol-resin-tds.pdf",
     sdsUrl: "/sds/bisphenol-resin-sds.pdf",
     seo: {
-      title: "Bisphenol Resin Supplier in India",
+      title: "Bisphenol Resin Manufacturer & Supplier in India",
       description:
         "Bisphenol Resin from Samrat Poly Resins — a bisphenol-A and epichlorohydrin epoxy for laminating, casting, coating and encapsulation. Request a quote.",
       keywords: [
@@ -2880,14 +2874,14 @@ export const products = [
       "Gel time": "35-45 minutes (at 25°C; TDS typical data)",
       "Styrene content": "Not applicable",
       "Specific gravity / density": "1.10 g/cm³ (at 25°C)",
-      "Thermal data": "80°C (fully cured; not a published continuous-service limit)",
+      "Thermal data": "80°C (fully cured)",
       "Flash point": ">100°C",
     },
     tagline: "Bisphenol A and epichlorohydrin-based thermosetting resin for laminating, casting, coating and encapsulation.",
     description:
-      "The current Bisphenol Resin TDS identifies a premium-grade Bisphenol A & epichlorohydrin-based thermosetting resin system. The TDS describes a low-viscosity liquid for laminating, casting, coating and encapsulation, and lists FRP composites, flooring and protective coatings, electrical encapsulation, tooling, structural bonding, and casting or coating as its application contexts. This is a separate specialist thermosetting product route from Samrat's general-purpose UPR and Vinyl Ester Resin grades.",
+      "Bisphenol Resin is a premium-grade Bisphenol A & epichlorohydrin-based thermosetting resin manufactured by Samrat Poly Resins at Doraha, Punjab. Its TDS describes a low-viscosity liquid for laminating, casting, coating and encapsulation, and lists FRP composites, flooring and protective coatings, electrical encapsulation, tooling, structural bonding, and casting or coating as its application contexts. This is a separate specialist thermosetting product route from Samrat's general-purpose UPR and Vinyl Ester Resin grades.",
     usageNote:
-      'The current product-specific TDS is the technical authority for this Bisphenol Resin grade. The catalogue remains a general range overview and should not replace the grade-specific data. The TDS identifies a room-temperature cure with an amine hardener, but this page does not provide ratios or process instructions. <a href="/products/fibre-glass-mat/">Glass Fiber</a> is a separate reinforcement decision for an FRP composite. For a broad general-purpose polyester requirement, review <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> or <a href="/products/gp-clear-resin/">GP Clear Resin</a>. <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> is a separate product route with its own TDS.',
+      'The current product-specific TDS is the technical authority for this Bisphenol Resin grade. The TDS identifies a room-temperature cure with an amine hardener, but this page does not provide ratios or process instructions. <a href="/products/fibre-glass-mat/">Glass Fiber</a> is a separate reinforcement decision for an FRP composite. For a broad general-purpose polyester requirement, review <a href="/products/unsaturated-polyester-resin/">Unsaturated Polyester Resin</a> or <a href="/products/gp-clear-resin/">GP Clear Resin</a>. <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a> is a separate product route with its own TDS.',
     features: [
       "Current TDS identifies a Bisphenol A & epichlorohydrin-based thermosetting resin system",
       "Published typical viscosity, gel-time, density and thermal data",
@@ -2920,7 +2914,7 @@ export const products = [
       },
       {
         q: "How is Bisphenol Resin different from Fiberglass Epoxy Resin?",
-        a: 'Both have their own TDS and SDS: Bisphenol Resin is SPR-TDS-BPR, Fiberglass Epoxy Resin is SPR-TDS-FER. The two sheets share an amine hardener at 2:1 by weight, a 35–45 minute gel time at 25 °C, no styrene, a flash point above 100 °C, 12-month shelf life, 20 kg packs and a 100 kg MOQ. They differ in viscosity (600 vs 700 cPs at 25 °C), density (1.10 vs 1.15 g/cm³), thermal data (80 °C vs 75 °C), grade (premium vs general purpose) and listed uses: Bisphenol Resin names Bisphenol A and epichlorohydrin chemistry for laminating, casting, coating, flooring and encapsulation; Fiberglass Epoxy Resin names epoxy for fabric lamination in boat, wind-turbine, construction, electrical and automotive laminates. Neither document says whether they are separate formulations or two grades of one epoxy platform, so choose by the sheet that matches your process and confirm the grade with the plant when ordering. See <a href="/products/fiberglass-epoxy-resin/">Fiberglass Epoxy Resin</a>.',
+        a: 'They are separate products, each with its own TDS and SDS (Bisphenol Resin: SPR-TDS-BPR; Fiberglass Epoxy Resin: SPR-TDS-FER). Bisphenol Resin is a premium Bisphenol A and epichlorohydrin based resin at 600 cPs and 1.10 g/cm³, with 80 °C thermal data, for laminating, casting, coating, flooring and encapsulation. Fiberglass Epoxy Resin is a general-purpose epoxy system at 700 cPs and 1.15 g/cm³, with 75 °C thermal data, for fibreglass fabric lamination in marine, wind-turbine, construction, electrical and automotive laminates. Both cure at room temperature with an amine hardener at 2:1 by weight and have a 35–45 minute gel time at 25 °C. See <a href="/products/fiberglass-epoxy-resin/">Fiberglass Epoxy Resin</a>.',
       },
       {
         q: "Does “Bisphenol” mean Bisphenol A for this product?",
@@ -3160,7 +3154,7 @@ export const products = [
       "General industrial moulding",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "Manufacturing polyester resins since 2017",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Consistent 99% purity with batch-to-batch quality control",
@@ -3292,7 +3286,7 @@ export const products = [
       "Gelcoat and surface-finish production",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the resin system, application and expected quantity",
@@ -3393,7 +3387,7 @@ export const products = [
       "Gelcoat and surface-finish formulation",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the resin system, application and expected quantity",
@@ -3487,7 +3481,7 @@ export const products = [
       "Automotive and industrial refinishing",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the intended coating system, application and expected quantity",
@@ -3578,7 +3572,7 @@ export const products = [
       "Marine and panel moulding",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the intended application and expected quantity",
@@ -3668,7 +3662,7 @@ export const products = [
       "Plastics and general industrial manufacturing",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the intended formulation and expected quantity",
@@ -3739,7 +3733,7 @@ export const products = [
     },
     tagline: "FRP mould release / parting wax for mould preparation and part release in composite moulding.",
     description:
-      "Wax Polish from Samrat Poly Resins is positioned, in the FRP context, as a mould release / parting wax. It is used for mould preparation, creating a release barrier and supporting polished tooling/mould surfaces across composite/FRP moulding workflows. In this catalogue it is not presented as a furniture polish, shoe polish, automotive detailing wax, resin, catalyst or hardener — its role here is mould-side release and surface preparation. Review the actual mould substrate and process before use.",
+      "Wax Polish from Samrat Poly Resins is positioned, in the FRP context, as a mould release / parting wax. It is used for mould preparation, creating a release barrier and supporting polished tooling/mould surfaces across composite/FRP moulding workflows. On this site it is not presented as a furniture polish, shoe polish, automotive detailing wax, resin, catalyst or hardener — its role here is mould-side release and surface preparation. Review the actual mould substrate and process before use.",
     usageNote:
       'Wax Polish is used to prepare a mould before <a href="/products/gp-gelcoat-resin/">gelcoat</a> and resin are applied, typically as one of the first steps in an open-moulding sequence, often alongside <a href="/products/paint-brushes/">application brushes</a> during mould preparation and gelcoat application. It is a mould-release product, not a resin, catalyst or hardener.',
     features: [
@@ -3761,7 +3755,7 @@ export const products = [
       "Panel and large-format composite moulding",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the mould/tooling context and expected quantity",
@@ -3769,12 +3763,12 @@ export const products = [
     ],
     faqs: [
       {
-        q: "What is Wax Polish used for in this catalogue?",
+        q: "What is Wax Polish used for?",
         a: "In the FRP context, Wax Polish is positioned as a mould release / parting wax — used for mould preparation and part release across composite/FRP moulding workflows.",
       },
       {
         q: "Is this the same as furniture or automotive wax polish?",
-        a: "No. In this catalogue, Wax Polish is presented specifically as an FRP mould release / parting wax for composite moulding tooling, not a furniture, shoe or automotive detailing product.",
+        a: "No. On this site, Wax Polish is presented specifically as an FRP mould release / parting wax for composite moulding tooling, not a furniture, shoe or automotive detailing product.",
       },
       {
         q: "What should I share when requesting a Wax Polish quote?",
@@ -3875,7 +3869,7 @@ export const products = [
       "General industrial moulding",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the intended sheet product, exposure condition and expected quantity",
@@ -3992,7 +3986,7 @@ export const products = [
       "FRP & composites manufacturing",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the FRP component, service medium and expected quantity",
@@ -4004,7 +3998,7 @@ export const products = [
       },
       {
         q: "Does ISO here mean ISO 9001 certification?",
-        a: "No. In resin naming, ISO is short for isophthalic and describes the chemistry of the resin. It is unrelated to ISO 9001:2015, the quality-management standard named on Samrat Poly Resins' certificate of registration. The two terms mean different things.",
+        a: "No. In resin naming, ISO is short for isophthalic and describes the chemistry of the resin. It is unrelated to ISO 9001:2015, the quality management system standard Samrat Poly Resins is certified to. The two terms mean different things.",
       },
       {
         q: "How is isophthalic resin different from orthophthalic resin?",
@@ -4075,17 +4069,14 @@ export const products = [
       "Storage Temperature": "15–25 °C, maximum 25 °C",
       "Country of Origin": "India",
     },
-    // Values from the final TDS SPR-TDS-IGC Rev. 01 (September 2026). The
-    // earlier sheet published no measured properties; this one does. The
-    // thixotropic index is shown as printed (26); 40,000 / 1,500 calculates to
-    // 26.7, recorded in source-documents/document-control-proposals.md.
+    // Values from the final TDS SPR-TDS-IGC Rev. 01 (September 2026).
     techSpecs: {
       "Resin Type": "Isophthalic Polyester Gelcoat (isophthalic unsaturated polyester backbone)",
       "Curing System": "MEKP at 2.0% by weight of gelcoat",
       Process: "Hand lay-up and spray-up FRP moulding",
       "Viscosity — low shear": "40,000 cPs at 25 °C",
       "Viscosity — high shear": "1,500 cPs at 25 °C",
-      "Thixotropic Index": "26 (as printed)",
+      "Thixotropic Index": "26",
       "Gel Time": "8 minutes at 25 °C",
       "Specific Gravity": "1.15 g/cm³ at 25 °C",
       "Styrene Content": "32% by weight",
@@ -4130,7 +4121,7 @@ export const products = [
       "FRP & composites manufacturing",
     ],
     whyChoose: [
-      "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
+      "ISO 9001:2015 certified quality management system",
       "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
       "Enquiry can begin with the finished part, service condition and required finish",
@@ -4146,7 +4137,7 @@ export const products = [
       },
       {
         q: "Does ISO here refer to ISO 9001 certification?",
-        a: "No. ISO in a gelcoat name is short for isophthalic and describes the chemistry. Samrat Poly Resins separately holds an ISO 9001:2015 certificate of registration for its quality management system; the two are unrelated terms that share an abbreviation.",
+        a: "No. ISO in a gelcoat name is short for isophthalic and describes the chemistry. Samrat Poly Resins is separately certified to ISO 9001:2015 for its quality management system; the two are unrelated terms that share an abbreviation.",
       },
       {
         q: "Can ISO Gelcoat be used as a laminating resin?",
