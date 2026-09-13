@@ -57,12 +57,11 @@ test.describe('document files', () => {
     expect(problems, problems.join('\n')).toEqual([]);
   });
 
-  test('the historical PET sheet-grade TDS is kept, but never served or linked', async () => {
-    const hist = path.resolve('source-documents/historical/historical-spr-tds-pet-pet-resin-original.pdf');
-    expect(fs.existsSync(hist), 'historical source missing').toBe(true);
-    expect(fs.existsSync(path.join(PUBLIC, 'tds', 'pet-resin-tds.pdf')), 'PET TDS is back in public/').toBe(false);
+  test('Polyester Putty Resin carries the PET TDS and SDS (owner, 2026-09-14)', async () => {
+    expect(fs.existsSync(path.join(PUBLIC, 'tds', 'pet-resin-tds.pdf'))).toBe(true);
     const putty: any = products.find((x) => x.slug === 'polyester-putty-resin');
-    expect([putty.tdsUrl, putty.sdsUrl, putty.pdsUrl].filter(Boolean)).toEqual([]);
+    expect(putty.tdsUrl).toBe('/tds/pet-resin-tds.pdf');
+    expect(putty.sdsUrl).toBe('/sds/pet-resin-sds.pdf');
     expect(products.some((x) => /^pet-resin$/.test(x.slug)), 'PET Resin recreated as a product').toBe(false);
   });
 
@@ -90,11 +89,8 @@ test.describe('document files', () => {
     expect(changed, `TDS changed without a matching SDS revision: ${changed.join(', ')}`).toEqual([]);
   });
 
-  test('retired and historical sheets are never linked from a product', async () => {
-    // pet-resin-*: the historical sheet-grade documents, held back from
-    // Polyester Putty Resin until the chemist establishes whether they describe
-    // the same grade. uv-resin-*: a product removed from the range.
-    const linked = docs.filter((d) => /\/(pet-resin|uv-resin)-(tds|sds)\.pdf$/.test(d.url));
+  test('retired UV Resin sheets are never linked from a product', async () => {
+    const linked = docs.filter((d) => /\/uv-resin-(tds|sds)\.pdf$/.test(d.url));
     expect(linked.map((d) => `${d.slug} → ${d.url}`)).toEqual([]);
   });
 });
@@ -138,9 +134,10 @@ test.describe('product page document actions', () => {
     expect(label).toMatch(/^Download Product Data Sheet PDF for Paint Brushes/);
   });
 
-  test('Polyester Putty Resin publishes no document at all', async ({ page }) => {
+  test('Polyester Putty Resin links its TDS and SDS', async ({ page }) => {
     await page.goto('/products/polyester-putty-resin/');
-    await expect(page.locator('a[href$=".pdf"]')).toHaveCount(0);
+    await expect(page.locator('a[href="/tds/pet-resin-tds.pdf"]').first()).toBeAttached();
+    await expect(page.locator('a[href="/sds/pet-resin-sds.pdf"]').first()).toBeAttached();
   });
 
   test('no page still says a published TDS is "not published yet"', async ({ page }) => {

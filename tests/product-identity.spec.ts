@@ -91,14 +91,11 @@ test.describe('Polyester Putty Resin has a single published identity', () => {
     expect(problems, problems.join('\n')).toEqual([]);
   });
 
-  test('the product page does not offer the sheet-grade documents', async ({ page }) => {
-    // Until the chemist confirms whether the putty base resin and the sheet
-    // grade are one grade or two, SPR-TDS-PET must not be published as this
-    // product's controlling document.
-    expect(putty.tdsUrl, 'a TDS was attached to Polyester Putty Resin').toBeFalsy();
-    expect(putty.sdsUrl, 'an SDS was attached to Polyester Putty Resin').toBeFalsy();
+  test('the product page offers the TDS and SDS (owner, 2026-09-14)', async ({ page }) => {
+    expect(putty.tdsUrl).toBe('/tds/pet-resin-tds.pdf');
+    expect(putty.sdsUrl).toBe('/sds/pet-resin-sds.pdf');
     await page.goto('/products/polyester-putty-resin/');
-    await expect(page.locator('a[href^="/tds/"], a[href^="/sds/"]')).toHaveCount(0);
+    await expect(page.locator('a[href="/tds/pet-resin-tds.pdf"]').first()).toBeAttached();
   });
 });
 

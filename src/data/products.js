@@ -2334,8 +2334,11 @@ export const products = [
     // product frame shows a code-native identity panel; the posters stay on
     // the page, unchanged, in a closed and labelled archive beneath it with
     // the warning (see archivedPosters in products/[slug].astro).
-    images: [],
-    archivedPosters: ["pet-resin.jpg", "pet-resin-2.jpg"],
+    // 2026-09-14: owner asked for the poster images and PDFs back on the page.
+    image: "pet-resin.jpg",
+    images: ["pet-resin-2.jpg"],
+    tdsUrl: "/tds/pet-resin-tds.pdf",
+    sdsUrl: "/sds/pet-resin-sds.pdf",
     // Historical documents SPR-TDS-PET Rev. 01 and its SDS are titled
     // "PET Resin / Polyester Putty Resin" but describe a SHEET GRADE for
     // "PET sheets and fibre sheet products" and "FRP sheet lamination and
@@ -2425,7 +2428,7 @@ export const products = [
       },
       {
         q: "Are a TDS and SDS available for this grade?",
-        a: "A revised, putty-specific data sheet is being prepared with our technical team. The historical sheet-grade document is not offered here, because it describes sheet and laminate manufacture rather than putty formulation. Request current grade data with your enquiry and it will be sent directly.",
+        a: "Yes. Download the Technical Data Sheet and Safety Data Sheet from this page.",
       },
       {
         q: "What should I send with an enquiry?",

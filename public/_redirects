@@ -251,7 +251,6 @@
 # and is no longer served as a public download. It is not the Polyester Putty
 # Resin TDS, so its old URL goes to the document library rather than to that
 # product page.
-/tds/pet-resin-tds.pdf                                     /technical-documents/  301
 
 # FRP Polyester Pigment SDS withdrawn from the site 2026-09-13 (its packaging line predates the 1 kg TDS).
 /sds/frp-polyester-pigment-sds.pdf /products/frp-polyester-pigment/ 301

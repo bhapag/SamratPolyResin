@@ -78,35 +78,13 @@ test.describe('TDS files formerly carrying a stray hidden text layer', () => {
   }
 });
 
-test.describe('Polyester Putty Resin posters', () => {
-  // 2026-09-13: the PET Resin posters no longer lead the page. The product
-  // frame is a text identity panel; the posters remain on the page, closed,
-  // in a labelled archive that opens onto the warning.
-  test('the product frame is an identity panel, not a PET poster', async ({ page }) => {
+test.describe('Polyester Putty Resin', () => {
+  // 2026-09-14: owner restored the poster images and the TDS/SDS on this page.
+  test('shows its product image and links its TDS and SDS', async ({ page }) => {
     await page.goto('/products/polyester-putty-resin/');
-    await expect(page.locator('.prod-img .prod-identity')).toBeVisible();
-    await expect(page.locator('.prod-img img')).toHaveCount(0);
-    await expect(page.locator('.prod-identity-name')).toHaveText('Polyester Putty Resin');
-  });
-
-  test('the posters are kept in a closed archive with a readable warning', async ({ page }) => {
-    await page.goto('/products/polyester-putty-resin/');
-    const archive = page.locator('details.prod-archive-art');
-    await expect(archive).toHaveCount(1);
-    expect(await archive.evaluate((d: HTMLDetailsElement) => d.open)).toBe(false);
-    await expect(archive.locator('summary')).toContainText(/not this product/i);
-    await archive.locator('summary').click();
-    const warn = archive.locator('.prod-img-warning');
-    await expect(warn).toBeVisible();
-    const text = (await warn.innerText()).replace(/\s+/g, ' ');
-    for (const claim of [/food-contact/i, /bottle/i, /injection- or blow-moulded/i, /not this grade/i]) expect(text).toMatch(claim);
-    const px = await warn.locator('p').last().evaluate((e) => parseFloat(getComputedStyle(e).fontSize));
-    expect(px).toBeGreaterThanOrEqual(13);
-    await expect(archive.locator('img')).toHaveCount(2);
-    const product = await page.evaluate(() =>
-      [...document.querySelectorAll('script[type="application/ld+json"]')].map((s) => JSON.parse(s.textContent!))
-        .flatMap((j: any) => (Array.isArray(j) ? j : j['@graph'] || [j])).find((j: any) => j['@type'] === 'Product'));
-    expect(product.image, 'PET poster exposed as Product.image').toBeUndefined();
+    await expect(page.locator('.prod-img img').first()).toBeVisible();
+    await expect(page.locator('a[href="/tds/pet-resin-tds.pdf"]').first()).toBeVisible();
+    await expect(page.locator('a[href="/sds/pet-resin-sds.pdf"]').first()).toBeAttached();
   });
 });
 
