@@ -47,6 +47,9 @@ const c = {
     text-transform: uppercase; color: var(--accent-gold-light);
   }
   .callout-warning .callout-label { color: #ff8f8f; }
+  /* On the paper (ledger) surface the light red is unreadable (1.6:1). */
+  :global(.ledger) .callout-warning .callout-label, :global(.ledger) .callout-warning .callout-icon { color: #9b1c1c; }
+  :global(.ledger) .callout-warning { border-left-color: #b42323; }
 
   .callout-body { color: var(--ink-dim); font-size: 0.92rem; }
   .callout-body :global(ul) { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-top: 0.3rem; }

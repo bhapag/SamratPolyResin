@@ -202,7 +202,7 @@ const webAppJsonLd = {
             <div class="sel-card-actions">
               <a class="sel-btn sel-btn-solid" href="${enquiryHref(p, answers)}">Enquire about this grade</a>
               <a class="sel-btn" href="/products/${esc(p.slug)}/">Full specifications</a>
-              ${p.tdsUrl ? `<a class="sel-btn" href="${esc(p.tdsUrl)}" target="_blank" rel="noopener">TDS</a>` : ''}
+              ${p.tdsUrl ? `<a class="sel-btn" href="${esc(p.tdsUrl)}" target="_blank" rel="noopener" aria-label="Download ${esc(p.name)} Technical Data Sheet (PDF)">TDS</a>` : ''}
             </div>
           </article>`;
       }

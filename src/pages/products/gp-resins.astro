@@ -202,9 +202,9 @@ const relatedResources = relatedResourceSlugs
                 <th scope="row"><a href={`/products/${p.slug}/`}>{p.name}</a></th>
                 {COMPARE_FIELDS.map((f) => <td>{spec(p, f) ?? <span class="fam-na">See TDS</span>}</td>)}
                 <td class="fam-docs-cell">
-                  {p.tdsUrl && <a href={p.tdsUrl} target="_blank" rel="noopener" download>TDS</a>}
+                  {p.tdsUrl && <a href={p.tdsUrl} target="_blank" rel="noopener" download aria-label={`Download ${p.name} Technical Data Sheet (PDF)`}>TDS</a>}
                   {p.tdsUrl && p.sdsUrl && <span aria-hidden="true"> · </span>}
-                  {p.sdsUrl && <a href={p.sdsUrl} target="_blank" rel="noopener" download>SDS</a>}
+                  {p.sdsUrl && <a href={p.sdsUrl} target="_blank" rel="noopener" download aria-label={`Download ${p.name} Safety Data Sheet (PDF)`}>SDS</a>}
                 </td>
               </tr>
             ))}

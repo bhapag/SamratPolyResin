@@ -712,6 +712,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .hero-desk-phone:hover { color: var(--accent-gold-light); }
     .hero-desk-lines { display: flex; flex-direction: column; gap: 0.2rem; margin-top: 0.55rem; }
     .hero-desk-lines a {
+      display: inline-block; padding-block: 0.2rem; min-height: 24px; align-self: flex-start;
       font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.02em; color: var(--ink-dim);
       transition: color .25s var(--ease-premium);
     }
