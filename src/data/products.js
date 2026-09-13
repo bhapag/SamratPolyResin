@@ -95,7 +95,7 @@ export const products = [
     image: "sheet-grade-yellow-resin.jpg",
     images: ["sheet-grade-yellow-resin-2.jpg", "sheet-grade-yellow-resin-3.jpg"],
     imageAlt:
-      "Sheet Grade Yellow Resin — pre-pigmented yellow orthophthalic polyester resin for FRP sheets by Samrat Poly Resins",
+      "Sheet Grade Yellow Resin — pre-pigmented yellow orthophthalic polyester resin for FRP sheets; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/sheet-grade-yellow-resin-tds.pdf",
     sdsUrl: "/sds/sheet-grade-yellow-resin-sds.pdf",
     seo: {
@@ -229,7 +229,7 @@ export const products = [
     tdsUrl: "/tds/unsaturated-polyester-resin-tds.pdf",
     sdsUrl: "/sds/unsaturated-polyester-resin-sds.pdf",
     imageAlt:
-      "Unsaturated Polyester Resin (UPR) — clear orthophthalic general-purpose polyester resin by Samrat Poly Resins",
+      "Unsaturated Polyester Resin (UPR) — clear orthophthalic general-purpose polyester resin; Samrat Poly Resins product graphic",
     seo: {
       title: "Unsaturated Polyester Resin (UPR) Manufacturer in India | TDS",
       description:
@@ -366,7 +366,7 @@ export const products = [
     image: "lamination-resin.jpg",
     images: ["lamination-resin-2.jpg", "lamination-resin-3.jpg"],
     imageAlt:
-      "Lamination Resin (LR Resin) — transparent orthophthalic unsaturated polyester lamination resin by Samrat Poly Resins",
+      "Lamination Resin (LR Resin) — transparent orthophthalic unsaturated polyester lamination resin; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/lamination-resin-tds.pdf",
     sdsUrl: "/sds/lamination-resin-sds.pdf",
     seo: {
@@ -498,7 +498,7 @@ export const products = [
     image: "gp-clear-resin.jpg",
     images: ["gp-clear-resin-2.jpg"],
     imageAlt:
-      "GP Clear Resin — clear orthophthalic general-purpose unsaturated polyester resin by Samrat Poly Resins",
+      "GP Clear Resin — clear orthophthalic general-purpose unsaturated polyester resin; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/gp-clear-resin-tds.pdf",
     sdsUrl: "/sds/gp-clear-resin-sds.pdf",
     seo: {
@@ -638,7 +638,7 @@ export const products = [
     images: ["gp-white-resin-2.jpg"],
     tdsUrl: "/tds/gp-white-resin-tds.pdf",
     tdsNote: "GP Clear Resin's shared base specification (SPR-TDS-GCR). Technical values apply; its 'Clear' appearance row does not. GP White is white pigmented (SDS).",
-    imageAlt: "GP White Resin — general-purpose orthophthalic unsaturated polyester resin for FRP moulding by Samrat Poly Resins",
+    imageAlt: "GP White Resin — general-purpose orthophthalic unsaturated polyester resin for FRP moulding; Samrat Poly Resins product graphic",
     sdsUrl: "/sds/gp-white-resin-sds.pdf",
     seo: {
       title: "GP White Resin Manufacturer in India | White GP Polyester Resin",
@@ -664,7 +664,7 @@ export const products = [
     // page figures (<350 cPs, 6 min, medium thixotropic, 30-35%), present
     // since the initial commit (516e1a5) with no source document and
     // contradicted by both GP White documents. Appearance (owner decision,
-    // 2026-09-14): the GP White SDS description "white pigmented" is the
+    // 2026-09-13): the GP White SDS description "white pigmented" is the
     // documented appearance; the TDS "Clear" row is carried over from GP Clear
     // and recorded as a TDS error awaiting reissue (see source-documents/
     // document-control-proposals.md).
@@ -765,7 +765,7 @@ export const products = [
     price: "",
     image: "gp-quartz-resin.jpg",
     images: ["gp-quartz-resin-2.jpg"],
-    imageAlt: "GP Quartz Resin — orthophthalic polyester resin for engineered stone and quartz casting by Samrat Poly Resins",
+    imageAlt: "GP Quartz Resin — orthophthalic polyester resin for engineered stone and quartz casting; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/gp-quartz-resin-tds.pdf",
     // The printed sheet is GP Quartz Resin's own (SPR-TDS-GQR) and matches this
     // page. The file first issued also carried GP Clear Resin's sheet as a
@@ -901,7 +901,7 @@ export const products = [
     image: "gp-gelcoat-resin.jpg",
     images: ["gp-gelcoat-resin-2.jpg", "gp-gelcoat-resin-3.jpg"],
     imageAlt:
-      "GP Gelcoat Resin — white high-gloss polyester surface-coating gelcoat by Samrat Poly Resins",
+      "GP Gelcoat Resin — white high-gloss polyester surface-coating gelcoat; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/gp-gelcoat-resin-tds.pdf",
     sdsUrl: "/sds/gp-gelcoat-resin-sds.pdf",
     seo: {
@@ -1042,7 +1042,7 @@ export const products = [
     image: "button-grade-resin.jpg",
     images: ["button-grade-resin-2.jpg", "button-grade-resin-3.jpg"],
     imageAlt:
-      "Button Grade Resin — transparent unsaturated polyester casting resin for buttons by Samrat Poly Resins",
+      "Button Grade Resin — transparent unsaturated polyester casting resin for buttons; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/button-grade-resin-tds.pdf",
     sdsUrl: "/sds/button-grade-resin-sds.pdf",
     seo: {
@@ -1159,7 +1159,7 @@ export const products = [
     image: "roof-light-resin.jpg",
     images: ["roof-light-resin-2.jpg", "roof-light-resin-3.jpg"],
     imageAlt:
-      "Roof Light Sheet Grade Resin — water-white translucent orthophthalic polyester resin for roofing sheets by Samrat Poly Resins",
+      "Roof Light Sheet Grade Resin — water-white translucent orthophthalic polyester resin for roofing sheets; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/roof-light-resin-tds.pdf",
     sdsUrl: "/sds/roof-light-resin-sds.pdf",
     seo: {
@@ -1276,7 +1276,7 @@ export const products = [
     image: "fire-retardant-resin.jpg",
     images: ["fire-retardant-resin-2.jpg", "fire-retardant-resin-3.jpg"],
     imageAlt:
-      "Fire Retardant Resin — halogenated unsaturated polyester resin by Samrat Poly Resins",
+      "Fire Retardant Resin — halogenated unsaturated polyester resin; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/fire-retardant-resin-tds.pdf",
     sdsUrl: "/sds/fire-retardant-resin-sds.pdf",
     seo: {
@@ -1402,7 +1402,7 @@ export const products = [
     price: "₹175 / kg",
     image: "iso-fire-retardant-resin.jpg",
     images: ["iso-fire-retardant-resin-2.jpg"],
-    imageAlt: "ISO Fire Retardant Resin — halogen-free, ATH-filled isophthalic fire-retardant polyester resin by Samrat Poly Resins",
+    imageAlt: "ISO Fire Retardant Resin — halogen-free, ATH-filled isophthalic fire-retardant polyester resin; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/iso-fire-retardant-resin-tds.pdf",
     // Printed sheet is ISO Fire Retardant Resin's own (SPR-TDS-IFR) and matches
     // this page. The hidden GP Clear Resin text layer in the first-issued file
@@ -1531,7 +1531,7 @@ export const products = [
     image: "frp-polyester-pigment.jpg",
     images: ["frp-polyester-pigment-1.jpg", "frp-polyester-pigment-3.jpg"],
     imageAlt:
-      "FRP Polyester Pigment — multicolour resin colour paste by Samrat Poly Resins",
+      "FRP Polyester Pigment — multicolour resin colour paste; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/frp-polyester-pigment-tds.pdf",
     sdsUrl: "/sds/frp-polyester-pigment-sds.pdf",
     seo: {
@@ -1601,8 +1601,8 @@ export const products = [
     ],
     whyChoose: [
       "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
-      "Manufacturing polyester resins since 2017",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Supplied by Samrat Poly Resins, Doraha, Punjab (established 2017)",
+      "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Heat-stable, fade-resistant multicolour formulation",
       "Custom RAL and Pantone colour matching available",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
@@ -1666,7 +1666,7 @@ export const products = [
     image: "fibre-glass-mat.jpg",
     images: ["fibre-glass-mat-2.jpg"],
     imageAlt:
-      "Glass Fiber — E-glass chopped strand mat (CSM) reinforcement roll by Samrat Poly Resins",
+      "Glass Fiber — E-glass chopped strand mat (CSM) reinforcement roll; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/fibre-glass-mat-tds.pdf",
     sdsUrl: "/sds/fibre-glass-mat-sds.pdf",
     seo: {
@@ -1745,7 +1745,7 @@ export const products = [
     ],
     whyChoose: [
       "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
-      "Manufacturing polyester resins since 2017",
+      "Supplied by Samrat Poly Resins, Doraha, Punjab (established 2017)",
       "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Industrial-grade E-glass with polyester sizing for reliable wet-out",
       "Supplied in 1040 mm rolls, minimum order 500 kg",
@@ -1814,7 +1814,7 @@ export const products = [
     image: "epoxy-clear-casting-resin.jpg",
     images: ["epoxy-clear-casting-resin-2.jpg"],
     imageAlt:
-      "Epoxy Clear Casting Resin — crystal-clear two-part epoxy for river table and decorative casting by Samrat Poly Resins",
+      "Epoxy Clear Casting Resin — crystal-clear two-part epoxy for river table and decorative casting; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/epoxy-clear-casting-resin-tds.pdf",
     // Printed sheet (SPR-TDS-CCR) gives 2:1 by weight, 900 cPs, 40 min pot life,
     // Shore D 82 — matching this page and the SDS. The first-issued file hid an
@@ -1888,8 +1888,8 @@ export const products = [
     ],
     whyChoose: [
       "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
-      "Manufacturing polyester resins since 2017",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Supplied by Samrat Poly Resins, Doraha, Punjab (established 2017)",
+      "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Crystal-clear, high-gloss finish with low bubble formation",
       "Supplied in 20 kg packs, minimum order 100 kg",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
@@ -1953,7 +1953,7 @@ export const products = [
     price: "₹700 / kg",
     image: "epoxy-art-resin.jpg",
     images: ["epoxy-art-resin-2.jpg", "epoxy-art-resin-3.jpg"],
-    imageAlt: "Epoxy Art Resin — self-levelling clear epoxy resin for decorative and artistic finishes by Samrat Poly Resins",
+    imageAlt: "Epoxy Art Resin — self-levelling clear epoxy resin for decorative and artistic finishes; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/epoxy-art-resin-tds.pdf",
     sdsUrl: "/sds/epoxy-art-resin-sds.pdf",
     seo: {
@@ -2015,8 +2015,8 @@ export const products = [
     ],
     whyChoose: [
       "ISO 9001:2015 certificate of registration (GMSQR Certifications, first registered 2019)",
-      "Manufacturing polyester resins since 2017",
-      "GST-registered Indian manufacturer (GSTIN 03ALBPS3446G1ZB)",
+      "Supplied by Samrat Poly Resins, Doraha, Punjab (established 2017)",
+      "GST-registered Indian business (GSTIN 03ALBPS3446G1ZB)",
       "Self-levelling, UV-resistant formulation for a lasting high-gloss finish",
       "Supplied in 15 kg packs, minimum order 100 kg",
       "Dispatch across North & East India, with exports to Nepal and Bangladesh",
@@ -2064,7 +2064,7 @@ export const products = [
     price: "₹700 / kg",
     image: "epoxy-hardener.jpg",
     images: ["epoxy-hardener-2.jpg"],
-    imageAlt: "Epoxy Hardener — polyamide curing agent for compatible epoxy resin systems by Samrat Poly Resins",
+    imageAlt: "Epoxy Hardener — polyamide curing agent for compatible epoxy resin systems; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/epoxy-hardener-tds.pdf",
     sdsUrl: "/sds/epoxy-hardener-sds.pdf",
     seo: {
@@ -2179,7 +2179,7 @@ export const products = [
     price: "₹150 / kg",
     image: "dmc-smc-resin.jpg",
     images: ["dmc-smc-resin-2.jpg", "dmc-smc-resin-3.jpg"],
-    imageAlt: "DMC/SMC Resin — orthophthalic polyester resin for dough and sheet moulding compounds by Samrat Poly Resins",
+    imageAlt: "DMC/SMC Resin — orthophthalic polyester resin for dough and sheet moulding compounds; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/dmc-smc-resin-tds.pdf",
     sdsUrl: "/sds/dmc-smc-resin-sds.pdf",
     seo: {
@@ -2333,7 +2333,7 @@ export const products = [
     // Product schema image, and a reading-size warning under the image states
     // that its food-contact, PET-packaging, moulding and figure claims do not
     // apply. The sheet-grade TDS is archived and neither PET document is linked.
-    // 2026-09-14: the two PET Resin posters no longer lead the page. The
+    // 2026-09-13: the two PET Resin posters no longer lead the page. The
     // product frame shows a code-native identity panel; the posters stay on
     // the page, unchanged, in a closed and labelled archive beneath it with
     // the warning (see archivedPosters in products/[slug].astro).
@@ -2451,7 +2451,7 @@ export const products = [
     price: "₹125 / kg",
     image: "marble-resin.jpg",
     images: ["marble-resin-2.jpg"],
-    imageAlt: "Illustrative Marble Resin product graphic by Samrat Poly Resins; review the TDS for verified grade data",
+    imageAlt: "Marble Resin; illustrative Samrat Poly Resins product graphic",
     tdsUrl: "/tds/marble-resin-tds.pdf",
     sdsUrl: "/sds/marble-resin-sds.pdf",
     seo: {
@@ -2572,7 +2572,7 @@ export const products = [
     image: "vinyl-ester-resin.jpg",
     images: ["vinyl-ester-resin-2.jpg"],
     imageAlt:
-      "Vinyl Ester Resin — Bisphenol-A epoxy vinyl ester resin for chemical-resistant FRP by Samrat Poly Resins",
+      "Vinyl Ester Resin — Bisphenol-A epoxy vinyl ester resin for chemical-resistant FRP; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/vinyl-ester-resin-tds.pdf",
     sdsUrl: "/sds/vinyl-ester-resin-sds.pdf",
     seo: {
@@ -2707,7 +2707,7 @@ export const products = [
     price: "₹800 / kg",
     image: "fiberglass-epoxy-resin.jpg",
     images: ["fiberglass-epoxy-resin-2.jpg", "fiberglass-epoxy-resin-3.jpg"],
-    imageAlt: "Illustrative Fiberglass Epoxy Resin product graphic by Samrat Poly Resins; verify the current TDS for grade data",
+    imageAlt: "Fiberglass Epoxy Resin; illustrative Samrat Poly Resins product graphic",
     tdsUrl: "/tds/fiberglass-epoxy-resin-tds.pdf",
     sdsUrl: "/sds/fiberglass-epoxy-resin-sds.pdf",
     seo: {
@@ -2846,7 +2846,7 @@ export const products = [
     price: "₹125 / kg",
     image: "bisphenol-resin.jpg",
     images: ["bisphenol-resin-2.jpg"],
-    imageAlt: "Bisphenol Resin product graphic by Samrat Poly Resins",
+    imageAlt: "Bisphenol Resin; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/bisphenol-resin-tds.pdf",
     sdsUrl: "/sds/bisphenol-resin-sds.pdf",
     seo: {
@@ -2974,7 +2974,7 @@ export const products = [
     price: "₹220 / kg",
     image: "mekp-hardener.jpg",
     images: ["mekp-hardener-2.jpg"],
-    imageAlt: "MEKP Hardener — methyl ethyl ketone peroxide catalyst for polyester resin systems by Samrat Poly Resins",
+    imageAlt: "MEKP Hardener — methyl ethyl ketone peroxide catalyst for polyester resin systems; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/mekp-hardener-tds.pdf",
     sdsUrl: "/sds/mekp-hardener-sds.pdf",
     seo: {
@@ -3093,7 +3093,7 @@ export const products = [
     image: "gp-yellow-resin.jpg",
     images: ["gp-yellow-resin-2.jpg"],
     imageAlt:
-      "GP Yellow Resin — transparent yellow, general-purpose orthophthalic polyester laminating resin by Samrat Poly Resins",
+      "GP Yellow Resin — transparent yellow, general-purpose orthophthalic polyester laminating resin; Samrat Poly Resins product graphic",
     tdsUrl: "/tds/gp-yellow-resin-tds.pdf",
     sdsUrl: "/sds/gp-yellow-resin-sds.pdf",
     seo: {
@@ -3242,7 +3242,7 @@ export const products = [
     price: "",
     image: "cobalt-octoate.png",
     imageAlt:
-      "Cobalt Octoate — cobalt-based accelerator / promoter for unsaturated polyester resin curing systems by Samrat Poly Resins",
+      "Cobalt Octoate — cobalt-based accelerator / promoter for unsaturated polyester resin curing systems; Samrat Poly Resins product graphic",
     seo: {
       title: "Cobalt Octoate Accelerator / Promoter | Samrat Poly Resins",
       description:
@@ -3348,7 +3348,7 @@ export const products = [
     price: "",
     image: "styrene-monomer.png",
     imageAlt:
-      "Styrene Monomer — reactive monomer / reactive diluent for unsaturated polyester resin systems by Samrat Poly Resins",
+      "Styrene Monomer — reactive monomer / reactive diluent for unsaturated polyester resin systems; Samrat Poly Resins product graphic",
     seo: {
       title: "Styrene Monomer Supplier in India",
       description:
@@ -3442,7 +3442,7 @@ export const products = [
     price: "",
     image: "nc-thinner.png",
     imageAlt:
-      "NC Thinner — nitrocellulose lacquer thinner for compatible NC coating systems by Samrat Poly Resins",
+      "NC Thinner — nitrocellulose lacquer thinner for compatible NC coating systems; Samrat Poly Resins product graphic",
     seo: {
       title: "NC Thinner | Nitrocellulose Lacquer Thinner",
       description:
@@ -3533,7 +3533,7 @@ export const products = [
     price: "",
     image: "paint-brushes.png",
     imageAlt:
-      "Paint Brushes — professional application brushes for resin, gelcoat and FRP work by Samrat Poly Resins",
+      "Paint Brushes — professional application brushes for resin, gelcoat and FRP work; Samrat Poly Resins product graphic",
     seo: {
       title: "Paint Brushes | Application Brushes for Resin & FRP Work",
       description:
@@ -3623,7 +3623,7 @@ export const products = [
     price: "",
     image: "soap-stone-powder.png",
     imageAlt:
-      "Soap Stone Powder — soapstone / talc-type industrial mineral filler powder by Samrat Poly Resins",
+      "Soap Stone Powder — soapstone / talc-type industrial mineral filler powder; Samrat Poly Resins product graphic",
     seo: {
       title: "Soap Stone Powder | Industrial Mineral Filler",
       description:
@@ -3716,7 +3716,7 @@ export const products = [
     price: "",
     image: "wax-polish.png",
     imageAlt:
-      "Wax Polish — FRP mould release / parting wax for composite moulding tooling by Samrat Poly Resins",
+      "Wax Polish — FRP mould release / parting wax for composite moulding tooling; Samrat Poly Resins product graphic",
     seo: {
       title: "Wax Polish | FRP Mould Release & Parting Wax",
       description:
@@ -3811,7 +3811,7 @@ export const products = [
     image: "uv-stabilized-sheet-grade-yellow-resin.jpg",
     images: [],
     imageAlt:
-      "UV Stabilized Sheet Grade Yellow Resin — pre-pigmented yellow unsaturated polyester resin for outdoor FRP roofing, cladding and coloured sheet manufacturing by Samrat Poly Resins",
+      "UV Stabilized Sheet Grade Yellow Resin — pre-pigmented yellow polyester resin for outdoor FRP sheet; Samrat Poly Resins product graphic",
     seo: {
       title: "UV Stabilized Sheet Grade Yellow Resin Manufacturer in India",
       description:
@@ -3921,7 +3921,7 @@ export const products = [
     image: "iso-polyester-resin.jpg",
     images: [],
     imageAlt:
-      "ISO Polyester Resin — isophthalic unsaturated polyester resin for chemical-resistant and water-resistant FRP applications by Samrat Poly Resins",
+      "ISO Polyester Resin — isophthalic unsaturated polyester resin; Samrat Poly Resins product graphic",
     seo: {
       title: "ISO Polyester Resin Manufacturer in India",
       description:
@@ -4050,7 +4050,7 @@ export const products = [
     // Downloads original are untouched.
     image: "iso-gelcoat-display.jpg",
     images: [],
-    imageAlt: "ISO Gelcoat — isophthalic polyester gelcoat applied to the mould face of an FRP moulding, by Samrat Poly Resins",
+    imageAlt: "ISO Gelcoat — isophthalic polyester gelcoat applied to the mould face of an FRP moulding; Samrat Poly Resins product graphic",
     seo: {
       title: "ISO Gelcoat Manufacturer in India | Isophthalic Gelcoat",
       description:

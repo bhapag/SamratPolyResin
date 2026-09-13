@@ -1,6 +1,6 @@
 # Document-control proposals (India site)
 
-Prepared 2026-09-14. These are proposed corrections to issued documents. None has been applied to a
+Prepared 2026-09-13. These are proposed corrections to issued documents. None has been applied to a
 published PDF: each needs the issuer (Samrat technical/document control) to approve and reissue.
 The website states the current documents truthfully in the meantime, so no website work waits on these.
 
@@ -74,6 +74,6 @@ Website meanwhile: describes the certificate (issuer, first registration, scope)
 
 ## 7. FRP Polyester Pigment SDS still cites the superseded packaging
 
-- On 2026-09-14 the FRP Polyester Pigment TDS was replaced by the issuer's final file (SPR-TDS-FPP Rev. 01, July 2026). The only content change is Packaging: 10 kg bottle → **1 kg bottle**. The Rev. and date were not changed in the supplied final.
+- On 2026-09-13 the FRP Polyester Pigment TDS was replaced by the issuer's final file (SPR-TDS-FPP Rev. 01, July 2026). The only content change is Packaging: 10 kg bottle → **1 kg bottle**. The Rev. and date were not changed in the supplied final.
 - The SDS SPR-SDS-FPP, Section 7, still reads "Packaging Material: 10 kg bottle, per manufacturer TDS". The SDS was not edited (standing instruction).
 - Proposal: at the next SDS revision, change it to "1 kg bottle, per manufacturer TDS". The issuer should also consider whether the TDS packaging change warrants Rev. 02.

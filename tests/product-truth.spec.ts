@@ -77,7 +77,7 @@ test.describe('TDS files formerly carrying a stray hidden text layer', () => {
 });
 
 test.describe('Polyester Putty Resin posters', () => {
-  // 2026-09-14: the PET Resin posters no longer lead the page. The product
+  // 2026-09-13: the PET Resin posters no longer lead the page. The product
   // frame is a text identity panel; the posters remain on the page, closed,
   // in a labelled archive that opens onto the warning.
   test('the product frame is an identity panel, not a PET poster', async ({ page }) => {

@@ -74,7 +74,7 @@ export const site = {
 
   // The one certification the repository holds evidence for:
   // public/certificates/iso-9001-2015-certificate-current.jpg. Read from the
-  // image (2026-09-14): GMSQR Certifications Pvt. Ltd., accredited by AIAO-BAR;
+  // image (2026-09-13): GMSQR Certifications Pvt. Ltd., accredited by AIAO-BAR;
   // scope "Manufactures and Supply of Polyster Resins & Allied Products";
   // initial registration 17.06.2019, issued 05.07.2019, printed "Valid until
   // 04.07.2032", validity "dependent upon ongoing surveillance"; surveillance
