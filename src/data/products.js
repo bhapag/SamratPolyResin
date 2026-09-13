@@ -637,7 +637,7 @@ export const products = [
     image: "gp-white-resin.jpg",
     images: ["gp-white-resin-2.jpg"],
     tdsUrl: "/tds/gp-white-resin-tds.pdf",
-    tdsNote: "GP Clear Resin's shared base specification (SPR-TDS-GCR). Technical values apply; its 'Clear' appearance row does not. GP White is white pigmented (SDS).",
+    tdsNote: "GP Clear base-resin specification (SPR-TDS-GCR). Its 'Clear' describes the base resin; GP White is white pigmented, as described in the GP White SDS.",
     imageAlt: "GP White Resin — general-purpose orthophthalic unsaturated polyester resin for FRP moulding; Samrat Poly Resins product graphic",
     sdsUrl: "/sds/gp-white-resin-sds.pdf",
     seo: {
@@ -664,15 +664,16 @@ export const products = [
     // page figures (<350 cPs, 6 min, medium thixotropic, 30-35%), present
     // since the initial commit (516e1a5) with no source document and
     // contradicted by both GP White documents. Appearance (owner decision,
-    // 2026-09-13): the GP White SDS description "white pigmented" is the
-    // documented appearance; the TDS "Clear" row is carried over from GP Clear
+    // 2026-09-13, confirmed by the owner): GP White Resin uses the published
+    // GP Clear base-resin specification, with white pigmentation as described
+    // in the GP White SDS. The TDS "Clear" row describes the base resin
     // and recorded as a TDS error awaiting reissue (see source-documents/
     // document-control-proposals.md).
     productDetails: {
       "Minimum Order Quantity": "1000 kg",
       "Packaging": "225 kg Drum",
       "Physical Form": "Liquid",
-      "Colour / Appearance": "White pigmented (per GP White SDS; the shared TDS's 'Clear' row is carried over from GP Clear)",
+      "Colour / Appearance": "White pigmented, as described in the GP White SDS (the base-resin TDS lists the unpigmented base resin as Clear)",
     },
     techSpecs: {
       "Resin Type": "Orthophthalic, Unsaturated Polyester",
@@ -688,7 +689,7 @@ export const products = [
     },
     tagline: "General-purpose orthophthalic resin for FRP moulding, on GP Clear Resin's base specification.",
     description:
-      "GP White Resin is Samrat Poly Resins' general-purpose orthophthalic unsaturated polyester resin for FRP panels, general moulding, hand layup, spray-up, cooling towers and water storage tanks. GP White Resin shares GP Clear Resin's published base specification (TDS reference SPR-TDS-GCR): 350-450 cPs viscosity, gel time under 8 minutes, 33-40% styrene and a non-accelerated curing system. Its documented appearance is white pigmented, as described by the GP White SDS. The GP White TDS is GP Clear Resin's base sheet (SPR-TDS-GCR) issued under the GP White name: its technical values apply, but its 'Clear' appearance row and 'crystal-clear' wording are carried over from GP Clear and are incorrect for this grade. Its non-accelerated system is used with MEKP catalyst and cobalt octoate accelerator at room temperature. For buyers searching for white polyester resin, the relevant question is whether this general-purpose laminate role and published process data match the intended FRP component; it is not a substitute for a mould-surface gelcoat or a statement about the final colour of every reinforced part.",
+      "GP White Resin is Samrat Poly Resins' general-purpose orthophthalic unsaturated polyester resin for FRP panels, general moulding, hand layup, spray-up, cooling towers and water storage tanks. GP White Resin uses the published GP Clear base-resin specification (TDS reference SPR-TDS-GCR): 350-450 cPs viscosity, gel time under 8 minutes, 33-40% styrene and a non-accelerated curing system, with white pigmentation as described in the GP White SDS. The 'Clear' and 'crystal-clear' wording on that base-resin sheet describes the base resin before pigmentation. Its non-accelerated system is used with MEKP catalyst and cobalt octoate accelerator at room temperature. For buyers searching for white polyester resin, the relevant question is whether this general-purpose laminate role and published process data match the intended FRP component; it is not a substitute for a mould-surface gelcoat or a statement about the final colour of every reinforced part.",
     usageNote:
       'GP White Resin is catalysed with an <a href="/products/mekp-hardener/">MEKP hardener</a> and reinforced with <a href="/products/fibre-glass-mat/">glass fibre</a> for hand layup and spray-up. For the separately listed clear grade, see our <a href="/products/gp-clear-resin/">GP Clear Resin</a>; mould-facing surfaces can be finished with a <a href="/products/gp-gelcoat-resin/">Gelcoat Resin</a>, and projects needing higher chemical resistance can step up to <a href="/products/vinyl-ester-resin/">Vinyl Ester Resin</a>.',
     features: [
@@ -724,7 +725,7 @@ export const products = [
       },
       {
         q: "What is the difference between GP White Resin and GP Clear Resin?",
-        a: 'Both are general-purpose orthophthalic polyester resins. They share one published base specification (TDS reference SPR-TDS-GCR), and the GP White SDS confirms the same base resin as <a href="/products/gp-clear-resin/">GP Clear Resin</a>. The difference is appearance: GP White is white pigmented, as its SDS describes. Its TDS is GP Clear\'s base sheet under the GP White name, so its technical values apply but its \'Clear\' appearance row is a carried-over error.',
+        a: 'Both are general-purpose orthophthalic polyester resins. They share one published base specification (TDS reference SPR-TDS-GCR), and the GP White SDS confirms the same base resin as <a href="/products/gp-clear-resin/">GP Clear Resin</a>. The difference is appearance: GP White uses the GP Clear base-resin specification with white pigmentation, as described in the GP White SDS.',
       },
       {
         q: "What is the gel time and viscosity of GP White Resin?",

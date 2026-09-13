@@ -28,7 +28,7 @@ Proposed corrected issue (no technical value changes anywhere):
   - The GP Yellow SDS's TDS cross-reference (currently SPR-TDS-GCR) would then need the same correction at its next revision.
   - *Decision needed from the issuer:* confirm "GYR" as the code.
 
-Website meanwhile: GP White carries the shared GP Clear values with the relationship explained, and appearance taken from its SDS.
+Owner confirmation (2026-09-13): GP White Resin uses the published GP Clear base-resin specification, with white pigmentation as described in the GP White SDS. The website states exactly that. The reissue above would put the same relationship on the TDS itself.
 
 ## 2. ISO Gelcoat thixotropic index (SPR-TDS-IGC Rev. 01, September 2026)
 

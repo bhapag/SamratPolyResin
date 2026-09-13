@@ -3320,7 +3320,7 @@ export const resources = [
       ogDescription: "Understand GP White Resin as a published general-purpose polyester grade on GP Clear Resin's base specification, its applications, and how it differs from clear GP resin and white gelcoat.",
     },
     quickFacts: {
-      "Documented appearance": "White pigmented (SDS); the shared TDS's Clear row is carried over from GP Clear",
+      "Documented appearance": "White pigmented (GP White SDS), on the GP Clear base resin",
       "Product role": "General-purpose orthophthalic polyester resin for reinforced FRP contexts",
       "Published process data": "350-450 cPs; gel under 8 minutes; 33-40% styrene (shared with GP Clear Resin)",
       "Published packaging": "225 kg drum, 1,000 kg MOQ",
@@ -3330,7 +3330,7 @@ export const resources = [
       {
         heading: "The buyer question behind 'white resin'",
         body: [
-          "Buyers may search for white polyester resin when the supplied appearance matters to a panel, moulding or general FRP requirement. On this site, GP White Resin is published as a general-purpose grade on GP Clear Resin's base specification. Its documented appearance is white pigmented, as described by the GP White SDS; the 'Clear' row in its shared TDS is carried over from GP Clear Resin. The question to resolve is whether that grade's product role and published data fit the component and process.",
+          "Buyers may search for white polyester resin when the supplied appearance matters to a panel, moulding or general FRP requirement. On this site, GP White Resin is published as a general-purpose grade on GP Clear Resin's base specification. It uses the published GP Clear base-resin specification (SPR-TDS-GCR), with white pigmentation as described in the GP White SDS. The question to resolve is whether that grade's product role and published data fit the component and process.",
           "Whatever the supplied resin looks like, it is not a promise that every finished FRP part will appear white, because the reinforcement, pigments and mould-facing surface layer are separate parts of the finished build-up.",
         ],
       },
@@ -3351,7 +3351,7 @@ export const resources = [
       {
         heading: "GP White compared with GP Clear",
         body: [
-          "Both are published general-purpose orthophthalic polyester grades, and they share one published base specification. The difference is appearance: GP White is white pigmented (SDS), GP Clear is clear. GP White's TDS reuses GP Clear's sheet, so its 'Clear' appearance row is a carried-over error; the technical values are shared.",
+          "Both are published general-purpose orthophthalic polyester grades, and they share one published base specification. The difference is appearance: GP White uses the GP Clear base-resin specification with white pigmentation, as described in the GP White SDS; GP Clear is supplied clear.",
         ],
       },
       {
@@ -3438,7 +3438,7 @@ export const resources = [
       note: "The values below are product-page facts, not a universal recommendation. Both TDS carry reference SPR-TDS-GCR; the GP White SDS confirms the same base resin.",
       headers: ["Decision factor", "GP White Resin", "GP Clear Resin"],
       rows: [
-        ["Documented appearance", "White pigmented (SDS; the shared TDS's Clear row is carried over)", "Clear"],
+        ["Documented appearance", "White pigmented (GP White SDS)", "Clear"],
         ["Published viscosity", "350-450 cPs (shared)", "350-450 cPs"],
         ["Published gel time", "Under 8 minutes (shared)", "Under 8 minutes"],
         ["Packaging / MOQ", "225 kg drum / 1,000 kg", "225 kg drum / 1,000 kg"],
@@ -3451,12 +3451,12 @@ export const resources = [
       { href: "/products/unsaturated-polyester-resin/", label: "View the UPR product hub", description: "Compare GP White and GP Clear in the broader published polyester-resin family." },
     ],
     faqs: [
-      { q: "What is the main difference between GP White Resin and GP Clear Resin?", a: "They share one published base specification, so viscosity, gel time and styrene content are the same. The difference is appearance: GP White is white pigmented (SDS), GP Clear is clear. GP White's TDS reuses GP Clear's sheet, so its 'Clear' appearance row is a carried-over error; the technical values are shared." },
+      { q: "What is the main difference between GP White Resin and GP Clear Resin?", a: "They share one published base specification, so viscosity, gel time and styrene content are the same. The difference is appearance: GP White uses the GP Clear base-resin specification with white pigmentation, as described in the GP White SDS; GP Clear is supplied clear." },
       { q: "Does 'White' in the name mean GP White Resin is a gelcoat?", a: "No. GP White Resin is the published general-purpose laminate grade. A white mould-facing surface requirement should be assessed against the separate GP Gelcoat Resin product." },
       { q: "Which grade should a buyer quote?", a: "Share the component, process, required supplied appearance or finish, quantity and delivery location, then confirm the selected grade's data before a quotation discussion." },
     ],
     sections: [
-      { heading: "The comparison starts with supplied appearance", body: ["GP White Resin and GP Clear Resin are related published general-purpose orthophthalic polyester grades for FRP work. GP Clear Resin is published Clear; GP White Resin is documented as white pigmented by its SDS; its shared TDS's 'Clear' row is carried over from GP Clear. Appearance is not a guarantee of the finished part's visible colour.", "The final appearance of an FRP part can also depend on reinforcement, pigments and the mould-side surface layer. A buyer should therefore identify what 'white' or 'clear' needs to mean in the actual build-up before selecting a grade."] },
+      { heading: "The comparison starts with supplied appearance", body: ["GP White Resin and GP Clear Resin are related published general-purpose orthophthalic polyester grades for FRP work. GP Clear Resin is published Clear; GP White Resin uses the GP Clear base-resin specification with white pigmentation, as described in the GP White SDS. Appearance is not a guarantee of the finished part's visible colour.", "The final appearance of an FRP part can also depend on reinforcement, pigments and the mould-side surface layer. A buyer should therefore identify what 'white' or 'clear' needs to mean in the actual build-up before selecting a grade."] },
       { heading: "Compare the published technical data", body: ["Both grades publish 350-450 cPs viscosity, gel time under 8 minutes and 33-40% styrene from one shared base specification, reference SPR-TDS-GCR. The GP White SDS confirms the same base resin.", "Do not transfer thixotropy, gel time, storage or any other figure from one grade to the other unless it is published for that exact product."] },
       { heading: "When another product role is relevant", body: ["If the requirement is for a mould-facing white surface, review GP Gelcoat Resin. If it is door, plywood or FRP bonding, review Lamination Resin. If a project has a stated chemical- or corrosion-resistance requirement, review Vinyl Ester Resin and its separate product data."] },
     ],
@@ -3489,12 +3489,12 @@ export const resources = [
     faqs: [
       { q: "What details should I include in a GP White Resin enquiry?", a: "Include the FRP component or application, expected quantity, required supplied appearance or finish, manufacturing process and delivery location. Add any stated drawing or specification wording where relevant." },
       { q: "Should I select GP White Resin only because the product is called white?", a: "No. Confirm that the general-purpose laminate role, shared base specification and supplied appearance match the actual requirement. A visible mould-side surface may require separate gelcoat review." },
-      { q: "What document should be checked before ordering?", a: "The GP White Resin TDS, which shares GP Clear Resin's base specification (reference SPR-TDS-GCR), and the GP White SDS. Use the SDS for appearance (white pigmented): the TDS's 'Clear' row is carried over from GP Clear." },
+      { q: "What document should be checked before ordering?", a: "The GP White Resin TDS, which shares GP Clear Resin's base specification (reference SPR-TDS-GCR), and the GP White SDS. The base-resin TDS gives the technical values; the SDS describes the white pigmentation." },
     ],
     sections: [
       { heading: "Describe the FRP component first", body: ["State whether the enquiry is for a panel, general moulding, hand layup, spray-up, water-storage, cooling-tower or another industrial FRP component. This identifies the published context to compare with GP White Resin before a quote is prepared."] },
       { heading: "Clarify what 'white' needs to mean", body: ["Confirm whether a white-pigmented supplied resin is what you need, or whether the actual requirement is a visible white surface. These are different questions: the general-purpose GP White laminate and the mould-facing GP Gelcoat product have separate roles."] },
-      { heading: "Review the published product data", body: ["The GP White Resin page publishes an orthophthalic resin type, the base specification shared with GP Clear Resin (350-450 cPs, gel under 8 minutes, 33-40% styrene, non-accelerated), 225 kg drum packaging and a 1,000 kg MOQ. Its documented appearance is white pigmented (GP White SDS); the TDS's 'Clear' row is carried over from GP Clear."] },
+      { heading: "Review the published product data", body: ["The GP White Resin page publishes an orthophthalic resin type, the base specification shared with GP Clear Resin (350-450 cPs, gel under 8 minutes, 33-40% styrene, non-accelerated), 225 kg drum packaging and a 1,000 kg MOQ. White pigmentation is described in the GP White SDS."] },
       { heading: "Send a focused quotation request", body: ["Share the component, manufacturing process, quantity, required supplied appearance or finish and delivery location. This helps the sales or technical discussion start from documented needs rather than an unsupported assumption about the correct grade."] },
     ],
   },

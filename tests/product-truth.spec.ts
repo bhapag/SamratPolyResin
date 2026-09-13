@@ -14,7 +14,7 @@ test.describe('GP White Resin', () => {
   // processing as GP Clear, so GP White carries GP Clear's issued TDS as a
   // shared base specification. The former page figures (<350 cPs, 6 min,
   // medium thixotropic, 30-35%) had no source and stay removed. Appearance
-  // follows the SDS ("white pigmented"); the TDS "Clear" row is a carried-over error.
+  // (owner-confirmed): GP Clear base-resin specification with white pigmentation per the GP White SDS.
   test('carries the shared GP Clear base specification, not the unsourced figures', async ({ page }) => {
     const p = bySlug('gp-white-resin');
     const clear = bySlug('gp-clear-resin');
@@ -27,7 +27,9 @@ test.describe('GP White Resin', () => {
     const text = await page.locator('main').innerText();
     expect(text).not.toMatch(/<\s?350 cPs|below 350 cPs|6[- ]minute gel|medium[- ]thixotrop|30[–-]35% styrene/i);
     expect(text).not.toMatch(/water[- ]white/i);
-    expect(text).toMatch(/white pigmented/i);
+    expect(text).toMatch(/GP Clear base-resin specification/i);
+    expect(text).toMatch(/white pigmentation as described in the GP White SDS/i);
+    expect(text).not.toMatch(/carried[- ]over|ignore its 'Clear'/i);
     expect(text).not.toMatch(/appearance (is )?not (yet )?confirmed/i);
   });
 
