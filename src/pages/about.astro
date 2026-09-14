@@ -3,12 +3,11 @@ import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import { site, buildCanonicalUrl, ORGANIZATION_ID } from '../data/site.js';
 import { products, CATEGORIES } from '../data/products.js';
-import factoryGate from '../assets/about/factory-gate.jpg';
 import productionInfrastructure from '../assets/facility/production-infrastructure.jpg';
 import qcLaboratory from '../assets/quality/qc-laboratory.jpg';
 
 const facilityPhotos = [
-  { src: factoryGate, alt: `${site.name} factory gate, ${site.address.line2}`, caption: 'Factory Gate' },
+  { src: productionInfrastructure, alt: 'Five stainless-steel resin reactor vessels inside the Samrat Poly Resins plant at Doraha, Punjab', caption: 'Production Plant' },
   { src: productionInfrastructure, alt: 'Stainless-steel resin processing reactors at the Samrat Poly Resins manufacturing facility', caption: 'Production Reactors' },
   { src: qcLaboratory, alt: 'Quality inspection laboratory at Samrat Poly Resins', caption: 'Quality Inspection Laboratory' },
 ];
