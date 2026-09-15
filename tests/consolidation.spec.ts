@@ -42,6 +42,8 @@ function parseRedirects(): Rule[] {
 function distHasPage(urlPath: string): boolean {
   const clean = urlPath.replace(/^\//, '').replace(/\/$/, '');
   if (!clean) return existsSync(join(dist, 'index.html'));
+  // A file destination (an image or PDF redirect target) must exist as that file.
+  if (/\.[a-z0-9]{2,5}$/i.test(clean)) return existsSync(join(dist, clean));
   return existsSync(join(dist, clean, 'index.html')) || existsSync(join(dist, `${clean}.html`));
 }
 

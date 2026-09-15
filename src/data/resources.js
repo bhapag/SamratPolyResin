@@ -224,8 +224,8 @@ export const resources = [
       {
         heading: "How GP Polyester Resin Is Manufactured",
         photo: {
-          src: "production-infrastructure.jpg",
-          alt: "Stainless-steel resin processing reactors at the Samrat Poly Resins manufacturing facility",
+          src: "samrat-poly-resins-plant-reactors.png",
+          alt: "Row of stainless-steel resin reactors inside the Samrat Poly Resins plant at Doraha, Punjab",
           caption: "Our production reactors — Doraha, Ludhiana",
         },
         body: [

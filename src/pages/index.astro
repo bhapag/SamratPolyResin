@@ -7,7 +7,7 @@ import { products, CATEGORIES, CATEGORY_HUBS } from '../data/products.js';
 import { applications } from '../data/applications.js';
 import { site, buildWhatsAppLink } from '../data/site.js';
 import qcLaboratory from '../assets/quality/qc-laboratory.jpg';
-import productionInfrastructure from '../assets/facility/production-infrastructure.jpg';
+import productionInfrastructure from '../assets/facility/samrat-poly-resins-plant-reactors.png';
 import heroVideoPosterMobile from '../assets/hero/hero-video-poster-mobile.jpg';
 import frpWaterTanks from '../assets/applications/frp-water-tanks.jpg';
 import frpRoofingSheets from '../assets/applications/frp-roofing-sheets.jpg';
@@ -374,7 +374,7 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
           </div>
           <figure class="make-photo">
             <div class="facility-frame make-frame">
-              <Image src={productionInfrastructure} alt="Stainless-steel resin processing reactors at the Samrat Poly Resins manufacturing facility" widths={[480, 760, 1100]} sizes="(max-width: 860px) 50vw, 520px" loading="lazy" />
+              <Image src={productionInfrastructure} alt="Row of stainless-steel resin reactors inside the Samrat Poly Resins plant at Doraha, Punjab" widths={[480, 760, 1100]} sizes="(max-width: 520px) 100vw, (max-width: 860px) 50vw, 520px" loading="lazy" />
             </div>
             <figcaption class="make-caption">Stainless-steel production reactors</figcaption>
           </figure>
@@ -882,6 +882,8 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     }
     .make-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease-premium); }
     .make-photo:hover .make-frame img { transform: scale(1.035); }
+    /* Plant photograph: tank tops touch the top edge; crop the floor instead. */
+    .facility-frame img { object-position: 30% 0%; }
     .make-caption {
       font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--ink-faint);

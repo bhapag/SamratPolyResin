@@ -21,7 +21,7 @@ import { getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import { site } from '../data/site.js';
 import { CATEGORIES, CATEGORY_HUBS, products } from '../data/products.js';
-import facility from '../assets/facility/production-infrastructure.jpg';
+import facility from '../assets/facility/samrat-poly-resins-plant-reactors.png';
 import qcLab from '../assets/quality/qc-laboratory.jpg';
 
 const EDITION = 'September 2026';
@@ -70,7 +70,7 @@ const years = Number(EDITION.slice(-4)) - Number(site.established);
 
     <!-- 1. Cover -->
     <section class="sheet sheet-cover" aria-labelledby="cat-title">
-      <img class="cover-img" src={cover.src} alt="Samrat Poly Resins production reactors at the Doraha plant" width={cover.attributes.width} height={cover.attributes.height} />
+      <img class="cover-img" src={cover.src} alt="Row of stainless-steel resin reactors inside the Samrat Poly Resins plant at Doraha, Punjab" width={cover.attributes.width} height={cover.attributes.height} />
       <div class="cover-body">
         <p class="cover-kicker">Product Catalogue · {EDITION}</p>
         <h1 id="cat-title">Samrat Poly Resins</h1>
@@ -216,7 +216,7 @@ const years = Number(EDITION.slice(-4)) - Number(site.established);
     .eyebrow { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: #8a6312 !important; margin: 0 0 0.35rem; }
 
     .sheet-cover { padding: 0; overflow: hidden; background: #13213d; color: #f4f2ee; }
-    .cover-img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
+    .cover-img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: 30% 0%; }
     .cover-body { padding: clamp(1.4rem, 5vw, 18mm); }
     .cover-kicker { font-family: var(--font-mono); letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.78rem; color: var(--accent-gold); margin: 0 0 0.6rem; }
     .sheet-cover h1 { color: #fff; -webkit-text-fill-color: #fff; font-family: var(--font-display, 'Oswald', sans-serif); font-size: clamp(2.2rem, 8vw, 3.6rem); line-height: 1; margin: 0 0 0.6rem; text-transform: uppercase; letter-spacing: 0.02em; }

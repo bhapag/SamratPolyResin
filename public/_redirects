@@ -254,3 +254,18 @@
 
 # FRP Polyester Pigment SDS withdrawn from the site 2026-09-13 (its packaging line predates the 1 kg TDS).
 /sds/frp-polyester-pigment-sds.pdf /products/frp-polyester-pigment/ 301
+
+# Plant photograph replaced 2026-09-15 (approved reactor-row photograph).
+# The previous photograph's content-hashed derivatives redirect to the new
+# derivative of the same width, so cached pages and image-search links resolve.
+/_astro/production-infrastructure.DRsHluC2_1v5W60.webp   /_astro/samrat-poly-resins-plant-reactors.DNzi_9UY_24cvI5.webp   301
+/_astro/production-infrastructure.DRsHluC2_ZO1mh5.webp   /_astro/samrat-poly-resins-plant-reactors.DNzi_9UY_24cvI5.webp   301
+/_astro/production-infrastructure.DRsHluC2_Z2uklxO.webp  /_astro/samrat-poly-resins-plant-reactors.DNzi_9UY_Z1KoEUl.webp  301
+/_astro/production-infrastructure.DRsHluC2_Z128Qn1.webp  /_astro/samrat-poly-resins-plant-reactors.DNzi_9UY_ZUBoI2.webp   301
+/_astro/production-infrastructure.DRsHluC2_Rfjlb.jpg     /_astro/samrat-poly-resins-plant-reactors.DNzi_9UY_Z3Q6f3.jpg    301
+/_astro/production-infrastructure.DRsHluC2_ZWnfmP.webp   /_astro/samrat-poly-resins-plant-reactors.DNzi_9UY_qR8qi.webp    301
+/_astro/production-infrastructure.DRsHluC2_Z17Tz86.webp  /_astro/samrat-poly-resins-plant-reactors.DNzi_9UY_1Xstxs.webp   301
+/_astro/production-infrastructure.DRsHluC2_N8HAm.webp    /_astro/samrat-poly-resins-plant-reactors.DNzi_9UY_ZVdgy9.webp   301
+/_astro/production-infrastructure.DRsHluC2_Z1L3c35.webp  /_astro/samrat-poly-resins-plant-reactors.DNzi_9UY_Z1j0WCp.webp  301
+/_astro/production-infrastructure.DRsHluC2_4XrAv.webp    /_astro/samrat-poly-resins-plant-reactors.DNzi_9UY_ZxfN8A.webp   301
+/_astro/production-infrastructure.DRsHluC2_ZyPoVk.webp   /_astro/samrat-poly-resins-plant-reactors.DNzi_9UY_1cMPPC.webp   301

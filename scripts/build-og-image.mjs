@@ -17,8 +17,10 @@ const WIDTH = 1200;
 const HEIGHT = 630;
 const PANEL_WIDTH = WIDTH / 2;
 
-const left = await sharp(join(ROOT, 'src/assets/facility/production-infrastructure.jpg'))
-  .resize(PANEL_WIDTH, HEIGHT, { fit: 'cover', position: 'centre' })
+// Left-aligned so the full row of reactors (which starts at the left edge of
+// the plant photograph) stays inside the half-width panel.
+const left = await sharp(join(ROOT, 'src/assets/facility/samrat-poly-resins-plant-reactors.png'))
+  .resize(PANEL_WIDTH, HEIGHT, { fit: 'cover', position: 'left' })
   .toBuffer();
 
 const right = await sharp(join(ROOT, 'src/assets/quality/qc-laboratory.jpg'))
