@@ -6,7 +6,7 @@ import BrandFilm from '../components/home/BrandFilm.astro';
 import { products, CATEGORIES, CATEGORY_HUBS } from '../data/products.js';
 import { applications } from '../data/applications.js';
 import { site, buildWhatsAppLink } from '../data/site.js';
-import qcLaboratory from '../assets/quality/qc-laboratory.jpg';
+import qcLaboratory from '../assets/quality/samrat-poly-resins-qc-laboratory.jpg';
 import productionInfrastructure from '../assets/facility/samrat-poly-resins-plant-reactors.png';
 import heroVideoPosterMobile from '../assets/hero/hero-video-poster-mobile.jpg';
 import frpWaterTanks from '../assets/applications/frp-water-tanks.jpg';
@@ -884,6 +884,8 @@ const exportMarkets = site.statesServed.filter((s) => s.startsWith('Export ')).m
     .make-photo:hover .make-frame img { transform: scale(1.035); }
     /* Plant photograph: tank tops touch the top edge; crop the floor instead. */
     .facility-frame img { object-position: 30% 0%; }
+    /* Laboratory photograph: keep the balance at the left bench edge in frame. */
+    .why-quality-frame img { object-position: 15% 50%; }
     .make-caption {
       font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--ink-faint);

@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 import { site, buildCanonicalUrl, ORGANIZATION_ID } from '../data/site.js';
 import { products, CATEGORIES } from '../data/products.js';
 import productionInfrastructure from '../assets/facility/samrat-poly-resins-plant-reactors.png';
-import qcLaboratory from '../assets/quality/qc-laboratory.jpg';
+import qcLaboratory from '../assets/quality/samrat-poly-resins-qc-laboratory.jpg';
 
 const facilityPhotos = [
   { src: productionInfrastructure, alt: 'Row of stainless-steel resin reactors inside the Samrat Poly Resins plant at Doraha, Punjab', caption: 'Production Plant' },
@@ -199,6 +199,7 @@ const breadcrumbJsonLd = {
     .about-facility-photo:hover :global(img) { transform: scale(1.035); }
     /* Plant photograph: tank tops touch the top edge; crop the floor instead. */
     .about-facility-photo :global(img[src*='samrat-poly-resins-plant-reactors']) { object-position: 30% 0%; }
+    .about-facility-photo :global(img[src*='samrat-poly-resins-qc-laboratory']) { object-position: 15% 50%; }
     .about-facility-photo figcaption {
       padding: 0.7rem 0.9rem; border-top: 1px solid var(--line); background: var(--bg-3);
       font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;

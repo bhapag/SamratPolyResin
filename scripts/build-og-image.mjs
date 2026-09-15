@@ -23,8 +23,10 @@ const left = await sharp(join(ROOT, 'src/assets/facility/samrat-poly-resins-plan
   .resize(PANEL_WIDTH, HEIGHT, { fit: 'cover', position: 'left' })
   .toBuffer();
 
-const right = await sharp(join(ROOT, 'src/assets/quality/qc-laboratory.jpg'))
-  .resize(PANEL_WIDTH, HEIGHT, { fit: 'cover', position: 'centre' })
+// Left-aligned: the balance, oven, sample bottles and viscometer sit in the
+// left half of the laboratory photograph.
+const right = await sharp(join(ROOT, 'src/assets/quality/samrat-poly-resins-qc-laboratory.jpg'))
+  .resize(PANEL_WIDTH, HEIGHT, { fit: 'cover', position: 'left' })
   .toBuffer();
 
 // Subtle bottom-edge darkening on each panel for visual depth — a plain

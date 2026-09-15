@@ -10,7 +10,7 @@ import { applications as applicationGuides } from '../../data/applications.js';
 import { resources } from '../../data/resources.js';
 import { site, buildWhatsAppLink, buildCanonicalUrl, ORGANIZATION_ID } from '../../data/site.js';
 import productionInfrastructure from '../../assets/facility/samrat-poly-resins-plant-reactors.png';
-import qcLaboratory from '../../assets/quality/qc-laboratory.jpg';
+import qcLaboratory from '../../assets/quality/samrat-poly-resins-qc-laboratory.jpg';
 
 export function getStaticPaths() {
   return products.map(p => ({ params: { slug: p.slug }, props: { product: p } }));
@@ -2965,7 +2965,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href="/resources/marble-resin-technical-specifications-and-rfq/" class="gp-trust-card">
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 33vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 33vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Keep the document record visible</strong>
             <span>Use the Marble Resin TDS for grade data, applications and supply details.</span>
@@ -2990,7 +2990,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Use the dedicated PET Resin TDS</strong>
             <span>The current TDS is the product-specific reference for the published PET-modified liquid UPR sheet grade, supplied form, listed applications and commercial details.</span>
@@ -3034,7 +3034,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Use the current product-specific TDS</strong>
             <span>The DMC/SMC Resin TDS identifies the orthophthalic UPR, one published liquid grade, its supply data and listed applications. It is not represented here as a BMC designation, compound formulation, finished-part test report or approval.</span>
@@ -3059,7 +3059,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Product-specific documentation</strong>
             <span>Review the current Sheet Grade Yellow Resin TDS alongside the published product data before discussing an FRP sheet or panel requirement.</span>
@@ -3140,7 +3140,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Use product-specific documentation</strong>
             <span>The Glass Fiber TDS is the reference for the published E-Glass CSM 300 and CSM 450 details. Review the relevant resin TDS separately when planning an FRP material system.</span>
@@ -3264,7 +3264,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Use the current product-specific document</strong>
             <span>The existing company page describes its general quality-checking approach. Use the UV Resin TDS and actual finished-product requirement for a product-specific discussion.</span>
@@ -3289,7 +3289,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Use the current product-specific document</strong>
             <span>Epoxy Art Resin is manufactured by Samrat Poly Resins at Doraha, Punjab. Use its TDS and your finished-surface requirement for a product-specific discussion.</span>
@@ -3314,7 +3314,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Use the current product-specific document</strong>
             <span>The existing company page describes its general quality-checking approach. Use the Clear Casting Resin TDS and the actual casting requirement for product-specific technical review.</span>
@@ -3339,7 +3339,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Use the current product-specific TDS</strong>
             <span>The Epoxy Hardener TDS identifies a polyamide, amine-based curing agent and its published supply data. Use it with the exact epoxy resin and intended application; it does not establish universal resin/hardener compatibility or a third-party certificate.</span>
@@ -3364,7 +3364,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Use material-specific documentation</strong>
             <span>The MEKP Hardener TDS is the current published reference for this catalyst product. Review it alongside the actual resin or gelcoat documentation; follow the official material document for handling and safety information.</span>
@@ -3389,7 +3389,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Use product-specific documentation</strong>
             <span>Use the FRP Polyester Pigment TDS for published product information. Confirm the actual colour, base system and application before finalising a requirement.</span>
@@ -3622,7 +3622,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href="/resources/fiberglass-epoxy-resin-technical-specifications-and-document-check/" class="gp-trust-card">
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 33vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 33vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Keep both product records visible</strong>
             <span>Fiberglass Epoxy Resin is manufactured by Samrat Poly Resins at Doraha, Punjab, and is a separate product from Bisphenol Resin. Use its TDS for grade data.</span>
@@ -3695,7 +3695,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 33vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 33vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Review the current product-specific TDS</strong>
             <span>The Bisphenol Resin TDS provides this grade&rsquo;s chemistry wording, typical supplied-resin data and published application contexts for technical review.</span>
@@ -3727,7 +3727,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 33vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 33vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Use the grade-specific TDS</strong>
             <span>The current Vinyl Ester Resin TDS publishes the resin identity, typical liquid-resin data, packaging, MOQ, shelf life and storage information. It is not represented here as a chemical-compatibility chart, certificate, fire report or finished-system approval.</span>
@@ -3752,7 +3752,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Use the grade-specific TDS</strong>
             <span>The current ISO Fire Retardant Resin TDS publishes the resin family, supplied appearance, viscosity, gel time, specific gravity, packaging, MOQ, shelf life and storage information. It is not represented here as a fire-test report, certificate or finished-system approval.</span>
@@ -3777,7 +3777,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href={tdsUrl} class="gp-trust-card" target="_blank" rel="noopener" download>
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Review grade-specific documentation</strong>
             <span>The current Roof Light Resin TDS publishes the grade-specific resin type, supplied appearance, viscosity, gel time, packaging, MOQ, shelf life and storage information. Use it for the exact requirement.</span>
@@ -3833,7 +3833,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href="/about/" class="gp-trust-card">
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Published quality approach</strong>
             <span>Our company information describes checks for viscosity, gel time and cure behaviour before batch approval.</span>
@@ -3873,7 +3873,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href="/about/" class="gp-trust-card">
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Published quality approach</strong>
             <span>Our company information describes checks for viscosity, gel time and cure behaviour before batch approval.</span>
@@ -3898,7 +3898,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href="/about/" class="gp-trust-card">
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Published quality approach</strong>
             <span>Our company information describes checks for viscosity, gel time and cure behaviour before batch approval; use the GP White Resin TDS for grade data.</span>
@@ -4021,7 +4021,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href="/about/" class="gp-trust-card">
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Product data should lead the discussion</strong>
             <span>Our company information describes checks for viscosity, gel time and cure behaviour. Use the GP Quartz Resin TDS for grade-specific data and the actual stone-composite requirement.</span>
@@ -4046,7 +4046,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href="/about/" class="gp-trust-card">
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Published quality approach</strong>
             <span>Our company information describes checks for viscosity, gel time and cure behaviour before batch approval.</span>
@@ -4071,7 +4071,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href="/about/" class="gp-trust-card">
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Published quality approach</strong>
             <span>Our company information describes checks for viscosity, gel time and cure behaviour before batch approval.</span>
@@ -4096,7 +4096,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href="/about/" class="gp-trust-card">
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Published quality approach</strong>
             <span>Our company information describes checks for viscosity, gel time and cure behaviour before batch approval.</span>
@@ -4121,7 +4121,7 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
           </span>
         </a>
         <a href="/about/" class="gp-trust-card">
-          <Image src={qcLaboratory} alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
+          <Image src={qcLaboratory} class="lab-card" alt="Quality-control laboratory at Samrat Poly Resins" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           <span class="gp-trust-card-body">
             <strong>Published quality approach</strong>
             <span>Our company information describes checks for viscosity, gel time and cure behaviour before batch approval.</span>
@@ -4879,13 +4879,16 @@ const faqJsonLd = faqs && faqs.length > 0 ? {
        photograph at its own 4:3 ratio, centred in the column, so the whole row
        stays visible. The column background fills the remaining height. */
     .gp-trust-card :global(img.plant-interior-card) { height: auto; min-height: 0; aspect-ratio: 4 / 3; object-fit: cover; align-self: center; }
+    /* Laboratory photograph (16:9): same treatment, so the benches and
+       instruments at both sides are not cropped away in a narrow column. */
+    .gp-trust-card :global(img.lab-card) { height: auto; min-height: 0; aspect-ratio: 16 / 9; object-fit: cover; align-self: center; }
     .gp-trust-card-body { display: flex; flex-direction: column; justify-content: center; gap: 0.55rem; padding: 1.2rem; }
     .gp-trust-card-body strong { color: var(--ink); font-size: 0.94rem; }
     .gp-trust-card-body span { color: var(--ink-dim); font-size: 0.84rem; line-height: 1.55; }
     .vinyl-ester-trust .gp-trust-grid, .marble-resin-trust .gp-trust-grid, .fiberglass-epoxy-trust .gp-trust-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     @media (max-width: 1080px) { .vinyl-ester-trust .gp-trust-grid, .marble-resin-trust .gp-trust-grid, .fiberglass-epoxy-trust .gp-trust-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 760px) { .gp-trust-grid, .vinyl-ester-trust .gp-trust-grid, .marble-resin-trust .gp-trust-grid, .fiberglass-epoxy-trust .gp-trust-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 460px) { .gp-trust-card { grid-template-columns: 1fr; } .gp-trust-card :global(img) { height: 180px; min-height: 0; } .gp-trust-card :global(img.plant-interior-card) { height: auto; } }
+    @media (max-width: 460px) { .gp-trust-card { grid-template-columns: 1fr; } .gp-trust-card :global(img) { height: 180px; min-height: 0; } .gp-trust-card :global(img.plant-interior-card), .gp-trust-card :global(img.lab-card) { height: auto; } }
 
     .gp-case-study { padding-block: 0 3.2rem; scroll-margin-top: 90px; }
     .gp-case-study .section-head { max-width: 760px; margin-bottom: 1.35rem; }
